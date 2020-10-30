@@ -64,8 +64,6 @@ bindsym $mod+shift+m exec minecraft-launcher
 
 bindsym $mod+shift+e exec thunderbird
 
-bindsym $mod+shift+n exec nautilus
-
 bindsym $mod+t exec torbrowser-launcher
 
 
