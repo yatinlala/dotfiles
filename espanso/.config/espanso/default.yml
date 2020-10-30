@@ -1,0 +1,58 @@
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+toggle_key: RIGHT_ALT
+
+matches:
+  # Simple text replacement
+  - trigger: ";;ss"
+    replace: "⊃"
+  - trigger: ";;iff"
+    replace: "≡"
+  - trigger: ";;or"
+    replace: "∨"
+  - trigger: ";;xor"
+    replace: "⊻"
+  - trigger: ";;ts"
+    replace: "⊢"
+  - trigger: ";;dts"
+    replace: "⊨"
+
+  - trigger: ";ss"
+    replace: "$\\supset$"
+  - trigger: ";and"
+    replace: "$\\&$"
+  - trigger: ";or"
+    replace: "$\\lor$"
+  - trigger: ";equiv"
+    replace: "$\\equiv$"
+  - trigger: ";not"
+    replace: "$\\sim$"
+
+  - trigger: ";-"
+    replace: "—"
+  - trigger: ";paragraph"
+    replace: "¶"
+  - trigger: ";silcrow"
+    replace: "§"
+
+  - trigger: ";thumbup"
+    replace: "👍"
+
+  # Dates
+  - trigger: ";date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Shell commands
+  - trigger: ";shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"

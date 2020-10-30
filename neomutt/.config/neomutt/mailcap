@@ -1,0 +1,6 @@
+# text/plain; vim %s; needsterminal; copiousoutput;
+text/html; elinks -dump-charset %{charset} -default-mime-type text/html %s; needsterminal; copiousoutput;
+image/jpeg; feh -;
+image/png; feh -;
+image/webp; feh -;
+application/pdf; zathura -;

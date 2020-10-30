@@ -1,0 +1,34 @@
+[general]
+metadata = ~/.local/share/offlineimap
+pythonfile = ~/.config/offlineimap/offlineimap.py
+fsync = false
+accounts = personal
+
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/.local/mail
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'trash':   '[Gmail]/Trash',
+                            }.get(folder, folder)
+
+[Repository personal-remote]
+type = Gmail
+maxconnections = 1
+remoteuser = yatin.lala@gmail.com
+remotepasseval = getPassword()
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Trash':     'trash',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Snoozed',
+                                             '[Gmail]/Starred',
+					     '[Gmail]/Sent Mail',
+					     '[Gmail]/All Mail',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam']
