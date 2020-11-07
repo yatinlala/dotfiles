@@ -132,4 +132,5 @@ bind editor <Tab> complete-query
 
 
 # Colors ---------------------------------------------
-color tilde black default
+#color tilde black default
+source gruvbox-colors.muttrc

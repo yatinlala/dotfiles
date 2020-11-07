@@ -12,8 +12,8 @@ Urxvt.perl-ext-common:
 URxvt.print-pipe: "$HOME/.local/scripts/save-scrollback-buffer"
 
 URxvt.perl-ext-common: ...,font-size
-URxvt.keysym.4-k:     font-size:increase
-URxvt.keysym.4-j:   font-size:decrease
+URxvt.keysym.4-i:     font-size:increase
+URxvt.keysym.4-o:   font-size:decrease
 URxvt.keysym.4-n:  font-size:reset
 
 ! -----------------------------------------------------------------------------

@@ -31,6 +31,7 @@ cmd open ${{
     esac
 }}
 
+
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
@@ -149,6 +150,7 @@ map d
 map c
 map e
 map f
+map r
 
 # Not really image preview
 # map P $~/.local/scripts/lf/draw_img "$f"
@@ -176,7 +178,7 @@ map tc clear_trash
 map tr restore_trash
 
 # Broot Mapping
-map f broot_jump
+map f fzf_jump
 
 # Dragon Mapping
 map dr dragon
@@ -202,7 +204,8 @@ map ch chmod
 map bg setwallpaper
 map o open_config
 map br $vimv $fx
-map r rename
+map rr rename
+map rb $printf "%s\n" $fx | vidir -
 map H top
 map L bottom
 map R reload
@@ -216,6 +219,7 @@ map gp cd ~/pictures
 map gps cd ~/pictures/screenshots
 map gd cd ~/documents
 map gD cd ~/downloads
+map gm cd ~/music
 map gs cd ~/.local/scripts
 map gc cd ~/.config
 map gl cd ~/.local

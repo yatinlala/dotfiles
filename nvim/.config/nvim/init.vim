@@ -6,6 +6,7 @@ set ignorecase
 set smartcase
 set number relativenumber
 set clipboard=unnamedplus
+set nohlsearch
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -26,11 +27,7 @@ map <Leader>p :w! \| !comp <c-r>%<CR><CR>
 " Enable spell checking
 map <Leader>S :setlocal spell! spelllang=en_us<CR>
 
-" Save and quit macro 
-map <Leader>s :wq<CR>
-
-" Quit Macro
-map <Leader>q :q!<CR>
+nnoremap S :%s//g<Left><Left>
 
 " Tab Settings
 set expandtab

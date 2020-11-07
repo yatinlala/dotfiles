@@ -8,6 +8,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 # Disable files
 export LESSHISTFILE=-
 
+export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 # Fixing Paths
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
@@ -23,12 +24,19 @@ export ZDOTDIR=$HOME/.config/zsh
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 
-# export RANGER_LOAD_DEFAULT_RC="FALSE"
+# FZF
+export FZF_DEFAULT_OPTS='--cycle --border'
+export FZF_DEFAULT_COMMAND='fd -H .'
 
 # Clipmenu
 # export CM_MAX_CLIPS=10
 # export CM_SELECTIONS="clipboard"
 # export CM_LAUNCHER="rofi"
+
+# Doom Emacs Commands
+export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="$HOME/.local/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Default Apps
 export EDITOR="nvim"
