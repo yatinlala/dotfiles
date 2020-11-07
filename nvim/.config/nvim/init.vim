@@ -25,7 +25,7 @@ set bg=dark
 map <Leader>p :w! \| !comp <c-r>%<CR><CR>
 
 " Enable spell checking
-map <Leader>S :setlocal spell! spelllang=en_us<CR>
+map <Leader><Leader>c :setlocal spell! spelllang=en_us<CR>
 
 nnoremap S :%s//g<Left><Left>
 
