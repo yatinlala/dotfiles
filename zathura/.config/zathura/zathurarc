@@ -47,3 +47,5 @@ map K zoom out
 map i recolor
 set recolor                     true
 map p print
+
+set font "monospace normal 14"

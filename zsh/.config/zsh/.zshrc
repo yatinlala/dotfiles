@@ -1,4 +1,11 @@
 # ============
+# Basic Settings 
+# ============
+
+# Load Colors
+autoload -U colors && colors
+
+# ============
 # key bindings
 # ============
 
@@ -60,12 +67,12 @@ zle -N accept-line
 zle -N clear-screen-scrollback
 
 # source and configure zsh autosuggestions
-# source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# ZSH_AUTOSUGGEST_USE_ASYNC=true
-# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+ ZSH_AUTOSUGGEST_USE_ASYNC=true
+ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # Load zsh-syntax-highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # Source environment Variables
 source /home/nitay/.zprofile
@@ -103,6 +110,7 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 
+pfetch
 # Spaceship Prompt
 autoload -U promptinit; promptinit
 prompt spaceship
