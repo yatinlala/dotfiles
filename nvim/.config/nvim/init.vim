@@ -27,6 +27,7 @@ map <Leader>p :w! \| !comp <c-r>%<CR><CR>
 " Enable spell checking
 map <Leader><Leader>c :setlocal spell! spelllang=en_us<CR>
 
+" Search and replace
 nnoremap S :%s//g<Left><Left>
 
 " Tab Settings

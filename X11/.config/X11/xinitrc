@@ -1,5 +1,5 @@
 xset b off
-xrdb -merge ~/.Xresources
+xrdb -merge ~/.config/X11/Xresources
 
 setxkbmap -option caps:swapescape
 

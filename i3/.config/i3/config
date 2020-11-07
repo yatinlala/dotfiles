@@ -54,7 +54,7 @@ bindsym $mod+i exec $term -e nvim
 
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 
-bindsym $mod+y exec rofi -show run
+bindsym $mod+r exec rofi -show run
 
 bindsym $mod+b exec firefox
 

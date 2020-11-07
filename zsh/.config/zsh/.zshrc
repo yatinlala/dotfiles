@@ -75,7 +75,7 @@ zle -N clear-screen-scrollback
  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # Source environment Variables
-source /home/nitay/.zprofile
+source /home/nitay/.zshenv
 
 # Source aliases
 source /home/nitay/.config/zsh/aliases

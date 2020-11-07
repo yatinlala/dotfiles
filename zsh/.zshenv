@@ -13,16 +13,21 @@ export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
 export GEM_HOME="$XDG_DATA_HOME/ruby/gems"
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-export NOTMUCH_CONFIG=$XDG_CONFIG_HOME/notmuch/config
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export ZDOTDIR=$HOME/.config/zsh
+export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
 
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --border'
