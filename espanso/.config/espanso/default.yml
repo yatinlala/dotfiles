@@ -7,7 +7,7 @@ matches:
   # Simple text replacement
   - trigger: ";;ss"
     replace: "⊃"
-  - trigger: ";;iff"
+  - trigger: ";;equiv"
     replace: "≡"
   - trigger: ";;or"
     replace: "∨"
@@ -17,6 +17,8 @@ matches:
     replace: "⊢"
   - trigger: ";;dts"
     replace: "⊨"
+  - trigger: ";;exists"
+    replace: "∃"
 
   - trigger: ";ss"
     replace: "$\\supset$"
@@ -28,6 +30,9 @@ matches:
     replace: "$\\equiv$"
   - trigger: ";not"
     replace: "$\\sim$"
+  - trigger: ";exists"
+    replace: "$\\exists$"
+
 
   - trigger: ";-"
     replace: "—"

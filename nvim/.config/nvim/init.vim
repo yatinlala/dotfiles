@@ -28,7 +28,7 @@ let g:lightline = {
       \ }
 
 " pandoc compilation
-map <Leader>p :w! \| !comp <c-r>%<CR><CR>
+map <Leader>c :w! \| !comp <c-r>%<CR><CR>
 
 " Enable spell checking
 map <Leader><Leader>c :setlocal spell! spelllang=en_us<CR>

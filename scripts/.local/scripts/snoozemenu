@@ -6,8 +6,8 @@ chosen=$(echo -e "$choices" | rofi -dmenu -i -p "quick menu")
 case $chosen in
     suspend) systemctl suspend;;
     hibernate) systemctl hibernate;;
-    shutdown) shutdown now;;
-    reboot) reboot;;
+    shutdown) systemctl shutdown;; 
+    reboot) systemctl reboot;;
     "exit i3") i3-msg exit;;
     internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off;;
     hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off;;

@@ -38,10 +38,8 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 # export CM_SELECTIONS="clipboard"
 # export CM_LAUNCHER="rofi"
 
-# Doom Emacs Commands
-# export PATH="$HOME/.emacs.d/bin:$PATH"
-# export PATH="$HOME/.local/scripts:$PATH"
-# export PATH="$HOME/.local/bin:$PATH"
+#Add scripts to path
+export PATH="$HOME/.local/scripts:$PATH"
 
 # Default Apps
 export EDITOR="nvim"
