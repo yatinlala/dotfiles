@@ -203,14 +203,16 @@ map ms $mkscript
 map ch chmod
 map bg setwallpaper
 map o open_config
-map br $vimv $fx
-map rr rename
-map rb $printf "%s\n" $fx | vidir -
 map H top
 map L bottom
 map R reload
 map C clear
 map U unselect
+
+#Rename Commands
+map rr rename #Simple rename
+map rb $printf "%s\n" $fx | vidir - #Bulk rename
+map rc push :rename<space> #New name
 
 # Movement
 map gt cd ~/.local/share/Trash/files

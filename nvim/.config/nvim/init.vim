@@ -11,11 +11,10 @@ set nohlsearch
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-commentary'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -23,9 +22,10 @@ call plug#end()
 autocmd vimenter * colorscheme gruvbox
 set bg=dark
 
-" gruv airline
-" let g:airline_theme='base16_gruvbox_dark_hard'
-" autocmd VimEnter * AirlineRefresh 
+" lightline theme
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 " pandoc compilation
 map <Leader>p :w! \| !comp <c-r>%<CR><CR>
@@ -56,4 +56,3 @@ map <C-l> <C-w>l
 
 " Better splitting
 set splitbelow splitright
-

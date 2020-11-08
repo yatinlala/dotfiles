@@ -11,10 +11,16 @@ Urxvt.perl-ext:
 Urxvt.perl-ext-common:
 URxvt.print-pipe: "$HOME/.local/scripts/save-scrollback-buffer"
 
+! Font adjustment
 URxvt.perl-ext-common: ...,font-size
-URxvt.keysym.4-i:     font-size:increase
-URxvt.keysym.4-o:   font-size:decrease
-URxvt.keysym.4-n:  font-size:reset
+URxvt.keysym.M-i:     font-size:increase
+URxvt.keysym.M-o:   font-size:decrease
+URxvt.keysym.M-n:  font-size:reset
+
+! Clickable links
+! URxvt.perl-ext-common: default,matcher
+! URxvt.url-launcher: /usr/bin/xdg-open
+! URxvt.matcher.button: 1
 
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources

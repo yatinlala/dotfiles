@@ -58,7 +58,7 @@ bindsym $mod+r exec rofi -show run
 
 bindsym $mod+b exec firefox
 
-bindsym $mod+n exec $term -e newsboat
+bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 
 bindsym $mod+m exec $term -e neomutt
 
