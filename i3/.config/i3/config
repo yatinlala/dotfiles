@@ -76,7 +76,6 @@ bindsym $mod+t exec torbrowser-launcher
 
 # selection scrot
 bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
-
 # fullscreen scrot
 bindsym --release $win+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 

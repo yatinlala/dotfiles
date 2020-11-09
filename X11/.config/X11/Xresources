@@ -12,10 +12,9 @@ Urxvt.perl-ext-common:
 URxvt.print-pipe: "$HOME/.local/scripts/save-scrollback-buffer"
 
 ! Font adjustment
-URxvt.perl-ext-common: ...,font-size
-URxvt.keysym.M-i:     font-size:increase
-URxvt.keysym.M-o:   font-size:decrease
-URxvt.keysym.M-n:  font-size:reset
+! URxvt.perl-ext-common: ...,font-size
+! URxvt.keysym.C-i:     perl:font-size:increase
+! URxvt.keysym.C-o:   perl:font-size:decrease
 
 ! Clickable links
 ! URxvt.perl-ext-common: default,matcher

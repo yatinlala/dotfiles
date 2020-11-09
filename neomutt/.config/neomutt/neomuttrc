@@ -46,6 +46,9 @@ unignore from: to: cc: date: subject:   # show only these,
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
 
+# set sidebar_visible
+# set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+# set mail_check_stats
 
 # Pager View Options ---------------------------------
 set pager_index_lines = 3  # number of index lines to show
