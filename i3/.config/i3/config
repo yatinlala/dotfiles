@@ -4,6 +4,7 @@
 set $mod Mod1
 set $win Mod4
 set $term urxvtc
+set $term2 st
 
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
@@ -17,21 +18,18 @@ default_orientation vertical
 bindsym $mod+q split toggle kill
 # bindsym $mod+q kill
 
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 #--------------------------------------------------
 #-----------------Program Shortcuts----------------
 #--------------------------------------------------
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
  
 bindsym $mod+Return exec $term
-bindsym $win+Return exec st
+bindsym $win+Return exec $term2 
 
 bindsym $mod+s exec snoozemenu
 bindsym $mod+shift+s exec "systemctl shutdown"
-
-bindsym $mod+c exec $term -e cmus
 
 #Camera and Audio
 bindsym $mod+shift+c exec guvcview
@@ -67,7 +65,9 @@ bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y
 bindsym --release $win+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
-
+bindsym $mod+c exec $term -e cmus
+bindsym $mod+shift+g exec gtk-straw-viewer
+bindsym $mod+p exec passmenu
 
 
 #--------------------------------------------------
