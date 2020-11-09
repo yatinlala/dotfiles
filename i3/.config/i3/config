@@ -1,5 +1,6 @@
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+#--------------------------------------------------
+#-----------------General Settings-----------------
+#--------------------------------------------------
 set $mod Mod1
 set $win Mod4
 set $term urxvtc
@@ -16,68 +17,82 @@ default_orientation vertical
 bindsym $mod+q split toggle kill
 # bindsym $mod+q kill
 
-# adjust screen brightness
-bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
-bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
-bindsym XF86MonBrightnessUp exec "xbacklight +1"
-bindsym XF86MonBrightnessDown exec "xbacklight -1"
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-
-bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
-bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
-
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#--------------------------------------------------
+#-----------------Program Shortcuts----------------
+#--------------------------------------------------
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
+ 
 bindsym $mod+Return exec $term
-
 bindsym $win+Return exec st
 
-bindsym $mod+shift+v exec pavucontrol
-
 bindsym $mod+s exec snoozemenu
-
 bindsym $mod+shift+s exec "systemctl shutdown"
-
-bindsym $mod+a exec $term -e lf
-
-bindsym $mod+shift+a exec $term -e sudo lf
 
 bindsym $mod+c exec $term -e cmus
 
+#Camera and Audio
 bindsym $mod+shift+c exec guvcview
+bindsym $mod+shift+v exec pavucontrol
 
+#Text Replacement
 bindsym $mod+e exec espanso daemon
 bindsym $mod+shift+e exec espanso stop
 
+#Text Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 
+#File Manager
+bindsym $mod+a exec $term -e lf
+bindsym $mod+shift+a exec $term -e sudo lf
+
+#App Launcher
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+r exec rofi -show run
 
+#Browser
 bindsym $mod+b exec firefox
+bindsym $mod+shift+b exec firefox -no-remote -P privacy
+bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-browser"
+
+#Email
+bindsym $mod+m exec $term -e neomutt
+bindsym $mod+shift+m exec thunderbird
+
+# Screenshots
+bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
+bindsym --release $win+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 
-bindsym $mod+m exec $term -e neomutt
-
-bindsym $mod+shift+m exec thunderbird
-
-bindsym $mod+t exec torbrowser-launcher
 
 
-# selection scrot
-bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
-# fullscreen scrot
-bindsym --release $win+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+#--------------------------------------------------
+#-------------Program Startup and Settings---------
+#--------------------------------------------------
+
+#Startup
+exec safeeyes
+exec urxvtd -q
+exec feh --bg-scale /home/nitay/pictures/sunrise.jpg 
+exec redshift
+exec espanso daemon
+exec pulseaudio --start
+exec picom
+exec dunst
+
+#floating window apps
+#for_window [Class="mpv"] floating enable
+for_window [Class="Pavucontrol"] floating enable
+for_window [Class="Gnome-break-timer"] floating enable
+for_window [Class="Tor Browser"] floating enable
+
+#--------------------------------------------------
+#-------------------Movement---------------------
+#--------------------------------------------------
 
 # change focus
 bindsym $mod+h focus left
@@ -109,12 +124,6 @@ bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+shift+space focus mode_toggle
-
-# floating window apps
-# for_window [Class="mpv"] floating enable
-for_window [Class="Pavucontrol"] floating enable
-for_window [Class="Gnome-break-timer"] floating enable
-
 
 #Set workspace names
 set $ws1 "1"
@@ -159,21 +168,35 @@ bindsym $win+shift+j resize grow height 10 px or 10 ppt
 bindsym $win+shift+k resize shrink height 10 px or 10 ppt
 bindsym $win+shift+l resize grow width 10 px or 10 ppt
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command i3status
 	position top
 }
 
-exec safeeyes
-exec urxvtd -q
-exec feh --bg-scale /home/nitay/pictures/sunrise.jpg 
-exec redshift
-exec espanso daemon
-exec pulseaudio --start
-exec picom
-exec dunst
+#--------------------------------------------------
+#--------------Peripheral Controls-----------------
+#--------------------------------------------------
+
+# adjust screen brightness
+bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
+bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
+bindsym XF86MonBrightnessUp exec "xbacklight +1"
+bindsym XF86MonBrightnessDown exec "xbacklight -1"
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+
+bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#--------------------------------------------------
+#-------------------Theming---------------------
+#--------------------------------------------------
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

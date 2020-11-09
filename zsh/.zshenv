@@ -41,6 +41,9 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 #Add scripts to path
 export PATH="$HOME/.local/scripts:$PATH"
 
+#Add Tor to path
+# export PATH="$HOME/.local/source/tor-browser"
+
 # Default Apps
 export EDITOR="nvim"
 export READER="zathura"
