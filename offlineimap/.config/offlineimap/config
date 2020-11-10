@@ -13,7 +13,10 @@ remoterepository = personal-remote
 type = Maildir
 localfolders = ~/.local/mail
 nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
                             'trash':   '[Gmail]/Trash',
+                            'archive':   '[Gmail]/All Mail',
                             }.get(folder, folder)
 
 [Repository personal-remote]
@@ -24,11 +27,14 @@ remotepasseval = getPassword()
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
                             '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
                             }.get(folder, folder)
+
 folderfilter = lambda folder: folder not in ['[Gmail]/Snoozed',
-                                             '[Gmail]/Starred',
-					     '[Gmail]/Sent Mail',
-					     '[Gmail]/All Mail',
                                              '[Gmail]/Important',
+                                             '[Gmail]/SJYS',
+                                             '[Gmail]/Colleges',
                                              '[Gmail]/Spam']

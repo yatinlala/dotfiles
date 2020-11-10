@@ -110,7 +110,7 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 
-pfetch
+# pfetch
 # Spaceship Prompt
 autoload -U promptinit; promptinit
 prompt spaceship

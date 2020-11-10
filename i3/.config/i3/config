@@ -58,7 +58,7 @@ bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-brows
 
 #Email
 bindsym $mod+m exec $term -e neomutt
-bindsym $mod+shift+m exec thunderbird
+bindsym $mod+shift+m exec minecraft-launcher
 
 # Screenshots
 bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection

@@ -46,9 +46,6 @@ unignore from: to: cc: date: subject:   # show only these,
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
 
-# set sidebar_visible
-# set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
-# set mail_check_stats
 
 # Pager View Options ---------------------------------
 set pager_index_lines = 3  # number of index lines to show
@@ -100,7 +97,7 @@ bind index i           mail
 bind index s           sync-mailbox
 bind index $           noop
 # "mark" like vim? kinda?
-# macro index,pager m "<pipe-message>~/.local/scripts/email-contacts --add-email-quiet<return>" "Add this sender to address book"
+macro index,pager m "<pipe-message>~/.local/scripts/email-contacts --add-email-quiet<return>" "Add this sender to address book"
 macro index c           "<change-folder>?" "change mailboxes"
 bind  index <space>     collapse-thread
 bind  index /           vfolder-from-query # use notmuch
@@ -133,7 +130,5 @@ bind compose p postpone-message
 macro index,pager a "<purge-message>" "functions as gmail 'archival'"
 bind editor <Tab> complete-query
 
-
 # Colors ---------------------------------------------
-#color tilde black default
 source gruvbox-colors.muttrc
