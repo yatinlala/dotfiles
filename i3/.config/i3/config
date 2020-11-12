@@ -30,8 +30,8 @@ bindsym $win+Return exec $term2
 
 # Boot and Screen Control
 bindsym $mod+s exec snoozemenu
-bindsym $mod+shift+s exec "shutdown now"
-bindsym $mod+shift+r exec reboot
+bindsym $mod+shift+s exec $term -e shutdown now
+bindsym $mod+shift+r exec $term -e reboot
 
 #Camera and Audio
 bindsym $mod+shift+c exec guvcview
