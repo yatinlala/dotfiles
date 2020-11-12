@@ -29,7 +29,7 @@ bindsym $mod+Return exec $term
 bindsym $win+Return exec $term2 
 
 # Boot and Screen Control
-bindsym $mod+s exec snoozemenu
+bindsym $mod+s exec quickmenu
 bindsym $mod+shift+s exec $term -e shutdown now
 bindsym $mod+shift+r exec $term -e reboot
 
