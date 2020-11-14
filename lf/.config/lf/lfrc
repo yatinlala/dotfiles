@@ -56,6 +56,9 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
+cmd sudovim ${{
+  sudo nvim "$f"
+}}
 cmd sudomkfile ${{
   printf "File Name: "
   read ans
@@ -165,6 +168,7 @@ map + :video_preview
 
 # File Openers
 map ee $$EDITOR "$f"
+map es sudovim
 
 # Archive Mappings
 map az zip
