@@ -1,0 +1,8 @@
+#!/bin/sh
+
+choices="dunst\nespanso\ni3\ni3status\nlf\nnvim\npicom\nxinitrc\nXresources\nzathura\nzshrc\nzsh aliases"
+chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")
+
+case $chosen in
+
+esac
