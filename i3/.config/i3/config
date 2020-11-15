@@ -9,8 +9,8 @@ set $term2 st
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
-gaps inner 0 
-gaps outer 0
+gaps inner 6 
+gaps outer 6
 for_window [class="^.*"] border pixel 2 
 
 default_orientation vertical
@@ -76,7 +76,7 @@ bindsym --release $win+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y
 bindsym --release $win+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
-bindsym $mod+c exec $term -e cmus
+bindsym $mod+c exec $term -name cmus -e cmus
 bindsym $mod+shift+g exec gtk-straw-viewer
 bindsym $mod+p exec passmenu
 
