@@ -1,6 +1,6 @@
 #!/bin/sh
 
-choices="suspend\nhibernate\nshutdown\nreboot\nexit i3\n|\ninternal\nhdmi\nmanual\n|\nmin brightness"
+choices="suspend\nhibernate\nshutdown\nreboot\nexit i3\n|\ninternal\nhdmi\nmanual"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "quick menu")
 
 case $chosen in
