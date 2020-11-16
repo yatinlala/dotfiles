@@ -55,9 +55,9 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+r exec rofi -show run
 
-#Music Control
+#Music
 bindsym $mod+c exec $term -name cmus -e cmus
-bindsym $mod+slash exec cmus-remote -u
+bindsym $mod+p exec cmus-remote -u
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 
@@ -84,7 +84,7 @@ bindsym --release $mod2+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+shift+g exec gtk-straw-viewer
-bindsym $mod+p exec passmenu
+bindsym $mod+semicolon exec passmenu
 
 
 #--------------------------------------------------
@@ -92,6 +92,7 @@ bindsym $mod+p exec passmenu
 #--------------------------------------------------
 
 #Startup
+exec nm-applet
 exec safeeyes
 exec urxvtd -q
 exec feh --bg-scale /home/nitay/pictures/sunrise.jpg 
