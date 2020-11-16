@@ -24,9 +24,9 @@ cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
         application/pdf) /usr/local/bin/devour zathura "$f";;
-        video/*) /usr/local/bin/devour mpv "$f";;
-        # audio/*) /usr/local/bin/devour mpv "$f";;
-        image/*) /usr/local/bin/devour feh "$f";;
+        video/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
+        audio/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
+        # image/*) /usr/local/bin/devour feh "$f";;
         *) xdg-open "$f" ;;
     esac
 }}
@@ -215,9 +215,8 @@ map C clear
 map U unselect
 
 #Rename Commands
-map rr rename #Simple rename
-map rb $printf "%s\n" $fx | vidir - #Bulk rename
-map rc push :rename<space> #New name
+map r rename #Simple rename
+map br $printf "%s\n" $fx | vidir - #Bulk rename
 
 # Movement
 map gt cd ~/.local/share/Trash/files
