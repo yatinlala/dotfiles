@@ -33,7 +33,7 @@ matches:
   - trigger: ";exists"
     replace: "$\\exists$"
 
-  - trigger: ";o"
+  - trigger: ";doto"
     replace: "ö"
 
   - trigger: ";-"
