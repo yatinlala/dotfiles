@@ -32,6 +32,7 @@ bindsym $mod2+Return exec $term2
 bindsym $mod+s exec quickmenu
 bindsym $mod+shift+s exec $term -e shutdown now
 bindsym $mod+shift+r exec $term -e reboot
+bindsym $mod+o exec i3lock -i ~/pictures/i3lock/sunrise.png
 
 #Config Menu
 bindsym $mod+u exec configmenu
