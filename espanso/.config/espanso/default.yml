@@ -30,6 +30,8 @@ matches:
     replace: "$\\equiv$"
   - trigger: ";not"
     replace: "$\\sim$"
+  - trigger: ";neq"
+    replace: "$\\neq$"
   - trigger: ";exists"
     replace: "$\\exists$"
 
