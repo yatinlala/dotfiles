@@ -1,14 +1,16 @@
 #!/bin/sh
 
-choices="dunst\nespanso\ni3\ni3status\nlf\nnvim\npicom\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
+choices="dunstrc\nespanso\ni3\ni3status\nlfrc\n\nmpv.conf\nmpv input.conf\nnvim\npicom\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")
 
 case $chosen in
-    dunst) urxvtc -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc;;
+    dunstrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc;;
     espanso) urxvtc -e $EDITOR $XDG_CONFIG_HOME/espanso/default.yml;;
     i3) urxvtc -e $EDITOR $XDG_CONFIG_HOME/i3/config;;
     i3status) urxvtc -e $EDITOR $XDG_CONFIG_HOME/i3status/config;;
-    lf) urxvtc -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc;;
+    lfrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc;;
+    mpv.conf) urxvtc -e $EDITOR $XDG_CONFIG_HOME/mpv/mpv.conf;;
+    "mpv input.conf") urxvtc -e $EDITOR $XDG_CONFIG_HOME/mpv/input.conf;;
     nvim) urxvtc -e $EDITOR $XDG_CONFIG_HOME/nvim/init.vim;;
     picom) urxvtc -e $EDITOR $XDG_CONFIG_HOME/picom/picom.conf;;
     xinitrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/X11/xinitrc;;
