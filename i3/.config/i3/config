@@ -65,7 +65,7 @@ bindsym $mod+bracketright exec cmus-remote -n
 
 #Browser
 bindsym $mod+b exec firefox
-bindsym $mod+shift+b exec firefox -no-remote -P privacy
+bindsym $mod+shift+b exec brave
 bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-browser"
 
 #Email
