@@ -31,7 +31,6 @@ cmd open ${{
     esac
 }}
 
-
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
@@ -65,22 +64,8 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
-
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
-  if [ -f "$res" ]; then
-    cmd="select"
-  elif [ -d "$res" ]; then
-    cmd="cd"
-  fi
-  lf -remote "send $id $cmd \"$res\""
-}}
-
-cmd broot_jump ${{
-  f=$(mktemp)
-  res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
-  rm -f "$f"
   if [ -f "$res" ]; then
     cmd="select"
   elif [ -d "$res" ]; then
@@ -148,11 +133,11 @@ cmd restore_trash ${{
 map m
 map o
 map n
+map e
 map "'"
 map '"'
 map d
 map c
-map e
 map f
 map r
 
@@ -167,8 +152,8 @@ cmd video_preview ${{
 map + :video_preview
 
 # File Openers
-map ee $$EDITOR "$f"
-map es sudovim
+map EE $$EDITOR "$f"
+map ES sudovim
 
 # Archive Mappings
 map az zip
@@ -206,7 +191,6 @@ map mr sudomkfile
 map md mkdir
 map ms $mkscript
 map ch chmod
-map bg setwallpaper
 map o open_config
 map H top
 map L bottom
@@ -214,11 +198,13 @@ map R reload
 map C clear
 map U unselect
 
-#Rename Commands
-map r rename #Simple rename
-map br $printf "%s\n" $fx | vidir - #Bulk rename
+# Rename Commands --------------------
+map r rename 
+map n :rename; cmd-delete-home
+map e :rename; cmd-word-back; cmd-left
+map b $printf "%s\n" $fx | vidir - #Bulk rename
 
-# Movement
+# Movement --------------------
 map gt cd ~/.local/share/Trash/files
 map gv cd ~/videos
 map gp cd ~/pictures
