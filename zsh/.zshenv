@@ -8,12 +8,13 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 # Disable files
 export LESSHISTFILE=-
 
-export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 # Fixing Paths
+export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
 export GEM_HOME="$XDG_DATA_HOME/ruby/gems"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export RANDFILE='$XDG_RUNTIME_DIR/rnd'
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
