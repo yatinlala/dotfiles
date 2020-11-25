@@ -1,6 +1,7 @@
 #--------------------------------------------------
 #-----------------General Settings-----------------
 #--------------------------------------------------
+
 set $mod Mod1
 set $mod2 Mod4
 set $term urxvtc
@@ -9,22 +10,21 @@ set $term2 st
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
-gaps inner 6 
-gaps outer 6
+gaps inner 0 
+gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
 default_orientation vertical
- for_window [class=".*"] split toggle
+for_window [class=".*"] split toggle
 bindsym $mod+q split toggle kill
 # bindsym $mod+q kill
 
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 #--------------------------------------------------
 #-----------------Program Shortcuts----------------
 #--------------------------------------------------
- 
+
 bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
@@ -61,7 +61,8 @@ bindsym $mod+c exec $term -name cmus -e cmus
 bindsym $mod+p exec cmus-remote -u
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
-
+bindsym $mod+minus exec cmus-remote -v -5%
+bindsym $mod+equals exec cmus-remote -v +5%
 
 #Browser
 bindsym $mod+b exec firefox
@@ -87,24 +88,22 @@ bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsbo
 bindsym $mod+shift+g exec gtk-straw-viewer
 bindsym $mod+semicolon exec passmenu
 
-
 #--------------------------------------------------
 #-------------Program Startup and Settings---------
 #--------------------------------------------------
 
 #Startup
+exec feh --bg-scale /home/nitay/pictures/mountains.jpg 
+exec espanso daemon
 exec nm-applet
 exec safeeyes
 exec urxvtd -q
-exec feh --bg-scale /home/nitay/pictures/sunrise.jpg 
 exec redshift
-exec espanso daemon
-exec pulseaudio --start
-exec picom
 exec dunst
+exec picom
+exec pulseaudio --start
 
-#floating window apps
-#for_window [Class="mpv"] floating enable
+#floating window programs
 for_window [Class="Pavucontrol"] floating enable
 for_window [Class="Gnome-break-timer"] floating enable
 for_window [Class="Tor Browser"] floating enable
@@ -188,7 +187,7 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-        status_command i3status
+    status_command i3status
 	position top
 }
 
