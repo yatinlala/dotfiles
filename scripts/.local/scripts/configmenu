@@ -1,6 +1,6 @@
 #!/bin/sh
 
-choices="dunstrc\nespanso\ni3\ni3status\nlfrc\n\nmpv.conf\nmpv input.conf\nnvim\npicom\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
+choices="dunstrc\nespanso\ni3\ni3status\nlfrc\nmpv.conf\nmpv input.conf\nnvim\npicom\nsway\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")
 
 case $chosen in
@@ -13,6 +13,7 @@ case $chosen in
     "mpv input.conf") urxvtc -e $EDITOR $XDG_CONFIG_HOME/mpv/input.conf;;
     nvim) urxvtc -e $EDITOR $XDG_CONFIG_HOME/nvim/init.vim;;
     picom) urxvtc -e $EDITOR $XDG_CONFIG_HOME/picom/picom.conf;;
+    sway) urxvtc -e $EDITOR $XDG_CONFIG_HOME/sway/config;;
     xinitrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/X11/xinitrc;;
     xresources) urxvtc -e $EDITOR $XDG_CONFIG_HOME/X11/Xresources;;
     zathura) urxvtc -e $EDITOR $XDG_CONFIG_HOME/zathura/zathurarc;;
