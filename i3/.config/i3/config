@@ -86,7 +86,7 @@ bindsym --release $mod2+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+shift+g exec gtk-straw-viewer
-bindsym $mod+semicolon exec passmenu
+bindsym $mod+semicolon exec passmenu-otp
 
 #--------------------------------------------------
 #-------------Program Startup and Settings---------
