@@ -62,7 +62,7 @@ bindsym $mod+p exec cmus-remote -u
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
-bindsym $mod+equals exec cmus-remote -v +5%
+bindsym $mod+equal exec cmus-remote -v +5%
 
 #Browser
 bindsym $mod+b exec firefox
