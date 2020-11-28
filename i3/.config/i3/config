@@ -68,6 +68,7 @@ bindsym $mod+equal exec cmus-remote -v +5%
 bindsym $mod+b exec firefox
 bindsym $mod+shift+b exec brave
 bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-browser"
+bindsym $mod2+w exec $term -e w3m https://lite.duckduckgo.com/lite
 
 #Email
 bindsym $mod+m exec $term -e neomutt
@@ -102,6 +103,7 @@ exec redshift
 exec dunst
 exec picom
 exec pulseaudio --start
+exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
