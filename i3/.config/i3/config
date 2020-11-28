@@ -85,7 +85,7 @@ bindsym --release $mod2+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%
 bindsym --release $mod2+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
-bindsym $mod+shift+g exec gtk-straw-viewer
+bindsym $mod+shift+g exec gtk-pipe-viewer
 bindsym $mod+semicolon exec passmenu-otp
 
 #--------------------------------------------------
