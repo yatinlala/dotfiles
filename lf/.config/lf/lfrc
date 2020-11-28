@@ -218,3 +218,4 @@ map gl cd ~/.local
 map ge cd /etc
 map gu cd /usr
 map gus cd /usr/share
+map g. cd ~/.dotfiles
