@@ -68,7 +68,7 @@ bindsym $mod+equal exec cmus-remote -v +5%
 bindsym $mod+b exec firefox
 bindsym $mod+shift+b exec brave
 bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-browser"
-bindsym $mod2+w exec $term -e w3m https://lite.duckduckgo.com/lite
+bindsym $mod+w exec $term -e w3m https://lite.duckduckgo.com/lite
 
 #Email
 bindsym $mod+m exec $term -e neomutt
@@ -136,8 +136,8 @@ bindsym $mod+v split v
 bindsym $mod+shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+shift+w layout tabbed
-bindsym $mod+w layout toggle split
+bindsym $mod2+shift+w layout tabbed
+bindsym $mod2+w layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+f floating toggle
