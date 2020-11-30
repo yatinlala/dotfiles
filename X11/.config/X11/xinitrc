@@ -1,6 +1,5 @@
 xset b off
 xrdb -merge ~/.config/X11/Xresources
-
 setxkbmap -option caps:swapescape
 
 exec i3
