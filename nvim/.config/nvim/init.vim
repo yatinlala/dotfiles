@@ -11,7 +11,6 @@ set nohlsearch
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-commentary'
