@@ -2,6 +2,8 @@
 # https://espanso.org/docs/
 
 toggle_key: RIGHT_ALT
+fast_inject: true
+undo_backspace: false
 
 matches:
   # Simple text replacement
