@@ -14,10 +14,13 @@ gaps inner 0
 gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
-default_orientation vertical
-for_window [class=".*"] split toggle
-bindsym $mod+q split toggle kill
-# bindsym $mod+q kill
+# BSPWM Style Tiling
+# default_orientation vertical
+# for_window [class=".*"] split toggle
+# bindsym $mod+q split toggle kill
+
+# Generic tiling
+bindsym $mod+q kill
 
 floating_modifier $mod
 
@@ -94,7 +97,6 @@ bindsym $mod+semicolon exec passmenu-otp
 #--------------------------------------------------
 
 #Startup
-exec feh --bg-scale /home/nitay/pictures/mountains.jpg 
 exec espanso daemon
 exec nm-applet
 exec safeeyes
@@ -217,6 +219,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #--------------------------------------------------
 #-------------------Theming---------------------
 #--------------------------------------------------
+# Wallpaper
+exec feh --bg-scale /home/nitay/pictures/mountains.jpg 
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
