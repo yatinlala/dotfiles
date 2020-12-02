@@ -5,7 +5,7 @@ configuration {
 	font: "DejaVu Sans Mono 14";
 	terminal: "urxvt";
 	hide-scrollbar: true;
-	theme: "/usr/share/rofi/themes/dmenu.rasi";
+	theme: "~/.config/rofi/theme.rasi";
 }
 
 
