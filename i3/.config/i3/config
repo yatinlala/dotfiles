@@ -106,6 +106,7 @@ exec dunst
 exec picom
 exec pulseaudio --start
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/vimwiki/index.wiki;'
 
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
