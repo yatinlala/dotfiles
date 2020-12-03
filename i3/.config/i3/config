@@ -60,8 +60,7 @@ bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+r exec rofi -show run
 
 #Music
-bindsym $mod+c exec $term -name cmus -e cmus
-bindsym $mod+p exec cmus-remote -u
+bindsym $mod+c exec cmus-start-pause 
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
@@ -104,7 +103,7 @@ exec urxvtd -q
 exec redshift
 exec dunst
 exec picom
-exec pulseaudio --start
+exec pulseuaudio --start
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/vimwiki/index.wiki;'
 
