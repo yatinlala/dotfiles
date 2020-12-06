@@ -60,7 +60,7 @@ bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+r exec rofi -show run
 
 #Music
-bindsym $mod+p exec cmus-start-pause 
+bindsym $mod+c exec cmus-start-pause 
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
