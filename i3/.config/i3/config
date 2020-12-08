@@ -110,7 +110,7 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/vimwiki/index.
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
 for_window [Class="Gnome-break-timer"] floating enable
-for_window [Class="Tor Browser"] floating enable
+# for_window [Class="Tor Browser"] floating enable
 
 #--------------------------------------------------
 #-------------------Movement---------------------
