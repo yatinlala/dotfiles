@@ -56,8 +56,8 @@ bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+a exec $term -e lf
 
 #Program Launcher
-bindsym $mod+space exec rofi -show drun -drun-display-format {name}
-bindsym $mod+r exec rofi -show run
+bindsym $mod+r exec rofi -show drun -drun-display-format {name}
+bindsym $mod+space exec rofi -show run
 
 #Music
 bindsym $mod+c exec cmus-start-pause 
@@ -160,8 +160,8 @@ set $ws9 "9"
 set $ws10 ""
 
 # move through workspaces sequentially
-bindsym $mod+z workspace prev
-bindsym $mod+x workspace next
+bindsym $mod2+h workspace prev
+bindsym $mod2+l workspace next
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
