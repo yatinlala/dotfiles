@@ -223,7 +223,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-exec feh --bg-scale /home/nitay/pictures/mountains.jpg 
+exec feh --bg-scale --no-fehbg /home/nitay/pictures/mountains.jpg 
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
