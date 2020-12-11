@@ -84,8 +84,8 @@ bindsym $mod+y scratchpad show
 bindsym $mod+shift+a exec xbacklight -set .00206254
 
 # Screenshots
-bindsym --release $mod2+s exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
-bindsym --release $mod2+shift+s exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
+bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
+bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+shift+g exec gtk-pipe-viewer
