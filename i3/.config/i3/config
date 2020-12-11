@@ -76,6 +76,9 @@ bindsym $mod+w exec $term -e w3m https://lite.duckduckgo.com/lite
 bindsym $mod+m exec $term -e neomutt
 bindsym $mod+shift+m exec minecraft-launcher
 
+#Pipe Viewer
+bindsym $mod+p exec $term -e pipe-viewer
+
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
 bindsym $mod+y scratchpad show
