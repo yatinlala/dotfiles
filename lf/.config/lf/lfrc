@@ -26,7 +26,7 @@ cmd open ${{
         application/pdf) /usr/local/bin/devour zathura "$f";;
         video/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
         audio/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
-        # image/*) /usr/local/bin/devour feh "$f";;
+        image/*) /usr/local/bin/devour feh "$f";;
         *) xdg-open "$f" ;;
     esac
 }}
