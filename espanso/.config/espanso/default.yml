@@ -11,7 +11,7 @@ matches:
     replace: "⊃"
   - trigger: ";;equiv"
     replace: "≡"
-  - trigger: ";;or"
+  - trigger: ";;lor"
     replace: "∨"
   - trigger: ";;xor"
     replace: "⊻"
