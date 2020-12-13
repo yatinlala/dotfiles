@@ -107,6 +107,7 @@ exec redshift
 exec dunst
 exec picom
 exec pulseuaudio --start
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/vimwiki/index.wiki;'
 
@@ -197,9 +198,9 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-    status_command i3status
-	position top
-}
+    status_command i3status 
+	 position top
+ }
 
 #--------------------------------------------------
 #--------------Peripheral Controls-----------------
