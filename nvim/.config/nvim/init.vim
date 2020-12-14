@@ -21,16 +21,14 @@ call plug#end()
 autocmd vimenter * colorscheme gruvbox
 set bg=dark
 
-" lightline theme
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
 " pandoc compilation
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
 
 " Enable spell checking
 map <Leader><Leader>c :setlocal spell! spelllang=en_us<CR>
+
+" Markdown-style table corners
+let g:table_mode_corner='|'
 
 " Search and replace
 nnoremap S :%s//g<Left><Left>
