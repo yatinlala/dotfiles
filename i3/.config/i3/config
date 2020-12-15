@@ -86,6 +86,9 @@ bindsym $mod+y scratchpad show
 #Min Brightness
 bindsym $mod+shift+a exec xbacklight -set .00206254
 
+#Wifi Radio Toggle
+bindsym $mod+~ exec wifi-radio-toggle
+
 # Screenshots
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
