@@ -5,7 +5,9 @@ chosen=$(echo -e "$choices" | rofi -dmenu -i -p "quick menu")
 
 case $chosen in
     suspend) systemctl suspend;;
-    hibernate) systemctl hibernate;;
+    hibernate) 
+        i3lock -i ~/pictures/i3lock/sunrise-blurred.png
+        systemctl hibernate;;
     shutdown) systemctl shutdown;; 
     reboot) systemctl reboot;;
     "exit wm") i3-msg exit;;
