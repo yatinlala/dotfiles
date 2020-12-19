@@ -10,7 +10,7 @@ set $term2 st
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
-gaps inner 0 
+gaps inner 5
 gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
