@@ -15,12 +15,12 @@ gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
 # BSPWM Style Tiling
-# default_orientation vertical
-# for_window [class=".*"] split toggle
-# bindsym $mod+q split toggle kill
+default_orientation vertical
+for_window [class=".*"] split toggle
+bindsym $mod+q split toggle kill
 
 # Generic tiling
-bindsym $mod+q kill
+# bindsym $mod+q kill
 
 floating_modifier $mod
 
@@ -67,9 +67,9 @@ bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 
 #Browser
-bindsym $mod+b exec firefox
-bindsym $mod+shift+b exec brave
-bindsym $mod+t exec sh -c "/home/nitay/.local/source/tor-browser/start-tor-browser"
+bindsym $mod+b exec brave
+bindsym $mod+shift+b exec firefox
+bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m https://lite.duckduckgo.com/lite
 
 #Email
