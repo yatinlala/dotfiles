@@ -1,6 +1,6 @@
 #!/bin/sh
 
-choices="dunstrc\nespanso\ni3\ni3status\nlfrc\nmpv.conf\nmpv input.conf\nnvim\npicom\nsway\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
+choices="dunstrc\nespanso\ni3\ni3status\nlfrc\nmpv.conf\nmpv input.conf\nnewsboat config\nnewsboat urls\nnvim\npicom\nsway\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")
 
 case $chosen in
@@ -11,6 +11,8 @@ case $chosen in
     lfrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/lf/lfrc;;
     mpv.conf) urxvtc -e $EDITOR $XDG_CONFIG_HOME/mpv/mpv.conf;;
     "mpv input.conf") urxvtc -e $EDITOR $XDG_CONFIG_HOME/mpv/input.conf;;
+    "newsboat config")urxvtc -e $EDITOR $XDG_CONFIG_HOME/newsboat/config;;
+    "newsboat urls")urxvtc -e $EDITOR $XDG_CONFIG_HOME/newsboat/urls;;
     nvim) urxvtc -e $EDITOR $XDG_CONFIG_HOME/nvim/init.vim;;
     picom) urxvtc -e $EDITOR $XDG_CONFIG_HOME/picom/picom.conf;;
     sway) urxvtc -e $EDITOR $XDG_CONFIG_HOME/sway/config;;
