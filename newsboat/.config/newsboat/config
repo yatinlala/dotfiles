@@ -33,8 +33,8 @@ highlight article "\\[[0-9]+\\]" color63 default bold
 highlight article "\\[image\\ [0-9]+\\]" color63 default bold
 highlight feedlist "^─.*$" color61 color235 bold
 
-browser lynx
+browser w3m
 
-macro v set browser "i3 exec devour mpv %u" ; open-in-browser ; set browser "lynx %u"
-macro f set browser "i3 exec brave %u" ; open-in-browser ; set browser "lynx %u"
-macro x set browser "i3 exec devour mpv --ytdl-format='best[height<=480]' '%u'" ; open-in-browser ; set browser "lynx %u"
+macro v set browser "devour mpv" ; open-in-browser ; set browser w3m
+macro u set browser "urlviewer" ; open-in-browser ; set browser w3m
+macro d set browser "youtube-dl --add-metadata -i -o '~/videos/newsboat/%(title)s.%(ext)s' %u"; open-in-browser ; set browser w3m
