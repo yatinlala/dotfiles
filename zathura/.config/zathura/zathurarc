@@ -41,8 +41,8 @@ map r reload
 map R rotate
 unmap zi
 unmap zo
-map J zoom in
-map K zoom out
+map K zoom in
+map J zoom out
 map i recolor
 set recolor                     true
 map p print

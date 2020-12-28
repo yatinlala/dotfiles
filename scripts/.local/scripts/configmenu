@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 choices="dunstrc\nespanso\ni3\ni3status\nlfrc\nmpv.conf\nmpv input.conf\nnewsboat config\nnewsboat urls\nnvim\npicom\nsway\nxinitrc\nxresources\nzathura\nzshrc\nzsh aliases"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")

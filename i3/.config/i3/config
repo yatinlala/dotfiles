@@ -39,6 +39,7 @@ bindsym $mod+o exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png
 
 #Config Menu
 bindsym $mod+u exec configmenu
+bindsym $mod+shift+u exec scriptmenu
 
 #Camera and Audio
 bindsym $mod+shift+c exec guvcview
@@ -98,7 +99,7 @@ bindsym $mod+shift+g exec gtk-pipe-viewer
 bindsym $mod+semicolon exec passmenu-otp
 
 #--------------------------------------------------
-#-------------Program Startup and Settings---------
+#---------------Startup and Settings---------------
 #--------------------------------------------------
 
 #Startup
@@ -112,7 +113,7 @@ exec picom
 exec pulseuaudio --start
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/vimwiki/index.wiki;'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
 
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
