@@ -15,12 +15,12 @@ gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
 # BSPWM Style Tiling
-default_orientation vertical
-for_window [class=".*"] split toggle
-bindsym $mod+q split toggle kill
+# default_orientation vertical
+# for_window [class=".*"] split toggle
+# bindsym $mod+q split toggle kill
 
 # Generic tiling
-# bindsym $mod+q kill
+bindsym $mod+q kill
 
 floating_modifier $mod
 
@@ -104,7 +104,6 @@ bindsym $mod+semicolon exec passmenu-otp
 
 #Startup
 exec espanso daemon
-exec nm-applet
 exec safeeyes
 exec urxvtd -q
 exec redshift
@@ -168,8 +167,8 @@ set $ws9 "9"
 set $ws10 ""
 
 # move through workspaces sequentially
-bindsym $mod2+h workspace prev
-bindsym $mod2+l workspace next
+bindsym $mod+z workspace prev
+bindsym $mod+x workspace next
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -202,9 +201,19 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-    status_command i3status 
-	 position top
- }
+    font pango:DejaVu Sans Mono, FontAwesome 14
+    position top
+    status_command i3status-rs ~/.config/i3status/config.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #928374 #928374 #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
 
 #--------------------------------------------------
 #--------------Peripheral Controls-----------------
