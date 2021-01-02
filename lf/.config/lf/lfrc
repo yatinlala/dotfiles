@@ -121,7 +121,7 @@ cmd trash ${{
   done
 }}
 
-cmd clear_trash %trash-empty
+cmd empty_trash %trash-empty
 
 cmd restore_trash ${{
   trash-restore
@@ -164,7 +164,7 @@ map au unarchive
 
 # Trash Mappings
 map dd trash
-map tc clear_trash
+map te empty_trash
 map tr restore_trash
 
 # Broot Mapping

@@ -15,7 +15,6 @@ export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
 export GEM_HOME="$XDG_DATA_HOME/ruby/gems"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export RANDFILE='$XDG_RUNTIME_DIR/rnd'
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
 export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"

@@ -2,12 +2,9 @@
 # Basic Settings 
 # ============
 
-# Load Colors
-autoload -U colors && colors
-
-# ============
-# key bindings
-# ============
+#--------------------------------------------------
+#-------------------Key Bindings-------------------
+#--------------------------------------------------
 
 bindkey -v
 KEYTIMEOUT=1
@@ -23,15 +20,19 @@ bindkey -M viins '^K' clear-screen-scrollback
 bindkey -M vicmd '^K' clear-screen-scrollback
 
 
-# =================================
-# custom widgets and behaviors
-# =================================
-
+#--------------------------------------------------
+#---------------Custom Behaviours------------------
+#--------------------------------------------------
+ 
+lf () {       tmp=$(mktemp)
+  command lf -last-dir-path "$tmp"
+  cd $(<"$tmp")
+}
 
 # Completions
-fpath=("$zshdatadir/completions" $fpath)
-setopt nocomplete_aliases completeinword
-zstyle ':completion:*' menu select
+# fpath=("$zshdatadir/completions" $fpath)
+# setopt nocomplete_aliases completeinword
+# zstyle ':completion:*' menu select
 
 # don't eat trailing spaces after autocompleting
 ZLE_REMOVE_SUFFIX_CHARS=''
@@ -43,9 +44,11 @@ zle-keymap-select () {
     viins|main) echo -ne '\033[6 q';; # line cursor
   esac
 }
+
 zle-line-init () {
   echo -ne '\033[6 q' # line cursor
 }
+
 accept-line () {
   echo -ne '\033[2 q' # block cursor
   zle .accept-line
@@ -57,8 +60,8 @@ clear-screen-scrollback () {
 }
 
 # *lastly*, enable zsh completion module
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit
 
 # load previously-defined custom widgets
 zle -N zle-keymap-select
@@ -72,7 +75,7 @@ zle -N clear-screen-scrollback
  ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # Load zsh-syntax-highlighting
- source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # Source environment Variables
 source /home/nitay/.zshenv
@@ -80,6 +83,11 @@ source /home/nitay/.zshenv
 # Source aliases
 source /home/nitay/.config/zsh/aliases
 
+#--------------------------------------------------
+#----------------------Prompt----------------------
+#--------------------------------------------------
+
+# Disable useless stuff
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_CHAR_SYMBOL=❯
@@ -110,7 +118,7 @@ SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 
-# Spaceship Prompt
- autoload -U promptinit; promptinit
- prompt spaceship
+# Load Prompt
+autoload -U promptinit; promptinit
+prompt spaceship
 
