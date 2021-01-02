@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 100
+max_width = 95
 show_marks = "visible"
 
 [[block]]
@@ -27,7 +27,7 @@ interface_name_include = []
 [[block]]
 block = "time"
 interval = 60
-format = "%a %d/%m %R"
+format = "%a %m/%d %I:%M %P"
 
 [[block]]
 block = "battery"

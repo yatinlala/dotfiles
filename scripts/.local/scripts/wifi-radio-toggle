@@ -4,9 +4,9 @@ status=$(nmcli radio wifi)
 
 case $status in
     enabled) 
-        notify-send "WIFI RADIO DISABLED"
         nmcli radio wifi off;;
+        notify-send "Wifi radio disabled."
     disabled) 
-        notify-send "WIFI RADIO ENABLED"
         nmcli radio wifi on;;
+        notify-send "Wifi radio enabled."
 esac
