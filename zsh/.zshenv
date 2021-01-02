@@ -41,10 +41,7 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 # export CM_LAUNCHER="rofi"
 
 #Add scripts to path
-export PATH="$HOME/.local/scripts:$PATH"
-
-#Add Tor to path
-# export PATH="$HOME/.local/source/tor-browser"
+export PATH="$HOME/scripts:$PATH"
 
 # Default Apps
 export EDITOR="nvim"
