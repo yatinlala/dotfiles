@@ -1,6 +1,5 @@
-# ============
-# Basic Settings 
-# ============
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 #--------------------------------------------------
 #-------------------Key Bindings-------------------
@@ -23,16 +22,19 @@ bindkey -M vicmd '^K' clear-screen-scrollback
 #--------------------------------------------------
 #---------------Custom Behaviours------------------
 #--------------------------------------------------
- 
+
+# No beeping
+setopt nobeep
+
+# configure completions
+fpath=("$zshdatadir/completions" $fpath)
+setopt nocomplete_aliases completeinword
+zstyle ':completion:*' menu select
+
 lf () {       tmp=$(mktemp)
   command lf -last-dir-path "$tmp"
   cd $(<"$tmp")
 }
-
-# Completions
-# fpath=("$zshdatadir/completions" $fpath)
-# setopt nocomplete_aliases completeinword
-# zstyle ':completion:*' menu select
 
 # don't eat trailing spaces after autocompleting
 ZLE_REMOVE_SUFFIX_CHARS=''
@@ -59,10 +61,6 @@ clear-screen-scrollback () {
   zle .clear-screen
 }
 
-# *lastly*, enable zsh completion module
-#autoload -Uz compinit
-#compinit
-
 # load previously-defined custom widgets
 zle -N zle-keymap-select
 zle -N zle-line-init
@@ -77,6 +75,10 @@ zle -N clear-screen-scrollback
 # Load zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
+# *lastly*, enable zsh completion module
+autoload -Uz compinit
+compinit
+ 
 # Source environment Variables
 source /home/nitay/.zshenv
 
