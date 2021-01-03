@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 95
+max_width = 90
 show_marks = "visible"
 
 [[block]]
@@ -13,6 +13,12 @@ inboxes = ["/home/nitay/.local/share/mail/yatin.lala@gmail.com/INBOX"]
 threshold_warning = 1
 threshold_critical = 10
 display_type = "new"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+step_width = 10
+root_scaling = 2
 
 [[block]]
 block = "sound"

@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-script_dir="$HOME/.local/scripts"
+script_dir="$HOME/scripts"
 
 cd "$script_dir"
 
