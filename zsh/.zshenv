@@ -9,6 +9,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export LESSHISTFILE=-
 
 # Fixing Paths
+export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"

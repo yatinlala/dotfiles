@@ -74,7 +74,7 @@ bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m https://lite.duckduckgo.com/lite
 
 #Email
-bindsym $mod+m exec $term -e neomutt
+bindsym $mod+m exec $term -e zsh -c neomutt
 bindsym $mod+shift+m exec minecraft-launcher
 
 #Pipe Viewer

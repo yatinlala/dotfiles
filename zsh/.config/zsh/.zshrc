@@ -1,6 +1,7 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source ~/.zshenv
 #--------------------------------------------------
 #-------------------Key Bindings-------------------
 #--------------------------------------------------
@@ -79,9 +80,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 autoload -Uz compinit
 compinit
  
-# Source environment Variables
-source /home/nitay/.zshenv
-
 # Source aliases
 source /home/nitay/.config/zsh/aliases
 

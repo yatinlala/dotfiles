@@ -16,6 +16,8 @@ alias p='pacman'
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'
 
+alias powertop='sudo powertop'
+
 alias s='fzf | xargs -r xdg-open'
 alias sdir="cd \$(fd -H -t d . | fzf)"
 
