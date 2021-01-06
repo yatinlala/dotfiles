@@ -203,7 +203,7 @@ bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 14
     position top
-    status_command i3status-rs ~/.config/i3status/config.toml
+    status_command i3status-rs
     colors {
         separator #666666
         background #222222
