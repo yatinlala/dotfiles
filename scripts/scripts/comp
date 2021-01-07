@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # General handler for compiling files
 
 file=$(readlink -f "$1")

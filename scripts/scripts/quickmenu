@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 choices="suspend\nhibernate\nshutdown\nreboot\nexit wm\n|\ninternal\nhdmi\nmanual"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "quick menu")

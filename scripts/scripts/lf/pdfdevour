@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -e
 
 clear_screen() {
     printf '\e[%sH\e[9999C\e[1J%b\e[1;%sr' \
