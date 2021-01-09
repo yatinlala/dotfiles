@@ -24,6 +24,8 @@ alias sdir="cd \$(fd -H -t d . | fzf)"
 alias sc="fd -H . $XDG_CONFIG_HOME | fzf | xargs -r xdg-open"
 alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 
+alias tb='ssh 192.168.86.36'
+
 alias libreoffice='d libreoffice'
 alias feh='d feh'
 alias zathura='d zathura'
@@ -36,7 +38,7 @@ alias zshc='nvim ~/.config/zsh/.zshrc'
 alias zsha='nvim ~/.config/zsh/aliases'
 alias zshe='nvim ~/.zshenv'
 
-alias ss='cd ~/scripts/'
+alias ss='cd ~/code/scripts/'
 alias csource='cd ~/.local/source'
 
 alias tp='trash-put'

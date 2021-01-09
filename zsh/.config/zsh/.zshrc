@@ -27,8 +27,6 @@ bindkey -M vicmd '^K' clear-screen-scrollback
 # No beeping
 setopt nobeep
 
-# configure completions
-fpath=("$zshdatadir/completions" $fpath)
 setopt nocomplete_aliases completeinword
 zstyle ':completion:*' menu select
 

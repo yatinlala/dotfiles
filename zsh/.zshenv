@@ -42,7 +42,7 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 # export CM_LAUNCHER="rofi"
 
 #Add scripts to path
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/code/scripts:$PATH"
 
 # Default Apps
 export EDITOR="nvim"
