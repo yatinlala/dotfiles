@@ -1,5 +1,3 @@
-# APP ALIASES
-
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias sudo='sudo '
 alias ls='ls --color=auto'
@@ -56,8 +54,8 @@ alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
 alias startx="startx '$XDG_CONFIG_HOME/X11/xinitrc'"
 
-#W3m
-alias w='w3m lite.duckduckgo.com/lite'
+#w3m
+alias w3m='HOME=.local/share w3m lite.duckduckgo.com/lite'
 
 # SUFFIX ALIASES
 alias -s pdf=zathura

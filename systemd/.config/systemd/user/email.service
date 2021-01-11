@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync Email
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zsh /home/nitay/code/scripts/syncemail
+
+[Install]
+WantedBy=default.target

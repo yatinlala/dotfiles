@@ -1,0 +1,9 @@
+[Unit]
+Description=Update newsboat periodically
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/zsh /usr/bin/newsboat -x reload
+
+[Install]
+WantedBy=default.target
