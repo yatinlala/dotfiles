@@ -215,6 +215,8 @@ map gD cd ~/downloads
 map gm cd ~/music
 map gs cd ~/scripts
 map gc cd ~/.config
+map gC cd ~/college
+map go cd ~/code
 map gl cd ~/.local
 map ge cd /etc
 map gu cd /usr
