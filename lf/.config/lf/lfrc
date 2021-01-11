@@ -1,4 +1,4 @@
-set previewer ~/scripts/lf/preview
+set previewer ~/code/scripts/lf/preview
 
 # Basic Settings
 set preview true
