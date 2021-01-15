@@ -1,7 +1,6 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.zshenv
 #--------------------------------------------------
 #-------------------Key Bindings-------------------
 #--------------------------------------------------
@@ -27,9 +26,11 @@ bindkey -M vicmd '^K' clear-screen-scrollback
 # No beeping
 setopt nobeep
 
+# Flag autocomplete loads as menu
 setopt nocomplete_aliases completeinword
 zstyle ':completion:*' menu select
 
+# Exiting lf dumps into last lf directory
 lf () {       tmp=$(mktemp)
   command lf -last-dir-path "$tmp"
   cd $(<"$tmp")
@@ -67,9 +68,9 @@ zle -N accept-line
 zle -N clear-screen-scrollback
 
 # source and configure zsh autosuggestions
- source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
- ZSH_AUTOSUGGEST_USE_ASYNC=true
- ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+#  source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# ZSH_AUTOSUGGEST_USE_ASYNC=true
+# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # Load zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
@@ -113,10 +114,10 @@ SPACESHIP_EMBER_SHOW=false
 SPACESHIP_KUBECONTEXT_SHOW=false
 SPACESHIP_TERRAFORM_SHOW=false
 SPACESHIP_TERRAFORM_SHOW=false
+SPACESHIP_BATTERY_SHOW=false
 SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 
 # Load Prompt
 autoload -U promptinit; promptinit
 prompt spaceship
-

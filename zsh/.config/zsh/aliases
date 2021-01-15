@@ -8,13 +8,10 @@ alias vim='nvim'
 alias v='nvim'
 alias z='zathura'
 alias d='devour'
-alias m='d mpv --force-window=yes'
-alias p='pacman'
+alias pman='sudo pacman'
 
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'
-
-alias powertop='sudo powertop'
 
 alias s='fzf | xargs -r xdg-open'
 alias sdir="cd \$(fd -H -t d . | fzf)"
@@ -24,10 +21,9 @@ alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 
 alias tb='ssh 192.168.86.36'
 
-alias libreoffice='d libreoffice'
 alias feh='d feh'
 alias zathura='d zathura'
-alias mpv='d mpv --force-window=yes'
+alias mpv='d mpv'
 alias surf='d surf'
 
 alias wmc='nvim ~/.config/i3/config'
@@ -37,13 +33,12 @@ alias zsha='nvim ~/.config/zsh/aliases'
 alias zshe='nvim ~/.zshenv'
 
 alias ss='cd ~/code/scripts/'
-alias csource='cd ~/.local/source'
 
 alias tp='trash-put'
 alias te='trash-empty'
 alias tl='trash-list'
 alias tr='trash-restore'
-alias tm='trash-remove'
+alias td='trash-remove'
 
 alias yt='youtube-dl --add-metadata -i'
 alias yta='youtube-dl -f bestaudio/best'
