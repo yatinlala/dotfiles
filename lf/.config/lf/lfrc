@@ -213,7 +213,7 @@ map gs cd ~/pictures/screenshots
 map gd cd ~/documents
 map gD cd ~/downloads
 map gm cd ~/music
-map gS cd ~/scripts
+map gS cd ~/code/scripts
 map gs cd ~/swat
 map gc cd ~/.config
 map gl cd ~/.local

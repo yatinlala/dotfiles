@@ -107,7 +107,8 @@ bindsym $mod+semicolon exec passmenu-otp
 exec espanso daemon
 exec safeeyes
 exec urxvtd -q
-exec redshift -b 1:.6
+#exec redshift -b 1:.6
+exec redshift
 exec dunst
 exec picom
 exec pulseuaudio --start
