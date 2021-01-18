@@ -7,8 +7,8 @@ URxvt.iso14755:          false
 URxvt.iso14755_52:       false
 URxvt.scrollTtyOutput:   false
 URxvt.scrollTtyKeypress: true
-Urxvt.perl-ext:
-Urxvt.perl-ext-common:
+! Urxvt.perl-ext:
+! Urxvt.perl-ext-common:
 
 ! Font adjustment
 ! URxvt.perl-ext-common: ...,font-size
