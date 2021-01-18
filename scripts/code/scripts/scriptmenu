@@ -6,4 +6,4 @@ cd "$script_dir"
 
 
 find -L -type f -printf "%f\n" |  rofi -dmenu -i -p "script menu" \
-     | ifne xargs urxvtc -e nvim
+     | ifne xargs $TERMINAL -e "nvim"

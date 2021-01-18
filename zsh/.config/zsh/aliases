@@ -30,7 +30,7 @@ alias wmc='nvim ~/.config/i3/config'
 alias vimc='nvim ~/.config/nvim/init.vim'
 alias zshc='nvim ~/.config/zsh/.zshrc'
 alias zsha='nvim ~/.config/zsh/aliases'
-alias zshe='nvim ~/.zshenv'
+alias zshe='nvim ~/.config/zsh/.zshenv'
 
 alias ss='cd ~/code/scripts/'
 

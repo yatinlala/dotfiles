@@ -219,4 +219,4 @@ map gc cd ~/.config
 map gl cd ~/.local
 map ge cd /etc
 map gu cd /usr
-map g. cd ~/.dotfiles
+map g. cd ~/dotfiles

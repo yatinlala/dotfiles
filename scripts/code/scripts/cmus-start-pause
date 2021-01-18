@@ -4,5 +4,6 @@ if pgrep -x "cmus" >/dev/null
 then
     cmus-remote -u
 else
-    i3-msg 'workspace ; exec urxvtc -name cmus -e cmus;'
+    #i3-msg 'workspace ; exec alacritty -e cmus;'
+    i3-msg 'workspace 10; exec alacritty -e cmus;'
 fi

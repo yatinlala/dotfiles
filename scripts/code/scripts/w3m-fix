@@ -1,0 +1,5 @@
+#!/bin/sh
+
+HOME=~/.local/share
+
+w3m lite.duckduckgo.com/lite

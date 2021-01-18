@@ -6,7 +6,7 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
-# Disable files
+# Disable less history files 
 export LESSHISTFILE=-
 
 # Fixing Paths
@@ -50,13 +50,16 @@ export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="urxvtc"
-export BROWSER="brave"
+export BROWSER="librewolf"
 export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="less"
 export WM="i3-gaps"
+
+# Get LF icons to work
+export LC_ALL="en_US.UTF-8"
 
 export LF_ICONS="\
 tw=:\
@@ -220,3 +223,4 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+
