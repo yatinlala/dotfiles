@@ -5,7 +5,7 @@
 set $mod Mod1
 set $mod2 Mod4
 set $term urxvtc
-set $term2 st
+set $term2 termite
 
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
@@ -32,7 +32,7 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
-bindsym $mod+shift+s exec $term -e shutdown now
+bindsym $mod+shift+s exec $term -e "shutdown now"
 bindsym $mod+shift+r exec $term -e reboot
 bindsym $mod+shift+o exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png
 
@@ -55,7 +55,7 @@ bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+o exec onlyoffice-desktopeditors
 
 #File Manager
-bindsym $mod+a exec $term -e lf
+bindsym $mod+a exec $term -e  lf
 
 #Program Launcher
 bindsym $mod+r exec rofi -show drun -drun-display-format {name}
@@ -69,13 +69,13 @@ bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 
 #Browser
-bindsym $mod+b exec firefox
+bindsym $mod+b exec librewolf
 bindsym $mod+shift+b exec brave
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e zsh -c "HOME=.local/share w3m lite.duckduckgo.com/lite"
+bindsym $mod+w exec $term -e w3m-fix
 
 #Email
-bindsym $mod+m exec $term -e zsh -c neomutt
+bindsym $mod+m exec $term -e "zsh -c neomutt"
 bindsym $mod+shift+m exec minecraft-launcher
 
 #Pipe Viewer
@@ -97,7 +97,7 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+shift+g exec gtk-pipe-viewer
-bindsym $mod+semicolon exec passmenu-otp
+bindsym $mod+semicolon exec passmenu
 
 #--------------------------------------------------
 #---------------Startup and Settings---------------
@@ -144,17 +144,17 @@ bindsym $mod+g split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+shift+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+shift+space focus mode_toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+d layout tabbed
 bindsym $mod+shift+d layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+f floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+shift+space focus mode_toggle
 
 #Set workspace names
 set $ws1 "1"
@@ -166,7 +166,8 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 ""
+#set $ws10 ""
+set $ws10 "10"
 
 # move through workspaces sequentially
 bindsym $mod+z workspace prev
@@ -203,7 +204,7 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 14
+    font pango:DejaVu Sans Mono, FontAwesome 15
     position top
     status_command i3status-rs
     colors {

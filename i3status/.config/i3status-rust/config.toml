@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 90
+max_width = 80
 show_marks = "visible"
 
 [[block]]
@@ -25,7 +25,7 @@ block = "sound"
 
 [[block]]
 block = "networkmanager"
-on_click = "urxvtc -e nmtui connect"
+on_click = "$TERMINAL -e nmtui connect"
 device_format= "{icon}{ap}"
 interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
 interface_name_include = []

@@ -1,6 +1,4 @@
 [Added Associations]
-text/plain=libreoffice-writer.desktop;
 
 [Default Applications]
-x-scheme-handler/lbry=lbry.desktop
 application/pdf=org.pwmt.zathura.desktop
