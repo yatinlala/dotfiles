@@ -5,5 +5,5 @@ then
     cmus-remote -u
 else
     #i3-msg 'workspace ; exec alacritty -e cmus;'
-    i3-msg 'workspace 10; exec alacritty -e cmus;'
+    i3-msg 'workspace 10; exec urxvtc -e cmus;'
 fi

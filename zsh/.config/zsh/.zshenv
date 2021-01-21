@@ -31,7 +31,7 @@ export ZDOTDIR="$HOME/.config/zsh"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export XINITRC="$XDG_CONFIG_HOME"/x11/xinitrc
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --border'
@@ -50,7 +50,7 @@ export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="urxvtc"
-export BROWSER="librewolf"
+export BROWSER="firefox"
 export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"
@@ -223,4 +223,3 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
-

@@ -8,7 +8,8 @@ alias vim='nvim'
 alias v='nvim'
 alias z='zathura'
 alias d='devour'
-alias pman='sudo pacman'
+
+alias sp='sudo pacman'
 
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'

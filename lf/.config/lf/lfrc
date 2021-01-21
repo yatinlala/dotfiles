@@ -211,7 +211,7 @@ map gv cd ~/videos
 map gp cd ~/pictures
 map gs cd ~/pictures/screenshots
 map gd cd ~/documents
-map gD cd ~/downloads
+map gi cd ~/io
 map gm cd ~/music
 map gS cd ~/code/scripts
 map gs cd ~/swat
