@@ -19,9 +19,6 @@ scrollback_lines = 10000
 #urgent_on_bell = true
 #hyperlinks = false
 
-# $BROWSER is used by default if set, with xdg-open as a fallback
-#browser = xdg-open
-
 # "system", "on" or "off"
 #cursor_blink = system
 
@@ -80,6 +77,9 @@ color7 = #a89984
 color15 = #ebdbb2
 
 # vim: ft=dosini cms=#%s
+
+# 20% background transparency (requires a compositor)
+#background = rgba(63, 63, 63, 0.8)
 
 [hints]
 #font = Monospace 12
