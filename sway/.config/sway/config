@@ -4,8 +4,8 @@
 
 set $mod Mod1
 set $mod2 Mod4
-set $term urxvt
-set $term2 st
+set $term urxvtc
+set $term2 termite
 
 
 font pango:Deja Vu Sans Mono 14
@@ -74,7 +74,7 @@ bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
 
 #Email
-bindsym $mod+m exec $term -e "zsh -c neomutt"
+bindsym $mod+m exec $term -e zsh -c neomutt
 bindsym $mod+shift+m exec minecraft-launcher
 
 #Pipe Viewer
@@ -103,19 +103,17 @@ bindsym $mod+semicolon exec passmenu
 #--------------------------------------------------
 
 #Startup
+exec xrdb -merge ~/.config/X11/Xdefaults
 exec espanso daemon
 exec safeeyes
 exec urxvtd -q
 exec dunst
-exec picom
 exec pulseaudio --start
-exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
+#exec --no-startup-id i3-msg 'workspace 10; exec $term -e cmus;'
+#exec --no-startup-id i3-msg 'workspace 1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
 
 
-
-
-
+for_window [app_id="zoom"] floating enable
 
 # Example configuration:
 #
@@ -161,10 +159,6 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/vim
     # Reload the configuration file
     bindsym $mod2+r reload
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod2+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
 
 # Move your focus around
 bindsym $mod+h focus left
@@ -180,6 +174,7 @@ bindsym $mod+Shift+l move right
 # move through workspaces sequentially
 bindsym $mod+z workspace prev
 bindsym $mod+x workspace next
+
 # Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -211,10 +206,10 @@ bindsym $mod+d layout tabbed
 bindsym $mod+shift+d layout toggle split
 
 # Make the current focus fullscreen
-bindsym $mod+f fullscreen
+bindsym $mod+shift+f fullscreen
 
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+shift+f floating toggle
+bindsym $mod+f floating toggle
 
 # Swap focus between the tiling area and the floating area
 bindsym $mod+shift+space focus mode_toggle
@@ -258,6 +253,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
    }
 input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
     natural_scroll enabled
+}
+input "1133:49284:Logitech_G203_Prodigy_Gaming_Mouse" {
+    accel_profile flat
 }
 
 include /etc/sway/config.d/*

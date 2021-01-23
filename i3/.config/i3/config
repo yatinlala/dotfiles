@@ -69,7 +69,7 @@ bindsym $mod+equal exec cmus-remote -v +5%
 
 #Browser
 bindsym $mod+b exec firefox
-bindsym $mod+shift+b exec brave
+bindsym $mod+shift+b exec brave --disable-gpu
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
 
