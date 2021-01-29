@@ -5,7 +5,7 @@
 set $mod Mod1
 set $mod2 Mod4
 set $term urxvtc
-set $term2 st
+set $term2 termite
 
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
@@ -51,13 +51,13 @@ bindsym $mod+shift+e exec espanso-start-stop
 bindsym $mod+e exec emacs
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
-bindsym $mod+o exec onlyoffice-desktopeditors
+bindsym $mod+o exec libreoffice
 
 #File Manager
 bindsym $mod+a exec $term -e  lf
 
 #Program Launcher
-bindsym $mod+r exec rofi -show drun -drun-display-format {name}
+bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+space exec rofi -show run
 
 #Music
@@ -68,8 +68,8 @@ bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 
 #Browser
-bindsym $mod+b exec firefox
-bindsym $mod+shift+b exec brave --disable-gpu
+bindsym $mod+b exec librewolf
+bindsym $mod+shift+b exec brave
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
 
@@ -195,7 +195,7 @@ bindsym $mod+shift+8 move container to workspace $ws8
 bindsym $mod+shift+9 move container to workspace $ws9
 bindsym $mod+shift+0 move container to workspace $ws10
 
-bindsym $mod2+r restart
+bindsym $mod+r restart
 
 bindsym $mod2+shift+h resize shrink width 10 px or 10 ppt
 bindsym $mod2+shift+j resize grow height 10 px or 10 ppt

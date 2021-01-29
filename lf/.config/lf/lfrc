@@ -215,8 +215,9 @@ map gi cd ~/io
 map gm cd ~/music
 map gS cd ~/code/scripts
 map gs cd ~/swat
-map gc cd ~/.config
-map gl cd ~/.local
+map gC cd ~/.config
+map gc cd ~/code
+map gl cd ~/.local/share
 map ge cd /etc
 map gu cd /usr
 map g. cd ~/dotfiles
