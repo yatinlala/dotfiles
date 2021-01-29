@@ -12,16 +12,19 @@ export LESSHISTFILE=-
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
+export SSB_HOME="$XDG_DATA_HOME/zoom"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
 export GEM_HOME="$XDG_DATA_HOME/ruby/gems"
 # export GNUPGHOME="$XDG_DATA_HOME/gnupg" # Now using default location to eliminate .pam_environment
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export RANDFILE='$XDG_RUNTIME_DIR/rnd'
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
 export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export OPAMROOT="$XDG_DATA_HOME/opam"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
@@ -50,7 +53,7 @@ export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="urxvtc"
-export BROWSER="firefox"
+export BROWSER="brave"
 export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"
@@ -58,6 +61,8 @@ export OPENER="xdg-open"
 export PAGER="less"
 export WM="i3-gaps"
 
+#Zoom to work on sway
+QT_QPA_PLATFORM=xcb
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"
 
