@@ -3,6 +3,7 @@ let mapleader = " "
 set t_Co=256
 set mouse=a
 set ignorecase
+set lazyredraw
 set smartcase
 set number relativenumber
 set clipboard=unnamedplus
