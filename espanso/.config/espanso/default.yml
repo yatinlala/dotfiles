@@ -1,7 +1,7 @@
 # You can refer to the official documentation:
 # https://espanso.org/docs/
 
-toggle_key: RIGHT_ALT
+toggle_key: OFF
 fast_inject: true
 undo_backspace: false
 

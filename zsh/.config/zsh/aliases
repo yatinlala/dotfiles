@@ -14,6 +14,8 @@ alias sp='sudo pacman'
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'
 
+alias minb='xbacklight -set .00206254'
+
 alias s='fzf | xargs -r xdg-open'
 alias sdir="cd \$(fd -H -t d . | fzf)"
 

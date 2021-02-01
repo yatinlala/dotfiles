@@ -34,7 +34,7 @@ bindsym $mod2+Return exec $term2
 #Boot and Screen Control
 bindsym $mod+shift+s exec $term -e shutdown now
 bindsym $mod+shift+r exec $term -e reboot
-bindsym $mod+shift+o exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png
+bindsym $mod+shift+o exec i3lock -i ~/pics/i3lock/sunrise-blurred.png
 
 #Menus
 bindsym $mod+s exec quickmenu
@@ -92,8 +92,8 @@ bindsym $mod+shift+a exec xbacklight -set .00206254
 bindsym $mod+grave exec wifi-radio-toggle
 
 # Screenshots
-bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
-bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
+bindsym --release Print exec scrot --select -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
+bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+semicolon exec passmenu
@@ -242,7 +242,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-exec feh --bg-scale --no-fehbg /home/nitay/pictures/snowy-mountains.jpg 
+exec feh --bg-scale --no-fehbg /home/nitay/pics/snowy-mountains.jpg 
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

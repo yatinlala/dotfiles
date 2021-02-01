@@ -3,4 +3,9 @@ xinput --set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Natural Scrolling E
 xrdb -merge ~/.config/X11/Xresources
 setxkbmap -option caps:swapescape
 
-exec i3
+#i3
+#exec i3
+
+#PLASMA
+export DESKTOP_SESSION=plasma
+exec startplasma-x11
