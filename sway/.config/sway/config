@@ -7,7 +7,6 @@ set $mod2 Mod4
 set $term urxvtc
 set $term2 termite
 
-
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
@@ -27,14 +26,14 @@ floating_modifier $mod
 #--------------------------------------------------
 #-----------------Program Shortcuts----------------
 #--------------------------------------------------
-
+#Launch terminals
 bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
 bindsym $mod+shift+s exec $term -e shutdown now
 bindsym $mod+shift+r exec $term -e reboot
-bindsym $mod+shift+o exec i3lock -i ~/pics/i3lock/sunrise-blurred.png
+bindsym $mod+shift+o exec swaylock -i ~/pics/i3lock/sunrise-blurred.png
 
 #Menus
 bindsym $mod+s exec quickmenu
@@ -46,20 +45,21 @@ bindsym $mod+shift+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #E
-bindsym $mod+e exec emacs
+#bindsym $mod+e exec emacs
 bindsym $mod+shift+e exec espanso-start-stop
 
-#File Editor
+#Editors
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+o exec libreoffice
 
 #File Manager
 bindsym $mod+a exec $term -e  lf
+bindsym $mod+shift+n exec nautilus
 
 #Program Launcher
-bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+space exec rofi -show run
+bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
 
 #Music
 bindsym $mod+c exec cmus-start-pause 
@@ -83,9 +83,6 @@ bindsym $mod+shift+m exec minecraft-launcher
 bindsym $mod+p exec $term -e pipe-viewer
 bindsym $mod+shift+g exec gtk-pipe-viewer
 
-#Scratchpad
-bindsym $mod+shift+y move scratchpad
-bindsym $mod+y scratchpad show
 
 bindsym $mod+m exec zoom -platform wayland
 
@@ -103,51 +100,30 @@ bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsbo
 bindsym $mod+semicolon exec passmenu
 
 #--------------------------------------------------
-#---------------Startup and Settings---------------
+#-----------------------Startup--------------------
 #--------------------------------------------------
 
 #Startup
-exec xrdb -merge ~/.config/X11/Xdefaults
+exec xrdb -merge ~/.config/X11/Xresources
 exec espanso daemon
 exec safeeyes
 exec urxvtd -q
-exec dunst
+exec mako
 exec pulseaudio --start
 #exec --no-startup-id i3-msg 'workspace 10; exec $term -e cmus;'
 #exec --no-startup-id i3-msg 'workspace 1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
 
-
 #for_window [app_id="zoom"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-    # Change normal to inverse to use left mouse button for resizing and right
-    floating_modifier $mod normal
+#--------------------------------------------------
+#---------------WM Movement Settings---------------
+#--------------------------------------------------
+# Change normal to inverse to use left mouse button for resizing and right
+floating_modifier $mod normal
 
 # Reload the configuration file
 bindsym $mod+r reload
-
 
 # Move your focus around
 bindsym $mod+h focus left
@@ -197,6 +173,10 @@ bindsym $mod+shift+d layout toggle split
 bindsym $mod+f fullscreen
 bindsym $mod+shift+f floating toggle
 
+#Scratchpad
+bindsym $mod+shift+y move scratchpad
+bindsym $mod+y scratchpad show
+
 # Swap focus between the tiling area and the floating area
 bindsym $mod+shift+space focus mode_toggle
 
@@ -233,6 +213,35 @@ bar {
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+
+include /etc/sway/config.d/*
+
+
+#--------------------------------------------------
+#-----------------Peripherals----------------------
+#--------------------------------------------------
+
+# adjust screen brightness
+bindsym XF86MonBrightnessUp exec "xbacklight +10"
+bindsym XF86MonBrightnessDown exec "xbacklight -10"
+
+bindsym $mod2+k exec "xbacklight +1"
+bindsym $mod2+j exec "xbacklight -1"
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+
+bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
+bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+set $refresh_i3status killall -SIGUSR1 i3status
 
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:swapescape
@@ -244,29 +253,12 @@ input "1133:49284:Logitech_G203_Prodigy_Gaming_Mouse" {
     accel_profile flat
 }
 
-include /etc/sway/config.d/*
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 
-
-#--------------------------------------------------
-#--------------Peripheral Controls-----------------
-#--------------------------------------------------
-
-# adjust screen brightness
-bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
-bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
-bindsym XF86MonBrightnessUp exec "xbacklight +1"
-bindsym XF86MonBrightnessDown exec "xbacklight -1"
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-
-bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
-bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
-
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #--------------------------------------------------
 #-------------------Theming---------------------

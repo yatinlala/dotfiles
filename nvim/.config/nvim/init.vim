@@ -14,9 +14,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'itchyny/lightline'
 Plug 'tpope/vim-commentary'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
