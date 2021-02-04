@@ -108,7 +108,7 @@ exec xrdb -merge ~/.config/X11/Xresources
 exec espanso daemon
 exec safeeyes
 exec urxvtd -q
-exec mako
+exec dunst
 exec pulseaudio --start
 #exec --no-startup-id i3-msg 'workspace 10; exec $term -e cmus;'
 #exec --no-startup-id i3-msg 'workspace 1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
