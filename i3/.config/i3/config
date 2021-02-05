@@ -110,7 +110,7 @@ exec urxvtd -q
 exec redshift
 exec dunst
 exec picom
-exec pulseaudio --start
+exec pulseaudio-startup-script
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'

@@ -4,8 +4,4 @@ xrdb -merge ~/.config/X11/Xresources
 setxkbmap -option caps:swapescape
 
 #i3
-#exec i3
-
-#PLASMA
-export DESKTOP_SESSION=plasma
-exec startplasma-x11
+exec i3

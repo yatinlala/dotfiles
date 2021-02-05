@@ -104,7 +104,7 @@ bindsym $mod+semicolon exec passmenu
 #--------------------------------------------------
 
 #Startup
-exec xrdb -merge ~/.config/X11/Xresources
+exec xrdb -merge ~/.config/X11/Xdefaults
 exec espanso daemon
 exec safeeyes
 exec urxvtd -q

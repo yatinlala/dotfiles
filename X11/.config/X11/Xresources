@@ -8,8 +8,9 @@ URxvt.iso14755_52:       false
 URxvt.scrollTtyOutput:   false
 URxvt.scrollTtyKeypress: true
 
-URxvt.depth: 32
-URxvt.background: [92]#282828
+! This is handled by picom in X
+!URxvt.depth: 32
+!#URxvt.background: [92]#282828
 
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
