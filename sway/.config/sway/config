@@ -77,7 +77,9 @@ bindsym $mod+w exec $term -e w3m-fix
 #Email
 #bindsym $mod+m exec $term -e zsh -c neomutt
 
-bindsym $mod+shift+m exec minecraft-launcher
+#Games
+bindsym $mod2+m exec minecraft-launcher
+bindsym $mod2+g exec steam-xdg
 
 #Pipe Viewer
 bindsym $mod+p exec $term -e pipe-viewer
@@ -86,15 +88,13 @@ bindsym $mod+shift+g exec gtk-pipe-viewer
 
 bindsym $mod+m exec zoom -platform wayland
 
-#Min Brightness
-bindsym $mod+shift+a exec xbacklight -set .00206254
 
 #Wifi Radio Toggle
 bindsym $mod+grave exec wifi-radio-toggle
 
 # Screenshots
-bindsym --release Print exec scrot --select -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
-bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
+#bindsym --release Print exec scrot --select -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
+bindsym --release Print exec grim
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+semicolon exec passmenu
@@ -109,7 +109,8 @@ exec espanso daemon
 exec safeeyes
 exec urxvtd -q
 exec dunst
-exec pulseaudio --start
+exec gammastep
+exec pulseaudio-startup-script
 #exec --no-startup-id i3-msg 'workspace 10; exec $term -e cmus;'
 #exec --no-startup-id i3-msg 'workspace 1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
 
@@ -170,8 +171,8 @@ bindsym $mod+v splitv
 bindsym $mod+d layout tabbed
 bindsym $mod+shift+d layout toggle split
 
-bindsym $mod+f fullscreen
-bindsym $mod+shift+f floating toggle
+bindsym $mod+f floating toggle
+bindsym $mod+shift+f fullscreen
 
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
@@ -225,11 +226,9 @@ include /etc/sway/config.d/*
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp exec "xbacklight +10"
-bindsym XF86MonBrightnessDown exec "xbacklight -10"
-
-bindsym $mod2+k exec "xbacklight +1"
-bindsym $mod2+j exec "xbacklight -1"
+bindsym XF86MonBrightnessUp exec "xbacklight +1"
+bindsym XF86MonBrightnessDown exec "xbacklight -1"
+bindsym $mod+shift+a exec xbacklight -set .00206254
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status

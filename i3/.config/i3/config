@@ -15,12 +15,12 @@ gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
 # Spiral Tiling
-default_orientation vertical
-for_window [class=".*"] split toggle
-bindsym $mod+q split toggle kill
+#default_orientation vertical
+#for_window [class=".*"] split toggle
+#bindsym $mod+q split toggle kill
 
 # Generic tiling
-# bindsym $mod+q kill
+bindsym $mod+q kill
 
 floating_modifier $mod
 
@@ -75,7 +75,10 @@ bindsym $mod+w exec $term -e w3m-fix
 
 #M
 bindsym $mod+m exec $term -e zsh -c neomutt
-bindsym $mod+shift+m exec minecraft-launcher
+
+#Games
+bindsym $mod2+m exec minecraft-launcher
+bindsym $mod2+g exec steam-xdg
 
 #Pipe Viewer
 bindsym $mod+p exec $term -e pipe-viewer

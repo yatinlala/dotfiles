@@ -3,16 +3,22 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 75
+max_width = 59
 show_marks = "visible"
 
+#[[block]]
+#block = "maildir"
+#interval = 60
+#inboxes = ["/home/nitay/.local/share/mail/yatin.lala@gmail.com/INBOX"]
+#threshold_warning = 1
+#threshold_critical = 10
+#display_type = "new"
+
 [[block]]
-block = "maildir"
-interval = 60
-inboxes = ["/home/nitay/.local/share/mail/yatin.lala@gmail.com/INBOX"]
-threshold_warning = 1
-threshold_critical = 10
-display_type = "new"
+block = "weather"
+# format = "{weather} ({location}) {temp}°, {wind} m/s {direction}"
+format = "{weather} {temp}°"
+service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
 
 [[block]]
 block = "backlight"
