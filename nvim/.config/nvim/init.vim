@@ -14,15 +14,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'itchyny/lightline'
 Plug 'tpope/vim-commentary'
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
-" set gruv theme
-autocmd vimenter * colorscheme gruvbox
-set bg=dark
+
+:hi! Normal ctermbg=NONE
 
 " pandoc compilation
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
@@ -56,3 +53,10 @@ map <C-l> <C-w>l
 
 " Better splitting
 set splitbelow splitright
+
+" set gruv theme
+autocmd vimenter * colorscheme gruvbox
+set bg=dark
+
+" Transparency
+autocmd vimenter * hi Normal ctermbg=NONE

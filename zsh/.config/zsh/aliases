@@ -11,6 +11,7 @@ alias d='devour'
 
 alias p='pacman'
 alias sp='sudo pacman'
+alias rmorphans='fluidsynth-2.1.7-1'
 
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'
@@ -21,11 +22,16 @@ alias sdir="cd \$(fd -H -t d . | fzf)"
 alias sc="fd -H . $XDG_CONFIG_HOME | fzf | xargs -r xdg-open"
 alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 
+# SSH ALIASES
+alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
+alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swatcs-network'
+alias usshfsswat='fusermount3 -u ~/code/swatcs-network'
+alias sshowl='ssh ylala1@owl.cs.swarthmore.edu'
 alias tb='ssh 192.168.86.36'
 
 alias feh='d feh'
 alias zathura='d zathura'
-alias mpv='d mpv'
+#alias mpv='d mpv'
 alias surf='d surf'
 
 alias wmc='nvim ~/.config/i3/config'
@@ -42,18 +48,19 @@ alias tl='trash-list'
 alias tr='trash-restore'
 alias td='trash-remove'
 
-alias yt='youtube-dl --add-metadata -i'
+alias ytd='youtube-dl --add-metadata -i'
 alias yta='youtube-dl -f bestaudio/best'
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 
 #XDG Compliance
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
-alias startx="startx '$XDG_CONFIG_HOME/X11/xinitrc'"
+alias starti3="startx '$XDG_CONFIG_HOME/X11/xiniti3'"
+alias startbsp="startx '$XDG_CONFIG_HOME/X11/xinitbsp'"
 
 #w3m
 alias w3m='HOME=.local/share w3m lite.duckduckgo.com/lite'
 
 # SUFFIX ALIASES
 alias -s pdf=zathura
-alias -s mp4=mpv
+#alias -s mp4=mpv
