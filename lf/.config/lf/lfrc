@@ -209,12 +209,11 @@ map b $printf "%s\n" $fx | vidir - #Bulk rename
 map gt cd ~/.local/share/Trash/files
 map gv cd ~/videos
 map gp cd ~/pics
-map gs cd ~/pics/screenshots
 map gd cd ~/docs
 map gi cd ~/io
 map gm cd ~/music
 map gS cd ~/code/scripts
-map gs cd ~/swat
+map gs. cd ~/swat
 map gC cd ~/.config
 map gc cd ~/code
 map gl cd ~/.local/share
@@ -222,3 +221,9 @@ map ge cd /etc
 map gu cd /usr
 map gU cd ~/.local/usb
 map g. cd ~/dotfiles
+
+# Temp Movement --------------------
+map gsl cd ~/swat/spring/adv-logic
+map gss cd ~/swat/spring/stats
+map gsc cd ~/code/swatcs-network/cs31
+map gsp cd ~/swat/spring/psych-33
