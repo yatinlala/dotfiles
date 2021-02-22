@@ -9,6 +9,9 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 # Disable less history files 
 export LESSHISTFILE=-
 
+# MANPAGER
+export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
+
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"

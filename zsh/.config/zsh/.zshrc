@@ -122,3 +122,5 @@ SPACESHIP_JOBS_SHOW=false
 # Load Prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+#colorscript random
