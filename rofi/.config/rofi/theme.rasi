@@ -4,9 +4,9 @@
  * Copyright: Dave Davenport
  */
 * {
-    background-color:      Black;
+    background-color:      #282828;
     border-color:          White;
-    text-color:           White;
+    text-color:           #ebdbb2;
     font:            "DejaVuSansMono Nerd Font 13";
 }
 
@@ -38,5 +38,5 @@ element {
     padding: 0px 2px;
 }
 element selected {
-    background-color: Green;
+    background-color: #665c54;
 }
