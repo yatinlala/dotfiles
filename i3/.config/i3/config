@@ -10,7 +10,7 @@ set $term2 termite
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
-gaps inner 5
+gaps inner 7
 gaps outer 0
 for_window [class="^.*"] border pixel 2 
 
@@ -76,15 +76,14 @@ bindsym $mod+w exec $term -e w3m-fix
 #M
 bindsym $mod+m exec $term -e zsh -c neomutt
 
-#Games
+#Entertainment
 bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
-
-#Video
 bindsym $mod+p exec $term -e pipe-viewer
 bindsym $mod+shift+g exec gtk-pipe-viewer
 bindsym $mod2+l exec lbry
+bindsym $mod2+f exec freetube
 
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
