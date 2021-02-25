@@ -19,6 +19,8 @@ matches:
     replace: "⊢"
   - trigger: ";;dts"
     replace: "⊨"
+  - trigger: ";a"
+    replace: ""
   - trigger: ";;exists"
     replace: "∃"
 
