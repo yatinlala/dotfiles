@@ -45,10 +45,9 @@ bindsym $mod+shift+u exec scriptmenu
 bindsym $mod+shift+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
-bindsym $mod+shift+e exec espanso-start-stop
+bindsym $mod+e exec espanso-start-stop
 
 #File Editor
-bindsym $mod+e exec emacs
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+o exec libreoffice
@@ -72,6 +71,10 @@ bindsym $mod+b exec librewolf
 bindsym $mod+shift+b exec brave
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
+
+#Communication
+bindsym $mod2+s exec i3-msg 'workspace 9; exec signal-desktop;'
+bindsym $mod2+shift+s exec i3-msg 'workspace 9; exec slack;'
 
 #M
 bindsym $mod+m exec $term -e zsh -c neomutt
@@ -115,7 +118,6 @@ exec redshift
 exec dunst
 exec picom
 exec pulseaudio-startup-script
-exec alsactl --file ~/.config/asound.state restore
 
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
