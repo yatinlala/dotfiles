@@ -73,8 +73,8 @@ bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
 
 #Communication
-bindsym $mod2+s exec i3-msg 'workspace 9; exec signal-desktop;'
-bindsym $mod2+shift+s exec i3-msg 'workspace 9; exec slack;'
+bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop;
+bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
 
 #M
 bindsym $mod+m exec $term -e zsh -c neomutt
@@ -84,9 +84,7 @@ bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
 bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+g exec gtk-pipe-viewer
 bindsym $mod2+l exec lbry
-bindsym $mod2+f exec freetube
 
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
@@ -99,8 +97,8 @@ bindsym $mod+shift+a exec xbacklight -set .00206254
 bindsym $mod+grave exec wifi-radio-toggle
 
 # Screenshots
-bindsym --release Print exec scrot --select -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
-bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Fullscreen
+bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+semicolon exec passmenu
@@ -150,10 +148,10 @@ bindsym $mod+g split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+shift+f fullscreen toggle
 
 # toggle tiling / floating
-bindsym $mod+shift+f floating toggle
+bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+shift+space focus mode_toggle
