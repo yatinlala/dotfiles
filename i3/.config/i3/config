@@ -84,7 +84,6 @@ bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
 bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod2+l exec lbry
 
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
@@ -247,7 +246,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/gruv-computer.png
+exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/pillar-mountain.jpg
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
