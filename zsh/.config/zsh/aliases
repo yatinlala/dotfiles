@@ -48,7 +48,7 @@ alias tl='trash-list'
 alias tr='trash-restore'
 alias td='trash-remove'
 
-alias ytd='youtube-dl --add-metadata -i'
+alias yt='youtube-dl --add-metadata -i'
 alias yta='youtube-dl -f bestaudio/best'
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 

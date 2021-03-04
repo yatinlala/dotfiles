@@ -31,10 +31,10 @@ setopt nocomplete_aliases completeinword
 zstyle ':completion:*' menu select
 
 # Exiting lf dumps into last lf directory
-lf () {       tmp=$(mktemp)
-  command lf -last-dir-path "$tmp"
-  cd $(<"$tmp")
-}
+#lf () {       tmp=$(mktemp)
+  #command lf -last-dir-path "$tmp"
+  #cd $(<"$tmp")
+#}
 
 # don't eat trailing spaces after autocompleting
 ZLE_REMOVE_SUFFIX_CHARS=''
