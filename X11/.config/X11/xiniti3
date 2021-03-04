@@ -55,6 +55,3 @@ setxkbmap -option caps:swapescape
 
 #i3
 exec i3
-
-#bspwm
-#exec bspwm

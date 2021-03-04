@@ -99,6 +99,8 @@ bindsym $mod+grave exec wifi-radio-toggle
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
+#Kill window
+#bindsym --release $mod2+k exec $term -e xkill
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+semicolon exec passmenu
 
