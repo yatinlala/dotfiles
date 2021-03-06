@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/nitay/.gtkrc-2.0.mine"
-gtk-theme-name="Gruvbox-Material-Dark-HIDPI"
+gtk-theme-name="Gruvbox-Material-Dark"
 gtk-icon-theme-name="gruvbox-dark-icons-gtk"
 gtk-font-name="DejaVu Sans 12"
 gtk-cursor-theme-name="Adwaita"
