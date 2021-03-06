@@ -1,4 +1,13 @@
-" Basic Settings
+" PLUGINS
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'vimwiki/vimwiki'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+
+" BASIC SETTINGS
 let mapleader = " "
 set t_Co=256
 set mouse=a
@@ -9,18 +18,8 @@ set number relativenumber
 set clipboard=unnamedplus
 set nohlsearch
 
-call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'vimwiki/vimwiki'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
-
-
-:hi! Normal ctermbg=NONE
-
+" MACROS
 " pandoc compilation
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
 

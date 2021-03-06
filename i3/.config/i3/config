@@ -84,13 +84,13 @@ bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
 bindsym $mod+p exec $term -e pipe-viewer
+bindsym $mod+shift+p exec gtk-pipe-viewer
+bindsym $mod2+l exec lbry
 
 #Scratchpad
 bindsym $mod+shift+y move scratchpad
 bindsym $mod+y scratchpad show
 
-#Min Brightness
-bindsym $mod+shift+a exec xbacklight -set .00206254
 
 #Wifi Radio Toggle
 bindsym $mod+grave exec wifi-radio-toggle
@@ -232,6 +232,9 @@ bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
 bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
 bindsym XF86MonBrightnessUp exec "xbacklight +1"
 bindsym XF86MonBrightnessDown exec "xbacklight -1"
+bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
+bindsym $mod2+j exec xbacklight -3
+bindsym $mod2+k exec xbacklight +3
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -248,7 +251,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/pillar-mountain.jpg
+exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
