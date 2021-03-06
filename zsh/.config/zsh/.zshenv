@@ -42,12 +42,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --border'
-export FZF_DEFAULT_COMMAND='fd -H .'
-
-# Clipmenu
-# export CM_MAX_CLIPS=10
-# export CM_SELECTIONS="clipboard"
-# export CM_LAUNCHER="rofi"
+#export FZF_DEFAULT_COMMAND='fd -H .'
 
 #Add scripts to path
 export PATH="$HOME/code/scripts:$PATH"

@@ -220,7 +220,7 @@ map gl cd ~/.local/share
 map ge cd /etc
 map gu cd /usr
 map gU cd ~/.local/usb
-map g. cd ~/dotfiles
+map g. cd ~/.dotfiles
 
 # Temp Movement --------------------
 map gsl cd ~/swat/spring/adv-logic

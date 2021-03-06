@@ -4,6 +4,12 @@ Plug 'morhetz/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-commentary'
+Plug 'liuchengxu/vim-which-key'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
+
 call plug#end()
 
 
@@ -24,7 +30,7 @@ set nohlsearch
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
 
 " Enable spell checking
-map <Leader><Leader>c :setlocal spell! spelllang=en_us<CR>
+map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
 
 " Markdown-style table corners
 let g:table_mode_corner='|'
@@ -56,6 +62,17 @@ set splitbelow splitright
 " set gruv theme
 autocmd vimenter * colorscheme gruvbox
 set bg=dark
+
+" Plugin Configs
+source $HOME/.config/nvim/fzf.vim
+source $HOME/.config/nvim/which-key.vim
+
+"
+"let g:lf_width=80
+"let g:lf_height=40
+
+" Change vimwiki default location
+let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
 
 " Transparency
 autocmd vimenter * hi Normal ctermbg=NONE
