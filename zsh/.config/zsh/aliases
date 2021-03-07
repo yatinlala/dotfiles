@@ -5,8 +5,8 @@ alias ll='ls -lah'
 
 alias devour='devour '
 
-alias vim='nvim'
 alias v='nvim'
+alias vim='nvim'
 alias z='zathura'
 alias d='devour'
 
@@ -25,10 +25,9 @@ alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 
 # SSH ALIASES
 alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
-alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swatcs-network'
-alias usshfsswat='fusermount3 -u ~/code/swatcs-network'
+alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/net-machine'
+alias usshfsswat='fusermount3 -u ~/code/net-machine'
 alias sshowl='ssh ylala1@owl.cs.swarthmore.edu'
-alias tb='ssh 192.168.86.36'
 
 alias feh='d feh'
 alias zathura='d zathura'
