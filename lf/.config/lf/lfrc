@@ -225,5 +225,5 @@ map g. cd ~/.dotfiles
 # Temp Movement --------------------
 map gsl cd ~/swat/spring/adv-logic
 map gss cd ~/swat/spring/stats
-map gsc cd ~/code/swatcs-network/cs31
+map gsc cd ~/code/net-machine/cs31
 map gsp cd ~/swat/spring/psych-33

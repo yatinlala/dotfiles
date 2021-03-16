@@ -10,6 +10,8 @@ alias vim='nvim'
 alias z='zathura'
 alias d='devour'
 
+alias rm='rm -i'
+
 alias p='pacman'
 alias sp='sudo pacman'
 alias rmorphans='fluidsynth-2.1.7-1'
@@ -27,6 +29,7 @@ alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
 alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/net-machine'
 alias usshfsswat='fusermount3 -u ~/code/net-machine'
+alias sshsccs='ssh s-ylala1@ibis.sccs.swarthmore.edu'
 alias sshowl='ssh ylala1@owl.cs.swarthmore.edu'
 
 alias feh='d feh'

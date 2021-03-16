@@ -1,6 +1,5 @@
-" PLUGINS
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-commentary'
@@ -13,7 +12,7 @@ Plug 'airblade/vim-rooter'
 call plug#end()
 
 
-" BASIC SETTINGS
+" -------------------- BASIC SETTINGS --------------------
 let mapleader = " "
 set t_Co=256
 set mouse=a
@@ -24,16 +23,13 @@ set number relativenumber
 set clipboard=unnamedplus
 set nohlsearch
 
-
-" MACROS
+" -------------------- MACROS --------------------
 " pandoc compilation
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
 
 " Enable spell checking
 map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
 
-" Markdown-style table corners
-let g:table_mode_corner='|'
 
 " Search and replace
 nnoremap S :%s//g<Left><Left>
@@ -59,17 +55,19 @@ map <C-l> <C-w>l
 " Better splitting
 set splitbelow splitright
 
-" set gruv theme
-autocmd vimenter * colorscheme gruvbox
-set bg=dark
 
-" Plugin Configs
+" -------------------- PLUGIN CONFIGS --------------------
+
+"Source stuff
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/which-key.vim
 
-"
-"let g:lf_width=80
-"let g:lf_height=40
+" Markdown-style table corners
+let g:table_mode_corner='|'
+
+" set gruv theme
+autocmd vimenter * colorscheme gruvbox
+set bg=dark
 
 " Change vimwiki default location
 let g:vimwiki_list = [{'path': '~/documents/wiki/'}]

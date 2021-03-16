@@ -1,5 +1,5 @@
 #--------------------------------------------------
-#-----------------General Settings-----------------
+#-----------------General Settings-----------------|
 #--------------------------------------------------
 
 set $mod Mod1
@@ -18,8 +18,7 @@ for_window [class="^.*"] border pixel 2
 #default_orientation vertical
 #for_window [class=".*"] split toggle
 #bindsym $mod+q split toggle kill
-
-# Generic tiling
+# Generic tiling 
 bindsym $mod+q kill
 
 floating_modifier $mod
@@ -50,6 +49,7 @@ bindsym $mod+e exec espanso-start-stop
 #File Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
+bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 bindsym $mod+o exec libreoffice
 
 #File Manager
@@ -76,7 +76,7 @@ bindsym $mod+w exec $term -e w3m-fix
 bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop;
 bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
 
-#M
+#Mail
 bindsym $mod+m exec $term -e zsh -c neomutt
 
 #Entertainment
@@ -84,12 +84,7 @@ bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
 bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+p exec gtk-pipe-viewer
-bindsym $mod2+l exec lbry
-
-#Scratchpad
-bindsym $mod+shift+y move scratchpad
-bindsym $mod+y scratchpad show
+bindsym $mod+shift+p exec gtk-pipe-viewer-hotkey
 
 
 #Wifi Radio Toggle
@@ -101,7 +96,7 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 
 #Kill window
 #bindsym --release $mod2+k exec $term -e xkill
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
+bindsym $mod+n exec $term -e newsboat-hotkey
 bindsym $mod+semicolon exec passmenu
 
 #--------------------------------------------------
@@ -110,6 +105,7 @@ bindsym $mod+semicolon exec passmenu
 
 #Startup
 exec espanso daemon
+exec aw-qt
 exec safeeyes
 exec urxvtd -q
 #exec redshift -b 1:.6
@@ -160,6 +156,10 @@ bindsym $mod+shift+space focus mode_toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+d layout tabbed
 bindsym $mod+shift+d layout toggle split
+
+#Scratchpad
+bindsym $mod+shift+y move scratchpad
+bindsym $mod+y scratchpad show
 
 #Set workspace names
 set $ws1 "1"

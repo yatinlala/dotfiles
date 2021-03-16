@@ -1,0 +1,5 @@
+#!/bin/sh
+
+notify-send "Launching..."
+sleep 10
+gtk-pipe-viewer

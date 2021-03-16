@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+DMENUEDITOR="nvim"
+
+declare -a options=(
+"bspwm - $HOME/.config/bspwm/bspwmrc"
+"dunst - $HOME/.config/dunst/dunstrc"
+"i3 - $HOME/.config/i3/config"
+"neovim - $HOME/.config/nvim/init.vim"
+"picom - $HOME/.config/picom/picom.conf"
+"polybar - $HOME/.config/polybar/config"
+"sxhkd - $HOME/.config/sxhkd/sxhkdrc"
+"termite - $HOME/.config/termite/config"
+"xresources - $HOME/.config/X11/Xresources"
+"zsh - $HOME/.config/zsh/.zshrc"
+"quit"
+)
+
+# Piping the above array into dmenu.
+# We use "printf '%s\n'" to format the array one item to a line.
+choice=$(printf '%s\n' "${options[@]}" | dmenu -theme /usr/share/rofi/themes/gruvbox-dark.rasi -i 20 -p 'Edit config:')
+
+# What to do when/if we choose 'quit'.
+if [[ "$choice" == "quit" ]]; then
+    echo "Program terminated." && exit 1
+
+# What to do when/if we choose a file to edit.
+elif [ "$choice" ]; then
+	cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
+	$DMEDITOR "$cfg"
+
+# What to do if we just escape without choosing anything.
+else
+    echo "Program terminated." && exit 1
+fi
+
