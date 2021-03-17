@@ -52,7 +52,7 @@ alias tr='trash-restore'
 alias td='trash-remove'
 
 alias yt='youtube-dl --add-metadata -i'
-alias yta='youtube-dl -f bestaudio/best'
+alias yta='youtube-dl --add-metadata -i -f bestaudio/best'
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 
 #XDG Compliance

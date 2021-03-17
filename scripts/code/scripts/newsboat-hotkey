@@ -1,5 +1,0 @@
-#!/bin/sh
-
-notify-send "Launching..."
-sleep 10
-newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config

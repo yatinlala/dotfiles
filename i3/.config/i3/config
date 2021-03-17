@@ -79,12 +79,15 @@ bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
 #Mail
 bindsym $mod+m exec $term -e zsh -c neomutt
 
-#Entertainment
+#Games
 bindsym $mod2+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
-bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+p exec gtk-pipe-viewer-hotkey
+
+#Video
+bindsym $mod+n exec delayed-launch '$term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config'
+bindsym $mod+p exec delayed-launch '$term -e pipe-viewer'
+bindsym $mod+shift+p exec delayed-launch gtk-pipe-viewer
 
 
 #Wifi Radio Toggle
@@ -94,9 +97,6 @@ bindsym $mod+grave exec wifi-radio-toggle
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
-#Kill window
-#bindsym --release $mod2+k exec $term -e xkill
-bindsym $mod+n exec $term -e newsboat-hotkey
 bindsym $mod+semicolon exec passmenu
 
 #--------------------------------------------------
@@ -120,6 +120,7 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/doc
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
 for_window [Class="Gnome-break-timer"] floating enable
+for_window [title="^Polls$"] floating enable
 # for_window [Class="Tor Browser"] floating enable
 
 #--------------------------------------------------
