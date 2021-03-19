@@ -32,8 +32,8 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
-bindsym $mod+shift+s exec $term -e shutdown now
-bindsym $mod+shift+r exec $term -e reboot
+bindsym $mod+shift+s exec $term -e confirm "shutdown now"
+bindsym $mod+shift+r exec $term -e confirm "reboot"
 bindsym $mod+shift+o exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
 
 #Menus
@@ -233,8 +233,8 @@ bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
 bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
 bindsym XF86MonBrightnessUp exec "xbacklight +1"
 bindsym XF86MonBrightnessDown exec "xbacklight -1"
-bindsym $mod2+j exec xbacklight -3
-bindsym $mod2+k exec xbacklight +3
+bindsym $mod2+j exec xbacklight -4
+bindsym $mod2+k exec xbacklight +4
 bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.

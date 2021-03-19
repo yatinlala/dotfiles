@@ -5,7 +5,6 @@ then
     espanso stop
     notify-send "Espanso stopped."
 else
-    #i3-msg 'workspace ; exec alacritty -e cmus;'
     espanso daemon & disown
     notify-send "Espanso started."
 fi
