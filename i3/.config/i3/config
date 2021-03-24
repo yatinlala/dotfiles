@@ -1,6 +1,5 @@
 #--------------------------------------------------
-#-----------------General Settings-----------------|
-#--------------------------------------------------
+#-----------------General Settings-----------------| --------------------------------------------------
 
 set $mod Mod1
 set $mod2 Mod4
@@ -67,7 +66,7 @@ bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod+shift+m exec i3-msg workspace 10; exec spotify;
+bindsym $mod2+m exec i3-msg workspace 10; exec spotify;
 
 #Browser
 bindsym $mod+b exec brave
@@ -75,15 +74,16 @@ bindsym $mod+shift+b exec librewolf
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-fix
 
-#Instant Messenging
+#Communication
 bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop;
 bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
-
-#Mail
 bindsym $mod+m exec mailspring
 
+#Dash
+bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
+
 #Games
-bindsym $mod2+m exec minecraft-launcher
+bindsym $mod+shift+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec lichess
 
