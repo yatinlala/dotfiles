@@ -41,7 +41,7 @@ bindsym $mod+u exec configmenu
 bindsym $mod+shift+u exec scriptmenu
 
 #Camera and Audio
-bindsym $mod+shift+c exec guvcview
+bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
 bindsym $mod+shift+v exec pavucontrol
 
 bindsym $mod+e exec espanso-start-stop
@@ -85,7 +85,7 @@ bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
 #Games
 bindsym $mod+shift+m exec minecraft-launcher
 bindsym $mod2+g exec sh -c steam-xdg
-bindsym $mod2+c exec lichess
+bindsym $mod2+c exec guvcview
 
 #Video
 bindsym $mod+n exec delayed-launch '$term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config'
