@@ -229,12 +229,10 @@ bar {
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym shift+XF86MonBrightnessUp exec "xbacklight +5"
-bindsym shift+XF86MonBrightnessDown exec "xbacklight -5"
-bindsym XF86MonBrightnessUp exec "xbacklight +1"
-bindsym XF86MonBrightnessDown exec "xbacklight -1"
-bindsym $mod2+j exec xbacklight -4
-bindsym $mod2+k exec xbacklight +4
+bindsym XF86MonBrightnessUp exec xbacklight +1
+bindsym XF86MonBrightnessDown exec xbacklight -1
+bindsym $mod2+j exec xbacklight -3
+bindsym $mod2+k exec xbacklight +3
 bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
