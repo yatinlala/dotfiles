@@ -27,8 +27,8 @@ alias sd="fd -H . $XDG_CONFIG_HOME/documents | fzf | xargs -r xdg-open"
 
 # SSH ALIASES
 alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
-alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/net-machine'
-alias usshfsswat='fusermount3 -u ~/code/net-machine'
+alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab'
+alias usshfsswat='fusermount3 -u ~/code/swat-computers/cslab'
 
 alias sshibis='ssh s-ylala1@ibis.sccs.swarthmore.edu'
 alias sshfsibis='sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis'
@@ -36,7 +36,7 @@ alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
 alias sshowl='ssh ylala1@owl.cs.swarthmore.edu'
 
-alias feh='d feh'
+alias feh='d feh --scale-down'
 alias zathura='d zathura'
 #alias mpv='d mpv'
 alias surf='d surf'

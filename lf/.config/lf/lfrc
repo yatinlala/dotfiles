@@ -26,7 +26,7 @@ cmd open ${{
         application/pdf) /usr/local/bin/devour zathura "$f";;
         video/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
         audio/*) /usr/local/bin/devour mpv --force-window=yes "$f";;
-        image/*) /usr/local/bin/devour feh "$f";;
+        image/*) /usr/local/bin/devour feh --scale-down "$f";;
         *) /usr/local/bin/devour xdg-open "$f" ;;
     esac
 }}
@@ -225,5 +225,5 @@ map g. cd ~/.dotfiles
 # Temp Movement --------------------
 map gsl cd ~/swat/spring/adv-logic
 map gss cd ~/swat/spring/stats
-map gsc cd ~/code/net-machine/cs31
+map gsc cd ~/code/swat-computers/cslab/cs31
 map gsp cd ~/swat/spring/psych-33
