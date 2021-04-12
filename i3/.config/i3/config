@@ -91,6 +91,7 @@ bindsym $mod2+c exec guvcview
 bindsym $mod+n exec delayed-launch '$term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config'
 bindsym $mod+p exec delayed-launch '$term -e pipe-viewer'
 bindsym $mod+shift+p exec delayed-launch gtk-pipe-viewer
+bindsym $mod2+l exec lbry
 
 #Wifi Radio Toggle
 bindsym $mod+grave exec wifi-radio-toggle
@@ -122,6 +123,7 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/doc
 for_window [Class="Pavucontrol"] floating enable
 for_window [Class="Gnome-break-timer"] floating enable
 for_window [title="^Polls$"] floating enable
+
 
 #--------------------------------------------------
 #-------------------Movement---------------------

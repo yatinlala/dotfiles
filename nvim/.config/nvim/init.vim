@@ -1,4 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
+
 Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
