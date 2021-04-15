@@ -30,12 +30,6 @@ setopt nobeep
 setopt nocomplete_aliases completeinword
 zstyle ':completion:*' menu select
 
-# Exiting lf dumps into last lf directory
-#lf () {       tmp=$(mktemp)
-  #command lf -last-dir-path "$tmp"
-  #cd $(<"$tmp")
-#}
-
 # don't eat trailing spaces after autocompleting
 ZLE_REMOVE_SUFFIX_CHARS=''
 
@@ -67,11 +61,6 @@ zle -N zle-line-init
 zle -N accept-line
 zle -N clear-screen-scrollback
 
-# source and configure zsh autosuggestions
-#  source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# ZSH_AUTOSUGGEST_USE_ASYNC=true
-# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-
 # Load zsh-syntax-highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
@@ -89,8 +78,8 @@ source /home/nitay/.config/zsh/aliases
 # Disable useless stuff
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
-# SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SYMBOL="$"
+ SPACESHIP_CHAR_SYMBOL="❯"
+#SPACESHIP_CHAR_SYMBOL="$"
 SPACESHIP_CHAR_SUFFIX=" "
 SPACESHIP_HG_SHOW=false
 SPACESHIP_PACKAGE_SHOW=false

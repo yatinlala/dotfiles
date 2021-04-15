@@ -66,7 +66,7 @@ bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod2+m exec i3-msg workspace 10; exec spotify;
+bindsym $mod2+m exec i3-msg workspace 8; exec flatpak run com.spotify.Client;
 
 #Browser
 bindsym $mod+b exec brave

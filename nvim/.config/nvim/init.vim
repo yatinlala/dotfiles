@@ -24,17 +24,6 @@ set number relativenumber
 set clipboard=unnamedplus
 set nohlsearch
 
-" -------------------- MACROS --------------------
-" pandoc compilation
-map <Leader>c :w! \| !comp <c-r>%<CR><CR>
-
-" Enable spell checking
-map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
-
-
-" Search and replace
-nnoremap S :%s//g<Left><Left>
-
 " Tab Settings
 set expandtab
 set shiftwidth=4
@@ -56,10 +45,16 @@ map <C-l> <C-w>l
 " Better splitting
 set splitbelow splitright
 
+" -------------------- KEYBINDS --------------------
+" pandoc compilation
+map <Leader>c :w! \| !comp <c-r>%<CR><CR>
+" Enable spell checking
+map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
+" Search and replace
+nnoremap S :%s//g<Left><Left>
 
 " -------------------- PLUGIN CONFIGS --------------------
-
-"Source stuff
+" Source stuff
 source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/which-key.vim
 
