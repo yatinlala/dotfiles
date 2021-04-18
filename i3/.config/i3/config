@@ -252,7 +252,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
+#exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
+exec feh --bg-fill --no-fehbg /usr/share/backgrounds/gnome/Loveles.jpg
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

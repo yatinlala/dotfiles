@@ -10,7 +10,7 @@ alias vim='nvim'
 alias z='zathura'
 alias d='devour'
 
-alias rm='rm -i'
+alias rm='rm -I'
 
 alias p='pacman'
 alias sp='sudo pacman'

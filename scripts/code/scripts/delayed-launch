@@ -1,5 +1,5 @@
 #!/bin/sh
 
 notify-send "Launching..."
-sleep 10
+sleep 5
 $1
