@@ -1,5 +1,6 @@
 #--------------------------------------------------
-#-----------------General Settings-----------------| --------------------------------------------------
+#-----------------General Settings-----------------
+#--------------------------------------------------
 
 set $mod Mod1
 set $mod2 Mod4
@@ -24,7 +25,7 @@ bindsym $mod+q kill
 floating_modifier $mod
 
 #--------------------------------------------------
-#-----------------Program Shortcuts----------------
+#-----------------Program Keybinds----------------
 #--------------------------------------------------
 
 bindsym $mod+Return exec $term
@@ -48,7 +49,6 @@ bindsym $mod+e exec espanso-start-stop
 
 #File Editor
 bindsym $mod+i exec $term -e nvim
-bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 bindsym $mod+o exec libreoffice
 
@@ -60,13 +60,17 @@ bindsym $mod2+n exec nautilus
 bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod+space exec rofi -show run
 
-#Music
+#Music Consumption
 bindsym $mod+c exec cmus-start-pause 
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 bindsym $mod2+m exec i3-msg workspace 8; exec flatpak run com.spotify.Client;
+
+#Music Production
+bindsym $mod2+a exec ardour
+bindsym $mod2+shift+a exec flatpak run org.audacityteam.Audacity
 
 #Browser
 bindsym $mod+b exec brave
@@ -79,11 +83,14 @@ bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop;
 bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
 bindsym $mod+m exec mailspring
 
+#SSH
+bindsym $mod+shift+i exec $term -g 15x5 -e sshmenu
+
 #Dash
 bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
 
 #Games
-bindsym $mod+shift+m exec minecraft-launcher
+bindsym $mod+shift+m exec multimc
 bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec guvcview
 
@@ -122,7 +129,9 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/doc
 #floating window programs
 for_window [Class="Pavucontrol"] floating enable
 for_window [Class="Gnome-break-timer"] floating enable
+for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
+for_window [title="^Console window for.*$"] floating enable
 
 
 #--------------------------------------------------
