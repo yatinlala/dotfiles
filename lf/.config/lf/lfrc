@@ -207,6 +207,7 @@ map b $printf "%s\n" $fx | vidir - #Bulk rename
 
 # Movement --------------------
 map gt cd ~/.local/share/Trash/files
+map ga cd ~/audio
 map gv cd ~/videos
 map gp cd ~/pictures
 map gd cd ~/documents

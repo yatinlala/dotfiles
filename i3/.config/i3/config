@@ -70,7 +70,7 @@ bindsym $mod2+m exec i3-msg workspace 8; exec flatpak run com.spotify.Client;
 
 #Music Production
 bindsym $mod2+a exec ardour
-bindsym $mod2+shift+a exec flatpak run org.audacityteam.Audacity
+bindsym $mod2+shift+a exec audacity
 
 #Browser
 bindsym $mod+b exec brave
