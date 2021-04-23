@@ -4,11 +4,11 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-commentary'
-Plug 'liuchengxu/vim-which-key'
+"Plug 'liuchengxu/vim-which-key'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+"Plug 'airblade/vim-rooter'
 
 call plug#end()
 
@@ -55,8 +55,8 @@ nnoremap S :%s//g<Left><Left>
 
 " -------------------- PLUGIN CONFIGS --------------------
 " Source stuff
-source $HOME/.config/nvim/fzf.vim
-source $HOME/.config/nvim/which-key.vim
+"source $HOME/.config/nvim/fzf.vim
+"source $HOME/.config/nvim/which-key.vim
 
 " Markdown-style table corners
 let g:table_mode_corner='|'

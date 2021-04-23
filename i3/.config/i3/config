@@ -12,7 +12,7 @@ smart_gaps on
 smart_borders on
 gaps inner 7
 gaps outer 0
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 3 
 
 # Spiral Tiling
 #default_orientation vertical
@@ -66,7 +66,7 @@ bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod2+m exec i3-msg workspace 8; exec flatpak run com.spotify.Client;
+bindsym $mod2+m exec i3-msg workspace 8; exec spotify
 
 #Music Production
 bindsym $mod2+a exec ardour
@@ -107,7 +107,7 @@ bindsym $mod+grave exec wifi-radio-toggle
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
-bindsym $mod+semicolon exec passmenu
+bindsym $mod+semicolon exec zsh -c passmenu
 
 #--------------------------------------------------
 #---------------Startup and Settings---------------
@@ -242,6 +242,8 @@ bar {
 # adjust screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight +1
 bindsym XF86MonBrightnessDown exec xbacklight -1
+bindsym shift+XF86MonBrightnessUp exec xbacklight +3
+bindsym shift+XF86MonBrightnessDown exec xbacklight -3
 bindsym $mod2+j exec xbacklight -3
 bindsym $mod2+k exec xbacklight +3
 bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
@@ -276,7 +278,7 @@ set $gray #a89984
 set $darkgray #1d2021
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $blue
+client.focused          $green $green $darkgray $purple $green
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 #client.urgent           $red $red $white $red $red
