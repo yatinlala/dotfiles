@@ -200,7 +200,6 @@ map U unselect
 
 # Rename Commands --------------------
 map r rename 
-map A :rename; cmd-delete-home
 map i :rename; cmd-home
 map e :rename; cmd-word-back; cmd-left
 map b $printf "%s\n" $fx | vidir - #Bulk rename
@@ -212,7 +211,7 @@ map gv cd ~/videos
 map gp cd ~/pictures
 map gd cd ~/documents
 map gi cd ~/io
-map gm cd ~/music
+map gm cd ~/audio/music
 map gS cd ~/code/scripts
 map gs. cd ~/swat
 map gC cd ~/.config

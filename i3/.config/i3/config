@@ -15,12 +15,12 @@ gaps outer 0
 for_window [class="^.*"] border pixel 3 
 
 # Spiral Tiling
+# Generic tiling 
+
+bindsym $mod+q kill
 #default_orientation vertical
 #for_window [class=".*"] split toggle
 #bindsym $mod+q split toggle kill
-
-# Generic tiling 
-bindsym $mod+q kill
 
 floating_modifier $mod
 
@@ -32,17 +32,19 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
-bindsym $mod+shift+s exec $term -e confirm "shutdown now"
-bindsym $mod+shift+r exec $term -e confirm "reboot"
+bindsym $mod+shift+s exec confirm "shutdown now"
+bindsym $mod+shift+r exec confirm "reboot"
 bindsym $mod+shift+o exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
 
 #Menus
 bindsym $mod+s exec quickmenu
 bindsym $mod+u exec configmenu
 bindsym $mod+shift+u exec scriptmenu
+bindsym $mod+shift+i exec $term -g 15x5 -e sshmenu
+bindsym $mod+semicolon exec zsh -c passmenu
 
 #Camera and Audio
-bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
+bindsym $mod2+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 bindsym $mod+e exec espanso-start-stop
@@ -76,52 +78,50 @@ bindsym $mod2+shift+a exec audacity
 bindsym $mod+b exec brave
 bindsym $mod+shift+b exec librewolf
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e w3m-fix
+bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
-bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop;
-bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack;
 bindsym $mod+m exec mailspring
+bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop
+bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack
 
-#SSH
-bindsym $mod+shift+i exec $term -g 15x5 -e sshmenu
-
-#Dash
-bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
 
 #Games
+bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
 bindsym $mod+shift+m exec multimc
 bindsym $mod2+g exec sh -c steam-xdg
-bindsym $mod2+c exec guvcview
 
-#Video
+#Video Entertainment
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
 bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+p exec delayed-launch gtk-pipe-viewer
+bindsym $mod+shift+p exec sleep 10 && gtk-pipe-viewer
 bindsym $mod2+l exec lbry
 
 #Wifi Radio Toggle
 bindsym $mod+grave exec wifi-radio-toggle
 
+#Dash
+bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
+
 # Screenshots
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
-bindsym $mod+semicolon exec zsh -c passmenu
 
 #--------------------------------------------------
 #---------------Startup and Settings---------------
 #--------------------------------------------------
 
 #Startup
-exec espanso daemon
-exec aw-qt
-exec safeeyes
+exec pulseaudio-startup-script
+exec picom
 exec urxvtd -q
 exec redshift -b 1:.8
 exec dunst
-exec picom
-exec pulseaudio-startup-script
+exec espanso daemon
+exec mailspring
+exec aw-qt
+exec safeeyes
 
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/documents/wiki/index.wiki;'
@@ -281,4 +281,4 @@ set $darkgray #1d2021
 client.focused          $green $green $darkgray $purple $green
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-#client.urgent           $red $red $white $red $red
+client.urgent           $red $red $white $red $red
