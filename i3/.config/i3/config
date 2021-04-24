@@ -95,8 +95,8 @@ bindsym $mod2+g exec sh -c steam-xdg
 bindsym $mod2+c exec guvcview
 
 #Video
-bindsym $mod+n exec delayed-launch '$term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config'
-bindsym $mod+p exec delayed-launch '$term -e pipe-viewer'
+bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
+bindsym $mod+p exec $term -e pipe-viewer
 bindsym $mod+shift+p exec delayed-launch gtk-pipe-viewer
 bindsym $mod2+l exec lbry
 
