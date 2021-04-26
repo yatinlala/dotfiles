@@ -2,71 +2,59 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'vimwiki/vimwiki'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'tpope/vim-commentary'
-"Plug 'liuchengxu/vim-which-key'
+Plug 'dhruvasagar/vim-table-mode' 
+Plug 'tpope/vim-commentary' 
+Plug 'mbbill/undotree'
 
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-"Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
 
 " -------------------- BASIC SETTINGS --------------------
-let mapleader = " "
-set t_Co=256
+set t_Co=256 
 set mouse=a
-set ignorecase
-set lazyredraw
-set smartcase
+set scrolloff=4
 set number relativenumber
+set noerrorbells
 set clipboard=unnamedplus
+set hidden
 set nohlsearch
-
-" Tab Settings
-set expandtab
+set incsearch
+set tabstop=4 softtabstop=4
 set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-
-" Autocompletion
+set expandtab
+set smartindent
 set wildmode=longest,list,full
-
-" Disable auto commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Better split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Better splitting
 set splitbelow splitright
+let mapleader = " "
+
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25
 
 " -------------------- KEYBINDS --------------------
 " pandoc compilation
-map <Leader>c :w! \| !comp <c-r>%<CR><CR>
+map <Leader><Leader>c :w! \| !comp <c-r>%<CR><CR>
+
 " Enable spell checking
 map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
+
 " Search and replace
 nnoremap S :%s//g<Left><Left>
 
-" -------------------- PLUGIN CONFIGS --------------------
-" Source stuff
-"source $HOME/.config/nvim/fzf.vim
-"source $HOME/.config/nvim/which-key.vim
+" Sensible splits
+map <leader>h <C-w>h
+map <leader>j <C-w>j
+map <leader>k <C-w>k
+map <leader>l <C-w>l
 
-" Markdown-style table corners
-let g:table_mode_corner='|'
-
-" set gruv theme
-autocmd vimenter * colorscheme gruvbox
-set bg=dark
-
-" Change vimwiki default location
-let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
-
-" Transparency
-autocmd vimenter * hi Normal ctermbg=NONE
+nnoremap <Leader>u :UndotreeToggle<CR>
+nnoremap <Leader>nt :Vex<CR>
+nnoremap <C-f> :Files %:p:h<CR>

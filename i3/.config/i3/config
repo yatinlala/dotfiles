@@ -15,12 +15,12 @@ gaps outer 0
 for_window [class="^.*"] border pixel 3 
 
 # Spiral Tiling
-# Generic tiling 
-
-bindsym $mod+q kill
 #default_orientation vertical
 #for_window [class=".*"] split toggle
 #bindsym $mod+q split toggle kill
+
+# Generic tiling 
+bindsym $mod+q kill
 
 floating_modifier $mod
 
