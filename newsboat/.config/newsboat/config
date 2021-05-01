@@ -36,6 +36,6 @@ highlight feedlist "^─.*$" color61 color235 bold
 browser w3m
 
 macro v set browser "devour mpv" ; open-in-browser ; set browser w3m
-macro m set browser "/home/nitay/code/scripts/newsboat-mpv" ; open-in-browser ; set browser w3m
+macro m set browser "/home/nitay/code/scripts/newsboat-mpv %u" ; open-in-browser ; set browser w3m
 macro u set browser "urlviewer" ; open-in-browser ; set browser w3m
 macro d set browser "youtube-dl --add-metadata -i -o '~/videos/%(title)s.%(ext)s' %u"; open-in-browser ; set browser w3m

@@ -1,3 +1,4 @@
-#/bin/sh
+#/bin/bash
 
-/usr/bin/mpv --no-terminal "$@" & disown
+mpv --really-quiet --pause --keep-open "$1" & disown
+
