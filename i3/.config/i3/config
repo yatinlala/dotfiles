@@ -7,6 +7,9 @@ set $mod2 Mod4
 set $term urxvtc
 set $term2 termite
 
+
+floating_modifier $mod
+
 font pango:Deja Vu Sans Mono 14
 smart_gaps on 
 smart_borders on
@@ -14,15 +17,11 @@ gaps inner 7
 gaps outer 0
 for_window [class="^.*"] border pixel 3 
 
-# Generic tiling 
-bindsym $mod+q kill
-
-floating_modifier $mod
-
 #--------------------------------------------------
 #-----------------Program Keybinds----------------
 #--------------------------------------------------
 
+#Terminals
 bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
@@ -42,7 +41,6 @@ bindsym $mod+semicolon exec zsh -c passmenu
 bindsym $mod2+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
-bindsym $mod+e exec espanso-start-stop
 
 #Editor
 bindsym $mod+i exec $term -e nvim
@@ -54,8 +52,8 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod2+n exec nautilus
 
 #Program Launcher
-bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
-bindsym $mod+space exec rofi -show run
+bindsym $mod+space exec rofi -show drun -drun-display-format {name}
+bindsym $mod2+space exec rofi -show run
 
 #Music Consumption
 bindsym $mod+c exec cmus-start-pause 
@@ -91,11 +89,14 @@ bindsym $mod+p exec $term -e pipe-viewer
 bindsym $mod+shift+p exec sleep 10 && gtk-pipe-viewer
 bindsym $mod2+l exec lbry
 
-#Wifi Radio Toggle
+#Toggles
 bindsym $mod+grave exec wifi-radio-toggle
+bindsym $mod+e exec espanso-start-stop
 
 #Dash
 bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
+
+bindsym $mod2+h exec $term -e htop
 
 # Screenshots
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
@@ -132,6 +133,8 @@ for_window [title="^Console window for.*$"] floating enable
 #--------------------------------------------------
 #-------------------Movement---------------------
 #--------------------------------------------------
+# Kill focused window
+bindsym $mod+q kill
 
 # change focus
 bindsym $mod+h focus left

@@ -57,4 +57,5 @@ map <leader>l <C-w>l
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>nt :Vex<CR>
-nnoremap <C-f> :Files %:p:h<CR>
+nnoremap <C-p> :Files %:p:h<CR>
+nnoremap <Leader>r :Rg<CR>
