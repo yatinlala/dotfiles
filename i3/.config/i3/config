@@ -95,7 +95,6 @@ bindsym $mod+e exec espanso-start-stop
 
 #Info
 bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
-bindsym $mod2+w exec gnome-weather
 
 bindsym $mod2+h exec $term -e htop
 
