@@ -18,7 +18,7 @@ call plug#end()
 " -------------------- BASIC SETTINGS --------------------
 set t_Co=256 
 set mouse=a
-set scrolloff=4
+" set scrolloff=4
 set number relativenumber
 set noerrorbells
 set clipboard=unnamedplus
@@ -50,10 +50,10 @@ map <Leader><Leader>s :setlocal spell! spelllang=en_us<CR>
 nnoremap S :%s//g<Left><Left>
 
 " Sensible splits
-map <leader>h <C-w>h
-map <leader>j <C-w>j
-map <leader>k <C-w>k
-map <leader>l <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>nt :Vex<CR>

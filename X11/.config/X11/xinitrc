@@ -50,10 +50,5 @@ fi
 
 xset b off
 xinput --set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Natural Scrolling Enabled" 1
-xrdb -merge ~/.config/X11/Xresources
 setxkbmap -option caps:swapescape
-
-
-
-#bspwm
-exec bspwm
+exec i3

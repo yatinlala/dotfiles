@@ -112,4 +112,5 @@ SPACESHIP_JOBS_SHOW=false
 autoload -U promptinit; promptinit
 prompt spaceship
 
+# Bling
 #colorscript random

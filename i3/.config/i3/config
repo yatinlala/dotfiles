@@ -38,12 +38,12 @@ bindsym $mod+shift+i exec sshmenu
 bindsym $mod+semicolon exec zsh -c passmenu
 
 #Camera and Audio
-bindsym $mod2+c exec guvcview
+bindsym $mod2+v exec guvcview
 bindsym $mod+shift+v exec pavucontrol
-
 
 #Editor
 bindsym $mod+i exec $term -e nvim
+bindsym $mod2+c exec code
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 bindsym $mod+o exec libreoffice
 
@@ -81,7 +81,7 @@ bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack
 #Games
 bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
 bindsym $mod+shift+m exec multimc
-bindsym $mod2+g exec sh -c steam-xdg
+bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Entertainment
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
@@ -93,8 +93,9 @@ bindsym $mod2+l exec lbry
 bindsym $mod+grave exec wifi-radio-toggle
 bindsym $mod+e exec espanso-start-stop
 
-#Dash
+#Info
 bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
+bindsym $mod2+w exec gnome-weather
 
 bindsym $mod2+h exec $term -e htop
 
