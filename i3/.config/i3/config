@@ -5,7 +5,7 @@
 set $mod Mod1
 set $mod2 Mod4
 set $term urxvtc
-set $term2 termite
+set $term2 alacritty
 
 
 floating_modifier $mod
