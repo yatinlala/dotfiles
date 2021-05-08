@@ -115,6 +115,7 @@ exec redshift -b 1:.8
 exec dunst
 exec mailspring
 exec safeeyes
+exec nm-applet
 #exec espanso daemon
 #exec aw-qt
 

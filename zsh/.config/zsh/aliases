@@ -5,6 +5,7 @@ alias ll='ls -lh'
 
 alias devour='devour '
 
+alias v='nvim'
 alias vim='nvim'
 alias z='zathura'
 alias d='devour'
@@ -13,7 +14,6 @@ alias rm='rm -I'
 
 alias p='pacman'
 alias sp='sudo pacman'
-alias rmorphans='fluidsynth-2.1.7-1'
 
 alias pv='pipe-viewer'
 alias pvc='pipe-viewer -sc'

@@ -14,6 +14,7 @@ export LESSHISTFILE=-
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
+export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export SSB_HOME="$XDG_DATA_HOME/zoom"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
