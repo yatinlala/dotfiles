@@ -16,7 +16,7 @@ Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 
-" -------------------- BASIC SETTINGS --------------------
+" -------------------- BASIC SETTINGS -------------------- 
 set t_Co=256 
 set mouse=a
 " set scrolloff=4
@@ -60,3 +60,5 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>nt :Vex<CR>
 nnoremap <C-p> :Files %:p:h<CR>
 nnoremap <Leader>r :Rg<CR>
+
+let g:taskwiki_data_location="~/.local/share/task"

@@ -18,7 +18,6 @@ bindkey -M main '^K' clear-screen-scrollback
 bindkey -M viins '^K' clear-screen-scrollback
 bindkey -M vicmd '^K' clear-screen-scrollback
 
-
 #--------------------------------------------------
 #---------------Custom Behaviours------------------
 #--------------------------------------------------
@@ -111,6 +110,3 @@ SPACESHIP_JOBS_SHOW=false
 # Load Prompt
 autoload -U promptinit; promptinit
 prompt spaceship
-
-# Bling
-#colorscript random
