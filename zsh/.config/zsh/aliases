@@ -5,7 +5,6 @@ alias ll='ls -lh'
 
 alias devour='devour '
 
-alias v='nvim'
 alias vim='nvim'
 alias z='zathura'
 alias d='devour'

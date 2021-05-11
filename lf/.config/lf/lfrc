@@ -167,8 +167,8 @@ map dd trash
 map te empty_trash
 map tr restore_trash
 
-# Broot Mapping
-map f fzf_jump
+# FZF
+map <c-p> fzf_jump
 
 # Dragon Mapping
 map dr dragon

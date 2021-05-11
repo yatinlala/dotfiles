@@ -17,7 +17,7 @@ show_marks = "visible"
 [[block]]
 block = "weather"
 # format = "{weather} ({location}) {temp}°, {wind} m/s {direction}"
-format = "{weather} {temp}°"
+format = "{weather} {temp}"
 service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
 
 [[block]]
@@ -44,4 +44,4 @@ format = "%a %m/%d %I:%M %P"
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}%"
+format = "{percentage}"
