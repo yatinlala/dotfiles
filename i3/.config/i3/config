@@ -49,7 +49,7 @@ bindsym $mod+o exec libreoffice
 
 #File Manager
 bindsym $mod+a exec $term -e lf
-bindsym $mod2+n exec nautilus
+bindsym $mod2+p exec pcmanfm
 
 #Program Launcher
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
@@ -262,8 +262,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #-------------------Theming---------------------
 #--------------------------------------------------
 # Wallpaper
-#exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
-exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
+#exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
