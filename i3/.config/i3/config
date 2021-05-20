@@ -74,7 +74,7 @@ bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
-bindsym $mod+m exec mailspring
+bindsym $mod+m exec mailspring 
 bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop
 bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack
 
@@ -113,7 +113,7 @@ exec picom
 exec urxvtd -q
 exec redshift -b 1:.8
 exec dunst
-exec mailspring
+exec mailspring -b
 exec safeeyes
 exec nm-applet
 #exec espanso daemon

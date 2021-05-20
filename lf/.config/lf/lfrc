@@ -185,6 +185,7 @@ map DD delete
 map p paste
 map x cut
 map y copy
+map C clear
 map <enter> open
 map mf mkfile
 map mr sudomkfile
