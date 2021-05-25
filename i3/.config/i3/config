@@ -7,7 +7,6 @@ set $mod2 Mod4
 set $term urxvtc
 set $term2 alacritty
 
-
 floating_modifier $mod
 
 font pango:Deja Vu Sans Mono 14
@@ -30,6 +29,10 @@ bindsym $mod+shift+s exec confirm "shutdown now"
 bindsym $mod+shift+r exec confirm "reboot"
 bindsym $mod+shift+o exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
 
+#Program Launcher
+bindsym $mod+space exec rofi -show drun -drun-display-format {name}
+bindsym $mod2+space exec rofi -show run
+
 #Menus
 bindsym $mod+s exec quickmenu
 bindsym $mod+u exec configmenu
@@ -44,50 +47,46 @@ bindsym $mod+shift+v exec pavucontrol
 #Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod2+c exec code
-bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 bindsym $mod+o exec libreoffice
+bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
 #File Manager
 bindsym $mod+a exec $term -e lf
-bindsym $mod2+p exec pcmanfm
+bindsym $mod2+f exec pcmanfm
 
-#Program Launcher
-bindsym $mod+space exec rofi -show drun -drun-display-format {name}
-bindsym $mod2+space exec rofi -show run
-
-#Music Consumption
+#Audio Consumption
 bindsym $mod+c exec cmus-start-pause 
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod2+m exec i3-msg workspace 8; exec spotify
+bindsym $mod2+m exec spotify; exec i3-msg workspace 6
+bindsym $mod2+p exec $term -e castero; exec i3-msg workspace 6
 
-#Music Production
-bindsym $mod2+a exec ardour
+#Audio Production
+bindsym $mod2+a exec ardour6
 bindsym $mod2+shift+a exec audacity
 
 #Browser
 bindsym $mod+b exec brave
-bindsym $mod+shift+b exec librewolf
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
 bindsym $mod+m exec mailspring 
-bindsym $mod2+s exec i3-msg workspace 9; exec signal-desktop
-bindsym $mod2+shift+s exec i3-msg workspace 9; exec slack
+bindsym $mod2+shift+s exec slack; exec i3-msg workspace 8
+bindsym $mod2+s exec signal-desktop; exec i3-msg workspace 9
 
 #Games
 bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
 bindsym $mod+shift+m exec multimc
 bindsym $mod+shift+g exec sh -c steam-xdg
 
-#Video Entertainment
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
-bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+p exec sleep 10 && gtk-pipe-viewer
-bindsym $mod2+l exec lbry
+#Video Consumption
+bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace 7
+bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace 7
+bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace 7
+bindsym $mod2+l exec lbry; exec i3-msg workspace 7
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -96,7 +95,9 @@ bindsym $mod+e exec espanso-start-stop
 #Info
 bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
 
+#Tools
 bindsym $mod2+h exec $term -e htop
+bindsym $mod2+g exec galculator
 
 # Screenshots
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
@@ -104,7 +105,7 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 
 
 #--------------------------------------------------
-#---------------Startup and Settings---------------
+#-----------Startup and Program Settings-----------
 #--------------------------------------------------
 
 #Startup
@@ -115,20 +116,27 @@ exec redshift -b 1:.8
 exec dunst
 exec mailspring -b
 exec safeeyes
-exec nm-applet
-#exec espanso daemon
-#exec aw-qt
+# exec nm-applet
+# exec espanso daemon
+# exec aw-qt
 
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-#exec --no-startup-id i3-msg 'workspace $ws1; exec $term -name wiki -e nvim ~/documents/wiki/index.wiki;'
 exec --no-startup-id i3-msg 'workspace $ws1'
 
-#floating window programs
 for_window [Class="Pavucontrol"] floating enable
-for_window [Class="Gnome-break-timer"] floating enable
 for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
+
+assign [class="Spotify"] $ws6
+assign [title="castero"] $ws6
+assign [class="Gtk-pipe-viewer"] $ws7
+assign [class="LBRY"] $ws7
+assign [title="pipe-viewer"] $ws7
+assign [title="newsboat"] $ws7
+assign [class="Slack"] $ws8
+assign [class="Signal"] $ws9
+assign [title="cmus"] $ws10
 
 
 #--------------------------------------------------
