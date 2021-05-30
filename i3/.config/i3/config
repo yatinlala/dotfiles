@@ -45,7 +45,7 @@ bindsym $mod2+v exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #Editor
-bindsym $mod+i exec $term -e nvim
+bindsym $mod2+n exec $term -e nvim
 bindsym $mod2+c exec code
 bindsym $mod+o exec libreoffice
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
@@ -60,8 +60,8 @@ bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod2+m exec spotify; exec i3-msg workspace 6
-bindsym $mod2+p exec $term -e castero; exec i3-msg workspace 6
+bindsym $mod2+m exec spotify; exec i3-msg workspace $ws10
+bindsym $mod2+p exec castero-i3
 
 #Audio Production
 bindsym $mod2+a exec ardour6
@@ -74,8 +74,8 @@ bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
 bindsym $mod+m exec mailspring 
-bindsym $mod2+shift+s exec slack; exec i3-msg workspace 8
-bindsym $mod2+s exec signal-desktop; exec i3-msg workspace 9
+bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws8
+bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
 bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
@@ -83,10 +83,10 @@ bindsym $mod+shift+m exec multimc
 bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace 7
-bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace 7
-bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace 7
-bindsym $mod2+l exec lbry; exec i3-msg workspace 7
+bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws7
+bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws7
+bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws7
+bindsym $mod2+l exec lbry; exec i3-msg workspace $ws7
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -123,12 +123,12 @@ exec safeeyes
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1'
 
+for_window [Class="rpi-imager"] floating enable
 for_window [Class="Pavucontrol"] floating enable
 for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
-assign [class="Spotify"] $ws6
 assign [title="castero"] $ws6
 assign [class="Gtk-pipe-viewer"] $ws7
 assign [class="LBRY"] $ws7
@@ -137,6 +137,7 @@ assign [title="newsboat"] $ws7
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws9
 assign [title="cmus"] $ws10
+assign [class="Spotify"] $ws10
 
 
 #--------------------------------------------------
@@ -190,7 +191,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:"
 
 # move through workspaces sequentially
 bindsym $mod+z workspace prev
@@ -229,6 +230,7 @@ bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 15
+    strip_workspace_numbers yes
     position top
     status_command i3status-rs
     colors {
