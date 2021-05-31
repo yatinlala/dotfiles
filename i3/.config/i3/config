@@ -65,7 +65,7 @@ bindsym $mod2+p exec castero-i3
 
 #Audio Production
 bindsym $mod2+a exec ardour6
-bindsym $mod2+shift+a exec audacity
+bindsym $mod2+shift+a exec audacity-xdg
 
 #Browser
 bindsym $mod+b exec brave
@@ -78,7 +78,7 @@ bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws8
 bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
-bindsym $mod+shift+c exec /home/nitay/.local/share/lichess/lichess
+bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
 bindsym $mod+shift+m exec multimc
 bindsym $mod+shift+g exec sh -c steam-xdg
 
@@ -93,10 +93,10 @@ bindsym $mod+grave exec wifi-radio-toggle
 bindsym $mod+e exec espanso-start-stop
 
 #Info
-bindsym $mod2+d exec /home/nitay/.local/share/dash/dash
-
-#Tools
 bindsym $mod2+h exec $term -e htop
+bindsym $mod2+d exec /home/nitay/.local/share/applications/dash/dash
+bindsym $mod2+shift+d exec /home/nitay/.local/share/applications/snapdrop/Snapdrop
+
 bindsym $mod2+g exec galculator
 
 # Screenshots

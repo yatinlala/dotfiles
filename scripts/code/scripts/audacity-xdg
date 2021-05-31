@@ -2,4 +2,4 @@
 
 HOME=$HOME/.local/share
 
-exec w3m lite.duckduckgo.com/lite
+exec audacity

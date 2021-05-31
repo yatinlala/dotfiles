@@ -5,7 +5,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'dhruvasagar/vim-table-mode' 
 Plug 'tpope/vim-commentary' 
 Plug 'mbbill/undotree'
-Plug 'tools-life/taskwiki'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
