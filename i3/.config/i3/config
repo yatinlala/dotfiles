@@ -45,7 +45,7 @@ bindsym $mod2+v exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #Editor
-bindsym $mod2+n exec $term -e nvim
+bindsym $mod+i exec $term -e nvim
 bindsym $mod2+c exec code
 bindsym $mod+o exec libreoffice
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki

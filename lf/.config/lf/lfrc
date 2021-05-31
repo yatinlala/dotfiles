@@ -213,6 +213,7 @@ map gp cd ~/pictures
 map gd cd ~/documents
 map gi cd ~/io
 map gm cd ~/audio/music
+map gb cd ~/documents/books
 map gS cd ~/code/scripts
 map gs. cd ~/swat
 map gC cd ~/.config
