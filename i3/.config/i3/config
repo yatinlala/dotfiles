@@ -48,7 +48,7 @@ bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+i exec $term -e nvim
 bindsym $mod2+c exec code
 bindsym $mod+o exec libreoffice
-bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
+bindsym $mod+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
 #File Manager
 bindsym $mod+a exec $term -e lf
@@ -70,7 +70,7 @@ bindsym $mod2+shift+a exec audacity-xdg
 #Browser
 bindsym $mod+b exec brave
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e w3m-xdg
+bindsym $mod+shift+w exec $term -e w3m-xdg
 
 #Communication
 bindsym $mod+m exec mailspring 

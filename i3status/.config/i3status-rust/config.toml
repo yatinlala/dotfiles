@@ -16,9 +16,9 @@ show_marks = "visible"
 
 [[block]]
 block = "weather"
-# format = "{weather} ({location}) {temp}°, {wind} m/s {direction}"
 format = "{weather} {temp}"
-service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
+# service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
+service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
 
 [[block]]
 block = "backlight"
