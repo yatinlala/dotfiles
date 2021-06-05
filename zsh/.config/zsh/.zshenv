@@ -30,7 +30,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export OPAMROOT="$XDG_DATA_HOME/opam"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+#export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
