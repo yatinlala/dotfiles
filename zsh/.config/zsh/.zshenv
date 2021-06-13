@@ -18,6 +18,7 @@ export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export SSB_HOME="$XDG_DATA_HOME/zoom"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GEM_SPEC_CACHE="$XDG_DATA_HOME/ruby/specs"
 export GEM_HOME="$XDG_DATA_HOME/ruby/gems"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
@@ -61,8 +62,6 @@ export OPENER="xdg-open"
 export PAGER="less"
 export WM="i3-gaps"
 
-#Zoom to work on sway
-QT_QPA_PLATFORM=xcb
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"
 

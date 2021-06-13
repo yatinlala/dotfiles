@@ -1,9 +1,10 @@
-#!/bin/sh -e
+#!/usr/bin/env sh
 
-chosen=$(echo -e "cs-lab\nibis\nowl\n|\nmount cs-lab" | rofi -dmenu -i -p "ssh menu")
+chosen=$(echo -e "cs-lab\nibis\nowl\nyuppie\n|\nmount cs-lab" | rofi -dmenu -i -p "ssh menu")
 case $chosen in
     cs-lab) $TERMINAL -e ssh ylala1@lab.cs.swarthmore.edu;;
     ibis) $TERMINAL -e ssh s-ylala1@ibis.sccs.swarthmore.edu;;
-    owl) ssh ylala1@owl.cs.swarthmore.edu;;
+    owl) $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
+    yuppie) $TERMINAL -e ssh ubuntu@192.168.86.22;;
     'mount cs-lab') sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
 esac

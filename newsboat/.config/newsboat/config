@@ -1,4 +1,4 @@
-auto-reload no
+auto-reload yes
 
 bind-key j down
 bind-key k up

@@ -9,7 +9,7 @@ set $term2 alacritty
 
 floating_modifier $mod
 
-font pango:Deja Vu Sans Mono 14
+font pango:Deja Vu Sans Mono 15
 smart_gaps on 
 smart_borders on
 gaps inner 7
@@ -48,7 +48,7 @@ bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+i exec $term -e nvim
 bindsym $mod2+c exec code
 bindsym $mod+o exec libreoffice
-bindsym $mod+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
+bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
 #File Manager
 bindsym $mod+a exec $term -e lf
@@ -64,13 +64,13 @@ bindsym $mod2+m exec spotify; exec i3-msg workspace $ws6
 bindsym $mod2+p exec castero-i3
 
 #Audio Production
-bindsym $mod2+a exec ardour6
-bindsym $mod2+shift+a exec audacity-xdg
+bindsym $mod2+a exec audacity-xdg
+bindsym $mod2+shift+a exec ardour6
 
 #Browser
 bindsym $mod+b exec brave
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+shift+w exec $term -e w3m-xdg
+bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
 bindsym $mod+m exec mailspring 
@@ -79,12 +79,13 @@ bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
 bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
-bindsym $mod+shift+m exec multimc
+bindsym $mod+shift+m exec minecraft-launcher
 bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws7
 bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws7
+bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws7
 bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws7
 bindsym $mod2+l exec lbry; exec i3-msg workspace $ws7
 
@@ -133,6 +134,7 @@ assign [title="castero"] $ws5
 assign [class="Gtk-pipe-viewer"] $ws7
 assign [class="LBRY"] $ws7
 assign [title="pipe-viewer"] $ws7
+assign [title="FreeTube"] $ws7
 assign [title="newsboat"] $ws7
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws9
