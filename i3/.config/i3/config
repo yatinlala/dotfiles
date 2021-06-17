@@ -25,8 +25,8 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
-bindsym $mod+shift+s exec confirm "shutdown now"
-bindsym $mod+shift+r exec confirm "reboot"
+bindsym $mod+shift+s exec confirm shutdown now
+bindsym $mod+shift+r exec confirm reboot
 bindsym $mod+shift+o exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
 
 #Program Launcher
@@ -60,7 +60,7 @@ bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod2+m exec spotify; exec i3-msg workspace $ws6
+bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws7
 bindsym $mod2+p exec castero-i3
 
 #Audio Production
@@ -69,25 +69,27 @@ bindsym $mod2+shift+a exec ardour6
 
 #Browser
 bindsym $mod+b exec brave
+bindsym $mod+shift+b exec /home/nitay/.local/share/firefox/firefox.AppImage
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg
 
 #Communication
-bindsym $mod+m exec mailspring 
-bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws8
+bindsym $mod+m exec $term -e neomutt
+bindsym $mod2+m exec mailspring 
+bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws9
 bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
 bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
-bindsym $mod+shift+m exec minecraft-launcher
+bindsym $mod+shift+m exec minecraft-launcher-xdg
 bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws7
-bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws7
-bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws7
-bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws7
-bindsym $mod2+l exec lbry; exec i3-msg workspace $ws7
+bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
+bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
+bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
+bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
+bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -113,12 +115,11 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 exec pulseaudio-startup-script
 exec picom
 exec urxvtd -q
-exec redshift -b 1:.8
+exec redshift -b 1:.6
 exec dunst
-exec mailspring -b
 exec safeeyes
+# exec mailspring -b
 # exec nm-applet
-# exec espanso daemon
 # exec aw-qt
 
 exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
@@ -130,16 +131,16 @@ for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
-assign [title="castero"] $ws5
-assign [class="Gtk-pipe-viewer"] $ws7
-assign [class="LBRY"] $ws7
-assign [title="pipe-viewer"] $ws7
-assign [title="FreeTube"] $ws7
-assign [title="newsboat"] $ws7
-assign [class="Slack"] $ws8
+assign [title="castero"] $ws6
+assign [class="Spotify"] $ws7
+assign [title="pipe-viewer"] $ws8
+assign [class="Gtk-pipe-viewer"] $ws8
+assign [class="LBRY"] $ws8
+assign [title="FreeTube"] $ws8
+assign [title="newsboat"] $ws8
+assign [class="Slack"] $ws9
 assign [class="Signal"] $ws9
 assign [title="cmus"] $ws10
-assign [class="Spotify"] $ws6
 
 
 #--------------------------------------------------

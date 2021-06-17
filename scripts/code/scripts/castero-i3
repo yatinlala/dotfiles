@@ -2,7 +2,7 @@
 
 if pgrep -x "castero" >/dev/null
 then
-    i3-msg workspace 5
+    i3-msg workspace 6
 else
-    urxvtc -e castero; exec i3-msg workspace 5   
+    urxvtc -e castero; exec i3-msg workspace 6
 fi

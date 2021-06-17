@@ -3,7 +3,7 @@ Description=Sync Email
 
 [Timer]
 OnBootSec=1min
-OnUnitActiveSec=20min
+OnUnitActiveSec=10min
 
 [Install]
 WantedBy=timers.target

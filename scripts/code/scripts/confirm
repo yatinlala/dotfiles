@@ -3,4 +3,4 @@
 choices="yes\nno"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "are you sure?")
 
-[[ "$chosen" == "yes" ]] && $1
+[[ "$chosen" == "yes" ]] && $@

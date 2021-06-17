@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+HOME=$HOME/.local/share
+
+exec minecraft-launcher
