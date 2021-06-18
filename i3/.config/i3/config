@@ -55,12 +55,19 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod2+f exec pcmanfm
 
 #Audio Consumption
-bindsym $mod+c exec cmus-start-pause 
-bindsym $mod+bracketleft exec cmus-remote -r
-bindsym $mod+bracketright exec cmus-remote -n
-bindsym $mod+minus exec cmus-remote -v -5%
-bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws7
+bindsym $mod+c exec spotify-start-pause
+bindsym $mod+bracketleft exec playerctl previous
+bindsym $mod+bracketright exec playerctl next
+#bindsym $mod+minus exec playerctl 
+#bindsym $mod+equal exec cmus-remote -v +5%
+bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws10
+
+# bindsym $mod+c exec cmus-start-pause 
+# bindsym $mod+bracketleft exec cmus-remote -r
+# bindsym $mod+bracketright exec cmus-remote -n
+# bindsym $mod+minus exec cmus-remote -v -5%
+# bindsym $mod+equal exec cmus-remote -v +5%
+# bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws10
 bindsym $mod2+p exec castero-i3
 
 #Audio Production
@@ -86,10 +93,10 @@ bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
-bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
-bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
-bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
-bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
+#bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
+#bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
+#bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
+#bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -122,8 +129,8 @@ exec safeeyes
 # exec nm-applet
 # exec aw-qt
 
-exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-exec --no-startup-id i3-msg 'workspace $ws1'
+# exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
+# exec --no-startup-id i3-msg 'workspace $ws1'
 
 for_window [Class="rpi-imager"] floating enable
 for_window [Class="Pavucontrol"] floating enable
@@ -132,7 +139,6 @@ for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
 assign [title="castero"] $ws6
-assign [class="Spotify"] $ws7
 assign [title="pipe-viewer"] $ws8
 assign [class="Gtk-pipe-viewer"] $ws8
 assign [class="LBRY"] $ws8
@@ -140,6 +146,7 @@ assign [title="FreeTube"] $ws8
 assign [title="newsboat"] $ws8
 assign [class="Slack"] $ws9
 assign [class="Signal"] $ws9
+assign [class="Spotify"] $ws10
 assign [title="cmus"] $ws10
 
 
