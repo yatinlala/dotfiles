@@ -93,10 +93,10 @@ bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
-#bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
-#bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
-#bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
-#bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
+# bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
+# bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
+# bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
+# bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-HOME=$HOME/.local/share
+HOME=$HOME/.local/xdg-garbage
 
-exec w3m lite.duckduckgo.com/lite
+exec w3m $@

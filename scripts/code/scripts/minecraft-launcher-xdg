@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-HOME=$HOME/.local/share
+HOME=$HOME/.local/xdg-garbage
 
 exec minecraft-launcher
