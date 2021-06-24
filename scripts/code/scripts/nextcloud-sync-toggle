@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+if pgrep -x "nextcloud" >/dev/null
+then
+    pkill nextcloud
+    notify-send "Nextcloud stopped."
+else
+    nextcloud & disown
+    notify-send "Nextcloud started."
+fi

@@ -1,9 +1,0 @@
-#!/bin/bash -e
-
-# Install things
-sudo pacman -Syu neovim xorg xorg-xinit i3-gaps i3status-rust base-devel noto-fonts noto-fonts-emoji
-
-# Install yay
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si

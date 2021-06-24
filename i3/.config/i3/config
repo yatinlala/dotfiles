@@ -41,12 +41,12 @@ bindsym $mod+shift+i exec sshmenu
 bindsym $mod+semicolon exec zsh -c passmenu
 
 #Camera and Audio
-bindsym $mod2+v exec guvcview
 bindsym $mod+shift+v exec pavucontrol
+bindsym $mod2+v exec guvcview
 
 #Editor
 bindsym $mod+i exec $term -e nvim
-bindsym $mod2+c exec code
+bindsym $mod+shift+c exec code
 bindsym $mod+o exec libreoffice
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
@@ -55,19 +55,18 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod2+f exec pcmanfm
 
 #Audio Consumption
-bindsym $mod+c exec spotify-start-pause
-bindsym $mod+bracketleft exec playerctl previous
-bindsym $mod+bracketright exec playerctl next
-#bindsym $mod+minus exec playerctl 
-#bindsym $mod+equal exec cmus-remote -v +5%
-bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws10
+bindsym $mod+c exec cmus-start-pause
+bindsym $mod+bracketleft exec cmus-remote -r
+bindsym $mod+bracketright exec cmus-remote -n
+bindsym $mod+minus exec cmus-remote -v -5%
+bindsym $mod+equal exec cmus-remote -v +5%
 
-# bindsym $mod+c exec cmus-start-pause 
-# bindsym $mod+bracketleft exec cmus-remote -r
-# bindsym $mod+bracketright exec cmus-remote -n
-# bindsym $mod+minus exec cmus-remote -v -5%
-# bindsym $mod+equal exec cmus-remote -v +5%
-# bindsym $mod+apostrophe exec spotify; exec i3-msg workspace $ws10
+bindsym $mod+apostrophe exec spotify-start-pause
+bindsym $mod+comma exec playerctl previous
+bindsym $mod+period exec playerctl next
+bindsym $mod+shift+minus exec playerctl volume .05- 
+bindsym $mod+shift+equal exec playerctl volume .05+
+
 bindsym $mod2+p exec castero-i3
 
 #Audio Production
@@ -75,10 +74,10 @@ bindsym $mod2+a exec audacity-xdg
 bindsym $mod2+shift+a exec ardour6
 
 #Browser
-bindsym $mod+b exec brave
-bindsym $mod+shift+b exec /home/nitay/.local/share/firefox/firefox.AppImage
+bindsym $mod+b exec librewolf-xdg
+bindsym $mod+shift+b exec brave
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e w3m-xdg
+bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication
 bindsym $mod+m exec $term -e neomutt
@@ -87,20 +86,21 @@ bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws9
 bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
-bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
+bindsym $mod2+c exec /home/nitay/.local/share/applications/lichess/lichess
 bindsym $mod+shift+m exec minecraft-launcher-xdg
 bindsym $mod+shift+g exec sh -c steam-xdg
 
 #Video Consumption
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
-# bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws8
-# bindsym $mod+shift+p exec gtk-pipe-viewer; exec i3-msg workspace $ws8
-# bindsym $mod2+l exec lbry; exec i3-msg workspace $ws8
-# bindsym $mod2+shift+f exec freetube; exec i3-msg workspace $ws8
+bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
+bindsym $mod+p exec delay $term -e pipe-viewer; exec i3-msg workspace $ws8
+bindsym $mod+shift+p exec delay gtk-pipe-viewer; exec i3-msg workspace $ws8
+bindsym $mod2+l exec delay lbry; exec i3-msg workspace $ws8
+bindsym $mod2+shift+f exec delay freetube; exec i3-msg workspace $ws8
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
 bindsym $mod+e exec espanso-start-stop
+bindsym $mod2+n exec nextcloud-sync-toggle
 
 #Info
 bindsym $mod2+h exec $term -e htop
@@ -113,7 +113,6 @@ bindsym $mod2+g exec galculator
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
-
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------
 #--------------------------------------------------
@@ -125,7 +124,6 @@ exec urxvtd -q
 exec redshift -b 1:.6
 exec dunst
 exec safeeyes
-# exec mailspring -b
 # exec nm-applet
 # exec aw-qt
 
@@ -138,7 +136,7 @@ for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
-assign [title="castero"] $ws6
+assign [title="castero"] $ws7
 assign [title="pipe-viewer"] $ws8
 assign [class="Gtk-pipe-viewer"] $ws8
 assign [class="LBRY"] $ws8
@@ -149,10 +147,10 @@ assign [class="Signal"] $ws9
 assign [class="Spotify"] $ws10
 assign [title="cmus"] $ws10
 
-
 #--------------------------------------------------
 #-------------------Movement---------------------
 #--------------------------------------------------
+
 # Kill focused window
 bindsym $mod+q kill
 
@@ -281,6 +279,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #--------------------------------------------------
 #-------------------Theming---------------------
 #--------------------------------------------------
+
 # Wallpaper
 exec feh --bg-fill --no-fehbg /home/nitay/pictures/wallpapers/lone-tree.jpg
 #exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
