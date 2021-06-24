@@ -12,33 +12,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
+Plug 'itchyny/lightline.vim'
+
 call plug#end()
-
-
-" -------------------- BASIC SETTINGS -------------------- 
-set t_Co=256 
-set mouse=a
-" set scrolloff=4
-set number relativenumber
-set noerrorbells
-set clipboard=unnamedplus
-set hidden
-set nohlsearch
-set incsearch
-set smartcase
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set wildmode=longest,list,full
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-set splitbelow splitright
-let mapleader = " "
-
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
 
 " -------------------- KEYBINDS --------------------
 " pandoc compilation
@@ -60,5 +36,3 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>nt :Vex<CR>
 nnoremap <C-p> :Files %:p:h<CR>
 nnoremap <Leader>r :Rg<CR>
-
-let g:taskwiki_data_location="~/.local/share/task"
