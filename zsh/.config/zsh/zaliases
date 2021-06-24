@@ -1,0 +1,72 @@
+#!/bin/sh
+
+alias arch-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+
+#General improvements
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias feh='d feh --scale-down'
+alias zathura='d zathura'
+
+#Colorize!
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+#Shorten frequently used commands
+alias ll='ls -lh'
+alias p='pacman'
+alias sp='sudo pacman'
+alias d='devour'
+alias vim='nvim'
+
+#Confirm before danger
+alias cp="cp -i"
+alias rm='rm -i'
+
+#Update things easily
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+
+#SSH ALIASES
+alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
+alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab'
+alias usshfsswat='fusermount3 -u ~/code/swat-computers/cslab'
+alias sshibis='ssh s-ylala1@ibis.sccs.swarthmore.edu'
+alias sshfsibis='sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis'
+alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
+
+#Jumps
+alias wmc='nvim ~/.config/i3/config'
+alias vimc='nvim ~/.config/nvim/init.vim'
+alias zshc='nvim ~/.config/zsh/zshrc'
+alias zsha='nvim ~/.config/zsh/zaliases'
+alias zshe='nvim ~/.config/zsh/.zshenv'
+alias ss='cd ~/code/scripts/'
+
+#Trash
+alias tp='trash-put'
+alias te='trash-empty'
+alias tl='trash-list'
+alias tr='trash-restore'
+alias td='trash-remove'
+
+#Media
+alias yt='youtube-dl --add-metadata -i'
+alias yta='youtube-dl --add-metadata -i -f bestaudio/best'
+alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
+alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
+
+#XDG Compliance
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
+alias audacity='audacity-xdg'
+alias librewolf='librewolf-xdg'
+alias minecraft-launcher='minecraft-launcher-xdg'
+alias steam='steam-xdg'
+alias w3m='w3m-xdg'
+
+#Aliases work after command
+alias sudo='sudo '
+alias devour='devour '

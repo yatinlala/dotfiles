@@ -43,7 +43,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
 # FZF
-export FZF_DEFAULT_OPTS='--cycle --border'
+export FZF_DEFAULT_OPTS='--cycle'
 #export FZF_DEFAULT_COMMAND='fd -H .'
 
 #Add scripts to path
