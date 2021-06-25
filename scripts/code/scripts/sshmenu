@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-chosen=$(echo -e "cs-lab\nibis\nowl\nyuppie\n|\nmount cs-lab" | rofi -dmenu -i -p "ssh menu")
+chosen=$(echo "cs-lab\nibis\nowl\nyuppie\n|\nmount cs-lab" | rofi -dmenu -i -p "ssh menu")
 case $chosen in
     cs-lab) $TERMINAL -e ssh ylala1@lab.cs.swarthmore.edu;;
     ibis) $TERMINAL -e ssh s-ylala1@ibis.sccs.swarthmore.edu;;

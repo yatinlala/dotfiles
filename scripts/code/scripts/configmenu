@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 choices="dunstrc\nespanso\ni3\ni3status\nlfrc\nmpv.conf\nmpv input.conf\nnewsboat config\nnewsboat urls\nnvim\npicom\nsway\ntermite\nxinitrc\nxresources\nzathura\nzshenv\nzshrc\nzsh aliases"
-chosen=$(echo -e "$choices" | rofi -dmenu -i -p "config menu")
+chosen=$(echo "$choices" | rofi -dmenu -i -p "config menu")
 
 case $chosen in
     dunstrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/dunst/dunstrc;;

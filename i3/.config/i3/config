@@ -25,20 +25,28 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 
 #Boot and Screen Control
-bindsym $mod+shift+s exec confirm shutdown now
-bindsym $mod+shift+r exec confirm reboot
-bindsym $mod+shift+o exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
+set $sys_launcher Action: [e]xit [h]ibernate [l]ock [r]eboot [s]hutdown s[u]spend 
+bindsym $mod+slash mode "$sys_launcher"
+mode "$sys_launcher" {
+    bindsym e exec i3-msg exit
+    bindsym h exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png; systemctl hibernate
+    bindsym u exec systemctl suspend
+    bindsym s exec shutdown now
+    bindsym r exec reboot
+    bindsym l exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 #Program Launcher
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod2+space exec rofi -show run
 
 #Menus
-bindsym $mod+s exec quickmenu
+bindsym $mod+apostrophe exec displaymenu
+bindsym $mod+shift+s exec sshmenu
 bindsym $mod+u exec configmenu
-bindsym $mod+shift+u exec scriptmenu
-bindsym $mod+shift+i exec sshmenu
-bindsym $mod+semicolon exec zsh -c passmenu
+bindsym $mod+semicolon exec passmenu
 
 #Camera and Audio
 bindsym $mod+shift+v exec pavucontrol
@@ -46,8 +54,14 @@ bindsym $mod2+v exec guvcview
 
 #Editor
 bindsym $mod+i exec $term -e nvim
-bindsym $mod+shift+c exec code
-bindsym $mod+o exec libreoffice
+set $editor_launcher Action: [c]ode [l]ibreoffice
+bindsym $mod+o mode "$editor_launcher"
+mode "$editor_launcher" {
+    bindsym c exec code
+    bindsym l exec libreoffice
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
 #File Manager
@@ -61,7 +75,7 @@ bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 
-bindsym $mod+apostrophe exec spotify-start-pause
+bindsym $mod+s exec spotify-start-pause
 bindsym $mod+comma exec playerctl previous
 bindsym $mod+period exec playerctl next
 bindsym $mod+shift+minus exec playerctl volume .05- 
@@ -86,7 +100,7 @@ bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws9
 bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
-bindsym $mod2+c exec /home/nitay/.local/share/applications/lichess/lichess
+bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
 bindsym $mod+shift+m exec minecraft-launcher-xdg
 bindsym $mod+shift+g exec sh -c steam-xdg
 
@@ -95,7 +109,6 @@ bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/
 bindsym $mod+p exec delay $term -e pipe-viewer; exec i3-msg workspace $ws8
 bindsym $mod+shift+p exec delay gtk-pipe-viewer; exec i3-msg workspace $ws8
 bindsym $mod2+l exec delay lbry; exec i3-msg workspace $ws8
-bindsym $mod2+shift+f exec delay freetube; exec i3-msg workspace $ws8
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
