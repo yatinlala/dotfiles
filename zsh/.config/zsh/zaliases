@@ -5,6 +5,7 @@ alias arch-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archli
 #General improvements
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias info='info --vi-keys'
 alias feh='d feh --scale-down'
 alias zathura='d zathura'
 

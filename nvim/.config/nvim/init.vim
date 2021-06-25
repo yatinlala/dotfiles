@@ -13,6 +13,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
 Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
 
 call plug#end()
 
