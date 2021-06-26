@@ -68,3 +68,5 @@ bindkey '^e' edit-command-line
 HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTSIZE=1000
 SAVEHIST=1000
+
+eval "$(zoxide init zsh)"
