@@ -1,3 +1,0 @@
-#/usr/bin/env sh
-
-mpv --really-quiet --keep-open "$1" & disown

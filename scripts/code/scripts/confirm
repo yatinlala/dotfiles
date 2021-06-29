@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh -e
 
 choices="yes\nno"
 chosen=$(echo -e "$choices" | rofi -dmenu -i -p "are you sure?")

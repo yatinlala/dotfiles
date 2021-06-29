@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/sh -e
 
 HOME=$HOME/.local/xdg-garbage
 
-exec librewolf
+exec librewolf $@

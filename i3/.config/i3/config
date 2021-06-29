@@ -43,8 +43,7 @@ bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod2+space exec rofi -show run
 
 #Menus
-bindsym $mod+apostrophe exec displaymenu
-bindsym $mod+shift+s exec sshmenu
+bindsym $mod+apostrophe exec sshdisplaymenu
 bindsym $mod+u exec configmenu
 bindsym $mod+semicolon exec passmenu
 
@@ -100,9 +99,9 @@ bindsym $mod2+shift+s exec slack; exec i3-msg workspace $ws9
 bindsym $mod2+s exec signal-desktop; exec i3-msg workspace $ws9
 
 #Games
-bindsym $mod+shift+c exec /home/nitay/.local/share/applications/lichess/lichess
+bindsym $mod+shift+c exec zsh -c lichess
 bindsym $mod+shift+m exec minecraft-launcher-xdg
-bindsym $mod+shift+g exec sh -c steam-xdg
+bindsym $mod+shift+g exec steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
@@ -117,8 +116,8 @@ bindsym $mod2+n exec nextcloud-sync-toggle
 
 #Info
 bindsym $mod2+h exec $term -e htop
-bindsym $mod2+d exec /home/nitay/.local/share/applications/dash/dash
-bindsym $mod2+shift+d exec /home/nitay/.local/share/applications/snapdrop/Snapdrop
+bindsym $mod2+d exec zsh -c swat-dash
+bindsym $mod2+shift+d exec zsh -c snapdrop
 
 bindsym $mod2+g exec galculator
 

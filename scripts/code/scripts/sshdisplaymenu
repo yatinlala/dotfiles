@@ -1,0 +1,13 @@
+#!/usr/bin/sh -e
+
+chosen=$(echo "cs-lab\nibis\nowl\nyuppie\n|\nmount cs-lab\n|\ninternal\nhdmi\nmanual" | rofi -dmenu -i -p "ssh & display menu")
+case $chosen in
+    cs-lab) $TERMINAL -e ssh ylala1@lab.cs.swarthmore.edu;;
+    ibis) $TERMINAL -e ssh s-ylala1@ibis.sccs.swarthmore.edu;;
+    owl) $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
+    yuppie) $TERMINAL -e ssh ubuntu@192.168.86.22;;
+    'mount cs-lab') sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
+    internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off;;
+    hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off;;
+    manual) arandr;;
+esac

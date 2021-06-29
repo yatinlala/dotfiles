@@ -1,3 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/sh -e
+
 HOME=$HOME/.local/xdg-garbage # or wherever
 exec /usr/bin/steam "$@"

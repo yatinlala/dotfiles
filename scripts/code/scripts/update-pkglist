@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh -e
 
 pacman -Qqe | grep -v "$(pacman -Qqm)" > ~/.dotfiles/pkglist/pacman
 pacman -Qqm > ~/.dotfiles/pkglist/pacman

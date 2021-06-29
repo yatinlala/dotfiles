@@ -1,4 +1,5 @@
 activitywatch-bin
+apg
 auto-cpufreq-git
 brave-bin
 castero
@@ -9,8 +10,9 @@ fontpreview-ueberzug-git
 glow
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
+hollywood
 htop-vim-git
-lbry-app-bin
+lbry-desktop-bin
 lf
 librewolf-bin
 mailspring
@@ -18,6 +20,7 @@ minecraft-launcher
 neovim-git
 nerd-fonts-complete
 nodejs-nativefier
+paru
 pfetch
 pipe-viewer-git
 pistol-git
@@ -29,6 +32,7 @@ safeeyes
 siji-git
 slack-desktop
 snake
+speedometer
 spotify
 spotify-tui
 ttf-ms-fonts
@@ -37,6 +41,5 @@ ttf-vista-fonts
 urlview
 urxvt-resize-font-git
 xcolor
-yay
 zoom
 zoxide-bin

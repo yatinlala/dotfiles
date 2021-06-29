@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh -e
 
 acc='yatin.lala@gmail.com'
 

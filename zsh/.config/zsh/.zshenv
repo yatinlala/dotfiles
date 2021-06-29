@@ -26,6 +26,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export RANDFILE='$XDG_RUNTIME_DIR/rnd'
 export CCACHE_CONFIGPATH="$XDG_CONFIG_HOME"/ccache.config
 export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
@@ -47,7 +48,7 @@ export FZF_DEFAULT_OPTS='--cycle'
 #export FZF_DEFAULT_COMMAND='fd -H .'
 
 #Add scripts to path
-export PATH="$HOME/code/scripts:$PATH"
+export PATH="$HOME/code/scripts:$HOME/.local/share/applications:$PATH"
 
 # Default Apps
 export EDITOR="nvim"

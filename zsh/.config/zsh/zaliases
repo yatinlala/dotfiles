@@ -1,6 +1,4 @@
-#!/bin/sh
-
-alias arch-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+#!/usr/bin/sh -e
 
 #General improvements
 alias df='df -h'                          # human-readable sizes
@@ -17,6 +15,7 @@ alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
 alias ll='ls -lh'
+alias la='ls -a'
 alias p='pacman'
 alias z='devour zathura'
 alias sp='sudo pacman'
@@ -24,12 +23,12 @@ alias d='devour'
 alias vim='nvim'
 
 #Confirm before danger
-alias cp="cp -i"
 alias rm='rm -i'
 
-#Update things easily
+#Automate frequent commands
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys'
 
 #SSH ALIASES
 alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'

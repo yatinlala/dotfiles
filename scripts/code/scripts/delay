@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/sh -e
 
-sleep 15
+sleep 10
 exec $@
