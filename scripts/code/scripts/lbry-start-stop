@@ -1,0 +1,9 @@
+#!/usr/bin/sh -e
+
+if pgrep -x "lbrynet" >/dev/null
+then
+    lbrynet stop
+    notify-send "LBRY stopped."
+else
+    lbrynet start & disown
+fi
