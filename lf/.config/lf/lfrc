@@ -206,28 +206,43 @@ map e :rename; cmd-word-back; cmd-left
 map b $printf "%s\n" $fx | vidir - #Bulk rename
 
 # Movement --------------------
-map gt cd ~/.local/share/Trash/files
-map g/ cd /
 map ga cd ~/audio
-map gv cd ~/videos
-map gp cd ~/pictures
-map gd cd ~/documents
-map gi cd ~/io
-map gm cd ~/audio/music
-map gb cd ~/documents/books
-map gS cd ~/code/scripts
-map gs. cd ~/documents/swat
 map gC cd ~/.config
-map gc cd ~/code
-map gl cd ~/.local/share
-map ge cd /etc
-map gu cd /usr
-map gU cd ~/.local/usb
-map g. cd ~/.dotfiles
 
-# Temp Movement --------------------
-map gsl cd ~/documents/swat/spring/adv-logic
-map gsC cd ~/documents/swat/spring/cs-31
-map gss cd ~/documents/swat/spring/stats
-map gsc cd ~/code/swat-computers/cslab/cs31
-map gsp cd ~/documents/swat/spring/psych-33
+map gc<space> cd ~/code
+map gcs cd ~/code/scripts
+
+map gd<space> cd ~/documents
+map gdp cd ~/documents/papers
+map gdb cd ~/documents/books
+map gds cd ~/documents/shorts
+map gb cd ~/documents/books
+
+map g. cd ~/.dotfiles
+map gi cd ~/io
+map gp cd ~/pictures
+map gv cd ~/videos
+map gm cd ~/audio/music
+
+map gl<space> cd ~/.local
+map glx cd ~/.local/xdg-garbage
+map gls cd ~/.local/share
+map glu cd ~/.local/usb
+
+map gu<space> cd /usr
+map gul cd /usr/local
+map gus<space> cd /usr/share
+map gusa cd /usr/share/applications
+
+map gt cd ~/.local/share/Trash/files
+
+map g/ cd /
+map ge cd /etc
+
+# Swat Jumps --------------------
+map gs<space> cd ~/documents/swat
+# map gsl cd ~/documents/swat/spring/adv-logic
+# map gsC cd ~/documents/swat/spring/cs-31
+# map gss cd ~/documents/swat/spring/stats
+# map gsc cd ~/code/swat-computers/cslab/cs31
+# map gsp cd ~/documents/swat/spring/psych-33
