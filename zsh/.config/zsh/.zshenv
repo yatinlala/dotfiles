@@ -29,6 +29,7 @@ export CCACHE_DIR="$XDG_CACHE_HOME"/ccache
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export OPAMROOT="$XDG_DATA_HOME/opam"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java

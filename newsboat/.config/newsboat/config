@@ -1,4 +1,5 @@
 auto-reload yes
+external-url-viewer "urlview"
 
 bind-key j down
 bind-key k up
@@ -6,6 +7,7 @@ bind-key j next articlelist
 bind-key k prev articlelist
 bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
+bind-key u show-urls
 bind-key G end
 bind-key g home
 bind-key h quit
@@ -15,9 +17,8 @@ bind-key u pageup
 bind-key n next-unread
 bind-key N prev-unread
 bind-key x pb-delete
-
-# colors
-color background          color229   default
+bind-key u show-urls
+# colors color background          color229   default
 color listnormal          color229   default
 color listnormal_unread   color229   default bold
 color listfocus           color229   color61 
@@ -33,9 +34,10 @@ highlight article "\\[[0-9]+\\]" color63 default bold
 highlight article "\\[image\\ [0-9]+\\]" color63 default bold
 highlight feedlist "^─.*$" color61 color235 bold
 
-browser w3m
+browser w3m-xdg
 
-macro v set browser "devour mpv" ; open-in-browser ; set browser w3m
-macro m set browser "/home/nitay/code/scripts/newsboat-mpv %u" ; open-in-browser ; set browser w3m
-macro u set browser "urlview %u" ; open-in-browser ; set browser w3m
-macro d set browser "youtube-dl --add-metadata -i -o '~/videos/%(title)s.%(ext)s' %u"; open-in-browser ; set browser w3m
+macro l set browser "lbry &" ; open-in-browser ; set browser w3m-xdg
+macro g set browser "lbryget" ; open-in-browser ; set browser w3m-xdg
+macro v set browser "devour mpv" ; open-in-browser ; set browser w3m-xdg
+macro m set browser "/home/nitay/code/scripts/newsboat-mpv %u" ; open-in-browser ; set browser w3m-xdg
+macro d set browser "youtube-dl -q --add-metadata -i -o '~/videos/%(title)s.%(ext)s' %u"; open-in-browser ; set browser w3m-xdg
