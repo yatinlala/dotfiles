@@ -3,7 +3,8 @@
 if pgrep -x "lbrynet" >/dev/null
 then
     lbrynet stop
-    notify-send "LBRY stopped."
+    notify-send "lbrynet stopped."
 else
-    lbrynet start & disown
+    notify-send "Starting lbrynet..."
+    nohup lbrynet start > $HOME/.local/share/lbry-nohup.out
 fi

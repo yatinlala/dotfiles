@@ -1,7 +1,7 @@
 #!/usr/bin/sh -e
 
 pacman -Qqe | grep -v "$(pacman -Qqm)" > ~/.dotfiles/pkglist/pacman
-pacman -Qqm > ~/.dotfiles/pkglist/pacman
+pacman -Qqm > ~/.dotfiles/pkglist/aur
 
 # RESTORE
 # cat pacman | xargs pacman -S --needed --noconfirm

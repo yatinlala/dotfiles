@@ -1,3 +1,4 @@
+abook-configdir
 activitywatch-bin
 auto-cpufreq-git
 brave-bin
@@ -15,9 +16,9 @@ lf
 librewolf-bin
 mailspring
 minecraft-launcher
-neovim-git
 nerd-fonts-complete
 nodejs-nativefier
+paru
 pfetch
 pipe-viewer-git
 pistol-git
@@ -37,6 +38,5 @@ ttf-vista-fonts
 urlview
 urxvt-resize-font-git
 xcolor
-yay
 zoom
 zoxide-bin
