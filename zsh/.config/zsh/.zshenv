@@ -14,6 +14,7 @@ export LESSHISTFILE=-
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
+export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export SSB_HOME="$XDG_DATA_HOME/zoom"
@@ -49,7 +50,7 @@ export FZF_DEFAULT_OPTS='--cycle'
 #export FZF_DEFAULT_COMMAND='fd -H .'
 
 #Add scripts to path
-export PATH="$HOME/code/scripts:$HOME/.local/share/applications:$PATH"
+export PATH="$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$PATH"
 
 # Default Apps
 export EDITOR="nvim"
