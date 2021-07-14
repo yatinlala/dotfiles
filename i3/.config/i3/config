@@ -53,6 +53,7 @@ bindsym $mod2+v exec guvcview
 
 #Editor
 bindsym $mod+i exec $term -e nvim
+bindsym $mod+e exec emacs
 set $editor_launcher Action: [c]ode [l]ibreoffice
 bindsym $mod+o mode "$editor_launcher"
 mode "$editor_launcher" {
@@ -106,12 +107,15 @@ bindsym $mod+shift+g exec steam-xdg
 #Video Consumption
 bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws8
 bindsym $mod+p exec delay $term -e pipe-viewer; exec i3-msg workspace $ws8
-bindsym $mod2+l exec lbry-start-stop
+bindsym $mod2+y exec yewtube
+
+bindsym $mod2+l exec lbrynet-start-stop
 bindsym $mod+shift+semicolon exec lbrynet-status
+bindsym $mod2+semicolon exec lbry
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
-bindsym $mod+e exec espanso-start-stop
+bindsym $mod+shift+e exec espanso-start-stop
 bindsym $mod2+n exec nextcloud-sync-toggle
 
 #Info
@@ -136,8 +140,8 @@ exec urxvtd -q
 exec redshift -b 1:.6
 exec dunst
 exec safeeyes
+exec aw-qt
 # exec nm-applet
-# exec aw-qt
 
 # exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 # exec --no-startup-id i3-msg 'workspace $ws1'
@@ -148,11 +152,11 @@ for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
+assign [title="Tor Browser"] $ws6
 assign [title="castero"] $ws7
 assign [title="pipe-viewer"] $ws8
 assign [class="Gtk-pipe-viewer"] $ws8
 assign [class="LBRY"] $ws8
-assign [title="FreeTube"] $ws8
 assign [title="newsboat"] $ws8
 assign [class="Slack"] $ws9
 assign [class="Signal"] $ws9

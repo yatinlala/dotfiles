@@ -15,8 +15,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'hrsh7th/nvim-compe'
 
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
 call plug#end()
 
 " -------------------- KEYBINDS --------------------
