@@ -21,6 +21,6 @@ case $chosen in
     xresources) urxvtc -e $EDITOR $XDG_CONFIG_HOME/X11/Xresources;;
     zathura) urxvtc -e $EDITOR $XDG_CONFIG_HOME/zathura/zathurarc;;
     zshenv) urxvtc -e $EDITOR $XDG_CONFIG_HOME/zsh/.zshenv;;
-    zshrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/zsh/.zshrc;;
+    zshrc) urxvtc -e $EDITOR $XDG_CONFIG_HOME/zsh/zshrc;;
     "zsh aliases") urxvtc -e $EDITOR $XDG_CONFIG_HOME/zsh/aliases;;
 esac
