@@ -10,7 +10,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export LESSHISTFILE=-
 
 # MANPAGER
-#export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
