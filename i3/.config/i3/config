@@ -2,8 +2,8 @@
 #-----------------General Settings-----------------
 #--------------------------------------------------
 
-set $mod Mod1
-set $mod2 Mod4
+set $mod Mod4
+set $mod2 Mod1
 set $term urxvtc
 set $term2 alacritty
 
