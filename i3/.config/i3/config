@@ -43,9 +43,9 @@ bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod2+space exec rofi -show run
 
 #Menus
-bindsym $mod+apostrophe exec sshdisplaymenu
-bindsym $mod+u exec configmenu
 bindsym $mod+semicolon exec passmenu
+bindsym $mod+shift+semicolon exec sshdisplaymenu
+bindsym $mod+u exec configmenu
 
 #Camera and Audio
 bindsym $mod+shift+v exec pavucontrol
@@ -111,8 +111,8 @@ bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/
 bindsym $mod+p exec delay $term -e pipe-viewer; exec i3-msg workspace $ws8
 bindsym $mod2+y exec yewtube
 
-bindsym $mod2+l exec lbrynet-start-stop
-bindsym $mod+shift+semicolon exec lbrynet-status
+bindsym $mod+comma exec lbrynet-start-stop
+bindsym $mod+shift+comma exec lbrynet-status
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -153,8 +153,8 @@ for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
-assign [title="Tor Browser"] $ws6
-assign [title="castero"] $ws7
+assign [title="Tor Browser"] $ws7
+assign [title="castero"] $ws10
 assign [title="pipe-viewer"] $ws8
 assign [class="Gtk-pipe-viewer"] $ws8
 assign [class="LBRY"] $ws8

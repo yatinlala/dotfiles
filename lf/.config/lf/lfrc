@@ -221,8 +221,11 @@ map gb cd ~/documents/books
 map g. cd ~/.dotfiles
 map gi cd ~/io
 map gp cd ~/pictures
-map gv cd ~/videos
 map gm cd ~/audio/music
+
+map gv<space> cd ~/videos
+map gvl cd ~/videos/lbry
+map gvm cd ~/videos/music-ed
 
 map gl<space> cd ~/.local
 map glx cd ~/.local/xdg-garbage
