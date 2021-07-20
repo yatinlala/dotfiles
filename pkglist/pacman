@@ -5,7 +5,6 @@ alacritty
 alsa-firmware
 alsa-utils
 arandr
-ardour
 asp
 audacity
 autoconf
@@ -37,10 +36,12 @@ dunst
 efibootmgr
 egl-wayland
 element-desktop
+emacs
 faad2
 fakeroot
 fd
 feh
+fish
 flex
 fuse2
 fwupd
@@ -140,6 +141,7 @@ playerctl
 powerline-fonts
 pulsemixer
 python-pdftotext
+qutebrowser
 r
 redshift
 reflector
@@ -151,6 +153,7 @@ rxvt-unicode
 screenkey
 scrot
 signal-desktop
+slop
 sof-firmware
 sshfs
 steam
@@ -177,6 +180,7 @@ texlive-science
 tldr
 tlp
 torbrowser-launcher
+transmission-gtk
 trash-cli
 ttf-dejavu
 ttf-font-awesome

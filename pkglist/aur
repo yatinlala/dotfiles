@@ -10,7 +10,7 @@ fontpreview-ueberzug-git
 glow
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
-htop-vim-git
+htim
 lbry-app-bin
 lf
 librewolf-bin
@@ -18,12 +18,14 @@ mailspring
 minecraft-launcher
 nerd-fonts-complete
 nodejs-nativefier
+nuclear-player-bin
 paru
 pfetch
 pipe-viewer-git
 pistol-git
 python-mpv
 python-vlc
+reaper-bin
 rofi-dmenu
 rpi-imager
 safeeyes
