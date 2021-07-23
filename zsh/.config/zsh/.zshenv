@@ -1,6 +1,5 @@
 typeset -U PATH path
 
-
 # Other XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -10,7 +9,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export LESSHISTFILE=-
 
 # MANPAGER
-export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
+#export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
@@ -57,12 +56,12 @@ export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="urxvtc"
-export BROWSER="librewolf"
+export BROWSER="librewolf-xdg"
 export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
-export PAGER="less"
+export PAGER="bat"
 export WM="i3-gaps"
 
 # Get LF icons to work

@@ -9,6 +9,7 @@ case $chosen in
     'mount cs-lab') sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
     internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off;;
     hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x525 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
+         #i3-msg workspace "1" output HDMI
         $HOME/code/scripts/wallpaper.sh;;
     manual) arandr;;
 esac

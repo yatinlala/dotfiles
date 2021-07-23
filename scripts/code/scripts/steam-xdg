@@ -1,4 +1,5 @@
 #!/usr/bin/sh -e
 
 HOME=$HOME/.local/xdg-garbage # or wherever
+export GDK_SCALE=2
 exec /usr/bin/steam "$@"

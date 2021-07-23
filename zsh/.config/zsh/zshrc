@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -8,11 +10,17 @@ zle_highlight=('paste:none')
 unsetopt BEEP
 
 # completions
-autoload -Uz compinit
 zstyle ':completion:*' menu select
-#zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
-compinit
+
+autoload -Uz compinit
+
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+
+compinit -C
+
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U up-line-or-beginning-search
@@ -51,3 +59,5 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 eval "$(zoxide init zsh)"
+
+#zprof
