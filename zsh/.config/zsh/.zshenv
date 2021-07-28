@@ -1,15 +1,24 @@
 typeset -U PATH path
 
-# Other XDG paths
+export PATH="$HOME/.local/bin:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$PATH"
+
+#YTFZF
+FZF_PLAYER="devour mpv"
+YTFZF_PLAYER_FORMAT="devour mpv --ytdl-format="
+
+# FZF
+export FZF_DEFAULT_OPTS='--cycle'
+#export FZF_DEFAULT_COMMAND='fd -H .'
+
+# Cursor
+# export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
+# export XCURSOR_THEME=Breeze_Snow
+
+# XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
-# Disable less history files 
-export LESSHISTFILE=-
-
-# MANPAGER
-#export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
@@ -44,13 +53,6 @@ export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 
-# FZF
-export FZF_DEFAULT_OPTS='--cycle'
-#export FZF_DEFAULT_COMMAND='fd -H .'
-
-#Add scripts to path
-export PATH="$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$PATH"
-
 # Default Apps
 export EDITOR="nvim"
 export READER="zathura"
@@ -63,6 +65,12 @@ export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="bat"
 export WM="i3-gaps"
+
+# Disable less history files 
+export LESSHISTFILE=-
+
+# MANPAGER
+#export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"

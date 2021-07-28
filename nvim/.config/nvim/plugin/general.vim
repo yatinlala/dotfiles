@@ -1,4 +1,6 @@
 syntax enable                           " Enables syntax highlighing
+set ignorecase
+set smartcase
 set hidden                              " Required to keep multiple buffers open multiple buffers
 "set nowrap                              " Display long lines as just one line
 set pumheight=10                        " Makes popup menu smaller set cmdheight=2                         " More space for displaying messages

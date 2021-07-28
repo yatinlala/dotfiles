@@ -9,7 +9,7 @@ set $term2 alacritty
 
 floating_modifier $mod
 
-font pango:Deja Vu Sans Mono 15
+font pango:Deja Vu Sans Mono 16
 smart_gaps on 
 smart_borders on
 gaps inner 7
@@ -25,7 +25,7 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2 
 #Boot and Screen Control
 set $sys_launcher Action: [e]xit [h]ibernate [l]ock [r]eboot [s]hutdown s[u]spend 
-bindsym $mod+slash mode "$sys_launcher"
+bindsym $mod+comma mode "$sys_launcher"
 mode "$sys_launcher" {
     bindsym e exec i3-msg exit
     bindsym h exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png; systemctl hibernate; mode "default"
@@ -90,12 +90,12 @@ bindsym $mod2+e exec eartraining
 #Browser
 bindsym $mod+b exec librewolf-xdg
 bindsym $mod+shift+b exec brave
-bindsym $mod+t exec torbrowser-launcher
+#bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication
-bindsym $mod+m exec $term -e neomutt
-bindsym $mod2+m exec mailspring 
+bindsym $mod+m exec mailspring 
+bindsym $mod2+m exec $term -e neomutt
 set $messaging_launcher Action: [s]ignal s[l]ack [d]iscord [e]lement
 bindsym $mod+shift+s mode "$messaging_launcher"
 mode "$messaging_launcher" {
@@ -114,11 +114,7 @@ bindsym $mod+shift+g exec steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9
-bindsym $mod+p exec delay $term -e pipe-viewer; exec i3-msg workspace $ws9
-bindsym $mod2+y exec yewtube
-
-bindsym $mod+comma exec lbrynet-start-stop
-bindsym $mod+shift+comma exec lbrynet-status
+bindsym $mod+p exec delay $term -e ytfzf --detach; exec i3-msg workspace $ws9
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -146,16 +142,16 @@ exec picom
 exec urxvtd -q
 exec redshift -b 1:.6
 exec dunst
-exec safeeyes
-exec aw-qt
-# exec nm-applet
+# exec safeeyes
+# exec aw-qt
+exec nm-applet
 
 # exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-# exec --no-startup-id i3-msg 'workspace $ws1'
+exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/documents/wiki/index.wiki'
 
+for_window [title="Library"] floating enable
 for_window [Class="rpi-imager"] floating enable
 for_window [Class="Pavucontrol"] floating enable
-for_window [title="^sshmenu*"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
@@ -164,12 +160,10 @@ assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Element"] $ws8
-assign [title="castero"] $ws9
-assign [title="pipe-viewer"] $ws9
-assign [class="Gtk-pipe-viewer"] $ws9
+assign [title="ytfzf"] $ws9
 assign [class="LBRY"] $ws9
 assign [title="newsboat"] $ws9
-assign [class="spotify"] $ws10
+assign [title="castero"] $ws10
 assign [title="cmus"] $ws10
 
 #--------------------------------------------------

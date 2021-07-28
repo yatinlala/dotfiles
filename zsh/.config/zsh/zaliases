@@ -4,6 +4,7 @@
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias info='info --vi-keys'
+
 alias feh='devour feh --scale-down'
 alias zathura='devour zathura'
 
