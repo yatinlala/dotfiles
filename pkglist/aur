@@ -2,6 +2,7 @@ abook-configdir
 activitywatch-bin
 auto-cpufreq-git
 brave-bin
+breeze-snow-cursor-theme
 castero
 devour
 dragon-drag-and-drop
@@ -14,6 +15,8 @@ htim
 i3-style
 lbry-app-bin
 lf
+libinput-gestures
+libopenaptx
 librewolf-bin
 mailspring
 minecraft-launcher
@@ -22,9 +25,9 @@ nodejs-nativefier
 nuclear-player-bin
 paru
 pfetch
-pipe-viewer-git
 pistol-git
 python-mpv
+python-pyqrcode
 python-vlc
 reaper-bin
 rofi-dmenu
@@ -41,5 +44,6 @@ ttf-vista-fonts
 urlview
 urxvt-resize-font-git
 xcolor
+ytfzf
 zoom
-zoxide-bin
+zsh-fast-syntax-highlighting

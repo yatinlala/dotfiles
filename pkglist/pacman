@@ -20,6 +20,7 @@ bluez-utils
 bpytop
 cabextract
 calcurse
+calibre
 ccls
 checkbashisms
 cmake
@@ -41,8 +42,8 @@ faad2
 fakeroot
 fd
 feh
-fish
 flex
+fprintd
 fuse2
 fwupd
 fzf
@@ -97,7 +98,10 @@ libreoffice-fresh
 libtool
 linux
 linux-firmware
+linux-lts
+lutris
 lxappearance
+lxsession
 m4
 make
 mediainfo
@@ -107,6 +111,7 @@ mpv
 msmtp
 mtools
 musescore
+nautilus
 ncdu
 neofetch
 neomutt
@@ -129,7 +134,6 @@ pass
 pass-otp
 patch
 pavucontrol
-pcmanfm-gtk3
 picom
 piper
 pipewire
@@ -143,6 +147,7 @@ pulsemixer
 python-pdftotext
 qutebrowser
 r
+ranger
 redshift
 reflector
 ripgrep
@@ -197,6 +202,8 @@ w3m
 wavpack
 wget
 which
+wine-staging
+wmctrl
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa
@@ -244,5 +251,6 @@ xorg-xwininfo
 xorg-xwud
 youtube-dl
 zathura
-zathura-pdf-mupdf
+zathura-pdf-poppler
 zsh
+zsh-autosuggestions
