@@ -225,7 +225,7 @@ map gm cd ~/audio/music
 
 map gv<space> cd ~/videos
 map gvl cd ~/videos/lbry
-map gvm cd ~/videos/music-ed
+map gvm cd ~/videos/repertoire-and-technique
 
 map gl<space> cd ~/.local
 map glx cd ~/.local/xdg-garbage
