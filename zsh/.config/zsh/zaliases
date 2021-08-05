@@ -1,9 +1,8 @@
-#!/usr/bin/sh -e
-
 #General improvements
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias info='info --vi-keys'
+alias bc='bc -lq'
 
 alias feh='devour feh --scale-down'
 alias zathura='devour zathura'
@@ -28,7 +27,6 @@ alias rm='rm -i'
 
 #Automate frequent commands
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys'
 
 #SSH ALIASES
