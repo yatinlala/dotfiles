@@ -5,11 +5,12 @@
 set $mod Mod4
 set $mod2 Mod1
 set $term urxvtc
+set $term_iso urxvt
 set $term2 alacritty
 
 floating_modifier $mod
 
-font pango:Deja Vu Sans Mono 16
+font pango:Deja Vu Sans Mono 18
 smart_gaps on 
 smart_borders on
 gaps inner 7
@@ -22,20 +23,9 @@ for_window [class="^.*"] border pixel 3
 
 #Terminals
 bindsym $mod+Return exec $term
-bindsym $mod2+Return exec $term2 
-#Boot and Screen Control
-set $sys_launcher Action: [e]xit [h]ibernate [l]ock [r]eboot [s]hutdown s[u]spend 
-bindsym $mod+comma mode "$sys_launcher"
-mode "$sys_launcher" {
-    bindsym e exec i3-msg exit
-    bindsym h exec i3lock -i ~/pictures/i3lock/sunrise-blurred.png; systemctl hibernate; mode "default"
-    bindsym u exec systemctl suspend; mode "default"
-    bindsym s exec shutdown now
-    bindsym r exec reboot
-    bindsym l exec i3lock -i ~/pictures/wallpapers/sunrise-blurred.png; mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+bindsym $mod+shift+Return exec $term -e fish
+bindsym $mod2+Return exec $term2
+bindsym $mod2+shift+Return exec $term2 -e fish
 
 #Program Launcher
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
@@ -65,7 +55,7 @@ bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
 
 #File Manager
 bindsym $mod+a exec $term -e lf
-bindsym $mod2+f exec pcmanfm
+bindsym $mod2+f exec nautilus
 
 #Audio Consumption
 bindsym $mod+c exec cmus-start-pause
@@ -88,21 +78,26 @@ bindsym $mod+shift+r exec reaper
 bindsym $mod2+e exec eartraining
 
 #Browser
-bindsym $mod+b exec librewolf-xdg
-bindsym $mod+shift+b exec brave
-#bindsym $mod+t exec torbrowser-launcher
+bindsym $mod+b exec brave
+bindsym $mod+shift+b exec librewolf-xdg
+bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
-#Communication
+#Communication + Mega Launcher
 bindsym $mod+m exec mailspring 
 bindsym $mod2+m exec $term -e neomutt
-set $messaging_launcher Action: [s]ignal s[l]ack [d]iscord [e]lement
-bindsym $mod+shift+s mode "$messaging_launcher"
-mode "$messaging_launcher" {
+set $mega_launcher Action: [s]ignal s[l]ack [d]iscord [e]lement | [q]uit [i]3lock [r]eboot shutdo[w]n s[u]spend 
+bindsym $mod+comma mode "$mega_launcher"
+mode "$mega_launcher" {
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element; exec i3-msg workspace $ws8; mode "default"
+    bindsym q exec i3-msg exit
+    bindsym i exec i3lock -i ~/pictures/wallpapers/lone-tree.jpg; mode "default"
+    bindsym r exec reboot
+    bindsym w exec shutdown now
+    bindsym u exec systemctl suspend; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -114,7 +109,7 @@ bindsym $mod+shift+g exec steam-xdg
 
 #Video Consumption
 bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9
-bindsym $mod+p exec delay $term -e ytfzf --detach; exec i3-msg workspace $ws9
+bindsym $mod+p exec delay $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
@@ -140,11 +135,13 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 exec pulseaudio-startup-script
 exec picom
 exec urxvtd -q
-exec redshift -b 1:.6
 exec dunst
+exec redshift -b 1:.6
+exec nm-applet
+exec mailspring -b
+exec --no-startup-id libinput-gestures-setup start
 # exec safeeyes
 # exec aw-qt
-exec nm-applet
 
 # exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/documents/wiki/index.wiki'
@@ -256,7 +253,7 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 16
+    font pango:DejaVu Sans Mono, FontAwesome 18
     strip_workspace_numbers yes
     position top
     status_command i3status-rs
