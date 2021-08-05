@@ -1,27 +1,15 @@
-call plug#begin('~/.local/share/nvim/plugged')
+" call plug#end()
+" lua << EOF
+" EOF
 
-Plug 'gruvbox-community/gruvbox'
-Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-commentary' 
-Plug 'mbbill/undotree'
+lua require('plugins')
 
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'hrsh7th/nvim-compe'
-
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-call plug#end()
 
 " -------------------- KEYBINDS --------------------
 let g:mapleader = " "
+
+"Make  Y work in a consistent way
+nnoremap Y y$
 
 " smart(ish) compilation
 map <Leader>c :w! \| !comp <c-r>%<CR><CR>
@@ -40,7 +28,6 @@ map <C-l> <C-w>l
 
 nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>t :Vex<CR>
-" nnoremap <C-p> :Files %:p:h<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>

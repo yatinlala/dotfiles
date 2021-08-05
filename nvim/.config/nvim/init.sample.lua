@@ -21,11 +21,11 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
+--use 'ludovicchabant/vim-gutentags' -- Automatic tags management
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
-  use 'joshdick/onedark.vim' -- Theme inspired by Atom
-  use 'itchyny/lightline.vim' -- Fancier statusline
+  use 'gruvbox-community/gruvbox'
+--use 'itchyny/lightline.vim' -- Fancier statusline
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
   -- Add git related info in the signs columns and popups
@@ -36,7 +36,7 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe' -- Autocompletion plugin
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+--use 'L3MON4D3/LuaSnip' -- Snippets plugin
 end)
 
 --Incremental live completion
@@ -67,11 +67,6 @@ vim.o.smartcase = true
 --Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
-
---Set colorscheme (order is important here)
-vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
-vim.cmd [[colorscheme onedark]]
 
 --Set statusbar
 vim.g.lightline = {
@@ -273,7 +268,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noinsert'
+vim.o.completeopt = 'menuone,noselect'
 
 -- Compe setup
 require('compe').setup {
