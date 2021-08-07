@@ -23,9 +23,7 @@ for_window [class="^.*"] border pixel 3
 
 #Terminals
 bindsym $mod+Return exec $term
-bindsym $mod+shift+Return exec $term -e fish
 bindsym $mod2+Return exec $term2
-bindsym $mod2+shift+Return exec $term2 -e fish
 
 #Program Launcher
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
@@ -73,9 +71,16 @@ bindsym $mod+shift+equal exec playerctl volume .05+
 bindsym $mod+shift+p exec castero-i3
 
 #Music
-bindsym $mod2+a exec audacity-xdg
-bindsym $mod+shift+r exec reaper
-bindsym $mod2+e exec eartraining
+set $music_launcher Action: [a]udacity [e]artraining [r]eaper
+bindsym $mod2+a mode "$music_launcher"
+mode "$music_launcher" {
+    bindsym a exec audacity-xdg; mode "default"
+    bindsym e exec eartraining; mode "default"
+    bindsym r exec reaper; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+shift+r exec eartraining
 
 #Browser
 bindsym $mod+b exec brave

@@ -1,4 +1,5 @@
 auto-reload yes
+show-title-bar no
 external-url-viewer "urlview"
 
 bind-key j down

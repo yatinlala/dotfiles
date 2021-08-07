@@ -41,7 +41,7 @@ bindkey -v '^?' backward-delete-char
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
+        vicmd) echo -ne '\e[2 q';;      # block
         viins|main) echo -ne '\e[6 q';; # beam
     esac
 }
@@ -70,10 +70,9 @@ bindkey -s '^o' 'lfcd\n'
 bindkey -s '^b' 'bc -lq\n'
 bindkey -s '^f' 'cd $(fd --type directory | fzf)\n'
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
+bindkey -M vicmd e edit-command-line
 
 ########## LOAD PLUGINS ##########
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
