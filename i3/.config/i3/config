@@ -25,7 +25,7 @@ for_window [class="^.*"] border pixel 3
 bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2
 
-#Program Launcher
+#Rofi
 bindsym $mod+space exec rofi -show drun -drun-display-format {name}
 bindsym $mod2+space exec rofi -show run
 
@@ -35,15 +35,15 @@ bindsym $mod+apostrophe exec sadmenu
 bindsym $mod+u exec configmenu
 
 #Camera and Audio
+bindsym $mod+shift+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
-bindsym $mod2+v exec guvcview
 
 #Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+e exec emacs
-set $editor_launcher Action: [c]ode [l]ibreoffice
-bindsym $mod+o mode "$editor_launcher"
-mode "$editor_launcher" {
+set $editor Action: [c]ode [l]ibreoffice
+bindsym $mod+o mode "$editor"
+mode "$editor" {
     bindsym c exec code; mode "default"
     bindsym l exec libreoffice; mode "default"
     bindsym Escape mode "default"
@@ -71,16 +71,16 @@ bindsym $mod+shift+equal exec playerctl volume .05+
 bindsym $mod+shift+p exec castero-i3
 
 #Music
-set $music_launcher Action: [a]udacity [e]artraining [r]eaper
-bindsym $mod2+a mode "$music_launcher"
-mode "$music_launcher" {
+set $music Action: [a]udacity [e]artraining [r]eaper
+bindsym $mod2+m mode "$music"
+mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
     bindsym e exec eartraining; mode "default"
     bindsym r exec reaper; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+r exec eartraining
+bindsym $mod+p exec eartraining
 
 #Browser
 bindsym $mod+b exec brave
@@ -90,10 +90,10 @@ bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication + Mega Launcher
 bindsym $mod+m exec mailspring 
-bindsym $mod2+m exec $term -e neomutt
-set $mega_launcher Action: [s]ignal s[l]ack [d]iscord [e]lement | [q]uit [i]3lock [r]eboot shutdo[w]n s[u]spend 
-bindsym $mod+comma mode "$mega_launcher"
-mode "$mega_launcher" {
+bindsym $mod+shift+m exec $term -e neomutt
+set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement | [q]uit [i]3lock [r]eboot shutdo[w]n s[u]spend 
+bindsym $mod+slash mode "$mega"
+mode "$mega" {
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
@@ -108,13 +108,26 @@ mode "$mega_launcher" {
 }
 
 #Games
-bindsym $mod+shift+c exec lichess
-bindsym $mod+shift+m exec minecraft-launcher-xdg
-bindsym $mod+shift+g exec steam-xdg
+set $games Action: [l]ichess [m]inecraft [s]team
+bindsym $mod+shift+g mode "$games"
+mode "$games" {
+    bindsym l exec lichess; mode "default"
+    bindsym m exec minecraft-launcher-xdg; mode "default"
+    bindsym s exec steam-xdg; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 #Video Consumption
-bindsym $mod+n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9
-bindsym $mod+p exec delay $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9
+set $entertainment Action: [l]bry [n]ewsboat [y]tfzf
+bindsym $mod+n mode "$entertainment"
+mode "$entertainment" {
+    bindsym l exec delay lbry; exec i3-msg workspace $ws9; mode "default
+    bindsym n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
+    bindsym y exec delay $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle

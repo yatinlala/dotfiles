@@ -1,5 +1,4 @@
 #!/usr/bin/sh -e
 
-notify-send "launching..."
 #sleep 10
 exec $@
