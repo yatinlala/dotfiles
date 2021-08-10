@@ -6,7 +6,7 @@ set $mod Mod4
 set $mod2 Mod1
 set $term urxvtc
 set $term_iso urxvt
-set $term2 alacritty
+set $term2 xterm
 
 floating_modifier $mod
 
@@ -56,19 +56,18 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
-bindsym $mod+c exec cmus-start-pause
+bindsym $mod+c exec cmus-toggle
 bindsym $mod+bracketleft exec cmus-remote -r
 bindsym $mod+bracketright exec cmus-remote -n
 bindsym $mod+minus exec cmus-remote -v -5%
 bindsym $mod+equal exec cmus-remote -v +5%
 
-bindsym $mod+s exec spotify-start-pause
+bindsym $mod+s exec spotify-toggle
 bindsym $mod+shift+bracketleft exec playerctl previous
 bindsym $mod+shift+bracketright exec playerctl next
 bindsym $mod+shift+minus exec playerctl volume .05- 
 bindsym $mod+shift+equal exec playerctl volume .05+
 
-bindsym $mod+shift+p exec castero-i3
 
 #Music
 set $music Action: [a]udacity [e]artraining [r]eaper
@@ -119,10 +118,11 @@ mode "$games" {
 }
 
 #Video Consumption
-set $entertainment Action: [l]bry [n]ewsboat [y]tfzf
+set $entertainment Action: [c]astero [l]bry [n]ewsboat [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
-    bindsym l exec delay lbry; exec i3-msg workspace $ws9; mode "default
+    bindsym c exec castero-i3; exec i3-msg workspace $ws10; mode "default"
+    bindsym l exec delay lbry; exec i3-msg workspace $ws9; mode "default"
     bindsym n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
     bindsym y exec delay $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
     bindsym Escape mode "default"
@@ -131,7 +131,7 @@ mode "$entertainment" {
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
-bindsym $mod+shift+e exec espanso-start-stop
+bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
 #Info
