@@ -71,7 +71,7 @@ bindsym $mod+shift+equal exec playerctl volume .05+
 
 #Music
 set $music Action: [a]udacity [e]artraining [r]eaper
-bindsym $mod2+m mode "$music"
+bindsym $mod+shift+m mode "$music"
 mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
     bindsym e exec eartraining; mode "default"
@@ -82,14 +82,14 @@ mode "$music" {
 bindsym $mod+p exec eartraining
 
 #Browser
-bindsym $mod+b exec brave --force-device-scale-factor=1.3
+bindsym $mod+b exec brave --force-device-scale-factor=1.2
 bindsym $mod+shift+b exec librewolf-xdg
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication + Mega Launcher
 bindsym $mod+m exec mailspring 
-bindsym $mod+shift+m exec $term -e neomutt
+bindsym $mod2+m exec $term -e neomutt
 set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement | [q]uit [i]3lock [r]eboot shutdo[w]n s[u]spend 
 bindsym $mod+slash mode "$mega"
 mode "$mega" {
