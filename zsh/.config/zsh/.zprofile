@@ -1,4 +1,3 @@
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep i3 || startx "$HOME/.config/X11/xinitrc"
+	pgrep i3  || $HOME/code/scripts/startx.sh
 fi
-

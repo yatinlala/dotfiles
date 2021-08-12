@@ -1,7 +1,6 @@
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
-stty stop undef		# Disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none')
 unsetopt BEEP # Beeping sucks
 
@@ -68,7 +67,7 @@ lfcd () {
 bindkey -s '^a' 'lf\n'
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^b' 'bc -lq\n'
-bindkey -s '^f' 'cd $(fd --type directory | fzf)\n'
+bindkey -s '^p' 'cd $(fd --type directory | fzf)\n'
 
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line
