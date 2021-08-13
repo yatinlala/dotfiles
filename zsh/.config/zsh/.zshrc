@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -31,11 +33,24 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+clear-screen-scrollback () {
+  echo -ne '\033c' # clear scrollback buffer as well
+  zle .clear-screen
+}
+
+zle -N clear-screen-scrollback
+
+# clear screen scrolleback keybindings
+bindkey -M main '^K' clear-screen-scrollback
+bindkey -M viins '^K' clear-screen-scrollback
+bindkey -M vicmd '^K' clear-screen-scrollback
+
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
@@ -53,10 +68,10 @@ zle -N zle-line-init
 echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
+# Use lf to switch directories
+lf () {
     tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
+    command lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp" >/dev/null
@@ -65,7 +80,6 @@ lfcd () {
 }
 
 bindkey -s '^a' 'lf\n'
-bindkey -s '^o' 'lfcd\n'
 bindkey -s '^b' 'bc -lq\n'
 bindkey -s '^p' 'cd $(fd --type directory | fzf)\n'
 
@@ -75,4 +89,6 @@ bindkey -M vicmd e edit-command-line
 
 ########## LOAD PLUGINS ##########
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#motivate

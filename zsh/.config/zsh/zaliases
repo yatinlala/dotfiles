@@ -39,10 +39,10 @@ alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
 #Jumps
 alias wmc='nvim ~/.config/i3/config'
-alias vimc='nvim ~/.config/nvim/init.vim'
-alias zshc='nvim ~/.config/zsh/zshrc'
-alias zsha='nvim ~/.config/zsh/zaliases'
-alias zshe='nvim ~/.config/zsh/.zshenv'
+alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias zshrc='nvim ~/.config/zsh/zshrc'
+alias zaliases='nvim ~/.config/zsh/zaliases'
+alias zshenv='nvim ~/.config/zsh/.zshenv'
 alias ss='cd ~/code/scripts/'
 
 #Trash
