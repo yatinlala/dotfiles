@@ -34,8 +34,8 @@ bindsym $mod+semicolon exec passmenu
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
-bindsym $mod2+c exec guvcview
-bindsym $mod2+v exec pavucontrol
+bindsym $mod+shift+c exec guvcview
+bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+i exec $term -e nvim
@@ -55,26 +55,22 @@ bindsym $mod+a exec $term -e lf
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
-bindsym $mod+c exec cmus-toggle
-bindsym $mod+bracketleft exec cmus-remote -r
-bindsym $mod+bracketright exec cmus-remote -n
-bindsym $mod+minus exec cmus-remote -v -5%
-bindsym $mod+equal exec cmus-remote -v +5%
-
-bindsym $mod+s exec spotify-toggle
-bindsym $mod+shift+bracketleft exec playerctl previous
-bindsym $mod+shift+bracketright exec playerctl next
-bindsym $mod+shift+minus exec playerctl volume .05- 
-bindsym $mod+shift+equal exec playerctl volume .05+
-
+bindsym $mod+s exec music-toggle
+bindsym $mod+bracketleft exec playerctl previous
+bindsym $mod+bracketright exec playerctl next
+bindsym $mod+minus exec playerctl volume .05- 
+bindsym $mod+equal exec playerctl volume .05+
 
 #Music
-set $music Action: [a]udacity [e]artraining [r]eaper
+set $music Action: [a]udacity [c]mus [e]artraining [r]eaper [s]potify
 bindsym $mod+shift+m mode "$music"
 mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
+    bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
     bindsym e exec eartraining; mode "default"
     bindsym r exec reaper; mode "default"
+    bindsym s exec i3-msg workspace $ws10; exec spotify; mode "default"
+
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -138,7 +134,7 @@ bindsym $mod+shift+n exec nextcloud-sync-toggle
 bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec swat-dash
 bindsym $mod2+shift+d exec snapdrop
-bindsym $mod+shift+c exec brave --profile-directory=Default --app-id=hmplmobicmfaiecgedkffnohgbjpaaod
+bindsym $mod+c exec brave --profile-directory=Default --app-id=hmplmobicmfaiecgedkffnohgbjpaaod
 
 bindsym $mod2+g exec galculator
 
@@ -292,8 +288,8 @@ bar {
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight +1.2
-bindsym XF86MonBrightnessDown exec xbacklight -1.2
+bindsym XF86MonBrightnessUp exec xbacklight +1.1
+bindsym XF86MonBrightnessDown exec xbacklight -1.1
 bindsym shift+XF86MonBrightnessUp exec xbacklight +3
 bindsym shift+XF86MonBrightnessDown exec xbacklight -3
 bindsym $mod2+j exec xbacklight -3
