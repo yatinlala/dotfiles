@@ -38,12 +38,14 @@ alias sshfsibis='sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/
 alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
 #Jumps
-alias wmc='nvim ~/.config/i3/config'
+alias ss='cd ~/code/scripts/'
+alias awesomerc='nvim ~/.config/awesome/rc.lua'
+alias lfrc='nvim ~/.config/lf/lfrc'
 alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias wmc='nvim ~/.config/i3/config'
 alias zshrc='nvim ~/.config/zsh/zshrc'
 alias zaliases='nvim ~/.config/zsh/zaliases'
 alias zshenv='nvim ~/.config/zsh/.zshenv'
-alias ss='cd ~/code/scripts/'
 
 #Trash
 alias tp='trash-put'
@@ -59,13 +61,14 @@ alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 
 #XDG Compliance
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
 alias audacity='audacity-xdg'
 alias librewolf='librewolf-xdg'
 alias minecraft-launcher='minecraft-launcher-xdg'
+alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
 alias steam='steam-xdg'
 alias w3m='w3m-xdg'
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 #Aliases work after command
 alias sudo='sudo '

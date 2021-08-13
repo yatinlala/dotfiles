@@ -32,7 +32,6 @@ bindsym $mod2+space exec rofi -show run
 #Menus
 bindsym $mod+semicolon exec passmenu
 bindsym $mod+apostrophe exec sadmenu
-bindsym $mod+u exec configmenu
 
 #Camera and Audio
 bindsym $mod2+c exec guvcview

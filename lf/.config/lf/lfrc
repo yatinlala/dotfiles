@@ -1,3 +1,5 @@
+%[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
+
 set previewer ~/code/scripts/lf/preview
 
 # Basic Settings
@@ -30,6 +32,27 @@ cmd open ${{
         *) /usr/local/bin/devour xdg-open "$f" ;;
     esac
 }}
+
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    [ -n "$fs" ] && fs="$(ls -A)"
+    printf '%s\n' "$fs" >"$old"
+    printf '%s\n' "$fs" >"$new"
+    $EDITOR "$new"
+    [ "$(wc -l "$new")" -ne "$(wc -l "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+
 
 cmd mkdir ${{
   printf "Directory Name: "
@@ -77,6 +100,8 @@ cmd fzf_jump ${{
 cmd open_config  ${{
   $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
 }}
+
+cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
 
 cmd dragon %dragon-drag-and-drop -a -x $fx
 cmd dragon-stay %dragon-drag-and-drop -a $fx
@@ -128,6 +153,7 @@ cmd restore_trash ${{
 }}
 
 
+
 # Bindings
 # Remove some defaults
 map m
@@ -170,6 +196,8 @@ map tr restore_trash
 # FZF
 map <c-p> fzf_jump
 
+map <c-s> share
+
 # Dragon Mapping
 map dr dragon
 map ds dragon-stay
@@ -203,7 +231,7 @@ map U unselect
 map r rename 
 map i :rename; cmd-home
 map e :rename; cmd-word-back; cmd-left
-map b $printf "%s\n" $fx | vidir - #Bulk rename
+map b bulk-rename
 
 # Movement --------------------
 map ga cd ~/audio
