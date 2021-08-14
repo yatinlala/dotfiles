@@ -3,6 +3,7 @@ activitywatch-bin
 auto-cpufreq-git
 brave-bin
 breeze-snow-cursor-theme
+bumblebee-status
 castero
 devour
 dragon-drag-and-drop
@@ -20,9 +21,11 @@ libopenaptx
 librewolf-bin
 mailspring
 minecraft-launcher
+motivate
 nerd-fonts-complete
 nodejs-nativefier
 nuclear-player-bin
+nvm
 paru
 pfetch
 pistol-git
@@ -44,7 +47,7 @@ ttf-unifont
 ttf-vista-fonts
 urlview
 urxvt-resize-font-git
+vscodium
 xcolor
 ytfzf
 zoom
-zsh-fast-syntax-highlighting

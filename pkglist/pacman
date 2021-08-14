@@ -4,11 +4,14 @@ adapta-gtk-theme
 alacritty
 alsa-firmware
 alsa-utils
+amfora
 arandr
+ardour
 asp
 audacity
 autoconf
 automake
+awesome
 base
 bat
 bc
@@ -26,7 +29,6 @@ checkbashisms
 cmake
 cmatrix
 cmus
-code
 dash
 discord
 dmidecode
@@ -255,3 +257,4 @@ zathura
 zathura-pdf-poppler
 zsh
 zsh-autosuggestions
+zsh-syntax-highlighting

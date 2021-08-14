@@ -43,5 +43,5 @@ format = "%a %m/%d %I:%M %P"
 
 [[block]]
 block = "battery"
-interval = 10
+interval = 5
 format = "{percentage}"
