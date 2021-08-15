@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$HOME/.config/dynamic-colors/bin:$PATH"
 
 #YTFZF
 FZF_PLAYER="devour mpv"
@@ -64,7 +64,7 @@ export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
-export PAGER="bat"
+export PAGER="bat --paging=always"
 export WM="i3-gaps"
 
 # Disable less history files 

@@ -40,6 +40,8 @@ alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
 #Jumps
 alias ss='cd ~/code/scripts/'
+alias vimwiki='nvim ~/documents/wiki/index.wiki'
+
 alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'
 alias nvimrc='nvim ~/.config/nvim/init.vim'
