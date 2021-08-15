@@ -34,16 +34,16 @@ bindsym $mod+semicolon exec passmenu
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
-bindsym $mod2+c exec guvcview
+#bindsym $mod2+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+e exec emacs
-set $editor Action: [c]ode [l]ibreoffice
+set $editor Action: vs[c]odium [l]ibreoffice
 bindsym $mod+o mode "$editor"
 mode "$editor" {
-    bindsym c exec code; mode "default"
+    bindsym c exec vscodium; mode "default"
     bindsym l exec libreoffice; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -131,13 +131,13 @@ bindsym $mod+grave exec wifi-radio-toggle
 bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
-#Info
+#Utility
 bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec swat-dash
 bindsym $mod2+shift+d exec snapdrop
 bindsym $mod+shift+c exec brave --profile-directory=Default --app-id=hmplmobicmfaiecgedkffnohgbjpaaod
+bindsym $mod2+c [instance="calc"] scratchpad show; [instance="calc"] move position center
 
-bindsym $mod2+g exec galculator
 
 # Screenshots
 bindsym --release Print exec scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
@@ -183,7 +183,17 @@ for_window [instance="notes"] floating enable
 for_window [instance="notes"] resize set 1200 900
 for_window [instance="notes"] move scratchpad
 for_window [instance="notes"] border pixel 8
-exec --no-startup-id $term -name notes -e tmux
+exec --no-startup-id $term -name notes -e tmux new-session \; \
+         send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
+         split-window -v -p 25 \; \
+         # split-window -h -p 30 \; \
+         # send-keys 'bc -lq' C-m C-l \;
+
+for_window [instance="calc"] floating enable
+for_window [instance="calc"] resize set 800 400
+for_window [instance="calc"] move scratchpad
+for_window [instance="calc"] border pixel 8
+exec --no-startup-id $term -name calc -e bc -lq
 
 #--------------------------------------------------
 #-------------------Movement---------------------
@@ -224,8 +234,8 @@ bindsym $mod+d layout tabbed
 bindsym $mod+shift+d layout toggle split
 
 #Scratchpad
-bindsym $mod+shift+y move scratchpad
 bindsym $mod+y scratchpad show
+bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
 set $ws1 "1"

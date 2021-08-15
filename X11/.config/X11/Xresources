@@ -17,7 +17,7 @@ URxvt.keysym.C-equal:    resize-font:bigger
 URxvt.keysym.C-plus:     resize-font:reset
 
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  brave
+URxvt.url-select.launcher:  xdg-open
 URxvt.url-select.underline: true
 URxvt.keysym.C-u:           perl:url-select:select_next
 URxvt.keysym.C-Escape:      perl:keyboard-select:activate
