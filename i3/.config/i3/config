@@ -15,7 +15,7 @@ smart_gaps on
 smart_borders on
 gaps inner 7
 gaps outer 0
-for_window [class="^.*"] border pixel 3 
+for_window [class="^.*"] border pixel 4
 
 #--------------------------------------------------
 #-----------------Program Keybinds----------------
@@ -48,7 +48,7 @@ mode "$editor" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+w exec $term -name wiki -e nvim ~/documents/wiki/index.wiki
+bindsym $mod+shift+w [instance="notes"] scratchpad show; [instance="notes"] move position center
 
 #File Manager
 bindsym $mod+a exec $term -e lf
@@ -160,7 +160,6 @@ exec --no-startup-id libinput-gestures-setup start
 # exec aw-qt
 
 # exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
-exec --no-startup-id i3-msg 'workspace $ws1; exec $term -e nvim ~/documents/wiki/index.wiki'
 
 for_window [title="Library"] floating enable
 for_window [Class="rpi-imager"] floating enable
@@ -179,6 +178,12 @@ assign [class="LBRY"] $ws9
 assign [title="newsboat"] $ws9
 assign [title="castero"] $ws10
 assign [title="cmus"] $ws10
+
+for_window [instance="notes"] floating enable
+for_window [instance="notes"] resize set 1200 900
+for_window [instance="notes"] move scratchpad
+for_window [instance="notes"] border pixel 8
+exec --no-startup-id $term -name notes -e tmux
 
 #--------------------------------------------------
 #-------------------Movement---------------------
