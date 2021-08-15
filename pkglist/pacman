@@ -50,12 +50,12 @@ fprintd
 fuse2
 fwupd
 fzf
-galculator
 gcc
 gdb
 gimp
 git
 gnome-backgrounds
+gnome-icon-theme
 gnome-keyring
 gnome-themes-extra
 go
@@ -137,6 +137,8 @@ pass
 pass-otp
 patch
 pavucontrol
+perl-json-xs
+perl-term-readline-gnu
 picom
 piper
 pipewire
@@ -187,6 +189,7 @@ texlive-publishers
 texlive-science
 tldr
 tlp
+tmux
 torbrowser-launcher
 transmission-gtk
 trash-cli

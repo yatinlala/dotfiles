@@ -1,8 +1,0 @@
-require('plugins')
-
--- Colorscheme --
-vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
-
--- Keybinds --
-vim.cmd [[let g:mapleader = " "]]

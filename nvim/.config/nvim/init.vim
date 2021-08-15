@@ -4,7 +4,6 @@
 
 lua require('plugins')
 
-
 " -------------------- KEYBINDS --------------------
 let g:mapleader = " "
 
