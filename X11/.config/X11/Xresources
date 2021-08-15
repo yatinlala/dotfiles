@@ -8,13 +8,21 @@ Urxvt.visualBell:        true
 URxvt.scrollTtyOutput:   false
 URxvt.scrollTtyKeypress: true
 
-URxvt.perl-ext-common:  resize-font
+URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,resize-font
 URxvt.iso14755:          false
 URxvt.iso14755_52:       false
 
 URxvt.keysym.C-minus:  resize-font:smaller
 URxvt.keysym.C-equal:    resize-font:bigger
 URxvt.keysym.C-plus:     resize-font:reset
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  brave
+URxvt.url-select.underline: true
+URxvt.keysym.C-u:           perl:url-select:select_next
+URxvt.keysym.C-Escape:      perl:keyboard-select:activate
+URxvt.keysym.C-s:           perl:keyboard-select:search
+
 
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
