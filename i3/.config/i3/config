@@ -183,11 +183,12 @@ for_window [instance="notes"] floating enable
 for_window [instance="notes"] resize set 1200 900
 for_window [instance="notes"] move scratchpad
 for_window [instance="notes"] border pixel 8
-exec --no-startup-id $term -name notes -e tmux new-session \; \
-         send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
-         split-window -v -p 25 \; \
-         # split-window -h -p 30 \; \
-         # send-keys 'bc -lq' C-m C-l \;
+# exec --no-startup-id $term -name notes -e tmux new-session \; \
+#          send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
+#          split-window -v -p 25 \; \
+#          # split-window -h -p 30 \; \
+#          # send-keys 'bc -lq' C-m C-l \;
+exec --no-startup-id $term -name notes -e nvim ~/documents/wiki/index.wiki
 
 for_window [instance="calc"] floating enable
 for_window [instance="calc"] resize set 800 400

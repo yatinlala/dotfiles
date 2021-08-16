@@ -238,7 +238,7 @@ map ga cd ~/audio
 map gC cd ~/.config
 
 map gc<space> cd ~/code
-map gcs cd ~/code/scripts
+map gS cd ~/code/scripts
 
 map gd<space> cd ~/documents
 map gdp cd ~/documents/papers

@@ -1,8 +1,22 @@
-" call plug#end()
-" lua << EOF
-" EOF
+lua << EOF
 
-lua require('plugins')
+require ('plugins')
+
+require("telescope").setup {
+  defaults = {
+  },
+  pickers = {
+    find_files = {
+        follow = true
+    }
+  },
+  extensions = {
+  }
+}
+
+
+EOF
+
 
 " -------------------- KEYBINDS --------------------
 let g:mapleader = " "
@@ -29,7 +43,9 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>t :Vex<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <C-p> <cmd>Telescope git_files<cr>
+nnoremap <Leader>ff <cmd>Telescope find_files<cr>
+nnoremap <Leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
+nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <Leader>fb <cmd>Telescope buffers<cr>
+nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
