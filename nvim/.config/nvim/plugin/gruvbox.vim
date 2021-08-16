@@ -1,5 +1,5 @@
-autocmd vimenter * colorscheme gruvbox8_soft
-set bg=dark
+autocmd vimenter * colorscheme gruvbox8_hard
+set background=dark
 highlight Normal guibg=none
 
 let s:enabled = 0

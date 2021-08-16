@@ -1,6 +1,6 @@
 lua << EOF
 
-require ('plugins')
+require("packer")
 
 require("telescope").setup {
   defaults = {
@@ -14,13 +14,66 @@ require("telescope").setup {
   }
 }
 
+require('nvim-autopairs').setup({
+  disable_filetype = { "TelescopePrompt" , "vim" },
+})
+
+require("nvim-autopairs.completion.compe").setup({
+  map_cr = true, --  map <CR> on insert mode
+  map_complete = true, -- it will auto insert `(` after select function or method item
+  auto_select = false,  -- auto select first item
+})
+
+
+-------------------- GENERAL SETTINGS --------------------
+
+vim.cmd('syntax enable')                   -- Enables syntax highlighing
+vim.cmd('set t_Co=256')                    -- Support 256 colors
+vim.o.hlsearch = false                     --  No search highlighting
+vim.o.mouse = 'a'                          -- Enable your mouse
+vim.o.hidden = true                        -- Required to keep multiple buffers open multiple buffers
+vim.o.ignorecase = true                    -- Case insensitive searching
+vim.o.smartcase = true                     -- Unless using a capital letter in search
+vim.o.splitbelow = true                    -- Horizontal splits will automatically be below
+vim.o.splitright = true                    -- Vertical splits will automatically be to the right
+vim.o.conceallevel = 0                     -- So that I can see `` in markdown files
+vim.o.tabstop = 4                          -- Insert 4 spaces for a tab
+vim.o.softtabstop = 4          
+vim.o.shiftwidth = 4                       -- Change the number of space characters inserted for indentation
+vim.o.expandtab = true                     -- Convert tabs to spaces
+--set nowrap                               -- Display long lines as just one line
+vim.o.smartindent = true                   -- Makes indenting smart
+--set noshowmode                           -- We don't need to see things like -- INSERT -- anymore
+vim.o.laststatus = 2                       -- Always display the status line
+vim.cmd('set number relativenumber')       -- Line numbers
+--set updatetime=300                       -- Faster completion
+--set timeoutlen=500                       -- By default timeoutlen is 1000 ms
+vim.cmd('set formatoptions-=cro')          -- Stop newline continution of comments
+vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everything else
+--vim.o.autochdir = true                     -- Your working directory will always be the same as your working directory
+vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
+vim.o.incsearch = true                     -- Show resuls as you type a search
+
+--Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 
 EOF
 
+" You can't stop me
+cmap w!! w !sudo tee %
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 25
+
 
 " -------------------- KEYBINDS --------------------
-let g:mapleader = " "
-
 "Make  Y work in a consistent way
 nnoremap Y y$
 
@@ -43,9 +96,14 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nnoremap <Leader>t :Vex<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p> <cmd>Telescope git_files<cr>
-nnoremap <Leader>ff <cmd>Telescope find_files<cr>
+" TODO C-p should git_files, if not in git dir then find_files in working dir
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <Leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <Leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
-nnoremap <Leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <Leader>fn <cmd>Telescope find_files cwd=~/.config/nvim<cr>
+nnoremap <Leader>fb <cmd>Telescope file_browser<cr>
+nnoremap <Leader>fg <cmd>Telescope git_files<cr>
+nnoremap <Leader>fG <cmd>Telescope live_grep<cr>
 nnoremap <Leader>fb <cmd>Telescope buffers<cr>
 nnoremap <Leader>fh <cmd>Telescope help_tags<cr>
+
