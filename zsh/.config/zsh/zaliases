@@ -21,7 +21,6 @@ alias p='pacman'
 alias z='devour zathura'
 alias sp='sudo pacman'
 alias d='devour'
-alias vim='nvim'
 
 #Confirm before danger
 alias rm='rm -i'

@@ -74,7 +74,6 @@ mode "$music" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+p exec eartraining
 
 #Browser
 bindsym $mod+b exec brave --force-device-scale-factor=1.2
