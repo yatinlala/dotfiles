@@ -327,7 +327,3 @@ vim.cmd [[colorscheme gruvbox]]
 
 -- Keybinds --
 vim.cmd [[let g:mapleader = " "]]
-
-
-
-

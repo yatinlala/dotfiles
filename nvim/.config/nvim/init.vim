@@ -15,15 +15,14 @@ require("telescope").setup {
 }
 
 require('nvim-autopairs').setup({
-  disable_filetype = { "TelescopePrompt" , "vim" },
+    disable_filetype = { "TelescopePrompt" , "vim" },
 })
 
 require("nvim-autopairs.completion.compe").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` after select function or method item
-  auto_select = false,  -- auto select first item
+    map_cr = true, --  map <CR> on insert mode
+    map_complete = true, -- it will auto insert `(` after select function or method item
+    auto_select = false,  -- auto select first item
 })
-
 
 -------------------- GENERAL SETTINGS --------------------
 
@@ -52,7 +51,7 @@ vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everyth
 --vim.o.autochdir = true                     -- Your working directory will always be the same as your working directory
 vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
 vim.o.incsearch = true                     -- Show resuls as you type a search
-
+vim.cmd('set formatoptions-=cro')
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
@@ -61,26 +60,22 @@ vim.g.maplocalleader = ' '
 
 EOF
 
-set formatoptions-=cro          " Stop newline continution of comments
-
 " You can't stop me
 cmap w!! w !sudo tee %
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Folds
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent loadview
-" augroup END
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.vim mkview
+  autocmd BufWinEnter *.vim silent! loadview
+augroup END
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
-set formatoptions-=cro          " Stop newline continution of comments
 
 " -------------------- KEYBINDS --------------------
 
