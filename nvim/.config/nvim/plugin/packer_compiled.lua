@@ -89,6 +89,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/packer.nvim"
@@ -112,6 +116,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   vimwiki = {
     loaded = true,

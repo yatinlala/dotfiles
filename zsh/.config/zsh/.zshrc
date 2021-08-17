@@ -81,6 +81,7 @@ lf () {
 
 bindkey -s '^a' 'lf\n'
 bindkey -s '^b' 'bc -lq\n'
+#bindkey -s '^i' 'nvim\n'
 bindkey -s '^o' 'dynamic-colors next\nclear\n'
 bindkey -s '^p' 'cd $(fd --type directory | fzf)\n'
 
