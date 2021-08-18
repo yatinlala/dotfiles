@@ -39,7 +39,7 @@ dunst
 efibootmgr
 egl-wayland
 element-desktop
-emacs
+entr
 faad2
 fakeroot
 fd
@@ -58,6 +58,7 @@ gnome-backgrounds
 gnome-icon-theme
 gnome-keyring
 gnome-themes-extra
+gnuplot
 go
 gpick
 groff
@@ -149,6 +150,7 @@ pkgconf
 playerctl
 powerline-fonts
 pulsemixer
+python-httplib2
 python-pdftotext
 qutebrowser
 r

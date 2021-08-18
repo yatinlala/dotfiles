@@ -115,7 +115,7 @@ nnoremap <leader>t :Vex<CR>
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
-nnoremap <leader>fn <cmd>Telescope find_files cwd=~/.config/nvim<cr>
+nnoremap <leader>en <cmd>Telescope find_files cwd=~/.config/nvim<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fG <cmd>Telescope live_grep<cr>

@@ -39,7 +39,6 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+i exec $term -e nvim
-bindsym $mod+e exec emacs
 set $editor Action: vs[c]odium [l]ibreoffice
 bindsym $mod+o mode "$editor"
 mode "$editor" {
@@ -127,7 +126,7 @@ mode "$entertainment" {
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
-bindsym $mod+shift+e exec espanso-toggle
+bindsym $mod+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
 #Utility
