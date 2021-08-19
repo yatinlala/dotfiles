@@ -115,11 +115,11 @@ set $entertainment Action: [c]astero [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
     bindsym c exec castero-i3; exec i3-msg workspace $ws10; mode "default"
-    bindsym l exec delay lbry; exec i3-msg workspace $ws9; mode "default"
-    bindsym n exec delay $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
-    bindsym o exec delay brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
+    bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
+    bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
+    bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
     bindsym p exec $term -e pipe-viewer; mode "default"
-    bindsym y exec delay $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
+    bindsym y exec $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }

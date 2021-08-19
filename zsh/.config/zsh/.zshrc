@@ -11,7 +11,7 @@ source "$ZDOTDIR/zaliases"
 
 # Enable colors and change prompt:
 autoload -Uz colors && colors	# Load colors
-PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%~%{$reset_color%} "
+PROMPT="%{$fg_bold[cyan]%}%~ %{$fg_bold[green]%}➜ %{$reset_color%}"
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
