@@ -22,9 +22,9 @@ return require('packer').startup(function()
   use 'lifepillar/gruvbox8'
   use 'vimwiki/vimwiki'
   use 'tpope/vim-fugitive'
-  use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
+  use 'ThePrimeagen/vim-be-good'
+  use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' } } }
   use 'kyazdani42/nvim-web-devicons'
-  -- Plug 'nvim-telescope/telescope-fzy-native.nvim'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'windwp/nvim-autopairs'

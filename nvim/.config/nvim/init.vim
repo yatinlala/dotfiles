@@ -1,28 +1,8 @@
 lua << EOF
 
 require("packer")
-
-require("telescope").setup {
-  defaults = {
-  },
-  pickers = {
-    find_files = {
-        follow = true
-    }
-  },
-  extensions = {
-  }
-}
-
-require('nvim-autopairs').setup({
-    disable_filetype = { "TelescopePrompt" , "vim" },
-})
-
-require("nvim-autopairs.completion.compe").setup({
-    map_cr = true, --  map <CR> on insert mode
-    map_complete = true, -- it will auto insert `(` after select function or method item
-    auto_select = false,  -- auto select first item
-})
+require("telescope-setup")
+require("autopairs-setup")
 
 -------------------- GENERAL SETTINGS --------------------
 
@@ -112,12 +92,11 @@ nnoremap <leader>t :Vex<CR>
 
 " Find files using Telescope command-line sugar.
 " TODO C-p should git_files, if not in git dir then find_files in working dir
-nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
-nnoremap <leader>en <cmd>Telescope find_files cwd=~/.config/nvim<cr>
+nnoremap <leader>en :lua require('telescope-setup').search_dotfiles()<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-nnoremap <leader>fg <cmd>Telescope git_files<cr>
 nnoremap <leader>fG <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
