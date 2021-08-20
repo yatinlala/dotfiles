@@ -3,6 +3,7 @@ lua << EOF
 require("packer")
 require("telescope-setup")
 require("autopairs-setup")
+require("compe-setup")
 
 -------------------- GENERAL SETTINGS --------------------
 
@@ -97,7 +98,7 @@ nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
 nnoremap <leader>en :lua require('telescope-setup').search_dotfiles()<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
-nnoremap <leader>fG <cmd>Telescope live_grep<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 

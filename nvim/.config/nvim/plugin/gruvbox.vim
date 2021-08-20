@@ -1,4 +1,4 @@
-autocmd vimenter * colorscheme gruvbox8_hard
+autocmd vimenter * colorscheme gruvbox8
 set background=dark
 highlight Normal guibg=none
 
