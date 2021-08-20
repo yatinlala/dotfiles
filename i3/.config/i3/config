@@ -75,7 +75,7 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b exec brave --force-device-scale-factor=1.2
+bindsym $mod+b exec brave --force-device-scale-factor=1.22
 bindsym $mod+shift+b exec librewolf-xdg
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
@@ -115,7 +115,7 @@ set $entertainment Action: [c]astero [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
     bindsym c exec castero-i3; exec i3-msg workspace $ws10; mode "default"
-    bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
+    bindsym l exec lbry; exec i3-msg workspace $ws8; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
     bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
     bindsym p exec $term -e pipe-viewer; mode "default"
@@ -175,6 +175,7 @@ assign [title="ytfzf"] $ws9
 assign [class="LBRY"] $ws9
 assign [title="newsboat"] $ws9
 assign [title="castero"] $ws10
+assign [class="spotify"] $ws10
 assign [title="cmus"] $ws10
 
 for_window [instance="notes"] floating enable
@@ -237,8 +238,8 @@ bindsym $mod+y scratchpad show
 bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
-set $ws1 "1"
-set $ws2 "2"
+set $ws1 "1:"
+set $ws2 "2:"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
