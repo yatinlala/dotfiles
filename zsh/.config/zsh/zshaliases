@@ -14,6 +14,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
+alias vim='nvim'
 alias ll='ls -lh'
 alias la='ls -a'
 alias ka='killall'
@@ -21,6 +22,8 @@ alias p='pacman'
 alias z='devour zathura'
 alias sp='sudo pacman'
 alias d='devour'
+
+alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 
 #Confirm before danger
 alias rm='rm -i'
@@ -48,7 +51,7 @@ alias picomrc='nvim ~/.config/picom/picom.conf'
 alias redshiftrc='nvim ~/.config/redshift/redshift.conf'
 alias wmc='nvim ~/.config/i3/config'
 alias zshrc='nvim ~/.config/zsh/zshrc'
-alias zaliases='nvim ~/.config/zsh/zaliases'
+alias zshaliases='nvim ~/.config/zsh/zshaliases'
 alias zshenv='nvim ~/.config/zsh/.zshenv'
 
 #Trash
