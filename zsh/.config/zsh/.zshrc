@@ -109,7 +109,7 @@ fzf-file-widget() {
   return $ret
 }
 zle     -N   fzf-file-widget
-bindkey '^T' fzf-file-widget
+bindkey '^f' fzf-file-widget
 
 __fzfcmd() {
   [ -n "$TMUX_PANE" ] && { [ "${FZF_TMUX:-0}" != 0 ] || [ -n "$FZF_TMUX_OPTS" ]; } &&
@@ -138,7 +138,6 @@ bindkey '^R' fzf-history-widget
 bindkey -s '^a' 'lf\n'
 bindkey -s '^b' 'bc -lq\n'
 #bindkey -s '^i' 'nvim\n'
-bindkey -s '^o' 'dynamic-colors next\nclear\n'
 bindkey -s '^p' 'cd $(fd --type directory | fzf)\n'
 
 # Edit line in vim with e:
