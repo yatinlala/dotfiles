@@ -12,12 +12,14 @@ audacity
 autoconf
 automake
 awesome
+barrier
 base
 bat
 bc
 bdf-unifont
 binutils
 bison
+blueman
 bluez
 bluez-utils
 bpytop
@@ -155,7 +157,6 @@ python-httplib2
 python-pdftotext
 qutebrowser
 r
-ranger
 redshift
 reflector
 ripgrep
