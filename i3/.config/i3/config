@@ -155,6 +155,8 @@ exec urxvtd -q
 exec dunst
 exec redshift
 exec nm-applet
+exec nm-applet
+exec blueman-applet
 # exec mailspring -b
 exec --no-startup-id libinput-gestures-setup start
 # exec safeeyes
@@ -164,6 +166,8 @@ exec --no-startup-id libinput-gestures-setup start
 
 for_window [title="Library"] floating enable
 for_window [Class="rpi-imager"] floating enable
+for_window [Class="Blueman-manager"] floating enable
+for_window [Class="Blueman-manager"] resize set 800 500
 for_window [Class="Pavucontrol"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
