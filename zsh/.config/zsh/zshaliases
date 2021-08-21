@@ -15,13 +15,15 @@ alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
 alias vim='nvim'
+alias la='ls -lAh'
 alias ll='ls -lh'
-alias la='ls -a'
 alias ka='killall'
+alias v='nvim'
+alias g='git'
 alias p='pacman'
 alias z='devour zathura'
-alias sp='sudo pacman'
 alias d='devour'
+alias sp='sudo pacman'
 
 alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 alias calc='$TERMINAL -name calc -e bc -lq'
