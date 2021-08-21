@@ -19,11 +19,16 @@ alias la='ls -lAh'
 alias ll='ls -lh'
 alias ka='killall'
 alias v='nvim'
-alias g='git'
 alias p='pacman'
 alias z='devour zathura'
 alias d='devour'
 alias sp='sudo pacman'
+
+#Git
+alias g='git'
+alias ga='git add'
+alias gc='git commit -v'
+alias gp='git push'
 
 alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 alias calc='$TERMINAL -name calc -e bc -lq'
