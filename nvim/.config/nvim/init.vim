@@ -14,7 +14,7 @@ vim.o.mouse = 'a'                          -- Enable your mouse
 vim.o.hidden = true                        -- Required to keep multiple buffers open multiple buffers
 vim.o.ignorecase = true                    -- Case insensitive searching
 vim.o.smartcase = true                     -- Unless using a capital letter in search
--- vim.o.splitbelow = true                    -- Horizontal splits will automatically be below
+-- vim.o.splitbelow = true                 -- Horizontal splits will automatically be below
 vim.o.splitright = true                    -- Vertical splits will automatically be to the right
 vim.o.conceallevel = 0                     -- So that I can see `` in markdown files
 vim.o.tabstop = 4                          -- Insert 4 spaces for a tab
@@ -37,7 +37,6 @@ vim.cmd('set formatoptions-=cro')
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 
 EOF
 

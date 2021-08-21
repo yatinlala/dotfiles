@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/gruvbox8"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/harpoon"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
