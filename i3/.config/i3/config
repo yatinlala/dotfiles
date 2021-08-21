@@ -39,6 +39,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+i exec $term -e nvim
+bindsym $mod+shift+i exec $term -e sudo nvim
 set $editor Action: vs[c]odium [l]ibreoffice
 bindsym $mod+o mode "$editor"
 mode "$editor" {
@@ -62,7 +63,7 @@ bindsym $mod+equal exec playerctl --player=spotify,cmus,%all volume .05+
 
 #Music
 set $music Action: [a]udacity [c]mus [e]artraining [r]eaper [s]potify
-bindsym $mod+shift+m mode "$music"
+bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
     bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
@@ -82,7 +83,7 @@ bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication + Some OS controls
 bindsym $mod+m exec mailspring 
-bindsym $mod2+m exec $term -e neomutt
+bindsym $mod+shift+m exec $term -e neomutt
 set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement | [i]3lock s[u]spend
 bindsym $mod+s mode "$mega"
 mode "$mega" {
@@ -136,7 +137,7 @@ bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec swat-dash
 bindsym $mod2+shift+d exec snapdrop
 bindsym $mod+shift+c exec brave --profile-directory=Default --app-id=hmplmobicmfaiecgedkffnohgbjpaaod
-bindsym $mod2+c [instance="calc"] scratchpad show; [instance="calc"] move position center
+bindsym $mod2+c exec calc-toggle
 
 
 # Screenshots
@@ -189,13 +190,13 @@ for_window [instance="notes"] border pixel 8
 #          split-window -v -p 25 \; \
 #          # split-window -h -p 30 \; \
 #          # send-keys 'bc -lq' C-m C-l \;
-exec --no-startup-id $term -name notes -e nvim ~/documents/wiki/index.wiki
+# exec --no-startup-id $term -name notes -e nvim ~/documents/wiki/index.wiki
 
 for_window [instance="calc"] floating enable
 for_window [instance="calc"] resize set 800 400
 for_window [instance="calc"] move scratchpad
 for_window [instance="calc"] border pixel 8
-exec --no-startup-id $term -name calc -e bc -lq
+# exec --no-startup-id $term -name calc -e bc -lq
 
 #--------------------------------------------------
 #-------------------Movement---------------------
