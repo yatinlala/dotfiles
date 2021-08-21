@@ -24,7 +24,7 @@ alias sp='sudo pacman'
 alias d='devour'
 
 alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
-
+alias calc='$TERMINAL -name calc -e bc -lq'
 #Confirm before danger
 alias rm='rm -i'
 
