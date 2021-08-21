@@ -7,7 +7,7 @@
     background-color:      #282828;
     border-color:          White;
     text-color:           #ebdbb2;
-    font:            "DejaVuSansMono Nerd Font 15";
+    font:            "DejaVuSansMono Nerd Font 18";
 }
 
 window {
