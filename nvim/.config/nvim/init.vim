@@ -95,7 +95,7 @@ nnoremap <leader>t :Vex<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
 nnoremap <leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
-nnoremap <leader>en :lua require('telescope-setup').search_dotfiles()<CR>
+nnoremap <leader>fn :lua require('telescope-setup').search_dotfiles()<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
