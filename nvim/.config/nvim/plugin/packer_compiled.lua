@@ -77,6 +77,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/harpoon"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
@@ -116,10 +120,6 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ["vim-be-good"] = {
-    loaded = true,
-    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/vim-be-good"
   },
   ["vim-commentary"] = {
     loaded = true,

@@ -1,6 +1,7 @@
 lua << EOF
 
 require("packer")
+require("lualine-setup")
 require("telescope-setup")
 require("autopairs-setup")
 require("compe-setup")
@@ -23,7 +24,7 @@ vim.o.shiftwidth = 4                       -- Change the number of space charact
 vim.o.expandtab = true                     -- Convert tabs to spaces
 --set nowrap                               -- Display long lines as just one line
 vim.o.smartindent = true                   -- Makes indenting smart
---set noshowmode                           -- We don't need to see things like -- INSERT -- anymore
+vim.cmd('set noshowmode')                  -- We don't need to see things like -- INSERT -- anymore
 vim.o.laststatus = 2                       -- Always display the status line
 vim.cmd('set number relativenumber')       -- Line numbers
 --set updatetime=300                       -- Faster completion
