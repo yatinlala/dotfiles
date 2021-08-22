@@ -48,10 +48,10 @@ mode "$editor" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+w [instance="notes"] scratchpad show; [instance="notes"] move position center
+bindsym $mod+shift+w exec vimwiki-toggle
 
 #File Manager
-bindsym $mod+a exec $term -e lfrun
+bindsym $mod+a exec $term -e lfi
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
@@ -117,7 +117,7 @@ mode "$games" {
 set $entertainment Action: [c]astero [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
-    bindsym c exec castero-i3; exec i3-msg workspace $ws10; mode "default"
+    bindsym c exec castero-toggle; exec i3-msg workspace $ws10; mode "default"
     bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
     bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
@@ -151,18 +151,15 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 #Startup
 exec pulseaudio-startup-script
 exec picom
+exec redshift
 exec urxvtd -q
 exec dunst
-exec redshift
-exec nm-applet
 exec nm-applet
 exec blueman-applet
 # exec mailspring -b
 exec --no-startup-id libinput-gestures-setup start
 # exec safeeyes
 # exec aw-qt
-
-# exec --no-startup-id i3-msg 'workspace $ws10; exec $term -e cmus;'
 
 for_window [title="Library"] floating enable
 for_window [Class="rpi-imager"] floating enable

@@ -18,7 +18,7 @@ alias vim='nvim'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ka='killall'
-alias v='nvim'
+#alias v='nvim'
 alias p='pacman'
 alias z='devour zathura'
 alias d='devour'
@@ -31,7 +31,7 @@ alias gc='git commit -v'
 alias gp='git push'
 alias gs='git status'
 
-alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
+alias notes'$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 alias calc='$TERMINAL -name calc -e bc -lq'
 #Confirm before danger
 alias rm='rm -i'
@@ -50,7 +50,6 @@ alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
 #Jumps
 alias ss='cd ~/code/scripts/'
-alias vimwiki='nvim ~/documents/wiki/index.wiki'
 
 alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'

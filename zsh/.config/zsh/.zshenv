@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$HOME/.config/dynamic-colors/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/xdg-wrappers:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$HOME/.config/dynamic-colors/bin:$PATH"
 
 #YTFZF
 FZF_PLAYER="devour mpv"
