@@ -35,6 +35,7 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.torrent) transmission-show "$1" ;;
 	*.iso) iso-info --no-header -l "$1" ;;
 	*.odt|*.ods|*.odp|*.sxw) odt2txt "$1" ;;
+	*.mkv|*.mp4|*.m4v|*.vid|*.webm) mediainfo "$1" ;;
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
 	*.xls|*.xlsx)
