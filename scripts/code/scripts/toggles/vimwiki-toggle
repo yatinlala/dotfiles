@@ -1,0 +1,9 @@
+#!/usr/bin/sh -e
+
+if wmctrl -l | grep "n0t3s$" > /dev/null
+then
+    i3-msg "[title="n0t3s"] scratchpad show; [title="n0t3s"] move position center"
+else
+    $TERMINAL -name notes -title n0t3s -e nvim ~/documents/wiki/index.wiki
+    i3-msg "[title="n0t3s"] scratchpad show; [title="n0t3s"] move position center"
+fi
