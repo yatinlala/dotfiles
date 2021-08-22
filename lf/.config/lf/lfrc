@@ -260,6 +260,7 @@ map gb cd ~/documents/books
 map g. cd ~/.dotfiles
 map gi cd ~/io
 map gp cd ~/pictures
+map gw cd ~/pictures/wallpapers
 map gm cd ~/audio/music
 
 map gv<space> cd ~/videos
