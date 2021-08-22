@@ -1,6 +1,7 @@
 %[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
 
 set previewer ~/code/scripts/lf/preview
+set cleaner ~/code/scripts/lf/cleaner
 
 # Basic Settings
 set preview true
@@ -87,6 +88,14 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
+cmd smart_w ${{
+  if [ $SHLVL -eq 2 ]; then
+      zsh
+  else
+      lf -remote "send $id quit"
+  fi
+}}
+
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
   if [ -f "$res" ]; then
@@ -158,7 +167,7 @@ cmd restore_trash ${{
 # Remove some defaults
 map m
 map o
-#map n
+map w
 map e
 map "'"
 map '"'
@@ -166,6 +175,8 @@ map d
 map c
 map f
 map r
+
+map w smart_w
 
 # Not really image preview
 # map P $~/.local/scripts/lf/draw_img "$f"

@@ -51,7 +51,7 @@ mode "$editor" {
 bindsym $mod+shift+w [instance="notes"] scratchpad show; [instance="notes"] move position center
 
 #File Manager
-bindsym $mod+a exec $term -e lf
+bindsym $mod+a exec $term -e lfrun
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
@@ -90,7 +90,7 @@ mode "$mega" {
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
-    bindsym e exec element; exec i3-msg workspace $ws8; mode "default"
+    bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym i exec i3lock -i ~/pictures/wallpapers/lone-tree.jpg; mode "default"
     bindsym u exec systemctl suspend; mode "default"
     bindsym Escape mode "default"
