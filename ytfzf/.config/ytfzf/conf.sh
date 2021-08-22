@@ -48,7 +48,7 @@ enable_noti=0
 #uses the youtube-dl preference system
 #must be a number eg: 22 is 720p
 #(YTFZF_PREF)
-video_pref=""
+#video_pref="22"
 
 #when -D is given it will use this external menu instead of fzf
 #(YTFZF_EXTMENU)
