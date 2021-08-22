@@ -344,7 +344,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Wallpaper
 exec wallpaper.sh
-#exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
