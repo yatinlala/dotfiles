@@ -48,7 +48,7 @@ mode "$editor" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+w exec vimwiki-toggle
+bindsym $mod+w exec vimwiki-toggle
 
 #File Manager
 bindsym $mod+a exec $term -e lfi
@@ -79,7 +79,7 @@ mode "$music" {
 bindsym $mod+b exec brave --force-device-scale-factor=1.22
 bindsym $mod+shift+b exec librewolf-xdg
 bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
+bindsym $mod+shift+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
 #Communication + Some OS controls
 bindsym $mod+m exec mailspring 
