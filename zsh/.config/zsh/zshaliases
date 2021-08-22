@@ -29,6 +29,7 @@ alias g='git'
 alias ga='git add'
 alias gc='git commit -v'
 alias gp='git push'
+alias gs='git status'
 
 alias notes='$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 alias calc='$TERMINAL -name calc -e bc -lq'

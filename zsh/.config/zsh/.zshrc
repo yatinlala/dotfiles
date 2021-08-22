@@ -71,7 +71,7 @@ preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 # Use lf to switch directories
 lf () {
     tmp="$(mktemp)"
-    command lf -last-dir-path="$tmp" "$@"
+    command lfrun -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp" >/dev/null
@@ -100,8 +100,9 @@ zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
 fzf-jump-widget() {
-    xdg-open "$(fd . ~/code ~/documents ~/.config | fzf --height=40%)"^M
+    xdg-open "$(fd . ~/code ~/documents ~/.config/alacritty ~/.config/amfora ~/.config/awesome ~/.config/bat ~/.config/bpytop ~/.config/calcurse ~/.config/castero ~/.config/cmus ~/.config/dunst ~/.config/dynamic-colors ~/.config/espanso ~/.config/git ~/.config/gtk* ~/.config/guvcview2 ~/.config/htop ~/.config/i3 ~/.config/i3status-rust ~/.config/lf ~/.config/mutt ~/.config/neofetch ~/.config/newsboat ~/.config/notmuch ~/.config/npm ~/.config/nvim ~/.config/picom ~/.config/pipewire ~/.config/rofi ~/.config/sway ~/.config/tmux ~/.config/urxvt ~/.config/vlc ~/.config/X11 ~/.config/yarn ~/.config/ytfzf ~/.config/zathura ~/.config/zsh | fzf --height=40%)"^M
     zle reset-prompt
+    echo -ne '\e[6 q'
 }
 zle     -N   fzf-jump-widget
 bindkey '^p' fzf-jump-widget
