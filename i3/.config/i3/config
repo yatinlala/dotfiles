@@ -114,10 +114,9 @@ mode "$games" {
 }
 
 #Video Consumption
-set $entertainment Action: [c]astero [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y]tfzf
+set $entertainment Action: [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
-    bindsym c exec castero-toggle; exec i3-msg workspace $ws10; mode "default"
     bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
     bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
