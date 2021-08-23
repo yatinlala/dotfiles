@@ -40,6 +40,7 @@ bindsym $mod+shift+v exec pavucontrol
 #Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
+bindsym $mod+e exec emacs
 set $editor Action: vs[c]odium [l]ibreoffice
 bindsym $mod+o mode "$editor"
 mode "$editor" {
@@ -128,14 +129,14 @@ mode "$entertainment" {
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle
-bindsym $mod+e exec espanso-toggle
+bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
 #Utility
 bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec swat-dash
 bindsym $mod2+shift+d exec snapdrop
-bindsym $mod+shift+c exec brave --profile-directory=Default --app-id=hmplmobicmfaiecgedkffnohgbjpaaod
+bindsym $mod+shift+c exec $term -e calcurse
 bindsym $mod2+c exec calc-toggle
 
 
