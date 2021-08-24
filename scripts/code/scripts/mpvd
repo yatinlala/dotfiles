@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # run mpv in devoured mode with escaped args
-/usr/local/bin/devour mpv -- "$@"
+devour mpv -- "$@"

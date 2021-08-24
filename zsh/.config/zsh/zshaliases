@@ -5,7 +5,6 @@ alias info='info --vi-keys'
 alias bc='bc -lq'
 
 alias feh='devour feh --scale-down'
-alias zathura='devour zathura'
 
 #Colorize!
 alias ls='ls --color=auto'
@@ -15,6 +14,7 @@ alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
 alias vim='nvim'
+alias mpv='mpvd'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ka='killall'
