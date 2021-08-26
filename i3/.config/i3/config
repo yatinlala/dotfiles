@@ -4,6 +4,7 @@
 
 set $mod Mod4
 set $mod2 Mod1
+set $mod3 Mod3
 set $term urxvtc
 set $term_iso urxvt
 set $term2 alacritty
@@ -34,21 +35,15 @@ bindsym $mod+semicolon exec passmenu
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
-# bindsym $mod2+c exec guvcview
+# bindsym $mod2+shift+c exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+e exec emacs
-set $editor Action: vs[c]odium [l]ibreoffice
-bindsym $mod+o mode "$editor"
-mode "$editor" {
-    bindsym c exec vscodium; mode "default"
-    bindsym l exec libreoffice; mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+bindsym $mod+o exec libreoffice
+bindsym $mod3+c exec vscodium
 bindsym $mod+w exec vimwiki-toggle
 
 #File Manager
@@ -82,26 +77,26 @@ bindsym $mod+shift+b exec librewolf-xdg
 bindsym $mod+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 
-#Communication + Some OS controls
+#Communication
 bindsym $mod+m exec mailspring 
 bindsym $mod+shift+m exec $term -e neomutt
-set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement | [i]3lock s[u]spend
+set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement
 bindsym $mod+s mode "$mega"
 mode "$mega" {
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
-    bindsym i exec i3lock -i ~/pictures/wallpapers/lone-tree.jpg; mode "default"
-    bindsym u exec systemctl suspend; mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
-# More OS Control
+# OS Control
 bindsym $mod+shift+q exec confirm "quit i3? " i3-msg exit
 bindsym $mod+shift+s exec confirm "shutdown? " shutdown now
 bindsym $mod+shift+r exec confirm "reboot? " reboot
+bindsym $mod3+i exec i3lock -i ~/pictures/wallpapers/lone-tree.jpg
+bindsym $mod3+s exec confirm systemctl suspend
 
 #Games
 set $games Action: [l]ichess [m]inecraft [s]team
@@ -114,7 +109,7 @@ mode "$games" {
     bindsym Return mode "default"
 }
 
-#Video Consumption
+#Video Entertainment
 set $entertainment Action: [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
@@ -126,6 +121,7 @@ mode "$entertainment" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
+bindsym $mod+p exec $term -e pipe-viewer
 
 #Toggles
 bindsym $mod+grave exec wifi-radio-toggle

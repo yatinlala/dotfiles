@@ -1,0 +1,5 @@
+clear control
+keycode  105 = Hyper_R
+keycode 37 = Control_L
+add     mod3 = Hyper_R
+add control = Control_L
