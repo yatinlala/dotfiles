@@ -23,6 +23,8 @@ alias p='pacman'
 alias z='devour zathura'
 alias d='devour'
 alias sp='sudo pacman'
+alias musb='sudo mount /dev/sda1 ~/.local/usb'
+alias uusb='sudo umount ~/.local/usb'
 
 #Git
 alias g='git'
