@@ -25,6 +25,7 @@ alias d='devour'
 alias sp='sudo pacman'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
+alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
 
 #Git
 alias g='git'

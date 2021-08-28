@@ -47,7 +47,7 @@ bindsym $mod3+c exec vscodium
 bindsym $mod+w exec vimwiki-toggle
 
 #File Manager
-bindsym $mod+a exec $term -e lfi
+bindsym $mod+a exec $term -name lf -e lfi
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
@@ -66,7 +66,7 @@ mode "$music" {
     bindsym e exec eartraining; mode "default"
     bindsym r exec reaper; mode "default"
     bindsym s exec i3-msg workspace $ws10; exec spotify; mode "default"
-
+    bindsym $mod+u mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -87,6 +87,7 @@ mode "$mega" {
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
+    bindsym $mod+s mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -105,6 +106,7 @@ mode "$games" {
     bindsym l exec lichess; mode "default"
     bindsym m exec minecraft-launcher-xdg; mode "default"
     bindsym s exec steam-xdg; mode "default"
+    bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -118,6 +120,7 @@ mode "$entertainment" {
     bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
     bindsym p exec $term -e pipe-viewer; mode "default"
     bindsym y exec $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
+    bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -339,7 +342,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #--------------------------------------------------
 
 # Wallpaper
-exec wallpaper.sh
+exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
