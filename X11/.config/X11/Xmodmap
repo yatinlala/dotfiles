@@ -1,6 +1,5 @@
 clear control
-keycode  105 = Print Sys_Req Print Sys_Req
 keycode 37 = Control_L
-keycode 107 = Hyper_R NoSymbol Hyper_R
-add     mod3 = Hyper_R
+keycode  105 = Hyper_R NoSymbol Hyper_R 
+add mod3 = Hyper_R
 add control = Control_L
