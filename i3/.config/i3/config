@@ -103,7 +103,7 @@ bindsym $mod3+s exec confirm "suspend? " systemctl suspend
 set $games Action: [l]ichess [m]inecraft [s]team
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
-    bindsym l exec lichess; mode "default"
+    bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m exec minecraft-launcher-xdg; mode "default"
     bindsym s exec steam-xdg; mode "default"
     bindsym $mod+shift+g mode "default"
