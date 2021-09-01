@@ -72,7 +72,7 @@ export WM="i3-gaps"
 export LESSHISTFILE=-
 
 # MANPAGER
-#export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"
