@@ -47,7 +47,7 @@ bindsym $mod3+c exec vscodium
 bindsym $mod+w exec vimwiki-toggle
 
 #File Manager
-bindsym $mod+a exec $term -name lf -e lfi
+bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption

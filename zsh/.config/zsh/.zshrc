@@ -71,7 +71,7 @@ preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 # Use lf to switch directories
 lf() {
     tmp="$(mktemp)"
-    lfi -last-dir-path="$tmp" "$@"
+    $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
         dir="$(cat "$tmp")"
         rm -f "$tmp" >/dev/null
