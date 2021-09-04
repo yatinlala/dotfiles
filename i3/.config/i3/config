@@ -148,7 +148,6 @@ bindsym --release $mod2+Print exec scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-
 #--------------------------------------------------
 
 #Startup
-exec pulseaudio-startup-script
 exec picom
 exec redshift
 exec urxvtd -q
@@ -168,7 +167,8 @@ for_window [Class="Pavucontrol"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
-assign [title="Tor Browser"] $ws7
+assign [title="Tor Browser"] $ws6
+assign [class="todoist"] $ws7
 assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
