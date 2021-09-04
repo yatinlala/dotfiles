@@ -3,7 +3,6 @@ lua << EOF
 require("packer")
 require("lualine-setup")
 require("telescope-setup")
-require("autopairs-setup")
 require("compe-setup")
 
 -------------------- GENERAL SETTINGS --------------------
@@ -70,7 +69,7 @@ nnoremap J mzJ'z
 " Undo break Points
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
-inoremap ( .<c-g>u
+inoremap ( (<c-g>u
 " Move text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv

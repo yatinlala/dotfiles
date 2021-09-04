@@ -81,10 +81,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
-  ["nvim-autopairs"] = {
-    loaded = true,
-    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
-  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-compe"
