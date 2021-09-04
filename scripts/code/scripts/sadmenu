@@ -6,8 +6,8 @@ case $chosen in
     ibis) $TERMINAL -e ssh s-ylala1@ibis.sccs.swarthmore.edu;;
     owl) $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
     yuppie) $TERMINAL -e ssh ubuntu@192.168.86.22;;
-    m-cslab) sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
-    m-ibis) sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis;;
+    "mount cs-lab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
+    "mount ibis") sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis;;
     internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off
         $HOME/code/scripts/wallpaper.sh;;
     hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x408 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off
