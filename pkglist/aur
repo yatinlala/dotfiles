@@ -4,7 +4,7 @@ auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
 bumblebee-status
-castero
+c-lolcat
 devour
 dragon-drag-and-drop
 espanso
@@ -14,6 +14,7 @@ gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 htim
 i3-style
+kmonad-bin
 lbry-app-bin
 lf
 libinput-gestures
@@ -23,6 +24,7 @@ mailspring
 minecraft-launcher
 motivate
 nerd-fonts-complete
+netris-git
 nodejs-nativefier
 nuclear-player-bin
 nvm
@@ -31,10 +33,7 @@ perl-lwp-useragent-cached
 pfetch
 pipe-viewer-git
 pistol-git
-powershell-bin
-python-mpv
 python-pyqrcode
-python-vlc
 reaper-bin
 rofi-dmenu
 rpi-imager
@@ -45,12 +44,13 @@ slack-desktop
 snake
 spotify
 spotify-tui
+todoist-electron
 ttf-ms-fonts
 ttf-unifont
 ttf-vista-fonts
 urlview
 urxvt-resize-font-git
-vscodium
+vscodium-bin
 xcolor
 ytfzf
 zoom

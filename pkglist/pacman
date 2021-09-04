@@ -31,6 +31,7 @@ checkbashisms
 cmake
 cmatrix
 cmus
+cowsay
 dash
 discord
 dmidecode
@@ -41,6 +42,7 @@ dunst
 efibootmgr
 egl-wayland
 element-desktop
+emacs
 entr
 faad2
 fakeroot
@@ -125,7 +127,6 @@ neovim
 network-manager-applet
 networkmanager
 newsboat
-nextcloud-client
 noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
@@ -154,6 +155,7 @@ playerctl
 powerline-fonts
 pulsemixer
 python-httplib2
+python-oauth2client
 python-pdftotext
 qutebrowser
 r
@@ -215,6 +217,7 @@ wget
 which
 wine-staging
 wmctrl
+xcape
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa
