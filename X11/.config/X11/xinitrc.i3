@@ -27,7 +27,9 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-[[ -f "$usermodmap" ]] && xmodmap "$usermodmap"
+if [ -f "$usermodmap" ]; then
+    xmodmap "$usermodmap"
+fi
 
 # start some nice programs
 
@@ -41,5 +43,5 @@ fi
 xset b off
 xinput --set-prop "SYNA8004:00 06CB:CD8B Touchpad" "libinput Natural Scrolling Enabled" 1
 setxkbmap -option caps:swapescape -option altwin:swap_alt_win
-xset r rate 400 25 
+#xset r rate 400 25 
 exec i3
