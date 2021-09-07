@@ -128,7 +128,7 @@ mode "$entertainment" {
 bindsym $mod+p exec $term -e pipe-viewer
 
 #Toggles
-bindsym $mod+grave exec wifi-radio-toggle
+# bindsym $mod+grave exec wifi-radio-toggle
 bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
