@@ -77,10 +77,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/harpoon"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/nitay/.local/share/nvim/site/pack/packer/start/lualine.nvim"
-  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/nitay/.local/share/nvim/site/pack/packer/start/nvim-compe"
