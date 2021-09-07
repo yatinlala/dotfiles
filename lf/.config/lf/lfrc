@@ -285,8 +285,5 @@ map ge cd /etc
 
 # Swat Jumps --------------------
 map gs<space> cd ~/documents/swat
-# map gsl cd ~/documents/swat/spring/adv-logic
-# map gsC cd ~/documents/swat/spring/cs-31
-# map gss cd ~/documents/swat/spring/stats
-# map gsc cd ~/code/swat-computers/cslab/cs31
-# map gsp cd ~/documents/swat/spring/psych-33
+map gsp cd ~/documents/swat/soph/psych-of-lang
+map gsw cd ~/documents/swat/soph/writing-petagogy
