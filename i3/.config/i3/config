@@ -63,7 +63,7 @@ bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
     bindsym d exec ardour6; mode "default"
-    bindsym e exec eartraining; mode "default"
+    bindsym e exec brave --profile-directory=Default --app-id=ldnhafmniildlikmpongfbompmmdgbik; mode "default"
     bindsym r exec reaper; mode "default"
     bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
     bindsym s exec i3-msg workspace $ws10; exec spotify; mode "default"
@@ -135,8 +135,8 @@ bindsym $mod+shift+n exec nextcloud-sync-toggle
 #Utility
 bindsym $mod+t exec todoist-toggle
 bindsym $mod2+h exec $term -e htop
-bindsym $mod2+d exec brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib 
-bindsym $mod2+shift+d exec snapdrop
+bindsym $mod2+d exec brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
+bindsym $mod2+s exec brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
 bindsym $mod+shift+c exec $term -e calcurse
 bindsym $mod2+c exec calc-toggle
 
