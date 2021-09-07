@@ -1,0 +1,9 @@
+#!/usr/bin/sh -e
+
+if pgrep -x "todoist" > /dev/null
+then
+    i3-msg workspace 7
+else
+    i3-msg workspace 7
+    todoist & disown
+fi
