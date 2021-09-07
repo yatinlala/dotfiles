@@ -20,7 +20,7 @@ vim.api.nvim_exec(
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Packer can manage itself
   use 'lifepillar/gruvbox8'
-  use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+  -- use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
   use 'vimwiki/vimwiki'
   use 'tpope/vim-fugitive'
   use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }

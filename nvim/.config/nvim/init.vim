@@ -1,7 +1,7 @@
 lua << EOF
 
 require("packer")
-require("lualine-setup")
+--require("lualine-setup")
 require("telescope-setup")
 require("compe-setup")
 
