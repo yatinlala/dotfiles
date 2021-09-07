@@ -249,6 +249,7 @@ map ga cd ~/audio
 map gC cd ~/.config
 
 map gc<space> cd ~/code
+map gcs cd ~/code/swat-computers/cslab
 map gS cd ~/code/scripts
 
 map gd<space> cd ~/documents
