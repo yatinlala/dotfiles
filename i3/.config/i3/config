@@ -58,13 +58,14 @@ bindsym $mod+minus exec playerctl --player=spotify,cmus,%all volume .05-
 bindsym $mod+equal exec playerctl --player=spotify,cmus,%all volume .05+
 
 #Music
-set $music Action: [a]udacity [c]mus [e]artraining [r]eaper [s]potify
+set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | [c]mus [s]potify
 bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a exec audacity-xdg; mode "default"
-    bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
+    bindsym d exec ardour6; mode "default"
     bindsym e exec eartraining; mode "default"
     bindsym r exec reaper; mode "default"
+    bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
     bindsym s exec i3-msg workspace $ws10; exec spotify; mode "default"
     bindsym $mod+u mode "default"
     bindsym Escape mode "default"
