@@ -287,3 +287,4 @@ map ge cd /etc
 map gs<space> cd ~/documents/swat
 map gsp cd ~/documents/swat/soph/psych-of-lang
 map gsw cd ~/documents/swat/soph/writing-petagogy
+map gsc cd ~/code/swat-computers/cslab
