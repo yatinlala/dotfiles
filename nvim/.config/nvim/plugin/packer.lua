@@ -29,5 +29,6 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
   use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
   use 'hrsh7th/nvim-compe'
 end)
