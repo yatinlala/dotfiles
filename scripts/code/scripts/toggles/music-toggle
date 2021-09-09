@@ -4,5 +4,5 @@ if pgrep -x "spotify" >/dev/null || pgrep -x "cmus">/dev/null
 then
     playerctl --player=spotify,cmus play-pause
 else
-    i3-msg mode "Action: [a]udacity [c]mus [e]artraining [r]eaper [s]potify"
+    i3-msg mode "Action: [a]udacity ar[d]our [e]artraining [r]eaper | [c]mus [s]potify"
 fi
