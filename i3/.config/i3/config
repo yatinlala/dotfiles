@@ -139,6 +139,7 @@ bindsym $mod2+d exec brave --profile-directory=Default --app-id=aaplghibfpkoiaga
 bindsym $mod2+s exec brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
 bindsym $mod+shift+c exec $term -e calcurse
 bindsym $mod2+c exec calc-toggle
+bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 
 # Screenshots
