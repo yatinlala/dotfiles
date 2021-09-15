@@ -93,7 +93,7 @@ nnoremap <leader>t :Vex<CR>
 " Find files using Telescope command-line sugar.
 " TODO C-p should git_files, if not in git dir then find_files in working dir
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <leader>ff <cmd>Telescope find_files cwd=~<cr>
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
 nnoremap <leader>fc <cmd>Telescope find_files cwd=~/.config<cr>
 nnoremap <leader>en :lua require('telescope-setup').search_dotfiles()<CR>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
