@@ -8,6 +8,7 @@ c-lolcat
 devour
 dragon-drag-and-drop
 espanso
+fastfetch-git
 fontpreview-ueberzug-git
 glow
 gruvbox-dark-icons-gtk
@@ -16,6 +17,7 @@ htim
 i3-style
 kmonad-bin
 lbry-app-bin
+lesstif
 lf
 libinput-gestures
 libopenaptx
@@ -44,7 +46,7 @@ slack-desktop
 snake
 spotify
 spotify-tui
-todoist-electron
+todoist-git
 ttf-ms-fonts
 ttf-unifont
 ttf-vista-fonts
