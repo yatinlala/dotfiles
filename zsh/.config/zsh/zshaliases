@@ -15,6 +15,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
+alias mmute='sudo vim /sys/class/leds/platform::micmute/brightness'
 alias vim='nvim'
 alias mpv='mpvd'
 alias t='todoist'
