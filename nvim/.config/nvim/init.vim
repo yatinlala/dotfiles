@@ -26,7 +26,7 @@ vim.o.smartindent = true                   -- Makes indenting smart
 vim.cmd('set noshowmode')                  -- We don't need to see things like -- INSERT -- anymore
 vim.o.laststatus = 2                       -- Always display the status line
 vim.cmd('set number relativenumber')       -- Line numbers
---set updatetime=300                       -- Faster completion
+vim.cmd('set updatetime=300')              -- Faster completion
 --set timeoutlen=500                       -- By default timeoutlen is 1000 ms
 vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everything else
 --vim.o.autochdir = true                     -- Your working directory will always be the same as your working directory
