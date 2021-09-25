@@ -81,13 +81,14 @@ bindsym $mod+shift+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
 #Communication
 bindsym $mod+m exec mailspring 
 bindsym $mod+shift+m exec $term -e neomutt
-set $mega Action: [s]ignal s[l]ack [d]iscord [e]lement
+set $mega Action: [d]iscord [e]lement [f]erdi s[l]ack [s]ignal
 bindsym $mod+s mode "$mega"
 mode "$mega" {
-    bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
-    bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
+    bindsym f exec ferdi; exec i3-msg workspace $ws8; mode "default"
+    bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
+    bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym $mod+s mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -174,6 +175,8 @@ assign [title="Tor Browser"] $ws6
 assign [class="todoist"] $ws7
 assign [class="Todoist"] $ws7
 assign [class="discord"] $ws8
+assign [class="ferdi"] $ws8
+assign [class="Ferdi"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Element"] $ws8
