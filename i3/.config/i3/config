@@ -134,7 +134,7 @@ bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
 #Utility
-bindsym $mod+t exec todoist-toggle
+bindsym $mod+t exec ferdi-toggle
 bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
 bindsym $mod2+s exec brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
