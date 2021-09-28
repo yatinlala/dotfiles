@@ -1,0 +1,9 @@
+#!/usr/bin/sh -e
+
+if pgrep -x "ferdi" > /dev/null
+then
+    i3-msg workspace 8
+else
+    i3-msg workspace 8
+    ferdi
+fi
