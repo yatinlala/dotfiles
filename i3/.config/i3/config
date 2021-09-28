@@ -120,13 +120,13 @@ mode "$entertainment" {
     bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
     bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
-    bindsym p exec $term -e pipe-viewer; mode "default"
+    bindsym p exec $term -e pipe-viewer; exec i3-msg workspace $ws9; mode "default"
     bindsym y exec $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
     bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+p exec $term -e pipe-viewer
+bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws9
 
 #Toggles
 # bindsym $mod+grave exec wifi-radio-toggle
