@@ -86,7 +86,7 @@ bindsym $mod+s mode "$mega"
 mode "$mega" {
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
-    bindsym f exec ferdi; exec i3-msg workspace $ws8; mode "default"
+    bindsym f exec ferdi; exec i3-msg workspace $ws1; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym $mod+s mode "default"
@@ -171,12 +171,12 @@ for_window [Class="Pavucontrol"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
+assign [class="ferdi"] $ws1
+assign [class="Ferdi"] $ws1
 assign [title="Tor Browser"] $ws6
 assign [class="todoist"] $ws7
 assign [class="Todoist"] $ws7
 assign [class="discord"] $ws8
-assign [class="ferdi"] $ws8
-assign [class="Ferdi"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Element"] $ws8
@@ -248,9 +248,9 @@ bindsym $mod+y scratchpad show
 bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
-set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3"
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
