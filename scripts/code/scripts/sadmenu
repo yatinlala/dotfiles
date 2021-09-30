@@ -1,15 +1,15 @@
 #/usr/bin/sh -e
 TERMINAL=urxvtc
-chosen=$(echo "cslab\nibis\nowl\nyuppie\n|\nmount cs-lab\nmount ibis\n|\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
+chosen=$(echo "cslab\nibis\nowl\nyuppie\n|\nmount cs-lab\nmount ibis\numount cs-lab\numount ibis\n|\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
 case $chosen in
     cslab) $TERMINAL -e ssh ylala1@lab.cs.swarthmore.edu;;
     ibis) $TERMINAL -e ssh s-ylala1@ibis.sccs.swarthmore.edu;;
     owl) $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
     yuppie) $TERMINAL -e ssh ubuntu@192.168.86.22;;
     "mount cs-lab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
-    "umount cs-lab") fusermount3 -uqz ~/code/swat-computers/cslab
+    "umount cs-lab") fusermount3 -uqz ~/code/swat-computers/cslab;;
     "mount ibis") sshfs s-ylala1@ibis.sccs.swarthmore.edu:/ ~/code/swat-computers/ibis;;
-    "umount ibis") fusermount3 -uqz ~/code/swat-computers/ibis
+    "umount ibis") fusermount3 -uqz ~/code/swat-computers/ibis;;
     internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off
         $HOME/code/scripts/wallpaper.sh;;
     hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x408 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off
