@@ -52,6 +52,9 @@ matches:
   - trigger: ";thumbup"
     replace: "👍"
 
+  - trigger: ";lenny"
+    replace: "( ͡° ͜ʖ ͡°)"
+
   # Dates
   - trigger: ";date"
     replace: "{{mydate}}"
