@@ -8,18 +8,15 @@ bind-key j next articlelist
 bind-key k prev articlelist
 bind-key J next-feed articlelist
 bind-key K prev-feed articlelist
-bind-key u show-urls
 bind-key G end
 bind-key g home
 bind-key h quit
 bind-key l open
 bind-key d pagedown
 bind-key u pageup
-bind-key n next-unread
-bind-key N prev-unread
-bind-key x pb-delete
 bind-key u show-urls
-# colors color background          color229   default
+
+# colors color background color229   default
 color listnormal          color229   default
 color listnormal_unread   color229   default bold
 color listfocus           color229   color61 
