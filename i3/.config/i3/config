@@ -99,8 +99,8 @@ mode "$mega" {
 bindsym $mod+shift+q exec confirm "quit i3? " i3-msg exit
 bindsym $mod+shift+s exec confirm "shutdown? " shutdown now
 bindsym $mod+shift+r exec confirm "reboot? " reboot
-bindsym $mod3+i exec i3lock -i ~/pictures/wallpapers/lone-tree.jpg
-bindsym $mod3+s exec confirm "suspend? " systemctl suspend
+bindsym $mod2+i exec i3lock -i ~/pictures/wallpapers/mountains.png
+#bindsym $mod2+s exec confirm "suspend? " systemctl suspend
 
 #Games
 set $games Action: [l]ichess [m]inecraft [s]team
