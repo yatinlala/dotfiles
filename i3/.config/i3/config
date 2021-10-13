@@ -103,9 +103,10 @@ bindsym $mod2+i exec i3lock -i ~/pictures/wallpapers/mountains.png
 #bindsym $mod2+s exec confirm "suspend? " systemctl suspend
 
 #Games
-set $games Action: [l]ichess [m]inecraft [s]team
+set $games Action: [l]ichess [m]inecraft [s]team [t]etris
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
+    bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m exec minecraft-launcher-xdg; mode "default"
     bindsym s exec steam-xdg; mode "default"
