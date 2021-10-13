@@ -15,3 +15,11 @@ function! ToggleBg()
 endfunction
 
 map <Leader><Leader>c :call ToggleBg()<CR>
+
+set statusline=
+set statusline+=%<%F                                     "File+path
+set statusline+=\ \ \ \ %y                               "FileType
+set statusline+=\ \ \ \ %{''.(&fenc!=''?&fenc:&enc).''}  "Encoding
+set statusline+=\ %=\ %l,%c\ \                       "Rows and Columns
+set statusline+=%{fugitive#statusline()}    
+set statusline+=\ \ %m%r%w\ %P\ \                        "Modified? Readonly? Top/bot.
