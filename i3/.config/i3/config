@@ -65,6 +65,7 @@ mode "$music" {
     bindsym d exec ardour6; mode "default"
     bindsym e exec brave --profile-directory=Default --app-id=ldnhafmniildlikmpongfbompmmdgbik; mode "default"
     bindsym r exec reaper; mode "default"
+    bindsym b exec rofi-beats; mode "default"
     bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
     bindsym s exec i3-msg workspace $ws10; exec spotify; mode "default"
     bindsym $mod+u mode "default"
