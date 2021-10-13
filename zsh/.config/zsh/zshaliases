@@ -38,7 +38,7 @@ alias calc='$TERMINAL -name calc -e bc -lq'
 alias rm='rm -i'
 
 #Automate frequent commands
-alias reflector="sudo reflector -f 50 -l 50 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys'
 
 #SSH ALIASES
