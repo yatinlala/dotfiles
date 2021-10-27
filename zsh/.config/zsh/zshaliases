@@ -31,6 +31,7 @@ alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
 
+alias myip='curl -4 https://icanhazip.com'
 
 alias notes'$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
 alias calc='$TERMINAL -name calc -e bc -lq'
@@ -55,7 +56,7 @@ alias .dot='cd ~/.dotfiles/'
 
 alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'
-alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias nvimrc='nvim ~/.config/nvim/init.lua'
 alias picomrc='nvim ~/.config/picom/picom.conf'
 alias redshiftrc='nvim ~/.config/redshift/redshift.conf'
 alias wmc='nvim ~/.config/i3/config'

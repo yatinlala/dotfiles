@@ -20,14 +20,15 @@ vim.api.nvim_exec(
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Packer can manage itself
   use 'lifepillar/gruvbox8'
-  -- use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
-  use 'vimwiki/vimwiki'
+  use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
   use 'tpope/vim-fugitive'
+  use 'vimwiki/vimwiki'
   use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
   use 'ThePrimeagen/harpoon'
-  use 'tpope/vim-surround'
+  use 'justinmk/vim-sneak'
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
+
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
   use 'hrsh7th/nvim-compe'
