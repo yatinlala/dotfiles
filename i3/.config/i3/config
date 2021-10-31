@@ -35,7 +35,7 @@ bindsym $mod+semicolon exec passmenu
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
-# bindsym $mod2+shift+c exec guvcview
+bindsym $mod2+v exec guvcview
 bindsym $mod+shift+v exec pavucontrol
 
 #Editor
