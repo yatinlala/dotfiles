@@ -15,7 +15,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
-alias mmute='sudo vim /sys/class/leds/platform::micmute/brightness'
+alias mmute='sudoedit /sys/class/leds/platform::micmute/brightness'
 alias vim='nvim'
 alias mpv='mpvd'
 alias t='todoist'
@@ -43,10 +43,8 @@ alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pa
 alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys'
 
 #SSH ALIASES
-alias sshswat='ssh ylala1@lab.cs.swarthmore.edu'
 alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab'
 alias usshfsswat='fusermount3 -u ~/code/swat-computers/cslab'
-alias sshibis='ssh s-ylala1@ibis.sccs.swarthmore.edu'
 alias sshfsibis='sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis'
 alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
 
