@@ -1,5 +1,4 @@
 highlight Normal guibg=none
-highlight Sneak guifg=black guibg=red ctermfg=black ctermbg=red
 
 let s:enabled = 0
 
@@ -23,7 +22,10 @@ map <Leader><Leader>c :call ToggleBg()<CR>
 " set statusline+=%{fugitive#statusline()}    
 " set statusline+=\ \ %m%r%w\ %P\ \                        "Modified? Readonly? Top/bot.
 
-autocmd vimenter * colorscheme gruvbox8
+autocmd ColorScheme * hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
+autocmd ColorScheme * hi SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
+autocmd ColorScheme * hi SneakLabel guifg=white guibg=magenta ctermfg=white ctermbg=green
+colorscheme gruvbox8
 set background=dark
 
 lua << EOF
