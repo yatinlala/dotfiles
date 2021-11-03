@@ -24,7 +24,7 @@ vim.cmd('set noshowmode')                  -- We don't need to see things like -
 vim.o.laststatus = 2                       -- Always display the status line
 vim.cmd('set number relativenumber')       -- Line numbers
 vim.cmd('set updatetime=300')              -- Faster completion
---set timeoutlen=500                       -- By default timeoutlen is 1000 ms
+vim.cmd('set timeoutlen=500')              -- By default timeoutlen is 1000 ms
 vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everything else
 --vim.o.autochdir = true                     -- Your working directory will always be the same as your working directory
 vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
@@ -64,19 +64,19 @@ map('n', '<leader>s', ':%s//g<Left><Left>', {})
 -- Force save a sudoer file
 map('c', 'w!!', 'w !sudo tee %', {})
 
--- Telescope
--- TODO C-p should git_files, if not in git dir then find_files in working dir
-map('n', '<C-p>', ':lua require(\'telescope.builtin\').git_files()<CR>', {noremap = true})
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true})
-map('n', '<leader>fc', '<cmd>Telescope find_files cwd=~/.config<cr>', {noremap = true})
-map('n', '<leader>en', ':lua require(\'telescope-setup\').search_dotfiles()<CR>', {noremap = true})
-map('n', '<leader>fB', '<cmd>Telescope file_browser<cr>', {noremap = true})
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {noremap = true})
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true})
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true})
+ -- Telescope
+ -- TODO C-p should git_files, if not in git dir then find_files in working dir
+ map('n', '<C-p>', ':lua require(\'telescope.builtin\').git_files()<CR>', {noremap = true})
+ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true})
+ map('n', '<leader>fc', '<cmd>Telescope find_files cwd=~/.config<cr>', {noremap = true})
+ map('n', '<leader>en', ':lua require(\'telescope-setup\').search_dotfiles()<CR>', {noremap = true})
+ map('n', '<leader>fB', '<cmd>Telescope file_browser<cr>', {noremap = true})
+ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {noremap = true})
+ map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true})
+ map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true})
 
--- Sensible split movement
-map('n', 'C-h>',  '<C-w>h', {})
+-- -- Sensible split movement
+map('n', '<C-h>',  '<C-w>h', {})
 map('n', '<C-j>',  '<C-w>j', {})
 map('n', '<C-k>',  '<C-w>k', {})
 map('n', '<C-l>',  '<C-w>l', {})
@@ -104,4 +104,5 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
+
 ]])
