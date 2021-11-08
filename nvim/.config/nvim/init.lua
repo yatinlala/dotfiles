@@ -21,6 +21,7 @@ vim.o.expandtab = true                     -- Convert tabs to spaces
 --set nowrap                               -- Display long lines as just one line
 vim.o.smartindent = true                   -- Makes indenting smart
 vim.cmd('set noshowmode')                  -- We don't need to see things like -- INSERT -- anymore
+vim.cmd('set shortmess+=c')                -- get rid of annoying pattern not found message from completion
 vim.o.laststatus = 2                       -- Always display the status line
 vim.cmd('set number relativenumber')       -- Line numbers
 vim.cmd('set updatetime=300')              -- Faster completion
