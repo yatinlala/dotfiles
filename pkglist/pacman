@@ -1,6 +1,5 @@
 acpi
 acpilight
-adapta-gtk-theme
 alacritty
 alsa-firmware
 alsa-utils
@@ -32,23 +31,25 @@ cmake
 cmatrix
 cmus
 cowsay
+cups
 dash
 discord
 dmidecode
 docker-compose
+dog
 dosfstools
 dune
 dunst
 efibootmgr
 egl-wayland
 element-desktop
-emacs
 entr
 faad2
 fakeroot
 fd
 feh
 figlet
+flameshot
 flex
 fprintd
 fuse2
@@ -81,7 +82,7 @@ id3lib
 imagemagick
 intel-undervolt
 isync
-jack2
+kdeconnect
 lib32-giflib
 lib32-gnutls
 lib32-gst-plugins-base-libs
@@ -179,6 +180,7 @@ sway
 swaylock
 sxhkd
 sxiv
+system-config-printer
 terminus-font
 texinfo
 texlive-bibtexextra
@@ -198,7 +200,6 @@ tldr
 tlp
 tmux
 torbrowser-launcher
-transmission-gtk
 trash-cli
 ttf-dejavu
 ttf-font-awesome
@@ -219,6 +220,7 @@ which
 wine-staging
 wmctrl
 xcape
+xcolor
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa

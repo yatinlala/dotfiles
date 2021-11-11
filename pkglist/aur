@@ -9,13 +9,12 @@ devour
 dragon-drag-and-drop
 espanso
 fastfetch-git
+ferdi-bin
 fontpreview-ueberzug-git
 glow
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 htim
-i3-style
-kmonad-bin
 lbry-app-bin
 lesstif
 lf
@@ -34,6 +33,7 @@ paru
 perl-lwp-useragent-cached
 pfetch
 pipe-viewer-git
+pipewire-jack-dropin
 pistol-git
 python-pyqrcode
 reaper-bin
@@ -41,6 +41,7 @@ rofi-dmenu
 rpi-imager
 safeeyes
 sc-im
+session-desktop-bin
 siji-git
 slack-desktop
 snake
@@ -53,6 +54,5 @@ ttf-vista-fonts
 urlview
 urxvt-resize-font-git
 vscodium-bin
-xcolor
 ytfzf
 zoom
