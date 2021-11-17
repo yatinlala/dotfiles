@@ -1,11 +1,11 @@
 #/usr/bin/sh -e
 TERMINAL=urxvtc
-chosen=$(echo "cslab\nibis\nowl\nyuppie\n|\nmount cs-lab\nmount ibis\numount cs-lab\numount ibis\n|\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
+chosen=$(echo "ssh cslab\nssh ibis\nssh owl\nssh yuppie\nmount cs-lab\nmount ibis\numount cs-lab\numount ibis\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
 case $chosen in
-    cslab) $TERMINAL -e ssh cslab;;
-    ibis) $TERMINAL -e ssh ibis;;
-    owl) $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
-    yuppie) $TERMINAL -e ssh ubuntu@192.168.86.22;;
+    "ssh cslab") $TERMINAL -e ssh cslab;;
+    "ssh ibis") $TERMINAL -e ssh ibis;;
+    "ssh owl") $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
+    "ssh yuppie") $TERMINAL -e ssh ubuntu@192.168.86.22;;
     "mount cs-lab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
     "umount cs-lab") fusermount3 -uqz ~/code/swat-computers/cslab;;
     "mount ibis") sshfs s-ylala1@ibis.sccs.swarthmore.edu:/ ~/code/swat-computers/ibis;;
