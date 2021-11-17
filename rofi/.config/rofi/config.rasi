@@ -5,5 +5,5 @@ configuration {
 	font: "DejaVu Sans Mono 14";
 	terminal: "urxvt";
 	hide-scrollbar: true;
-	theme: "~/.config/rofi/theme.rasi";
+	theme: "/usr/share/rofi/themes/gruvbox-dark.rasi";
 }
