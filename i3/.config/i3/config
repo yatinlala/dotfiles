@@ -11,7 +11,7 @@ set $term2 alacritty
 
 floating_modifier $mod
 
-font pango:Deja Vu Sans Mono 18
+font pango:Deja Vu Sans Mono 16
 smart_gaps on 
 smart_borders on
 gaps inner 7
@@ -52,8 +52,8 @@ bindsym $mod2+f exec nautilus
 
 #Audio Consumption
 bindsym $mod+c exec music-toggle
-bindsym $mod+bracketleft exec "playerctl --player=spotify,cmus,%all previous"
-bindsym $mod+bracketright exec "playerctl --player=spotify,cmus,%all next"
+bindsym $mod+bracketleft exec "playerctl --player=spotify,cmus,%any previous"
+bindsym $mod+bracketright exec "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus exec playerctl --player=spotify,cmus,%all volume .05- 
 bindsym $mod+equal exec playerctl --player=spotify,cmus,%all volume .05+
 
@@ -74,7 +74,7 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b exec brave --force-device-scale-factor=1.25
+bindsym $mod+b exec brave --force-device-scale-factor=1.15
 bindsym $mod+shift+b exec librewolf-xdg
 bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
@@ -131,7 +131,9 @@ mode "$entertainment" {
 bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws9
 
 #Toggles
-# bindsym $mod+grave exec wifi-radio-toggle
+bindsym XF86WLAN exec wifi-radio-toggle
+bindsym XF86Bluetooth exec bluetooth toggle
+bindsym $mod2+b exec blueman-manager
 bindsym $mod+shift+e exec espanso-toggle
 bindsym $mod+shift+n exec nextcloud-sync-toggle
 
@@ -296,7 +298,7 @@ bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
 bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 18
+    font pango:DejaVu Sans Mono, FontAwesome 16
     strip_workspace_numbers yes
     position top
     status_command i3status-rs
