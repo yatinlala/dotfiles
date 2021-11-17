@@ -37,8 +37,8 @@ set page-padding 1
 map u scroll half-up
 map d scroll half-down
 map D toggle_page_mode
-map r reload
-map R rotate
+map r rotate
+map R reload
 unmap zi
 unmap zo
 map K zoom in
