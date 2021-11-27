@@ -79,8 +79,8 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
-cmd sudovim ${{
-  sudo nvim "$f"
+cmd sudoedit ${{
+  sudoedit "$f"
 }}
 cmd sudomkfile ${{
   printf "File Name: "
@@ -190,7 +190,7 @@ map + :video_preview
 
 # File Openers
 map EE $$EDITOR "$f"
-map ES sudovim
+map ES sudoedit
 
 # Archive Mappings
 map az zip
