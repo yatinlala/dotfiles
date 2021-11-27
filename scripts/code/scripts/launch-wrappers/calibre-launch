@@ -1,0 +1,4 @@
+#!/usr/bin/sh -e
+
+CALIBRE_USE_DARK_PALETTE=1
+exec calibre $@
