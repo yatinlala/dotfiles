@@ -28,7 +28,7 @@ bindsym $mod+Return exec $term
 bindsym $mod2+Return exec $term2
 
 #Rofi
-bindsym $mod+space exec rofi -show drun -drun-display-format {name}
+bindsym $mod+space exec rofi -show drun -show-icons -drun-display-format {name}
 bindsym $mod2+space exec rofi -show run
 
 #Menus
