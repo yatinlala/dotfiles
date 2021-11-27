@@ -8,6 +8,7 @@ set $mod3 Mod3
 set $term urxvtc
 set $term_iso urxvt
 set $term2 alacritty
+set $xdg ~/code/scripts/launch-wrappers
 
 floating_modifier $mod
 
@@ -61,7 +62,7 @@ bindsym $mod+equal exec playerctl --player=spotify,cmus,%all volume .05+
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | [c]mus [s]potify
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a exec audacity-xdg; mode "default"
+    bindsym a exec $xdg/audacity-xdg; mode "default"
     bindsym d exec ardour6; mode "default"
     bindsym e exec brave --profile-directory=Default --app-id=ldnhafmniildlikmpongfbompmmdgbik; mode "default"
     bindsym r exec reaper; mode "default"
@@ -75,9 +76,9 @@ mode "$music" {
 
 #Browser
 bindsym $mod+b exec brave --force-device-scale-factor=1.15
-bindsym $mod+shift+b exec librewolf-xdg
+bindsym $mod+shift+b exec $xdg/librewolf-xdg
 bindsym $mod+shift+t exec torbrowser-launcher
-bindsym $mod+shift+w exec $term -e w3m-xdg lite.duckduckgo.com/lite
+bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
 
 #Communication
 bindsym $mod+m exec mailspring 
@@ -108,8 +109,8 @@ bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m exec minecraft-launcher-xdg; mode "default"
-    bindsym s exec steam-xdg; mode "default"
+    bindsym m exec $xdg/minecraft-launcher-xdg; mode "default"
+    bindsym s exec $xdg/steam-xdg; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -128,7 +129,8 @@ mode "$entertainment" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+p exec $term -e pipe-viewer; exec i3-msg workspace $ws9
+bindsym $mod+p exec $term -e pipe-viewer --resolution=480; exec i3-msg workspace $ws9
+bindsym $mod+shift+p exec $term -e pipe-viewer; exec i3-msg workspace $ws9
 
 #Toggles
 bindsym XF86WLAN exec wifi-radio-toggle
