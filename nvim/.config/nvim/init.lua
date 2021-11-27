@@ -5,13 +5,13 @@ require("compe-setup")
 
 -------------------- GENERAL SETTINGS --------------------
 
-vim.cmd('syntax enable')                   -- Enables syntax highlighing
 vim.cmd('set t_Co=256')                    -- Support 256 colors
 vim.o.hlsearch = false                     --  No search highlighting
 vim.o.mouse = 'a'                          -- Enable your mouse
 vim.o.hidden = true                        -- Required to keep multiple buffers open multiple buffers
-vim.o.ignorecase = true                    -- Case insensitive searching vim.o.smartcase = true                     -- Unless using a capital letter in search
--- vim.o.splitbelow = true                 -- Horizontal splits will automatically be below
+vim.o.ignorecase = true                    -- Case insensitive searching 
+vim.o.smartcase = true                     -- Unless using a capital letter in search
+vim.o.splitbelow = true                    -- Horizontal splits will automatically be below
 vim.o.splitright = true                    -- Vertical splits will automatically be to the right
 vim.o.conceallevel = 0                     -- So that I can see `` in markdown files
 vim.o.tabstop = 4                          -- Insert 4 spaces for a tab
@@ -31,7 +31,6 @@ vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everyth
 vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
 vim.o.incsearch = true                     -- Show resuls as you type a search
 vim.cmd('set formatoptions-=cro')
-
 
 -------------------- KEYBINDS --------------------
 
@@ -64,6 +63,11 @@ map('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
 map('n', '<leader>s', ':%s//g<Left><Left>', {})
 -- Force save a sudoer file
 map('c', 'w!!', 'w !sudo tee %', {})
+-- GF creates new file if needed
+map('n', 'gf',  ':edit <cfile><cr>', {})
+
+map('v', '<',  '<gv', {})
+map('v', '>',  '>gv', {})
 
  -- Telescope
  -- TODO C-p should git_files, if not in git dir then find_files in working dir
@@ -106,4 +110,5 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
+tnoremap <Esc> <C-\><C-n>
 ]])
