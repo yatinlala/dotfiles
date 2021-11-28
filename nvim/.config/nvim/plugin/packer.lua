@@ -25,7 +25,7 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'vimwiki/vimwiki'
   use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
-  use 'ThePrimeagen/harpoon'
+  -- use 'ThePrimeagen/harpoon'
   use 'justinmk/vim-sneak'
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
 
