@@ -59,7 +59,7 @@ bindsym $mod+minus exec playerctl --player=spotify,cmus,%all volume .05-
 bindsym $mod+equal exec playerctl --player=spotify,cmus,%all volume .05+
 
 #Music
-set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | [c]mus [s]potify
+set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify
 bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a exec $xdg/audacity-xdg; mode "default"
@@ -193,6 +193,7 @@ assign [title="Spotify"] $ws10
 assign [title="spotify"] $ws10
 assign [title="cmus"] $ws10
 
+for_window [title="radio-mpv"] move scratchpad
 for_window [instance="notes"] floating enable
 for_window [instance="notes"] resize set 1200 900
 for_window [instance="notes"] move scratchpad
