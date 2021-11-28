@@ -6,6 +6,7 @@ breeze-snow-cursor-theme
 bumblebee-status
 c-lolcat
 devour
+downgrade
 dragon-drag-and-drop
 espanso
 fastfetch-git
@@ -36,6 +37,7 @@ pipe-viewer-git
 pipewire-jack-dropin
 pistol-git
 python-pyqrcode
+qdirstat-bin
 reaper-bin
 rofi-dmenu
 rpi-imager
@@ -53,6 +55,7 @@ ttf-unifont
 ttf-vista-fonts
 urlview
 urxvt-resize-font-git
+visidata
 vscodium-bin
 ytfzf
 zoom
