@@ -25,7 +25,7 @@ map <Leader><Leader>c :call ToggleBg()<CR>
 autocmd ColorScheme * hi Sneak guifg=black guibg=red ctermfg=black ctermbg=red
 autocmd ColorScheme * hi SneakScope guifg=red guibg=yellow ctermfg=red ctermbg=yellow
 autocmd ColorScheme * hi SneakLabel guifg=white guibg=magenta ctermfg=white ctermbg=green
-colorscheme gruvbox8
+colorscheme gruvbox8_soft
 set background=dark
 
 lua << EOF

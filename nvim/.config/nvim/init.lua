@@ -1,5 +1,5 @@
 require("packer")
--- require("lsp-setup")
+require("lsp-setup")
 require("telescope-setup")
 require("compe-setup")
 

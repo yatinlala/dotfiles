@@ -20,6 +20,7 @@ vim.api.nvim_exec(
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Packer can manage itself
   use 'lifepillar/gruvbox8'
+  use 'sickill/vim-monokai'
   use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
   use 'tpope/vim-fugitive'
@@ -30,6 +31,6 @@ return require('packer').startup(function()
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
 
   use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  use 'williamboman/nvim-lsp-installer'
   use 'hrsh7th/nvim-compe'
 end)
