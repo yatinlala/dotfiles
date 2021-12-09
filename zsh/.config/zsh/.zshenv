@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/applications:$HOME/.config/emacs/bin:$HOME/.config/dynamic-colors/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
 
 #YTFZF
 FZF_PLAYER="devour mpv"
@@ -60,8 +60,8 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
+export BROWSER="librewolf-xdg"
 export TERMINAL="urxvtc"
-export BROWSER="brave"
 export VIDEO="mpv"
 export IMAGE="feh"
 export COLORTERM="truecolor"

@@ -17,7 +17,7 @@ alias fgrep='fgrep --color=auto'
 #Shorten frequently used commands
 alias mmute='sudoedit /sys/class/leds/platform::micmute/brightness'
 alias vim='nvim'
-alias mpv='mpvd'
+alias mpv='devour mpv'
 alias t='todoist'
 alias la='ls -lAh'
 alias ll='ls -lh'
@@ -30,6 +30,12 @@ alias sp='sudo pacman'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
+
+#Git
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
 
 alias myip='curl -4 https://icanhazip.com'
 
