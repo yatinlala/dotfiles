@@ -1,7 +1,7 @@
 require("packer")
 require("lsp-setup")
 require("telescope-setup")
-require("compe-setup")
+require("completion")
 
 -------------------- GENERAL SETTINGS --------------------
 
@@ -15,7 +15,7 @@ vim.o.splitbelow = true                    -- Horizontal splits will automatical
 vim.o.splitright = true                    -- Vertical splits will automatically be to the right
 vim.o.conceallevel = 0                     -- So that I can see `` in markdown files
 vim.o.tabstop = 4                          -- Insert 4 spaces for a tab
-vim.o.softtabstop = 4          
+vim.o.softtabstop = 4
 vim.o.shiftwidth = 4                       -- Change the number of space characters inserted for indentation
 vim.o.expandtab = true                     -- Convert tabs to spaces
 --set nowrap                               -- Display long lines as just one line
@@ -38,7 +38,7 @@ vim.cmd('set formatoptions-=cro')
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+--
 local map = vim.api.nvim_set_keymap
 
 -- Consistent Y

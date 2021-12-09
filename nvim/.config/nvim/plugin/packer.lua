@@ -19,18 +19,49 @@ vim.api.nvim_exec(
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Packer can manage itself
+
+  -- Theming
   use 'lifepillar/gruvbox8'
-  use 'sickill/vim-monokai'
   use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+
+  -- Navigation
+  use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
+  use 'justinmk/vim-sneak'
+  -- use 'ThePrimeagen/harpoon'
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
+  use 'williamboman/nvim-lsp-installer'
+  use 'onsails/lspkind-nvim'
+
+  -- Copmletions
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp'
+
   use 'tpope/vim-fugitive'
   use 'vimwiki/vimwiki'
-  use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
-  -- use 'ThePrimeagen/harpoon'
-  use 'justinmk/vim-sneak'
-  use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-
-  use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
-  use 'hrsh7th/nvim-compe'
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+  use {
+      'chipsenkbeil/distant.nvim',
+      config = function()
+          require('distant').setup {
+              -- Applies Chip's personal settings to every machine you connect to
+              --
+              -- 1. Ensures that distant servers terminate with no connections
+              -- 2. Provides navigation bindings for remote directories
+              -- 3. Provides keybinding to jump into a remote file's parent directory
+              ['*'] = require('distant.settings').chip_default()
+          }
+      end
+  }
 end)
