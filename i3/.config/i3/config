@@ -43,7 +43,8 @@ bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+e exec emacs
-bindsym $mod+o exec libreoffice
+bindsym $mod+o exec obsidian
+bindsym $mod+shift+o exec libreoffice
 bindsym $mod3+c exec vscodium
 bindsym $mod+w exec vimwiki-toggle
 
@@ -75,8 +76,8 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b exec brave --force-device-scale-factor=1.15
-bindsym $mod+shift+b exec $xdg/librewolf-xdg
+bindsym $mod+b exec $xdg/librewolf-xdg
+bindsym $mod+shift+b exec brave --force-device-scale-factor=1.15
 bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
 
@@ -130,7 +131,6 @@ mode "$entertainment" {
     bindsym Return mode "default"
 }
 bindsym $mod+p exec $term -e pipe-viewer --resolution=480; exec i3-msg workspace $ws9
-bindsym $mod+shift+p exec $term -e pipe-viewer; exec i3-msg workspace $ws9
 
 #Toggles
 bindsym XF86WLAN exec wifi-radio-toggle
