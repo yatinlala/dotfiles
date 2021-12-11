@@ -78,7 +78,7 @@ mode "$music" {
 #Browser
 bindsym $mod+b exec $xdg/librewolf-xdg
 bindsym $mod+shift+b exec brave --force-device-scale-factor=1.15
-bindsym $mod+shift+t exec torbrowser-launcher
+# bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
 
 #Communication
