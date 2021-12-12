@@ -41,8 +41,6 @@ vim.g.maplocalleader = ' '
 --
 local map = vim.api.nvim_set_keymap
 
--- Consistent Y
-map('n', 'Y', 'y$', {noremap = true})
 -- Centered searches
 map('n', 'n', 'nzzzv', {noremap = true})
 map('n', 'N', 'Nzzzv', {noremap = true})
