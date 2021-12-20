@@ -43,8 +43,8 @@ bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+i exec $term -e nvim
 bindsym $mod+shift+i exec $term -e sudo nvim
 bindsym $mod+e exec emacs
-bindsym $mod+o exec obsidian
-bindsym $mod+shift+o exec libreoffice
+bindsym $mod+o exec onlyoffice-desktopeditors
+bindsym $mod+shift+o exec obsidian
 bindsym $mod3+c exec vscodium
 bindsym $mod+w exec vimwiki-toggle
 
@@ -53,7 +53,7 @@ bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
-bindsym $mod+c exec music-toggle
+bindsym $mod+s exec music-toggle
 bindsym $mod+bracketleft exec "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright exec "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus exec playerctl --player=spotify,cmus,%all volume .05- 
@@ -65,7 +65,7 @@ bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a exec $xdg/audacity-xdg; mode "default"
     bindsym d exec ardour6; mode "default"
-    bindsym e exec brave --profile-directory=Default --app-id=ldnhafmniildlikmpongfbompmmdgbik; mode "default"
+    bindsym e exec brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r exec reaper; mode "default"
     bindsym b exec rofi-beats; mode "default"
     bindsym c exec i3-msg workspace $ws10; exec $term -e cmus; mode "default"
@@ -76,23 +76,23 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b exec $xdg/librewolf-xdg
+bindsym $mod+b exec librewolf
 bindsym $mod+shift+b exec brave --force-device-scale-factor=1.15
-# bindsym $mod+shift+t exec torbrowser-launcher
+bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
 
 #Communication
 bindsym $mod+m exec mailspring 
 bindsym $mod+shift+m exec $term -e neomutt
 set $mega Action: [d]iscord [e]lement [f]erdi s[l]ack [s]ignal
-bindsym $mod+s mode "$mega"
+bindsym $mod+c mode "$mega"
 mode "$mega" {
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym f exec ferdi; exec i3-msg workspace $ws1; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
-    bindsym $mod+s mode "default"
+    bindsym $mod+c mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -344,8 +344,8 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
-bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
+# bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+# bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
