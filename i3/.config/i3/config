@@ -80,6 +80,7 @@ bindsym $mod+b exec librewolf
 bindsym $mod+shift+b exec brave --force-device-scale-factor=1.15
 bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
+bindsym $mod2+l exec librewolf lesswrong.com
 
 #Communication
 bindsym $mod+m exec mailspring 
