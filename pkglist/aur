@@ -24,7 +24,6 @@ libopenaptx
 librewolf-bin
 mailspring
 minecraft-launcher
-motivate
 nerd-fonts-complete
 netris-git
 nodejs-nativefier
@@ -38,7 +37,10 @@ pfetch
 pipe-viewer-git
 pipewire-jack-dropin
 pistol-git
+protonup-qt
+python-inputs
 python-pyqrcode
+python-vdf
 qdirstat-bin
 reaper-bin
 rofi-dmenu
@@ -59,5 +61,6 @@ urlview
 urxvt-resize-font-git
 visidata
 vscodium-bin
+xsnow-comp-patch-git
 ytfzf
 zoom
