@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 50
+max_width = 78 
 show_marks = "visible"
 
 #[[block]]
@@ -20,11 +20,11 @@ format = "{weather} {temp}"
 service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
 #service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
 
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-step_width = 10
-root_scaling = 2
+# [[block]]
+# block = "backlight"
+# device = "intel_backlight"
+# step_width = 10
+# root_scaling = 2
 
 [[block]]
 block = "sound"

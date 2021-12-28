@@ -116,6 +116,7 @@ lxsession
 m4
 make
 mediainfo
+mlocate
 moreutils
 mpg123
 mpv
