@@ -53,7 +53,7 @@ bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
 bindsym $mod2+f exec nautilus
 
 #Audio Consumption
-bindsym $mod+s exec music-toggle
+bindsym $mod+c exec music-toggle
 bindsym $mod+bracketleft exec "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright exec "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus exec playerctl --player=spotify,cmus,%all volume .05- 
@@ -76,24 +76,24 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b exec librewolf
-bindsym $mod+shift+b exec brave --force-device-scale-factor=1.15
-bindsym $mod+shift+t exec torbrowser-launcher
+bindsym $mod+b exec brave --force-device-scale-factor=1.15
+bindsym $mod+shift+b exec librewolf
+# bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e $xdg/w3m-xdg lite.duckduckgo.com/lite
 bindsym $mod2+l exec librewolf lesswrong.com
 
 #Communication
-bindsym $mod+m exec mailspring 
+bindsym $mod+m exec mailspring-toggle
 bindsym $mod+shift+m exec $term -e neomutt
 set $mega Action: [d]iscord [e]lement [f]erdi s[l]ack [s]ignal
-bindsym $mod+c mode "$mega"
+bindsym $mod+s mode "$mega"
 mode "$mega" {
     bindsym d exec discord; exec i3-msg workspace $ws8; mode "default"
     bindsym e exec element-desktop; exec i3-msg workspace $ws8; mode "default"
     bindsym f exec ferdi; exec i3-msg workspace $ws1; mode "default"
     bindsym l exec slack; exec i3-msg workspace $ws8; mode "default"
     bindsym s exec signal-desktop; exec i3-msg workspace $ws8; mode "default"
-    bindsym $mod+c mode "default"
+    bindsym $mod+s mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -119,12 +119,11 @@ mode "$games" {
 }
 
 #Video Entertainment
-set $entertainment Action: [l]bry [o]dysee [p]ipe-viewer [n]ewsboat [y]tfzf
+set $entertainment Action: [l]bry [p]ipe-viewer [n]ewsboat [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
     bindsym l exec lbry; exec i3-msg workspace $ws9; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; exec i3-msg workspace $ws9; mode "default"
-    bindsym o exec brave --profile-directory=Default --app-id=hfhflbfbdbfkgkjgjjioheljacjjlcff; exec i3-msg workspace $ws9; mode "default"
     bindsym p exec $term -e pipe-viewer; exec i3-msg workspace $ws9; mode "default"
     bindsym y exec $term_iso -e ytfzf --detach; exec i3-msg workspace $ws9; mode "default"
     bindsym $mod+n mode "default"
@@ -132,6 +131,7 @@ mode "$entertainment" {
     bindsym Return mode "default"
 }
 bindsym $mod+p exec $term -e pipe-viewer --resolution=480; exec i3-msg workspace $ws9
+bindsym $mod+shift+p exec gtk-pipe-viewer
 
 #Toggles
 bindsym XF86WLAN exec wifi-radio-toggle
@@ -165,7 +165,7 @@ exec urxvtd -q
 exec dunst
 exec nm-applet
 exec blueman-applet
-# exec mailspring -b
+exec mailspring -b
 exec --no-startup-id libinput-gestures-setup start
 # exec safeeyes
 # exec aw-qt
@@ -178,6 +178,8 @@ for_window [Class="Pavucontrol"] floating enable
 for_window [title="^Polls$"] floating enable
 for_window [title="^Console window for.*$"] floating enable
 
+assign [class="mailspring"] $ws1
+assign [class="Mailspring"] $ws1
 assign [class="ferdi"] $ws1
 assign [class="Ferdi"] $ws1
 assign [title="Tor Browser"] $ws7
@@ -190,8 +192,8 @@ assign [title="ytfzf"] $ws9
 assign [class="LBRY"] $ws9
 assign [title="newsboat"] $ws9
 assign [title="castero"] $ws10
-assign [title="Spotify"] $ws10
 assign [title="spotify"] $ws10
+assign [title="Spotify"] $ws10
 assign [title="cmus"] $ws10
 
 for_window [title="radio-mpv"] move scratchpad
@@ -255,7 +257,7 @@ bindsym $mod+y scratchpad show
 bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
-set $ws1 "1:"
+set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3"
 set $ws4 "4"
