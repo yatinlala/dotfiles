@@ -1,9 +1,9 @@
 #!/usr/bin/sh -e
 
-if pgrep -x "ferdi" > /dev/null
+if pgrep -x "mailspring" > /dev/null
 then
     i3-msg workspace 1:
 else
     i3-msg workspace 1:
-    ferdi & disown
+    mailspring & disown
 fi
