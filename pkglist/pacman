@@ -105,7 +105,6 @@ libao
 libmad
 libmp4v2
 libmpcdec
-libreoffice-fresh
 libtool
 linux
 linux-firmware
@@ -161,7 +160,6 @@ pulsemixer
 python-httplib2
 python-oauth2client
 python-pdftotext
-qutebrowser
 r
 redshift
 reflector
@@ -176,7 +174,6 @@ signal-desktop
 slop
 sof-firmware
 sshfs
-steam
 stow
 sudo
 sway

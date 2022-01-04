@@ -1,9 +1,7 @@
 abook-configdir
-activitywatch-bin
 auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
-bumblebee-status
 c-lolcat
 devour
 downgrade
@@ -17,10 +15,8 @@ gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 htim
 lbry-app-bin
-lesstif
 lf
 libinput-gestures
-libopenaptx
 librewolf-bin
 mailspring
 minecraft-launcher
@@ -32,15 +28,11 @@ nvm
 obsidian
 onlyoffice-bin
 paru
-perl-lwp-useragent-cached
 pfetch
 pipe-viewer-git
 pipewire-jack-dropin
 pistol-git
-protonup-qt
-python-inputs
 python-pyqrcode
-python-vdf
 qdirstat-bin
 reaper-bin
 rofi-dmenu
@@ -54,6 +46,7 @@ snake
 spotify
 spotify-tui
 todoist-git
+topgrade
 ttf-ms-fonts
 ttf-unifont
 ttf-vista-fonts
@@ -61,6 +54,5 @@ urlview
 urxvt-resize-font-git
 visidata
 vscodium-bin
-xsnow-comp-patch-git
 ytfzf
 zoom
