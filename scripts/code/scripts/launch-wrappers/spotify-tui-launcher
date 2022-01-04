@@ -1,0 +1,13 @@
+#!/usr/bin/sh -e
+
+TERMINAL=urxvtc
+
+if pgrep -x "spotifyd" > /dev/null
+then
+    spotifyd
+    i3-msg workspace 10:
+    $TERMINAL -e spt
+else
+    i3-msg workspace 10:
+    $TERMINAL -e spt
+fi

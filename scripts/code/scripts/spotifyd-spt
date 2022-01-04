@@ -1,0 +1,9 @@
+#/bin/sh
+TERMINAL=urxvtc
+
+killall spotifyd
+killall spt
+
+spotifyd &
+i3-msg "workspace 10:"
+$TERMINAL -name spt -e spt
