@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 78 
+max_width =  46
 show_marks = "visible"
 
 #[[block]]
@@ -20,21 +20,21 @@ format = "{weather} {temp}"
 service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
 #service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
 
-# [[block]]
-# block = "backlight"
-# device = "intel_backlight"
-# step_width = 10
-# root_scaling = 2
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+step_width = 10
+root_scaling = 2
 
 [[block]]
 block = "sound"
 
-#[[block]]
-#block = "networkmanager"
-#on_click = "$TERMINAL -e nmtui connect"
-#device_format= "{icon}{ap}"
-#interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-#interface_name_include = []
+[[block]]
+block = "networkmanager"
+on_click = "$TERMINAL -e nmtui connect"
+device_format= "{icon}{ap}"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
 
 [[block]]
 block = "time"
