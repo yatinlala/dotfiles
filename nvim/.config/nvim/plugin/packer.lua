@@ -26,7 +26,6 @@ return require('packer').startup(function()
 
   -- Navigation
   use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
-  use 'justinmk/vim-sneak'
   -- use 'ThePrimeagen/harpoon'
 
   -- LSP
