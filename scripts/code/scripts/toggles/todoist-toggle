@@ -1,6 +1,6 @@
 #!/usr/bin/sh -e
 
-if wmctrl -l | grep "Todoist" > /dev/null
+if wmctrl -l | grep "point Todoist" > /dev/null
 then
     i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center"
 else

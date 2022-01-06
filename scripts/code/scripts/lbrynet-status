@@ -1,8 +1,0 @@
-#!/usr/bin/sh -e
-
-if pgrep -x "lbrynet" >/dev/null
-then
-    notify-send "lbrynet running."
-else
-    notify-send "lbrynet stopped."
-fi

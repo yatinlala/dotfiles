@@ -2,7 +2,7 @@
 
 if pgrep -x "spotify" >/dev/null || pgrep -x "cmus">/dev/null || pgrep -x "spotifyd">/dev/null
 then
-    playerctl --player=spotifyd,spotify,cmus play-pause
+    playerctl --player=cmus,spotifyd,spotify play-pause
 else
     i3-msg mode "Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify-tui s[p]otify"
 fi
