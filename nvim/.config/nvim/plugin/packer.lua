@@ -42,7 +42,6 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
 
-  use 'itchyny/calendar.vim'
   use 'tpope/vim-fugitive'
   use 'vimwiki/vimwiki'
   use {

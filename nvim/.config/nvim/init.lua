@@ -20,17 +20,15 @@ vim.o.shiftwidth = 4                       -- Change the number of space charact
 vim.o.expandtab = true                     -- Convert tabs to spaces
 --set nowrap                               -- Display long lines as just one line
 vim.o.smartindent = true                   -- Makes indenting smart
-vim.cmd('set noshowmode')                  -- We don't need to see things like -- INSERT -- anymore
+vim.o.showmode = false                     -- We don't need to see things like -- INSERT -- anymore
 vim.cmd('set shortmess+=c')                -- get rid of annoying pattern not found message from completion
 vim.o.laststatus = 2                       -- Always display the status line
-vim.cmd('set number relativenumber')       -- Line numbers
-vim.cmd('set updatetime=300')              -- Faster completion
-vim.cmd('set timeoutlen=500')              -- By default timeoutlen is 1000 ms
-vim.cmd('set clipboard=unnamedplus')       -- Copy paste between vim and everything else
+vim.o.relativenumber = true                -- Line numbers
+vim.o.updatetime = 300                     -- Faster completion
+vim.o.timeoutlen = 500                     -- By default timeoutlen is 1000 ms
+vim.o.clipboard = 'unnamedplus'            -- Copy paste between vim and everything else
 --vim.o.autochdir = true                     -- Your working directory will always be the same as your working directory
-vim.cmd('autocmd BufEnter * silent! lcd %:p:h')
 vim.o.incsearch = true                     -- Show resuls as you type a search
-vim.cmd('set formatoptions-=cro')
 
 -------------------- KEYBINDS --------------------
 
@@ -67,6 +65,9 @@ map('n', 'gf',  ':edit <cfile><cr>', {})
 map('v', '<',  '<gv', {})
 map('v', '>',  '>gv', {})
 
+map('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+
+
  -- Telescope
  -- TODO C-p should git_files, if not in git dir then find_files in working dir
  map('n', '<C-p>', ':lua require(\'telescope.builtin\').git_files()<CR>', {noremap = true})
@@ -95,8 +96,6 @@ map('n', '<leader>gj',  ':diffget //2<CR>', {})
 
 vim.cmd([[
 
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 augroup remember_folds
   autocmd!
   autocmd BufWinLeave *.vim mkview
@@ -108,5 +107,4 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
-tnoremap <Esc> <C-\><C-n>
 ]])
