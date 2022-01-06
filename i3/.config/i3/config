@@ -60,7 +60,7 @@ bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e playerctl --player=spotify,cmus,%all volume .05- 
 bindsym $mod+equal $e playerctl --player=spotify,cmus,%all volume .05+
 bindsym $mod+slash $e spotifyd-spt
-bindsym $mod+shift+slash $e killall spotifyd; exec notify-send "KIlling spotifyd."
+bindsym $mod+shift+slash $e killall spotifyd; exec notify-send "Killing spotifyd."
 
 #Music
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify-tui s[p]otify
@@ -148,7 +148,7 @@ bindsym $mod+t $e todoist-toggle
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
 bindsym $mod2+s $e brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
-bindsym $mod+shift+c $e $term -e calcurse
+bindsym $mod+shift+c $e calendar-toggle
 bindsym $mod2+c $e calc-toggle
 bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
@@ -207,8 +207,13 @@ for_window [instance="notes"] border pixel 8
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] floating enable
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] resize set 1500 1000
-for_window [instance="notes"] border pixel 8
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] border pixel 8
 
+#Calendar
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] floating enable
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1500 1000
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] border pixel 8
 # $e $term -name notes -e tmux new-session \; \
 #          send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
 #          split-window -v -p 25 \; \

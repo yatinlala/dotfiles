@@ -1,0 +1,10 @@
+#!/usr/bin/sh -e
+
+if wmctrl -l | grep "point Google Calendar -" > /dev/null
+then
+    i3-msg "[instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] scratchpad show; [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move position center"
+else
+    gtk-launch calendar
+    sleep 1
+    i3-msg "[instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] scratchpad show; [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move position center"
+fi
