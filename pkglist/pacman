@@ -21,9 +21,7 @@ bison
 blueman
 bluez
 bluez-utils
-bpytop
 cabextract
-calcurse
 calibre
 ccls
 checkbashisms
@@ -67,7 +65,6 @@ gnome-keyring
 gnome-themes-extra
 gnuplot
 go
-gpick
 groff
 grub
 grub-customizer
