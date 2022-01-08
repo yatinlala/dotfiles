@@ -252,10 +252,7 @@ map gc<space> cd ~/code
 map gcs cd ~/code/swat-computers/cslab/cs35
 map gS cd ~/code/scripts
 
-map gd<space> cd ~/documents
-map gdp cd ~/documents/papers
-map gdb cd ~/documents/books
-map gds cd ~/documents/shorts
+map gd cd ~/documents
 map gb cd ~/documents/books
 
 map g. cd ~/.dotfiles
