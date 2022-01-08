@@ -6,4 +6,4 @@ configuration {
 	terminal: "urxvt";
 	hide-scrollbar: true;
 }
-@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
+@theme "/home/nitay/.config/rofi/theme.rasi"
