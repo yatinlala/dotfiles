@@ -311,10 +311,10 @@ bindsym $mod+shift+0 move container to workspace $ws10
 
 bindsym $mod+r restart
 
-bindsym $mod2+shift+h resize shrink width 10 px or 10 ppt
-bindsym $mod2+shift+j resize grow height 10 px or 10 ppt
-bindsym $mod2+shift+k resize shrink height 10 px or 10 ppt
-bindsym $mod2+shift+l resize grow width 10 px or 10 ppt
+bindsym $mod2+shift+h resize shrink width 3 px or 3 ppt
+bindsym $mod2+shift+j resize grow height 3 px or 3 ppt
+bindsym $mod2+shift+k resize shrink height 3 px or 3 ppt
+bindsym $mod2+shift+l resize grow width 3 px or 3 ppt
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 16
