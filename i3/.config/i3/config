@@ -60,10 +60,10 @@ bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e playerctl --player=spotify,cmus,%all volume .05- 
 bindsym $mod+equal $e playerctl --player=spotify,cmus,%all volume .05+
 bindsym $mod+slash $e spotifyd-spt
-bindsym $mod+shift+slash $e killall spotifyd; exec notify-send "Killing spotifyd."
+bindsym $mod+shift+slash $e spotifyd-toggle
 
 #Music
-set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify-tui s[p]otify
+set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a $e $xdg/audacity-xdg; mode "default"
@@ -72,8 +72,8 @@ mode "$music" {
     bindsym r $e reaper; mode "default"
     bindsym b $e rofi-beats; mode "default"
     bindsym c $e i3-msg workspace $ws10; $e $term -e cmus; mode "default"
-    bindsym s $e spotify-tui-launcher; mode "default"
-    bindsym p $e i3-msg workspace $ws10; $e spotify; mode "default"
+    bindsym s $e i3-msg workspace $ws10; $e spotify; mode "default"
+    bindsym p $e spotify-tui-launcher; mode "default"
     bindsym $mod+u mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
