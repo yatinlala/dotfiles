@@ -3,22 +3,15 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width =  46
+max_width = 35 
 show_marks = "visible"
 
-#[[block]]
-#block = "maildir"
-#interval = 60
-#inboxes = ["/home/nitay/.local/share/mail/yatin.lala@gmail.com/INBOX"]
-#threshold_warning = 1
-#threshold_critical = 10
-#display_type = "new"
-
 [[block]]
-block = "weather"
-format = "{weather} {temp}"
-service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
-#service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
+block = "networkmanager"
+on_click = "$TERMINAL -e nmtui connect"
+device_format= "{icon}{ap}"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
 
 [[block]]
 block = "backlight"
@@ -30,11 +23,18 @@ root_scaling = 2
 block = "sound"
 
 [[block]]
-block = "networkmanager"
-on_click = "$TERMINAL -e nmtui connect"
-device_format= "{icon}{ap}"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
+block = "weather"
+format = "{weather} {temp}"
+service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
+#service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
+
+# [[block]]
+# block = "maildir"
+# interval = 60
+# inboxes = ["/home/nitay/.local/share/mail/yatin.lala@gmail.com/INBOX"]
+# threshold_warning = 1
+# threshold_critical = 10
+# display_type = "new"
 
 [[block]]
 block = "time"
