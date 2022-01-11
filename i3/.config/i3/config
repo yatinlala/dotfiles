@@ -212,7 +212,7 @@ for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] border pixel 8
 #Calendar
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] floating enable
-for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1500 1000
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1800 1000
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] border pixel 8
 # $e $term -name notes -e tmux new-session \; \
 #          send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
