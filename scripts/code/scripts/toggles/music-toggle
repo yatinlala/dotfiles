@@ -1,8 +1,11 @@
 #!/usr/bin/sh -e
 
-if pgrep -x "spotify" >/dev/null || pgrep -x "cmus">/dev/null || pgrep -x "spotifyd">/dev/null
+if pgrep -x "spotify" >/dev/null || pgrep -x "cmus"
 then
-    playerctl --player=cmus,spotifyd,spotify play-pause
+    playerctl --player=spotify,cmus play-pause
+elif pgrep -x "spotifyd">/dev/null
+then
+    playerctl --player=spotifyd play-pause
 else
     i3-msg mode "Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify-tui s[p]otify"
 fi
