@@ -248,8 +248,7 @@ map b bulk-rename
 map ga cd ~/audio
 map gC cd ~/.config
 
-map gc<space> cd ~/code
-map gcs cd ~/code/swat-computers/cslab/cs35
+map gc cd ~/code
 map gS cd ~/code/scripts
 
 map gd cd ~/documents
