@@ -94,6 +94,11 @@ map('n', '<leader>gs',  ':G<CR>', {})
 map('n', '<leader>gf',  ':diffget //3<CR>', {})
 map('n', '<leader>gj',  ':diffget //2<CR>', {})
 
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
+vim.g.netrw_browse_split = 4
+vim.g.netrw_winsize = 25
+
 vim.cmd([[
 
 augroup remember_folds
@@ -101,10 +106,5 @@ augroup remember_folds
   autocmd BufWinLeave *.vim mkview
   autocmd BufWinEnter *.vim silent! loadview
 augroup END
-
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_winsize = 25
 
 ]])
