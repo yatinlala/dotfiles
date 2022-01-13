@@ -1,0 +1,8 @@
+#!/usr/bin/bash -e
+
+if pgrep -x "nm-applet" > /dev/null
+then
+    killall nm-applet
+else
+    nm-applet & disown
+fi

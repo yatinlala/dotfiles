@@ -2,9 +2,8 @@
 
 if pgrep -x "spotifyd" >/dev/null
 then
-    notify-send "Restarting spotifyd."
+    notify-send "Killing spotifyd."
     killall spotifyd
-    spotifyd & disown
 else
     notify-send "Starting spotifyd."
     spotifyd & disown
