@@ -3,15 +3,8 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 35 
+max_width = 45 
 show_marks = "visible"
-
-[[block]]
-block = "networkmanager"
-on_click = "$TERMINAL -e nmtui connect"
-device_format= "{icon}{ap}"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
 
 [[block]]
 block = "backlight"
@@ -21,6 +14,13 @@ root_scaling = 2
 
 [[block]]
 block = "sound"
+
+[[block]]
+block = "networkmanager"
+on_click = "$TERMINAL -e nmtui connect"
+device_format= "{icon}{ap}"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
 
 [[block]]
 block = "weather"
