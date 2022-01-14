@@ -8,7 +8,7 @@ set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
 set $term urxvtc
-set $term_iso urxvt
+set $term_iso alacritty
 set $term2 alacritty
 
 floating_modifier $mod
@@ -140,6 +140,7 @@ bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86WLAN $e wifi-radio-toggle
 bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
+bindsym $mod2+n $e nm-applet-toggle
 bindsym $mod+shift+e $e espanso-toggle
 bindsym $mod+shift+n $e nextcloud-sync-toggle
 
