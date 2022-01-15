@@ -35,6 +35,7 @@ alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wal
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gr='git restore'
 alias gd='git diff'
 alias gp='git push'
 

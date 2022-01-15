@@ -167,7 +167,6 @@ $e picom
 $e redshift
 $e urxvtd -q
 $e dunst
-# $e nm-applet
 $e blueman-applet
 $e mailspring
 $e libinput-gestures-setup start
