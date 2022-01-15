@@ -38,17 +38,17 @@ nvim_tree.setup {
   hijack_netrw = true,
   open_on_setup = false,
   ignore_ft_on_setup = {
-    "startify",
-    "dashboard",
-    "alpha",
+    --"startify",
+    --"dashboard",
+    --"alpha",
   },
   auto_close = true,
   open_on_tab = false,
-  hijack_cursor = false,
+  hijack_cursor = true,
   update_cwd = true,
   update_to_buf_dir = {
     enable = true,
-    auto_open = true,
+    auto_open = false,
   },
   diagnostics = {
     enable = true,

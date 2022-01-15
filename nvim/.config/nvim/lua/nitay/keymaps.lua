@@ -10,14 +10,6 @@ map("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 -- -- Sensible split movement
 map("n", "<C-h>", "<C-w>h", opts)
@@ -40,16 +32,16 @@ map("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Centered searches
-map('n', 'n', 'nzzzv', {noremap = true})
-map('n', 'N', 'Nzzzv', {noremap = true})
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
-map('n', 'J', 'mzJ\'z', {noremap = true})
+map('n', 'J', 'mzJ\'z', opts)
 
 -- Insert --
 -- Undo break points
-map('i', ',', ',<c-g>u', {noremap = true})
-map('i', '.', '.<c-g>u', {noremap = true})
-map('i', '(', '(<c-g>u', {noremap = true})
+map('i', ',', ',<c-g>u', opts)
+map('i', '.', '.<c-g>u', opts)
+map('i', '(', '(<c-g>u', opts)
 
 -- Visual --
 -- Stay in indent mode

@@ -10,3 +10,10 @@ require("nitay.lsp.handlers").setup()
 --
 vim.cmd('autocmd CursorHold * lua vim.diagnostic.open_float()')
 vim.cmd('autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()')
+
+vim.cmd [[ 
+augroup locallist
+    autocmd!
+    autocmd BufWrite,BufEnter,InsertLeave * :lua vim.diagnostic.setloclist({open = false})
+augroup END
+]]
