@@ -18,7 +18,7 @@ map <Leader><Leader>c :call ToggleBg()<CR>
 set background=dark
 ]]
 
-  
+
 local colorscheme = "gruvbox8_soft"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

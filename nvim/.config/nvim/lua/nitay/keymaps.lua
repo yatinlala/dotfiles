@@ -37,6 +37,18 @@ map('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
 map('n', 'J', 'mzJ\'z', opts)
 
+map('n', 'f', '<cmd>HopChar1AC<cr>', opts)
+map('n', 'F', '<cmd>HopChar1BC<cr>', opts)
+
+-- -- Smart(ish) compilation
+-- map('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
+-- -- Enable spell checking
+-- map('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
+-- -- Search and replace
+-- map('n', '<leader>s', ':%s//g<Left><Left>', {})
+-- -- GF creates new file if needed
+-- map('n', 'gf',  ':edit <cfile><cr>', {})
+
 -- Insert --
 -- Undo break points
 map('i', ',', ',<c-g>u', opts)
@@ -56,6 +68,10 @@ map("v", "p", '"_dP', opts)
 map("x", "J", ":move '>+1<CR>gv-gv", opts)
 map("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+-- Command --
+-- Force save a sudoer file
+map('c', 'w!!', 'w !sudo tee %', {})
+
 -- Terminal --
 map('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
 
@@ -65,16 +81,6 @@ map('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
 -- map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- -- Smart(ish) compilation
--- map('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
--- -- Enable spell checking
--- map('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
--- -- Search and replace
--- map('n', '<leader>s', ':%s//g<Left><Left>', {})
--- -- Force save a sudoer file
--- map('c', 'w!!', 'w !sudo tee %', {})
--- -- GF creates new file if needed
--- map('n', 'gf',  ':edit <cfile><cr>', {})
 --
 --  -- Telescope
 --  -- TODO C-p should git_files, if not in git dir then find_files in working dir

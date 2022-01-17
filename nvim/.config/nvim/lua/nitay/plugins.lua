@@ -15,21 +15,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]]
-
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
 end
 
-return packer.startup(function(use)
+return packer.startup({function(use)
     -- Theming
     use 'lifepillar/gruvbox8'
     use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
@@ -43,13 +35,15 @@ return packer.startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
 
-    -- Completions
+    -- Completion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp'
+
+    -- Snippets
     use 'saadparwaiz1/cmp_luasnip' -- snippet completions
     use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
     use 'L3MON4D3/LuaSnip' --snippet engine
@@ -73,6 +67,7 @@ return packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'goolord/alpha-nvim'
+    use 'phaazon/hop.nvim'
     use {
         'chipsenkbeil/distant.nvim',
         config = function()
@@ -88,8 +83,7 @@ return packer.startup(function(use)
     }
 
     use 'wbthomason/packer.nvim' -- Packer can manage itself
-    config = {
-        -- Move to lua dir so impatient.nvim can cache it
-        compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
-    }
-end)
+    end,  config = {
+    -- Move to lua dir so impatient.nvim can cache it
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  }})
