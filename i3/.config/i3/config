@@ -144,7 +144,7 @@ bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
 bindsym $mod2+n $e nm-applet-toggle
 bindsym $mod+shift+e $e toggler espanso
-bindsym $mod+shift+n $e nextcloud-sync-toggle
+bindsym $mod+grave $e dunstctl close
 
 #Utility
 bindsym $mod+t $e todoist-toggle
