@@ -47,26 +47,26 @@ bindsym $mod+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+shift+o $e obsidian
 bindsym $mod3+c $e vscodium
-bindsym $mod+w $e vimwiki-toggle
+bindsym $mod+w $e toggler notes
 
 #File Manager
 bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
 bindsym $mod2+f $e nautilus
 
 #Audio Consumption
-bindsym $mod+s $e music-toggle
+bindsym $mod+s $e toggler music
 bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e playerctl --player=spotify,cmus,%all volume .05- 
 bindsym $mod+equal $e playerctl --player=spotify,cmus,%all volume .05+
 bindsym $mod+slash $e spotifyd-spt
-bindsym $mod+shift+slash $e spotifyd-toggle
+bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e $xdg/audacity-xdg; mode "default"
+    bindsym a $e xdg-launch audacity; mode "default"
     bindsym d $e ardour6; mode "default"
     bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r $e reaper; mode "default"
@@ -81,13 +81,13 @@ mode "$music" {
 
 #Browser
 bindsym $mod+b $e brave --force-device-scale-factor=1.15
-bindsym $mod+shift+b $e librewolf
+bindsym $mod+shift+b $e xdg-launch librewolf
 bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e w3m-xdg lite.duckduckgo.com/lite
-bindsym $mod2+l $e librewolf lesswrong.com
+bindsym $mod+shift+w $e xdg-launch "urxvtc -e w3m" "lite.duckduckgo.com/lite"
+bindsym $mod2+l $e brave lesswrong.com
 
 #Communication
-bindsym $mod+m $e mailspring-toggle
+bindsym $mod+m $e toggler mailspring
 bindsym $mod+shift+m $e $term -e neomutt
 set $mega Action: [d]iscord [e]lement [f]erdi s[l]ack [s]ignal
 bindsym $mod+c mode "$mega"
@@ -110,12 +110,14 @@ bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 #bindsym $mod2+s $e confirm "suspend? " systemctl suspend
 
 #Games
-set $games Action: [l]ichess [m]inecraft [t]etris
+set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
-    bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
+    bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m $e minecraft-launcher-xdg; mode "default"
+    bindsym m $e xdg-launch minecraft-launcher; mode "default"
+    bindsym s $e flatpak run com.valvesoftware.Steam; mode "default"
+    bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -137,11 +139,11 @@ bindsym $mod+p $e $term -e pipe-viewer --resolution=480; $e i3-msg workspace $ws
 bindsym $mod+shift+p $e gtk-pipe-viewer
 
 #Toggles
-bindsym XF86WLAN $e wifi-radio-toggle
+bindsym XF86WLAN $e wifi toggle
 bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
 bindsym $mod2+n $e nm-applet-toggle
-bindsym $mod+shift+e $e espanso-toggle
+bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+shift+n $e nextcloud-sync-toggle
 
 #Utility
@@ -149,8 +151,8 @@ bindsym $mod+t $e todoist-toggle
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
 bindsym $mod2+s $e brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
-bindsym $mod+shift+c $e calendar-toggle
-bindsym $mod2+c $e calc-toggle
+bindsym $mod+shift+c $e toggler calendar
+bindsym $mod2+c $e toggler bc
 bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 
