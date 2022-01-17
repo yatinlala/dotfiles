@@ -142,12 +142,12 @@ bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86WLAN $e wifi toggle
 bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
-bindsym $mod2+n $e nm-applet-toggle
+bindsym $mod2+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 
 #Utility
-bindsym $mod+t $e todoist-toggle
+bindsym $mod+t $e toggler todoist
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
 bindsym $mod2+s $e brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
@@ -363,7 +363,7 @@ bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle && $re
 #--------------------------------------------------
 
 # Wallpaper
-exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+$e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
