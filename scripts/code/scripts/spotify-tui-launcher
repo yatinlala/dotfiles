@@ -1,7 +1,5 @@
 #!/usr/bin/sh -e
 
-TERMINAL=urxvtc
-
 if pgrep -x "spotifyd" > /dev/null
 then
     spotifyd

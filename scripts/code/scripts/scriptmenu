@@ -1,9 +1,0 @@
-#!/usr/bin/sh -e
-
-script_dir="$HOME/code/scripts"
-
-cd "$script_dir"
-
-
-find -L -type f -printf "%f\n" |  rofi -dmenu -i -p "script menu" \
-     | ifne xargs $TERMINAL -e "nvim"

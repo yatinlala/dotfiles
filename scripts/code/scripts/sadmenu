@@ -1,4 +1,4 @@
-#/usr/bin/sh -e
+#!/usr/bin/sh -e
 TERMINAL=urxvtc
 chosen=$(echo "ssh cslab\nssh ibis\nssh owl\nssh yuppie\nmount cs-lab\nmount ibis\nunmount cs-lab\nunmount ibis\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
 case $chosen in

@@ -1,9 +1,0 @@
-#!/usr/bin/bash -e
-
-if pgrep -x "ferdi" > /dev/null
-then
-    i3-msg workspace 1:
-else
-    i3-msg workspace 1:
-    ferdi & disown
-fi

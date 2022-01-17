@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-devour mpv "$@" --ytdl-format='bestvideo[height<=480]+bestaudio/best[height<=480]'

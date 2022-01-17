@@ -1,9 +1,0 @@
-#!/usr/bin/sh -e
-
-if wmctrl -l | grep "point notes" > /dev/null
-then
-    i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center"
-else
-    $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.wiki
-    i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center"
-fi

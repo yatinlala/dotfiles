@@ -1,5 +1,4 @@
-#/bin/sh
-TERMINAL=urxvtc
+#!/usr/bin/sh -e
 
 killall spotifyd
 killall spt

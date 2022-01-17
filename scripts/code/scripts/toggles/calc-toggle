@@ -1,9 +1,0 @@
-#!/usr/bin/sh -e
-
-if pgrep -x "bc" > /dev/null
-then
-    i3-msg "[instance="calc"] scratchpad show; [instance="calc"] move position center"
-else
-    $TERMINAL -name calc -e bc -lq
-    i3-msg "[instance="calc"] scratchpad show; [instance="calc"] move position center"
-fi

@@ -1,9 +1,0 @@
-#!/usr/bin/sh -e
-
-if pgrep -x "espanso" > /dev/null
-then
-    espanso stop
-    notify-send "Espanso stopped."
-else
-    espanso daemon & disown
-fi
