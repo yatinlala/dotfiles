@@ -8,11 +8,11 @@ downgrade
 dragon-drag-and-drop
 espanso
 fastfetch-git
-ferdi-bin
 fontpreview-ueberzug-git
 glow
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
+heroic-games-launcher-bin
 htim
 lbry-app-bin
 lf
@@ -24,7 +24,6 @@ nerd-fonts-complete
 netris-git
 nodejs-nativefier
 nuclear-player-bin
-nvm
 obsidian
 onlyoffice-bin
 paru
@@ -32,7 +31,6 @@ pfetch
 pipe-viewer-git
 pipewire-jack-dropin
 pistol-git
-python-pyqrcode
 qdirstat-bin
 reaper-bin
 rofi-dmenu

@@ -50,6 +50,7 @@ fd
 feh
 figlet
 flameshot
+flatpak
 flex
 fprintd
 fuse2
@@ -215,6 +216,7 @@ w3m
 wavpack
 wget
 which
+wine-mono
 wine-staging
 wmctrl
 xcape
