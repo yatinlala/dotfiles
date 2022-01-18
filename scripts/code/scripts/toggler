@@ -18,5 +18,8 @@ case $1 in
     nm-applet) pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes) wmctrl -l | grep -q "point notes" || $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.wiki; i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     spotifyd) pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || (notify-send "Starting spotifyd."; setsid spotifyd &);;
+    spotifyd-spt) pkill -x spotifyd; pkill -x spt; i3-msg 'workspace 10:'; $TERMINAL -name spt -class spt -e spt;;
+    spotify-tui) (pgrep -x "spotifyd" || spotifyd &); (pgrep -x spt || $TERMINAL -name spt -class spt -e spt); i3-msg workspace 10:;;
     todoist) wmctrl -l | grep -q "point Todoist" || (gtk-launch todoist; sleep 1); i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;
+    *) echo "Invalid argument.";;
 esac

@@ -59,7 +59,7 @@ bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e playerctl --player=spotify,cmus,%all volume .05- 
 bindsym $mod+equal $e playerctl --player=spotify,cmus,%all volume .05+
-bindsym $mod+slash $e spotifyd-spt
+bindsym $mod+slash $e toggler spotifyd-spt
 bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
@@ -73,7 +73,7 @@ mode "$music" {
     bindsym b $e rofi-beats; mode "default"
     bindsym c $e i3-msg workspace $ws10; $e $term -e cmus; mode "default"
     bindsym s $e i3-msg workspace $ws10; $e spotify; mode "default"
-    bindsym p $e spotify-tui-launcher; mode "default"
+    bindsym p $e toggler spotify-tui; mode "default"
     bindsym $mod+u mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
