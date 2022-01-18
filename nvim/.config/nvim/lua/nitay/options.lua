@@ -32,7 +32,7 @@ vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = true                   -- set relative numbered lines
 vim.opt.numberwidth = 2                         -- set min number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column
-vim.opt.wrap = true                             -- display lines as one long line
+vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.shortmess:append "c" -- Get rid of "pattern not found" during completions
 
 
