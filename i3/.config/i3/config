@@ -103,11 +103,34 @@ mode "$mega" {
 }
 
 # OS Control
-bindsym $mod+shift+q $e confirm "quit i3? " i3-msg exit
-bindsym $mod+shift+s $e confirm "shutdown? " shutdown now
-bindsym $mod+shift+r $e confirm "reboot? " reboot
+set $quit Quit?: [y]es [n]o
+bindsym $mod+shift+q mode "$quit"
+mode "$quit" {
+    bindsym y $e i3-msg exit
+    bindsym n $e mode "default"
+    bindsym $mod+shift+q mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+set $shutdown Shutdown?: [y]es [n]o
+bindsym $mod+shift+s mode "$shutdown"
+mode "$shutdown" {
+    bindsym y $e shutdown now
+    bindsym n $e mode "default"
+    bindsym $mod+shift+s mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+set $reboot Reboot?: [y]es [n]o
+bindsym $mod+shift+r mode "$reboot"
+mode "$reboot" {
+    bindsym y $e reboot
+    bindsym n $e mode "default"
+    bindsym $mod+shift+r mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
-#bindsym $mod2+s $e confirm "suspend? " systemctl suspend
 
 #Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
@@ -144,7 +167,7 @@ bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
 bindsym $mod2+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
-bindsym $mod+grave $e dunstctl close
+bindsym control+space $e dunstctl close
 
 #Utility
 bindsym $mod+t $e toggler todoist
@@ -166,12 +189,12 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 
 #Startup
 $e picom
-$e redshift
 $e urxvtd -q
 $e dunst
 $e blueman-applet
 $e mailspring
 $e libinput-gestures-setup start
+# $e redshift
 # $e safeeyes
 
 for_window [title="^Library"] floating enable
@@ -216,18 +239,11 @@ for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] floating enable
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1800 1000
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] border pixel 8
-# $e $term -name notes -e tmux new-session \; \
-#          send-keys 'nvim ~/documents/wiki/index.wiki' C-m \; \
-#          split-window -v -p 25 \; \
-#          # split-window -h -p 30 \; \
-#          # send-keys 'bc -lq' C-m C-l \;
-# $e $term -name notes -e nvim ~/documents/wiki/index.wiki
 
 for_window [instance="calc"] floating enable
 for_window [instance="calc"] resize set 800 400
 for_window [instance="calc"] move scratchpad
 for_window [instance="calc"] border pixel 8
-# $e $term -name calc -e bc -lq
 
 #--------------------------------------------------
 #-------------------Movement---------------------

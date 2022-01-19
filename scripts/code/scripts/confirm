@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-choices="yes\nno"
-chosen=$(echo -e "$choices" | rofi -dmenu -i -p "$1")
-
-[[ "$chosen" == "yes" ]] && ${@:2}
