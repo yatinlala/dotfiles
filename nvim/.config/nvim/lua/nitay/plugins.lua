@@ -31,10 +31,12 @@ return packer.startup({function(use)
     use 'kyazdani42/nvim-tree.lua'
     --use 'ThePrimeagen/harpoon'
 
+    --Treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
+    use {'p00f/nvim-ts-rainbow', requires = {'nvim-treesitter/nvim-treesitter'} }
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
-
     -- Completion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
@@ -42,19 +44,15 @@ return packer.startup({function(use)
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp'
-
     -- Snippets
     use 'saadparwaiz1/cmp_luasnip' -- snippet completions
     use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
     use 'L3MON4D3/LuaSnip' --snippet engine
 
-    --Treesitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
-    use {'p00f/nvim-ts-rainbow', requires = {'nvim-treesitter/nvim-treesitter'} }
-
     --Other
     use 'folke/which-key.nvim'
     use 'tpope/vim-fugitive'
+    use 'mhinz/vim-sayonara'
     use 'vimwiki/vimwiki'
     use {
         'numToStr/Comment.nvim',
