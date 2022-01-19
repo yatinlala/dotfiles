@@ -51,6 +51,7 @@ return packer.startup({function(use)
 
     --Other
     use 'folke/which-key.nvim'
+    use 'norcalli/nvim-colorizer.lua'
     use 'tpope/vim-fugitive'
     use 'mhinz/vim-sayonara'
     use 'vimwiki/vimwiki'

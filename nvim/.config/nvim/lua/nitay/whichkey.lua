@@ -78,13 +78,12 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "alpha" },
-  ["b"] = {
+  a = { "<cmd>Alpha<cr>", "alpha" },
+  b = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "buffers",
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "explorer" },
-  ["x"] = { "<cmd>:w!<cr><cmd>silent bd!<cr>", "save and close Buffer" },
+  e = { "<cmd>NvimTreeToggle<cr>", "explorer" },
   f = {
     name = "Telescope",
     f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
@@ -93,16 +92,8 @@ local mappings = {
     -- S = { "<cmd>PackerStatus<cr>", "Status" },
     -- u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
+  F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   g = {
     name = "Git",
@@ -158,6 +149,14 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    s = { "<cmd>PackerSync<cr>", "Sync" },
+    S = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
+  },
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -179,6 +178,11 @@ local mappings = {
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+  },
+  w = {
+    name = "Vimwiki",
+    w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
+    d = { "<cmd>VimwikiDiaryIndex<cr><cmd>VimwikiDiaryGenerateLinks<cr><cmd>e!<cr>", "Diary Index" },
   },
 }
 
