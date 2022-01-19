@@ -168,6 +168,7 @@ bindsym $mod2+b $e blueman-manager
 bindsym $mod2+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym control+space $e dunstctl close
+bindsym $mod2+r $e toggler redshift
 
 #Utility
 bindsym $mod+t $e toggler todoist
