@@ -25,6 +25,7 @@ cabextract
 calibre
 ccls
 checkbashisms
+cloc
 cmake
 cmatrix
 cmus
@@ -129,6 +130,7 @@ neovim
 network-manager-applet
 networkmanager
 newsboat
+nmap
 noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
@@ -173,6 +175,7 @@ signal-desktop
 slop
 sof-firmware
 sshfs
+steam
 stow
 sudo
 sway

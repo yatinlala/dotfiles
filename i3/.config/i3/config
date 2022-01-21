@@ -28,11 +28,8 @@ for_window [class="^.*"] border pixel 4
 bindsym $mod+Return $e $term
 bindsym $mod2+Return $e $term2
 
-#Rofi
-bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
-bindsym $mod2+space $e rofi -show run
-
 #Menus
+bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
 bindsym $mod+semicolon $e passmenu
 bindsym $mod+apostrophe $e sadmenu
 
@@ -110,7 +107,7 @@ mode "$quit" {
     bindsym n $e mode "default"
     bindsym $mod+shift+q mode "default"
     bindsym Escape mode "default"
-    bindsym Return mode "default"
+    bindsym Return $e i3-msg exit
 }
 set $shutdown Shutdown?: [y]es [n]o
 bindsym $mod+shift+s mode "$shutdown"
@@ -119,7 +116,7 @@ mode "$shutdown" {
     bindsym n $e mode "default"
     bindsym $mod+shift+s mode "default"
     bindsym Escape mode "default"
-    bindsym Return mode "default"
+    bindsym Return mode $e shutdown now
 }
 set $reboot Reboot?: [y]es [n]o
 bindsym $mod+shift+r mode "$reboot"
@@ -128,7 +125,7 @@ mode "$reboot" {
     bindsym n $e mode "default"
     bindsym $mod+shift+r mode "default"
     bindsym Escape mode "default"
-    bindsym Return mode "default"
+    bindsym Return $e reboot
 }
 bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
@@ -139,7 +136,7 @@ mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m $e xdg-launch minecraft-launcher; mode "default"
-    bindsym s $e flatpak run com.valvesoftware.Steam; mode "default"
+    bindsym s $e steam; mode "default"
     bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
@@ -167,7 +164,7 @@ bindsym XF86Bluetooth $e bluetooth toggle
 bindsym $mod2+b $e blueman-manager
 bindsym $mod2+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
-bindsym control+space $e dunstctl close
+bindsym $mod+grave $e dunstctl close
 bindsym $mod2+r $e toggler redshift
 
 #Utility
@@ -358,8 +355,6 @@ bar {
 # adjust screen brightness
 bindsym XF86MonBrightnessUp $e xbacklight +1
 bindsym XF86MonBrightnessDown $e xbacklight -1
-bindsym shift+XF86MonBrightnessUp $e xbacklight +3
-bindsym shift+XF86MonBrightnessDown $e xbacklight -3
 bindsym $mod2+j $e xbacklight -3
 bindsym $mod2+k $e xbacklight +3
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
@@ -368,9 +363,6 @@ bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
 bindsym XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-
-# bindsym shift+XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-# bindsym shift+XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
 
 bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
