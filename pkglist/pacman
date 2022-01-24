@@ -21,6 +21,7 @@ bison
 blueman
 bluez
 bluez-utils
+browserpass-chromium
 cabextract
 calibre
 ccls
@@ -60,6 +61,7 @@ gcc
 gdb
 gimp
 git
+glow
 gnome-backgrounds
 gnome-icon-theme
 gnome-keyring
@@ -182,6 +184,7 @@ swaylock
 sxhkd
 sxiv
 system-config-printer
+termdown
 terminus-font
 texinfo
 texlive-bibtexextra

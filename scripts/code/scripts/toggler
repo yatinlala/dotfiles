@@ -39,8 +39,8 @@ case $1 in
         pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
         (notify-send "Starting spotifyd."; setsid spotifyd &);;
     spotifyd-spt) 
-        pgrep -x spotifyd && killall spotifyd
-        pgrep -x spt && killall spt
+        killall -q spotifyd
+        killall -q spt
         i3-msg 'workspace 10:'
         $TERMINAL -name spt -class spt -e spt;;
     spotify-tui)
