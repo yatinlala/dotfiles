@@ -112,10 +112,10 @@ cmd open_config  ${{
 
 cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
 
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
-cmd dragon-target %dragon-drag-and-drop -t $fx
+cmd dragon %dragon-drag-and-drop -a -x "$fx"
+cmd dragon-stay %dragon-drag-and-drop -a "$fx"
+cmd dragon-individual %dragon-drag-and-drop "$fx"
+cmd dragon-target %dragon-drag-and-drop -t "$fx"
 cmd dlfile %dlfile
 
 # Archive bindings

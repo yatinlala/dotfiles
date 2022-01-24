@@ -1,0 +1,7 @@
+#!/bin/bash
+
+out=$(wmctrl -d | awk '{ if ($9 == 9) { print $2} }')
+
+[ "$out" = "*" ] && echo "yes" || echo "no"
+
+termdown
