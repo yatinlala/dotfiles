@@ -10,8 +10,8 @@ require'lualine'.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {{'filename', path = 1}},
-    lualine_x = {'filetype'},
-    lualine_y = {},
+    lualine_x = {},
+    lualine_y = {'filtype'},
     lualine_z = {'location'}
   },
   inactive_sections = {

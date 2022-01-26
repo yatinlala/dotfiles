@@ -144,7 +144,7 @@ mode "$games" {
 }
 
 #Video Entertainment
-set $entertainment Action: [l]bry [p]ipe-viewer [n]ewsboat [y]tfzf
+set $entertainment Action: [l]bry [n]ewsboat [p]ipe-viewer [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
     bindsym l $e lbry; $e i3-msg workspace $ws9; mode "default"
