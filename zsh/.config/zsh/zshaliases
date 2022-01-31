@@ -6,8 +6,6 @@ alias bc='bc -lq'
 alias neofetch='fastfetch'
 alias tetris='netris -k "hHklLJjs frn"'
 
-alias feh='devour feh --scale-down'
-
 #Colorize!
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -15,21 +13,23 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 #Shorten frequently used commands
-alias mmute='sudoedit /sys/class/leds/platform::micmute/brightness'
-alias vim='nvim'
-alias mpv='devour mpv'
+alias e='nvim'
 alias t='todoist'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ka='killall'
-alias e='nvim'
 alias p='pacman'
-alias z='devour zathura'
-alias d='devour'
 alias sp='sudo pacman'
+alias mmute='sudoedit /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
+
+#Devouring
+alias d='devour'
+alias feh='devour feh --scale-down'
+alias z='devour zathura'
+alias mpv='devour mpv'
 
 #Git
 alias gs='git status'
@@ -42,8 +42,6 @@ alias gp='git push'
 
 alias myip='curl -4 https://icanhazip.com'
 
-alias notes'$TERMINAL -name notes -e nvim ~/documents/wiki/index.wiki'
-alias calc='$TERMINAL -name calc -e bc -lq'
 #Confirm before danger
 alias rm='rm -i'
 
@@ -51,16 +49,11 @@ alias rm='rm -i'
 alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys'
 
-#SSH ALIASES
-alias sshfsswat='sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab'
-alias usshfsswat='fusermount3 -u ~/code/swat-computers/cslab'
-alias sshfsibis='sshfs s-ylala1@ibis.sccs.swarthmore.edu:/staff/s-ylala1 ~/code/swat-computers/ibis'
-alias usshfsibis='fusermount3 -u ~/code/swat-computers/ibis'
-
 #Jumps
 alias ss='cd ~/code/scripts/'
 alias .dot='cd ~/.dotfiles/'
 
+#Configuration
 alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'
 alias nvimrc='nvim ~/.config/nvim/init.lua'
