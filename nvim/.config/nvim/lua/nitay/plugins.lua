@@ -29,11 +29,11 @@ return packer.startup({function(use)
     -- Navigation
     use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
     use 'kyazdani42/nvim-tree.lua'
+    use 'mhinz/vim-sayonara'
     --use 'ThePrimeagen/harpoon'
 
     --Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
-    use {'p00f/nvim-ts-rainbow', requires = {'nvim-treesitter/nvim-treesitter'} }
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
@@ -50,19 +50,12 @@ return packer.startup({function(use)
     use 'L3MON4D3/LuaSnip' --snippet engine
 
     --Other
+    use 'lewis6991/impatient.nvim'
     use 'folke/which-key.nvim'
     use 'norcalli/nvim-colorizer.lua'
     use 'tpope/vim-fugitive'
-    use 'mhinz/vim-sayonara'
     use 'vimwiki/vimwiki'
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
-    use 'lewis6991/impatient.nvim'
-    use 'antoinemadec/FixCursorHold.nvim'
+    use 'numToStr/Comment.nvim'
     use 'akinsho/bufferline.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'goolord/alpha-nvim'
@@ -82,7 +75,8 @@ return packer.startup({function(use)
     }
 
     use 'wbthomason/packer.nvim' -- Packer can manage itself
-    end,  config = {
+    end,
+    config = {
     -- Move to lua dir so impatient.nvim can cache it
     compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
   }})
