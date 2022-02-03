@@ -15,6 +15,7 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
+-- Hop around
 map("n", "s", ":HopChar1AC<cr>", opts)
 map("n", "S", ":HopChar1BC<cr>", opts)
 
@@ -38,8 +39,12 @@ map('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
 map('n', 'J', 'mzJ\'z', opts)
 
-map('n', 'gs', ':Sayonara<cr>', opts)
-map('n', 'gS', ':Sayonara!<cr>', opts)
+-- Simply quit files
+map('n', 'gs', ':Sayonara<CR>', opts)
+map('n', 'gS', ':Sayonara!<CR>', opts)
+
+map('n', 'gf', ':e <cfile><CR>', opts)
+
 -- -- Smart(ish) compilation
 -- map('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
 -- -- Enable spell checking

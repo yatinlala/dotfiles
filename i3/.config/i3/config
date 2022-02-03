@@ -84,14 +84,13 @@ bindsym $mod+shift+w $e xdg-launch "urxvtc -e w3m" "lite.duckduckgo.com/lite"
 bindsym $mod2+l $e brave lesswrong.com
 
 #Communication
-bindsym $mod+m $e toggler mailspring
+bindsym $mod+m $e toggler gmail
 bindsym $mod+shift+m $e $term -e neomutt
-set $mega Action: [d]iscord [e]lement [f]erdi s[l]ack [s]ignal
+set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal
 bindsym $mod+c mode "$mega"
 mode "$mega" {
     bindsym d $e discord; $e i3-msg workspace $ws8; mode "default"
     bindsym e $e element-desktop; $e i3-msg workspace $ws8; mode "default"
-    bindsym f $e ferdi; $e i3-msg workspace $ws1; mode "default"
     bindsym l $e slack; $e i3-msg workspace $ws8; mode "default"
     bindsym s $e signal-desktop; $e i3-msg workspace $ws8; mode "default"
     bindsym $mod+c mode "default"
@@ -190,7 +189,7 @@ $e picom
 $e urxvtd -q
 $e dunst
 $e blueman-applet
-$e mailspring
+# $e mailspring
 $e libinput-gestures-setup start
 # $e redshift
 # $e safeeyes
@@ -229,14 +228,17 @@ for_window [instance="notes"] border pixel 8
 #Todoist
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] floating enable
-for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] resize set 1500 1000
-for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] border pixel 8
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] resize set 1700 1020
 
 #Calendar
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad
 for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] floating enable
-for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1800 1000
-for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] border pixel 8
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1900 1020
+
+#Gmail Web
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] move scratchpad
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] floating enable
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] resize set 1900 1020
 
 for_window [instance="calc"] floating enable
 for_window [instance="calc"] resize set 800 400
@@ -286,8 +288,8 @@ bindsym $mod+y scratchpad show
 bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
-set $ws1 "1:"
-set $ws2 "2:"
+set $ws1 "1:"
+set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"

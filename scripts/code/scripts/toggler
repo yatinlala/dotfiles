@@ -12,6 +12,12 @@ case $1 in
     espanso)
         pgrep -x espanso && (espanso stop; notify-send "Espanso stopped.") || \
         setsid espanso daemon &;;
+    gmail)
+        wmctrl -l | grep -q "point Gmail" || \
+        (gtk-launch gmail; sleep 1)
+        i3-msg "[instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] scratchpad show; \
+        [instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] move position center";;
+
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "point Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
@@ -34,7 +40,7 @@ case $1 in
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift -b 1:.3 &);;
+        (notify-send "Starting Redshift."; setsid redshift);;
     spotifyd)
         pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
         (notify-send "Starting spotifyd."; setsid spotifyd &);;
