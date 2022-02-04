@@ -263,7 +263,6 @@ map gm cd ~/audio/music
 map gv cd ~/videos
 
 map gl<space> cd ~/.local
-map glx cd ~/.local/xdg-garbage
 map gls cd ~/.local/share
 map glu cd ~/.local/usb
 
