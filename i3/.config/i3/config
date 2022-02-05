@@ -63,7 +63,7 @@ bindsym $mod+shift+slash $e toggler spotifyd
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e audacity; mode "default"
+    bindsym a $e xdg-launch audacity; mode "default"
     bindsym d $e ardour6; mode "default"
     bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r $e reaper; mode "default"
@@ -81,7 +81,7 @@ mode "$music" {
 bindsym $mod+b $e brave --force-device-scale-factor=1.15
 bindsym $mod+shift+b $e librewolf
 bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e w3m "lite.duckduckgo.com/lite"
+bindsym $mod+shift+w $e $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
 bindsym $mod2+l $e brave lesswrong.com
 
 #Communication
@@ -135,7 +135,7 @@ bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m $e minecraft-launcher; mode "default"
+    bindsym m $e xdg-launch minecraft-launcher; mode "default"
     bindsym s $e steam; mode "default"
     bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
@@ -195,16 +195,10 @@ $e libinput-gestures-setup start
 $e redshift
 # $e safeeyes
 
-for_window [title="^Library"] floating enable
-for_window [Class="rpi-imager"] floating enable
 for_window [Class="Blueman-manager"] floating enable
 for_window [Class="Blueman-manager"] resize set 800 500
 for_window [Class="Pavucontrol"] floating enable
-for_window [title="^Polls$"] floating enable
-for_window [title="^Console window for.*$"] floating enable
 
-assign [class="Mailspring"] $ws1
-assign [class="ferdi"] $ws1
 assign [title="Tor Browser"] $ws7
 assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
