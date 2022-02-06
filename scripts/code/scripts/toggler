@@ -2,7 +2,7 @@
 
 case $1 in
     bc)
-        pgrep -x bc || $TERMINAL -name calc -e bc -lq
+        pgrep -x bc || $TERMINAL -t calc -e bc -lq
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \
@@ -36,7 +36,7 @@ case $1 in
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
         wmctrl -l | grep -q "point notes" || \
-        $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md
+        $TERMINAL -t notes -e nvim ~/documents/wiki/index.md
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
@@ -47,10 +47,10 @@ case $1 in
     spotifyd-spt) 
         (killall -q spotifyd && setsid spotifyd &) || setsid spotifyd &
         (killall -q spt && i3-msg 'workspace 10:') || i3-msg 'workspace 10:'
-        $TERMINAL -name spt -e spt;;
+        $TERMINAL -t spt -e spt;;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
-        pgrep -x spt || $TERMINAL -name spt -class spt -e spt
+        pgrep -x spt || $TERMINAL -t spt --class spt -e spt
         i3-msg workspace 10:;;
     todoist)
         wmctrl -l | grep -q "point Todoist" || (gtk-launch todoist; sleep 1)

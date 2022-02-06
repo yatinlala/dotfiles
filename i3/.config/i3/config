@@ -7,9 +7,8 @@ set $e exec --no-startup-id
 set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
-set $term urxvtc
-set $term_iso alacritty
-set $term2 alacritty
+set $term alacritty msg create-window
+set $term2 urxvt
 
 floating_modifier $mod
 
@@ -80,7 +79,7 @@ mode "$music" {
 #Browser
 bindsym $mod+b $e brave --force-device-scale-factor=1.15
 bindsym $mod+shift+b $e librewolf
-bindsym $mod+shift+t $e torbrowser-launcher
+# bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
 bindsym $mod2+l $e brave lesswrong.com
 
@@ -150,7 +149,7 @@ mode "$entertainment" {
     bindsym l $e lbry; workspace $ws9; mode "default"
     bindsym n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
     bindsym p $e $term -e pipe-viewer; workspace $ws9; mode "default"
-    bindsym y $e $term_iso -e ytfzf --detach; workspace $ws9; mode "default"
+    bindsym y $e $term -e ytfzf --detach; workspace $ws9; mode "default"
     bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -187,7 +186,8 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 
 #Startup
 $e picom
-$e urxvtd -q
+#$e urxvtd -q
+$e alacritty --title alacritty-server
 $e dunst
 $e blueman-applet
 # $e mailspring
@@ -195,9 +195,9 @@ $e libinput-gestures-setup start
 $e redshift
 # $e safeeyes
 
-for_window [Class="Blueman-manager"] floating enable
-for_window [Class="Blueman-manager"] resize set 800 500
-for_window [Class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Blueman-manager"] resize set 800 500
+for_window [class="Pavucontrol"] floating enable
 
 assign [title="Tor Browser"] $ws7
 assign [class="discord"] $ws8
@@ -213,6 +213,8 @@ assign [title="spt"] $ws10
 
 #Rofi-Beats
 for_window [title="radio-mpv"] move scratchpad
+#Alacritty Server
+for_window [title="alacritty-server"] move scratchpad
 
 #Vimwiki
 for_window [instance="notes"] floating enable
