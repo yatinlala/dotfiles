@@ -1,4 +1,5 @@
 abook-configdir
+anki-bin
 auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
@@ -29,6 +30,7 @@ paru
 pfetch
 pipe-viewer-git
 pistol-git
+python-stringcase
 qdirstat-bin
 reaper-bin
 rofi-dmenu

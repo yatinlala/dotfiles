@@ -1,5 +1,5 @@
 #!/usr/bin/bash -e
 
-HOME=$HOME/.local/xdg-garbage
+HOME=$HOME/.local/xdgify
 
 exec $1 "${@:2}"

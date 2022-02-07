@@ -53,8 +53,8 @@ bindsym $mod2+f $e nautilus
 bindsym $mod+s $e toggler music
 bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
-bindsym $mod+minus $e playerctl --player=spotify,cmus,%all volume .05- 
-bindsym $mod+equal $e playerctl --player=spotify,cmus,%all volume .05+
+bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
+bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
 bindsym $mod+slash $e toggler spotifyd-spt
 bindsym $mod+shift+slash $e toggler spotifyd
 
@@ -213,6 +213,7 @@ assign [title="spt"] $ws10
 
 #Rofi-Beats
 for_window [title="radio-mpv"] move scratchpad
+
 #Alacritty Server
 for_window [title="alacritty-server"] move scratchpad
 
@@ -359,7 +360,7 @@ bindsym $mod2+k $e xbacklight +3
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
+set $refresh_i3status killall -SIGUSR1 i3status-rs
 bindsym XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
 bindsym XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
