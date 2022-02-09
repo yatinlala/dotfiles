@@ -107,8 +107,7 @@ fzf-jump-widget() {
 zle     -N   fzf-jump-widget
 bindkey '^p' fzf-jump-widget
 
-bindkey -s '^a' 'lf\n'
-bindkey -s '^b' 'bc -lq\n'
+bindkey -s '^A' 'lf^M'
 
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line
