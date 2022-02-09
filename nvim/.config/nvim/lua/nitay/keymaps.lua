@@ -16,8 +16,8 @@ map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
 -- Hop around
-map("n", "s", ":HopChar1AC<cr>", opts)
-map("n", "S", ":HopChar1BC<cr>", opts)
+map("n", "s", ":HopChar2AC<cr>", opts)
+map("n", "S", ":HopChar2BC<cr>", opts)
 
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
