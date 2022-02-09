@@ -17,7 +17,6 @@ case $1 in
         (gtk-launch gmail; sleep 1)
         i3-msg "[instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] scratchpad show; \
         [instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] move position center";;
-
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "point Mailspring" || \
         setsid mailspring &)) || setsid mailspring &

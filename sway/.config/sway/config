@@ -2,268 +2,371 @@
 #-----------------General Settings-----------------
 #--------------------------------------------------
 
-set $mod Mod1
-set $mod2 Mod4
-set $term urxvtc
-set $term2 termite
+set $e exec --no-startup-id
 
-font pango:Deja Vu Sans Mono 14
-smart_gaps on 
-smart_borders on
-gaps inner 5
-gaps outer 0
-for_window [class="^.*"] border pixel 2 
-default_border pixel 2
-
-# Spiral Tiling
-#default_orientation vertical
-#for_window [class=".*"] split toggle
-
-bindsym $mod+q kill
+set $mod Mod4
+set $mod2 Mod1
+set $mod3 Mod3
+set $term alacritty msg create-window
+set $term2 urxvt
 
 floating_modifier $mod
 
-#--------------------------------------------------
-#-----------------Program Shortcuts----------------
-#--------------------------------------------------
-#Launch terminals
-bindsym $mod+Return exec $term
-bindsym $mod2+Return exec $term2 
+font pango:BlexMono Nerd Font 13
+smart_gaps on 
+smart_borders on
+gaps inner 7
+gaps outer 0
+default_border pixel 4
 
-#Boot and Screen Control
-bindsym $mod+shift+s exec $term -e shutdown now
-bindsym $mod+shift+r exec $term -e reboot
-bindsym $mod+shift+o exec swaylock -i ~/pics/i3lock/sunrise-blurred.png
+#--------------------------------------------------
+#-----------------Program Keybinds----------------
+#--------------------------------------------------
+
+#Terminals
+bindsym $mod+Return $e $term
+bindsym $mod2+Return $e $term2
 
 #Menus
-bindsym $mod+s exec quickmenu
-bindsym $mod+u exec configmenu
-bindsym $mod+shift+u exec scriptmenu
+bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
+bindsym $mod+semicolon $e passmenu
+bindsym $mod+apostrophe $e sadmenu
 
 #Camera and Audio
-bindsym $mod+shift+c exec guvcview
-bindsym $mod+shift+v exec pavucontrol
+bindsym $mod2+v $e guvcview
+bindsym $mod+shift+v $e pavucontrol
 
-#E
-#bindsym $mod+e exec emacs
-bindsym $mod+shift+e exec espanso-start-stop
-
-#Editors
-bindsym $mod+i exec $term -e nvim
-bindsym $mod+shift+i exec $term -e sudo nvim
-bindsym $mod+o exec libreoffice
+#Editor
+bindsym $mod+i $e $term -e nvim
+bindsym $mod+shift+i $e $term -e sudo nvim
+bindsym $mod+e $e emacs
+bindsym $mod+o $e onlyoffice-desktopeditors
+bindsym $mod+shift+o $e obsidian
+bindsym $mod3+c $e vscodium
+bindsym $mod+w $e toggler notes
 
 #File Manager
-bindsym $mod+a exec $term -e  lf
-bindsym $mod+shift+n exec nautilus
+bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
+bindsym $mod2+f $e nautilus
 
-#Program Launcher
-bindsym $mod+space exec rofi -show run
-bindsym $mod2+space exec rofi -show drun -drun-display-format {name}
+#Audio Consumption
+bindsym $mod+s $e toggler music
+bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
+bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
+bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
+bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
+bindsym $mod+slash $e toggler spotifyd-spt
+bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
-bindsym $mod+c exec cmus-start-pause 
-bindsym $mod+bracketleft exec cmus-remote -r
-bindsym $mod+bracketright exec cmus-remote -n
-bindsym $mod+minus exec cmus-remote -v -5%
-bindsym $mod+equal exec cmus-remote -v +5%
+set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
+bindsym $mod+u mode "$music"
+mode "$music" {
+    bindsym a $e xdg-launch audacity; mode "default"
+    bindsym d $e ardour6; mode "default"
+    bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
+    bindsym r $e reaper; mode "default"
+    bindsym b $e rofi-beats; mode "default"
+    bindsym c workspace $ws10; $e $term -e cmus; mode "default"
+    bindsym n workspace $ws10; $e nuclear; mode "default"
+    bindsym s workspace $ws10; $e spotify; mode "default"
+    bindsym p $e toggler spotify-tui; mode "default"
+    bindsym $mod+u mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
 #Browser
-bindsym $mod+b exec librewolf
-bindsym $mod+shift+b exec brave
-bindsym $mod+t exec torbrowser-launcher
-bindsym $mod+w exec $term -e w3m-fix
+bindsym $mod+b $e brave --force-device-scale-factor=1
+bindsym $mod+shift+b $e librewolf
+# bindsym $mod+shift+t $e torbrowser-launcher
+bindsym $mod+shift+w $e $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
+bindsym $mod2+l $e brave lesswrong.com
 
-#Email
-#bindsym $mod+m exec $term -e zsh -c neomutt
+#Communication
+bindsym $mod+m $e toggler gmail
+bindsym $mod+shift+m $e $term -e neomutt
+set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal
+bindsym $mod+c mode "$mega"
+mode "$mega" {
+    bindsym d $e discord; workspace $ws8; mode "default"
+    bindsym e $e element-desktop; workspace $ws8; mode "default"
+    bindsym l $e slack; workspace $ws8; mode "default"
+    bindsym s $e signal-desktop; workspace $ws8; mode "default"
+    bindsym $mod+c mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+# OS Control
+set $quit Quit?: [y]es [n]o
+bindsym $mod+shift+q mode "$quit"
+mode "$quit" {
+    bindsym y $e exit
+    bindsym n $e mode "default"
+    bindsym $mod+shift+q mode "default"
+    bindsym Escape mode "default"
+    bindsym Return $e exit
+}
+set $shutdown Shutdown?: [y]es [n]o
+bindsym $mod+shift+s mode "$shutdown"
+mode "$shutdown" {
+    bindsym y $e shutdown now
+    bindsym n $e mode "default"
+    bindsym $mod+shift+s mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode $e shutdown now
+}
+set $reboot Reboot?: [y]es [n]o
+bindsym $mod+shift+r mode "$reboot"
+mode "$reboot" {
+    bindsym y $e reboot
+    bindsym n $e mode "default"
+    bindsym $mod+shift+r mode "default"
+    bindsym Escape mode "default"
+    bindsym Return $e reboot
+}
+bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
-bindsym $mod2+m exec minecraft-launcher
-bindsym $mod2+g exec steam-xdg
+set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
+bindsym $mod+shift+g mode "$games"
+mode "$games" {
+    bindsym h $e heroic; mode "default"
+    bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
+    bindsym m $e xdg-launch minecraft-launcher; mode "default"
+    bindsym s $e steam; mode "default"
+    bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
+    bindsym $mod+shift+g mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 
-#Pipe Viewer
-bindsym $mod+p exec $term -e pipe-viewer
-bindsym $mod+shift+g exec gtk-pipe-viewer
+#Video Entertainment
+set $entertainment Action: [l]bry [n]ewsboat [p]ipe-viewer [y]tfzf
+bindsym $mod+n mode "$entertainment"
+mode "$entertainment" {
+    bindsym l $e lbry; workspace $ws9; mode "default"
+    bindsym n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
+    bindsym p $e $term -e pipe-viewer; workspace $ws9; mode "default"
+    bindsym y $e $term -e ytfzf --detach; workspace $ws9; mode "default"
+    bindsym $mod+n mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
+bindsym $mod+shift+p $e gtk-pipe-viewer
 
+#Toggles
+bindsym XF86WLAN $e wifi toggle
+bindsym XF86Bluetooth $e bluetooth toggle
+bindsym $mod2+n $e toggler nm-applet
+bindsym $mod+shift+e $e toggler espanso
+bindsym $mod+grave $e dunstctl close
+# bindsym $mod2+r $e toggler redshift
 
-bindsym $mod+m exec zoom -platform wayland
+#Utility
+bindsym $mod+t $e toggler todoist
+bindsym $mod2+h $e $term -e htop
+bindsym $mod2+d $e brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
+bindsym $mod2+s $e brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
+bindsym $mod+shift+c $e toggler calendar
+bindsym $mod2+c $e toggler bc
+# bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
-
-#Wifi Radio Toggle
-bindsym $mod+grave exec wifi-radio-toggle
 
 # Screenshots
-#bindsym --release Print exec scrot --select -e 'mv $f ~/pics/screenshots/%Y-%m-%d-%H-%M-%S.png' #Selection
-bindsym --release Print exec grim
-
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config
-bindsym $mod+semicolon exec passmenu
+bindsym --release Print $e scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 #--------------------------------------------------
-#-----------------------Startup--------------------
+#-----------Startup and Program Settings-----------
 #--------------------------------------------------
 
 #Startup
-exec xrdb -merge ~/.config/X11/Xdefaults
-exec espanso daemon
-exec safeeyes
-exec urxvtd -q
-exec dunst
-exec gammastep
-exec pulseaudio-startup-script
-#exec --no-startup-id i3-msg 'workspace 10; exec $term -e cmus;'
-#exec --no-startup-id i3-msg 'workspace 1; exec $term -name wiki -e nvim ~/vimwiki/index.wiki;'
+$e alacritty --title alacritty-server
+$e dunst
+$e blueman-applet
+# $e mailspring
+$e libinput-gestures-setup start
 
-#for_window [app_id="zoom"] floating enable
-for_window [app_id="pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Blueman-manager"] resize set 800 500
+for_window [class="Pavucontrol"] floating enable
+
+assign [title="Tor Browser"] $ws7
+assign [class="discord"] $ws8
+assign [class="Slack"] $ws8
+assign [class="Signal"] $ws8
+assign [class="Element"] $ws8
+assign [title="pipe-viewer"] $ws9
+assign [title="ytfzf"] $ws9
+assign [class="LBRY"] $ws9
+assign [title="newsboat"] $ws9
+assign [title="cmus"] $ws10
+assign [title="spt"] $ws10
+
+#Rofi-Beats
+for_window [title="radio-mpv"] move scratchpad
+
+#Alacritty Server
+for_window [title="alacritty-server"] move scratchpad
+
+#Vimwiki
+for_window [title="notes"] floating enable
+for_window [title="notes"] resize set 1200 900
+for_window [title="notes"] move scratchpad
+for_window [title="notes"] border pixel 8
+
+#Todoist
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] floating enable
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] resize set 1700 1020
+
+#Calendar
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] floating enable
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] resize set 1900 1020
+
+#Gmail Web
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] move scratchpad
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] floating enable
+for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] resize set 1900 1020
+
+for_window [instance="calc"] floating enable
+for_window [instance="calc"] resize set 800 400
+for_window [instance="calc"] move scratchpad
+for_window [instance="calc"] border pixel 8
 
 #--------------------------------------------------
-#---------------WM Movement Settings---------------
+#-------------------Movement---------------------
 #--------------------------------------------------
-# Change normal to inverse to use left mouse button for resizing and right
-floating_modifier $mod normal
 
-# Reload the configuration file
-bindsym $mod+r reload
+# Kill focused window
+bindsym $mod+q kill
 
-# Move your focus around
+# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# move focused window
+bindsym $mod+shift+h move left
+bindsym $mod+shift+j move down
+bindsym $mod+shift+k move up
+bindsym $mod+shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+g split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+shift+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+shift+space focus mode_toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+d layout tabbed
+bindsym $mod+shift+d layout toggle split
+
+#Scratchpad
+bindsym $mod+y scratchpad show
+bindsym $mod+shift+y move scratchpad
+
+#Set workspace names
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # move through workspaces sequentially
 bindsym $mod+z workspace prev
 bindsym $mod+x workspace next
 
-# Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+# move focused container to workspace
+bindsym $mod+shift+1 move container to workspace $ws1
+bindsym $mod+shift+2 move container to workspace $ws2
+bindsym $mod+shift+3 move container to workspace $ws3
+bindsym $mod+shift+4 move container to workspace $ws4
+bindsym $mod+shift+5 move container to workspace $ws5
+bindsym $mod+shift+6 move container to workspace $ws6
+bindsym $mod+shift+7 move container to workspace $ws7
+bindsym $mod+shift+8 move container to workspace $ws8
+bindsym $mod+shift+9 move container to workspace $ws9
+bindsym $mod+shift+0 move container to workspace $ws10
 
-bindsym $mod+g splith
-bindsym $mod+v splitv
+bindsym $mod+r reload
 
-bindsym $mod+d layout tabbed
-bindsym $mod+shift+d layout toggle split
-
-bindsym $mod+f floating toggle
-bindsym $mod+shift+f fullscreen
-
-#Scratchpad
-bindsym $mod+shift+y move scratchpad
-bindsym $mod+y scratchpad show
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+shift+space focus mode_toggle
-
-bindsym $mod2+shift+h resize shrink width 10px
-bindsym $mod2+shift+j resize grow height 10px
-bindsym $mod2+shift+k resize shrink height 10px
-bindsym $mod2+shift+l resize grow width 10px
+bindsym $mod2+shift+h resize shrink width 3 px or 3 ppt
+bindsym $mod2+shift+j resize grow height 3 px or 3 ppt
+bindsym $mod2+shift+k resize shrink height 3 px or 3 ppt
+bindsym $mod2+shift+l resize grow width 3 px or 3 ppt
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 15
+    font pango:BlexMono Nerd Font 13
+    strip_workspace_numbers yes
     position top
     status_command i3status-rs
     colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #458588 #458588 #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
+        separator #928374
+        background #282828
+        statusline #ebdbb2
+        focused_workspace #689d6a #689d6a #282828
+        active_workspace #1d2021 #1d2021 #928374
+        inactive_workspace #32302f #32302f #928374
+        urgent_workspace #cc241d #cc241d #ebdbb2
     }
 }
 
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-
-include /etc/sway/config.d/*
-
-
 #--------------------------------------------------
-#-----------------Peripherals----------------------
+#--------------Peripheral Controls-----------------
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp exec "xbacklight +1"
-bindsym XF86MonBrightnessDown exec "xbacklight -1"
-bindsym $mod+shift+a exec xbacklight -set .00206254
+bindsym XF86MonBrightnessUp $e xbacklight -inc .1
+bindsym XF86MonBrightnessDown $e xbacklight -dec .1
+bindsym $mod2+j $e xbacklight -dec 1
+bindsym $mod2+k $e xbacklight -inc 1
+bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym shift+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
-bindsym shift+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
-
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-set $refresh_i3status killall -SIGUSR1 i3status
-
-input "1:1:AT_Translated_Set_2_keyboard" {
-    xkb_options caps:swapescape
-   }
-input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
-    natural_scroll enabled
-}
-input "1133:49284:Logitech_G203_Prodigy_Gaming_Mouse" {
-    accel_profile flat
-}
-
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
+bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 #--------------------------------------------------
 #-------------------Theming---------------------
 #--------------------------------------------------
+
 # Wallpaper
-output * bg /home/nitay/pics/snowy-mountains.jpg fill
+output * bg ~/pictures/wallpapers/lone-tree.jpg fill
 
 # set primary gruvbox colorscheme colors
 set $bg #282828
@@ -275,10 +378,20 @@ set $purple #b16286
 set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
-set $white #000000
 
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $blue
-client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-client.urgent           $red $red $white $red $red
+client.focused #689d6a #689d6a #282828 #282828
+client.focused_inactive #1d2021 #1d2021 #928374 #282828
+client.unfocused #32302f #32302f #928374 #282828
+client.urgent #cc241d #cc241d #ebdbb2 #282828
+
+#--------------------------------------------------
+#--------------Keyboard Layout---------------------
+#--------------------------------------------------
+input "type:keyboard" {
+    xkb_layout us
+    xkb_options altwin:swap_lalt_lwin,caps:escape
+}
+input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
+    natural_scroll enabled
+}

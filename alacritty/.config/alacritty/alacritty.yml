@@ -39,7 +39,7 @@
 # Font configuration
 font:
   normal:
-    family: DejaVuSansMono Nerd Font Mono
+    family: BlexMono Nerd Font Mono
     style: Regular
   #bold:
     #family: monospace
@@ -51,13 +51,13 @@ font:
     #family: monospace
     #style: Bold Italic
 
-  size: 9.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
   # spacing.
-  #offset:
-  #  x: 0
+  offset:
+   x: 1
   #  y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
