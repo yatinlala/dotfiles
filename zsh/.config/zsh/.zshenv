@@ -19,6 +19,7 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_JUNK_DIR="$HOME/.local/xdg-garbage"
+export XDG_SESSION_TYPE=wayland
 
 export CALIBRE_USE_DARK_PALETTE=1
 
