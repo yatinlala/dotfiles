@@ -29,7 +29,7 @@ bindsym $mod2+Return $e $term2
 
 #Menus
 bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
-bindsym $mod+semicolon $e passmenu
+bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
 
 #Camera and Audio
