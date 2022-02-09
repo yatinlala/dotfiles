@@ -89,7 +89,7 @@ cmd sudomkfile ${{
 }}
 
 cmd smart_w ${{
-  if [ $SHLVL -eq 3 ]; then
+  if [ $SHLVL -eq 2 ]; then
       zsh
   else
       lf -remote "send $id quit"
