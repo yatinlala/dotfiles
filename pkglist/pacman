@@ -69,6 +69,7 @@ gnome-keyring
 gnome-themes-extra
 gnuplot
 go
+grim
 groff
 grub
 grub-customizer
@@ -169,6 +170,7 @@ redshift
 reflector
 ripgrep
 rofi
+rofi-pass
 rsync
 rustup
 rxvt-unicode
@@ -210,6 +212,7 @@ torbrowser-launcher
 trash-cli
 ttf-dejavu
 ttf-font-awesome
+ttf-ibm-plex
 ttf-opensans
 ttf-roboto
 typespeed
@@ -228,8 +231,10 @@ which
 wine-mono
 wine-staging
 wmctrl
+wofi
 xcape
 xcolor
+xdg-desktop-portal-wlr
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa
