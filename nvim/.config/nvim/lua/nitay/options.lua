@@ -36,7 +36,9 @@ vim.opt.wrap = false                            -- display lines as one long lin
 vim.opt.shortmess:append "c" -- Get rid of "pattern not found" during completions
 
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[autocmd BufEnter * set formatoptions-=cro]]
-vim.cmd [[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]]
+vim.cmd [[
+    set whichwrap+=<,>,[,],h,l
+    set iskeyword+=-
+    autocmd BufEnter * set formatoptions-=cro
+    autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+]]
