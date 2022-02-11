@@ -2,8 +2,6 @@
 #-----------------General Settings-----------------
 #--------------------------------------------------
 
-set $e exec --no-startup-id
-
 set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
@@ -24,75 +22,76 @@ default_border pixel 4
 #--------------------------------------------------
 
 #Terminals
-bindsym $mod+Return $e $term
-bindsym $mod2+Return $e $term2
+bindsym $mod+Return exec $term
+bindsym $mod2+Return exec $term2
 
 #Menus
-bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
-bindsym $mod+semicolon $e rofi-pass
-bindsym $mod+apostrophe $e sadmenu
+bindsym $mod+space exec rofi -show drun -show-icons -drun-display-format {name}
+bindsym $mod+semicolon exec rofi-pass
+bindsym $mod+apostrophe exec sadmenu
+bindsym $mod2+b exec bluetooth on; exec blueman-manager
 
 #Camera and Audio
-bindsym $mod2+v $e guvcview
-bindsym $mod+shift+v $e pavucontrol
+bindsym $mod2+v exec guvcview
+bindsym $mod+shift+v exec pavucontrol
 
 #Editor
-bindsym $mod+i $e $term -e nvim
-bindsym $mod+shift+i $e $term -e sudo nvim
-bindsym $mod+e $e emacs
-bindsym $mod+o $e onlyoffice-desktopeditors
-bindsym $mod+shift+o $e obsidian
-bindsym $mod3+c $e vscodium
-bindsym $mod+w $e toggler notes
+bindsym $mod+i exec $term -e nvim
+bindsym $mod+shift+i exec $term -e sudo nvim
+bindsym $mod+e exec emacs
+bindsym $mod+o exec onlyoffice-desktopeditors
+bindsym $mod+shift+o exec obsidian
+bindsym $mod3+c exec vscodium
+bindsym $mod+w exec toggler notes
 
 #File Manager
-bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
-bindsym $mod2+f $e nautilus
+bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
+bindsym $mod2+f exec nautilus
 
 #Audio Consumption
-bindsym $mod+s $e toggler music
-bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
-bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
-bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
-bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
-bindsym $mod+slash $e toggler spotifyd-spt
-bindsym $mod+shift+slash $e toggler spotifyd
+bindsym $mod+s exec toggler music
+bindsym $mod+bracketleft exec "playerctl --player=spotify,cmus,%any previous"
+bindsym $mod+bracketright exec "playerctl --player=spotify,cmus,%any next"
+bindsym $mod+minus exec "playerctl --player=spotify,cmus,%all volume .05-"
+bindsym $mod+equal exec "playerctl --player=spotify,cmus,%all volume .05+"
+bindsym $mod+slash exec toggler spotifyd-spt
+bindsym $mod+shift+slash exec toggler spotifyd
 
 #Music
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e xdg-launch audacity; mode "default"
-    bindsym d $e ardour6; mode "default"
-    bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
-    bindsym r $e reaper; mode "default"
-    bindsym b $e rofi-beats; mode "default"
-    bindsym c workspace 10; $e $term -e cmus; mode "default"
-    bindsym n workspace 10; $e nuclear; mode "default"
-    bindsym s workspace 10; $e spotify; mode "default"
-    bindsym p $e toggler spotify-tui; mode "default"
+    bindsym a exec xdg-launch audacity; mode "default"
+    bindsym d exec ardour6; mode "default"
+    bindsym e exec brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
+    bindsym r exec reaper; mode "default"
+    bindsym b exec rofi-beats; mode "default"
+    bindsym c workspace 10; exec $term -e cmus; mode "default"
+    bindsym n workspace 10; exec nuclear; mode "default"
+    bindsym s workspace 10; exec spotify; mode "default"
+    bindsym p exec toggler spotify-tui; mode "default"
     bindsym $mod+u mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
 #Browser
-bindsym $mod+b $e brave --force-device-scale-factor=1
-bindsym $mod+shift+b $e librewolf
-# bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
-bindsym $mod2+l $e brave lesswrong.com
+bindsym $mod+b exec brave --force-device-scale-factor=1
+bindsym $mod+shift+b exec librewolf
+bindsym $mod+shift+t exec torbrowser-launcher
+bindsym $mod+shift+w exec $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
+bindsym $mod2+l exec brave lesswrong.com
 
 #Communication
-bindsym $mod+m $e toggler gmail
-bindsym $mod+shift+m $e $term -e neomutt
+bindsym $mod+m exec toggler gmail
+bindsym $mod+shift+m exec $term -e neomutt
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal
 bindsym $mod+c mode "$mega"
 mode "$mega" {
-    bindsym d $e discord; workspace 8; mode "default"
-    bindsym e $e element-desktop; workspace 8; mode "default"
-    bindsym l $e slack; workspace 8; mode "default"
-    bindsym s $e signal-desktop; workspace 8; mode "default"
+    bindsym d exec discord; workspace 8; mode "default"
+    bindsym e exec element-desktop; workspace 8; mode "default"
+    bindsym l exec slack; workspace 8; mode "default"
+    bindsym s exec signal-desktop; workspace 8; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -102,41 +101,41 @@ mode "$mega" {
 set $quit Quit?: [y]es [n]o
 bindsym $mod+shift+q mode "$quit"
 mode "$quit" {
-    bindsym y $e exit
-    bindsym n $e mode "default"
+    bindsym y exit
+    bindsym n exec mode "default"
     bindsym $mod+shift+q mode "default"
     bindsym Escape mode "default"
-    bindsym Return $e exit
+    bindsym Return exit
 }
 set $shutdown Shutdown?: [y]es [n]o
 bindsym $mod+shift+s mode "$shutdown"
 mode "$shutdown" {
-    bindsym y $e shutdown now
-    bindsym n $e mode "default"
+    bindsym y exec shutdown now
+    bindsym n exec mode "default"
     bindsym $mod+shift+s mode "default"
     bindsym Escape mode "default"
-    bindsym Return mode $e shutdown now
+    bindsym Return mode exec shutdown now
 }
 set $reboot Reboot?: [y]es [n]o
 bindsym $mod+shift+r mode "$reboot"
 mode "$reboot" {
-    bindsym y $e reboot
-    bindsym n $e mode "default"
+    bindsym y exec reboot
+    bindsym n exec mode "default"
     bindsym $mod+shift+r mode "default"
     bindsym Escape mode "default"
-    bindsym Return $e reboot
+    bindsym Return exec reboot
 }
-bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
+bindsym $mod2+i exec i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
-    bindsym h $e heroic; mode "default"
-    bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m $e xdg-launch minecraft-launcher; mode "default"
-    bindsym s $e steam; mode "default"
-    bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
+    bindsym h exec heroic; mode "default"
+    bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
+    bindsym m exec xdg-launch minecraft-launcher; mode "default"
+    bindsym s exec steam; mode "default"
+    bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -146,53 +145,51 @@ mode "$games" {
 set $entertainment Action: [l]bry [n]ewsboat [p]ipe-viewer [y]tfzf
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
-    bindsym l $e lbry; workspace 9; mode "default"
-    bindsym n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace 9; mode "default"
-    bindsym p $e $term -e pipe-viewer; workspace 9; mode "default"
-    bindsym y $e $term -e ytfzf --detach; workspace 9; mode "default"
+    bindsym l exec lbry; workspace 9; mode "default"
+    bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace 9; mode "default"
+    bindsym p exec $term -e pipe-viewer; workspace 9; mode "default"
+    bindsym y exec $term -e ytfzf --detach; workspace 9; mode "default"
     bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace 9
-bindsym $mod+shift+p $e gtk-pipe-viewer
+bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 9
+bindsym $mod+shift+p exec gtk-pipe-viewer
 
 #Toggles
-bindsym XF86WLAN $e wifi toggle
-bindsym XF86Bluetooth $e bluetooth toggle
-bindsym $mod2+n $e toggler nm-applet
-bindsym $mod+shift+e $e toggler espanso
-bindsym $mod+grave $e dunstctl close
-# bindsym $mod2+r $e toggler redshift
+bindsym XF86WLAN exec wifi toggle
+bindsym XF86Bluetooth exec bluetooth off
+bindsym $mod2+n exec toggler nm-applet
+bindsym $mod+shift+e exec toggler espanso
+bindsym $mod+grave exec dunstctl close
+# bindsym $mod2+r exec toggler redshift
 
 #Utility
-bindsym $mod+t $e toggler todoist
-bindsym $mod2+h $e $term -e htop
-bindsym $mod2+d $e brave --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib # Swat Dash
-bindsym $mod2+s $e brave --profile-directory=Default --app-id=ikpmlgdcejalmjnfbahhijemkcgljabf # Snapdrop
-bindsym $mod+shift+c $e toggler calendar
-bindsym $mod2+c $e toggler bc
-# bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
-
+bindsym $mod+t exec toggler todoist
+bindsym $mod2+h exec $term -e htop
+bindsym $mod2+d exec gtk-launch dash
+bindsym $mod2+s exec gtk-launch snapdrop
+bindsym $mod+shift+c exec toggler calendar
+bindsym $mod2+c exec toggler bc
 
 # Screenshots
-bindsym --release Print $e grim --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
-bindsym --release $mod2+Print $e grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release Print exec grim --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------
 #--------------------------------------------------
 
 #Startup
-$e alacritty --class alacritty-server --title alacritty-server
-$e dunst
-$e blueman-applet
-# $e mailspring
-$e libinput-gestures-setup start
+exec alacritty --class alacritty-server --title alacritty-server
+exec dunst
+exec blueman-applet
+# exec mailspring
+exec libinput-gestures-setup start
 
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] resize set 800 500
-for_window [class="Pavucontrol"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="blueman-manager"] resize set 800 500
+for_window [app_id="pavucontrol"] floating enable
 
 assign [title="Tor Browser"] 7
 assign [class="discord"] 8
@@ -210,13 +207,13 @@ assign [title="spt"] 10
 for_window [title="radio-mpv"] move scratchpad
 
 #Alacritty Server
-for_window [title="alacritty-server"] move scratchpad
+for_window [app_id="alacritty-server"] move scratchpad
 
 #Vimwiki
-for_window [title="notes"] floating enable
-for_window [title="notes"] resize set 1200 900
-for_window [title="notes"] move scratchpad
-for_window [title="notes"] border pixel 8
+for_window [app_id="notes"] floating enable
+for_window [app_id="notes"] resize set 1200 900
+for_window [app_id="notes"] move scratchpad
+for_window [app_id="notes"] border pixel 8
 
 #Todoist
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
@@ -233,10 +230,10 @@ for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] move scratchpad
 for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] floating enable
 for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] resize set 1900 1020
 
-for_window [instance="calc"] floating enable
-for_window [instance="calc"] resize set 800 400
-for_window [instance="calc"] move scratchpad
-for_window [instance="calc"] border pixel 8
+for_window [app_id="calc"] floating enable
+for_window [app_id="calc"] resize set 800 400
+for_window [app_id="calc"] move scratchpad
+for_window [app_id="calc"] border pixel 8
 
 #--------------------------------------------------
 #-------------------Movement---------------------
@@ -336,18 +333,18 @@ bar {
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp $e xbacklight -inc .5
-bindsym XF86MonBrightnessDown $e xbacklight -dec .5
-bindsym $mod2+j $e xbacklight -dec 1
-bindsym $mod2+k $e xbacklight -inc 1
-bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc .5
+bindsym XF86MonBrightnessDown exec xbacklight -dec .5
+bindsym $mod2+j exec xbacklight -dec 1
+bindsym $mod2+k exec xbacklight -inc 1
+bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 #--------------------------------------------------
 #-------------------Theming---------------------
