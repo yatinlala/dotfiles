@@ -378,7 +378,7 @@ client.urgent #cc241d #cc241d #ebdbb2 #282828
 #--------------------------------------------------
 input "type:keyboard" {
     xkb_layout us
-    xkb_options altwin:swap_lalt_lwin,caps:escape
+    xkb_options altwin:swap_alt_win,caps:escape
 }
 input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
     natural_scroll enabled
