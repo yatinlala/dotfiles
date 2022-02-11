@@ -4,13 +4,12 @@ echo  "[a]wesome [i]3wm [s]way"
 
 read input
 
-if [ $input = "a" ]
+if [ "$input" = "a" ]
 then
     startx "$HOME/.config/X11/xinitrc.awesome"
-elif [ $input = "i" ]
+elif [ "$input" = "i" ]
 then
     startx "$HOME/.config/X11/xinitrc.i3"
-elif [ $input ="s" ]
-then
-    echo "Not set up yet."
+else
+    sway
 fi

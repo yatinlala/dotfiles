@@ -2,8 +2,8 @@
 TERMINAL='alacritty msg create-window'
 case $1 in
     bc)
-        pgrep -x bc || $TERMINAL -t calc -e bc -lq
-        i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
+        pgrep -x bc || $TERMINAL -t calc --class calc -e bc -lq
+        i3-msg "[app_id=calc] scratchpad show; [app_id=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \
         (gtk-launch calendar; sleep 1)
@@ -20,7 +20,7 @@ case $1 in
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "point Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
-        i3-msg workspace 1:;;
+        i3-msg workspace 1;;
     music)
         if pgrep -x "spotify" >/dev/null || pgrep -x "cmus" >/dev/null
         then
@@ -34,8 +34,9 @@ case $1 in
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
-        wmctrl -l | grep -q "point notes" || \
-        $TERMINAL -t notes -e nvim ~/documents/wiki/index.md
+        # wmctrl -l | grep -q "point notes" || \
+        swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        $TERMINAL --class notes -t notes -e nvim ~/documents/wiki/index.md
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
@@ -45,12 +46,12 @@ case $1 in
         (notify-send "Starting spotifyd."; setsid spotifyd &);;
     spotifyd-spt) 
         (killall -q spotifyd && setsid spotifyd &) || setsid spotifyd &
-        (killall -q spt && i3-msg 'workspace 10:') || i3-msg 'workspace 10:'
+        (killall -q spt && i3-msg 'workspace 10') || i3-msg 'workspace 10'
         $TERMINAL -t spt -e spt;;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt
-        i3-msg workspace 10:;;
+        i3-msg workspace 10;;
     todoist)
         wmctrl -l | grep -q "point Todoist" || (gtk-launch todoist; sleep 1)
         i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;
