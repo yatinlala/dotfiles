@@ -22,8 +22,9 @@ default_border pixel 4
 #--------------------------------------------------
 
 #Terminals
-bindsym $mod+Return exec $term
-bindsym $mod2+Return exec $term2
+bindsym $mod+return exec $term
+bindsym $mod+shift+return exec $term2
+bindsym $mod2+a exec alacritty --class alacritty-server --title alacritty-server
 
 #Menus
 bindsym $mod+space exec rofi -show drun -show-icons -drun-display-format {name}

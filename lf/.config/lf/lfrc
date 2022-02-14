@@ -26,11 +26,12 @@ set ignorecase true
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
-        application/pdf) /usr/bin/devour zathura "$f";;
-        video/*) /usr/bin/devour mpv --force-window=yes "$f";;
-        audio/*) /usr/bin/devour mpv --force-window=yes "$f";;
-        image/*) /usr/bin/devour feh --scale-down "$f";;
-        *) /usr/bin/devour xdg-open "$f" ;;
+        application/msword) setsid onlyoffice-desktopeditors "$f" &;;
+        application/pdf) setsid zathura "$f" &;;
+        video/*) setsid mpv --force-window=yes "$f" &;;
+        audio/*) setsid mpv --force-window=yes "$f" &;;
+        image/*) setsid feh --scale-down "$f" &;;
+        *) xdg-open "$f";;
     esac
 }}
 
