@@ -53,6 +53,7 @@ fd
 feh
 figlet
 flameshot
+flatpak
 flex
 fprintd
 fuse2
@@ -181,7 +182,6 @@ slop
 sof-firmware
 speedtest-cli
 sshfs
-steam
 stow
 sudo
 sway
@@ -224,6 +224,7 @@ upower
 urxvt-perls
 valgrind
 vlc
+vulkan-intel
 w3m
 wavpack
 wget

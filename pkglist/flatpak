@@ -1,0 +1,9 @@
+Steam	com.valvesoftware.Steam	1.0.0.74	stable	system
+Freedesktop Platform	org.freedesktop.Platform	21.08.10	21.08	system
+i386	org.freedesktop.Platform.Compat.i386		21.08	system
+Mesa	org.freedesktop.Platform.GL.default	21.3.5	21.08	system
+default	org.freedesktop.Platform.GL32.default		21.08	system
+Intel	org.freedesktop.Platform.VAAPI.Intel		21.08	system
+i386	org.freedesktop.Platform.VAAPI.Intel.i386		21.08	system
+openh264	org.freedesktop.Platform.openh264	2.1.0	2.0	system
+Adwaita dark GTK theme	org.gtk.Gtk3theme.Adwaita-dark		3.22	system
