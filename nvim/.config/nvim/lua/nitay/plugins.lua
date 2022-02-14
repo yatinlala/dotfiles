@@ -24,20 +24,30 @@ end
 return packer.startup({function(use)
     -- Theming
     use 'lifepillar/gruvbox8'
-    -- use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
     use {'tjdevries/express_line.nvim', requires = {'nvim-lua/plenary.nvim' } }
+    -- Visual
+    use 'goolord/alpha-nvim'
+    use 'akinsho/bufferline.nvim'
+    use 'folke/which-key.nvim'
+    use 'norcalli/nvim-colorizer.lua'
 
-    -- Navigation
-    use {'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzy-native.nvim' }, { 'kyazdani42/nvim-web-devicons' } } }
+    -- Movement
+    use {'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/popup.nvim' },
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-fzy-native.nvim' },
+            { 'kyazdani42/nvim-web-devicons' }}}
     use 'kyazdani42/nvim-tree.lua'
     use 'yashlala/vim-sayonara'
     --use 'ThePrimeagen/harpoon'
+    use 'phaazon/hop.nvim'
 
-    --Treesitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- Post-install/update hook with neovim command
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'williamboman/nvim-lsp-installer'
+    --Treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     -- Completion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
@@ -50,17 +60,14 @@ return packer.startup({function(use)
     use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
     use 'L3MON4D3/LuaSnip' --snippet engine
 
+    -- Git
+    use 'TimUntersberger/neogit'
+
     --Other
     use 'lewis6991/impatient.nvim'
-    use 'folke/which-key.nvim'
-    use 'norcalli/nvim-colorizer.lua'
-    use 'tpope/vim-fugitive'
     use 'vimwiki/vimwiki'
     use 'numToStr/Comment.nvim'
-    use 'akinsho/bufferline.nvim'
     use 'akinsho/toggleterm.nvim'
-    use 'goolord/alpha-nvim'
-    use 'phaazon/hop.nvim'
     use {
         'chipsenkbeil/distant.nvim',
         config = function()

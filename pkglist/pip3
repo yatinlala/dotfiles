@@ -109,7 +109,7 @@ pyzstd              0.15.0
 Reflector           2021.11.20.2.41.3
 regex               2021.11.10
 rencode             1.0.6
-requests            2.26.0
+requests            2.27.0
 resolvelib          0.5.5
 retrying            1.3.3
 rsa                 4.8
@@ -118,7 +118,7 @@ screenkey           1.5
 Send2Trash          1.8.0
 service-identity    21.1.0
 setproctitle        1.2.2
-setuptools          59.2.0
+setuptools          59.3.0
 sgmllib3k           1.0.0
 shtab               1.5.3
 six                 1.16.0
