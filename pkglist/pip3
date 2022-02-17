@@ -1,6 +1,7 @@
 Package             Version
 ------------------- -------------------------------------------------------------------------------
 anki                2.1.49
+apipkg              2.1.0
 appdirs             1.4.4
 apsw                3.36.0.post1
 aqt                 2.1.49
@@ -21,6 +22,7 @@ click               8.0.3
 colorama            0.4.4
 constantly          15.1.0
 contextlib2         0.6.0.post1
+coverage            6.1.1
 cryptography        36.0.1
 css-parser          1.0.6
 cssselect           1.1.0
@@ -47,6 +49,7 @@ idna                3.3
 ifaddr              0.1.7
 importlib-metadata  4.8.1
 incremental         21.3.0
+iniconfig           1.1.1
 itsdangerous        2.0.1
 jeepney             0.7.1
 Jinja2              3.0.3
@@ -60,7 +63,7 @@ Mako                1.1.6
 Markdown            3.3.6
 MarkupSafe          2.0.1
 mechanize           0.4.6
-meson               0.61.1
+meson               0.61.2
 more-itertools      8.10.0
 msgpack             1.0.3
 multivolumefile     0.2.3
@@ -68,17 +71,19 @@ mutagen             1.45.1
 netifaces           0.11.0
 oauth2client        4.1.3
 ordered-set         4.0.2
-orjson              3.6.6
+orjson              3.6.7
 packaging           20.9
 pdftotext           2.2.2
 pep517              0.12.0
 Pillow              9.0.1
 pip                 22.0.3
+pluggy              0.13.1
 ply                 3.11
 progress            1.6
 protobuf            3.19.4
 psutil              5.9.0
 pulsemixer          1.5.1
+py                  1.11.0
 py7zr               0.16.2
 pyasn1              0.4.8
 pyasn1-modules      0.2.8
@@ -95,11 +100,15 @@ PyGObject           3.42.0
 pyOpenSSL           21.0.0
 pyparsing           2.4.7
 pyppmd              0.17.1
+PyQRCode            1.2.1
 PyQt5               5.15.6
 PyQt5-sip           12.9.1
 PyQtWebEngine       5.15.5
 pyrsistent          0.18.1
 PySocks             1.7.1
+pytest              6.2.5
+pytest-cov          2.12.1
+pytest-runner       5.3.1
 python-dateutil     2.8.2
 python-xlib         0.31
 pytz                2021.3
@@ -109,7 +118,7 @@ pyzstd              0.15.0
 Reflector           2021.11.20.2.41.3
 regex               2021.11.10
 rencode             1.0.6
-requests            2.27.0
+requests            2.27.1
 resolvelib          0.5.5
 retrying            1.3.3
 rsa                 4.8
@@ -122,7 +131,7 @@ setuptools          59.3.0
 sgmllib3k           1.0.0
 shtab               1.5.3
 six                 1.16.0
-soupsieve           2.2.1
+soupsieve           2.3
 speedtest-cli       2.1.3
 stringcase          1.2.0
 team                1.0
