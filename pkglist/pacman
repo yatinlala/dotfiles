@@ -232,6 +232,7 @@ wget
 which
 wine-mono
 wine-staging
+wl-clipboard
 wmctrl
 wofi
 xcape
