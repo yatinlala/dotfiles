@@ -26,7 +26,6 @@ return packer.startup({function(use)
     use 'lifepillar/gruvbox8'
     use {'tjdevries/express_line.nvim', requires = {'nvim-lua/plenary.nvim' } }
     -- Visual
-    use 'goolord/alpha-nvim'
     use 'akinsho/bufferline.nvim'
     use 'folke/which-key.nvim'
     use 'norcalli/nvim-colorizer.lua'

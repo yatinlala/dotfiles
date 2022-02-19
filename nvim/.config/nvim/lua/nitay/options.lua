@@ -40,5 +40,5 @@ vim.cmd [[
     set whichwrap+=<,>,[,],h,l
     set iskeyword+=-
     autocmd BufEnter * set formatoptions-=cro
-    autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+    " autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 ]]
