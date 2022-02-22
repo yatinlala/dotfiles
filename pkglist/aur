@@ -9,13 +9,14 @@ devour
 downgrade
 dragon-drag-and-drop
 espanso
+eva
 fastfetch-git
 fontpreview-ueberzug-git
+grimshot
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 heroic-games-launcher-bin
 htim
-lbry-app-bin
 lf
 libinput-gestures
 librewolf-bin
@@ -52,5 +53,4 @@ urlview
 urxvt-resize-font-git
 visidata
 vscodium-bin
-ytfzf
 zoom
