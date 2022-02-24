@@ -1,9 +1,9 @@
 #!/usr/bin/sh -e
 TERMINAL='alacritty msg create-window'
 case $1 in
-    bc)
-        pgrep -x bc || $TERMINAL -t calc --class calc -e bc -lq
-        i3-msg "[app_id=calc] scratchpad show; [app_id=calc] move position center";;
+    eva)
+        pgrep -x eva || $TERMINAL -t calc --class calc -e eva
+        i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \
         (gtk-launch calendar; sleep 1)
@@ -36,7 +36,7 @@ case $1 in
     notes)
         # wmctrl -l | grep -q "point notes" || \
         swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL --class notes -t notes -e nvim ~/documents/wiki/index.md
+        $TERMINAL --class notes -t notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
