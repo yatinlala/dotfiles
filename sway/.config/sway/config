@@ -62,7 +62,7 @@ bindsym $mod+shift+slash exec toggler spotifyd
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a exec xdg-launch audacity; mode "default"
+    bindsym a exec audacity; mode "default"
     bindsym d exec ardour6; mode "default"
     bindsym e exec brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r exec reaper; mode "default"
@@ -80,7 +80,7 @@ mode "$music" {
 bindsym $mod+b exec brave --force-device-scale-factor=1
 bindsym $mod+shift+b exec librewolf
 bindsym $mod+shift+t exec torbrowser-launcher
-bindsym $mod+shift+w exec $term -e xdg-launch w3m "lite.duckduckgo.com/lite"
+bindsym $mod+shift+w exec $term -e w3m "lite.duckduckgo.com/lite"
 bindsym $mod2+l exec brave lesswrong.com
 
 #Communication
@@ -134,7 +134,7 @@ bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym h exec heroic; mode "default"
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m exec xdg-launch minecraft-launcher; mode "default"
+    bindsym m exec minecraft-launcher; mode "default"
     bindsym s exec flatpak run com.valvesoftware.Steam; mode "default"
     bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
@@ -143,13 +143,11 @@ mode "$games" {
 }
 
 #Video Entertainment
-set $entertainment Action: [l]bry [n]ewsboat [p]ipe-viewer [y]tfzf
+set $entertainment Action: [n]ewsboat [p]ipe-viewer
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
-    bindsym l exec lbry; workspace 9; mode "default"
     bindsym n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace 9; mode "default"
     bindsym p exec $term -e pipe-viewer; workspace 9; mode "default"
-    bindsym y exec $term -e ytfzf --detach; workspace 9; mode "default"
     bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -171,10 +169,12 @@ bindsym $mod2+h exec $term -e htop
 bindsym $mod2+d exec gtk-launch dash
 bindsym $mod2+s exec gtk-launch snapdrop
 bindsym $mod+shift+c exec toggler calendar
-bindsym $mod2+c exec toggler bc
+bindsym $mod2+c exec toggler eva
+bindsym $mod+comma exec clipman pick --tool=rofi
+bindsym $mod+shift+comma exec clipman clear --tool=rofi
 
 # Screenshots
-bindsym --release Print exec grim --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release Print exec grimshot copy area
 bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 #--------------------------------------------------
@@ -182,10 +182,10 @@ bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 #--------------------------------------------------
 
 #Startup
+exec wl-paste -t text --watch clipman store
 exec alacritty --class alacritty-server --title alacritty-server
 exec dunst
 exec blueman-applet
-# exec mailspring
 exec libinput-gestures-setup start
 
 for_window [app_id="blueman-manager"] floating enable
@@ -334,8 +334,8 @@ bar {
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc .5
-bindsym XF86MonBrightnessDown exec xbacklight -dec .5
+bindsym XF86MonBrightnessUp exec xbacklight -inc .6
+bindsym XF86MonBrightnessDown exec xbacklight -dec .6
 bindsym $mod2+j exec xbacklight -dec 1
 bindsym $mod2+k exec xbacklight -inc 1
 bindsym $mod+shift+a exec xbacklight -set .00206254 #Min Brightness
