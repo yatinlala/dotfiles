@@ -5,8 +5,6 @@ local subscribe = require "el.subscribe"
 local lsp_statusline = require "el.plugins.lsp_status"
 local diagnostic = require "el.diagnostic"
 
-local has_lsp_extensions, ws_diagnostics = pcall(require, "lsp_extensions.workspace.diagnostic")
-
 local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
   local icon = extensions.file_icon(_, bufnr)
   if icon then

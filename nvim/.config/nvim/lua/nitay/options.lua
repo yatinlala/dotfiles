@@ -39,6 +39,7 @@ vim.opt.shortmess:append "c" -- Get rid of "pattern not found" during completion
 vim.cmd [[
     set whichwrap+=<,>,[,],h,l
     set iskeyword+=-
+    set path +=**
     autocmd BufEnter * set formatoptions-=cro
-    " autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
+    autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 ]]

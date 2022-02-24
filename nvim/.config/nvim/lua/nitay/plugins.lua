@@ -25,6 +25,7 @@ return packer.startup({function(use)
     -- Theming
     use 'lifepillar/gruvbox8'
     use {'tjdevries/express_line.nvim', requires = {'nvim-lua/plenary.nvim' } }
+    use 'goolord/alpha-nvim'
     -- Visual
     use 'akinsho/bufferline.nvim'
     use 'folke/which-key.nvim'
@@ -37,10 +38,9 @@ return packer.startup({function(use)
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzy-native.nvim' },
             { 'kyazdani42/nvim-web-devicons' }}}
-    use 'kyazdani42/nvim-tree.lua'
     use 'yashlala/vim-sayonara'
     --use 'ThePrimeagen/harpoon'
-    use 'phaazon/hop.nvim'
+    use 'rlane/pounce.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'

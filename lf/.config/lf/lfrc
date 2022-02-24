@@ -25,7 +25,12 @@ set ignorecase true
 # Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
+        text/*|application/json) 
+              if [ -n "$NVIM_LISTEN_ADDRESS" ] ; then
+                  nvr --remote-tab "$f"
+              else
+                  exec $EDITOR "$f"
+              fi;;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
         application/pdf) setsid zathura "$f" &;;
         video/*) setsid mpv --force-window=yes "$f" &;;
