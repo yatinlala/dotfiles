@@ -159,7 +159,7 @@ bindsym $mod+shift+p $e gtk-pipe-viewer
 #Toggles
 bindsym XF86WLAN $e wifi toggle
 bindsym XF86Bluetooth $e bluetooth off
-bindsym $mod2+b $e bluetooth on; $e blueman-manager
+bindsym $mod2+b $e bluetooth on; $e sleep .1 && blueman-manager
 bindsym $mod2+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
