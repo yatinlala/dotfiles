@@ -1,0 +1,5 @@
+cargo-update v8.1.2:
+    cargo-install-update
+    cargo-install-update-config
+distant v0.15.1:
+    distant
