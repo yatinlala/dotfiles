@@ -1,7 +1,6 @@
 vim.cmd [[
-highlight Normal guibg=none
-let s:enabled = 0
-set background=dark
+    highlight Normal guibg=none
+    set background=dark
 ]]
 
 local colorscheme = "gruvbox8_soft"

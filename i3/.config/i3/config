@@ -62,7 +62,7 @@ bindsym $mod+shift+slash $e toggler spotifyd
 set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e audacity; mode "default"
+    bindsym a $e flatpak run org.audacityteam.Audacity; mode "default"
     bindsym d $e ardour6; mode "default"
     bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r $e reaper; mode "default"
@@ -78,7 +78,6 @@ mode "$music" {
 
 #Browser
 bindsym $mod+b $e brave --force-device-scale-factor=1
-bindsym $mod+shift+b $e librewolf
 bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e w3m "lite.duckduckgo.com/lite"
 bindsym $mod2+l $e brave lesswrong.com
@@ -134,7 +133,7 @@ bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m $e minecraft-launcher; mode "default"
+    bindsym m $e flatpak run com.mojang.Minecraft; mode "default"
     bindsym s $e steam; mode "default"
     bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
@@ -159,8 +158,8 @@ bindsym $mod+shift+p $e gtk-pipe-viewer
 #Toggles
 bindsym XF86WLAN $e wifi toggle
 bindsym XF86Bluetooth $e bluetooth off
-bindsym $mod2+b $e bluetooth on; $e sleep .1 && blueman-manager
-bindsym $mod2+n $e toggler nm-applet
+bindsym $mod+shift+b $e bluetooth on; $e sleep .1 && blueman-manager
+bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 bindsym $mod2+r $e toggler redshift

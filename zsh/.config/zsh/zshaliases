@@ -3,7 +3,6 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias info='info --vi-keys'
 alias bc='bc -lq'
-alias neofetch='fastfetch'
 alias tetris='netris -k "hHklLJjs frn"'
 #Rustify
 alias du='dust'

@@ -270,7 +270,6 @@ map gv cd ~/videos
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
-map glx cd ~/.local/xdgify
 map glu cd ~/.local/usb
 
 map gu<space> cd /usr
