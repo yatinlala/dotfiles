@@ -38,6 +38,7 @@ dash
 deluge-gtk
 discord
 dmidecode
+docker
 docker-compose
 dog
 dosfstools
@@ -237,7 +238,6 @@ wine-mono
 wine-staging
 wl-clipboard
 wmctrl
-wofi
 xcape
 xcolor
 xdg-desktop-portal-wlr
