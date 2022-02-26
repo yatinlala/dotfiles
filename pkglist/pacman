@@ -5,7 +5,6 @@ alsa-firmware
 alsa-utils
 amfora
 arandr
-ardour
 asp
 autoconf
 automake
@@ -92,6 +91,7 @@ id3lib
 imagemagick
 intel-undervolt
 isync
+jdk-openjdk
 kdeconnect
 lib32-giflib
 lib32-gnutls

@@ -59,11 +59,11 @@ disable = ["git_repos"]
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 "Update pacman pkglist" = "pacman -Qqe | grep -v \"$(pacman -Qqm)\" > ~/.dotfiles/pkglist/pacman"
-"Update aur pkglist" = "pacman -Qqm > ~/.dotfiles/pkglist/aur; echo \"Updated AUR list.\""
-"Update cargo pkglist" = "cargo install --list > ~/.dotfiles/pkglist/cargo; echo \"Updated cargo list.\""
-"Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm; echo \"Updated npm list.\""
-"Update pip pkglist" = "pip3 list > ~/.dotfiles/pkglist/pip3; echo \"Updated pip3 list.\""
-"Update flatpak pkglist" = "flatpak list > ~/.dotfiles/pkglist/flatpak; echo \"Updated flatpak list.\""
+"Update aur pkglist" = "pacman -Qqm > ~/.dotfiles/pkglist/aur"
+"Update cargo pkglist" = "cargo install --list > ~/.dotfiles/pkglist/cargo"
+"Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm"
+"Update pip pkglist" = "pip3 list > ~/.dotfiles/pkglist/pip3"
+"Update flatpak pkglist" = "flatpak list > ~/.dotfiles/pkglist/flatpak"
 
 [brew]
 #greedy_cask = true

@@ -25,7 +25,7 @@ for_window [class="^.*"] border pixel 4
 
 #Terminals
 bindsym $mod+Return $e $term
-bindsym $mod2+Return $e $term2
+bindsym $mod+shift+Return $e $term2
 
 #Menus
 bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
@@ -33,13 +33,11 @@ bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
 
 #Camera and Audio
-bindsym $mod2+v $e guvcview
 bindsym $mod+shift+v $e pavucontrol
 
 #Editor
-bindsym $mod+i $e $term -e nvim
+bindsym $mod+e $e $term -e nvim
 bindsym $mod+shift+i $e $term -e sudo nvim
-bindsym $mod+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+shift+o $e obsidian
 bindsym $mod3+c $e vscodium
@@ -47,7 +45,6 @@ bindsym $mod+w $e toggler notes
 
 #File Manager
 bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
-bindsym $mod2+f $e nautilus
 
 #Audio Consumption
 bindsym $mod+s $e toggler music
@@ -59,11 +56,10 @@ bindsym $mod+slash $e toggler spotifyd-spt
 bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
-set $music Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
+set $music Action: [a]udacity [e]artraining [r]eaper rofi-[b]eats [c]mus [n]uclear [s]potify s[p]otify-tui
 bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a $e flatpak run org.audacityteam.Audacity; mode "default"
-    bindsym d $e ardour6; mode "default"
     bindsym e $e brave --profile-directory=Default --app-id=acboifakfdfbjokchjihkcebeejogheg; mode "default"
     bindsym r $e reaper; mode "default"
     bindsym b $e rofi-beats; mode "default"
@@ -125,7 +121,7 @@ mode "$reboot" {
     bindsym Escape mode "default"
     bindsym Return $e reboot
 }
-bindsym $mod2+i $e i3lock -i ~/pictures/wallpapers/mountains.png
+bindsym $mod+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
