@@ -129,7 +129,7 @@ bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m $e flatpak run com.mojang.Minecraft; mode "default"
+    bindsym m $e xdg-launch minecraft-launcher; mode "default"
     bindsym s $e steam; mode "default"
     bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
