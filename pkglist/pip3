@@ -52,7 +52,7 @@ itsdangerous        2.0.1
 jeepney             0.7.1
 Jinja2              3.0.3
 jsonschema          3.2.0
-lensfun             0.3.95
+lensfun             0.3.3
 libtorrent          2.0.5-build-libtorrent-rasterbar-src-libtorrent-rasterbar-2.0.5-bindings-python
 louis               3.20.0
 lutris              0.5.9.1
@@ -94,7 +94,7 @@ Pygments            2.11.2
 PyGObject           3.42.0
 pynvim              0.4.3
 pyOpenSSL           21.0.0
-pyparsing           3.0.0
+pyparsing           3.0.1
 pyppmd              0.17.1
 PyQt5               5.15.6
 PyQt5-sip           12.9.1

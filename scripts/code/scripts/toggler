@@ -1,8 +1,8 @@
 #!/usr/bin/sh -e
 TERMINAL='alacritty msg create-window'
 case $1 in
-    eva)
-        pgrep -x eva || $TERMINAL -t calc --class calc -e eva
+    bc)
+        pgrep -x bc || $TERMINAL -t calc --class calc -e bc
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \

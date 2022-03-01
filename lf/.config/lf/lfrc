@@ -33,8 +33,8 @@ cmd open ${{
               fi;;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
         application/pdf) setsid zathura "$f" &;;
-        video/*) setsid mpv --force-window=yes "$f" &;;
-        audio/*) setsid mpv --force-window=yes "$f" &;;
+        video/*) devour mpv --force-window=yes "$f" &;;
+        audio/*) devour mpv --force-window=yes "$f" &;;
         image/*) setsid feh --scale-down "$f" &;;
         *) xdg-open "$f";;
     esac
