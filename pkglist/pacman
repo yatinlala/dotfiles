@@ -56,7 +56,6 @@ fakeroot
 fd
 feh
 figlet
-flameshot
 flatpak
 flex
 fprintd
@@ -150,6 +149,7 @@ openal
 opusfile
 os-prober
 pacman-contrib
+pamixer
 pandoc
 pass
 pass-otp
@@ -231,6 +231,7 @@ urxvt-perls
 valgrind
 vlc
 vulkan-intel
+w3m
 wavpack
 wget
 which
