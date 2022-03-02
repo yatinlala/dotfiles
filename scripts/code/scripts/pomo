@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+echo "" > $XDG_CACHE_HOME/pomo.cache
+
+notify-send "Start work!"
+
+wifi off
+
+secs=$((5 * 60))
+while [ $secs -gt 0 ]; do
+   echo -ne " $secs" > $XDG_CACHE_HOME/pomo.cache
+   sleep 10
+   ((secs-=10))
+done
+
+echo "" > $XDG_CACHE_HOME/pomo.cache
+
+wifi on
+
+notify-send "Done!"

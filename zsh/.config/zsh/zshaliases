@@ -14,7 +14,7 @@ alias grep='grep --color=auto'
 
 #Shorten frequently used commands
 alias e='nvim'
-alias t='todoist'
+alias t='tmux'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias ka='killall'

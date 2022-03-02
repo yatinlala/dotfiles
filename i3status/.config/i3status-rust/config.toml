@@ -7,6 +7,13 @@ max_width = 90
 show_marks = "visible"
 
 [[block]]
+block = "custom"
+command = "cat ~/.cache/pomo.cache"
+watch_files = ["~/.cache/pomo.cache"]
+interval = "once"
+hide_when_empty = false
+
+[[block]]
 block = "backlight"
 device = "intel_backlight"
 step_width = 10
@@ -25,8 +32,8 @@ interface_name_include = []
 [[block]]
 block = "weather"
 format = "{weather} {temp}"
-service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }
-#service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }
+service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }   # Swarthmore
+#service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }  # Palo Alto
 
 # [[block]]
 # block = "maildir"

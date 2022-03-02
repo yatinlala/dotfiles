@@ -2,7 +2,7 @@
 TERMINAL='alacritty msg create-window'
 case $1 in
     bc)
-        pgrep -x bc || $TERMINAL -t calc --class calc -e bc
+        pgrep -x bc -q || $TERMINAL -t calc --class calc -e bc
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \
@@ -22,25 +22,18 @@ case $1 in
         setsid mailspring &)) || setsid mailspring &
         i3-msg workspace 1;;
     music)
-        if pgrep -x "spotify" >/dev/null || pgrep -x "cmus" >/dev/null
-        then
-            playerctl --player=spotify,cmus play-pause
-        elif pgrep -x "spotifyd">/dev/null
-        then
-            playerctl --player=spotifyd play-pause
-        else
-            i3-msg mode "Action: [a]udacity ar[d]our [e]artraining [r]eaper | rofi-[b]eats [c]mus [s]potify s[p]otify-tui"
-        fi;;
+        pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
+        i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus s[p]otify-tui [r]eaper [s]potify";;
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
-        # wmctrl -l | grep -q "point notes" || \
-        swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        wmctrl -l | grep -q "point notes" || \
+        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL --class notes -t notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift);;
+        (notify-send "Starting Redshift."; setsid redshift -b 1:.5);;
     spotifyd)
         pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
         (notify-send "Starting spotifyd."; setsid spotifyd &);;

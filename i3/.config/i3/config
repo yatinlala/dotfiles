@@ -37,7 +37,6 @@ bindsym $mod+shift+v $e pavucontrol
 
 #Editor
 bindsym $mod+e $e $term -e nvim
-bindsym $mod+shift+i $e $term -e sudo nvim
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+shift+o $e obsidian
 bindsym $mod3+c $e vscodium
@@ -73,7 +72,7 @@ mode "$music" {
 #Browser
 bindsym $mod+b $e brave --force-device-scale-factor=1
 bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e w3m "lite.duckduckgo.com/lite"
+bindsym $mod+shift+w $e $term -e w3m -v
 bindsym $mod2+l $e brave lesswrong.com
 
 #Communication
@@ -119,7 +118,7 @@ mode "$reboot" {
     bindsym Escape mode "default"
     bindsym Return $e reboot
 }
-bindsym $mod+i $e i3lock -i ~/pictures/wallpapers/mountains.png
+bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
@@ -136,18 +135,18 @@ mode "$games" {
 }
 
 #Video Entertainment
-set $entertainment Action: [n]ewsboat [p]ipe-viewer [y]tfzf
+set $entertainment Action: [g]tk-pipe-viewer [n]ewsboat [p]ipe-viewer
 bindsym $mod+n mode "$entertainment"
 mode "$entertainment" {
+    bindsym g $e gtk-pipe-viewer; workspace $ws9; mode "default"
     bindsym n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
     bindsym p $e $term -e pipe-viewer; workspace $ws9; mode "default"
-    bindsym y $e $term -e ytfzf --detach; workspace $ws9; mode "default"
     bindsym $mod+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
-bindsym $mod+shift+p $e gtk-pipe-viewer
+bindsym $mod+shift+p $e pomo
 
 #Toggles
 bindsym XF86WLAN $e wifi toggle
@@ -348,10 +347,8 @@ bindsym $mod2+j $e xbacklight -3
 bindsym $mod2+k $e xbacklight +3
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
-# Use pactl to adjust volume in PulseAudio.
-# set $refresh_i3status killall -SIGUSR1 i3status-rs
-bindsym XF86AudioRaiseVolume $e pactl set-sink-volume @DEFAULT_SINK@ +1% # && $refresh_i3status
-bindsym XF86AudioLowerVolume $e pactl set-sink-volume @DEFAULT_SINK@ -5% # && $refresh_i3status
+bindsym XF86AudioRaiseVolume $e pamixer -i 1
+bindsym XF86AudioLowerVolume $e pamixer -d 5
 
 bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle # && $refresh_i3status
 bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $refresh_i3status
