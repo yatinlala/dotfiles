@@ -146,7 +146,7 @@ mode "$entertainment" {
     bindsym Return mode "default"
 }
 bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
-bindsym $mod+shift+p $e pomo
+bindsym XF86Tools $e pomo
 
 #Toggles
 bindsym XF86WLAN $e wifi toggle

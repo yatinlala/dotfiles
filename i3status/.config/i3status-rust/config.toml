@@ -9,7 +9,7 @@ show_marks = "visible"
 [[block]]
 block = "custom"
 command = "cat ~/.cache/pomo.cache"
-watch_files = ["~/.cache/pomo.cache"]
+signal = 4
 interval = "once"
 hide_when_empty = false
 
