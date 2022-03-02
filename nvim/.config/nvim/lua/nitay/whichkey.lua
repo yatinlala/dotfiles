@@ -84,7 +84,6 @@ local mappings = {
         "buffers",
     },
     c = { "<cmd>lcd %:p:h<cr>", "lcd to current dir"},
-    e = { "<cmd>lua _LF_TOGGLE()<cr>", "LF" },
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },

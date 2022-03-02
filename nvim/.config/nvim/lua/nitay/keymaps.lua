@@ -18,6 +18,9 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- Pounce around
 map("n", "s", ":Pounce<cr>", opts)
 
+-- Explore!
+map("n", "<C-a>", ":lua _LF_TOGGLE()<cr>", opts)
+
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)
