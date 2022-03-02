@@ -6,11 +6,18 @@ notify-send "Start work!"
 
 wifi off
 
-secs=$((5 * 60))
-while [ $secs -gt 0 ]; do
-   echo -ne " $secs" > $XDG_CACHE_HOME/pomo.cache
-   sleep 10
-   ((secs-=10))
+min=5
+sec=0
+
+while [ $min -ge 0 ]; do
+    while [ $sec -ge 0 ]; do
+        echo " $min:$sec" > $XDG_CACHE_HOME/pomo.cache
+        pkill -SIGRTMIN+4 i3status-rs
+        let "sec=sec-1"
+        sleep 1
+    done
+    sec=59
+    let "min=min-1"
 done
 
 echo "" > $XDG_CACHE_HOME/pomo.cache
