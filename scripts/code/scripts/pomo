@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Don't terminate
+trap -- '' SIGINT SIGTERM
+
 echo "" > $XDG_CACHE_HOME/pomo.cache
 
 notify-send "Start work!"
@@ -14,6 +17,7 @@ while [ $min -ge 0 ]; do
         echo " $min:$sec" > $XDG_CACHE_HOME/pomo.cache
         pkill -SIGRTMIN+4 i3status-rs
         let "sec=sec-1"
+        wifi off
         sleep 1
     done
     sec=59
@@ -21,6 +25,7 @@ while [ $min -ge 0 ]; do
 done
 
 echo "" > $XDG_CACHE_HOME/pomo.cache
+pkill -SIGRTMIN+4 i3status-rs
 
 wifi on
 

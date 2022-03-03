@@ -147,6 +147,8 @@ mode "$entertainment" {
 }
 bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
 bindsym XF86Tools $e pomo
+bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
+
 
 #Toggles
 bindsym XF86WLAN $e wifi toggle
