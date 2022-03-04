@@ -22,7 +22,6 @@ blueman
 bluez
 bluez-utils
 browserpass-chromium
-btop
 cabextract
 calibre
 ccls
@@ -44,6 +43,7 @@ dosfstools
 dune
 dunst
 dust
+ed
 efibootmgr
 egl-wayland
 electron16
@@ -179,7 +179,6 @@ rofi
 rofi-pass
 rsync
 rustup
-rxvt-unicode
 screenkey
 scrot
 signal-desktop
@@ -227,7 +226,6 @@ unittestpp
 unrar
 unzip
 upower
-urxvt-perls
 valgrind
 vlc
 vulkan-intel

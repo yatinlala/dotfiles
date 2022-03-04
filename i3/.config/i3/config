@@ -7,8 +7,8 @@ set $e exec --no-startup-id
 set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
-set $term alacritty msg create-window
-set $term2 urxvt
+set $term urxvtc
+set $term2 alacritty msg create-window
 
 floating_modifier $mod
 

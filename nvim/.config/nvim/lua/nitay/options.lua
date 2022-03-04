@@ -41,5 +41,4 @@ vim.cmd [[
     set iskeyword+=-
     set path +=**
     autocmd BufEnter * set formatoptions-=cro
-    autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 ]]

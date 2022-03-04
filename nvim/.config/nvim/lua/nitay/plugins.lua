@@ -24,7 +24,6 @@ end
 return packer.startup({function(use)
     -- Theming
     use 'lifepillar/gruvbox8'
-    use {'tjdevries/express_line.nvim', requires = {'nvim-lua/plenary.nvim' } }
     use 'goolord/alpha-nvim'
     -- Visual
     use 'akinsho/bufferline.nvim'

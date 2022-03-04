@@ -79,7 +79,7 @@ progress            1.6
 protobuf            3.19.4
 psutil              5.9.0
 pulsemixer          1.5.1
-py7zr               0.16.2
+py7zr               0.17.4
 pyasn1              0.4.8
 pyasn1-modules      0.2.8
 pycairo             1.20.1
@@ -95,7 +95,7 @@ PyGObject           3.42.0
 pynvim              0.4.3
 pyOpenSSL           21.0.0
 pyparsing           3.0.1
-pyppmd              0.17.1
+pyppmd              0.17.3
 PyQt5               5.15.6
 PyQt5-sip           12.9.1
 PyQtWebEngine       5.15.5
@@ -106,7 +106,7 @@ python-xlib         0.31
 pytz                2021.3
 pyxdg               0.27
 PyYAML              6.0
-pyzstd              0.15.0
+pyzstd              0.15.2
 Reflector           2021.11.20.2.41.3
 regex               2021.11.10
 rencode             1.0.6

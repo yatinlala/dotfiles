@@ -17,6 +17,7 @@ heroic-games-launcher-bin
 htim
 lf
 libinput-gestures
+libptytty
 librewolf-bin
 mailspring
 minecraft-launcher
@@ -34,6 +35,7 @@ python-stringcase
 qdirstat-bin
 reaper-bin
 rpi-imager
+rxvt-unicode-truecolor-wide-glyphs
 safeeyes
 sc-im
 siji-git
@@ -46,7 +48,6 @@ ttf-ms-fonts
 ttf-unifont
 ttf-vista-fonts
 urlview
-urxvt-resize-font-git
 visidata
 vscodium-bin
 zoom
