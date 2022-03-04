@@ -181,6 +181,7 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 
 #Startup
 $e picom
+$e urxvtd -q
 $e alacritty --title alacritty-server
 $e dunst
 $e blueman-applet

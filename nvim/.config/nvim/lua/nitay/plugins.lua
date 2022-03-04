@@ -40,6 +40,7 @@ return packer.startup({function(use)
     use 'yashlala/vim-sayonara'
     --use 'ThePrimeagen/harpoon'
     use 'rlane/pounce.nvim'
+    use {'is0n/fm-nvim'}
 
     -- LSP
     use 'neovim/nvim-lspconfig'
