@@ -134,6 +134,7 @@ nautilus
 ncdu
 neofetch
 neomutt
+neovim
 network-manager-applet
 networkmanager
 newsboat
@@ -288,7 +289,6 @@ xorg-xwud
 youtube-dl
 zathura
 zathura-pdf-poppler
-zoxide
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting

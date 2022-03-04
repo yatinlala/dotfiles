@@ -1,95 +1,171 @@
-local builtin = require "el.builtin"
-local extensions = require "el.extensions"
-local sections = require "el.sections"
-local subscribe = require "el.subscribe"
-local lsp_statusline = require "el.plugins.lsp_status"
-local diagnostic = require "el.diagnostic"
+-- https://nuxsh.is-a.dev/blog/custom-nvim-statusline.html
 
-local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
-  local icon = extensions.file_icon(_, bufnr)
-  if icon then
-    return icon .. " "
-  end
+local fn = vim.fn
+local api = vim.api
 
-  return ""
-end)
+local modes = {
+    ["n"] = "NORMAL",
+    ["no"] = "NORMAL",
+    ["v"] = "VISUAL",
+    ["V"] = "VISUAL LINE",
+    [""] = "VISUAL BLOCK",
+    ["s"] = "SELECT",
+    ["S"] = "SELECT LINE",
+    [""] = "SELECT BLOCK",
+    ["i"] = "INSERT",
+    ["ic"] = "INSERT",
+    ["R"] = "REPLACE",
+    ["Rv"] = "VISUAL REPLACE",
+    ["c"] = "COMMAND",
+    ["cv"] = "VIM EX",
+    ["ce"] = "EX",
+    ["r"] = "PROMPT",
+    ["rm"] = "MOAR",
+    ["r?"] = "CONFIRM",
+    ["!"] = "SHELL",
+    ["t"] = "TERMINAL",
+}
 
-local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
-  local branch = extensions.git_branch(window, buffer)
-  if branch then
-    return " " .. extensions.git_icon() .. " " .. branch
-  end
-end)
-
-local git_changes = subscribe.buf_autocmd("el_git_changes", "BufWritePost", function(window, buffer)
-  return extensions.git_changes(window, buffer)
-end)
-
-local show_current_func = function(window, buffer)
-  if buffer.filetype == "lua" then
-    return ""
-  end
-
-  return lsp_statusline.current_function(window, buffer)
+local function mode()
+    local current_mode = api.nvim_get_mode().mode
+    return string.format(" %s ", modes[current_mode]):upper()
 end
 
-local minimal_status_line = function(_, buffer)
-  if string.find(buffer.name, "sourcegraph/sourcegraph") then
-    return true
-  end
+local function update_mode_colors()
+    local current_mode = api.nvim_get_mode().mode
+    local mode_color = "%#StatusLineAccent#"
+    if current_mode == "n" then
+        mode_color = "%#StatuslineAccent#"
+    elseif current_mode == "i" or current_mode == "ic" then
+        mode_color = "%#StatuslineInsertAccent#"
+    elseif current_mode == "v" or current_mode == "V" or current_mode == "" then
+        mode_color = "%#StatuslineVisualAccent#"
+    elseif current_mode == "R" then
+        mode_color = "%#StatuslineReplaceAccent#"
+    elseif current_mode == "c" then
+        mode_color = "%#StatuslineCmdLineAccent#"
+    elseif current_mode == "t" then
+        mode_color = "%#StatuslineTerminalAccent#"
+    end
+    return mode_color
 end
 
-local diagnostic_display = diagnostic.make_buffer()
+local function filepath()
+    local fpath = fn.fnamemodify(fn.expand "%", ":~:.:h")
+    if fpath == "" or fpath == "." then
+        return " "
+    end
 
-require("el").setup {
-  generator = function(window, buffer)
-    local is_minimal = minimal_status_line(window, buffer)
+    return string.format(" %%<%s/", fpath)
+end
 
-    local mode = extensions.gen_mode { format_string = " %s " }
+local function filename()
+    local fname = fn.expand "%:t"
+    if fname == "" then
+        return ""
+    end
+    return fname .. " "
+end
 
-    local items = {
-      { mode, required = true },
-      { git_branch },
-      { " " },
-      { sections.split, required = true },
-      { git_icon },
-      { sections.maximum_width(builtin.make_responsive_file(140, 90), 0.40), required = true },
-      { sections.collapse_builtin { { " " }, { builtin.modified_flag } } },
-      { sections.split, required = true },
-      { diagnostic_display },
-      { show_current_func },
-      -- { lsp_statusline.server_progress },
-      -- { ws_diagnostic_counts },
-      { git_changes },
-      { "[" },
-      { builtin.line_with_width(3) },
-      { ":" },
-      { builtin.column_with_width(2) },
-      { "]" },
-      {
-        sections.collapse_builtin {
-          "[",
-          builtin.help_list,
-          builtin.readonly_list,
-          "]",
-        },
-      },
-      { builtin.filetype },
+function lsp()
+    local count = {}
+    local levels = {
+        errors = "Error",
+        warnings = "Warn",
+        info = "Info",
+        hints = "Hint",
     }
 
-    local add_item = function(result, item)
-      if is_minimal and not item.required then
-        return
-      end
-
-      table.insert(result, item)
+    for k, level in pairs(levels) do
+        count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
     end
 
-    local result = {}
-    for _, item in ipairs(items) do
-      add_item(result, item)
+    local errors = ""
+    local warnings = ""
+    local hints = ""
+    local info = ""
+
+    if count["errors"] ~= 0 then
+        errors = " %#LspDiagnosticsSignError# " .. count["errors"]
+    end
+    if count["warnings"] ~= 0 then
+        warnings = " %#LspDiagnosticsSignWarning# " .. count["warnings"]
+    end
+    if count["hints"] ~= 0 then
+        hints = " %#LspDiagnosticsSignHint# " .. count["hints"]
+    end
+    if count["info"] ~= 0 then
+        info = " %#LspDiagnosticsSignInformation# " .. count["info"]
     end
 
-    return result
-  end,
-}
+    return errors .. warnings .. hints .. info .. "%#Normal#"
+end
+
+local vcs = function()
+    local git_info = vim.b.gitsigns_status_dict
+    if not git_info or git_info.head == "" then
+        return ""
+    end
+    local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
+    local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
+    local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
+    if git_info.added == 0 then
+        added = ""
+    end
+    if git_info.changed == 0 then
+        changed = ""
+    end
+    if git_info.removed == 0 then
+        removed = ""
+    end
+    return table.concat {
+        " ",
+        added,
+        changed,
+        removed,
+        " ",
+        "%#GitSignsAdd# ",
+        git_info.head,
+        " %#Normal#",
+    }
+end
+
+local function filetype()
+    return string.format(" %s ", vim.bo.filetype):upper()
+end
+
+Statusline = {}
+
+Statusline.active = function()
+    return table.concat {
+        "%#Statusline#",
+        update_mode_colors(),
+        mode(),
+        "%#Normal# ",
+        filepath(),
+        filename(),
+        "%#Normal#",
+        "%=%#StatusLineExtra#",
+        lsp(),
+        vcs(),
+        filetype(),
+    }
+end
+
+function Statusline.inactive()
+    return " %F"
+end
+
+function Statusline.short()
+    return "%#StatusLineNC#   NvimTree"
+end
+
+
+api.nvim_exec([[
+  augroup Statusline
+  au!
+  au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
+  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
+  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
+  augroup END
+]], false)

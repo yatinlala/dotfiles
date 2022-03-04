@@ -1,8 +1,8 @@
 #!/usr/bin/sh -e
-TERMINAL='alacritty msg create-window'
+TERMINAL='urxvtc'
 case $1 in
     bc)
-        pgrep -x bc -q || $TERMINAL -t calc --class calc -e bc
+        pgrep -x bc -q || $TERMINAL -name calc calc -e bc
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     calendar)
         wmctrl -l | grep -q "point Google Calendar -" || \
@@ -29,7 +29,7 @@ case $1 in
     notes)
         wmctrl -l | grep -q "point notes" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL --class notes -t notes -e nvim ~/documents/wiki/index.md && sleep 0.05
+        $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
@@ -40,7 +40,7 @@ case $1 in
     spotifyd-spt) 
         (killall -q spotifyd && setsid spotifyd &) || setsid spotifyd &
         (killall -q spt && i3-msg 'workspace 10') || i3-msg 'workspace 10'
-        $TERMINAL -t spt -e spt;;
+        $TERMINAL -name spt -title spt -e spt;;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt

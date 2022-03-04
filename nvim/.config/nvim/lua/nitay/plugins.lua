@@ -61,6 +61,13 @@ return packer.startup({function(use)
 
     -- Git
     use 'TimUntersberger/neogit'
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        -- tag = 'release' -- To use the latest release
+    }
 
     --Other
     use 'lewis6991/impatient.nvim'

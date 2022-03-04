@@ -8,7 +8,7 @@ set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
 set $term urxvtc
-set $term2 alacritty msg create-window
+set $term2 alacritty
 
 floating_modifier $mod
 
@@ -182,7 +182,6 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 #Startup
 $e picom
 $e urxvtd -q
-$e alacritty --title alacritty-server
 $e dunst
 $e blueman-applet
 $e libinput-gestures-setup start
@@ -204,9 +203,6 @@ assign [title="spt"] $ws10
 
 #Rofi-Beats
 for_window [title="radio-mpv"] move scratchpad
-
-#Alacritty Server
-for_window [title="alacritty-server"] move scratchpad
 
 #Vimwiki
 for_window [title="notes"] floating enable
