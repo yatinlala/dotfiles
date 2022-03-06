@@ -9,7 +9,7 @@ URxvt.scrollTtyOutput:   false
 URxvt.scrollTtyKeypress: true
 
 urxvt*perl-lib:          /home/nitay/.config/urxvt
-URxvt.perl-ext-common:   default,clipboard,url-select,keyboard-select,resize-font,urxvt-colors
+URxvt.perl-ext-common:   default,clipboard,url-select,resize-font,urxvt-colors
 URxvt.iso14755:          false
 URxvt.iso14755_52:       false
 
@@ -20,17 +20,15 @@ URxvt.keysym.C-plus:     resize-font:reset
 URxvt.url-select.launcher:  xdg-open
 URxvt.url-select.underline: true
 
-URxvt.keysym.Control-u:             builtin-string:
-URxvt.keysym.Control-y:             builtin-string:
-URxvt.keysym.Control-Shift-u:       perl:url-select:select_next
-URxvt.keysym.Control-Escape:        perl:keyboard-select:activate
-URxvt.keysym.Control-Shift-Escape:  perl:keyboard-select:search
+URxvt.keysym.Mod4-Shift-U:       perl:url-select:select_next
 
 urxvt*dynamicColors: on
 urxvt.keysym.XF86Favorites: perl:urxvt-colors:next
 
-URxvt.keysym.Control-Shift-c: eval:selection_to_clipboard:
-URxvt.keysym.Control-Shift-v: eval:paste_clipboard:
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
