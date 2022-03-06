@@ -67,9 +67,3 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
-
-local lf = Terminal:new({ cmd = "lf .", hidden = true })
-
-function _LF_TOGGLE()
-	lf:toggle()
-end
