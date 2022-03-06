@@ -1,13 +1,8 @@
-#zmodload zsh/zprof
-
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
 zle_highlight=('paste:none')
 unsetopt BEEP # Beeping sucks
-
-#Source aliases
-source "$ZDOTDIR/zshaliases"
 
 # Enable colors and change prompt:
 autoload -Uz colors && colors	# Load colors
@@ -19,7 +14,7 @@ setopt interactive_comments
 # History in cache directory:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE="$XDG_CACHE_HOME"/zsh/history
+HISTFILE="$XDG_CACHE_HOME"/history.zsh
 
 # Basic auto/tab complete:
 autoload -Uz compinit
@@ -33,11 +28,10 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
 
 clear-screen-scrollback () {
   echo -ne '\033c' # clear scrollback buffer as well
@@ -100,7 +94,7 @@ zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
 fzf-jump-widget() {
-    xdg-open "'$(fd . ~/code ~/documents ~/.config/alacritty ~/.config/amfora ~/.config/awesome ~/.config/bat ~/.config/bpytop ~/.config/calcurse ~/.config/cmus ~/.config/dunst ~/.config/dynamic-colors ~/.config/espanso ~/.config/git ~/.config/gtk* ~/.config/guvcview2 ~/.config/htop ~/.config/i3 ~/.config/i3status-rust ~/.config/lf ~/.config/mutt ~/.config/newsboat ~/.config/notmuch ~/.config/npm ~/.config/nvim ~/.config/picom ~/.config/pipewire ~/.config/rofi ~/.config/sway ~/.config/tmux ~/.config/urxvt ~/.config/vlc ~/.config/X11 ~/.config/yarn ~/.config/ytfzf ~/.config/zathura ~/.config/zsh | fzf --height=40%)'"^M
+    xdg-open "'$(fd . ~/code ~/documents ~/.config | fzf --height=40%)'"^M
     zle reset-prompt
     echo -ne '\e[6 q'
 }
@@ -116,3 +110,7 @@ bindkey -M vicmd e edit-command-line
 ########## LOAD PLUGINS ##########
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#Source aliases
+source "$ZDOTDIR/zshaliases"
+

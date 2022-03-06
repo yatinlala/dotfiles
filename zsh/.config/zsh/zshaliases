@@ -7,7 +7,6 @@ alias tetris='netris -k "hHklLJjs frn"'
 #Rustify
 alias du='dust'
 alias ls='exa'
-#alias ps='procs'
 
 #Colorize!
 alias grep='grep --color=auto'

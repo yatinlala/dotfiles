@@ -2,10 +2,6 @@ typeset -U PATH path
 
 export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
 
-#YTFZF
-FZF_PLAYER="devour mpv"
-YTFZF_PLAYER_FORMAT="devour mpv --ytdl-format="
-
 # FZF
 export FZF_DEFAULT_OPTS='--cycle'
 #export FZF_DEFAULT_COMMAND='fd -H .'
