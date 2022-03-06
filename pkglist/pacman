@@ -167,7 +167,6 @@ pipewire-pulse
 pkgconf
 playerctl
 powerline-fonts
-procs
 pulsemixer
 python-httplib2
 python-oauth2client

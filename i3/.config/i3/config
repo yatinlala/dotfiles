@@ -151,8 +151,10 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 
 
 #Toggles
-bindsym XF86WLAN $e wifi toggle
+bindsym XF86WLAN $e wifi off
+bindsym shift+XF86WLAN $e wifi on
 bindsym XF86Bluetooth $e bluetooth off
+bindsym shift+XF86Bluetooth $e bluetooth on
 bindsym $mod+shift+b $e bluetooth on; $e sleep .1 && blueman-manager
 bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
@@ -166,8 +168,8 @@ bindsym $mod2+d $e gtk-launch dash
 bindsym $mod2+s $e gtk-launch snapdrop
 bindsym $mod+shift+c $e toggler calendar
 bindsym $mod2+c $e toggler bc
-bindsym $mod+comma exec clipman pick --tool=rofi
-bindsym $mod+shift+comma exec clipman clear --tool=rofi
+bindsym $mod+comma exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+bindsym $mod+shift+comma exec pkill greenclip && greenclip clear && greenclip daemon &
 bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 
@@ -183,6 +185,7 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 $e picom
 $e urxvtd -q
 $e dunst
+$e greenclip daemon
 $e blueman-applet
 $e libinput-gestures-setup start
 $e redshift
