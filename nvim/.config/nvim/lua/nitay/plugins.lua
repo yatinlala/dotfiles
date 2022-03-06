@@ -32,15 +32,18 @@ return packer.startup({function(use)
 
     -- Movement
     use {'nvim-telescope/telescope.nvim',
+        opt = true,
+        cmd = 'Telescope',
+        config = 'require(nitay.telescope)',
         requires = {
             { 'nvim-lua/popup.nvim' },
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzy-native.nvim' },
             { 'kyazdani42/nvim-web-devicons' }}}
-    use 'yashlala/vim-sayonara'
+    use { 'yashlala/vim-sayonara', opt = true, cmd = 'Sayonara', config = "require('nitay.sayonara'}" }
     --use 'ThePrimeagen/harpoon'
-    use 'rlane/pounce.nvim'
-    use {'is0n/fm-nvim'}
+    use { 'rlane/pounce.nvim', opt = true, cmd = 'Pounce', config = "require('nitay.pounce'}" }
+    use { 'is0n/fm-nvim', opt = true, cmd = 'Lf', config = "require('nitay.fm-nvim'}" }
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -60,37 +63,26 @@ return packer.startup({function(use)
     use 'L3MON4D3/LuaSnip' --snippet engine
 
     -- Git
-    use 'TimUntersberger/neogit'
+    use { 'TimUntersberger/neogit', opt = true, cmd = 'Pounce', config = "require('nitay.git'}" }
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
         },
-        -- tag = 'release' -- To use the latest release
     }
 
     --Other
     use 'lewis6991/impatient.nvim'
-    use 'vimwiki/vimwiki'
+
+    use { 'vimwiki/vimwiki',
+        opt = true,
+        cmd = {'VimwikiMakeDiaryNote', 'VimwikiIndex' },
+        config = "require('nitay.vimwiki'" }
+
     use 'numToStr/Comment.nvim'
+
     use 'akinsho/toggleterm.nvim'
-    use {
-        'chipsenkbeil/distant.nvim',
-        config = function()
-            require('distant').setup {
-                -- Applies Chip's personal settings to every machine you connect to
-                --
-                -- 1. Ensures that distant servers terminate with no connections
-                -- 2. Provides navigation bindings for remote directories
-                -- 3. Provides keybinding to jump into a remote file's parent directory
-                ['*'] = require('distant.settings').chip_default()
-            }
-        end
-    }
 
     use 'wbthomason/packer.nvim' -- Packer can manage itself
-    end,
-    config = {
-    -- Move to lua dir so impatient.nvim can cache it
-    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
-  }})
+    end
+  })
