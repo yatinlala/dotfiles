@@ -23,12 +23,12 @@ end
 
 return packer.startup({function(use)
     -- Theming
-    use 'lifepillar/gruvbox8'
-    use 'goolord/alpha-nvim'
+    use { 'lifepillar/gruvbox8' }
+    use { 'goolord/alpha-nvim' }
     -- Visual
-    use 'akinsho/bufferline.nvim'
-    use 'folke/which-key.nvim'
-    use 'norcalli/nvim-colorizer.lua'
+    use { 'akinsho/bufferline.nvim' }
+    use { 'folke/which-key.nvim' }
+    use { 'norcalli/nvim-colorizer.lua' }
 
     -- Movement
     use {'nvim-telescope/telescope.nvim',
@@ -46,21 +46,21 @@ return packer.startup({function(use)
     use { 'is0n/fm-nvim', opt = true, cmd = 'Lf', config = "require('nitay.fm-nvim'}" }
 
     -- LSP
-    use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
+    use { 'neovim/nvim-lspconfig' }
+    use { 'williamboman/nvim-lsp-installer' }
     --Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     -- Completion
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/cmp-nvim-lua'
-    use 'hrsh7th/cmp-nvim-lsp'
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+    use { 'hrsh7th/cmp-cmdline' }
+    use { 'hrsh7th/cmp-nvim-lua' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
     -- Snippets
-    use 'saadparwaiz1/cmp_luasnip' -- snippet completions
-    use 'rafamadriz/friendly-snippets' -- a bunch of snippets to use
-    use 'L3MON4D3/LuaSnip' --snippet engine
+    use { 'saadparwaiz1/cmp_luasnip' } -- snippet completions
+    use { 'rafamadriz/friendly-snippets' } -- a bunch of snippets to use
+    use { 'L3MON4D3/LuaSnip' } --snippet engine
 
     -- Git
     use { 'TimUntersberger/neogit', opt = true, cmd = 'Pounce', config = "require('nitay.git'}" }
@@ -72,16 +72,16 @@ return packer.startup({function(use)
     }
 
     --Other
-    use 'lewis6991/impatient.nvim'
+    use { 'lewis6991/impatient.nvim' }
 
     use { 'vimwiki/vimwiki',
         opt = true,
         cmd = {'VimwikiMakeDiaryNote', 'VimwikiIndex' },
         config = "require('nitay.vimwiki'" }
 
-    use 'numToStr/Comment.nvim'
+    use { 'numToStr/Comment.nvim' }
 
-    use 'akinsho/toggleterm.nvim'
+    use { 'akinsho/toggleterm.nvim' }
 
     use 'wbthomason/packer.nvim' -- Packer can manage itself
     end

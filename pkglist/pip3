@@ -135,13 +135,13 @@ trash-cli           0.21.10.24
 Twisted             21.7.0
 typing_extensions   4.1.0
 ueberzug            18.1.9
-unrardll            0.1.4
+unrardll            0.1.5
 urllib3             1.26.8
 visidata            2.8
 waitress            2.0.0
 webencodings        0.5.1
 Werkzeug            2.0.3
 youtube-dl          2021.12.17
-zeroconf            0.38.2
+zeroconf            0.38.4
 zipp                3.7.0
 zope.interface      5.4.0

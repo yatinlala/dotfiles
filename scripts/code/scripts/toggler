@@ -33,14 +33,10 @@ case $1 in
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift -b 1:.6);;
+        (notify-send "Starting Redshift."; setsid redshift -b 1:.1);;
     spotifyd)
         pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
         (notify-send "Starting spotifyd."; setsid spotifyd &);;
-    spotifyd-spt) 
-        (killall -q spotifyd && setsid spotifyd &) || setsid spotifyd &
-        (killall -q spt && i3-msg 'workspace 10') || i3-msg 'workspace 10'
-        $TERMINAL -name spt -title spt -e spt;;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt

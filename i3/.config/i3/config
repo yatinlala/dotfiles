@@ -51,7 +51,7 @@ bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
 bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
-bindsym $mod+slash $e toggler spotifyd-spt
+bindsym $mod+slash $e toggler spotify-tui
 bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
