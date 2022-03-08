@@ -15,12 +15,6 @@ map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
--- Pounce around
-map("n", "s", ":Pounce<cr>", opts)
-
--- Explore!
-map("n", "<C-a>", ":Lf<cr>", opts)
-
 -- Resize with arrows
 map("n", "<C-Up>", ":resize -2<CR>", opts)
 map("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -41,9 +35,6 @@ map('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
 map('n', 'J', 'mzJ\'z', opts)
 
--- Simply quit files
-map('n', 'gs', ':Sayonara<CR>', opts)
-map('n', 'gS', ':Sayonara!<CR>', opts)
 
 map('n', 'gf', ':e <cfile><CR>', opts)
 
@@ -78,9 +69,6 @@ map("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Command --
 -- Force save a sudoer file
 map('c', 'w!!', 'w !sudo tee %', {})
-
--- Terminal --
-map('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
 
 -- -- Fugitive
 -- map('n', '<leader>gs',  ':G<CR>', {})
