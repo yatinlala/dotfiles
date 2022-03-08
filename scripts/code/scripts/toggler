@@ -33,7 +33,7 @@ case $1 in
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift -b 1:.1);;
+        (notify-send "Starting Redshift."; setsid redshift -b 1:.7);;
     spotifyd)
         pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
         (notify-send "Starting spotifyd."; setsid spotifyd &);;
