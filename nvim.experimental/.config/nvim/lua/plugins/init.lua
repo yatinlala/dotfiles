@@ -17,17 +17,13 @@ local plugins = {
       event = "VimEnter",
    },
 
-   {
-      "NvChad/nvim-base16.lua",
-      after = "packer.nvim",
-      config = function()
-         require("colors").init()
-      end,
-   },
+  {
+  "lifepillar/gruvbox8",
+  },
 
    {
       "kyazdani42/nvim-web-devicons",
-      after = "nvim-base16.lua",
+      after = "gruvbox8",
       config = override_req("nvim_web_devicons", "plugins.configs.icons", "setup"),
    },
 
