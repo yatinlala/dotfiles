@@ -1,37 +1,24 @@
-local fn = vim.fn
+local present, packer = pcall(require, "plugin.packerInit")
 
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    }
-    print "Installing packer close and reopen Neovim..."
-    vim.cmd [[packadd packer.nvim]]
-end
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-    return
+if not present then
+   return false
 end
 
 return packer.startup({function(use)
     -- THEMING
     use 'lifepillar/gruvbox8'
     use 'goolord/alpha-nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- VISUAL
     use 'akinsho/bufferline.nvim'
 
     use { 'folke/which-key.nvim',
     config = function()
-        require('nitay.whichkey')
+        require('plugin.config.whichkey')
     end,
     keys = '<leader>' }
 
@@ -42,14 +29,13 @@ return packer.startup({function(use)
             { 'nvim-telescope/telescope-fzy-native.nvim' },
             { 'kyazdani42/nvim-web-devicons' }},
         config = function ()
-            require('nitay.telescope')
+            require('plugin.config.telescope')
         end,
         cmd = 'Telescope'
         }
-
     use { 'yashlala/vim-sayonara',
     config = function()
-        require('nitay.sayonara')
+        require('plugin.config.sayonara')
          vim.api.nvim_set_keymap('n', 'gs', ':Sayonara<CR>', { silent = true } )
          vim.api.nvim_set_keymap('n', 'gS', ':Sayonara!<CR>', { silent = true } )
         end,
@@ -59,7 +45,7 @@ return packer.startup({function(use)
 
     use { 'rlane/pounce.nvim',
         config = function()
-            require('nitay.pounce')
+            require('plugin.config.pounce')
             -- Pounce around
             vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
         end,
@@ -68,28 +54,24 @@ return packer.startup({function(use)
 
     use {'is0n/fm-nvim',
         config = function()
-           require('nitay.fm-nvim')
+           require('plugin.config.fm-nvim')
             vim.api.nvim_set_keymap("n", "<C-a>", ":Lf<cr>", { silent = true } )
            end,
         keys = '<C-a>',
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer',
-        after = 'packer',
-    }
+    use { 'williamboman/nvim-lsp-installer', }
     use { 'neovim/nvim-lspconfig',
         config = function()
-            require('nitay.lsp')
+            require('plugin.config.lsp')
         end,
-        after = 'nvim-lsp-installer'
     }
 
     use {'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        event = 'BufWinEnter',
         config = function()
-            require('nitay.treesitter')
+            require('plugin.config.treesitter')
         end
     }
 
@@ -97,13 +79,12 @@ return packer.startup({function(use)
         config = function()
             require 'colorizer'.setup()
         end,
-        event = 'BufWinEnter'
     }
 
     -- Completion
     use { 'hrsh7th/nvim-cmp',
         config = function ()
-            require('nitay.cmp')
+            require('plugin.config.cmp')
         end,
         event = 'InsertEnter' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
@@ -118,7 +99,7 @@ return packer.startup({function(use)
     -- Git
     use { 'TimUntersberger/neogit',
         config = function()
-            require('nitay.neogit')
+            require('plugin.config.neogit')
             end,
         cmd = 'Neogit'
     }
@@ -135,13 +116,13 @@ return packer.startup({function(use)
     use 'vimwiki/vimwiki'
     use { 'numToStr/Comment.nvim',
         config = function()
-            require('nitay.comment')
+            require('plugin.config.comment')
         end,
         event = 'CursorMoved'}
 
     use { 'akinsho/toggleterm.nvim',
         config = function ()
-            require('nitay.toggleterm')
+            require('plugin.config.toggleterm')
         end,
     }
 

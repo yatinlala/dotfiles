@@ -9,6 +9,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Normal --
+
+-- Don't yank on x
+map("n", "x", '"_x', opts)
 -- Sensible split movement
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)

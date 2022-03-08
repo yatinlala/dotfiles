@@ -4,8 +4,8 @@ if not status_ok then
   return
 end
 
-require "nitay.lsp.lsp-installer"
-require("nitay.lsp.handlers").setup()
+require("plugin.config.lsp.lsp-installer")
+require("plugin.config.lsp.handlers").setup()
 --require "user.lsp.null-ls"
 --
 vim.cmd('autocmd CursorHold * lua vim.diagnostic.open_float()')

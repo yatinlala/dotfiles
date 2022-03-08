@@ -1,15 +1,16 @@
-local status_ok, impatient = pcall(require, "impatient")
-if not status_ok then
-  return
-end
+--[[ _ __   ___  _____   _(_)_ __ ___
+    | '_ \ / _ \/ _ \ \ / / | '_ ` _ \
+    | | | |  __/ (_) \ V /| | | | | | |
+    |_| |_|\___|\___/ \_/ |_|_| |_| |_|  ]]
 
-impatient.enable_profile()
 
-require 'nitay.options'
-require 'nitay.colorscheme'
-require 'nitay.plugins'
-require 'nitay.bufferline'
-require 'nitay.keymaps'
-require 'nitay.alpha'
-require 'nitay.gitsigns'
-require 'nitay.vimwiki'
+require 'plugin.config.impatient'
+require 'core.options'
+require 'core.keymaps'
+require 'plugin'
+require 'plugin.config.colorscheme'
+require 'plugin.config.lualine'
+require 'plugin.config.bufferline'
+require 'plugin.config.alpha'
+require 'plugin.config.gitsigns'
+require 'plugin.config.vimwiki'
