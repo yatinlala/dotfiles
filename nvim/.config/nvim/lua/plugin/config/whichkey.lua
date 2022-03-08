@@ -84,13 +84,12 @@ local mappings = {
         "buffers",
     },
     c = { "<cmd>lcd %:p:h<cr>", "lcd to current dir"},
+    e = { n = { "<cmd>e ~/.config/nvim/init.lua<cr>", "Edit init.lua"} },
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
         n = { "<cmd>:Telescope find_files cwd=~/.config/nvim<CR>", "edit neovim" },
-        -- s = { "<cmd>PackerSync<cr>", "Sync" },
-        -- S = { "<cmd>PackerStatus<cr>", "Status" },
-        -- u = { "<cmd>PackerUpdate<cr>", "Update" },
+        r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
     },
     F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
@@ -148,6 +147,9 @@ local mappings = {
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols",
         },
+    },
+    n = {
+        ":ene <BAR> startinsert <CR>", "new file"
     },
     p = {
         name = "Packer",
