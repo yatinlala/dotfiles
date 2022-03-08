@@ -61,24 +61,27 @@ return packer.startup({function(use)
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', }
+    use { 'williamboman/nvim-lsp-installer', event = 'VimEnter' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')
         end,
+        after = 'nvim-lsp-installer',
     }
 
     use {'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
             require('plugin.config.treesitter')
-        end
+        end,
+        after = 'nvim-lsp-installer',
     }
 
     use { 'norcalli/nvim-colorizer.lua',
         config = function()
             require 'colorizer'.setup()
         end,
+        after = 'nvim-lsp-installer',
     }
 
     -- Completion
