@@ -31,6 +31,7 @@ pfetch
 pipe-viewer-git
 pistol-git
 portmaster-bin
+pup
 python-stringcase
 qdirstat-bin
 reaper-bin
@@ -48,6 +49,7 @@ topgrade
 ttf-ms-fonts
 ttf-unifont
 ttf-vista-fonts
+tuxi-git
 urlview
 visidata
 vscodium-bin
