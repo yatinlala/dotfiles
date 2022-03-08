@@ -79,7 +79,7 @@ alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 # alias audacity='xdg-launch audacity'
 # alias librewolf='xdg-launch librewolf'
 # alias minecraft-launcher='xdg-launch minecraft-launcher'
-# alias w3m='xdg-launch w3m'
+alias w3m='xdg-launch w3m'
 alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
