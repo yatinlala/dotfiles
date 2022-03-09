@@ -160,6 +160,7 @@ bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 bindsym $mod2+r $e toggler redshift
+bindsym $mod2+shift+r $e toggler redshift-dark
 
 #Utility
 bindsym $mod+t $e toggler todoist
