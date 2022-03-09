@@ -7,14 +7,18 @@ end
 return packer.startup({function(use)
     -- THEMING
     use 'lifepillar/gruvbox8'
-    use 'goolord/alpha-nvim'
+    use { 'goolord/alpha-nvim',
+        config = function()
+            require('plugin.config.alpha')
+        end,
+        event = 'VimEnter' }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     }
 
     -- VISUAL
-    use 'akinsho/bufferline.nvim'
+    use { 'akinsho/bufferline.nvim', after = 'alpha-nvim' }
 
     use { 'folke/which-key.nvim',
     config = function()
@@ -61,7 +65,7 @@ return packer.startup({function(use)
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'VimEnter' }
+    use { 'williamboman/nvim-lsp-installer', event = 'UIEnter' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')
@@ -111,17 +115,25 @@ return packer.startup({function(use)
         requires = {
             'nvim-lua/plenary.nvim'
         },
+        config = function()
+            require('plugin.config.gitsigns')
+        end,
+        after = 'nvim-lsp-installer'
         -- tag = 'release' -- To use the latest release
     }
 
     --Other
     use 'lewis6991/impatient.nvim'
-    use 'vimwiki/vimwiki'
+    use { 'vimwiki/vimwiki',
+        config = function()
+            require('plugin.config.vimwiki')
+        end,
+        after = 'nvim-lsp-installer' }
     use { 'numToStr/Comment.nvim',
         config = function()
             require('plugin.config.comment')
         end,
-        event = 'CursorMoved'}
+        event = 'CursorMoved' }
 
     use { 'akinsho/toggleterm.nvim',
         config = function ()
@@ -143,6 +155,6 @@ return packer.startup({function(use)
     }
 
     use { 'wbthomason/packer.nvim',
-        event = 'VimEnter' }
+        after = 'alpha-nvim' }
     end,
   })
