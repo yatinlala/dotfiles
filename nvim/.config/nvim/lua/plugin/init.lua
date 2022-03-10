@@ -6,7 +6,11 @@ end
 
 return packer.startup({function(use)
     -- THEMING
-    use 'lifepillar/gruvbox8'
+    use { 'lifepillar/gruvbox8',
+        config = function()
+            require('plugin.config.colorscheme')
+        end,
+    }
     use { 'goolord/alpha-nvim',
         config = function()
             require('plugin.config.alpha')
@@ -15,10 +19,18 @@ return packer.startup({function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('plugin.config.lualine')
+        end,
+        event = 'VimEnter'
     }
 
     -- VISUAL
-    use { 'akinsho/bufferline.nvim', after = 'alpha-nvim' }
+    use { 'akinsho/bufferline.nvim',
+        config = function()
+            require('plugin.config.bufferline')
+        end,
+    }
 
     use { 'folke/which-key.nvim',
     config = function()
@@ -59,9 +71,9 @@ return packer.startup({function(use)
     use {'is0n/fm-nvim',
         config = function()
            require('plugin.config.fm-nvim')
-            vim.api.nvim_set_keymap("n", "<C-a>", ":Lf<cr>", { silent = true } )
+            vim.api.nvim_set_keymap("n", "<C-f>", ":Lf<cr>", { silent = true } )
            end,
-        keys = '<C-a>',
+        keys = '<C-f>',
         cmd = 'Lf'
     }
 

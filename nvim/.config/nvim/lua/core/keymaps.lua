@@ -67,11 +67,7 @@ map("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Force save a sudoer file
 map('c', 'w!!', 'w !sudo tee %', {})
 
--- -- Fugitive
--- map('n', '<leader>gs',  ':G<CR>', {})
--- map('n', '<leader>gf',  ':diffget //3<CR>', {})
--- map('n', '<leader>gj',  ':diffget //2<CR>', {})
---
+
 -- vim.cmd([[
 --
 -- augroup remember_folds
