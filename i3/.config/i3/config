@@ -6,7 +6,6 @@ set $e exec --no-startup-id
 
 set $mod Mod4
 set $mod2 Mod1
-set $mod3 Mod3
 set $term urxvtc
 set $term2 alacritty
 
@@ -43,7 +42,7 @@ bindsym $mod3+c $e vscodium
 bindsym $mod+w $e toggler notes
 
 #File Manager
-bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
+bindsym $mod+f $e $term -e ~/code/scripts/lf/lf
 
 #Audio Consumption
 bindsym $mod+s $e toggler music
@@ -73,7 +72,6 @@ mode "$music" {
 bindsym $mod+b $e brave --force-device-scale-factor=1
 bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e xdg-launch w3m -v
-bindsym $mod2+l $e brave lesswrong.com
 
 #Communication
 bindsym $mod+m $e toggler gmail
@@ -135,17 +133,9 @@ mode "$games" {
 }
 
 #Video Entertainment
-set $entertainment Action: [g]tk-pipe-viewer [n]ewsboat [p]ipe-viewer
-bindsym $mod+n mode "$entertainment"
-mode "$entertainment" {
-    bindsym g $e gtk-pipe-viewer; workspace $ws9; mode "default"
-    bindsym n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
-    bindsym p $e $term -e pipe-viewer; workspace $ws9; mode "default"
-    bindsym $mod+n mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
 bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
+bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo
 bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
 
@@ -259,11 +249,11 @@ bindsym $mod+g split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# toggle tiling / floating
+bindsym $mod+a floating toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+shift+f fullscreen toggle
-
-# toggle tiling / floating
-bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+shift+space focus mode_toggle

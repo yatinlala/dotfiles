@@ -15,14 +15,14 @@ return packer.startup({function(use)
         config = function()
             require('plugin.config.alpha')
         end,
-        event = 'VimEnter' }
+        }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
             require('plugin.config.lualine')
         end,
-        event = 'VimEnter'
+        after = 'gruvbox8',
     }
 
     -- VISUAL
@@ -30,6 +30,7 @@ return packer.startup({function(use)
         config = function()
             require('plugin.config.bufferline')
         end,
+        after = 'gruvbox8'
     }
 
     use { 'folke/which-key.nvim',
@@ -71,13 +72,13 @@ return packer.startup({function(use)
     use {'is0n/fm-nvim',
         config = function()
            require('plugin.config.fm-nvim')
-            vim.api.nvim_set_keymap("n", "<C-f>", ":Lf<cr>", { silent = true } )
+            vim.api.nvim_set_keymap("n", "<leader>e", ":Lf<cr>", { silent = true } )
            end,
-        keys = '<C-f>',
+        keys = '<leader>e',
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'UIEnter' }
+    use { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')

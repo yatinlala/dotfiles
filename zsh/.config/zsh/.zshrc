@@ -93,15 +93,7 @@ fzf-history-widget() {
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-fzf-jump-widget() {
-    xdg-open "'$(fd . ~/code ~/documents ~/.config | fzf --height=40%)'"^M
-    zle reset-prompt
-    echo -ne '\e[6 q'
-}
-zle     -N   fzf-jump-widget
-bindkey '^p' fzf-jump-widget
-
-bindkey -s '^A' 'lf^M'
+bindkey -s '^f' "tmux-sessionizer\n"
 
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line
