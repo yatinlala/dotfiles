@@ -86,7 +86,7 @@ return packer.startup({function(use)
         after = 'nvim-lsp-installer',
     }
 
-    use {'nvim-treesitter/nvim-treesitter',
+    use { 'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
             require('plugin.config.treesitter')

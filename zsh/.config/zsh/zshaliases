@@ -51,7 +51,7 @@ alias arch-fix-keys='sudo pacman-key --init && sudo pacman-key --populate archli
 alias ss='cd ~/code/scripts/'
 alias .dot='cd ~/.dotfiles/'
 
-#Configuration
+#File Jumps
 alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'
 alias nvimrc='nvim ~/.config/nvim/init.lua'
@@ -61,6 +61,8 @@ alias wmc='nvim ~/.config/i3/config'
 alias zshrc='nvim ~/.config/zsh/zshrc'
 alias zshaliases='nvim ~/.config/zsh/zshaliases'
 alias zshenv='nvim ~/.config/zsh/.zshenv'
+
+alias wiki='nvim ~/documents/wiki/index.md'
 
 #Trash
 alias tp='trash-put'
