@@ -89,14 +89,14 @@ pycparser           2.21
 pycryptodome        3.14.1
 pycryptodomex       3.12.0
 pycups              2.0.1
-pycurl              7.44.1
+pycurl              7.45.0
 pyfiglet            0.8.post1
 Pygments            2.11.2
 PyGObject           3.42.0
 pynvim              0.4.3
 pyOpenSSL           21.0.0
 pyparsing           3.0.1
-pyppmd              0.17.3
+pyppmd              0.17.4
 PyQt5               5.15.6
 PyQt5-sip           12.9.1
 PyQtWebEngine       5.15.5
@@ -139,7 +139,7 @@ ueberzug            18.1.9
 unrardll            0.1.5
 urllib3             1.26.8
 visidata            2.8
-waitress            2.0.0
+waitress            2.1.0
 webencodings        0.5.1
 Werkzeug            2.0.3
 youtube-dl          2021.12.17

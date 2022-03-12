@@ -42,7 +42,7 @@ bindsym $mod3+c $e vscodium
 bindsym $mod+w $e toggler notes
 
 #File Manager
-bindsym $mod+f $e $term -e ~/code/scripts/lf/lf
+bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
 
 #Audio Consumption
 bindsym $mod+s $e toggler music
@@ -71,7 +71,7 @@ mode "$music" {
 #Browser
 bindsym $mod+b $e brave --force-device-scale-factor=1
 bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e xdg-launch w3m -v
+bindsym $mod+shift+w $e $term -e w3m -v
 
 #Communication
 bindsym $mod+m $e toggler gmail
@@ -250,7 +250,7 @@ bindsym $mod+g split h
 bindsym $mod+v split v
 
 # toggle tiling / floating
-bindsym $mod+a floating toggle
+bindsym $mod+f floating toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+shift+f fullscreen toggle

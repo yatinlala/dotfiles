@@ -93,6 +93,9 @@ fzf-history-widget() {
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
+zle     -N   lf
+bindkey '^a' lf
+
 bindkey -s '^f' "tmux-sessionizer\n"
 
 # Edit line in vim with e:
