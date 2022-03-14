@@ -96,7 +96,7 @@ bindkey '^R' fzf-history-widget
 zle     -N   lf
 bindkey '^a' lf
 
-bindkey -s '^f' "tmux-sessionizer\n"
+bindkey -s '^f' "^utmux-sessionizer\n"
 
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line

@@ -37,8 +37,6 @@ bindsym $mod+shift+v $e pavucontrol
 #Editor
 bindsym $mod+e $e $term -e nvim
 bindsym $mod+o $e onlyoffice-desktopeditors
-bindsym $mod+shift+o $e obsidian
-bindsym $mod3+c $e vscodium
 bindsym $mod+w $e toggler notes
 
 #File Manager

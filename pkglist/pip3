@@ -61,6 +61,7 @@ Mako                1.1.6
 Markdown            3.3.6
 MarkupSafe          2.0.1
 mechanize           0.4.6
+meson               0.61.2
 more-itertools      8.10.0
 msgpack             1.0.3
 multivolumefile     0.2.3
@@ -83,7 +84,7 @@ pulsemixer          1.5.1
 py7zr               0.18.0
 pyasn1              0.4.8
 pyasn1-modules      0.2.8
-pycairo             1.20.1
+pycairo             1.21.0
 pychm               0.8.6
 pycparser           2.21
 pycryptodome        3.14.1
