@@ -1,4 +1,7 @@
-/home/nitay/.local/share/npm/lib
-├── neovim@4.10.1
-└── npm@8.5.4
+/usr/lib
+├── corepack@0.10.0
+├── node-gyp@9.0.0
+├── nopt@5.0.0
+├── npm@8.5.5
+└── semver@7.3.5
 
