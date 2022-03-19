@@ -11,16 +11,16 @@ return packer.startup({function(use)
             require('plugin.config.colorscheme')
         end,
     }
-    use { 'goolord/alpha-nvim',
-        config = function()
-            require('plugin.config.alpha')
-        end,
-        }
+    -- use { 'goolord/alpha-nvim',
+    --     config = function()
+    --         require('plugin.config.alpha')
+    --     end,
+    --     }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
-            require('plugin.config.lualine')
+            require('plugin.config.statusline')
         end,
         after = 'gruvbox8',
     }
@@ -78,7 +78,7 @@ return packer.startup({function(use)
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' }
+    use { 'williamboman/nvim-lsp-installer', event = 'CursorMoved' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')
@@ -132,7 +132,6 @@ return packer.startup({function(use)
             require('plugin.config.gitsigns')
         end,
         after = 'nvim-lsp-installer'
-        -- tag = 'release' -- To use the latest release
     }
 
     --Other
@@ -167,7 +166,6 @@ return packer.startup({function(use)
         cmd = 'DistantLaunch'
     }
 
-    use { 'wbthomason/packer.nvim',
-        after = 'alpha-nvim' }
+    use { 'wbthomason/packer.nvim', }
     end,
   })
