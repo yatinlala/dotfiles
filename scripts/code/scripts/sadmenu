@@ -1,6 +1,6 @@
 #!/usr/bin/sh -e
 TERMINAL=urxvtc
-chosen=$(echo "ssh cslab\nssh ibis\nssh owl\nssh yuppie\nmount cs-lab\nmount ibis\nunmount cs-lab\nunmount ibis\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
+chosen=$(echo -e "ssh cslab\nssh ibis\nssh owl\nssh yuppie\nmount cs-lab\nmount ibis\nunmount cs-lab\nunmount ibis\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
 case $chosen in
     "ssh cslab") $TERMINAL -e ssh cslab;;
     "ssh ibis") $TERMINAL -e ssh ibis;;

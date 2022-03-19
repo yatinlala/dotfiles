@@ -4,8 +4,13 @@ case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -title calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
+    bluetooth)
+        wmctrl -l | grep -q "pointer bluetooth" || \
+        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        $TERMINAL -name bluetooth -title bluetooth -e bluetoothctl
+        i3-msg "[title="bluetooth"] scratchpad show; [title="bluetooth"] move position center";;
     calendar)
-        wmctrl -l | grep -q "point Google Calendar -" || \
+        wmctrl -l | grep -q "pointer Google Calendar -" || \
         (gtk-launch calendar; sleep 1)
         i3-msg "[instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] scratchpad show; \
         [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
@@ -13,12 +18,12 @@ case $1 in
         pgrep -x espanso && (espanso stop; notify-send "Espanso stopped.") || \
         setsid espanso daemon &;;
     gmail)
-        wmctrl -l | grep -q "point Gmail" || \
+        wmctrl -l | grep -q "pointer Gmail" || \
         (gtk-launch gmail; sleep 1)
         i3-msg "[instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] scratchpad show; \
         [instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] move position center";;
     mailspring)
-        (pgrep -x mailspring && (wmctrl -l | grep -q "point Mailspring" || \
+        (pgrep -x mailspring && (wmctrl -l | grep -q "pointer Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
         i3-msg workspace 1;;
     music)
@@ -27,7 +32,7 @@ case $1 in
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
-        wmctrl -l | grep -q "point notes" || \
+        wmctrl -l | grep -q "pointer notes" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
@@ -45,7 +50,12 @@ case $1 in
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt
         i3-msg workspace 10;;
     todoist)
-        wmctrl -l | grep -q "point Todoist" || (gtk-launch todoist; sleep 1)
+        wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)
         i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;
+    whatsapp)
+        wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
+        i3-msg workspace 8;;
+    *) echo "Invalid argument.";;
+
     *) echo "Invalid argument.";;
 esac

@@ -36,7 +36,7 @@ bindsym $mod+shift+v $e pavucontrol
 
 #Editor
 bindsym $mod+e $e $term -e nvim
-bindsym $mod+o $e onlyoffice-desktopeditors
+bindsym $mod+o $e flatpak run org.onlyoffice.desktopeditors
 bindsym $mod+w $e toggler notes
 
 #File Manager
@@ -74,13 +74,14 @@ bindsym $mod+shift+w $e $term -e w3m -v
 #Communication
 bindsym $mod+m $e toggler gmail
 bindsym $mod+shift+m $e $term -e neomutt
-set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal
+set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
     bindsym d $e discord; workspace $ws8; mode "default"
     bindsym e $e element-desktop; workspace $ws8; mode "default"
     bindsym l $e slack; workspace $ws8; mode "default"
     bindsym s $e signal-desktop; workspace $ws8; mode "default"
+    bindsym w $e toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -117,14 +118,13 @@ mode "$reboot" {
 bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
-set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
+set $games Action: [h]eroic [l]ichess [m]inecraft [s]team
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m $e xdg-launch minecraft-launcher; mode "default"
-    bindsym s $e com.valvesoftware.Steam; mode "default"
-    bindsym t $e $term -e netris -k "hHklLJjs frn"; mode "default"
+    bindsym s $e flatpak run com.valvesoftware.Steam; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -139,11 +139,9 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 
 
 #Toggles
-bindsym XF86WLAN $e wifi off
-bindsym shift+XF86WLAN $e wifi on
-bindsym XF86Bluetooth $e bluetooth off
-bindsym shift+XF86Bluetooth $e bluetooth on
-bindsym $mod+shift+b $e bluetooth on; $e sleep .1 && blueman-manager
+bindsym XF86Bluetooth $e echo "power off" | bluetoothctl
+bindsym $mod+XF86Bluetooth $e rfkill unblock 0
+bindsym $mod+shift+b $e toggler bluetooth
 bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
@@ -188,6 +186,7 @@ assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Element"] $ws8
+assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws8
 assign [title="pipe-viewer"] $ws9
 assign [title="newsboat"] $ws9
 assign [title="cmus"] $ws10
@@ -195,6 +194,12 @@ assign [title="spt"] $ws10
 
 #Rofi-Beats
 for_window [title="radio-mpv"] move scratchpad
+
+#Bluetoothctl
+for_window [title="bluetooth"] floating enable
+for_window [title="bluetooth"] resize set 800 400
+for_window [title="bluetooth"] move scratchpad
+for_window [title="bluetooth"] border pixel 8
 
 #Vimwiki
 for_window [title="notes"] floating enable
