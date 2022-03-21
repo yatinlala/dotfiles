@@ -1,5 +1,4 @@
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
-vim.opt.laststatus = 2                          -- Always display the status line
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- don't conceal markups
 vim.opt.hidden = true                           -- Required to keep multiple buffers open multiple buffers
@@ -40,5 +39,5 @@ vim.cmd [[
     set whichwrap+=<,>,[,],h,l
     set iskeyword+=-
     set path +=**
-    autocmd BufEnter * set formatoptions-=cro
+    autocmd BufEnter * set formatoptions-=cro | set laststatus=3
 ]]

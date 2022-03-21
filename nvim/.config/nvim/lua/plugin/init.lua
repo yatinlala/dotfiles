@@ -1,21 +1,16 @@
-local present, packer = pcall(require, "plugin.packerInit")
-
-if not present then
-   return false
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return packer.startup({function(use)
+return require('packer').startup(function(use)
     -- THEMING
     use { 'lifepillar/gruvbox8',
         config = function()
             require('plugin.config.colorscheme')
         end,
     }
-    -- use { 'goolord/alpha-nvim',
-    --     config = function()
-    --         require('plugin.config.alpha')
-    --     end,
-    --     }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -72,13 +67,12 @@ return packer.startup({function(use)
     use {'is0n/fm-nvim',
         config = function()
            require('plugin.config.fm-nvim')
-            vim.api.nvim_set_keymap("n", "<leader>e", ":Lf<cr>", { silent = true } )
            end,
         keys = '<leader>e',
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'CursorMoved' }
+    use { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')
@@ -167,5 +161,7 @@ return packer.startup({function(use)
     }
 
     use { 'wbthomason/packer.nvim', }
-    end,
-  })
+  if packer_bootstrap then
+    require('packer').sync()
+    end
+end)

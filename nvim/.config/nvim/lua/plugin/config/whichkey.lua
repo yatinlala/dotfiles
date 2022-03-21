@@ -78,13 +78,12 @@ local opts = {
 }
 
 local mappings = {
-    a = { "<cmd>Alpha<cr>", "alpha" },
     b = {
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "buffers",
     },
     c = { "<cmd>lcd %:p:h<cr>", "lcd to current dir"},
-    e = { n = { "<cmd>e ~/.config/nvim/init.lua<cr>", "Edit init.lua"} },
+    e = { "<cmd>Lf<cr>", "Lf" },
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
