@@ -47,7 +47,6 @@ moreutils
 mpv
 mtools
 neofetch
-neovim
 network-manager-applet
 networkmanager
 newsboat
@@ -69,6 +68,7 @@ pipewire-pulse
 pkgconf
 playerctl
 python
+redshift
 reflector
 ripgrep
 rofi
