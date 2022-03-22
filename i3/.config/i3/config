@@ -131,7 +131,7 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
+#bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
 bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
 bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo

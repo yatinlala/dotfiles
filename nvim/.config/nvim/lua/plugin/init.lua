@@ -51,18 +51,19 @@ return require('packer').startup(function(use)
          vim.api.nvim_set_keymap('n', 'gs', ':Sayonara<CR>', { silent = true } )
          vim.api.nvim_set_keymap('n', 'gS', ':Sayonara!<CR>', { silent = true } )
         end,
-    keys = { 'gs', 'gS' } }
+    keys = { 'gs', 'gS' },
+    cmd = { 'Sayonara', 'Sayonara!'  } }
 
     --use 'ThePrimeagen/harpoon'
 
-    use { 'rlane/pounce.nvim',
-        config = function()
-            require('plugin.config.pounce')
-            -- Pounce around
-            vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
-        end,
-        keys = 's'
-    }
+    -- use { 'rlane/pounce.nvim',
+    --     config = function()
+    --         require('plugin.config.pounce')
+    --         -- Pounce around
+    --         vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
+    --     end,
+    --     keys = 's'
+    -- }
 
     use {'is0n/fm-nvim',
         config = function()
@@ -92,7 +93,7 @@ return require('packer').startup(function(use)
         config = function()
             require 'colorizer'.setup()
         end,
-        after = 'nvim-lsp-installer',
+        after = 'nvim-treesitter',
     }
 
     -- Completion
@@ -135,6 +136,7 @@ return require('packer').startup(function(use)
             require('plugin.config.vimwiki')
         end,
         after = 'nvim-lsp-installer' }
+
     use { 'numToStr/Comment.nvim',
         config = function()
             require('plugin.config.comment')
@@ -145,6 +147,7 @@ return require('packer').startup(function(use)
         config = function ()
             require('plugin.config.toggleterm')
         end,
+        after = 'gruvbox8'
     }
 
     use {

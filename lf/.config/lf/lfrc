@@ -123,6 +123,7 @@ cmd dlfile %dlfile
 # Archive bindings
 cmd unarchive ${{
   case "$f" in
+      *.rar) unrar e "$f" ;;
       *.zip) unzip "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
       *.tar.xz) tar -xf "$f" ;;

@@ -89,6 +89,7 @@ torbrowser-launcher
 trash-cli
 ttf-ibm-plex
 ueberzug
+unrar
 unzip
 vlc
 vulkan-intel
@@ -97,6 +98,7 @@ wget
 which
 wireplumber
 wmctrl
+xcolor
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa
