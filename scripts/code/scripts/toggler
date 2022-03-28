@@ -5,6 +5,7 @@ case $1 in
         pgrep -x bc || $TERMINAL -name calc -title calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     bluetooth)
+        rfkill unblock 0
         wmctrl -l | grep -q "pointer bluetooth" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name bluetooth -title bluetooth -e bluetoothctl

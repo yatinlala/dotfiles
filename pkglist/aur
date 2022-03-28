@@ -2,6 +2,7 @@ auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
 c-lolcat
+cargo-make
 devour
 downgrade
 dragon-drag-and-drop
@@ -18,14 +19,17 @@ librewolf-bin
 minecraft-launcher
 neovim-nightly-bin
 nerd-fonts-complete
+onlyoffice-bin
 paru
 pipe-viewer-git
 reaper-bin
 rofi-greenclip
+rust-script
 rxvt-unicode-truecolor-wide-glyphs
 slack-desktop
 spotify
 spotify-tui
 topgrade
+ttf-ms-fonts
 urlview
 zoom

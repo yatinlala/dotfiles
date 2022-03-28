@@ -57,7 +57,7 @@ alias picomrc='nvim ~/.config/picom/picom.conf'
 alias redshiftrc='nvim ~/.config/redshift/redshift.conf'
 alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 alias wmc='nvim ~/.config/i3/config'
-alias zshrc='nvim ~/.config/zsh/zshrc'
+alias zshrc='nvim ~/.config/zsh/.zshrc'
 alias zshaliases='nvim ~/.config/zsh/zshaliases'
 alias zshenv='nvim ~/.config/zsh/.zshenv'
 

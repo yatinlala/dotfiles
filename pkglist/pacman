@@ -12,6 +12,7 @@ bluez
 bluez-utils
 browserpass-chromium
 calibre
+cmatrix
 cmus
 discord
 docker
@@ -84,8 +85,21 @@ stow
 sudo
 tealdeer
 texinfo
+texlive-bibtexextra
+texlive-core
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latexextra
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-science
 tmux
 torbrowser-launcher
+transmission-cli
 trash-cli
 ttf-ibm-plex
 ueberzug
@@ -99,6 +113,7 @@ which
 wireplumber
 wmctrl
 xcolor
+xcompmgr
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa

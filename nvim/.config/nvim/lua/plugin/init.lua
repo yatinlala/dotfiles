@@ -25,14 +25,14 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.bufferline')
         end,
-        after = 'gruvbox8'
+        after = 'gruvbox8',
     }
 
     use { 'folke/which-key.nvim',
     config = function()
         require('plugin.config.whichkey')
     end,
-    keys = '<leader>' }
+    --[[ keys = '<leader>'  ]]}
 
     -- Movement
     use {'nvim-telescope/telescope.nvim',
@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'BufWinEnter' }
+    use { 'williamboman/nvim-lsp-installer', event = 'CursorMoved' }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp')

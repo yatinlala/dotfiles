@@ -115,7 +115,7 @@ mode "$reboot" {
     bindsym Escape mode "default"
     bindsym Return $e reboot
 }
-bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
+#bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team
@@ -139,8 +139,7 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 
 
 #Toggles
-bindsym XF86Bluetooth $e echo "power off" | bluetoothctl
-bindsym $mod+XF86Bluetooth $e rfkill unblock 0
+bindsym XF86Bluetooth $e rfkill block 0; $e notify-send "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
@@ -152,7 +151,6 @@ bindsym $mod2+shift+r $e toggler redshift-dark
 bindsym $mod+t $e toggler todoist
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e gtk-launch dash
-bindsym $mod2+s $e gtk-launch snapdrop
 bindsym $mod+shift+c $e toggler calendar
 bindsym $mod2+c $e toggler bc
 bindsym $mod+comma exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -343,8 +341,8 @@ bindsym $mod2+j $e xbacklight -3
 bindsym $mod2+k $e xbacklight +3
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
-bindsym XF86AudioRaiseVolume $e pamixer -i 1
-bindsym XF86AudioLowerVolume $e pamixer -d 5
+bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 1
+bindsym XF86AudioLowerVolume $e pamixer --allow-boost -d 5
 
 bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle # && $refresh_i3status
 bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $refresh_i3status
