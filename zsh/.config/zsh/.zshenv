@@ -4,7 +4,7 @@ export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/laun
 
 # FZF
 export FZF_DEFAULT_OPTS='--cycle'
-#export FZF_DEFAULT_COMMAND='fd -H .'
+export FZF_DEFAULT_COMMAND='fd -H .'
 
 # Cursor
 # export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons

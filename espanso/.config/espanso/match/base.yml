@@ -36,12 +36,16 @@ matches:
   #   replace: ö
   - trigger: ;-
     replace: —
+
   - trigger: ;paragraph
     replace: ¶
+
   - trigger: ;silcrow
     replace: §
+
   - trigger: ;lenny
     replace: ( ͡° ͜ʖ ͡°)
+
   - trigger: ;date
     replace: "{{mydate}}"
     vars:
@@ -49,6 +53,7 @@ matches:
         type: date
         params:
           format: "%m/%d/%Y"
+
   - trigger: ;shell
     replace: "{{output}}"
     vars:

@@ -36,7 +36,7 @@ bindsym $mod+shift+v $e pavucontrol
 
 #Editor
 bindsym $mod+e $e $term -e nvim
-bindsym $mod+o $e flatpak run org.onlyoffice.desktopeditors
+bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+w $e toggler notes
 
 #File Manager
@@ -138,9 +138,11 @@ bindsym XF86Tools $e pomo
 bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
 
 
-#Toggles
+#TOGGLES
+#Bluetooth
 bindsym XF86Bluetooth $e rfkill block 0; $e notify-send "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
+#Other
 bindsym $mod+shift+n $e toggler nm-applet
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close

@@ -11,14 +11,14 @@ return require('packer').startup(function(use)
             require('plugin.config.colorscheme')
         end,
     }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require('plugin.config.statusline')
-        end,
-        after = 'gruvbox8',
-    }
+    -- use {
+    --     'nvim-lualine/lualine.nvim',
+    --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    --     config = function()
+    --         require('plugin.config.statusline')
+    --     end,
+    --     after = 'gruvbox8',
+    -- }
 
     -- VISUAL
     use { 'akinsho/bufferline.nvim',
@@ -35,7 +35,12 @@ return require('packer').startup(function(use)
     --[[ keys = '<leader>'  ]]}
 
     -- Movement
-    use {'nvim-telescope/telescope.nvim',
+    use { 'rlane/pounce.nvim', cmd = 'Pounce', keys = 's',
+        config = function()
+            vim.api.nvim_set_keymap("n", "s", ":Pounce<CR>", {})
+        end,
+    }
+    use { 'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzy-native.nvim' },
