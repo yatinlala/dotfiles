@@ -267,7 +267,7 @@ map gv cd ~/videos
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
-map glu cd ~/.local/usb
+map glx cd ~/.local/xdgify
 
 map gu<space> cd /usr
 map gul cd /usr/local

@@ -190,9 +190,6 @@ assign [title="newsboat"] $ws9
 assign [title="cmus"] $ws10
 assign [title="spt"] $ws10
 
-#Rofi-Beats
-for_window [title="radio-mpv"] move scratchpad
-
 #Bluetoothctl
 for_window [title="bluetooth"] floating enable
 for_window [title="bluetooth"] resize set 800 400
