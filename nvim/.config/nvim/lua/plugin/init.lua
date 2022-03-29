@@ -6,7 +6,7 @@ end
 
 return require('packer').startup(function(use)
     -- THEMING
-    use { 'lifepillar/gruvbox8',
+    use { 'ellisonleao/gruvbox.nvim',
         config = function()
             require('plugin.config.colorscheme')
         end,
@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.bufferline')
         end,
-        after = 'gruvbox8',
+        -- after = 'gruvbox8',
     }
 
     use { 'folke/which-key.nvim',
@@ -35,21 +35,26 @@ return require('packer').startup(function(use)
     --[[ keys = '<leader>'  ]]}
 
     -- Movement
-    use { 'rlane/pounce.nvim', cmd = 'Pounce', keys = 's',
+    use { 'rlane/pounce.nvim',
         config = function()
-            vim.api.nvim_set_keymap("n", "s", ":Pounce<CR>", {})
+            require('plugin.config.pounce')
+            -- Pounce around
+            vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
         end,
+        keys = 's',
+        cmd = 'Pounce',
     }
+
     use { 'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
-            { 'nvim-telescope/telescope-fzy-native.nvim' },
-            { 'kyazdani42/nvim-web-devicons' }},
+            { 'kyazdani42/nvim-web-devicons' },
+            { 'nvim-telescope/telescope-fzy-native.nvim' } },
         config = function ()
-            require('plugin.config.telescope')
+            require('plugin.config.telescope-nvim')
         end,
-        cmd = 'Telescope'
-        }
+    }
+
     use { 'yashlala/vim-sayonara',
     config = function()
         require('plugin.config.sayonara')
@@ -61,18 +66,11 @@ return require('packer').startup(function(use)
 
     --use 'ThePrimeagen/harpoon'
 
-    -- use { 'rlane/pounce.nvim',
-    --     config = function()
-    --         require('plugin.config.pounce')
-    --         -- Pounce around
-    --         vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
-    --     end,
-    --     keys = 's'
-    -- }
 
     use {'is0n/fm-nvim',
         config = function()
            require('plugin.config.fm-nvim')
+            vim.api.nvim_set_keymap('n', '<leader>e', ':Lf<CR>', {})
            end,
         keys = '<leader>e',
         cmd = 'Lf'
@@ -96,9 +94,9 @@ return require('packer').startup(function(use)
 
     use { 'norcalli/nvim-colorizer.lua',
         config = function()
-            require 'colorizer'.setup()
+            require('plugin.config.nvim-colorizer')
         end,
-        after = 'nvim-treesitter',
+        cmd = 'ColorizerToggle'
     }
 
     -- Completion
@@ -129,9 +127,9 @@ return require('packer').startup(function(use)
             'nvim-lua/plenary.nvim'
         },
         config = function()
-            require('plugin.config.gitsigns')
+            require('plugin.config.gitsigns-nvim')
         end,
-        after = 'nvim-lsp-installer'
+        event = 'BufRead'
     }
 
     --Other
@@ -152,16 +150,13 @@ return require('packer').startup(function(use)
         config = function ()
             require('plugin.config.toggleterm')
         end,
-        after = 'gruvbox8'
+        cmd = 'ToggleTerm',
     }
 
     use {
         'chipsenkbeil/distant.nvim',
         config = function()
             require('distant').setup {
-                -- 1. Ensures that distant servers terminate with no connections
-                -- 2. Provides navigation bindings for remote directories
-                -- 3. Provides keybinding to jump into a remote file's parent directory
                 ['*'] = require('distant.settings').chip_default()
             }
         end,

@@ -43,21 +43,21 @@ require('fm-nvim').setup{
 	-- Terminal commands used w/ file manager (have to be in your $PATH)
 	cmds = {
 		lf_cmd      = "lf", -- eg: lf_cmd = "lf -command 'set hidden'"
-		fm_cmd      = "fm",
-		nnn_cmd     = "nnn",
-		fff_cmd     = "fff",
-		twf_cmd     = "twf",
-		fzf_cmd     = "fzf", -- eg: fzf_cmd = "fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-		fzy_cmd     = "find . | fzy",
-		xplr_cmd    = "xplr",
-		vifm_cmd    = "vifm",
-		skim_cmd    = "sk",
-		broot_cmd   = "broot",
-		gitui_cmd   = "gitui",
-		ranger_cmd  = "ranger",
-		joshuto_cmd = "joshuto",
-		lazygit_cmd = "lazygit",
-		neomutt_cmd = "neomutt"
+		-- fm_cmd      = "fm",
+		-- nnn_cmd     = "nnn",
+		-- fff_cmd     = "fff",
+		-- twf_cmd     = "twf",
+		-- fzf_cmd     = "fzf", -- eg: fzf_cmd = "fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+		-- fzy_cmd     = "find . | fzy",
+		-- xplr_cmd    = "xplr",
+		-- vifm_cmd    = "vifm",
+		-- skim_cmd    = "sk",
+		-- broot_cmd   = "broot",
+		-- gitui_cmd   = "gitui",
+		-- ranger_cmd  = "ranger",
+		-- joshuto_cmd = "joshuto",
+		-- lazygit_cmd = "lazygit",
+		-- neomutt_cmd = "neomutt"
 	},
 
 	-- Mappings used with the plugin

@@ -82,8 +82,8 @@ local mappings = {
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "buffers",
     },
-    c = { "<cmd>lcd %:p:h<cr>", "lcd to current dir"},
-    e = { "<cmd>Lf<cr>", "Lf" },
+    c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer"},
+    e = { "<cmd>Lf<CR>", "Lf" },
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },

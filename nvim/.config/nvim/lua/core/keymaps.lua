@@ -77,3 +77,5 @@ map('c', 'w!!', 'w !sudo tee %', {})
 -- augroup END
 --
 -- ]])
+
+vim.api.nvim_set_keymap('n', '<c-\\>', ':ToggleTerm<CR>', {})
