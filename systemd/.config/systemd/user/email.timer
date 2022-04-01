@@ -1,9 +1,0 @@
-[Unit]
-Description=Sync Email
-
-[Timer]
-OnBootSec=1min
-OnUnitActiveSec=10min
-
-[Install]
-WantedBy=timers.target
