@@ -86,6 +86,7 @@ sof-firmware
 sshfs
 stow
 sudo
+tcpdump
 tealdeer
 texinfo
 texlive-bibtexextra
