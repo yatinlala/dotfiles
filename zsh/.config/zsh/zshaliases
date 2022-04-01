@@ -22,6 +22,7 @@ alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
+alias domains="sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8"
 
 #Devouring
 alias d='devour'

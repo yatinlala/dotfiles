@@ -49,7 +49,8 @@ case $1 in
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt
-        i3-msg workspace 10;;
+        i3-msg workspace 9;;
+    tmux);;
     todoist)
         wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)
         i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;

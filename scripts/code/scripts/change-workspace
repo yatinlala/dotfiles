@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case $1 in
+    prev) wmctrl -d | awk '{print $2" "$(NF)}' | grep '\* 1$' || i3-msg workspace prev;;
+    next) wmctrl -d | awk '{print $2" "$(NF)}' | grep '\* 10' || i3-msg workspace next;;
+esac

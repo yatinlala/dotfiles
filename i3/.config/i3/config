@@ -58,8 +58,8 @@ mode "$music" {
     bindsym a $e flatpak run org.audacityteam.Audacity; mode "default"
     bindsym r $e reaper; mode "default"
     bindsym b $e rofi-beats; mode "default"
-    bindsym c workspace $ws10; $e $term -e cmus; mode "default"
-    bindsym s workspace $ws10; $e spotify; mode "default"
+    bindsym c workspace $ws9; $e $term -e cmus; mode "default"
+    bindsym s workspace $ws9; $e spotify; mode "default"
     bindsym p $e toggler spotify-tui; mode "default"
     bindsym $mod+u mode "default"
     bindsym Escape mode "default"
@@ -131,8 +131,8 @@ mode "$games" {
 }
 
 #Video Entertainment
-#bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws9; mode "default"
-bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws9
+#bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws10; mode "default"
+bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws10
 bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo
 bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
@@ -187,10 +187,10 @@ assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Element"] $ws8
 assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws8
-assign [title="pipe-viewer"] $ws9
-assign [title="newsboat"] $ws9
-assign [title="cmus"] $ws10
-assign [title="spt"] $ws10
+assign [title="pipe-viewer"] $ws10
+assign [title="newsboat"] $ws10
+assign [title="cmus"] $ws9
+assign [title="spt"] $ws9
 
 #Bluetoothctl
 for_window [title="bluetooth"] floating enable
@@ -279,8 +279,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 # move through workspaces sequentially
-bindsym $mod+z workspace prev
-bindsym $mod+x workspace next
+bindsym $mod+z $e change-workspace prev
+bindsym $mod+x $e change-workspace next
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
