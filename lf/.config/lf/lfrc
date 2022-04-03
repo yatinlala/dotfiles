@@ -1,3 +1,8 @@
+# interpreter for shell commands
+set shell sh
+
+set shellopts '-eu'
+
 %[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
 
 set previewer ~/code/scripts/lf/preview
@@ -25,12 +30,10 @@ set ignorecase true
 # Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json) 
-              exec $EDITOR "$f";;
+        text/*|application/json) exec $EDITOR "$f";;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
         application/pdf) devour zathura "$f";;
-        video/*) devour mpv --force-window=yes "$f";;
-        audio/*) devour mpv --force-window=yes "$f";;
+        video/*|audio/*) devour mpv --force-window=yes "$f";;
         image/*) devour feh --scale-down "$f";;
         *) xdg-open "$f";;
     esac
@@ -268,6 +271,8 @@ map gv cd ~/videos
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
 map glx cd ~/.local/xdgify
+
+map glmc cd ~/.local/mount/cslab
 
 map gu<space> cd /usr
 map gul cd /usr/local
