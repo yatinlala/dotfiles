@@ -6,10 +6,10 @@ case $chosen in
     "ssh ibis") $TERMINAL -e ssh ibis;;
     "ssh owl") $TERMINAL -e ssh ylala1@owl.cs.swarthmore.edu;;
     "ssh yuppie") $TERMINAL -e ssh ubuntu@192.168.86.22;;
-    "mount cs-lab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/code/swat-computers/cslab;;
-    "unmount cs-lab") fusermount3 -uqz ~/code/swat-computers/cslab;;
-    "mount ibis") sshfs s-ylala1@ibis.sccs.swarthmore.edu:/ ~/code/swat-computers/ibis;;
-    "unmount ibis") fusermount3 -uqz ~/code/swat-computers/ibis;;
+    "mount cslab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/.local/mount/cslab;;
+    "unmount cslab") fusermount3 -uqz ~/.local/mount/cslab;;
+    "mount ibis") sshfs s-ylala1@ibis.sccs.swarthmore.edu:/ ~/.local/mount/ibis;;
+    "unmount ibis") fusermount3 -uqz ~/.local/mount/ibis;;
     internal) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --off --output VIRTUAL1 --off
         $HOME/code/scripts/wallpaper.sh;;
     hdmi) xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x408 --rotate normal --output DP1 --off --output DP2 --off --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VIRTUAL1 --off
