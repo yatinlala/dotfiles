@@ -30,6 +30,7 @@ case $1 in
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
         i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus s[p]otify-tui [r]eaper [s]potify";;
+    nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &;;
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)

@@ -8,7 +8,7 @@ alias bc='bc -lq'
 alias ls='exa'
 
 #Colorize!
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --exclude-dir=.dit'
 
 #Shorten frequently used commands
 alias e='nvim'

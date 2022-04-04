@@ -143,7 +143,15 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 bindsym XF86Bluetooth $e rfkill block 0; $e notify-send "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 #Other
-bindsym $mod+shift+n $e toggler nm-applet
+set $toggles Action: nm-[a]pplet ne[x]tcloud
+bindsym $mod+shift+n mode "$toggles"
+mode "$toggles" {
+    bindsym a $e toggler nm-applet; mode "default"
+    bindsym x $e toggler nextcloud; mode "default"
+    bindsym $mod+shift+n mode "default"
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
 bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 bindsym $mod2+r $e toggler redshift
@@ -173,6 +181,7 @@ $e picom
 $e urxvtd -q
 $e dunst
 $e greenclip daemon
+$e nextcloud
 $e blueman-applet
 $e libinput-gestures-setup start
 $e redshift

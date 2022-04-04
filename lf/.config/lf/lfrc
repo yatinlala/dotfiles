@@ -207,8 +207,8 @@ map au unarchive
 
 # Trash Mappings
 map dd trash
-map te empty_trash
-map tr restore_trash
+map Te empty_trash
+map Tr restore_trash
 
 # FZF
 map <c-p> fzf_jump
