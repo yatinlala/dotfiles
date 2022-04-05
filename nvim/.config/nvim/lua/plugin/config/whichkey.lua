@@ -183,6 +183,7 @@ local mappings = {
         name = "Vimwiki",
         w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
         d = { "<cmd>VimwikiDiaryIndex<cr><cmd>VimwikiDiaryGenerateLinks<cr><cmd>e!<cr>", "Diary Index" },
+        n = { "<cmd>VimwikiMakeDiaryNote<CR>", "Today's Diary Entry" },
     },
 }
 

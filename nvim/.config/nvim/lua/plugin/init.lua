@@ -138,7 +138,7 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.vimwiki')
         end,
-        after = 'nvim-lsp-installer' }
+    }
 
     use { 'numToStr/Comment.nvim',
         config = function()

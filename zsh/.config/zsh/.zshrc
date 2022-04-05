@@ -7,7 +7,6 @@ unsetopt BEEP # Beeping sucks
 # Enable colors and change prompt:
 autoload -Uz colors && colors	# Load colors
 PROMPT="%{$fg_bold[cyan]%}%~ %{$fg_bold[green]%}➜ %{$reset_color%}"
-setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
 
@@ -62,7 +61,7 @@ zle -N zle-line-init
 echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
-# Use lf to switch directories
+# # Use lf to switch directories
 lf() {
     tmp="$(mktemp)"
     $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
@@ -72,7 +71,13 @@ lf() {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+# lf() {
+#     $HOME/code/scripts/lf/lf
+# }
 
+tmux-sessionizer() {
+    $HOME/code/scripts/tmux-sessionizer
+}
 
 # FZF
 fzf-history-widget() {
@@ -93,10 +98,11 @@ fzf-history-widget() {
 zle     -N   fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-zle     -N   lf
+zle -N lf
 bindkey '^a' lf
 
-bindkey -s '^f' "^utmux-sessionizer\n"
+zle -N tmux-sessionizer
+bindkey '^f' tmux-sessionizer
 
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line

@@ -11,10 +11,10 @@ case $1 in
         $TERMINAL -name bluetooth -title bluetooth -e bluetoothctl
         i3-msg "[title="bluetooth"] scratchpad show; [title="bluetooth"] move position center";;
     calendar)
-        wmctrl -l | grep -q "pointer Google Calendar -" || \
+        wmctrl -l | grep -q "pointer Calendar - SCCS Nextcloud" || \
         (gtk-launch calendar; sleep 1)
-        i3-msg "[instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] scratchpad show; \
-        [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
+        i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
+        [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -26,7 +26,7 @@ case $1 in
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "pointer Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
-        i3-msg workspace 1;;
+        i3-msg workspace 7;;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
         i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus s[p]otify-tui [r]eaper [s]potify";;
