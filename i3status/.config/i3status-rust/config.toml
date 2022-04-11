@@ -13,6 +13,23 @@ signal = 4
 interval = "once"
 hide_when_empty = false
 
+# [[block]]
+# block = "music"
+# player = "spotify"
+# buttons = ["play", "next"]
+# [[block]]
+# block = "music"
+# buttons = ["play", "next"]
+# interface_name_exclude = [".*kdeconnect.*", "mpd"]
+# [[block]]
+# block = "music"
+# on_collapsed_click = "spotify"
+
+# [[block]]
+# block = "docker"
+# interval = 2
+# format = "{running}/{total}"
+
 [[block]]
 block = "backlight"
 device = "intel_backlight"

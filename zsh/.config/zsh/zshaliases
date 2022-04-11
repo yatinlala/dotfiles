@@ -3,21 +3,19 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias info='info --vi-keys'
 alias bc='bc -lq'
-#alias tetris='netris -k "hHklLJjs frn"'
 #Rustify
 alias ls='exa'
 
 #Colorize!
-alias grep='grep --color=auto --exclude-dir=.dit'
+alias grep='grep --color=auto --exclude-dir=.git'
 
 #Shorten frequently used commands
 alias e='nvim'
 alias t='tmux'
-alias la='ls -lah'
-alias ll='ls -lh'
+alias la='ls -al'
 alias ka='killall'
+alias s='sudo'
 alias p='pacman'
-alias sp='sudo pacman'
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
@@ -51,12 +49,7 @@ alias ss='cd ~/code/scripts/'
 alias .dot='cd ~/.dotfiles/'
 
 #File Jumps
-alias awesomerc='nvim ~/.config/awesome/rc.lua'
 alias lfrc='nvim ~/.config/lf/lfrc'
-alias nvimrc='nvim ~/.config/nvim/init.lua'
-alias picomrc='nvim ~/.config/picom/picom.conf'
-alias redshiftrc='nvim ~/.config/redshift/redshift.conf'
-alias tmuxrc='nvim ~/.config/tmux/tmux.conf'
 alias wmc='nvim ~/.config/i3/config'
 alias zshrc='nvim ~/.config/zsh/.zshrc'
 alias zshaliases='nvim ~/.config/zsh/zshaliases'

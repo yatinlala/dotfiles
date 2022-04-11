@@ -36,6 +36,7 @@ bindsym $mod+shift+v $e pavucontrol
 
 #Editor
 bindsym $mod+e $e $term -e nvim
+bindsym $mod+shift+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+w $e toggler notes
 
@@ -140,7 +141,7 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 
 #TOGGLES
 #Bluetooth
-bindsym XF86Bluetooth $e rfkill block 0; $e notify-send "Bluetooth off."
+bindsym XF86Bluetooth $e rfkill block 0; $e notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 #Other
 set $toggles Action: nm-[a]pplet ne[x]tcloud
@@ -152,7 +153,7 @@ mode "$toggles" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+e $e toggler espanso
+bindsym $mod+period $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 bindsym $mod2+r $e toggler redshift
 bindsym $mod2+shift+r $e toggler redshift-dark
@@ -181,7 +182,7 @@ $e picom
 $e urxvtd -q
 $e dunst
 $e greenclip daemon
-$e nextcloud
+#$e nextcloud
 $e blueman-applet
 $e libinput-gestures-setup start
 $e redshift
@@ -190,7 +191,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 800 500
 for_window [class="Pavucontrol"] floating enable
 
-assign [title="Tor Browser"] $ws7
+assign [title="Tor Browser"] $ws6
+assign [class="Mailspring"] $ws7
 assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
 assign [class="Signal"] $ws8
@@ -208,7 +210,7 @@ for_window [title="bluetooth"] move scratchpad
 for_window [title="bluetooth"] border pixel 8
 
 #Vimwiki
-for_window [title="notes"] floating enable
+for_window [title="^notes"] floating enable
 for_window [title="notes"] resize set 1200 900
 for_window [title="notes"] move scratchpad
 for_window [title="notes"] border pixel 8

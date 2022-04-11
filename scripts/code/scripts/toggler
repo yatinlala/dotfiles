@@ -16,7 +16,7 @@ case $1 in
         i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
         [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
     espanso)
-        pgrep -x espanso && (espanso stop; notify-send "Espanso stopped.") || \
+        pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
     gmail)
         wmctrl -l | grep -q "pointer Gmail" || \
@@ -39,14 +39,14 @@ case $1 in
         $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
     redshift)
-        pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift -b 1:1);;
+        pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
+        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
     redshift-dark)
-        pgrep -x "redshift" && (killall redshift; notify-send "Killing redshift.") || \
-        (notify-send "Starting Redshift."; setsid redshift -b 1:.5);;
+        pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
+        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
     spotifyd)
-        pgrep -x spotifyd && (notify-send "Killing spotifyd."; killall spotifyd) || \
-        (notify-send "Starting spotifyd."; setsid spotifyd &);;
+        pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
+        (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || $TERMINAL -t spt --class spt -e spt

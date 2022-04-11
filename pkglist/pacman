@@ -18,8 +18,11 @@ discord
 docker
 docker-compose
 dosfstools
+drawing
 dunst
+easyeffects
 efibootmgr
+emacs-nativecomp
 exa
 fakeroot
 fd
@@ -48,6 +51,7 @@ make
 moreutils
 mpv
 mtools
+nautilus
 neofetch
 network-manager-applet
 networkmanager
@@ -72,6 +76,7 @@ pipewire-alsa
 pipewire-pulse
 pkgconf
 playerctl
+pulsemixer
 python
 redshift
 reflector
@@ -82,6 +87,7 @@ rsync
 rtkit
 scrot
 seahorse
+shellcheck
 signal-desktop
 sof-firmware
 sshfs

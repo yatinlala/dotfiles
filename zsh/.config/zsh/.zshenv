@@ -17,6 +17,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_JUNK_DIR="$HOME/.local/xdg-garbage"
 
 export CALIBRE_USE_DARK_PALETTE=1
+#export GTK_THEME='Adwaita:dark'
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
