@@ -178,18 +178,16 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 #--------------------------------------------------
 
 #Startup
-$e lxsession
-$e picom
-$e urxvtd -q
-$e dunst
-$e greenclip daemon
-#$e nextcloud
-$e blueman-applet
-$e libinput-gestures-setup start
-$e redshift
+exec --no-startup-id lxsession #Needed by fprintd
+exec --no-startup-id picom
+exec --no-startup-id urxvtd -q
+exec --no-startup-id dunst
+exec --no-startup-id greenclip daemon
+exec --no-startup-id gnome-keyring-daemon --start #Hooked up to PAM
+#exec --no-startup-id nextcloud
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id redshift
 
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Blueman-manager"] resize set 800 500
 for_window [class="Pavucontrol"] floating enable
 
 assign [title="Tor Browser"] $ws6

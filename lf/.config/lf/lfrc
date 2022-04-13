@@ -181,6 +181,7 @@ map d
 map c
 map f
 map r
+map t
 
 map w smart_w
 
@@ -207,8 +208,8 @@ map au unarchive
 
 # Trash Mappings
 map dd trash
-map Te empty_trash
-map Tr restore_trash
+map te empty_trash
+map tr restore_trash
 
 # FZF
 map <c-p> fzf_jump

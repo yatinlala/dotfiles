@@ -23,7 +23,7 @@ URxvt.url-select.underline: true
 URxvt.keysym.Mod4-Shift-U:       perl:url-select:select_next
 
 urxvt*dynamicColors: on
-urxvt.keysym.XF86Favorites: perl:urxvt-colors:next
+! urxvt.keysym.XF86Favorites: perl:urxvt-colors:next
 
 URxvt.keysym.Control-Meta-c: builtin-string:
 URxvt.keysym.Control-Meta-v: builtin-string:
