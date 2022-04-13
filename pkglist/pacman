@@ -32,6 +32,7 @@ figlet
 flatpak
 flex
 fprintd
+fwupd
 fzf
 gcc
 gimp
@@ -52,6 +53,7 @@ moreutils
 mpv
 mtools
 nautilus
+ncdu
 neofetch
 network-manager-applet
 networkmanager

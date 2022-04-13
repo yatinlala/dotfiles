@@ -178,6 +178,7 @@ bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d
 #--------------------------------------------------
 
 #Startup
+$e lxsession
 $e picom
 $e urxvtd -q
 $e dunst

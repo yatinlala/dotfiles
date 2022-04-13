@@ -43,7 +43,7 @@ case $1 in
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
     redshift-dark)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
+        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.7);;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;

@@ -134,6 +134,12 @@ return require('packer').startup(function(use)
 
     --Other
     use 'lewis6991/impatient.nvim'
+    use {
+        'antoinemadec/FixCursorHold.nvim',
+        config = function()
+            vim.g.cursorhold_updatetime = 100
+        end,
+    }
     use { 'vimwiki/vimwiki',
         config = function()
             require('plugin.config.vimwiki')
