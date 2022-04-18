@@ -15,6 +15,9 @@ case $1 in
         (gtk-launch calendar; sleep 1)
         i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
         [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
+    cmus)
+        pgrep -x "cmus" || $TERMINAL -t cmus --class cmus -e cmus
+        i3-msg workspace 9;;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -29,7 +32,7 @@ case $1 in
         i3-msg workspace 7;;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
-        i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus s[p]otify-tui [r]eaper [s]potify";;
+        i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui";;
     nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &;;
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
@@ -38,6 +41,11 @@ case $1 in
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
+    pulsemixer)
+        wmctrl -l | grep -q "pointer pulsemixer" || \
+        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        $TERMINAL -name pulsemixer -title pulsemixer -e pulsemixer && sleep 0.05
+        i3-msg "[title="pulsemixer"] scratchpad show; [title="pulsemixer"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;

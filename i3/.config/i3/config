@@ -32,7 +32,7 @@ bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
 
 #Camera and Audio
-bindsym $mod+shift+v $e pavucontrol
+bindsym $mod+shift+v $e toggler pulsemixer
 
 #Editor
 bindsym $mod+e $e $term -e nvim
@@ -49,20 +49,22 @@ bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
 bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
 bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
+bindsym $mod+period $e toggler cmus
 bindsym $mod+slash $e toggler spotify-tui
 bindsym $mod+shift+slash $e toggler spotifyd
 
 #Music
-set $music Action: [a]udacity rofi-[b]eats [c]mus s[p]otify-tui [r]eaper [s]potify
+set $music Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui
 bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a $e flatpak run org.audacityteam.Audacity; mode "default"
-    bindsym r $e reaper; mode "default"
     bindsym b $e rofi-beats; mode "default"
     bindsym c workspace $ws9; $e $term -e cmus; mode "default"
+    bindsym r $e reaper; mode "default"
     bindsym s workspace $ws9; $e spotify; mode "default"
-    bindsym p $e toggler spotify-tui; mode "default"
+    bindsym t $e toggler spotify-tui; mode "default"
     bindsym $mod+u mode "default"
+    bindsym $mod+s mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
@@ -90,7 +92,7 @@ mode "$mega" {
 
 # OS Control
 set $quit Quit?: [y]es [n]o
-bindsym $mod+shift+q mode "$quit"
+#bindsym $mod2+q mode "$quit"
 mode "$quit" {
     bindsym y $e exit
     bindsym n $e mode "default"
@@ -107,15 +109,15 @@ mode "$shutdown" {
     bindsym Escape mode "default"
     bindsym Return mode $e shutdown now
 }
-set $reboot Reboot?: [y]es [n]o
-bindsym $mod+shift+r mode "$reboot"
-mode "$reboot" {
-    bindsym y $e reboot
-    bindsym n $e mode "default"
-    bindsym $mod+shift+r mode "default"
-    bindsym Escape mode "default"
-    bindsym Return $e reboot
-}
+# set $reboot Reboot?: [y]es [n]o
+# #bindsym $mod2+r mode "$reboot"
+# mode "$reboot" {
+#     bindsym y $e reboot
+#     bindsym n $e mode "default"
+#     bindsym $mod+shift+r mode "default"
+#     bindsym Escape mode "default"
+#     bindsym Return $e reboot
+# }
 #bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
 
 #Games
@@ -144,23 +146,30 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 bindsym XF86Bluetooth $e rfkill block 0; $e notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 #Other
-set $toggles Action: nm-[a]pplet ne[x]tcloud
+set $toggles Action: nm-[a]pplet next[c]loud
 bindsym $mod+shift+n mode "$toggles"
 mode "$toggles" {
     bindsym a $e toggler nm-applet; mode "default"
-    bindsym x $e toggler nextcloud; mode "default"
+    bindsym c $e toggler nextcloud; mode "default"
     bindsym $mod+shift+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+period $e toggler espanso
+bindsym $mod+backslash $e toggler espanso
 bindsym $mod+grave $e dunstctl close
-bindsym $mod2+r $e toggler redshift
-bindsym $mod2+shift+r $e toggler redshift-dark
+set $redshift Action: [r]edshift redshift-[d]ark | [enter]=reboot
+bindsym $mod+shift+r mode "$redshift"
+mode "$redshift" {
+    bindsym r $e toggler redshift; mode "default"
+    bindsym d $e toggler redshift-dark; mode "default"
+    bindsym $mod+shift+r mode "default"
+    bindsym Escape mode "default"
+    bindsym Return $e reboot 
+}
 
 #Utility
 bindsym $mod+t $e toggler todoist
-bindsym $mod2+h $e $term -e htop
+#bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e gtk-launch dash
 bindsym $mod+shift+c $e toggler calendar
 bindsym $mod2+c $e toggler bc
@@ -190,7 +199,7 @@ exec --no-startup-id redshift
 
 for_window [class="Pavucontrol"] floating enable
 
-assign [title="Tor Browser"] $ws6
+assign [class="Tor Browser"] $ws6
 assign [class="Mailspring"] $ws7
 assign [class="discord"] $ws8
 assign [class="Slack"] $ws8
@@ -209,10 +218,16 @@ for_window [title="bluetooth"] move scratchpad
 for_window [title="bluetooth"] border pixel 8
 
 #Vimwiki
-for_window [title="^notes"] floating enable
+for_window [title="notes"] floating enable
 for_window [title="notes"] resize set 1200 900
 for_window [title="notes"] move scratchpad
 for_window [title="notes"] border pixel 8
+
+#Pulsemixer
+for_window [title="pulsemixer"] floating enable
+for_window [title="pulsemixer"] resize set 1200 900
+for_window [title="pulsemixer"] move scratchpad
+for_window [title="pulsemixer"] border pixel 8
 
 #Todoist
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
@@ -352,6 +367,7 @@ bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
 bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 1
 bindsym XF86AudioLowerVolume $e pamixer --allow-boost -d 5
+bindsym shift+XF86AudioLowerVolume $e pamixer --allow-boost -d 1
 
 bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle # && $refresh_i3status
 bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $refresh_i3status
@@ -361,7 +377,7 @@ bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $
 #--------------------------------------------------
 
 # Wallpaper
-$e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
+exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

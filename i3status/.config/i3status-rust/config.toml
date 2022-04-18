@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "focused_window"
-max_width = 90
+max_width = 50
 show_marks = "visible"
 
 [[block]]
@@ -13,17 +13,15 @@ signal = 4
 interval = "once"
 hide_when_empty = false
 
-# [[block]]
-# block = "music"
-# player = "spotify"
-# buttons = ["play", "next"]
-# [[block]]
-# block = "music"
-# buttons = ["play", "next"]
-# interface_name_exclude = [".*kdeconnect.*", "mpd"]
-# [[block]]
-# block = "music"
-# on_collapsed_click = "spotify"
+[[block]]
+block = "music"
+#buttons = ["prev", "next"]
+interface_name_exclude = [".*kdeconnect.*", "mpd", "chromium*"]
+max_width = 25
+dynamic_width = true
+# smart_trim = true
+hide_when_empty	= true
+on_click = "playerctl --player=spotify,cmus,%any play-pause"
 
 # [[block]]
 # block = "docker"
