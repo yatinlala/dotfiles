@@ -23,7 +23,6 @@ dunst
 easyeffects
 efibootmgr
 emacs-nativecomp
-exa
 fakeroot
 fd
 feh
@@ -55,6 +54,7 @@ mtools
 nautilus
 ncdu
 neofetch
+neovim
 network-manager-applet
 networkmanager
 newsboat
@@ -92,9 +92,11 @@ seahorse
 shellcheck
 signal-desktop
 sof-firmware
+sof-tools
 sshfs
 stow
 sudo
+sway
 tcpdump
 tealdeer
 texinfo
@@ -128,6 +130,7 @@ wireplumber
 wmctrl
 xcolor
 xcompmgr
+xdg-desktop-portal-wlr
 xdg-user-dirs
 xf86-video-intel
 xf86-video-vesa

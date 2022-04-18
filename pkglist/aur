@@ -19,7 +19,6 @@ libptytty
 librewolf-bin
 mailspring
 minecraft-launcher
-neovim-nightly-bin
 nerd-fonts-complete
 onlyoffice-bin
 paru
@@ -37,4 +36,3 @@ topgrade
 ttf-ms-fonts
 urlview
 vscodium-bin
-zoom
