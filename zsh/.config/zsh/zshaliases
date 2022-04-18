@@ -3,19 +3,19 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias info='info --vi-keys'
 alias bc='bc -lq'
-#Rustify
-alias ls='exa'
 
 #Colorize!
 alias grep='grep --color=auto --exclude-dir=.git'
+alias ls='ls --color=auto'
 
 #Shorten frequently used commands
 alias e='nvim'
 alias t='tmux'
-alias la='ls -al'
+alias la='ls -Al'
 alias ll='ls -l'
 alias ka='killall'
 alias s='sudo'
+alias se='sudoedit'
 alias p='pacman'
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
@@ -57,13 +57,6 @@ alias zshaliases='nvim ~/.config/zsh/zshaliases'
 alias zshenv='nvim ~/.config/zsh/.zshenv'
 
 alias wiki='nvim ~/documents/wiki/index.md'
-
-#Trash
-alias tp='trash-put'
-alias te='trash-empty'
-alias tl='trash-list'
-alias tr='trash-restore'
-alias td='trash-remove'
 
 #Media
 alias yt='youtube-dl --add-metadata -i'
