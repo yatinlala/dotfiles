@@ -63,7 +63,7 @@ cmd bulk-rename ${{
 cmd mkdir ${{
   printf "Directory Name: "
   read ans
-  mkdir $ans
+  mkdir "$ans"
 }}
 
 cmd mkfile ${{
@@ -273,7 +273,10 @@ map gl<space> cd ~/.local
 map gls cd ~/.local/share
 map glx cd ~/.local/xdgify
 
+map glm<space> cd ~/.local/mount
 map glmc cd ~/.local/mount/cslab
+map glmu cd ~/.local/mount/usb
+
 
 map gu<space> cd /usr
 map gul cd /usr/local
