@@ -5,7 +5,7 @@
 set $mod Mod4
 set $mod2 Mod1
 set $mod3 Mod3
-set $term alacritty msg create-window
+set $term alacritty
 set $term2 urxvt
 
 floating_modifier $mod
@@ -24,7 +24,6 @@ default_border pixel 4
 #Terminals
 bindsym $mod+return exec $term
 bindsym $mod+shift+return exec $term2
-bindsym $mod2+a exec alacritty --class alacritty-server --title alacritty-server
 
 #Menus
 bindsym $mod+space exec rofi -show drun -show-icons -drun-display-format {name}
@@ -183,7 +182,6 @@ bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 
 #Startup
 exec wl-paste -t text --watch clipman store
-exec alacritty --class alacritty-server --title alacritty-server
 exec dunst
 exec blueman-applet
 exec libinput-gestures-setup start
@@ -206,9 +204,6 @@ assign [title="spt"] 10
 
 #Rofi-Beats
 for_window [title="radio-mpv"] move scratchpad
-
-#Alacritty Server
-for_window [app_id="alacritty-server"] move scratchpad
 
 #Vimwiki
 for_window [app_id="notes"] floating enable
