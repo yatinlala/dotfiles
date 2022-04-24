@@ -168,7 +168,7 @@ return require('packer').startup(function(use)
         end,
         cmd = 'DistantLaunch'
     }
-
+    use { 'romgrk/todoist.nvim' }
     use { 'wbthomason/packer.nvim', }
   if packer_bootstrap then
     require('packer').sync()

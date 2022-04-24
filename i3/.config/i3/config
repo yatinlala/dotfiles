@@ -35,8 +35,8 @@ bindsym $mod+apostrophe $e sadmenu
 bindsym $mod+shift+v $e toggler pulsemixer
 
 #Editor
-bindsym $mod+e $e $term -e nvim
-bindsym $mod+shift+e $e emacs
+bindsym $mod+e $e $term -e zsh -ic nvim
+#bindsym $mod+shift+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+w $e toggler notes
 
@@ -155,7 +155,7 @@ mode "$toggles" {
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+backslash $e toggler espanso
+bindsym $mod+shift+e $e toggler espanso
 bindsym $mod+grave $e dunstctl close
 set $redshift Action: [r]edshift redshift-[d]ark | [enter]=reboot
 bindsym $mod+shift+r mode "$redshift"
