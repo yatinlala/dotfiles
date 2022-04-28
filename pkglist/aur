@@ -13,6 +13,7 @@ gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 heroic-games-launcher-bin
 htim
+keyd-git
 lf
 libinput-gestures
 libptytty
@@ -27,6 +28,7 @@ pipe-viewer-git
 python-stringcase
 qdirstat-bin
 reaper-bin
+rofi-bluetooth-git
 rofi-greenclip
 rxvt-unicode-truecolor-wide-glyphs
 slack-desktop

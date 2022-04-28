@@ -127,7 +127,7 @@ mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m $e xdg-launch minecraft-launcher; mode "default"
-    bindsym s $e flatpak run com.valvesoftware.Steam; mode "default"
+    bindsym s $e steam; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
