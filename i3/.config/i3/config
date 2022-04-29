@@ -57,7 +57,7 @@ bindsym $mod+shift+slash $e toggler spotifyd
 set $music Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e flatpak run org.audacityteam.Audacity; mode "default"
+    bindsym a $e xdg-launch flatpak run org.audacityteam.Audacity; mode "default"
     bindsym b $e rofi-beats; mode "default"
     bindsym c workspace $ws9; $e $term -e cmus; mode "default"
     bindsym r $e reaper; mode "default"
@@ -70,7 +70,7 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b $e brave --force-device-scale-factor=1
+bindsym $mod+b $e xdg-launch brave --force-device-scale-factor=1
 bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e w3m -v
 
@@ -127,7 +127,7 @@ mode "$games" {
     bindsym h $e heroic; mode "default"
     bindsym l $e brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m $e xdg-launch minecraft-launcher; mode "default"
-    bindsym s $e steam; mode "default"
+    bindsym s $e xdg-launch steam; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
