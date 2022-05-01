@@ -6,11 +6,12 @@ end
 
 return require('packer').startup(function(use)
     -- THEMING
-    use { 'ellisonleao/gruvbox.nvim',
+    use { 'lifepillar/vim-gruvbox8',
         config = function()
             require('plugin.config.colorscheme')
         end,
     }
+
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
