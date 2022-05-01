@@ -79,6 +79,7 @@ pipewire-alsa
 pipewire-pulse
 pkgconf
 playerctl
+plocate
 pulsemixer
 python
 redshift

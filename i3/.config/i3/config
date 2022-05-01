@@ -70,7 +70,7 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b $e xdg-launch brave --force-device-scale-factor=1
+bindsym $mod+b $e xdg-launch brave
 bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e w3m -v
 
