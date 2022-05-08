@@ -52,6 +52,9 @@ case $1 in
     redshift-dark)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
+    spotify)
+        pgrep -x "spotify" || (i3-msg workspace 9 && spotify)
+        i3-msg workspace 9;;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;

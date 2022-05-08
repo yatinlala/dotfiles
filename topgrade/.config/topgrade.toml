@@ -63,7 +63,7 @@ disable = ["git_repos"]
 "Update cargo pkglist" = "cargo install --list > ~/.dotfiles/pkglist/cargo"
 "Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm"
 "Update pip pkglist" = "pip3 list --user > ~/.dotfiles/pkglist/pip3"
-"Update flatpak pkglist" = "flatpak list --app > ~/.dotfiles/pkglist/flatpak"
+# "Update flatpak pkglist" = "flatpak list --app > ~/.dotfiles/pkglist/flatpak"
 
 [brew]
 #greedy_cask = true

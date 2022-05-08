@@ -50,6 +50,7 @@ bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
 bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
 bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
 bindsym $mod+period $e toggler cmus
+bindsym $mod+shift+period $e toggler spotify
 bindsym $mod+slash $e toggler spotify-tui
 bindsym $mod+shift+slash $e toggler spotifyd
 
@@ -57,7 +58,7 @@ bindsym $mod+shift+slash $e toggler spotifyd
 set $music Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui
 bindsym $mod+u mode "$music"
 mode "$music" {
-    bindsym a $e xdg-launch flatpak run org.audacityteam.Audacity; mode "default"
+    bindsym a $e xdg-launch audacity; mode "default"
     bindsym b $e rofi-beats; mode "default"
     bindsym c workspace $ws9; $e $term -e cmus; mode "default"
     bindsym r $e reaper; mode "default"
@@ -70,7 +71,7 @@ mode "$music" {
 }
 
 #Browser
-bindsym $mod+b $e xdg-launch brave
+bindsym $mod+b $e brave
 bindsym $mod+shift+t $e torbrowser-launcher
 bindsym $mod+shift+w $e $term -e w3m -v
 
@@ -180,7 +181,7 @@ bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictur
 
 # Screenshots
 bindsym --release Print $e scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
-bindsym --release $mod2+Print $e scrot -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release $mod+Print $e scrot --select -e 'xclip -selection clipboard -t image/png -i $f'
 
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------

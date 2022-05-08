@@ -21,6 +21,7 @@ export CALIBRE_USE_DARK_PALETTE=1
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
+export CONAN_USER_HOME="$XDG_CONFIG_HOME"
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
