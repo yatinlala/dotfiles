@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
             require('plugin.config.colorscheme')
         end,
     }
-
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -25,14 +24,13 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.bufferline')
         end,
-        -- after = 'gruvbox8',
     }
-
     use { 'folke/which-key.nvim',
-    config = function()
-        require('plugin.config.whichkey')
-    end,
-    --[[ keys = '<leader>'  ]]}
+        config = function()
+            require('plugin.config.whichkey')
+        end,
+        keys = '<leader>',
+    }
 
     -- Movement
     use { 'tpope/vim-surround', event = 'CursorMoved' }
@@ -45,7 +43,6 @@ return require('packer').startup(function(use)
         keys = 's',
         cmd = 'Pounce',
     }
-
     use { 'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
@@ -55,7 +52,6 @@ return require('packer').startup(function(use)
             require('plugin.config.telescope-nvim')
         end,
     }
-
     use { 'yashlala/vim-sayonara',
     config = function()
         require('plugin.config.sayonara')
@@ -64,10 +60,7 @@ return require('packer').startup(function(use)
         end,
     keys = { 'gs', 'gS' },
     cmd = { 'Sayonara', 'Sayonara!'  } }
-
     --use 'ThePrimeagen/harpoon'
-
-
     use {'is0n/fm-nvim',
         config = function()
            require('plugin.config.fm-nvim')
@@ -77,14 +70,19 @@ return require('packer').startup(function(use)
         cmd = 'Lf'
     }
 
-    use { 'williamboman/nvim-lsp-installer', event = 'CursorMoved' }
+    -- LSP
+    use { 'williamboman/nvim-lsp-installer',
+        event = 'CursorMoved',
+        config = function()
+            require('plugin.config.lsp-installer')
+        end,
+    }
     use { 'neovim/nvim-lspconfig',
         config = function()
-            require('plugin.config.lsp')
+            require('plugin.config.lspconfig')
         end,
-        after = 'nvim-lsp-installer',
+        after = 'nvim-lsp-installer'
     }
-
     use { 'nvim-treesitter/nvim-treesitter',
         -- run = ':TSUpdate',
         config = function()
@@ -92,7 +90,6 @@ return require('packer').startup(function(use)
         end,
         after = 'nvim-lsp-installer',
     }
-
     use { 'norcalli/nvim-colorizer.lua',
         config = function()
             require('plugin.config.nvim-colorizer')
