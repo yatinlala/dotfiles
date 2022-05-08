@@ -30,7 +30,6 @@ fd
 feh
 ffmpeg
 figlet
-flatpak
 flex
 fprintd
 fwupd
@@ -65,6 +64,7 @@ noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
 npm
+obs-studio
 obsidian
 os-prober
 pacman-contrib

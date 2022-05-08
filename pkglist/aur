@@ -1,8 +1,10 @@
+audacity-git
 auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
 c-lolcat
 cargo-make
+conan
 devour
 downgrade
 dragon-drag-and-drop
@@ -25,6 +27,9 @@ netris-git
 onlyoffice-bin
 paru
 pipe-viewer-git
+python-node-semver
+python-patch-ng
+python-pluginbase
 python-stringcase
 qdirstat-bin
 reaper-bin
