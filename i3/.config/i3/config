@@ -144,7 +144,7 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 
 #TOGGLES
 #Bluetooth
-bindsym XF86Bluetooth $e rfkill block 0; $e notify-send -t 1000 "Bluetooth off."
+bindsym XF86Bluetooth $e "echo 'power off' | bluetoothctl"; $e notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 #Other
 set $toggles Action: nm-[a]pplet next[c]loud
