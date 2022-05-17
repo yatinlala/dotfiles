@@ -1,6 +1,7 @@
 alacritty
 alsa-utils
 arandr
+asciiquarium
 autoconf
 automake
 base
@@ -12,6 +13,8 @@ bluez
 bluez-utils
 browserpass-chromium
 calibre
+clang
+cmake
 cmatrix
 cmus
 cups
@@ -42,6 +45,7 @@ grub
 guvcview
 i3-gaps
 i3status-rust
+kdeconnect
 libtool
 linux
 linux-firmware
@@ -103,6 +107,7 @@ sudo
 sway
 tcpdump
 tealdeer
+tesseract
 texinfo
 texlive-bibtexextra
 texlive-core

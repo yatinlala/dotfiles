@@ -33,11 +33,8 @@ vim.opt.numberwidth = 2                         -- set min number column width t
 vim.opt.signcolumn = "yes"                      -- always show the sign column
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.shortmess:append "c" -- Get rid of "pattern not found" during completions
-
+vim.opt.laststatus = 3                          -- global statusline
 
 vim.cmd [[
-    set whichwrap+=<,>,[,],h,l
-    set iskeyword+=-
-    set path +=**
-    autocmd BufEnter * set formatoptions-=cro | set laststatus=3
+ autocmd BufEnter * set formatoptions-=cro
 ]]
