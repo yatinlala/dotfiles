@@ -93,19 +93,19 @@ mode "$mega" {
 
 # OS Control
 set $quit Quit?: [y]es [n]o
-#bindsym $mod2+q mode "$quit"
+bindsym $mod+shift+q mode "$quit"
 mode "$quit" {
-    bindsym y $e exit
-    bindsym n $e mode "default"
+    bindsym y exit
+    bindsym n mode "default"
     bindsym $mod+shift+q mode "default"
     bindsym Escape mode "default"
-    bindsym Return $e exit
+    bindsym Return exit
 }
 set $shutdown Shutdown?: [y]es [n]o
 bindsym $mod+shift+s mode "$shutdown"
 mode "$shutdown" {
     bindsym y $e shutdown now
-    bindsym n $e mode "default"
+    bindsym n mode "default"
     bindsym $mod+shift+s mode "default"
     bindsym Escape mode "default"
     bindsym Return mode $e shutdown now
@@ -170,7 +170,7 @@ mode "$redshift" {
 
 #Utility
 bindsym $mod+t $e toggler todoist
-#bindsym $mod2+h $e $term -e htop
+bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e gtk-launch dash
 bindsym $mod+shift+c $e toggler calendar
 bindsym $mod2+c $e toggler bc
