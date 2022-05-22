@@ -18,6 +18,7 @@ cmake
 cmatrix
 cmus
 cups
+deluge-gtk
 discord
 docker
 docker-compose
@@ -46,6 +47,7 @@ guvcview
 i3-gaps
 i3status-rust
 kdeconnect
+lazygit
 libtool
 linux
 linux-firmware
