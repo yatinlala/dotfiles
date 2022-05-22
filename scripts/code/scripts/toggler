@@ -2,13 +2,13 @@
 TERMINAL='urxvtc'
 case $1 in
     bc)
-        pgrep -x bc || $TERMINAL -name calc -title calc -e bc -q
+        pgrep -x bc || $TERMINAL -name calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
     bluetooth)
         rfkill unblock 0
         wmctrl -l | grep -q "pointer bluetooth" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name bluetooth -title bluetooth -e bluetoothctl
+        $TERMINAL -name bluetooth -e bluetoothctl
         i3-msg "[title="bluetooth"] scratchpad show; [title="bluetooth"] move position center";;
     calendar)
         wmctrl -l | grep -q "pointer Calendar - SCCS Nextcloud" || \
@@ -16,8 +16,10 @@ case $1 in
         i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
         [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
     cmus)
-        pgrep -x "cmus" || $TERMINAL -t cmus --class cmus -e cmus
-        i3-msg workspace 9;;
+        wmctrl -l | grep -q "pointer cmus" || \
+        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        $TERMINAL -name cmus -e cmus
+        i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -29,7 +31,7 @@ case $1 in
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "pointer Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
-        i3-msg workspace 7;;
+        i3-msg workspace 8;;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
         i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui";;
@@ -44,7 +46,7 @@ case $1 in
     pulsemixer)
         wmctrl -l | grep -q "pointer pulsemixer" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name pulsemixer -title pulsemixer -e pulsemixer && sleep 0.05
+        $TERMINAL -name pulsemixer -e pulsemixer && sleep 0.05
         i3-msg "[title="pulsemixer"] scratchpad show; [title="pulsemixer"] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
@@ -60,8 +62,10 @@ case $1 in
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
-        pgrep -x spt || $TERMINAL -t spt --class spt -e spt
-        i3-msg workspace 9;;
+        wmctrl -l | grep -q "pointer spt" || \
+        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
+        $TERMINAL -name spt -e spt
+        i3-msg "[instance=spt] scratchpad show; [instance=spt] move position center";;
     tmux);;
     todoist)
         wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)

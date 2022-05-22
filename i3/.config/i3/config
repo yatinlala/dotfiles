@@ -35,7 +35,7 @@ bindsym $mod+apostrophe $e sadmenu
 bindsym $mod+shift+v $e toggler pulsemixer
 
 #Editor
-bindsym $mod+e $e $term -e zsh -ic nvim
+bindsym $mod+e $e $term -e nvim
 #bindsym $mod+shift+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+w $e toggler notes
@@ -60,9 +60,9 @@ bindsym $mod+u mode "$music"
 mode "$music" {
     bindsym a $e xdg-launch audacity; mode "default"
     bindsym b $e rofi-beats; mode "default"
-    bindsym c workspace $ws9; $e $term -e cmus; mode "default"
+    bindsym c $e toggler cmus; mode "default"
     bindsym r $e reaper; mode "default"
-    bindsym s workspace $ws9; $e spotify; mode "default"
+    bindsym s $e spotify; mode "default"
     bindsym t $e toggler spotify-tui; mode "default"
     bindsym $mod+u mode "default"
     bindsym $mod+s mode "default"
@@ -81,10 +81,10 @@ bindsym $mod+shift+m $e $term -e neomutt
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
-    bindsym d $e discord; workspace $ws8; mode "default"
-    bindsym e $e element-desktop; workspace $ws8; mode "default"
-    bindsym l $e slack; workspace $ws8; mode "default"
-    bindsym s $e signal-desktop; workspace $ws8; mode "default"
+    bindsym d $e discord; workspace $ws9; mode "default"
+    bindsym e $e element-desktop; workspace $ws9; mode "default"
+    bindsym l $e slack; workspace $ws9; mode "default"
+    bindsym s $e signal-desktop; workspace $ws9; mode "default"
     bindsym w $e toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
@@ -135,8 +135,8 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n $e $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws10; mode "default"
-bindsym $mod+p $e $term -e pipe-viewer --resolution=480; workspace $ws10
+bindsym $mod+n $e $term -name newsboat -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws10; mode "default"
+bindsym $mod+p $e $term -name pipe-viewer -e pipe-viewer --resolution=480; workspace $ws10
 bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo
 bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
@@ -200,35 +200,45 @@ exec --no-startup-id redshift
 
 for_window [class="Pavucontrol"] floating enable
 
-assign [class="Tor Browser"] $ws6
-assign [class="Mailspring"] $ws7
-assign [class="discord"] $ws8
-assign [class="Slack"] $ws8
-assign [class="Signal"] $ws8
-assign [class="Element"] $ws8
-assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws8
-assign [title="pipe-viewer"] $ws10
-assign [title="newsboat"] $ws10
-assign [title="cmus"] $ws9
-assign [title="spt"] $ws9
+assign [class="Tor Browser"] $ws7
+assign [class="Mailspring"] $ws8
+assign [class="discord"] $ws9
+assign [class="Slack"] $ws9
+assign [class="Signal"] $ws9
+assign [class="Element"] $ws9
+assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws9 # Whatsapp
+assign [instance="pipe-viewer"] $ws10
+assign [instance="newsboat"] $ws10
 
 #Bluetoothctl
-for_window [title="bluetooth"] floating enable
-for_window [title="bluetooth"] resize set 800 400
-for_window [title="bluetooth"] move scratchpad
-for_window [title="bluetooth"] border pixel 8
+for_window [instance="bluetooth"] floating enable
+for_window [instance="bluetooth"] resize set 800 400
+for_window [instance="bluetooth"] move scratchpad
+for_window [instance="bluetooth"] border pixel 8
+
+#Cmus
+for_window [instance="cmus"] floating enable
+for_window [instance="cmus"] resize set 1200 900
+for_window [instance="cmus"] move scratchpad
+for_window [instance="cmus"] border pixel 8
+
+#Cmus
+for_window [instance="spt"] floating enable
+for_window [instance="spt"] resize set 1200 900
+for_window [instance="spt"] move scratchpad
+for_window [instance="spt"] border pixel 8
 
 #Vimwiki
-for_window [title="notes"] floating enable
-for_window [title="notes"] resize set 1200 900
-for_window [title="notes"] move scratchpad
-for_window [title="notes"] border pixel 8
+for_window [instance="notes"] floating enable
+for_window [instance="notes"] resize set 1200 900
+for_window [instance="notes"] move scratchpad
+for_window [instance="notes"] border pixel 8
 
 #Pulsemixer
-for_window [title="pulsemixer"] floating enable
-for_window [title="pulsemixer"] resize set 1200 900
-for_window [title="pulsemixer"] move scratchpad
-for_window [title="pulsemixer"] border pixel 8
+for_window [instance="pulsemixer"] floating enable
+for_window [instance="pulsemixer"] resize set 1200 900
+for_window [instance="pulsemixer"] move scratchpad
+for_window [instance="pulsemixer"] border pixel 8
 
 #Todoist
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad

@@ -29,20 +29,11 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.whichkey')
         end,
-        keys = '<leader>',
+        -- keys = '<leader>',
     }
 
     -- Movement
     use { 'tpope/vim-surround', event = 'CursorMoved' }
-    use { 'rlane/pounce.nvim',
-        config = function()
-            require('plugin.config.pounce')
-            -- Pounce around
-            vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
-        end,
-        keys = 's',
-        cmd = 'Pounce',
-    }
     use { 'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
@@ -143,20 +134,17 @@ return require('packer').startup(function(use)
             require('plugin.config.vimwiki')
         end,
     }
-
     use { 'numToStr/Comment.nvim',
         config = function()
             require('plugin.config.comment')
         end,
         event = 'CursorMoved' }
-
     use { 'akinsho/toggleterm.nvim',
         config = function ()
             require('plugin.config.toggleterm')
         end,
         cmd = 'ToggleTerm',
     }
-
     use {
         'chipsenkbeil/distant.nvim',
         config = function()
@@ -166,7 +154,6 @@ return require('packer').startup(function(use)
         end,
         cmd = 'DistantLaunch'
     }
-    use { 'romgrk/todoist.nvim' }
     use { 'wbthomason/packer.nvim', }
   if packer_bootstrap then
     require('packer').sync()

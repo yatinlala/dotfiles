@@ -69,6 +69,7 @@ neogit.setup {
       ["B"] = "BranchPopup",
       -- Removes the default mapping of "s"
       ["s"] = "",
+      ["a"] = "Stage",
     }
   }
 }
