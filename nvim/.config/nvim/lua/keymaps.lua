@@ -32,6 +32,7 @@ map('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
 map('n', 'J', 'mzJ\'z', opts)
 
+vim.api.nvim_set_keymap('n', '<c-\\>', ':ToggleTerm<CR>', {})
 
 map('n', 'gf', ':e <cfile><CR>', opts)
 
@@ -41,8 +42,6 @@ map('n', 'gf', ':e <cfile><CR>', opts)
 -- map('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
 -- -- Search and replace
 -- map('n', '<leader>s', ':%s//g<Left><Left>', {})
--- -- GF creates new file if needed
--- map('n', 'gf',  ':edit <cfile><cr>', {})
 
 -- Insert --
 -- Undo break points
@@ -78,4 +77,3 @@ map('c', 'w!!', 'w !sudo tee %', {})
 --
 -- ]])
 
-vim.api.nvim_set_keymap('n', '<c-\\>', ':ToggleTerm<CR>', {})

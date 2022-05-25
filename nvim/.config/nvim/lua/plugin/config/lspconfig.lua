@@ -23,6 +23,13 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+    -- Document highlight
+    vim.api.nvim_command [[ hi LspReferenceText guibg=#504945]]
+    vim.api.nvim_create_autocmd("CursorHold", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0})
+    vim.api.nvim_create_autocmd("CursorHoldI", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0})
+    vim.api.nvim_create_autocmd("CursorMoved", { callback = function()vim.lsp.buf.clear_references() end, buffer = 0})
+    vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank() end})
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

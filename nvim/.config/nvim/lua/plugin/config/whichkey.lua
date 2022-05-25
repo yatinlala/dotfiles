@@ -87,6 +87,7 @@ local mappings = {
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
+        h = { "<cmd>:Telescope help_tags<CR>", "help tags" },
         n = { "<cmd>:Telescope find_files cwd=~/.config/nvim<CR>", "edit neovim" },
         r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
     },

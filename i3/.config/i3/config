@@ -216,6 +216,12 @@ for_window [instance="bluetooth"] resize set 800 400
 for_window [instance="bluetooth"] move scratchpad
 for_window [instance="bluetooth"] border pixel 8
 
+
+#Bluetoothctl
+for_window [instance="nm-connection-editor"] floating enable
+for_window [instance="nm-connection-editor"] resize set 800 400
+for_window [instance="nm-connection-editor"] border pixel 8
+
 #Cmus
 for_window [instance="cmus"] floating enable
 for_window [instance="cmus"] resize set 1200 900

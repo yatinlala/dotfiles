@@ -58,10 +58,8 @@ zle-line-init() {
     echo -ne "\e[6 q"
 }
 zle -N zle-line-init
-echo -ne '\e[6 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
-# # Use lf to switch directories
+# Use lf to switch directories
 lf() {
     tmp="$(mktemp)"
     $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
@@ -114,4 +112,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 #Source aliases
 source "$ZDOTDIR/zshaliases"
-source "$ZDOTDIR/secret"
+
+# Create a tmux session if none exist
+case $- in *i*)
+    # if [[ ! $(tmux list-sessions) ]]; then
+    #     tmux new -s TMUX
+    # fi
+
+    tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
+esac
+
+# autoload -U promptinit; promptinit
+# prompt pure

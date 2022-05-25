@@ -60,6 +60,15 @@ return require('packer').startup(function(use)
         keys = '<leader>e',
         cmd = 'Lf'
     }
+    use { 'rlane/pounce.nvim',
+    config = function()
+        require('plugin.config.pounce')
+        -- Pounce around
+        vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
+    end,
+    keys = 's',
+    cmd = 'Pounce',
+    }
 
     -- LSP
     use { 'williamboman/nvim-lsp-installer',

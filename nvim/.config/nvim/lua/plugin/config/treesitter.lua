@@ -4,12 +4,7 @@ if not status_ok then
 end
 
 configs.setup {
-  -- A list of parser names, or "all"
   -- ensure_installed = { "c", "lua", "rust" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
   -- List of parsers to ignore installing (for "all")
   ignore_install = { "" },
 
