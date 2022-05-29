@@ -131,6 +131,10 @@ return require('packer').startup(function(use)
     }
 
     --Other
+    use {
+        'glacambre/firenvim',
+        run = function() vim.fn['firenvim#install'](0) end
+    }
     use 'lewis6991/impatient.nvim'
     use {
         'antoinemadec/FixCursorHold.nvim',

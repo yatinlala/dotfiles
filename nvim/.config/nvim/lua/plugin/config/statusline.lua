@@ -12,7 +12,8 @@ require('lualine').setup {
     lualine_b = {'branch', 'diagnostics'},
     lualine_c = {'filename'},
     lualine_x = {'diff', 'filetype'},
-    lualine_y = {''},
+    lualine_y = {},
+
     lualine_z = {'location'}
   },
   inactive_sections = {
