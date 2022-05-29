@@ -107,6 +107,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd e edit-command-line
 
 ########## LOAD PLUGINS ##########
+# source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -121,6 +122,3 @@ case $- in *i*)
 
     tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
 esac
-
-# autoload -U promptinit; promptinit
-# prompt pure

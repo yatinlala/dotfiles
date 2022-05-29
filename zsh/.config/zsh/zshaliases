@@ -69,7 +69,6 @@ alias audacity='xdg-launch audacity'
 alias librewolf='xdg-launch librewolf'
 alias minecraft-launcher='xdg-launch minecraft-launcher'
 alias w3m='xdg-launch w3m'
-alias newsboat="newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
