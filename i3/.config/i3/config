@@ -135,8 +135,8 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n $e $term -name newsboat -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws10; mode "default"
-bindsym $mod+p $e $term -name pipe-viewer -e pipe-viewer --resolution=480; workspace $ws10
+bindsym $mod+n $e $term -name newsboat -e newsboat; workspace $ws10; mode "default"
+bindsym $mod+p $e $term -name pipe-viewer -e pipe-viewer --resolution=720; workspace $ws10
 bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo
 bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
@@ -210,61 +210,15 @@ assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws9 # Whatsapp
 assign [instance="pipe-viewer"] $ws10
 assign [instance="newsboat"] $ws10
 
-#Bluetoothctl
-for_window [instance="bluetooth"] floating enable
-for_window [instance="bluetooth"] resize set 800 400
-for_window [instance="bluetooth"] move scratchpad
-for_window [instance="bluetooth"] border pixel 8
-
-
-#Bluetoothctl
-for_window [instance="nm-connection-editor"] floating enable
-for_window [instance="nm-connection-editor"] resize set 800 400
-for_window [instance="nm-connection-editor"] border pixel 8
-
-#Cmus
-for_window [instance="cmus"] floating enable
-for_window [instance="cmus"] resize set 1200 900
-for_window [instance="cmus"] move scratchpad
-for_window [instance="cmus"] border pixel 8
-
-#Cmus
-for_window [instance="spt"] floating enable
-for_window [instance="spt"] resize set 1200 900
-for_window [instance="spt"] move scratchpad
-for_window [instance="spt"] border pixel 8
-
-#Vimwiki
-for_window [instance="notes"] floating enable
-for_window [instance="notes"] resize set 1200 900
-for_window [instance="notes"] move scratchpad
-for_window [instance="notes"] border pixel 8
-
-#Pulsemixer
-for_window [instance="pulsemixer"] floating enable
-for_window [instance="pulsemixer"] resize set 1200 900
-for_window [instance="pulsemixer"] move scratchpad
-for_window [instance="pulsemixer"] border pixel 8
-
-#Todoist
-for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad
-for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] floating enable
-for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] resize set 1700 1020
-
-#Calendar
-for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad
-for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] floating enable
-for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] resize set 1900 1020
-
-#Gmail Web
-for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] move scratchpad
-for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] floating enable
-for_window [instance="crx_fmgjjmmmlfnkbppncabfkddbjimcfncm"] resize set 1900 1020
-
-for_window [instance="calc"] floating enable
-for_window [instance="calc"] resize set 800 400
-for_window [instance="calc"] move scratchpad
-for_window [instance="calc"] border pixel 8
+for_window [instance="bluetooth"] floating enable, resize set 800 400, move scratchpad, border pixel 8
+for_window [instance="calc"] floating enable, resize set 800 400, move scratchpad, border pixel 8
+for_window [instance="nm-connection-editor"] floating enable, resize set 800 400, border pixel 8
+for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
+for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
 
 #--------------------------------------------------
 #-------------------Movement---------------------

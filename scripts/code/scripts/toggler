@@ -72,7 +72,7 @@ case $1 in
         i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;
     whatsapp)
         wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
-        i3-msg workspace 8;;
+        i3-msg workspace 9;;
     *) echo "Invalid argument.";;
 
     *) echo "Invalid argument.";;
