@@ -111,10 +111,6 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd open_config  ${{
-  $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
-}}
-
 cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
 
 cmd dragon %dragon-drag-and-drop -a -x "$fx"
@@ -188,13 +184,6 @@ map w smart_w
 # Not really image preview
 # map P $~/.local/scripts/lf/draw_img "$f"
 
-cmd video_preview ${{
-    CACHE=$(mktemp /tmp/thumb_cache.XXXXX)
-    ffmpegthumbnailer -i "$f" -o $CACHE -s 0
-    ~/.config/lf/draw_img $CACHE && rm $CACHE
-}}
-map + :video_preview
-
 # File Openers
 map EE $$EDITOR "$f"
 map ES sudoedit
@@ -211,7 +200,6 @@ map dd trash
 map te empty_trash
 map tr restore_trash
 
-map T tag-toggle
 
 # FZF
 map <c-p> fzf_jump
@@ -238,14 +226,13 @@ map <enter> open
 map mf mkfile
 map mr sudomkfile
 map md mkdir
-map ms $mkscript
 map ch chmod
-map o open_config
 map H top
 map L bottom
 map R reload
 map C clear
 map U unselect
+map T tag-toggle
 
 # Rename Commands --------------------
 map r rename 
