@@ -122,3 +122,5 @@ case $- in *i*)
 
     tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
 esac
+
+eval "$(fasd --init auto)"

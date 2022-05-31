@@ -163,6 +163,15 @@ cmd restore_trash ${{
   trash-restore
 }}
 
+cmd fasd_dir ${{
+    res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else
+        cmd="select"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
 
 
 # Bindings
@@ -200,6 +209,8 @@ map dd trash
 map te empty_trash
 map tr restore_trash
 
+# Fasd
+map go :fasd_dir
 
 # FZF
 map <c-p> fzf_jump
