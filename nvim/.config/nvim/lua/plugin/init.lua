@@ -18,13 +18,27 @@ return require('packer').startup(function(use)
             require('plugin.config.statusline')
         end,
     }
+    -- Lua
+    -- use {
+    --     "SmiteshP/nvim-gps",
+    --     requires = "nvim-treesitter/nvim-treesitter",
+    --     after = 'nvim-treesitter',
+    --     config = function()
+    --         require("nvim-gps").setup()
+    --         _G.gps_location = function()
+    --             local gps = require "nvim-gps"
+    --             return gps.is_available() and gps.get_location() or ""
+    --         end
+    --         vim.opt.winbar = "%{%v:lua.gps_location()%}"
+    --     end,
+    -- }
 
     -- VISUAL
-    use { 'akinsho/bufferline.nvim',
-        config = function()
-            require('plugin.config.bufferline')
-        end,
-    }
+    -- use { 'akinsho/bufferline.nvim',
+    --     config = function()
+    --         require('plugin.config.bufferline')
+    --     end,
+    -- }
     use { 'folke/which-key.nvim',
         config = function()
             require('plugin.config.whichkey')
