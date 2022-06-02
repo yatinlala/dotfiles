@@ -1,7 +1,7 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 return require('packer').startup(function(use)
@@ -53,47 +53,47 @@ return require('packer').startup(function(use)
             { 'nvim-lua/plenary.nvim' },
             { 'kyazdani42/nvim-web-devicons' },
             { 'nvim-telescope/telescope-fzy-native.nvim' } },
-        config = function ()
+        config = function()
             require('plugin.config.telescope-nvim')
         end,
     }
     use { 'yashlala/vim-sayonara',
-    config = function()
-        require('plugin.config.sayonara')
-         vim.api.nvim_set_keymap('n', 'gs', ':Sayonara<CR>', { silent = true } )
-         vim.api.nvim_set_keymap('n', 'gS', ':Sayonara!<CR>', { silent = true } )
-        end,
-    keys = { 'gs', 'gS' },
-    cmd = { 'Sayonara', 'Sayonara!'  } }
-    --use 'ThePrimeagen/harpoon'
-    use {'is0n/fm-nvim',
         config = function()
-           require('plugin.config.fm-nvim')
+            require('plugin.config.sayonara')
+            vim.api.nvim_set_keymap('n', 'gs', ':Sayonara<CR>', { silent = true })
+            vim.api.nvim_set_keymap('n', 'gS', ':Sayonara!<CR>', { silent = true })
+        end,
+        keys = { 'gs', 'gS' },
+        cmd = { 'Sayonara', 'Sayonara!' } }
+    --use 'ThePrimeagen/harpoon'
+    use { 'is0n/fm-nvim',
+        config = function()
+            require('plugin.config.fm-nvim')
             vim.api.nvim_set_keymap('n', '<leader>e', ':Lf<CR>', {})
-           end,
+        end,
         keys = '<leader>e',
         cmd = 'Lf'
     }
     use { 'rlane/pounce.nvim',
-    config = function()
-        require('plugin.config.pounce')
-        -- Pounce around
-        vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", {silent = true } )
-    end,
-    keys = 's',
-    cmd = 'Pounce',
+        config = function()
+            require('plugin.config.pounce')
+            -- Pounce around
+            vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", { silent = true })
+        end,
+        keys = 's',
+        cmd = 'Pounce',
     }
 
     -- LSP
     use { 'williamboman/nvim-lsp-installer',
         event = 'CursorMoved',
         config = function()
-            require('plugin.config.lsp-installer')
+            require('plugin.config.lsp.lsp-installer')
         end,
     }
     use { 'neovim/nvim-lspconfig',
         config = function()
-            require('plugin.config.lspconfig')
+            require('plugin.config.lsp.lspconfig')
         end,
         after = 'nvim-lsp-installer'
     }
@@ -104,6 +104,12 @@ return require('packer').startup(function(use)
         end,
         after = 'nvim-lsp-installer',
     }
+    -- use { 'jose-elias-alvarez/null-ls.nvim',
+    --     config = function()
+    --         require('plugin.config.lsp.null-ls')
+    --     end,
+    --     after = 'nvim-lsp-installer',
+    -- }
     use { 'norcalli/nvim-colorizer.lua',
         config = function()
             require('plugin.config.nvim-colorizer')
@@ -113,7 +119,7 @@ return require('packer').startup(function(use)
 
     -- Completion
     use { 'hrsh7th/nvim-cmp',
-        config = function ()
+        config = function()
             require('plugin.config.cmp')
         end,
         event = 'InsertEnter' }
@@ -122,7 +128,7 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-    use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }  -- snippet completions
+    use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' } -- snippet completions
     use { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' } -- a bunch of snippets to use
     use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' } --snippet engine
 
@@ -130,7 +136,7 @@ return require('packer').startup(function(use)
     use { 'TimUntersberger/neogit',
         config = function()
             require('plugin.config.neogit')
-            end,
+        end,
         cmd = 'Neogit'
     }
     use {
@@ -167,7 +173,7 @@ return require('packer').startup(function(use)
         end,
         event = 'CursorMoved' }
     use { 'akinsho/toggleterm.nvim',
-        config = function ()
+        config = function()
             require('plugin.config.toggleterm')
         end,
         cmd = 'ToggleTerm',
@@ -182,7 +188,7 @@ return require('packer').startup(function(use)
         cmd = 'DistantLaunch'
     }
     use { 'wbthomason/packer.nvim', }
-  if packer_bootstrap then
-    require('packer').sync()
+    if packer_bootstrap then
+        require('packer').sync()
     end
 end)

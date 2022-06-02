@@ -40,8 +40,6 @@ map('n', 'gf', ':e <cfile><CR>', opts)
 -- map('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
 -- -- Enable spell checking
 -- map('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
--- -- Search and replace
--- map('n', '<leader>s', ':%s//g<Left><Left>', {})
 
 -- Insert --
 -- Undo break points
