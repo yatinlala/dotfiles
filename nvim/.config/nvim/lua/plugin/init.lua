@@ -86,7 +86,6 @@ return require('packer').startup(function(use)
 
     -- LSP
     use { 'williamboman/nvim-lsp-installer',
-        event = 'CursorMoved',
         config = function()
             require('plugin.config.lsp.lsp-installer')
         end,
@@ -102,7 +101,6 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.treesitter')
         end,
-        after = 'nvim-lsp-installer',
     }
     -- use { 'jose-elias-alvarez/null-ls.nvim',
     --     config = function()
@@ -120,7 +118,7 @@ return require('packer').startup(function(use)
     -- Completion
     use { 'hrsh7th/nvim-cmp',
         config = function()
-            require('plugin.config.cmp')
+            require('plugin.config.nvim-cmp')
         end,
         event = 'InsertEnter' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
@@ -151,11 +149,8 @@ return require('packer').startup(function(use)
     }
 
     --Other
-    use {
-        'glacambre/firenvim',
-        run = function() vim.fn['firenvim#install'](0) end
-    }
     use 'lewis6991/impatient.nvim'
+    use { "Djancyp/cheat-sheet" }
     use {
         'antoinemadec/FixCursorHold.nvim',
         config = function()
@@ -167,6 +162,27 @@ return require('packer').startup(function(use)
             require('plugin.config.vimwiki')
         end,
     }
+    -- use { 'nvim-orgmode/orgmode',
+    --     config = function()
+    --         -- Load custom tree-sitter grammar for org filetype
+    --         require('orgmode').setup_ts_grammar()
+    --
+    --         -- Tree-sitter configuration
+    --         require 'nvim-treesitter.configs'.setup {
+    --             -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+    --             highlight = {
+    --                 enable = true,
+    --                 additional_vim_regex_highlighting = { 'org' }, -- Required for spellcheck, some LaTex highlights and code block highlights that do not have ts grammar
+    --             },
+    --             ensure_installed = { 'org' }, -- Or run :TSUpdate org
+    --         }
+    --
+    --         require('orgmode').setup({
+    --             org_agenda_files = { '~/documents/org/*', '~/documents/org/my-orgs/**/*' },
+    --             org_default_notes_file = '~/documents/org/refile.org',
+    --         })
+    --     end
+    -- }
     use { 'numToStr/Comment.nvim',
         config = function()
             require('plugin.config.comment')

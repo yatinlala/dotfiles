@@ -10,7 +10,7 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diagnostics'},
-    lualine_c = { 'filename' },
+    lualine_c = { { 'filename', path = 2 } },
     lualine_x = {'diff', 'filetype'},
     lualine_y = {},
 
@@ -19,7 +19,7 @@ require('lualine').setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_c = {},
     lualine_x = {'location'},
     lualine_y = {},
     lualine_z = {}
