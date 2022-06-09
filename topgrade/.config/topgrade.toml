@@ -64,7 +64,7 @@ disable = ["git_repos"]
 "Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm"
 "Update pip pkglist" = "pip3 list --user > ~/.dotfiles/pkglist/pip3"
 # "Update flatpak pkglist" = "flatpak list --app > ~/.dotfiles/pkglist/flatpak"
-"Prune paccache" = "paccache -d -k 5"
+"Prune paccache" = "paccache -d -k 8"
 
 [brew]
 #greedy_cask = true
