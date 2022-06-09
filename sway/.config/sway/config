@@ -9,7 +9,7 @@ set $term2 urxvt
 
 floating_modifier $mod
 
-font pango:BlexMono Nerd Font 13
+font pango:BlexMono Nerd Font 12
 smart_gaps on 
 smart_borders on
 gaps inner 7
@@ -30,10 +30,10 @@ bindsym $mod+semicolon exec rofi-pass
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
-bindsym $mod+shift+v exec pulsemixer
+bindsym $mod+shift+v exec pavucontrol
 
 #Editor
-bindsym $mod+e $e $term -e zsh -ic nvim
+bindsym $mod+e $e $term -e nvim
 #bindsym $mod+shift+e $e emacs
 bindsym $mod+o $e onlyoffice-desktopeditors
 bindsym $mod+w $e toggler notes
@@ -79,10 +79,10 @@ bindsym $mod+shift+m $e $term -e neomutt
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
-    bindsym d exec discord; workspace $ws8; mode "default"
-    bindsym e exec element-desktop; workspace $ws8; mode "default"
-    bindsym l exec slack; workspace $ws8; mode "default"
-    bindsym s exec signal-desktop; workspace $ws8; mode "default"
+    bindsym d exec discord; workspace $ws9; mode "default"
+    bindsym e exec element-desktop; workspace $ws9; mode "default"
+    bindsym l exec slack; workspace $ws9; mode "default"
+    bindsym s exec signal-desktop; workspace $ws9; mode "default"
     bindsym w exec toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
@@ -125,7 +125,7 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n exec $term -e newsboat -u .config/newsboat/urls -c .config/newsboat/cache.db -C .config/newsboat/config; workspace $ws10; mode "default"
+bindsym $mod+n exec $term -e newsboat; workspace $ws10; mode "default"
 bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace $ws10
 bindsym $mod+shift+p exec gtk-pipe-viewer
 bindsym XF86Tools exec pomo
