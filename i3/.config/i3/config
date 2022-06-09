@@ -147,10 +147,11 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 bindsym XF86Bluetooth $e "echo 'power off' | bluetoothctl"; $e notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b $e toggler bluetooth
 #Other
-set $toggles Action: nm-[a]pplet next[c]loud
+set $toggles Action: nm-[a]pplet [b]lueman-applet next[c]loud
 bindsym $mod+shift+n mode "$toggles"
 mode "$toggles" {
     bindsym a $e toggler nm-applet; mode "default"
+    bindsym b $e toggler blueman-applet; mode "default"
     bindsym c $e toggler nextcloud; mode "default"
     bindsym $mod+shift+n mode "default"
     bindsym Escape mode "default"
@@ -215,6 +216,7 @@ for_window [instance="calc"] floating enable, resize set 800 400, move scratchpa
 for_window [instance="nm-connection-editor"] floating enable, resize set 800 400, border pixel 8
 for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [instance="spotify"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
@@ -336,8 +338,9 @@ bindsym $mod2+j $e xbacklight -3
 bindsym $mod2+k $e xbacklight +3
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
-bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 1
+bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 5
 bindsym XF86AudioLowerVolume $e pamixer --allow-boost -d 5
+bindsym shift+XF86AudioRaiseVolume $e pamixer --allow-boost -i 1
 bindsym shift+XF86AudioLowerVolume $e pamixer --allow-boost -d 1
 
 bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle # && $refresh_i3status

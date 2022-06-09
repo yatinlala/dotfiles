@@ -4,12 +4,14 @@ case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
+    blueman-applet)
+        pgrep -x "blueman-applet" && killall blueman-applet || setsid blueman-applet &;;
     bluetooth)
         rfkill unblock 0
         wmctrl -l | grep -q "pointer bluetooth" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name bluetooth -e bluetoothctl
-        i3-msg "[title="bluetooth"] scratchpad show; [title="bluetooth"] move position center";;
+        i3-msg "[title=bluetooth] scratchpad show; [title=bluetooth] move position center";;
     calendar)
         wmctrl -l | grep -q "pointer Calendar - SCCS Nextcloud" || \
         (gtk-launch calendar; sleep 1)
@@ -55,8 +57,8 @@ case $1 in
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
     spotify)
-        pgrep -x "spotify" || (i3-msg workspace 9 && spotify)
-        i3-msg workspace 9;;
+        pgrep -x "spotify" || spotify &
+        i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
@@ -73,7 +75,5 @@ case $1 in
     whatsapp)
         wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
         i3-msg workspace 9;;
-    *) echo "Invalid argument.";;
-
     *) echo "Invalid argument.";;
 esac
