@@ -48,14 +48,14 @@ alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pa
 
 #Jumps
 alias ss='cd ~/code/scripts/'
-alias .dot='cd ~/.dotfiles/'
+# alias .dot='cd ~/.dotfiles/'
 
 #File Jumps
-alias lfrc='nvim ~/.config/lf/lfrc'
+# alias lfrc='nvim ~/.config/lf/lfrc'
 alias wmc='nvim ~/.config/i3/config'
-alias zshrc='nvim ~/.config/zsh/.zshrc'
-alias zshaliases='nvim ~/.config/zsh/zshaliases'
-alias zshenv='nvim ~/.config/zsh/.zshenv'
+# alias zshrc='nvim ~/.config/zsh/.zshrc'
+# alias zshaliases='nvim ~/.config/zsh/zshaliases'
+# alias zshenv='nvim ~/.config/zsh/.zshenv'
 
 alias wiki='nvim ~/documents/wiki/index.md'
 
