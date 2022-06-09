@@ -10,6 +10,7 @@ bat
 bc
 bison
 bitwarden
+blueman
 bluez
 bluez-utils
 browserpass-chromium
@@ -29,7 +30,6 @@ dunst
 easyeffects
 efibootmgr
 element-desktop
-emacs-nativecomp
 fakeroot
 fd
 feh
@@ -57,6 +57,7 @@ lxappearance
 lxsession
 m4
 make
+micro
 moreutils
 mpv
 mtools
@@ -91,6 +92,7 @@ playerctl
 plocate
 pulsemixer
 python
+python-pytorch
 redshift
 reflector
 ripgrep
