@@ -27,7 +27,7 @@ bindsym $mod+Return $e $term
 bindsym $mod+shift+Return $e $term2
 
 #Menus
-bindsym $mod+space $e rofi -show drun -show-icons -drun-display-format {name}
+bindsym $mod+space $e ~/.config/rofi/launcher/launcher.sh
 bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
 
@@ -92,24 +92,25 @@ mode "$mega" {
 }
 
 # OS Control
-set $quit Quit?: [y]es [n]o
-bindsym $mod+shift+q mode "$quit"
-mode "$quit" {
-    bindsym y exit
-    bindsym n mode "default"
-    bindsym $mod+shift+q mode "default"
-    bindsym Escape mode "default"
-    bindsym Return exit
-}
-set $shutdown Shutdown?: [y]es [n]o
-bindsym $mod+shift+s mode "$shutdown"
-mode "$shutdown" {
-    bindsym y $e shutdown now
-    bindsym n mode "default"
-    bindsym $mod+shift+s mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode $e shutdown now
-}
+bindsym $mod+shift+s $e ~/.config/rofi/powermenu/powermenu.sh
+# set $quit Quit?: [y]es [n]o
+# bindsym $mod+shift+q mode "$quit"
+# mode "$quit" {
+#     bindsym y exit
+#     bindsym n mode "default"
+#     bindsym $mod+shift+q mode "default"
+#     bindsym Escape mode "default"
+#     bindsym Return exit
+# }
+# set $shutdown Shutdown?: [y]es [n]o
+# bindsym $mod+shift+s mode "$shutdown"
+# mode "$shutdown" {
+#     bindsym y $e shutdown now
+#     bindsym n mode "default"
+#     bindsym $mod+shift+s mode "default"
+#     bindsym Escape mode "default"
+#     bindsym Return mode $e shutdown now
+# }
 # set $reboot Reboot?: [y]es [n]o
 # #bindsym $mod2+r mode "$reboot"
 # mode "$reboot" {
@@ -190,7 +191,7 @@ bindsym --release $mod+Print $e scrot --select -e 'xclip -selection clipboard -t
 
 #Startup
 exec --no-startup-id lxsession #Needed by fprintd
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends
 exec --no-startup-id urxvtd -q
 exec --no-startup-id dunst
 exec --no-startup-id greenclip daemon
@@ -318,7 +319,7 @@ bar {
     status_command i3status-rs
     colors {
         separator #928374
-        background #282828
+        background #32302f
         statusline #ebdbb2
         focused_workspace #689d6a #689d6a #282828 #ffffff
         active_workspace #1d2021 #1d2021 #928374 #ffffff
@@ -353,8 +354,8 @@ bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $
 # Wallpaper
 exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 
-# set primary gruvbox colorscheme colors
-set $bg #282828
+# set primary gruvbox light colorscheme colors
+set $bg #32302f
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
