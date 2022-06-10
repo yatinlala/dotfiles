@@ -172,7 +172,7 @@ mode "$redshift" {
 }
 
 #Utility
-bindsym $mod+t $e toggler todoist
+bindsym $mod+t $e toggler habitica
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e gtk-launch dash
 bindsym $mod+shift+c $e toggler calendar
@@ -223,6 +223,7 @@ for_window [instance="notes"] floating enable, resize set 1200 900, move scratch
 for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
+for_window [instance="crx_pdigihnmoiplkhocekidmdcmhchhdpjo"] move scratchpad, floating enable, resize set 1900 1020
 
 #--------------------------------------------------
 #-------------------Movement---------------------
