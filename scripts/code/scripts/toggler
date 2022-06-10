@@ -45,6 +45,9 @@ case $1 in
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
         i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
+    pavucontrol)
+        pgrep -x "pavucontrol" || setsid pavucontrol &
+        i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
     pulsemixer)
         wmctrl -l | grep -q "pointer pulsemixer" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \

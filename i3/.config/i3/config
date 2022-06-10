@@ -30,6 +30,7 @@ bindsym $mod+shift+Return $e $term2
 bindsym $mod+space $e ~/.config/rofi/launcher/launcher.sh
 bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
+bindsym $mod+shift+bracketleft $e rofi -show emoji -modi emoji
 
 #Camera and Audio
 bindsym $mod+shift+v $e toggler pulsemixer
@@ -175,7 +176,7 @@ bindsym $mod+t $e toggler todoist
 bindsym $mod2+h $e $term -e htop
 bindsym $mod2+d $e gtk-launch dash
 bindsym $mod+shift+c $e toggler calendar
-bindsym $mod2+c $e toggler bc
+bindsym $mod2+c $e rofi -show calc -modi calc -no-show-match -no-sort
 bindsym $mod+comma exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+shift+comma exec pkill greenclip && greenclip clear && greenclip daemon &
 bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
