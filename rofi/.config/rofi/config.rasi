@@ -1,9 +1,7 @@
+/** Basic config file **/
+
 configuration {
-	modi: "run,drun,ssh";
-	width: 900;
-	lines: 6;
-	font: "DejaVu Sans Mono 14";
-	terminal: "urxvt";
-	hide-scrollbar: true;
+  show-icons:         true;
+  icon-theme:         "Papirus";
 }
 @theme "/home/nitay/.config/rofi/theme.rasi"
