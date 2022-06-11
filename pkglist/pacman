@@ -97,6 +97,8 @@ redshift
 reflector
 ripgrep
 rofi
+rofi-calc
+rofi-emoji
 rofi-pass
 rsync
 rtkit
