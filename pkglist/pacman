@@ -67,6 +67,7 @@ ncdu
 neofetch
 network-manager-applet
 networkmanager
+networkmanager-openvpn
 newsboat
 nextcloud-client
 noto-fonts
@@ -113,6 +114,7 @@ steam
 stow
 sudo
 sway
+systemd-resolvconf
 tcpdump
 tealdeer
 tesseract

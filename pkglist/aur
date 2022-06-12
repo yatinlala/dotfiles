@@ -27,9 +27,14 @@ netris-git
 onlyoffice-bin
 paru
 pipe-viewer-git
+protonvpn
+protonvpn-cli
+protonvpn-gui
 python-node-semver
 python-patch-ng
 python-pluginbase
+python-proton-client
+python-protonvpn-nm-lib
 python-stringcase
 qdirstat-bin
 reaper-bin
