@@ -20,8 +20,8 @@ configuration {
 
 * {
   al:  #00000000;
-  bg:  #665c54;
-  se:  #7c6f64;
+  bg:  #32302f;
+  se:  #504945;
   fg:  #ebdbb2;
   ac:  #98971a;
 }
