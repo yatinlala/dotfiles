@@ -30,6 +30,7 @@ bindsym $mod+shift+Return $e $term2
 bindsym $mod+space $e ~/.config/rofi/launcher/launcher.sh
 bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
+bindsym $mod+shift+apostrophe $e rofi -show window
 bindsym $mod+shift+bracketleft $e rofi -show emoji -modi emoji
 
 #Camera and Audio
@@ -202,6 +203,7 @@ exec --no-startup-id libinput-gestures-setup start
 exec --no-startup-id redshift
 
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 assign [class="Tor Browser"] $ws7
 assign [class="Mailspring"] $ws8
