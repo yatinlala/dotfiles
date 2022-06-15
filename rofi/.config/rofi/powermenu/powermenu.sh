@@ -78,7 +78,7 @@ case $chosen in
 				openbox --exit
 			elif [[ "$DESKTOP_SESSION" == "bspwm" ]]; then
 				bspc quit
-			elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
+			elif [[ "$WM" == "i3-gaps" ]]; then
 				i3-msg exit
 			fi
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
