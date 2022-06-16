@@ -27,7 +27,7 @@ bindsym $mod+Return $e $term
 bindsym $mod+shift+Return $e $term2
 
 #Menus
-bindsym $mod+space $e ~/.config/rofi/launcher/launcher.sh
+bindsym $mod+space $e rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
 bindsym $mod+semicolon $e rofi-pass
 bindsym $mod+apostrophe $e sadmenu
 bindsym $mod+shift+apostrophe $e rofi -show window
