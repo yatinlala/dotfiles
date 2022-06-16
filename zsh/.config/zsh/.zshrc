@@ -114,13 +114,13 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #Source aliases
 source "$ZDOTDIR/zshaliases"
 
-# Create a tmux session if none exist
-case $- in *i*)
-    # if [[ ! $(tmux list-sessions) ]]; then
-    #     tmux new -s TMUX
-    # fi
-
-    tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
-esac
+# # Create a tmux session if none exist
+# case $- in *i*)
+#     # if [[ ! $(tmux list-sessions) ]]; then
+#     #     tmux new -s TMUX
+#     # fi
+#
+#     tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
+# esac
 
 eval "$(fasd --init auto)"
