@@ -11,8 +11,7 @@ return require('packer').startup(function(use)
             require('plugin.config.colorscheme')
         end,
     }
-    use {
-        'nvim-lualine/lualine.nvim',
+    use { 'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
             require('plugin.config.lualine')
@@ -190,15 +189,14 @@ return require('packer').startup(function(use)
         cmd = 'ToggleTerm',
     }
     use { 'romainl/vim-cool' }
-    use {
-        'chipsenkbeil/distant.nvim',
-        config = function()
-            require('distant').setup {
-                ['*'] = require('distant.settings').chip_default()
-            }
-        end,
-        cmd = 'DistantLaunch'
-    }
+    -- use { 'chipsenkbeil/distant.nvim',
+    --     config = function()
+    --         require('distant').setup {
+    --             ['*'] = require('distant.settings').chip_default()
+    --         }
+    --     end,
+    --     cmd = 'DistantLaunch'
+    -- }
     use { 'wbthomason/packer.nvim', }
     if Packer_Bootstrap then
         require('packer').sync()
