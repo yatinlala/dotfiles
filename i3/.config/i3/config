@@ -342,6 +342,8 @@ bindsym XF86MonBrightnessUp $e xbacklight +1
 bindsym XF86MonBrightnessDown $e xbacklight -1
 bindsym $mod2+j $e xbacklight -3
 bindsym $mod2+k $e xbacklight +3
+bindsym $mod2+1 $e xbacklight -8
+bindsym $mod2+2 $e xbacklight +8
 bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
 
 bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 5
