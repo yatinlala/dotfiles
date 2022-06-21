@@ -14,7 +14,7 @@ floating_modifier $mod
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
 smart_borders on
-gaps inner 7
+gaps inner 10
 gaps outer 0
 for_window [class="^.*"] border pixel 4
 
