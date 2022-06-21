@@ -30,7 +30,6 @@ dunst
 easyeffects
 efibootmgr
 element-desktop
-emacs
 exa
 fakeroot
 fd
@@ -116,6 +115,7 @@ sof-tools
 sshfs
 steam
 stow
+streamlink
 sudo
 sway
 systemd-resolvconf
