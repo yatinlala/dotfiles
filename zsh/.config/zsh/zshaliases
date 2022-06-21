@@ -7,12 +7,12 @@ alias tetris='netris -k "hHklLJjs frn"'
 
 #Colorize!
 alias grep='grep --color=auto --exclude-dir=.git'
-alias ls='ls --color=auto'
+alias ls='exa --icons'
 
 #Shorten frequently used commands
 alias e='nvim'
 alias t='tmux'
-alias la='ls -Al'
+alias la='ls -al'
 alias ll='ls -l'
 alias ka='killall'
 alias sp='sudo pacman'
