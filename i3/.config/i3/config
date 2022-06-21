@@ -198,6 +198,7 @@ exec --no-startup-id urxvtd -q
 exec --no-startup-id dunst
 exec --no-startup-id greenclip daemon
 exec --no-startup-id gnome-keyring-daemon --start #Hooked up to PAM
+exec --no-startup-id rclone mount googledrive: ~/drive/
 #exec --no-startup-id nextcloud
 exec --no-startup-id libinput-gestures-setup start
 exec --no-startup-id redshift

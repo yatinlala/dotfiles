@@ -96,6 +96,7 @@ plocate
 pulsemixer
 python
 python-pytorch
+rclone
 redshift
 reflector
 ripgrep
