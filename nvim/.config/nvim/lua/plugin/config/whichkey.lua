@@ -82,8 +82,11 @@ local mappings = {
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "buffers",
     },
+
     c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer" },
+
     e = { "<cmd>Lf<CR>", "Lf" },
+
     f = {
         name = "Telescope",
         f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
@@ -91,8 +94,8 @@ local mappings = {
         n = { "<cmd>:Telescope find_files cwd=~/.config/nvim<CR>", "edit neovim" },
         r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
     },
+
     F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
     g = {
         name = "Git",
@@ -140,7 +143,7 @@ local mappings = {
             "Prev Diagnostic",
         },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+        q = { "<cmd>lua vim.diagnostic.setloclist({ open = false })<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
@@ -148,9 +151,11 @@ local mappings = {
             "Workspace Symbols",
         },
     },
+
     n = {
         ":ene <BAR> startinsert <CR>", "new file"
     },
+
     p = {
         name = "Packer",
         c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -159,6 +164,17 @@ local mappings = {
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
+
+    P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+
+    q = {
+        t = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
+        w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+        d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
+        q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+        l = { "<cmd>TroubleToggle loclist<cr>", "Loclist" },
+    },
+
     s = {
         name = "Search",
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -173,13 +189,12 @@ local mappings = {
 
     t = {
         name = "Terminal",
-        u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-        t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+        f = { "<cmd>ToggleTerm direction=float<cr>", "Term Float" },
+        h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Term Horizontal" },
         p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-        f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-        h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-        v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+        v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Term Vertical" },
     },
+
     w = {
         name = "Vimwiki",
         w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
