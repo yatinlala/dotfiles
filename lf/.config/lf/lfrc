@@ -9,11 +9,11 @@ set previewer ~/code/scripts/lf/preview
 set cleaner ~/code/scripts/lf/cleaner
 
 # Basic Settings
-set preview true
-set hidden true
-set drawbox true
-set icons true
-set ignorecase true
+set preview
+set hidden
+set drawbox
+set icons
+set ignorecase
 
 #Dynamically set number of columns
 %{{
