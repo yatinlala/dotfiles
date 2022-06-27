@@ -207,7 +207,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 
 assign [class="Tor Browser"] $ws7
-assign [class="Mailspring"] $ws8
+assign [class="Mailspring"] $ws9
 assign [class="discord"] $ws9
 assign [class="Slack"] $ws9
 assign [class="Signal"] $ws9
