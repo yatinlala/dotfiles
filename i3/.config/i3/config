@@ -11,7 +11,7 @@ set $term2 alacritty
 
 floating_modifier $mod
 
-font pango:BlexMono Nerd Font 12
+font pango:JetBrainsMono Nerd Font 12
 smart_gaps on 
 smart_borders on
 gaps inner 10
@@ -318,7 +318,7 @@ bindsym $mod2+shift+k resize shrink height 3 px or 3 ppt
 bindsym $mod2+shift+l resize grow width 3 px or 3 ppt
 
 bar {
-    font pango:BlexMono Nerd Font 12
+    font pango:JetBrainsMono Nerd Font 12
     strip_workspace_numbers yes
     position top
     status_command i3status-rs
