@@ -13,7 +13,7 @@ require('fm-nvim').setup{
 
 		float = {
 			-- Floating window border (see ':h nvim_open_win')
-			border    = "none",
+			border    = "rounded",
 
 			-- Highlight group for floating window/border (see ':h winhl')
 			float_hl  = "Normal",
