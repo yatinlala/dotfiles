@@ -12,6 +12,7 @@ alias ls='exa --icons'
 #Shorten frequently used commands
 alias e='nvim'
 alias t='tmux'
+alias lg='lazygit'
 alias la='ls -al'
 alias ll='ls -l'
 alias ka='killall'
