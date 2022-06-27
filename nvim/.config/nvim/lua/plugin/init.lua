@@ -163,6 +163,19 @@ return require('packer').startup(function(use)
             require('plugin.config.vimwiki')
         end,
     }
+    -- use { 'milkypostman/vim-togglelist',
+    --     config = function()
+    --         vim.g.toggle_list_no_mappings = 1
+    --     end,
+    -- }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+            vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+        end
+    }
     -- use { 'nvim-orgmode/orgmode',
     --     config = function()
     --         -- Load custom tree-sitter grammar for org filetype
