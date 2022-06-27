@@ -65,8 +65,8 @@ return require('packer').startup(function(use)
             require('plugin.config.fm-nvim')
             vim.api.nvim_set_keymap('n', '<leader>e', ':Lf<CR>', {})
         end,
-        keys = '<leader>e',
-        cmd = 'Lf'
+        -- keys = '<leader>e',
+        -- cmd = 'Lf'
     }
     use { 'rlane/pounce.nvim',
         config = function()
@@ -193,7 +193,7 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.toggleterm')
         end,
-        cmd = 'ToggleTerm',
+        -- cmd = 'ToggleTerm',
     }
     use { 'romainl/vim-cool' }
     -- use { 'chipsenkbeil/distant.nvim',
