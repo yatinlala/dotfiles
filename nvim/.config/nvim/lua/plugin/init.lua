@@ -144,6 +144,13 @@ return require('packer').startup(function(use)
 
     --Other
     use 'lewis6991/impatient.nvim'
+    use {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup {
+            }
+        end
+    }
     use { "Djancyp/cheat-sheet" }
     use {
         'antoinemadec/FixCursorHold.nvim',
