@@ -83,10 +83,10 @@ bindsym $mod+shift+m $e $term -e neomutt
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
-    bindsym d $e discord; workspace $ws9; mode "default"
+    bindsym d $e toggler discord; mode "default"
     bindsym e $e element-desktop; workspace $ws9; mode "default"
     bindsym l $e slack; workspace $ws9; mode "default"
-    bindsym s $e signal-desktop; workspace $ws9; mode "default"
+    bindsym s $e toggler signal; mode "default"
     bindsym w $e toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
@@ -148,7 +148,7 @@ bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRT
 #TOGGLES
 #Bluetooth
 bindsym XF86Bluetooth $e "echo 'power off' | bluetoothctl"; $e notify-send -t 1000 "Bluetooth off."
-bindsym $mod+shift+b $e toggler bluetooth
+bindsym $mod+shift+b $e toggler blueman-manager
 #Other
 set $toggles Action: nm-[a]pplet [b]lueman-applet next[c]loud
 bindsym $mod+shift+n mode "$toggles"
