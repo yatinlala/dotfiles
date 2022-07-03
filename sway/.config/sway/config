@@ -177,6 +177,7 @@ bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 #-----------Startup and Program Settings-----------
 #--------------------------------------------------
 exec export WM='sway'
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 #Startup
 exec wl-paste -t text --watch clipman store
