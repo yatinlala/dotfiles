@@ -5,7 +5,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-    -- THEMING
+    --- VISUAL ---
     use { 'lifepillar/vim-gruvbox8',
         config = function()
             require('plugin.config.colorscheme')
@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
             require('plugin.config.lualine')
         end,
     }
-    -- Lua
     -- use {
     --     "SmiteshP/nvim-gps",
     --     requires = "nvim-treesitter/nvim-treesitter",
@@ -31,17 +30,41 @@ return require('packer').startup(function(use)
     --         vim.opt.winbar = "%{%v:lua.gps_location()%}"
     --     end,
     -- }
-
-    -- VISUAL
     use { 'folke/which-key.nvim',
         config = function()
             require('plugin.config.whichkey')
         end,
-        -- keys = '<leader>',
     }
 
-    -- Movement
+    --- TEXT MOTIONS ---
     use { 'tpope/vim-surround', event = 'CursorMoved' }
+    -- use { 'rlane/pounce.nvim',
+    --     config = function()
+    --         require('plugin.config.pounce')
+    --         -- Pounce around
+    --         vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", { silent = true })
+    --     end,
+    --     -- keys = 's',
+    --     -- cmd = 'Pounce',
+    -- }
+    use { 'numToStr/Comment.nvim',
+        config = function()
+            require('plugin.config.comment')
+        end,
+        event = 'CursorMoved' }
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v1', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            -- require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuranjmwe' }
+            vim.api.nvim_set_keymap('', 's', "<cmd>lua require'hop'.hint_words({})<cr>", {})
+            vim.api.nvim_set_keymap('', 'S', "<cmd>lua require'hop'.hint_lines({})<cr>", {})
+        end
+    }
+
+    --- FILE MOTIONS ---
     use { 'nvim-telescope/telescope.nvim',
         requires = {
             { 'nvim-lua/plenary.nvim' },
@@ -59,26 +82,16 @@ return require('packer').startup(function(use)
         end,
         keys = { 'gs', 'gS' },
         cmd = { 'Sayonara', 'Sayonara!' } }
-    --use 'ThePrimeagen/harpoon'
     use { 'is0n/fm-nvim',
         config = function()
             require('plugin.config.fm-nvim')
-            vim.api.nvim_set_keymap('n', '<leader>e', ':Lf<CR>', {})
         end,
         -- keys = '<leader>e',
         -- cmd = 'Lf'
     }
-    use { 'rlane/pounce.nvim',
-        config = function()
-            require('plugin.config.pounce')
-            -- Pounce around
-            vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", { silent = true })
-        end,
-        keys = 's',
-        cmd = 'Pounce',
-    }
+    --use 'ThePrimeagen/harpoon'
 
-    -- LSP
+    --- LSP & TREESITTER ---
     use { 'williamboman/nvim-lsp-installer',
         config = function()
             require('plugin.config.lsp.lsp-installer')
@@ -109,7 +122,7 @@ return require('packer').startup(function(use)
         cmd = 'ColorizerToggle'
     }
 
-    -- Completion
+    --- COMPLETION ---
     use { 'hrsh7th/nvim-cmp',
         config = function()
             require('plugin.config.nvim-cmp')
@@ -124,13 +137,13 @@ return require('packer').startup(function(use)
     use { 'rafamadriz/friendly-snippets', after = 'nvim-cmp' } -- a bunch of snippets to use
     use { 'L3MON4D3/LuaSnip', after = 'nvim-cmp' } --snippet engine
 
-    -- Git
-    use { 'TimUntersberger/neogit',
-        config = function()
-            require('plugin.config.neogit')
-        end,
-        cmd = 'Neogit'
-    }
+    -- Git ---
+    -- use { 'TimUntersberger/neogit',
+    --     config = function()
+    --         require('plugin.config.neogit')
+    --     end,
+    --     -- cmd = 'Neogit'
+    -- }
     use {
         'lewis6991/gitsigns.nvim',
         requires = {
@@ -139,10 +152,9 @@ return require('packer').startup(function(use)
         config = function()
             require('plugin.config.gitsigns-nvim')
         end,
-        event = 'BufRead'
     }
 
-    --Other
+    --- Other ---
     use 'lewis6991/impatient.nvim'
     use {
         "ahmedkhalf/project.nvim",
@@ -197,11 +209,6 @@ return require('packer').startup(function(use)
     --         })
     --     end
     -- }
-    use { 'numToStr/Comment.nvim',
-        config = function()
-            require('plugin.config.comment')
-        end,
-        event = 'CursorMoved' }
     use { 'akinsho/toggleterm.nvim',
         config = function()
             require('plugin.config.toggleterm')
