@@ -47,6 +47,11 @@ map('i', ',', ',<c-g>u', opts)
 map('i', '.', '.<c-g>u', opts)
 map('i', '(', '(<c-g>u', opts)
 
+-- Adjust bullet level
+map('i', '<C-f>', '<esc><<A', opts)
+map('i', '<C-j>', '<esc>>>A', opts)
+
+
 -- Visual --
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
