@@ -48,6 +48,7 @@ git
 go
 grub
 guvcview
+hugo
 i3-gaps
 i3lock
 i3status-rust
