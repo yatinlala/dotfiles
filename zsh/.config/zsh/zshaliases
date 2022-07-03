@@ -42,7 +42,7 @@ alias gp='git push'
 alias myip='curl -4 https://icanhazip.com'
 
 #Confirm before danger
-alias rm='rm -i'
+alias rm='rm -I'
 
 #Automate frequent commands
 alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"

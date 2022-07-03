@@ -4,8 +4,8 @@ case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
-    blueman-applet)
-        pgrep -x "blueman-applet" && killall blueman-applet || setsid blueman-applet &;;
+    blueman-manager)
+        pgrep -x "blueman-manager" && killall blueman-manager || setsid blueman-manager &;;
     bluetooth)
         rfkill unblock 0
         wmctrl -l | grep -q "pointer bluetooth" || \
@@ -22,6 +22,10 @@ case $1 in
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
         $TERMINAL -name cmus -e cmus
         i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
+    discord)
+        pgrep -x discord || setsid discord &
+        i3-msg "[class=discord] focus"
+        ;;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -64,6 +68,10 @@ case $1 in
     redshift-dark)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
+    signal)
+        pgrep -x signal-desktop || setsid signal-desktop &
+        i3-msg "[class=Signal] focus"
+        ;;
     spotify)
         pgrep -x "spotify" || spotify &
         i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
@@ -79,7 +87,7 @@ case $1 in
     tmux);;
     todoist)
         wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)
-        i3-msg "[instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] scratchpad show; [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move position center";;
+        i3-msg "[instance=crx_elldfnmogicegdcphgljaoaklkpcnbnn] scratchpad show; [instance=crx_elldfnmogicegdcphgljaoaklkpcnbnn] move position center";;
     whatsapp)
         wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
         i3-msg workspace 9;;
