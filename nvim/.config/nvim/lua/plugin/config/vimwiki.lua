@@ -16,3 +16,5 @@ vim.api.nvim_exec([[
     " \   'mouse': 0,
     " \ }
 ]], false)
+
+vim.g.vimwiki_folding = 'custom'
