@@ -138,7 +138,7 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n $e $term -name newsboat -e newsboat; workspace $ws10; mode "default"
+bindsym $mod+n $e "alacritty --class newsboat -e newsboat"; workspace $ws10; mode "default"
 bindsym $mod+p $e $term -name pipe-viewer -e pipe-viewer --resolution=720; workspace $ws10
 bindsym $mod+shift+p $e gtk-pipe-viewer
 bindsym XF86Tools $e pomo
