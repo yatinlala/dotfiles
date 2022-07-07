@@ -14,6 +14,7 @@ blueman
 bluez
 bluez-utils
 browserpass-chromium
+browserpass-firefox
 calibre
 clang
 cmake
@@ -38,6 +39,7 @@ festival
 festival-us
 ffmpeg
 figlet
+firefox
 fish
 flex
 fprintd
