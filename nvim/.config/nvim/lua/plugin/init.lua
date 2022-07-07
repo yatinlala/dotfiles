@@ -57,8 +57,8 @@ return require('packer').startup(function(use)
         branch = 'v1', -- optional but strongly recommended
         config = function()
             -- you can configure Hop the way you like here; see :h hop-config
-            -- require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuranjmwe' }
+            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+            -- require 'hop'.setup { keys = 'etovxqpdygfblzhckisuranjmwe' }
             vim.api.nvim_set_keymap('', 's', "<cmd>lua require'hop'.hint_words({})<cr>", {})
             vim.api.nvim_set_keymap('', 'S', "<cmd>lua require'hop'.hint_lines({})<cr>", {})
         end
