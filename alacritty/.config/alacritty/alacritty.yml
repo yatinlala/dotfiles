@@ -74,8 +74,8 @@ font:
 # Colors (Gruvbox Material Dark Medium)
 colors:
   primary:
-    background: '0x282828'
-    foreground: '0xdfbf8e'
+    background: '#303030'
+    foreground: '#ebdbb2'
 
   normal:
     black:   '0x665c54'
