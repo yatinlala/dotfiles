@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
             require('plugin.config.whichkey')
         end,
     }
+    use 'baskerville/vim-sxhkdrc'
 
     --- TEXT MOTIONS ---
     use { 'tpope/vim-surround', event = 'CursorMoved' }
