@@ -1,6 +1,6 @@
-#General improvements
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+#Improve Defaults
+alias df='df -h'
+alias free='free -m'
 alias info='info --vi-keys'
 alias bc='bc -lq'
 alias tetris='netris -k "hHklLJjs frn"'
@@ -16,17 +16,20 @@ alias lg='lazygit'
 alias la='ls -al'
 alias ll='ls -l'
 alias ka='killall'
-alias sp='sudo pacman'
 alias p='pacman'
+alias sp='sudo pacman'
+
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
 alias domains="sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8"
 alias orphans='pacman -Qtdq'
+alias xevsym="xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'"
+alias myip='curl -4 https://icanhazip.com'
+alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 
 #Devouring
-alias d='devour'
 alias feh='devour feh --scale-down'
 alias mpv='devour mpv'
 
@@ -39,25 +42,12 @@ alias gr='git restore'
 alias gd='git diff'
 alias gp='git push'
 
-alias myip='curl -4 https://icanhazip.com'
 
 #Confirm before danger
 alias rm='rm -I'
 
-#Automate frequent commands
-alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-
-#Jumps
-alias ss='cd ~/code/scripts/'
-# alias .dot='cd ~/.dotfiles/'
-
 #File Jumps
-# alias lfrc='nvim ~/.config/lf/lfrc'
 alias wmc='nvim ~/.config/i3/config'
-# alias zshrc='nvim ~/.config/zsh/.zshrc'
-# alias zshaliases='nvim ~/.config/zsh/zshaliases'
-# alias zshenv='nvim ~/.config/zsh/.zshenv'
-
 alias wiki='nvim ~/documents/wiki/index.md'
 
 #Media
@@ -68,6 +58,7 @@ alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
+alias firefox='xdg-launch firefox'
 alias librewolf='xdg-launch librewolf'
 alias minecraft-launcher='xdg-launch minecraft-launcher'
 alias w3m='xdg-launch w3m'
