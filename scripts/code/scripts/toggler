@@ -37,9 +37,9 @@ case $1 in
         setsid mailspring &)) || setsid mailspring &
         i3-msg "[class=Mailspring] focus";;
     music)
-        pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
-        i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui";;
-    nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &;;
+        pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
+    nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
+            ;;
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
