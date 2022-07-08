@@ -1,85 +1,14 @@
-#--------------------------------------------------
-#-----------------General Settings-----------------
-#--------------------------------------------------
-
 set $e exec --no-startup-id
-
 set $mod Mod4
-set $mod2 Mod1
-set $term urxvtc
-set $term2 alacritty
-
-floating_modifier $mod
 
 font pango:JetBrainsMono Nerd Font 12
 smart_gaps on 
+floating_modifier $mod
 smart_borders on
-gaps inner 10
+gaps inner 4
 gaps outer 0
-for_window [class="^.*"] border pixel 4
+default_border pixel 4
 
-#--------------------------------------------------
-#-----------------Program Keybinds----------------
-#--------------------------------------------------
-
-#Terminals
-bindsym $mod+Return $e $term
-bindsym $mod+shift+Return $e $term2
-
-#Menus
-bindsym $mod+space $e rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
-bindsym $mod2+space $e rofi -show emoji -modi emoji
-bindsym $mod+semicolon $e rofi-pass
-bindsym $mod+shift+semicolon $e rofi -show window
-bindsym $mod+apostrophe $e sadmenu
-
-#Camera and Audio
-bindsym $mod+shift+v $e toggler pulsemixer
-
-#Editor
-bindsym $mod+e $e $term -e nvim
-#bindsym $mod+shift+e $e emacs
-bindsym $mod+o $e onlyoffice-desktopeditors
-bindsym $mod+w $e toggler notes
-
-#File Manager
-bindsym $mod+a $e $term -e ~/code/scripts/lf/lf
-
-#Audio Consumption
-bindsym $mod+s $e toggler music
-bindsym $mod+bracketleft $e "playerctl --player=spotify,cmus,%any previous"
-bindsym $mod+bracketright $e "playerctl --player=spotify,cmus,%any next"
-bindsym $mod+minus $e "playerctl --player=spotify,cmus,%all volume .05-"
-bindsym $mod+equal $e "playerctl --player=spotify,cmus,%all volume .05+"
-bindsym $mod+period $e toggler cmus
-bindsym $mod+shift+period $e toggler spotify
-bindsym $mod+slash $e toggler spotify-tui
-bindsym $mod+shift+slash $e toggler spotifyd
-
-#Music
-set $music Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui
-bindsym $mod+u mode "$music"
-mode "$music" {
-    bindsym a $e xdg-launch audacity; mode "default"
-    bindsym b $e rofi-beats; mode "default"
-    bindsym c $e toggler cmus; mode "default"
-    bindsym r $e reaper; mode "default"
-    bindsym s $e spotify; mode "default"
-    bindsym t $e toggler spotify-tui; mode "default"
-    bindsym $mod+u mode "default"
-    bindsym $mod+s mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-
-#Browser
-bindsym $mod+b $e brave
-bindsym $mod+shift+t $e torbrowser-launcher
-bindsym $mod+shift+w $e $term -e w3m -v
-
-#Communication
-bindsym $mod+m $e toggler mailspring
-bindsym $mod+shift+m $e $term -e neomutt
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
@@ -93,38 +22,6 @@ mode "$mega" {
     bindsym Return mode "default"
 }
 
-# OS Control
-bindsym $mod+shift+s $e ~/.config/rofi/powermenu/powermenu.sh
-# set $quit Quit?: [y]es [n]o
-# bindsym $mod+shift+q mode "$quit"
-# mode "$quit" {
-#     bindsym y exit
-#     bindsym n mode "default"
-#     bindsym $mod+shift+q mode "default"
-#     bindsym Escape mode "default"
-#     bindsym Return exit
-# }
-# set $shutdown Shutdown?: [y]es [n]o
-# bindsym $mod+shift+s mode "$shutdown"
-# mode "$shutdown" {
-#     bindsym y $e shutdown now
-#     bindsym n mode "default"
-#     bindsym $mod+shift+s mode "default"
-#     bindsym Escape mode "default"
-#     bindsym Return mode $e shutdown now
-# }
-# set $reboot Reboot?: [y]es [n]o
-# #bindsym $mod2+r mode "$reboot"
-# mode "$reboot" {
-#     bindsym y $e reboot
-#     bindsym n $e mode "default"
-#     bindsym $mod+shift+r mode "default"
-#     bindsym Escape mode "default"
-#     bindsym Return $e reboot
-# }
-#bindsym $mod+shift+i $e i3lock -i ~/pictures/wallpapers/mountains.png
-
-#Games
 set $games Action: [h]eroic [l]ichess [m]inecraft [s]team
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
@@ -137,75 +34,42 @@ mode "$games" {
     bindsym Return mode "default"
 }
 
-#Video Entertainment
-bindsym $mod+n $e "alacritty --class newsboat -e newsboat"; workspace $ws10; mode "default"
-bindsym $mod+p $e $term -name pipe-viewer -e pipe-viewer --resolution=720; workspace $ws10
-bindsym $mod+shift+p $e gtk-pipe-viewer
-bindsym XF86Tools $e pomo
-bindsym shift+XF86Tools $e echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
-
-
-#TOGGLES
-#Bluetooth
-bindsym XF86Bluetooth $e "echo 'power off' | bluetoothctl"; $e notify-send -t 1000 "Bluetooth off."
-bindsym $mod+shift+b $e toggler blueman-manager
-#Other
-set $toggles Action: nm-[a]pplet [b]lueman-applet next[c]loud
-bindsym $mod+shift+n mode "$toggles"
-mode "$toggles" {
-    bindsym a $e toggler nm-applet; mode "default"
+set $applets Action: [n]m-applet [b]lueman-applet next[c]loud
+bindsym $mod+shift+n mode "$applets"
+mode "$applets" {
     bindsym b $e toggler blueman-applet; mode "default"
     bindsym c $e toggler nextcloud; mode "default"
+    bindsym n $e toggler nm-applet; mode "default"
     bindsym $mod+shift+n mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
-bindsym $mod+shift+e $e toggler espanso
-bindsym $mod+grave $e dunstctl close
-set $redshift Action: [r]edshift redshift-[d]ark | [enter]=reboot
+
+set $redshift Action: [r]edshift redshift-[d]ark
 bindsym $mod+shift+r mode "$redshift"
 mode "$redshift" {
     bindsym r $e toggler redshift; mode "default"
     bindsym d $e toggler redshift-dark; mode "default"
     bindsym $mod+shift+r mode "default"
     bindsym Escape mode "default"
-    bindsym Return $e reboot 
 }
 
-#Utility
-bindsym $mod+t $e toggler habitica
-bindsym $mod2+h $e $term -e htop
-bindsym $mod2+d $e gtk-launch dash
-bindsym $mod+shift+c $e toggler calendar
-bindsym $mod2+c $e rofi -show calc -modi calc -no-show-match -no-sort
-bindsym $mod+comma exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-bindsym $mod+shift+comma exec pkill greenclip && greenclip clear && greenclip daemon &
-bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+#i3 gets mad without this
+bindsym $mod+Mod1+control+shift+d layout toggle split
 
-
-# Screenshots
-bindsym --release Print $e scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
-bindsym --release $mod+Print $e scrot --select -e 'xclip -selection clipboard -t image/png -i $f'
-
-#--------------------------------------------------
-#-----------Startup and Program Settings-----------
-#--------------------------------------------------
+bindsym $mod+s $e toggler music
 
 #Startup
-exec --no-startup-id lxsession #Needed by fprintd
-exec --no-startup-id picom --experimental-backends
-exec --no-startup-id urxvtd -q
-exec --no-startup-id dunst
-exec --no-startup-id greenclip daemon
-exec --no-startup-id gnome-keyring-daemon --start #Hooked up to PAM
-exec --no-startup-id rclone mount googledrive: ~/drive/
-#exec --no-startup-id nextcloud
-exec --no-startup-id libinput-gestures-setup start
-exec --no-startup-id redshift
-
-for_window [class="Pavucontrol"] floating enable
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Protonvpn"] floating enable
+$e lxsession #Needed by fprintd
+$e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
+$e picom --experimental-backends
+$e dunst
+$e greenclip daemon
+$e gnome-keyring-daemon --start #Hooked up to PAM
+$e rclone mount googledrive: ~/drive/
+$e libinput-gestures-setup start
+$e urxvtd -q
+#$e nextcloud
 
 assign [class="Tor Browser"] $ws7
 assign [class="Mailspring"] $ws9
@@ -217,59 +81,21 @@ assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws9 # Whatsapp
 assign [instance="pipe-viewer"] $ws10
 assign [instance="newsboat"] $ws10
 
-for_window [instance="bluetooth"] floating enable, resize set 800 400, move scratchpad, border pixel 8
-for_window [instance="calc"] floating enable, resize set 800 400, move scratchpad, border pixel 8
-for_window [instance="nm-connection-editor"] floating enable, resize set 800 400, border pixel 8
-for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
-for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
-for_window [instance="spotify"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
-for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
-for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Protonvpn"] floating enable
+
+for_window [instance="bluetooth"] floating enable, resize set 800 400, move scratchpad
+for_window [instance="calc"] floating enable, resize set 800 400, move scratchpad
+for_window [instance="nm-connection-editor"] floating enable, resize set 800 400
+for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad
+for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad
+for_window [instance="spotify"] floating enable, resize set 1500 950, move scratchpad
+for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad
+for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
 for_window [instance="crx_pdigihnmoiplkhocekidmdcmhchhdpjo"] move scratchpad, floating enable, resize set 1900 1020
-
-#--------------------------------------------------
-#-------------------Movement---------------------
-#--------------------------------------------------
-
-# Kill focused window
-bindsym $mod+q kill
-
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-
-# move focused window
-bindsym $mod+shift+h move left
-bindsym $mod+shift+j move down
-bindsym $mod+shift+k move up
-bindsym $mod+shift+l move right
-
-# split in horizontal orientation
-bindsym $mod+g split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# toggle tiling / floating
-bindsym $mod+f floating toggle
-
-# enter fullscreen mode for the focused container
-bindsym $mod+shift+f fullscreen toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+shift+space focus mode_toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+d layout tabbed
-bindsym $mod+shift+d layout toggle split
-
-#Scratchpad
-bindsym $mod+y scratchpad show
-bindsym $mod+shift+y move scratchpad
 
 #Set workspace names
 set $ws1 "1"
@@ -282,41 +108,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# move through workspaces sequentially
-bindsym $mod+z workspace prev
-bindsym $mod+x workspace next
-
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+shift+1 move container to workspace $ws1
-bindsym $mod+shift+2 move container to workspace $ws2
-bindsym $mod+shift+3 move container to workspace $ws3
-bindsym $mod+shift+4 move container to workspace $ws4
-bindsym $mod+shift+5 move container to workspace $ws5
-bindsym $mod+shift+6 move container to workspace $ws6
-bindsym $mod+shift+7 move container to workspace $ws7
-bindsym $mod+shift+8 move container to workspace $ws8
-bindsym $mod+shift+9 move container to workspace $ws9
-bindsym $mod+shift+0 move container to workspace $ws10
-
-bindsym $mod+r restart
-
-bindsym $mod2+shift+h resize shrink width 3 px or 3 ppt
-bindsym $mod2+shift+j resize grow height 3 px or 3 ppt
-bindsym $mod2+shift+k resize shrink height 3 px or 3 ppt
-bindsym $mod2+shift+l resize grow width 3 px or 3 ppt
 
 bar {
     font pango:JetBrainsMono Nerd Font 12
@@ -333,34 +124,6 @@ bar {
         urgent_workspace #cc241d #cc241d #ebdbb2 #ffffff
     }
 }
-
-#--------------------------------------------------
-#--------------Peripheral Controls-----------------
-#--------------------------------------------------
-
-# adjust screen brightness
-bindsym XF86MonBrightnessUp $e xbacklight +1
-bindsym XF86MonBrightnessDown $e xbacklight -1
-bindsym $mod2+j $e xbacklight -3
-bindsym $mod2+k $e xbacklight +3
-bindsym $mod2+1 $e xbacklight -8
-bindsym $mod2+2 $e xbacklight +8
-bindsym $mod+shift+a $e xbacklight -set .00206254 #Min Brightness
-
-bindsym XF86AudioRaiseVolume $e pamixer --allow-boost -i 5
-bindsym XF86AudioLowerVolume $e pamixer --allow-boost -d 5
-bindsym shift+XF86AudioRaiseVolume $e pamixer --allow-boost -i 1
-bindsym shift+XF86AudioLowerVolume $e pamixer --allow-boost -d 1
-
-bindsym XF86AudioMute $e pactl set-sink-mute @DEFAULT_SINK@ toggle # && $refresh_i3status
-bindsym XF86AudioMicMute $e pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $refresh_i3status
-
-#--------------------------------------------------
-#-------------------Theming---------------------
-#--------------------------------------------------
-
-# Wallpaper
-exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 
 # set primary gruvbox light colorscheme colors
 set $bg #32302f
