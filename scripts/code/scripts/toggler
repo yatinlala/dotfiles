@@ -1,5 +1,5 @@
 #!/usr/bin/sh -e
-TERMINAL='urxvtc'
+TERMINAL='alac'
 case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -e bc -q
@@ -8,24 +8,19 @@ case $1 in
         pgrep -x "blueman-manager" && killall blueman-manager || setsid blueman-manager &;;
     bluetooth)
         rfkill unblock 0
-        wmctrl -l | grep -q "pointer bluetooth" || \
-        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name bluetooth -e bluetoothctl
-        i3-msg "[title=bluetooth] scratchpad show; [title=bluetooth] move position center";;
+        pgrep -x bluetoothctl || ($TERMINAL --class bluetooth -e bluetoothctl && sleep .1)
+        i3-msg "[instance=bluetooth] scratchpad show; [instance=bluetooth] move position center";;
     calendar)
         wmctrl -l | grep -q "pointer Calendar - SCCS Nextcloud" || \
         (gtk-launch calendar; sleep 1)
         i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
         [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
     cmus)
-        wmctrl -l | grep -q "pointer cmus" || \
-        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name cmus -e cmus
+        pgrep -x cmus || ($TERMINAL --class cmus -e cmus && sleep .1)
         i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
-        i3-msg "[class=discord] focus"
-        ;;
+        i3-msg "[class=discord] focus";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -40,9 +35,7 @@ case $1 in
     mailspring)
         (pgrep -x mailspring && (wmctrl -l | grep -q "pointer Mailspring" || \
         setsid mailspring &)) || setsid mailspring &
-        i3-msg workspace 9
-        i3-msg "[class=Mailspring] focus"
-        ;;
+        i3-msg "[class=Mailspring] focus";;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause || \
         i3-msg mode "Action: [a]udacity rofi-[b]eats [c]mus [r]eaper [s]potify spotify-[t]ui";;
@@ -52,16 +45,14 @@ case $1 in
     notes)
         wmctrl -l | grep -q "pointer notes" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name notes -title notes -e nvim ~/documents/wiki/index.md && sleep 0.05
-        i3-msg "[title="notes"] scratchpad show; [title="notes"] move position center";;
+        $TERMINAL --class notes --title notes -e nvim ~/documents/wiki/index.md && sleep 0.1
+        i3-msg "[instance=notes] scratchpad show; [instance=notes] move position center";;
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
         i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
     pulsemixer)
-        wmctrl -l | grep -q "pointer pulsemixer" || \
-        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name pulsemixer -e pulsemixer && sleep 0.05
-        i3-msg "[title="pulsemixer"] scratchpad show; [title="pulsemixer"] move position center";;
+        pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .1)
+        i3-msg "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
@@ -70,8 +61,7 @@ case $1 in
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.6);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop &
-        i3-msg "[class=Signal] focus"
-        ;;
+        i3-msg "[class=Signal] focus";;
     spotify)
         pgrep -x "spotify" || spotify &
         i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
@@ -80,9 +70,7 @@ case $1 in
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
-        wmctrl -l | grep -q "pointer spt" || \
-        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -name spt -e spt
+        pgrep -x spt || ($TERMINAL --class spt -e spt && sleep .1)
         i3-msg "[instance=spt] scratchpad show; [instance=spt] move position center";;
     tmux);;
     todoist)
