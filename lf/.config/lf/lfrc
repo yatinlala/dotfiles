@@ -94,7 +94,7 @@ cmd sudomkfile ${{
 }}
 
 cmd smart_w ${{
-  if [ $SHLVL -eq 5 ]; then
+  if [ $LF_LEVEL -eq 1 ]; then
       zsh
   else
       lf -remote "send $id quit"
