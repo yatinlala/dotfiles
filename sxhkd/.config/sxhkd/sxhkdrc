@@ -1,0 +1,164 @@
+### TERMINALS ###
+super + Return
+	$TERMINAL
+super + shift + Return
+    urxvt
+
+
+super + t
+    toggler habitica
+# super + shift + d
+#     gtk-launch dash
+# super + shift + c
+#     toggler calendar
+super + shift + v; {a, v}
+    {toggler pulsemixer, guvcview}
+super + w
+    toggler notes
+super + a
+    $TERMINAL -e ~/code/scripts/lf/lf
+super + m
+    toggler mailspring
+super + shift + e 
+    toggler espanso
+super + grave
+    dunstctl close
+XF86Display
+    feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+Print
+    scrot --select -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+
+
+### MENUS ###
+super + space
+    rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
+super + semicolon
+    rofi-pass
+super + shift + semicolon
+    rofi -show window
+super + period
+    rofi -show emoji -modi emoji
+super + apostrophe
+    sadmenu
+alt + c
+    rofi -show calc -modi calc -no-show-match -no-sort
+super + shift + s
+    ~/.config/rofi/powermenu/powermenu.sh
+
+### BROWSERS ###
+super + b
+    brave
+super + shift + t
+    torbrowser-launcher
+super + shift + w
+    $TERMINAL -e xdg-launch w3m -v
+
+
+### EDITORS ###
+super + e
+    $TERMINAL -e nvim
+super + o
+    onlyoffice-desktopeditors
+
+
+### ENTERTAINMENT ###
+# AUDIO
+super + s
+    toggler music
+super + u
+    toggler cmus
+super + shift + u
+    toggler spotify
+super + slash
+    toggler spotify-tui
+super + shift + slash
+    toggler spotifyd
+super + {bracketleft, bracketright}
+    playerctl --player=spotify,cmus,%any {previous, next}
+super + {minus, equal}
+    playerctl --player=spotify,cmus,%all volume .05{-,+}
+
+# VIDEO
+super + n
+    i3-msg 'workspace 10; mode default' && \
+    alacritty --class newsboat -e newsboat
+XF86Tools
+    pomo
+shift+XF86Tools
+    echo "" > $XDG_CACHE_HOME/pomo.cache && \
+    pkill -SIGRTMIN+4 i3status-rs
+
+
+### CLIPBOARD ###
+super + comma
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+super + shift + comma
+    exec pkill greenclip && greenclip clear && greenclip daemon &
+
+
+### BRIGHTNESS ###
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+    xbacklight {-,+}1
+alt + {j, k}
+    xbacklight {-,+}3
+alt + {1, 2}
+    xbacklight {-,+}8
+super + shift + a
+    xbacklight -set .00206254
+### VOLUME ###
+{_,shift} + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    pamixer --allow-boost -{d 5,d 1,i 5,i 1}
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle # && $refresh_i3status
+
+### BLUETOOTH ###
+XF86Bluetooth
+    echo 'power off' | bluetoothctl \
+    notify-send -t 1000 "Bluetooth off."
+super + shift + b
+    toggler blueman-manager
+
+
+### WINDOW MANAGER ###
+# WORKSPACES
+super + {z, x}
+    {i3-msg workspace prev, i3-msg workspace next}
+super + {1-9, 0}
+    i3-msg workspace {1-9, 10}
+super + shift + {1-9, 0}
+    i3-msg move container to workspace {1-9, 10}
+
+# FOCUS
+super + {h, j, k, l}
+    i3-msg focus {left, down, up, right}
+super + shift + {h, j, k, l}
+    i3-msg move {left, down, up, right}
+alt + shift + {h, j, k, l}
+    i3-msg resize {shrink, grow, shrink, grow} {width, height, height, width} 3px or 3ppt
+super + shift + space
+    i3-msg focus mode_toggle
+# RESTART
+super + r
+    i3-msg restart
+#KILL
+super + q
+    i3-msg kill
+#SPLIT DIRECTION
+super + {g,v}
+    i3-msg split {h, v}
+#toggle tiling / floating
+super + f
+    i3-msg floating toggle
+# enter fullscreen mode for the focused container
+super + shift + f
+    i3-msg fullscreen toggle
+#LAYOUT
+super + {_,shift} d
+    i3-msg layout {tabbed,toggle split}
+#SCRATCHPAD
+super + y
+    i3-msg scratchpad show
+super + shift + y
+    i3-msg move scratchpad
