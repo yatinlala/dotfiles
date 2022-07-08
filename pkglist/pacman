@@ -16,11 +16,13 @@ bluez-utils
 browserpass-chromium
 browserpass-firefox
 calibre
+checkbashisms
 clang
 cmake
 cmatrix
 cmus
 cups
+dash
 deluge-gtk
 discord
 docker
