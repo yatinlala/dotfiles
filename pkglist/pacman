@@ -125,6 +125,7 @@ stow
 streamlink
 sudo
 sway
+sxhkd
 systemd-resolvconf
 tcpdump
 tealdeer

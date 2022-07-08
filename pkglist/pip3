@@ -9,13 +9,16 @@ commonmark            0.9.1
 downloader-cli        0.3.3
 ffmpeg-python         0.2.0
 future                0.18.2
+greenlet              1.1.2
 h11                   0.12.0
 httpcore              0.14.7
 httpx                 0.22.0
 itunespy              1.6.0
+neovim-remote         2.5.1
 pip                   22.1.2
 pycountry             22.3.5
 pyDes                 2.0.1
+pynvim                0.4.3
 rfc3986               1.5.0
 rich                  12.0.0
 simber                0.2.4
