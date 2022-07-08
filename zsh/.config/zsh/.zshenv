@@ -18,8 +18,8 @@ export XDG_JUNK_DIR="$HOME/.local/xdg-garbage"
 
 export CALIBRE_USE_DARK_PALETTE=1
 #export GTK_THEME='Adwaita:dark'
-
 export DIFFPROG="nvim -d"
+export SXHKD_SHELL="sh"
 
 # Fixing Paths
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
