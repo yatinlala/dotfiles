@@ -69,6 +69,7 @@ $e gnome-keyring-daemon --start #Hooked up to PAM
 $e rclone mount googledrive: ~/drive/
 $e libinput-gestures-setup start
 $e urxvtd -q
+$e autotiling
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
@@ -96,6 +97,10 @@ for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move sc
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
 for_window [instance="crx_pdigihnmoiplkhocekidmdcmhchhdpjo"] move scratchpad, floating enable, resize set 1900 1020
+
+for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
+for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom Meeting"] floating disable
 
 #Set workspace names
 set $ws1 "1"
