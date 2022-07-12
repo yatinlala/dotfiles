@@ -28,7 +28,7 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$lock\n$reboot\n$shutdown\n$suspend\n$logout"
+options="$lock\n$suspend\n$reboot\n$shutdown\n$logout"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
