@@ -42,7 +42,7 @@ super + period
     rofi -show emoji -modi emoji
 super + apostrophe
     sadmenu
-super + p
+super + i
     rofi -show calc -modi calc -no-show-match -no-sort
 super + shift + s
     ~/.config/rofi/powermenu/powermenu.sh
@@ -99,7 +99,7 @@ super + shift + comma
 ### BRIGHTNESS ###
 {XF86MonBrightnessDown,XF86MonBrightnessUp}
     xbacklight {-,+}1
-super + {_, shift} + i 
+super + {_, shift} + p 
     xbacklight {-,+}3
 alt + {1, 2}
     xbacklight {-,+}8
