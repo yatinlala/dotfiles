@@ -1,5 +1,6 @@
 audacity-git
 auto-cpufreq
+autotiling-git
 brave-bin
 breeze-snow-cursor-theme
 c-lolcat
@@ -36,7 +37,6 @@ python-pluginbase
 python-proton-client
 python-protonvpn-nm-lib
 python-stringcase
-qdirstat-bin
 reaper-bin
 rofi-bluetooth-git
 rofi-greenclip
