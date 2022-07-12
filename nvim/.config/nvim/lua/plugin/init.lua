@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
     }
     --use 'ThePrimeagen/harpoon'
 
-    --- LSP & TREESITTER ---
+--- LSP & TREESITTER ---
     use { 'williamboman/nvim-lsp-installer',
         config = function()
             require('plugin.config.lsp.lsp-installer')
