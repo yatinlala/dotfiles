@@ -28,6 +28,7 @@ alias orphans='pacman -Qtdq'
 alias xevsym="xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'"
 alias myip='curl -4 https://icanhazip.com'
 alias reflector="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias tpv='command mpv --vo=tct'
 
 #Devouring
 alias feh='devour feh --scale-down'
@@ -42,6 +43,9 @@ alias gr='git restore'
 alias gd='git diff'
 alias gp='git push'
 
+#rmtrash
+alias rm='rmtrash --ask-pass'
+alias rmdir='rmdirtrash --ask-pass'
 
 #Confirm before danger
 alias rm='rm -I'
