@@ -122,6 +122,8 @@ shellcheck
 signal-desktop
 sof-firmware
 sof-tools
+spotify-launcher
+spotifyd
 sshfs
 steam
 stow
