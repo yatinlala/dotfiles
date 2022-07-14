@@ -1,4 +1,4 @@
-#!/usr/bin/sh -e
+#!/usr/bin/bash -e
 TERMINAL='alac'
 case $1 in
     bc)
@@ -20,7 +20,7 @@ case $1 in
         i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
-        i3-msg "[class=discord] focus";;
+        i3-msg "workspace 9; [class=discord] focus";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
@@ -33,9 +33,8 @@ case $1 in
         wmctrl -l | grep -q "pointer Habitica" || (gtk-launch habitica; sleep 1)
         i3-msg "[instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] scratchpad show; [instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] move position center";;
     mailspring)
-        (pgrep -x mailspring && (wmctrl -l | grep -q "pointer Mailspring" || \
-        setsid mailspring &)) || setsid mailspring &
-        i3-msg "[class=Mailspring] focus";;
+        pgrep -x mailspring || setsid mailspring &
+        i3-msg "workspace 9; [class=Mailspring] focus";;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
     nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
@@ -61,10 +60,13 @@ case $1 in
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.6);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop &
-        i3-msg "[class=Signal] focus";;
+        i3-msg "workspace 9; [class=Signal] focus";;
     spotify)
-        pgrep -x "spotify" || spotify &
+        pgrep -x "spotify-launcher" || spotify-launcher &
         i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
+    spotify-web)
+        wmctrl -l | grep -q "pointer Spotify" || (gtk-launch spotify; sleep 1)
+        i3-msg "[instance=crx_pjibgclleladliembfgfagdaldikeohf] scratchpad show; [instance=crx_pjibgclleladliembfgfagdaldikeohf] move position center";;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
