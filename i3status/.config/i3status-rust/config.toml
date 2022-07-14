@@ -4,7 +4,7 @@ icons = "awesome"
 [[block]]
 block = "focused_window"
 max_width = 65
-show_marks = "visible"
+show_marks = "none"
 
 [[block]]
 block = "custom"

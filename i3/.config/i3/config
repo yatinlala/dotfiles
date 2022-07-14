@@ -69,7 +69,7 @@ $e gnome-keyring-daemon --start #Hooked up to PAM
 $e rclone mount googledrive: ~/drive/
 $e libinput-gestures-setup start
 $e urxvtd -q
-$e autotiling -w 1 2 3 4 5 6 7 8
+$e i3-layouts
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
@@ -91,10 +91,11 @@ for_window [instance="calc"] floating enable, resize set 800 400, move scratchpa
 for_window [instance="nm-connection-editor"] floating enable, resize set 800 400
 for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad
-for_window [instance="spotify"] floating enable, resize set 1500 950, move scratchpad
+# for_window [instance="spotify"] floating enable, resize set 1500 950, move scratchpad
 for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
+for_window [instance="crx_pjibgclleladliembfgfagdaldikeohf"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
 for_window [instance="crx_pdigihnmoiplkhocekidmdcmhchhdpjo"] move scratchpad, floating enable, resize set 1900 1020
 
@@ -113,6 +114,15 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+set $i3l vstack to workspace $ws1
+set $i3l vstack to workspace $ws2
+set $i3l vstack to workspace $ws3
+set $i3l vstack to workspace $ws4
+set $i3l vstack to workspace $ws5
+set $i3l vstack to workspace $ws6
+set $i3l vstack to workspace $ws7
+set $i3l vstack to workspace $ws8
 
 bar {
     font pango:JetBrainsMono Nerd Font 12

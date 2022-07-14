@@ -134,7 +134,7 @@ super + shift + {1-9, 0}
 super + {h, j, k, l}
     i3-msg focus {left, down, up, right}
 super + shift + {h, j, k, l}
-    i3-msg move {left, down, up, right}
+    i3l move {left, down, up, right}
 alt + shift + {h, j, k, l}
     i3-msg resize {shrink, grow, shrink, grow} {width, height, height, width} 3px or 3ppt
 super + shift + space
@@ -151,6 +151,8 @@ super + {g,v}
 #toggle tiling / floating
 super + f
     i3-msg floating toggle
+super + Tab
+    # i3l [vstack|hstack|spiral|3columns|2columns|companion|autosplit|none]
 # enter fullscreen mode for the focused container
 super + shift + f
     i3-msg fullscreen toggle
