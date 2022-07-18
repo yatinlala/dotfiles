@@ -4,11 +4,11 @@ setopt interactive_comments
 zle_highlight=('paste:none')
 unsetopt BEEP # Beeping sucks
 
-# Enable colors and change prompt:
-autoload -Uz colors && colors	# Load colors
-PROMPT="%{$fg_bold[cyan]%}%~ %{$fg_bold[green]%}➜ %{$reset_color%}"
-stty stop undef		# Disable ctrl-s to freeze terminal.
-setopt interactive_comments
+# # Enable colors and change prompt:
+# autoload -Uz colors && colors	# Load colors
+# PROMPT="%{$fg_bold[cyan]%}%~ %{$fg_bold[green]%}➜ %{$reset_color%}"
+# stty stop undef		# Disable ctrl-s to freeze terminal.
+# setopt interactive_comments
 
 # History in cache directory:
 HISTSIZE=1000
@@ -124,3 +124,4 @@ source "$ZDOTDIR/zshaliases"
 # esac
 
 eval "$(fasd --init auto)"
+eval "$(starship init zsh)"

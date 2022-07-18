@@ -33,6 +33,7 @@ dunst
 easyeffects
 efibootmgr
 element-desktop
+emacs-nativecomp
 exa
 fakeroot
 fd
@@ -125,6 +126,7 @@ sof-tools
 spotify-launcher
 spotifyd
 sshfs
+starship
 steam
 stow
 streamlink
