@@ -54,6 +54,15 @@ mode "$redshift" {
     bindsym Escape mode "default"
 }
 
+set $audio-video Action: [a]udio [v]ideo
+bindsym $mod+shift+v mode "$audio-video"
+mode "$audio-video" {
+    bindsym a $e toggler pulsemixer; mode "default"
+    bindsym v $e toggler guvcview; mode "default"
+    bindsym $mod+shift+v mode "default"
+    bindsym Escape mode "default"
+}
+
 #i3 gets mad without this
 bindsym $mod+Mod1+control+shift+d layout toggle split
 
@@ -69,7 +78,6 @@ $e gnome-keyring-daemon --start #Hooked up to PAM
 $e rclone mount googledrive: ~/drive/
 $e libinput-gestures-setup start
 $e urxvtd -q
-$e i3-layouts
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
@@ -114,15 +122,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-set $i3l vstack to workspace $ws1
-set $i3l vstack to workspace $ws2
-set $i3l vstack to workspace $ws3
-set $i3l vstack to workspace $ws4
-set $i3l vstack to workspace $ws5
-set $i3l vstack to workspace $ws6
-set $i3l vstack to workspace $ws7
-set $i3l vstack to workspace $ws8
 
 bar {
     font pango:JetBrainsMono Nerd Font 12
