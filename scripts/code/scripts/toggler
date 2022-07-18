@@ -50,7 +50,7 @@ case $1 in
         pgrep -x "pavucontrol" || setsid pavucontrol &
         i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
     pulsemixer)
-        pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .1)
+        pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .15)
         i3-msg "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
     redshift)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
