@@ -21,6 +21,8 @@ super + a
     $TERMINAL -e ~/code/scripts/lf/lf
 super + m
     toggler mailspring
+super + p
+    gtk-pipe-viewer
 super + shift + e 
     toggler espanso
 super + grave
@@ -101,8 +103,8 @@ super + shift + comma
 ### BRIGHTNESS ###
 {XF86MonBrightnessDown,XF86MonBrightnessUp}
     xbacklight {-,+}1
-super + {_, shift} + p 
-    xbacklight {-,+}3
+# super + {_, shift} + p 
+#     xbacklight {-,+}3
 alt + {1, 2}
     xbacklight {-,+}8
 super + shift + a
