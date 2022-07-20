@@ -37,11 +37,18 @@ clear-screen-scrollback () {
   zle .clear-screen
 }
 
+clear-screen-scrollback-insert () {
+  echo -ne '\033c' # clear scrollback buffer as well
+  zle .clear-screen
+  echo -ne "\e[6 q"
+}
+
 zle -N clear-screen-scrollback
+zle -N clear-screen-scrollback-insert
 
 # clear screen scrolleback keybindings
 bindkey -M main '^K' clear-screen-scrollback
-bindkey -M viins '^K' clear-screen-scrollback
+bindkey -M viins '^K' clear-screen-scrollback-insert
 bindkey -M vicmd '^K' clear-screen-scrollback
 
 
