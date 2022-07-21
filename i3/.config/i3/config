@@ -5,9 +5,9 @@ font pango:JetBrainsMono Nerd Font 12
 smart_gaps on 
 floating_modifier $mod
 smart_borders on
-gaps inner 4
+gaps inner 0
 gaps outer 0
-default_border pixel 4
+default_border pixel 3
 
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
@@ -54,15 +54,6 @@ mode "$redshift" {
     bindsym Escape mode "default"
 }
 
-set $audio-video Action: [a]udio [v]ideo
-bindsym $mod+shift+v mode "$audio-video"
-mode "$audio-video" {
-    bindsym a $e toggler pulsemixer; mode "default"
-    bindsym v $e toggler guvcview; mode "default"
-    bindsym $mod+shift+v mode "default"
-    bindsym Escape mode "default"
-}
-
 #i3 gets mad without this
 bindsym $mod+Mod1+control+shift+d layout toggle split
 
@@ -73,9 +64,10 @@ $e lxsession #Needed by fprintd
 $e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 $e picom --experimental-backends
 $e dunst
+# $e i3-autolayout
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
-$e rclone mount googledrive: ~/drive/
+# $e rclone mount googledrive: ~/drive/
 $e libinput-gestures-setup start
 $e urxvtd -q
 #$e nextcloud
@@ -99,9 +91,9 @@ for_window [instance="calc"] floating enable, resize set 800 400, move scratchpa
 for_window [instance="nm-connection-editor"] floating enable, resize set 800 400
 for_window [instance="cmus"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpad
-# for_window [instance="spotify"] floating enable, resize set 1500 950, move scratchpad
 for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad
+for_window [instance="spotify"] floating enable, resize set 1700 1020, move scratchpad
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_pjibgclleladliembfgfagdaldikeohf"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
