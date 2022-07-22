@@ -19,6 +19,8 @@ super + shift + c
     toggler calendar
 super + a
     $TERMINAL -e ~/code/scripts/lf/lf
+super + shift + v
+    toggler pulsemixer
 super + m
     toggler mailspring
 super + p
@@ -97,7 +99,7 @@ shift+XF86Tools
 super + comma
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 super + shift + comma
-    exec pkill greenclip && greenclip clear && greenclip daemon &
+    pkill greenclip && greenclip clear && greenclip daemon &
 
 
 ### BRIGHTNESS ###
