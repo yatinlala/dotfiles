@@ -1,5 +1,5 @@
 cargo-update v8.1.4:
     cargo-install-update
     cargo-install-update-config
-i3-autolayout v0.1.0:
+i3-autolayout v0.2.0:
     i3-autolayout

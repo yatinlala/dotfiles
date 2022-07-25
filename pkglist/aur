@@ -9,7 +9,7 @@ dashbinsh
 devour
 downgrade
 dragon-drag-and-drop
-espanso
+espanso-bin
 faba-icon-theme
 fontpreview-ueberzug-git
 gruvbox-dark-icons-gtk
@@ -25,16 +25,19 @@ nerd-fonts-complete
 netris-git
 onlyoffice-bin
 paru
+peazip-gtk2-bin
 pipe-viewer-git
 protonvpn
 protonvpn-cli
 protonvpn-gui
 python-node-semver
 python-patch-ng
+python-playsound
 python-pluginbase
 python-proton-client
 python-protonvpn-nm-lib
 python-stringcase
+python-textual
 reaper-bin
 rmtrash
 rofi-bluetooth-git
@@ -44,6 +47,7 @@ slack-desktop
 spotiflyer-bin
 spotify-tui
 system-monitoring-center
+termtyper-git
 times-newer-roman
 topgrade
 ttf-ms-fonts
