@@ -1,5 +1,7 @@
-# dots for archlinux
+# dotfiles
+
 Have I mentioned that I use Arch?
 
-
-These dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/). To use my dotfiles for a particular program, clone this repo and type `stow <foldername>`.
+These dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/). 
+To use my dotfiles for a particular program, clone this repo, cd into the root
+directory, and type `stow <foldername>`.
