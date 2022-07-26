@@ -64,12 +64,12 @@ $e lxsession #Needed by fprintd
 $e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 $e picom --experimental-backends
 $e dunst
-# $e i3-autolayout
+$e i3-autolayout
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
 # $e rclone mount googledrive: ~/drive/
 $e libinput-gestures-setup start
-$e urxvtd -q
+# $e urxvtd -q
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
@@ -94,6 +94,7 @@ for_window [instance="spt"] floating enable, resize set 1200 900, move scratchpa
 for_window [instance="notes"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="pulsemixer"] floating enable, resize set 1200 900, move scratchpad
 for_window [instance="spotify"] floating enable, resize set 1700 1020, move scratchpad
+
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_pjibgclleladliembfgfagdaldikeohf"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
