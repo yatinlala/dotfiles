@@ -113,10 +113,10 @@ cmd fzf_jump ${{
 
 cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
 
-cmd dragon %dragon-drag-and-drop -a -x "$fx"
-cmd dragon-stay %dragon-drag-and-drop -a "$fx"
-cmd dragon-individual %dragon-drag-and-drop "$fx"
-cmd dragon-target %dragon-drag-and-drop -t "$fx"
+cmd dragon %dragon-drop -a -x "$fx"
+cmd dragon-stay %dragon-drop -a "$fx"
+cmd dragon-individual %dragon-drop "$fx"
+cmd dragon-target %dragon-drop -t "$fx"
 cmd dlfile %dlfile
 
 # Archive bindings
@@ -290,6 +290,7 @@ map ge cd /etc
 
 # Swat Jumps --------------------
 map gs<space> cd ~/documents/swat
+map gsr cd ~/documents/swat/summer-research
 map gsb cd ~/documents/swat/soph/spring/behavioural-neuroscience
 map gsc cd ~/documents/swat/soph/spring/clinical-psych
 map gsl cd ~/documents/swat/soph/spring/linear-algebra
