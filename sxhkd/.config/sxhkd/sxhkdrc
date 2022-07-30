@@ -40,15 +40,15 @@ super + space
     rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
 super + semicolon
     rofi-pass
-super + shift + semicolon
-    rofi -show window
-super + period
-    rofi -show emoji -modi emoji
+# super + shift + semicolon
+#     rofi -show window
 super + apostrophe
     sadmenu
-super + shift + apostrophe
+super + comma
     systemd-inhibit --what=handle-lid-switch sleep 20m 
 super + i
+    rofi -show emoji -modi emoji
+super + shift + i
     rofi -show calc -modi calc -no-show-match -no-sort
 super + shift + s
     ~/.config/rofi/powermenu/powermenu.sh
@@ -96,9 +96,9 @@ shift+XF86Tools
 
 
 ### CLIPBOARD ###
-super + comma
+super + shift + semicolon
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
-super + shift + comma
+super + shift + apostrophe
     pkill greenclip && greenclip clear && greenclip daemon &
 
 
