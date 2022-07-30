@@ -44,8 +44,8 @@ alias gd='git diff'
 alias gp='git push'
 
 #rmtrash
-alias rm='rmtrash -I --ask-pass'
-alias rmdir='rmdirtrash --ask-pass'
+alias rm='rmtrash -I'
+alias rmdir='rmdirtrash'
 
 # #Confirm before danger
 # alias rm='rm -I'
