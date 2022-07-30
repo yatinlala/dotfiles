@@ -15,12 +15,14 @@ bluez
 bluez-utils
 browserpass-chromium
 browserpass-firefox
+btop
 calibre
 checkbashisms
 clang
 cmake
 cmatrix
 cmus
+cool-retro-term
 cups
 dash
 deluge-gtk
@@ -54,6 +56,7 @@ gifsicle
 gimp
 git
 github-cli
+gnuplot
 go
 grub
 guvcview
@@ -70,6 +73,7 @@ lxappearance
 lxsession
 m4
 make
+megasync
 micro
 moreutils
 mpv
