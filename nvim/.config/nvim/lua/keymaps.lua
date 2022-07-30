@@ -51,6 +51,7 @@ map('i', '(', '(<c-g>u', opts)
 map('i', '<C-f>', '<esc><<A', opts)
 map('i', '<C-j>', '<esc>>>A', opts)
 
+map('i', '<C-<BS>>', '<C-w>', opts)
 
 -- Visual --
 -- Stay in indent mode

@@ -63,7 +63,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("CursorHold", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0 })
     vim.api.nvim_create_autocmd("CursorHoldI", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0 })
     vim.api.nvim_create_autocmd("CursorMoved", { callback = function() vim.lsp.buf.clear_references() end, buffer = 0 })
-    vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank() end })
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
