@@ -64,7 +64,7 @@ $e lxsession #Needed by fprintd
 $e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 $e picom --experimental-backends
 $e dunst
-$e i3-autolayout
+$e i3-autolayout autolayout
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
 # $e rclone mount googledrive: ~/drive/
