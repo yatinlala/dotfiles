@@ -34,7 +34,7 @@ mode "$games" {
     bindsym Return mode "default"
 }
 
-set $applets Action: [n]m-applet [b]lueman-applet next[c]loud
+set $applets Action: [b]lueman-applet next[c]loud [n]m-applet 
 bindsym $mod+shift+n mode "$applets"
 mode "$applets" {
     bindsym b $e toggler blueman-applet; mode "default"
