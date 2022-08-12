@@ -1,5 +1,5 @@
 ### TERMINALS ###
-super + Return
+super + space
 	$TERMINAL
 super + shift + Return
     urxvt
@@ -7,10 +7,8 @@ super + shift + Return
 
 super + t
     toggler habitica
-# super + shift + d
-#     gtk-launch dash
-# super + shift + c
-#     toggler calendar
+super + shift + d
+    gtk-launch dash
 # super + shift + v; {a, v}
 #     {toggler pulsemixer, guvcview}
 super + w
@@ -25,7 +23,7 @@ super + m
     toggler mailspring
 super + p
     gtk-pipe-viewer
-super + shift + e 
+super + Tab
     toggler espanso
 super + grave
     dunstctl close
@@ -36,7 +34,7 @@ Print
 
 
 ### MENUS ###
-super + space
+alt + F1
     rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
 super + semicolon
     rofi-pass
@@ -55,7 +53,7 @@ super + shift + s
 
 ### BROWSERS ###
 super + b
-    brave
+    xdg-launch brave
 super + shift + t
     toggler torbrowser
 super + shift + w
@@ -65,6 +63,8 @@ super + shift + w
 ### EDITORS ###
 super + e
     $TERMINAL -e nvim
+super + shift + e
+    emacs
 super + o
     onlyoffice-desktopeditors
 
@@ -113,7 +113,7 @@ super + shift + a
     xbacklight -set .00206254
 ### VOLUME ###
 {_,shift} + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
-    pamixer --allow-boost -{d 5,d 1,i 5,i 1}
+    pamixer --allow-boost -{d 1,d 5,i 1,i 5}
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
@@ -137,9 +137,9 @@ super + shift + {1-9, 0}
     i3-msg move container to workspace {1-9, 10}
 
 # FOCUS
-super + {h, j, k, l}
-    i3-msg focus {left, down, up, right}
-super + shift + {h, j, k, l}
+super + {h,j,k,l}
+    i3-msg focus {left,down,up,right}
+super + shift + {h,j,k,l}
     i3-msg move {left, down, up, right}
 alt + shift + {h, j, k, l}
     i3-msg resize {shrink, grow, shrink, grow} {width, height, height, width} 3px or 3ppt
@@ -157,14 +157,16 @@ super + {g,v}
 #toggle tiling / floating
 super + f
     i3-msg floating toggle
-super + Tab
+# super + Tab
     # i3l [vstack|hstack|spiral|3columns|2columns|companion|autosplit|none]
 # enter fullscreen mode for the focused container
 super + shift + f
     i3-msg fullscreen toggle
 #LAYOUT
-super + {_,shift} d
-    i3-msg layout {tabbed,toggle split}
+# super + {_,shift} d
+#     i3-msg layout {tabbed,toggle split}
+super + d
+    i3-msg layout toggle tabbed split
 #SCRATCHPAD
 super + y
     i3-msg scratchpad show

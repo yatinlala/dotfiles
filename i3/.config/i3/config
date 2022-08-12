@@ -64,11 +64,11 @@ $e lxsession #Needed by fprintd
 $e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 $e picom --experimental-backends
 $e dunst
-$e i3-autolayout autolayout
+$e ksuperkey -e 'Super_L=Alt_L|F1'
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
+# $e i3-autolayout autolayout
 # $e rclone mount googledrive: ~/drive/
-$e libinput-gestures-setup start
 # $e urxvtd -q
 #$e nextcloud
 

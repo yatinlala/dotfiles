@@ -17,6 +17,7 @@ gruvbox-material-gtk-theme-git
 heroic-games-launcher-bin
 htim
 keyd-git
+ksuperkey
 lf
 libinput-gestures
 mailspring
@@ -45,9 +46,9 @@ rofi-bluetooth-git
 rofi-greenclip
 rxvt-unicode-truecolor-wide-glyphs
 slack-desktop
+sov
 spotiflyer-bin
 spotify-tui
-swhkd-bin
 system-monitoring-center
 termtyper-git
 times-newer-roman
@@ -55,6 +56,7 @@ topgrade
 ttf-ms-fonts
 urlview
 vscodium-bin
+wev
 xwinwrap-git
 zoom
 zsh-autocomplete-git

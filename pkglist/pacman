@@ -13,8 +13,6 @@ bitwarden
 blueman
 bluez
 bluez-utils
-browserpass-chromium
-browserpass-firefox
 btop
 calibre
 checkbashisms
@@ -69,6 +67,7 @@ lazygit
 libtool
 linux
 linux-firmware
+linux-headers
 lxappearance
 lxsession
 m4
@@ -162,6 +161,7 @@ ueberzug
 unrar
 unzip
 usbutils
+virtualbox
 vlc
 vulkan-intel
 w3m
