@@ -13,6 +13,7 @@ bitwarden
 blueman
 bluez
 bluez-utils
+bspwm
 btop
 calibre
 checkbashisms
@@ -62,6 +63,7 @@ hugo
 i3-gaps
 i3lock
 i3status-rust
+jq
 kdeconnect
 lazygit
 libtool
@@ -106,10 +108,13 @@ pipewire-pulse
 pkgconf
 playerctl
 plocate
+polybar
+powertop
 pulsemixer
 python
 python-pytorch
 rclone
+reaper
 redshift
 reflector
 ripgrep
