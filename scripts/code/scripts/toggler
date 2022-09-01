@@ -4,6 +4,8 @@ case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -e bc -q
         i3-msg "[instance=calc] scratchpad show; [instance=calc] move position center";;
+    blueman-applet)
+        pgrep -x "blueman-applet" && killall blueman-applet || setsid blueman-applet &;;
     blueman-manager)
         pgrep -x "blueman-manager" && killall blueman-manager || setsid blueman-manager &;;
     bluetooth)

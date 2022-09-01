@@ -1,8 +1,6 @@
 ### TERMINALS ###
-super + space
+super + Return
 	$TERMINAL
-super + shift + Return
-    urxvt
 
 
 super + t
@@ -18,7 +16,7 @@ super + shift + c
 super + a
     $TERMINAL -e ~/code/scripts/lf/lf
 super + shift + v
-    toggler pulsemixer
+    toggler pavucontrol
 super + m
     toggler mailspring
 super + p
@@ -34,7 +32,7 @@ Print
 
 
 ### MENUS ###
-alt + F1
+super + space
     rofi -show drun -modi drun -theme "$HOME/.config/rofi/launcher.rasi"
 super + semicolon
     rofi-pass
@@ -172,3 +170,8 @@ super + y
     i3-msg scratchpad show
 super + shift + y
     i3-msg move scratchpad
+
+
+
+super + Escape
+	pkill -USR1 -x sxhkd
