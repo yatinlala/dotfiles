@@ -29,7 +29,7 @@ dashbinsh
 devour
 downgrade
 dragon-drop
-electron16
+electron16-bin
 espanso-bin
 faba-icon-theme
 fontpreview-ueberzug-git
@@ -69,8 +69,8 @@ python2-six
 rmtrash
 rofi-bluetooth-git
 rofi-greenclip
+rstudio-desktop-bin
 rxvt-unicode-truecolor-wide-glyphs
-slack-desktop
 sov
 spotiflyer-bin
 spotify-tui
@@ -83,5 +83,4 @@ urlview
 vscodium-bin
 wev
 xwinwrap-git
-zoom
 zsh-autocomplete-git

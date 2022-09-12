@@ -25,7 +25,6 @@ cool-retro-term
 cups
 dash
 deluge-gtk
-discord
 docker
 docker-compose
 dosfstools
@@ -46,11 +45,14 @@ figlet
 filelight
 firefox
 fish
+flatpak
+flatpak-xdg-utils
 flex
 fprintd
 fwupd
 fzf
 gcc
+gedit
 gifsicle
 gimp
 git
@@ -113,6 +115,7 @@ powertop
 pulsemixer
 python
 python-pytorch
+qt5ct
 rclone
 reaper
 redshift
