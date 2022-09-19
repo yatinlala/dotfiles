@@ -13,15 +13,15 @@ case $1 in
         pgrep -x bluetoothctl || ($TERMINAL --class bluetooth -e bluetoothctl && sleep .1)
         i3-msg "[instance=bluetooth] scratchpad show; [instance=bluetooth] move position center";;
     calendar)
-        wmctrl -l | grep -q "pointer Calendar - SCCS Nextcloud" || \
+        wmctrl -l | grep -q "pointer Google Calendar" || \
         (gtk-launch calendar; sleep 1)
-        i3-msg "[instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] scratchpad show; \
-        [instance=crx_gipedbjkhfgkohfgefhoabnbnbomkjkc] move position center";;
+        i3-msg "[instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] scratchpad show; \
+        [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
     cmus)
         pgrep -x cmus || ($TERMINAL --class cmus -e cmus && sleep .1)
         i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
     discord)
-        pgrep -x discord || setsid discord &
+        pgrep -x discord || setsid flatpak run com.discordapp.Discord &
         i3-msg "workspace 9; [class=discord] focus";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
@@ -59,7 +59,7 @@ case $1 in
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
     redshift-dark)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.6);;
+        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop &
         i3-msg "workspace 9; [class=Signal] focus";;
