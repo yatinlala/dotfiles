@@ -52,7 +52,6 @@ fprintd
 fwupd
 fzf
 gcc
-gedit
 gifsicle
 gimp
 git
@@ -74,6 +73,7 @@ linux-firmware
 linux-headers
 lxappearance
 lxsession
+lynx
 m4
 make
 micro

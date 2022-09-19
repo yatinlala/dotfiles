@@ -27,6 +27,7 @@ cargo-make
 conan
 dashbinsh
 devour
+distrobox
 downgrade
 dragon-drop
 electron16-bin
