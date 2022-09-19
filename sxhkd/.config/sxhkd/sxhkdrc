@@ -85,7 +85,7 @@ super + {minus, equal}
 # VIDEO
 super + n
     i3-msg 'workspace 10; mode default' && \
-    alacritty --class newsboat -e newsboat
+    urxvtc -name newsboat -e newsboat
 XF86Tools
     pomo
 shift+XF86Tools
