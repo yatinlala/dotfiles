@@ -70,7 +70,7 @@ $e libinput-gestures
 # $e ksuperkey -e 'Super_L=Alt_L|F1'
 # $e i3-autolayout autolayout
 # $e rclone mount googledrive: ~/drive/
-# $e urxvtd -q
+$e urxvtd -q
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
@@ -100,6 +100,7 @@ for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, fl
 for_window [instance="crx_pjibgclleladliembfgfagdaldikeohf"] move scratchpad, floating enable, resize set 1700 1020
 for_window [instance="crx_gipedbjkhfgkohfgefhoabnbnbomkjkc"] move scratchpad, floating enable, resize set 1900 1020
 for_window [instance="crx_pdigihnmoiplkhocekidmdcmhchhdpjo"] move scratchpad, floating enable, resize set 1900 1020
+for_window [instance="crx_kjbdgfilnfhdoflbpgamdcdgpehopbep"] move scratchpad, floating enable, resize set 1900 1020
 
 for_window [class="(.*join\?action\=join.*|.*zoom.*)"] floating enable
 for_window [class="(.*join\?action\=join.*|.*zoom.*)" title="Zoom - Licensed Account"] floating disable
