@@ -291,7 +291,4 @@ map ge cd /etc
 # Swat Jumps --------------------
 map gs<space> cd ~/documents/swat
 map gsr cd ~/documents/swat/summer-research
-map gsb cd ~/documents/swat/soph/spring/behavioural-neuroscience
-map gsc cd ~/documents/swat/soph/spring/clinical-psych
-map gsl cd ~/documents/swat/soph/spring/linear-algebra
-map gsp cd ~/documents/swat/soph/spring/phil-of-science
+map gsp cd ~/documents/swat/junior/epistemology
