@@ -7,19 +7,19 @@ Urxvt.visualBell:        true
 URxvt.scrollTtyOutput:   false
 URxvt.scrollTtyKeypress: true
 
-urxvt*perl-lib:          /home/nitay/.config/urxvt
-URxvt.perl-ext-common:   default,url-select,resize-font
-URxvt.iso14755:          false
-URxvt.iso14755_52:       false
+urxvt*perl-lib: /home/nitay/.config/urxvt
+URxvt.perl-ext-common: default,url-select,resize-font
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
-URxvt.keysym.C-minus:    resize-font:smaller
-URxvt.keysym.C-equal:    resize-font:bigger
-URxvt.keysym.C-plus:     resize-font:reset
+URxvt.keysym.C-minus: resize-font:smaller
+URxvt.keysym.C-equal: resize-font:bigger
+URxvt.keysym.C-plus: resize-font:reset
 
-URxvt.url-select.launcher:  xdg-open
+URxvt.url-select.launcher: xdg-open
 URxvt.url-select.underline: true
 
-URxvt.keysym.Mod4-Shift-U:       perl:url-select:select_next
+URxvt.keysym.C-Shift-U: perl:url-select:select_next
 
 URxvt.keysym.Control-Meta-c: builtin-string:
 URxvt.keysym.Control-Meta-v: builtin-string:
@@ -34,10 +34,13 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 ! Last Modified: 6 Sep 2014
 ! -----------------------------------------------------------------------------
 
-! hard contrast: *background: #1d2021
-!*background: #282828
+! hard contrast: 
+! *background: #1d2021
 ! soft contrast: 
-*background: #32302f
+! *background: #32302f
+! normal contrast:
+*background: #282828
+
 *foreground: #ebdbb2
 ! Black + DarkGrey
 *color0:  #282828
