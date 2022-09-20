@@ -10,3 +10,5 @@ require 'globals'
 require 'keymaps'
 require 'autocmds'
 require 'plugin'
+
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"

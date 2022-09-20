@@ -1,4 +1,4 @@
-local colorscheme = "gruvbox8_soft"
+local colorscheme = "gruvbox8"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

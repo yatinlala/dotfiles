@@ -74,6 +74,8 @@ local on_attach = function(client, bufnr)
 --     vim.cmd[[
 --     autocmd CursorHold * lua vim.diagnostic.open_float()
 --     autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help() ]]
+
+    require('nvim-navic').attach(client, bufnr)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and

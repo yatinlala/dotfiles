@@ -17,19 +17,10 @@ return require('packer').startup(function(use)
             require('plugin.config.lualine')
         end,
     }
-    -- use {
-    --     "SmiteshP/nvim-gps",
-    --     requires = "nvim-treesitter/nvim-treesitter",
-    --     after = 'nvim-treesitter',
-    --     config = function()
-    --         require("nvim-gps").setup()
-    --         _G.gps_location = function()
-    --             local gps = require "nvim-gps"
-    --             return gps.is_available() and gps.get_location() or ""
-    --         end
-    --         vim.opt.winbar = "%{%v:lua.gps_location()%}"
-    --     end,
-    -- }
+    use {
+        "SmiteshP/nvim-navic",
+        requires = "neovim/nvim-lspconfig"
+    }
     use { 'folke/which-key.nvim',
         config = function()
             require('plugin.config.whichkey')
@@ -61,7 +52,7 @@ return require('packer').startup(function(use)
             require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
             -- require 'hop'.setup { keys = 'etovxqpdygfblzhckisuranjmwe' }
             vim.api.nvim_set_keymap('', 's', "<cmd>lua require'hop'.hint_words({})<cr>", {})
-            vim.api.nvim_set_keymap('', 'S', "<cmd>lua require'hop'.hint_lines({})<cr>", {})
+            -- vim.api.nvim_set_keymap('', 'S', "<cmd>lua require'hop'.hint_lines({})<cr>", {})
         end
     }
 
@@ -181,6 +172,8 @@ return require('packer').startup(function(use)
     --         vim.g.toggle_list_no_mappings = 1
     --     end,
     -- }
+
+    use { 'ThePrimeagen/vim-be-good' }
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",

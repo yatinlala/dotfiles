@@ -36,7 +36,7 @@ require('lualine').setup {
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
-        lualine_y = {},
+        lualine_y = {{require('nvim-navic').get_location, cond = require('nvim-navic').is_available }},
         lualine_z = { 'tabs' }
     },
 
