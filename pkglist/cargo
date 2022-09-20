@@ -1,4 +1,4 @@
-cargo-update v8.2.0:
+cargo-update v9.0.0:
     cargo-install-update
     cargo-install-update-config
 i3-autolayout v0.2.3:
