@@ -67,7 +67,6 @@ export IMAGE="feh"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="bat --paging=always"
-export WM="i3-gaps"
 
 # Disable less history files 
 export LESSHISTFILE=-

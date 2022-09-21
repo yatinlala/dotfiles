@@ -9,13 +9,14 @@ gaps inner 0
 gaps outer 0
 default_border pixel 3
 
-set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
+set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [t]elegram [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
     bindsym d $e toggler discord; mode "default"
     bindsym e $e element-desktop; workspace $ws9; mode "default"
     bindsym l $e slack; workspace $ws9; mode "default"
     bindsym s $e toggler signal; mode "default"
+    bindsym t $e flatpak run org.telegram.desktop; mode "default"
     bindsym w $e toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
@@ -67,10 +68,10 @@ $e dunst
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
 $e libinput-gestures
-# $e ksuperkey -e 'Super_L=Alt_L|F1'
-# $e i3-autolayout autolayout
-# $e rclone mount googledrive: ~/drive/
 $e urxvtd -q
+# $e ksuperkey -e 'Super_L=Alt_L|F1'
+$e i3-autolayout autolayout
+# $e rclone mount googledrive: ~/drive/
 #$e nextcloud
 
 assign [class="Tor Browser"] $ws7
