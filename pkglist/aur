@@ -39,9 +39,7 @@ gruvbox-material-gtk-theme-git
 heroic-games-launcher-bin
 htim
 hyprland-bin
-keyd-git
 ksuperkey
-lf
 libinput-gestures
 mailspring
 megasync-bin
@@ -63,10 +61,12 @@ python-proton-client
 python-protonvpn-nm-lib
 python-stringcase
 python-textual
+python2
 python2-appdirs
 python2-ordered-set
 python2-packaging
 python2-pyparsing
+python2-setuptools
 python2-six
 rmtrash
 rofi-bluetooth-git
