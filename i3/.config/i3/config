@@ -8,6 +8,7 @@ smart_borders on
 gaps inner 0
 gaps outer 0
 default_border pixel 3
+for_window [class="^.*"] border pixel 3
 
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [t]elegram [w]hatsapp
 bindsym $mod+c mode "$mega"
@@ -76,10 +77,12 @@ $e i3-autolayout autolayout
 
 assign [class="Tor Browser"] $ws7
 assign [class="Mailspring"] $ws9
+assign [class="ferdium"] $ws9
 assign [class="discord"] $ws9
 assign [class="Slack"] $ws9
 assign [class="Signal"] $ws9
 assign [class="Element"] $ws9
+assign [class='whatsapp-desktop-linux'] $ws9
 assign [instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] $ws9 # Whatsapp
 assign [instance="pipe-viewer"] $ws10
 assign [instance="newsboat"] $ws10
