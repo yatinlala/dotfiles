@@ -26,6 +26,9 @@ case $1 in
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
         setsid espanso daemon &;;
+    ferdium)
+        pgrep -x ferdium || setsid ferdium &
+        i3-msg "workspace 9; [class=ferdium] focus";;
     gmail)
         wmctrl -l | grep -q "pointer Gmail" || \
         (gtk-launch gmail; sleep 1)
@@ -84,7 +87,9 @@ case $1 in
         wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
         i3-msg "workspace 7";;
     whatsapp)
-        wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
+    #     wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
+    #     i3-msg workspace 9;;
+    # *) echo "Invalid argument.";;
+        pgrep whatsapp || flatpak run io.github.mimbrero.WhatsAppDesktop
         i3-msg workspace 9;;
-    *) echo "Invalid argument.";;
 esac
