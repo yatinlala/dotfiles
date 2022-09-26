@@ -1,7 +1,8 @@
 ## Colors configuration
 colors:
   primary:
-    background: '#303030'
+    # background: '#303030'
+    background: '#282828'
     foreground: '#ebdbb2'
 
   normal:
