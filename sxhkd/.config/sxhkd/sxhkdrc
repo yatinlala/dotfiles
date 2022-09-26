@@ -1,6 +1,8 @@
 ### TERMINALS ###
 super + Return
 	$TERMINAL
+super + shift + Return
+	alac
 
 
 super + t
@@ -18,7 +20,7 @@ super + a
 super + shift + v
     toggler pavucontrol
 super + m
-    toggler mailspring
+    toggler ferdium
 super + p
     gtk-pipe-viewer
 super + Tab
