@@ -1,5 +1,7 @@
-cargo-update v10.0.0:
+cargo-update v10.0.1:
     cargo-install-update
     cargo-install-update-config
 i3-autolayout v0.2.3:
     i3-autolayout
+vimv v1.7.7:
+    vimv
