@@ -60,6 +60,7 @@ mode "$redshift" {
 bindsym $mod+Mod1+control+shift+d layout toggle split
 
 bindsym $mod+s $e toggler music
+bindsym $mod+shift+p $e toggler picom
 
 #Startup
 $e lxsession #Needed by fprintd
@@ -150,7 +151,7 @@ set $gray #a89984
 set $darkgray #1d2021
 
 # class                 border|backgr|text|indicator|child_border
-client.focused #689d6a #a89984 #282828 #282828
+client.focused #689d6a #a89984 #282828 #d79921
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828

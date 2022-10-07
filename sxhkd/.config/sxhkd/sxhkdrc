@@ -126,7 +126,6 @@ XF86Bluetooth
 super + shift + b
     toggler blueman-manager
 
-
 ### WINDOW MANAGER ###
 # WORKSPACES
 super + {z, x}

@@ -35,6 +35,7 @@ espanso-bin
 faba-icon-theme
 ferdium-bin
 fontpreview-ueberzug-git
+gradience
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
 heroic-games-launcher-bin
@@ -54,6 +55,9 @@ pipe-viewer-git
 protonvpn
 protonvpn-cli
 protonvpn-gui
+python-anyascii
+python-cssutils
+python-material-color-utilities
 python-node-semver
 python-patch-ng
 python-playsound
@@ -84,6 +88,7 @@ topgrade
 ttf-ms-fonts
 urlview
 vscodium-bin
+waybar-hyprland-git
 wev
 xwinwrap-git
 zsh-autocomplete-git

@@ -54,6 +54,8 @@ case $1 in
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
         i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
+    picom)
+        pgrep -x picom && killall picom || setsid picom --experimental-backends &;;
     pulsemixer)
         pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .20)
         i3-msg "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
@@ -67,7 +69,7 @@ case $1 in
         pgrep -x signal-desktop || setsid signal-desktop &
         i3-msg "workspace 9; [class=Signal] focus";;
     spotify)
-        (wmctrl -l | grep -q "pointer Spotify") || spotify-launcher &
+        (wmctrl -l | grep -q "pointer Spotify") || setsid spotify-launcher &
         i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
     spotify-web)
         wmctrl -l | grep -q "pointer Spotify" || (gtk-launch spotify; sleep 1)

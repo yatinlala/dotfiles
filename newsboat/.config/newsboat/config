@@ -1,4 +1,4 @@
-refresh-on-startup yes
+refresh-on-startup no
 show-title-bar no
 external-url-viewer "urlview"
 

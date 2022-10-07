@@ -30,31 +30,11 @@ return require('packer').startup(function(use)
 
     --- TEXT MOTIONS ---
     use { 'tpope/vim-surround', event = 'CursorMoved' }
-    -- use { 'rlane/pounce.nvim',
-    --     config = function()
-    --         require('plugin.config.pounce')
-    --         -- Pounce around
-    --         vim.api.nvim_set_keymap("n", "s", ":Pounce<cr>", { silent = true })
-    --     end,
-    --     -- keys = 's',
-    --     -- cmd = 'Pounce',
-    -- }
     use { 'numToStr/Comment.nvim',
         config = function()
             require('plugin.config.comment')
         end,
         event = 'CursorMoved' }
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v1', -- optional but strongly recommended
-        config = function()
-            -- you can configure Hop the way you like here; see :h hop-config
-            require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-            -- require 'hop'.setup { keys = 'etovxqpdygfblzhckisuranjmwe' }
-            vim.api.nvim_set_keymap('', 's', "<cmd>lua require'hop'.hint_words({})<cr>", {})
-            -- vim.api.nvim_set_keymap('', 'S', "<cmd>lua require'hop'.hint_lines({})<cr>", {})
-        end
-    }
 
     --- FILE MOTIONS ---
     use { 'nvim-telescope/telescope.nvim',
