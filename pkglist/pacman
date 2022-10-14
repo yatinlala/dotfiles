@@ -8,6 +8,7 @@ awesome
 base
 bat
 bc
+beets
 bison
 bitwarden
 blueman
@@ -21,6 +22,7 @@ clang
 cmake
 cmatrix
 cmus
+code
 cool-retro-term
 cups
 dash
@@ -33,7 +35,6 @@ dunst
 easyeffects
 efibootmgr
 element-desktop
-emacs-nativecomp
 exa
 fakeroot
 fd
