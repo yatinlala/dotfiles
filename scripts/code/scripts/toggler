@@ -28,7 +28,7 @@ case $1 in
         setsid espanso daemon &;;
     ferdium)
         pgrep -x ferdium || setsid ferdium &
-        i3-msg "workspace 9; [class=ferdium] focus";;
+        i3-msg "workspace 9; [class=Ferdium] focus";;
     gmail)
         wmctrl -l | grep -q "pointer Gmail" || \
         (gtk-launch gmail; sleep 1)
