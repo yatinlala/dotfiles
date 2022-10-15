@@ -64,16 +64,30 @@ return require('packer').startup(function(use)
     --use 'ThePrimeagen/harpoon'
 
 --- LSP & TREESITTER ---
-    use { 'williamboman/nvim-lsp-installer',
+    -- use { 'williamboman/nvim-lsp-installer',
+    --     config = function()
+    --         require('plugin.config.lsp.lsp-installer')
+    --     end,
+    -- }
+    use {
+        "williamboman/mason.nvim",
         config = function()
-            require('plugin.config.lsp.lsp-installer')
+            require("mason").setup()
+            require("mason-lspconfig").setup()
         end,
+    }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason-lspconfig").setup()
+        end,
+        after = 'mason.nvim',
     }
     use { 'neovim/nvim-lspconfig',
         config = function()
             require('plugin.config.lsp.lspconfig')
         end,
-        after = 'nvim-lsp-installer'
+        after = 'mason-lspconfig.nvim'
     }
     use { 'nvim-treesitter/nvim-treesitter',
         -- run = ':TSUpdate',

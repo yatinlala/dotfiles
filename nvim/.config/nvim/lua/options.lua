@@ -1,8 +1,10 @@
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- don't conceal markups
+vim.opt.ch = 1
 vim.opt.hidden = true                           -- Required to keep multiple buffers open multiple buffers
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
+vim.opt.spell = false
 vim.opt.hlsearch = true                         -- highlight all matches on previous search pattern
 vim.opt.incsearch = true                        -- Show resuls as you type a search
 vim.opt.ignorecase = true                       -- ignore case in search patterns
