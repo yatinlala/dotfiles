@@ -2,6 +2,7 @@ Xcursor.theme: Breeze-Snow
 
 Urxvt.saveLines:     	 4096
 URxvt.font:              xft:JetBrainsMono Nerd Font Mono:size=12.5
+! URxvt.font:              xft:Iosevka:size=14
 URxvt.scrollBar:         false URxvt.fading:            10
 Urxvt.visualBell:        true
 URxvt.scrollTtyOutput:   false
