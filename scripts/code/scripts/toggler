@@ -89,9 +89,9 @@ case $1 in
         wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
         i3-msg "workspace 7";;
     whatsapp)
-    #     wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
-    #     i3-msg workspace 9;;
-    # *) echo "Invalid argument.";;
-        pgrep whatsapp || flatpak run io.github.mimbrero.WhatsAppDesktop
+        wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
         i3-msg workspace 9;;
+        # pgrep whatsapp || flatpak run io.github.mimbrero.WhatsAppDesktop
+        # i3-msg workspace 9;;
+    # *) echo "Invalid argument.";;
 esac

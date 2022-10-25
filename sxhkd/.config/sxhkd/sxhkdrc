@@ -71,10 +71,10 @@ super + o
 # AUDIO
 super + u
     toggler cmus
-super + shift + u
-    toggler spotify
 super + slash
-    toggler spotify-tui
+    toggler spotify
+# super + slash
+#     toggler spotify-tui
 super + shift + slash
     toggler spotifyd
 super + {bracketleft, bracketright}
