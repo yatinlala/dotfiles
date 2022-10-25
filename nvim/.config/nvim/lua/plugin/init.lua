@@ -11,12 +11,32 @@ return require('packer').startup(function(use)
             require('plugin.config.colorscheme')
         end,
     }
-    use { 'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    use { 'akinsho/bufferline.nvim',
         config = function()
-            require('plugin.config.lualine')
+            require('plugin.config.bufferline')
         end,
     }
+    -- use { 'nvim-lualine/lualine.nvim',
+    --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    --     config = function()
+    --         require('plugin.config.lualine')
+    --     end,
+    -- }
+    -- use({
+    --     "folke/noice.nvim",
+    --     event = "VimEnter",
+    --     config = function()
+    --         require("noice").setup()
+    --     end,
+    --     requires = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         "rcarriga/nvim-notify",
+    --     }
+    -- })
     use {
         "SmiteshP/nvim-navic",
         requires = "neovim/nvim-lspconfig"
