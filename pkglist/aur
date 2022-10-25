@@ -57,6 +57,7 @@ protonvpn-cli
 protonvpn-gui
 python-anyascii
 python-cssutils
+python-install
 python-material-color-utilities
 python-node-semver
 python-patch-ng
