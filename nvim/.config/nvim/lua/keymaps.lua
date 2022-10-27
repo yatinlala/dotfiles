@@ -69,15 +69,3 @@ map("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Command --
 -- Force save a sudoer file
 map('c', 'w!!', 'w !sudo tee %', {})
-
-
--- vim.cmd([[
---
--- augroup remember_folds
---   autocmd!
---   autocmd BufWinLeave *.vim mkview
---   autocmd BufWinEnter *.vim silent! loadview
--- augroup END
---
--- ]])
-

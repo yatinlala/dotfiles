@@ -16,12 +16,12 @@ return require('packer').startup(function(use)
             require('plugin.config.bufferline')
         end,
     }
-    -- use { 'nvim-lualine/lualine.nvim',
-    --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    --     config = function()
-    --         require('plugin.config.lualine')
-    --     end,
-    -- }
+    use { 'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require('plugin.config.lualine')
+        end,
+    }
     -- use({
     --     "folke/noice.nvim",
     --     event = "VimEnter",
@@ -126,6 +126,11 @@ return require('packer').startup(function(use)
             require('plugin.config.nvim-colorizer')
         end,
         cmd = 'ColorizerToggle'
+    }
+    use { 'RRethy/vim-illuminate',
+        config = function()
+            require('plugin.config.illuminate')
+        end,
     }
 
     --- COMPLETION ---

@@ -58,11 +58,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 
-    -- Document highlight
-    vim.api.nvim_command [[ hi LspReferenceText guibg=#504945]]
-    vim.api.nvim_create_autocmd("CursorHold", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0 })
-    vim.api.nvim_create_autocmd("CursorHoldI", { callback = function() vim.lsp.buf.document_highlight() end, buffer = 0 })
-    vim.api.nvim_create_autocmd("CursorMoved", { callback = function() vim.lsp.buf.clear_references() end, buffer = 0 })
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -71,9 +66,8 @@ local on_attach = function(client, bufnr)
             signs = true,
         }
     )
---     vim.cmd[[
---     autocmd CursorHold * lua vim.diagnostic.open_float()
---     autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help() ]]
+    -- require('autocmds').lsp_hov_highlight()
+    -- require('autocmds').lsp_hov_diagnostics()
 
     require('nvim-navic').attach(client, bufnr)
 end
