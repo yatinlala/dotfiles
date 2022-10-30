@@ -21,7 +21,7 @@ case $1 in
         pgrep -x cmus || ($TERMINAL --class cmus -e cmus && sleep .1)
         i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
     discord)
-        pgrep -x discord || setsid flatpak run com.discordapp.Discord &
+        pgrep -x discord || setsid discord &
         i3-msg "workspace 9; [class=discord] focus";;
     espanso)
         pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
