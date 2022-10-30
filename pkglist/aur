@@ -18,7 +18,6 @@ archcraft-gtk-theme-sweet
 archcraft-gtk-theme-wave
 archcraft-gtk-theme-white
 archcraft-gtk-theme-windows
-audacity-git
 auto-cpufreq
 brave-bin
 breeze-snow-cursor-theme
@@ -56,9 +55,11 @@ protonvpn
 protonvpn-cli
 protonvpn-gui
 python-anyascii
+python-colored
 python-cssutils
 python-install
 python-material-color-utilities
+python-nanoid
 python-node-semver
 python-patch-ng
 python-playsound
@@ -66,7 +67,9 @@ python-pluginbase
 python-proton-client
 python-protonvpn-nm-lib
 python-stringcase
+python-syrupy
 python-textual
+python-time-machine
 python2
 python2-appdirs
 python2-ordered-set
