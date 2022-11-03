@@ -9,6 +9,7 @@ commonmark            0.9.1
 cycler                0.11.0
 downloader-cli        0.3.3
 ffmpeg-python         0.2.0
+Flask-SQLAlchemy      3.0.2
 fonttools             4.37.1
 future                0.18.2
 greenlet              1.1.2
@@ -32,6 +33,7 @@ scipy                 1.9.1
 simber                0.2.4
 sniffio               1.2.0
 spotipy               2.19.0
+SQLAlchemy            1.4.42
 threadpoolctl         3.1.0
 websockets            10.2
 youtube-search-python 1.6.3
