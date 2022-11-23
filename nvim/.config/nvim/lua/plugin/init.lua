@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
         end,
     }
     use 'baskerville/vim-sxhkdrc'
+    use 'theRealCarneiro/hyprland-vim-syntax'
 
     --- TEXT MOTIONS ---
     use { 'tpope/vim-surround', event = 'CursorMoved' }

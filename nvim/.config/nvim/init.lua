@@ -10,6 +10,3 @@ require 'globals'
 require 'keymaps'
 require 'autocmds'.setup()
 require 'plugin'
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
