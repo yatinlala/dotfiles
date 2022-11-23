@@ -23,6 +23,7 @@ brave-bin
 breeze-snow-cursor-theme
 c-lolcat
 cargo-make
+clipman
 conan
 dashbinsh
 devour
@@ -44,6 +45,7 @@ ksuperkey
 libinput-gestures
 mailspring
 megasync-bin
+metis
 minecraft-launcher
 nerd-fonts-complete
 netris-git
@@ -66,10 +68,14 @@ python-playsound
 python-pluginbase
 python-proton-client
 python-protonvpn-nm-lib
+python-pytube
+python-spotdl
+python-spotipy
 python-stringcase
 python-syrupy
 python-textual
 python-time-machine
+python-ytmusicapi
 python2
 python2-appdirs
 python2-ordered-set
@@ -83,7 +89,6 @@ rofi-greenclip
 rstudio-desktop-bin
 rxvt-unicode-truecolor-wide-glyphs
 sov
-spotiflyer-bin
 spotify-tui
 system-monitoring-center
 termtyper-git
@@ -91,7 +96,7 @@ times-newer-roman
 topgrade
 ttf-ms-fonts
 urlview
-waybar-hyprland-git
+waybar-hyprland
 wev
 xwinwrap-git
 zsh-autocomplete-git

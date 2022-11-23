@@ -1,3 +1,4 @@
 /home/nitay/.local/share/npm/lib
-└── neovim@4.10.1
+├── neovim@4.10.1
+└── tree-sitter-cli@0.20.7
 

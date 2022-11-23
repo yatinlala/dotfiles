@@ -57,6 +57,7 @@ foot
 fprintd
 fwupd
 fzf
+gammastep
 gcc
 gifsicle
 gimp
@@ -75,6 +76,7 @@ kdeconnect
 lazygit
 lf
 libtool
+light
 linux
 linux-firmware
 linux-headers
@@ -91,6 +93,7 @@ mtools
 musescore
 nautilus
 ncdu
+nemo
 neofetch
 network-manager-applet
 networkmanager
@@ -121,6 +124,7 @@ playerctl
 plocate
 polybar
 powertop
+progress
 pulsemixer
 python
 python-pytorch
@@ -169,6 +173,7 @@ texlive-pictures
 texlive-pstricks
 texlive-publishers
 texlive-science
+thunderbird
 tmux
 torbrowser-launcher
 transmission-cli
