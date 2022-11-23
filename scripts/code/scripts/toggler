@@ -42,6 +42,10 @@ case $1 in
         i3-msg "workspace 9; [class=Mailspring] focus";;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
+    music-player)
+        i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center"
+        i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center"
+        ;;
     nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
             ;;
     nm-applet)
@@ -55,7 +59,7 @@ case $1 in
         pgrep -x "pavucontrol" || setsid pavucontrol &
         i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
     picom)
-        pgrep -x picom && killall picom || setsid picom --experimental-backends &;;
+        pgrep -x picom && killall picom || setsid picom;;
     pulsemixer)
         pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .20)
         i3-msg "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
@@ -65,6 +69,12 @@ case $1 in
     redshift-dark)
         pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
         (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
+    gammastep)
+        pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
+        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -l 39.898491:-75.343880);;
+    gammastep-dark)
+        pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
+        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.5 -l 39.898491:-75.343880);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop &
         i3-msg "workspace 9; [class=Signal] focus";;
