@@ -66,14 +66,14 @@ bindsym $mod+shift+p $e toggler picom
 $e lxsession #Needed by fprintd
 # $e feh --bg-fill --no-fehbg ~/pictures/wallpapers/lone-tree.jpg
 $e feh --bg-scale --no-fehbg ~/pictures/wasay.jpg
-$e picom --experimental-backends
+$e picom
 $e dunst
 $e greenclip daemon
 $e gnome-keyring-daemon --start #Hooked up to PAM
 $e sxhkd
 $e libinput-gestures
 $e urxvtd -q
-$e i3-autolayout autolayout
+# $e i3-autolayout autolayout
 # $e ksuperkey -e 'Super_L=Alt_L|F1'
 # $e rclone mount googledrive: ~/drive/
 #$e nextcloud
