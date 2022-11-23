@@ -71,8 +71,10 @@ super + o
 # AUDIO
 super + u
     toggler cmus
-super + slash
+super + shift + u
     toggler spotify
+super + slash
+    toggler music-player
 # super + slash
 #     toggler spotify-tui
 super + shift + slash
@@ -102,13 +104,13 @@ super + shift + apostrophe
 
 ### BRIGHTNESS ###
 {XF86MonBrightnessDown,XF86MonBrightnessUp}
-    xbacklight {-,+}1.5
+    light -{U,A} 1
 # super + {_, shift} + p 
 #     xbacklight {-,+}3
 alt + {1, 2}
-    xbacklight {-,+}8
+    light -{U,A} 8
 super + shift + a
-    xbacklight -set .00206254
+    light -S .01
 ### VOLUME ###
 {_,shift} + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
     pamixer --allow-boost -{d 1,d 5,i 1,i 5}
