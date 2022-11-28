@@ -19,7 +19,7 @@ case $1 in
         [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
     cmus)
         pgrep -x cmus || ($TERMINAL --class cmus -e cmus && sleep .1)
-        i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center";;
+        i3-msg "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
         i3-msg "workspace 9; [class=discord] focus";;
@@ -36,15 +36,17 @@ case $1 in
         [instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] move position center";;
     habitica)
         wmctrl -l | grep -q "pointer Habitica" || (gtk-launch habitica; sleep 1)
-        i3-msg "[instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] scratchpad show; [instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] move position center";;
+        i3-msg "[instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] scratchpad show; \
+            [instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] move position center";;
     mailspring)
         pgrep -x mailspring || setsid mailspring &
         i3-msg "workspace 9; [class=Mailspring] focus";;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
     music-player)
-        i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move position center"
-        i3-msg "[instance=cmus] scratchpad show; [instance=cmus] move position center"
+        i3-msg "[instance=spotify] scratchpad show; [instance=spotify] move \
+        position center; [app_id=cmus] scratchpad show; [app_id=cmus] move \
+        position center"
         ;;
     nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
             ;;
@@ -74,7 +76,7 @@ case $1 in
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -l 39.898491:-75.343880);;
     gammastep-dark)
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
-        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.5 -l 39.898491:-75.343880);;
+        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.3 -l 39.898491:-75.343880);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop &
         i3-msg "workspace 9; [class=Signal] focus";;
