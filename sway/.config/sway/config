@@ -4,7 +4,7 @@
 
 set $mod Mod4
 set $mod2 Mod1
-set $term urxvtc
+set $term footclient
 set $term2 alacritty
 
 font pango:BlexMono Nerd Font 12
@@ -24,8 +24,8 @@ bindsym $mod+return exec $term
 bindsym $mod+shift+return exec $term2
 
 #Menus
-bindsym $mod+space exec rofi -show drun -show-icons -drun-display-format {name}
-bindsym $mod+semicolon exec rofi-pass
+bindsym $mod+space exec ulauncher-toggle
+bindsym $mod+semicolon exec tessen --action=both
 bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
@@ -33,9 +33,9 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e $e toggler espanso
-bindsym $mod+o $e QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
-bindsym $mod+w $e toggler notes
+bindsym $mod+shift+e exec toggler espanso
+bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
+bindsym $mod+w exec toggler notes
 
 #File Manager
 bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
@@ -52,12 +52,12 @@ bindsym $mod+slash exec toggler music-player
 bindsym $mod+shift+slash exec toggler spotifyd
 
 #Browser
-bindsym $mod+b exec brave --ozone-platform-hint=auto
+bindsym $mod+b exec brave
 bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e w3m -v
 
 #Communication
-bindsym $mod+m $e toggler ferdium
+bindsym $mod+m exec toggler ferdium
 set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
 bindsym $mod+c mode "$mega"
 mode "$mega" {
@@ -92,18 +92,18 @@ bindsym $mod+n exec $term -e newsboat; workspace 10; mode "default"
 bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 10
 bindsym $mod+shift+p exec gtk-pipe-viewer
 bindsym XF86Tools exec pomo
-bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; $e pkill -SIGRTMIN+4 i3status-rs
+bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; exec pkill -SIGRTMIN+4 i3status-rs
 
 
 #TOGGLES
 #Bluetooth
-bindsym XF86Bluetooth exec "echo 'power off' | bluetoothctl"; $e notify-send -t 1000 "Bluetooth off."
+bindsym XF86Bluetooth exec "echo 'power off' | bluetoothctl"; exec notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b exec toggler blueman-manager
 #Other
 set $toggles Action: [b]lueman-applet next[c]loud [n]m-applet 
 bindsym $mod+shift+n mode "$toggles"
 mode "$toggles" {
-    bindsym b $e toggler blueman-applet; mode "default"
+    bindsym b exec toggler blueman-applet; mode "default"
     bindsym c exec toggler nextcloud; mode "default"
     bindsym n exec toggler nm-applet; mode "default"
     bindsym $mod+shift+n mode "default"
@@ -125,16 +125,19 @@ mode "$redshift" {
 bindsym $mod+t exec toggler habitica
 bindsym $mod+shift+d exec gtk-launch dash
 bindsym $mod+shift+c exec toggler calendar
-bindsym $mod+i rofi -show emoji -modi emoji
-bindsym $mod+shift+i exec rofi -show calc -modi calc -no-show-match -no-sort
+# bindsym $mod+i exec rofi -show emoji -modi emoji
+# bindsym $mod+shift+i exec rofi -show calc -modi calc -no-show-match -no-sort
 bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --tool=rofi
-bindsym XF86Display $e feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 
 
 # Screenshots
 bindsym --release Print exec grimshot copy area
 bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+
+# Troll
+bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
 
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------
@@ -144,13 +147,16 @@ bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 exec wl-paste -t text --watch clipman store
 exec dunst
 exec blueman-applet
-exec libinput-gestures-setup start
-exec urxvtd
-exec import-gsettings
+exec ulauncher
+exec foot --server
+exec swaystart
 
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 800 500
 for_window [app_id="pavucontrol"] floating enable
+
+for_window [app_id="ulauncher"] border none
+for_window [app_id="ulauncher"] move position 650 200
 
 assign [title="Tor Browser"] 7
 assign [class="discord"] 9
@@ -163,6 +169,7 @@ assign [class="LBRY"] 10
 assign [title="newsboat"] 10
 
 for_window [instance="urxvt"] opacity set .98
+for_window [app_id="foot"] opacity set .98
 
 #Vimwiki
 for_window [app_id="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
@@ -179,6 +186,7 @@ for_window [app_id="cmus"] floating enable, resize set 1200 900, move scratchpad
 #Spotify
 for_window [instance="spotify"] floating enable, resize set 1700 1020, move scratchpad
 #Calculator
+
 for_window [app_id="calc"] floating enable, resize set 800 400, move scratchpad, border pixel 8
 
 #--------------------------------------------------
@@ -285,10 +293,10 @@ bindsym $mod2+2 exec light -A 5
 bindsym $mod+shift+a exec light -S .01 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
@@ -316,6 +324,8 @@ client.focused #689d6a #689d6a #282828 #282828
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
+
+seat seat0 xcursor_theme Breeze_Snow 24
 
 #--------------------------------------------------
 #--------------Keyboard Layout---------------------
