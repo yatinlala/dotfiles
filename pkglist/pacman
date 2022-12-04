@@ -66,6 +66,7 @@ github-cli
 gnuplot
 go
 grub
+grub-customizer
 guvcview
 hugo
 i3-gaps
@@ -75,11 +76,14 @@ jq
 kdeconnect
 lazygit
 lf
+libsixel
 libtool
 light
 linux
 linux-firmware
 linux-headers
+linux-zen
+linux-zen-headers
 lxappearance
 lxsession
 lynx
@@ -191,6 +195,7 @@ wget
 which
 wireplumber
 wmctrl
+wtype
 xcolor
 xcompmgr
 xdg-desktop-portal-wlr

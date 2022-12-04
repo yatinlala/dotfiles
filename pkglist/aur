@@ -19,6 +19,7 @@ archcraft-gtk-theme-wave
 archcraft-gtk-theme-white
 archcraft-gtk-theme-windows
 auto-cpufreq
+betterdiscord-installer-bin
 brave-bin
 breeze-snow-cursor-theme
 c-lolcat
@@ -42,6 +43,8 @@ heroic-games-launcher-bin
 htim
 hyprland-bin
 ksuperkey
+libgbinder
+libglibutil
 libinput-gestures
 mailspring
 megasync-bin
@@ -59,6 +62,7 @@ protonvpn-gui
 python-anyascii
 python-colored
 python-cssutils
+python-gbinder
 python-install
 python-material-color-utilities
 python-nanoid
@@ -92,11 +96,16 @@ sov
 spotify-tui
 system-monitoring-center
 termtyper-git
+tessen
 times-newer-roman
 topgrade
 ttf-ms-fonts
+ulauncher
+ungoogled-chromium-xdg-bin
 urlview
 waybar-hyprland
+waydroid
+wdisplays
 wev
 xwinwrap-git
 zsh-autocomplete-git

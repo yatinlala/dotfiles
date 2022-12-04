@@ -53,7 +53,7 @@ alias rmdir='rmdirtrash'
 # alias rm='rm -I'
 
 #File Jumps
-alias wmc='nvim ~/.config/i3/config'
+alias wmc='nvim ~/.config/sway/config'
 alias wiki='nvim ~/documents/wiki/index.md'
 
 #Media
