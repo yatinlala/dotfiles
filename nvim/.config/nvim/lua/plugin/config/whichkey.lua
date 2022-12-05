@@ -85,6 +85,12 @@ local mappings = {
 
     c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer" },
 
+    D = {
+        name = "Duck",
+        h = { "<cmd>lua require('duck').hatch()<CR>", "Hatch a duck" },
+        k = { "<cmd>lua require('duck').cook()<CR>", "Cook the duck" },
+    },
+
     e = { "<cmd>Lf<CR>", "Lf" },
 
     f = {

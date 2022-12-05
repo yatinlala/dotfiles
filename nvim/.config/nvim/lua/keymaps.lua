@@ -29,6 +29,9 @@ map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Centered searches
 map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
+-- Centered half page movements
+map("n", "<C-d>", "<C-d>zz", opts)
+map("n", "<C-u>", "<C-u>zz", opts)
 -- Centered line cat
 map('n', 'J', 'mzJ\'z', opts)
 

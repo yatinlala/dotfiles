@@ -1,7 +1,8 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_Bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    Packer_Bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
 end
 
 return require('packer').startup(function(use)
@@ -62,7 +63,8 @@ return require('packer').startup(function(use)
         requires = {
             { 'nvim-lua/plenary.nvim' },
             { 'kyazdani42/nvim-web-devicons' },
-            { 'nvim-telescope/telescope-fzy-native.nvim' } },
+            { 'nvim-telescope/telescope-fzy-native.nvim' }
+        },
         config = function()
             require('plugin.config.telescope-nvim')
         end,
@@ -84,7 +86,7 @@ return require('packer').startup(function(use)
     }
     --use 'ThePrimeagen/harpoon'
 
---- LSP & TREESITTER ---
+    --- LSP & TREESITTER ---
     -- use { 'williamboman/nvim-lsp-installer',
     --     config = function()
     --         require('plugin.config.lsp.lsp-installer')
@@ -239,6 +241,13 @@ return require('packer').startup(function(use)
     --     end,
     --     cmd = 'DistantLaunch'
     -- }
+    use {
+        'tamton-aquib/duck.nvim',
+        config = function()
+            vim.keymap.set('n', '<leader>Dh', function() require("duck").hatch() end, {})
+            vim.keymap.set('n', '<leader>Dk', function() require("duck").cook() end, {})
+        end
+    }
     use { 'wbthomason/packer.nvim', }
     if Packer_Bootstrap then
         require('packer').sync()
