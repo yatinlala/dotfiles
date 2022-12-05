@@ -146,6 +146,7 @@ bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
 #Startup
 exec wl-paste -t text --watch clipman store
 exec dunst
+exec gammastep
 exec blueman-applet
 exec ulauncher
 exec foot --server
@@ -293,6 +294,8 @@ bindsym $mod2+2 exec light -A 5
 bindsym $mod+shift+a exec light -S .01 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
+bindsym $mod+i exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+shift+i exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
