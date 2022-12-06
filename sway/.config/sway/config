@@ -89,8 +89,8 @@ mode "$games" {
 
 #Video Entertainment
 bindsym $mod+n exec $term -e newsboat; workspace 10; mode "default"
-bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 10
-bindsym $mod+shift+p exec gtk-pipe-viewer
+# bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 10
+bindsym $mod+p exec gtk-pipe-viewer
 bindsym XF86Tools exec pomo
 bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; exec pkill -SIGRTMIN+4 i3status-rs
 
@@ -137,7 +137,9 @@ bindsym --release Print exec grimshot copy area
 bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 # Troll
-bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
+# bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/alright-christmas.m4a
+bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/hog-rider.m4a
+bindsym shift+XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
 
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------
@@ -294,8 +296,8 @@ bindsym $mod2+2 exec light -A 5
 bindsym $mod+shift+a exec light -S .01 #Min Brightness
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym $mod+i exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+shift+i exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+i exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+shift+i exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
