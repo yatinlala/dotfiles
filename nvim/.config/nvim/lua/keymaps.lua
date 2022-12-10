@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 --Remap space as leader key
 map("", "<Space>", "<Nop>", opts)
