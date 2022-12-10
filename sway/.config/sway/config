@@ -130,6 +130,7 @@ bindsym $mod+shift+c exec toggler calendar
 bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --tool=rofi
 bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
+bindsym $mod+backslash exec systemd-inhibit --what=handle-lid-switch sleep 1d
 
 
 # Screenshots
