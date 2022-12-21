@@ -31,6 +31,7 @@ libinput-gestures
 mailspring
 megasync-bin
 minecraft-launcher
+muse-hub-bin
 nerd-fonts-complete
 netris-git
 onlyoffice-bin
@@ -59,7 +60,7 @@ rmtrash
 rofi-greenclip
 rstudio-desktop-bin
 rxvt-unicode-truecolor-wide-glyphs
-sov
+slides
 spotify-tui
 system-monitoring-center
 tessen
