@@ -65,9 +65,9 @@ map("v", ">", ">gv", opts)
 map("v", "p", '"_dP', opts)
 
 -- Visual Block --
--- Move text up and down
-map("x", "J", ":move '>+1<CR>gv-gv", opts)
-map("x", "K", ":move '<-2<CR>gv-gv", opts)
+-- Move text up and down and indent it
+map("x", "J", ":move '>+1<CR>gv=gv", opts)
+map("x", "K", ":move '<-2<CR>gv=gv", opts)
 
 -- Command --
 -- Force save a sudoer file
