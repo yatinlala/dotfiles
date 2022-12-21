@@ -7,7 +7,9 @@ echo "" > $XDG_CACHE_HOME/pomo.cache
 
 notify-send "Start work!"
 
-wifi off
+pkill -SIGRTMIN+4 i3status-rs
+
+nmcli device disconnect wlp0s20f3
 
 min=5
 sec=0
