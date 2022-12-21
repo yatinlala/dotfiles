@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/.local/share/go/bin:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
 
 # FZF
 export FZF_DEFAULT_OPTS='--cycle'
