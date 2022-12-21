@@ -141,11 +141,11 @@ source "$ZDOTDIR/zshaliases"
 
 # # Create a tmux session if none exist
 # case $- in *i*)
-#     # if [[ ! $(tmux list-sessions) ]]; then
-#     #     tmux new -s TMUX
-#     # fi
-#
-#     tmux has-session -t TMUX 2> /dev/null || tmux new-session -d -s TMUX
+#     if [[ "$SSH_CONNECTION" == "" ]]; then
+#         if [ -z "$TMUX" ]; then
+#             tmux new-session -A -s main neww -t main:
+#         fi
+#     fi
 # esac
 
 eval "$(fasd --init auto)"
