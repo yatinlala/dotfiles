@@ -24,7 +24,7 @@ bindsym $mod+return exec $term
 bindsym $mod+shift+return exec $term2
 
 #Menus
-bindsym $mod+space exec albert toggle
+bindsym $mod+space exec ulauncher-toggle
 bindsym $mod+semicolon exec tessen --action=both
 bindsym $mod+apostrophe exec sadmenu
 
@@ -149,7 +149,8 @@ bindsym shift+XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.w
 #Startup
 exec wl-paste -t text --watch clipman store
 exec dunst
-exec albert
+# exec albert
+exec ulauncher
 exec gammastep
 exec blueman-applet
 exec foot --server
@@ -159,6 +160,7 @@ for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 800 500
 for_window [app_id="pavucontrol"] floating enable
 
+for_window [app_id="ulauncher"] floating enable
 for_window [app_id="ulauncher"] border none
 for_window [app_id="ulauncher"] move position 650 200
 

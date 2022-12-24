@@ -75,7 +75,7 @@ case $1 in
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -l 39.898491:-75.343880);;
     gammastep-dark)
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
-        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.3 -l 39.898491:-75.343880);;
+        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.5 -l 39.898491:-75.343880);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop --ozone-platform=wayland &
         i3-msg "workspace 9; [class=Signal] focus";;

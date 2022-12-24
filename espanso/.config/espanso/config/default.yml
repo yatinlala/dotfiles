@@ -4,4 +4,4 @@
 toggle_key: "OFF"
 disable_x11_fast_inject: false
 undo_backspace: false
-search_shortcut: ALT+SPACE
+search_shortcut: META+SPACE

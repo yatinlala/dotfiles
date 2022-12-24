@@ -10,6 +10,9 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 # export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
 # export XCURSOR_THEME=Breeze_Snow
 
+#QT Styling
+QT_QPA_PLATFORMTHEME=qt5ct
+
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
