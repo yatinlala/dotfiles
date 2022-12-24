@@ -1,6 +1,7 @@
 local M = {}
 
 function M.setup()
+    local groupid = vim.api.nvim_create_augroup('main_group', { clear = true})
     -- vim.cmd [[
     --     augroup remember_folds
     --         autocmd!
@@ -12,12 +13,20 @@ function M.setup()
         vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
     end })
     vim.api.nvim_create_autocmd("ColorScheme", { callback = function()
-        vim.cmd [[
-         hi def IlluminatedWordText guibg=#504945
-         hi def IlluminatedWordRead guibg=#504945
-         hi def IlluminatedWordWrite guibg=#504945
-         ]]
-    end })
+        if vim.o.background == 'dark' then
+            vim.cmd [[
+                hi def IlluminatedWordText guibg=#504945
+                hi def IlluminatedWordRead guibg=#504945
+                hi def IlluminatedWordWrite guibg=#504945
+            ]]
+        else
+            vim.cmd [[
+                hi def IlluminatedWordText guibg=#ebdbb2
+                hi def IlluminatedWordRead guibg=#ebdbb2
+                hi def IlluminatedWordWrite guibg=#ebdbb2
+            ]]
+        end
+    end})
     vim.api.nvim_create_autocmd("TextYankPost", { callback = function()
         vim.highlight.on_yank({ timeout = 200 })
     end

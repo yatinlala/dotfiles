@@ -84,6 +84,7 @@ local mappings = {
     },
 
     c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer" },
+    C = { "<cmd>lua require('utils').toggleBg()<CR>", "toggle dark/light" },
 
     D = {
         name = "Duck",
