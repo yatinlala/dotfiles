@@ -134,7 +134,9 @@ progress
 pulsemixer
 python
 python-pytorch
+qjackctl
 qt5ct
+qt6-wayland
 rclone
 reaper
 redshift

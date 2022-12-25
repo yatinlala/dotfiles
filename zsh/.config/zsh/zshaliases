@@ -55,7 +55,7 @@ alias rmdir='rmdirtrash'
 
 #File Jumps
 alias wmc='nvim ~/.config/sway/config'
-alias wiki='nvim ~/documents/wiki/index.md'
+# alias wiki='nvim +VimwikiIndex'
 
 #Media
 alias yt='youtube-dl --add-metadata -i'
