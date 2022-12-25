@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- don't conceal markups
@@ -18,8 +21,8 @@ vim.opt.splitbelow = true                       -- force all horizontal splits t
 vim.opt.splitright = true                       -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
-vim.opt.updatetime = 4000                        -- faster completion (4000ms default)
-vim.opt.timeoutlen = 300                        -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.updatetime = 1000                        -- faster completion (4000ms default)
+vim.opt.timeoutlen = 400                        -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- persistent undo
 vim.opt.autochdir = false                       -- change cwd on buffer open and buffer switch
 vim.opt.backup = false                          -- creates a backup file

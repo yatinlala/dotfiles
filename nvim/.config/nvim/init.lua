@@ -1,12 +1,13 @@
---[[ _ __   ___  _____   _(_)_ __ ___
-    | '_ \ / _ \/ _ \ \ / / | '_ ` _ \
-    | | | |  __/ (_) \ V /| | | | | | |
-    |_| |_|\___|\___/ \_/ |_|_| |_| |_|  ]]
+require("util")
+require("config.options")
+require("config.globals")
+require("config.lazy")
 
-
-require 'plugin.config.impatient'
-require 'options'
-require 'globals'
-require 'keymaps'
-require 'autocmds'.setup()
-require 'plugin'
+vim.api.nvim_create_autocmd("User", {
+	pattern = "VeryLazy",
+	callback = function()
+		require("config.autocmds").setup()
+		require("config.keymaps")
+	end,
+})
+require("util").setColors()
