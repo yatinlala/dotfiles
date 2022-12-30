@@ -16,7 +16,6 @@ function M.setup()
 	})
 	vim.api.nvim_create_autocmd("ColorScheme", {
 		callback = function()
-			print("hello")
 			if vim.o.background == "dark" then
 				vim.cmd([[
                 hi def IlluminatedWordText guibg=#504945

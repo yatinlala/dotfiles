@@ -1,30 +1,28 @@
 return {
-	"vimwiki/vimwiki",
-	cmd = { "VimwikiIndex", "VimwikiDiaryIndex", "VimwikiMakeDiaryNote" },
-	ft = { "vimwiki" },
-	config = function()
-		vim.cmd(
-			[[
-        let g:vimwiki_list = [{'path': '~/documents/wiki', 'syntax': 'markdown', 
-        \ 'auto_diary_index': 1, 'auto_generate_links': 1, 'ext': '.md'}]
+    "vimwiki/vimwiki",
+    lazy = false,
+    disable = true,
+    -- cmd = { "VimwikiIndex", "VimwikiDiaryIndex", "VimwikiMakeDiaryNote" },
+    -- ft = { "vimwiki" },
+    config = function()
+        vim.g.vimwiki_list = {
+            path = "/home/nitay/documents/wiki",
+            syntax = "markdown",
+            auto_diary_index = 1,
+            auto_generate_links = 1,
+            ext = ".md",
+        }
 
-        " let g:vimwiki_key_mappings =
-        " \ {
-            " \   'all_maps': 0,
-            " \   'global': 1,
-            " \   'headers': 1,
-            " \   'text_objs': 1,
-            " \   'table_format': 1,
-            " \   'table_mappings': 1,
-            " \   'lists': 1,
-            " \   'links': 1,
-            " \   'html': 1,
-            " \   'mouse': 0,
-            " \ }
-            ]],
-			false
-		)
-
-		vim.g.vimwiki_folding = "custom"
-	end,
+        vim.g.vimwiki_key_mappings = {
+            global = 0,
+            headers = 1,
+            text_obj = 1,
+            table_format = 1,
+            table_mappings = 1,
+            lists = 1,
+            links = 1,
+            html = 1,
+            mouse = 0,
+        }
+    end,
 }

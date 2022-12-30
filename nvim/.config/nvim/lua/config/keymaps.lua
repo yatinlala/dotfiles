@@ -20,10 +20,6 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<S-l>", ":bnext<CR>", opts)
 map("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Move text up and down
-map("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
 -- Centered searches
 map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
@@ -276,12 +272,14 @@ map("c", "w!!", "w !sudo tee %", {})
 
 local leader = {
 	b = {
-		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+		function()
+			require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
+		end,
 		"buffers",
 	},
 
 	c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer" },
-	C = { "<cmd>lua require('util').toggleBg()<CR>", "toggle dark/light" },
+	C = { require("util").toggleBg, "toggle dark/light" },
 
 	D = {
 		name = "Duck",
@@ -289,21 +287,34 @@ local leader = {
 		k = { "<cmd>lua require('duck').cook()<CR>", "Cook the duck" },
 	},
 
-	e = { "<cmd>Lf<CR>", "Lf" },
+	e = {
+		function()
+			_lf_toggle()
+		end,
+		"Lf",
+	},
 
 	f = {
 		name = "Telescope",
 		f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
 		h = { "<cmd>:Telescope help_tags<CR>", "help tags" },
 		n = { "<cmd>:Telescope find_files cwd=~/.config/nvim<CR>", "edit neovim" },
+		p = { require("telescope").extensions.projects.projects, "projects" },
+
 		r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
+		s = { ":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} }", "recent files" },
 	},
 
 	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 
 	g = {
 		name = "Git",
-		g = { "<cmd>Lazygit<CR>", "Neogit" },
+		g = {
+			function()
+				_lazygit_toggle()
+			end,
+			"Lazygit",
+		},
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -347,6 +358,7 @@ local leader = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+		o = { "<cmd>:SymbolsOutline<CR>", "Symbols Outline" },
 		q = { "<cmd>lua vim.diagnostic.setloclist({ open = false })<cr>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
@@ -371,7 +383,7 @@ local leader = {
 	--     u = { "<cmd>PackerUpdate<cr>", "Update" },
 	-- },
 
-	p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+	-- p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
 	q = {
 		t = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
@@ -397,7 +409,8 @@ local leader = {
 		name = "Terminal",
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Term Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Term Horizontal" },
-		p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+		-- p = { _PYTHON_TOGGLE(), "Python" },
+		t = { "<cmd>ToggleTerm direction=tab<cr>", "Term Tab" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Term Vertical" },
 	},
 
@@ -408,9 +421,7 @@ local leader = {
 
 	w = {
 		name = "Vimwiki",
-		w = { "<cmd>VimwikiIndex<cr>", "Wiki Index" },
-		d = { "<cmd>VimwikiDiaryIndex<cr>", "Diary Index" },
-		n = { "<cmd>VimwikiMakeDiaryNote<CR>", "Today's Diary Entry" },
+		w = { "<cmd>e ~/documents/wiki/index.<cr>", "Wiki Index" },
 	},
 }
 

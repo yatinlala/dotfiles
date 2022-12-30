@@ -8,8 +8,7 @@ local M = {
 		{ "nvim-telescope/telescope-fzy-native.nvim" },
 		{ "debugloop/telescope-undo.nvim" },
 		{ "nvim-telescope/telescope-project.nvim" },
-		-- { "nvim-telescope/telescope-symbols.nvim" },
-		{ "nvim-telescope/telescope-fzf-native.nvim" },
+		{ "nvim-telescope/telescope-symbols.nvim" },
 	},
 }
 
@@ -39,6 +38,8 @@ function M.config()
 	require("telescope").load_extension("fzy_native")
 	require("telescope").load_extension("projects")
 	require("telescope").load_extension("undo")
+
+
 end
 
 M.search_dotfiles = function()

@@ -1,5 +1,6 @@
 local M = {
 	"is0n/fm-nvim",
+    disable = true,
 	cmd = { "Lazygit", "Lf" },
 }
 
