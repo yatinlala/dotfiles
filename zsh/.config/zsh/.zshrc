@@ -11,8 +11,8 @@ unsetopt BEEP # Beeping sucks
 # setopt interactive_comments
 
 # History in cache directory:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE="$XDG_CACHE_HOME"/history.zsh
 
 # Basic auto/tab complete:
@@ -147,6 +147,11 @@ source "$ZDOTDIR/zshaliases"
 #         fi
 #     fi
 # esac
+
+if [[ -v NVIM ]];
+then
+    EDITOR="nvrl"
+fi
 
 eval "$(fasd --init auto)"
 eval "$(starship init zsh)"

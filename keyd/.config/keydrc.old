@@ -1,0 +1,25 @@
+[ids]
+*
+
+[main]
+capslock = esc 
+esc = capslock
+meta = layer(alt)
+leftalt = layer(meta)
+rightalt = overload(ralthold, oneshot(nav))
+
+[nav:C]
+
+[ralthold:M]
+
+[meta+ralthold]
+a = 1
+s = 2
+d = 3
+f = 4
+g = 5
+h = 6
+j = 7
+k = 8
+l = 9
+; = 0

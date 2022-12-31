@@ -147,14 +147,15 @@ bindsym shift+XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.w
 #--------------------------------------------------
 
 #Startup
-exec wl-paste -t text --watch clipman store
-exec dunst
 # exec albert
 exec ulauncher
 exec gammastep
-exec blueman-applet
+exec wl-paste -t text --watch clipman store
+exec dunst
 exec foot --server
 exec swaystart
+exec blueman-applet
+exec QT_QPA_PLATFORM='xcb' megasync
 
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 800 500
@@ -162,7 +163,7 @@ for_window [app_id="pavucontrol"] floating enable
 
 for_window [app_id="ulauncher"] floating enable
 for_window [app_id="ulauncher"] border none
-for_window [app_id="ulauncher"] move position 650 200
+for_window [app_id="ulauncher"] move position 650 250
 
 for_window [app_id="albert"] move position 650 300
 
@@ -340,10 +341,10 @@ seat seat0 xcursor_theme Breeze_Snow 24
 #--------------------------------------------------
 #--------------Keyboard Layout---------------------
 #--------------------------------------------------
-input "type:keyboard" {
-    xkb_layout us
-    xkb_options altwin:swap_alt_win,caps:escape
-}
+# input "type:keyboard" {
+#     xkb_layout us
+#     xkb_options altwin:swap_alt_win,caps:escape
+# }
 input "1739:52619:SYNA8004:00_06CB:CD8B_Touchpad" {
     natural_scroll enabled
 }

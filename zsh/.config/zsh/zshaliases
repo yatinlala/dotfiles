@@ -10,7 +10,7 @@ alias grep='grep --color=auto --exclude-dir=.git'
 alias ls='exa --icons'
 
 #Shorten frequently used commands
-alias e='nvim'
+alias e='$EDITOR'
 alias t='tmux'
 alias lg='lazygit'
 alias la='ls -alh'
@@ -54,8 +54,8 @@ alias rmdir='rmdirtrash'
 # alias rm='rm -I'
 
 #File Jumps
-alias wmc='nvim ~/.config/sway/config'
-# alias wiki='nvim +VimwikiIndex'
+alias wmc='$EDITOR ~/.config/sway/config'
+alias wiki='$EDITOR ~/documents/wiki/index.md'
 
 #Media
 alias yt='youtube-dl --add-metadata -i'
