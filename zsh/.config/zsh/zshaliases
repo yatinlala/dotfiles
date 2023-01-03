@@ -62,6 +62,7 @@ alias yt='youtube-dl --add-metadata -i'
 alias yta='youtube-dl --add-metadata -i -f bestaudio/best'
 alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
+alias newsboat='news'
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'

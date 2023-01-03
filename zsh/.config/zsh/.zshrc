@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -37,8 +38,8 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+# zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # vi mode
 bindkey -v
@@ -84,19 +85,19 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-# Use lf to switch directories
-lf() {
-    tmp="$(mktemp)"
-    $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
+# # Use lf to switch directories
 # lf() {
-#     $HOME/code/scripts/lf/lf
+#     tmp="$(mktemp)"
+#     $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         rm -f "$tmp" >/dev/null
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
 # }
+lf() {
+    $HOME/code/scripts/lf/lf
+}
 
 tmux-sessionizer() {
     $HOME/code/scripts/tmux-sessionizer
