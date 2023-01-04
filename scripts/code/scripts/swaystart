@@ -11,5 +11,3 @@ systemctl --user start wireplumber
 gsettings set org.gnome.desktop.interface cursor-theme "Breeze_Snow"
 
 # import-gsettings
-
-libinput-gestures-setup start

@@ -5,7 +5,7 @@
 set $mod Mod4
 set $mod2 Mod1
 set $term footclient
-set $term2 alacritty
+set $term2 alac
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
@@ -33,7 +33,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e exec toggler espanso
+bindsym $mod+shift+e exec GDK_BACKEND=x11 emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+w exec toggler notes
 
@@ -88,7 +88,7 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n exec $term -e newsboat; workspace 10; mode "default"
+bindsym $mod+n exec $term -e news; workspace 10; mode "default"
 # bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 10
 bindsym $mod+p exec gtk-pipe-viewer
 bindsym XF86Tools exec pomo
@@ -131,16 +131,17 @@ bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --all
 bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 bindsym $mod+backslash exec systemd-inhibit --what=handle-lid-switch sleep 1d
+bindsym $mod+shift+p exec swayprop
 
 
 # Screenshots
-bindsym --release Print exec grimshot copy area
-bindsym --release $mod2+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release XF86Favorites exec grimshot copy area
+bindsym --release shift+XF86Favorites exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 # Troll
 # bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/alright-christmas.m4a
-bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/hog-rider.m4a
-bindsym shift+XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
+# bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/hog-rider.m4a
+# bindsym shift+XF86Favorites exec ffplay -nodisp -autoexit ~/audio/one-last-pic.webm
 
 #--------------------------------------------------
 #-----------Startup and Program Settings-----------
@@ -242,6 +243,8 @@ bindsym $mod+shift+y move scratchpad
 # move through workspaces sequentially
 bindsym $mod+z workspace prev
 bindsym $mod+x workspace next
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 
 # switch to workspace
 bindsym $mod+1 workspace 1
