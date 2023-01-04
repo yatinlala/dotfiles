@@ -24,6 +24,18 @@ return {
 		config = true,
 	},
 
+	{
+		"nvim-orgmode/orgmode",
+        lazy = false,
+		config = function()
+			require("orgmode").setup_ts_grammar()
+			require("orgmode").setup({
+				org_agenda_files = "~/documents/org/*",
+				org_default_notes_file = "~/documents/org/refile.org",
+			})
+		end,
+	},
+
 	--  { "tpope/vim-dispatch" },
 	--  { "tpope/vim-sleuth" },
 	--  { "tpope/vim-repeat" },

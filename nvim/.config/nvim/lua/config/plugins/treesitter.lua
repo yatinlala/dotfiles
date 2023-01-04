@@ -5,7 +5,7 @@ local M = {
 
 function M.config()
     require("nvim-treesitter.configs").setup({
-        -- ensure_installed = { "c", "lua", "rust" },
+        ensure_installed = { "c", "lua", "org" },
         -- List of parsers to ignore installing (for "all")
         ignore_install = { "" },
 
@@ -22,7 +22,7 @@ function M.config()
             -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
             -- Using this option may slow down your editor, and you may see some duplicate highlights.
             -- Instead of true it can also be a list of languages
-            additional_vim_regex_highlighting = false,
+            -- additional_vim_regex_highlighting = { 'org' },
         },
         indent = {
             enable = true,

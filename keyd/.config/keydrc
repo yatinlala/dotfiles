@@ -8,7 +8,6 @@ meta = layer(alt)
 leftalt = layer(meta)
 rightalt = overload(meta, oneshot(control))
 sysrq = layer(num)
-rightcontrol = sysrq
 
 [num]
 a = 1

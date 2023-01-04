@@ -54,6 +54,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
+	vim.keymap.set("n", "gl", vim.diagnostic.open_float, bufopts)
 	vim.keymap.set("n", "<space>d", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<space>lr", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set("n", "<space>la", vim.lsp.buf.code_action, bufopts)
@@ -68,7 +69,7 @@ local on_attach = function(client, bufnr)
 		signs = true,
 	})
 	-- require('config.autocmds').lsp_hov_highlight()
-	require("config.autocmds").lsp_hov_diagnostics()
+	-- require("config.autocmds").lsp_hov_diagnostics()
 
 	-- require('nvim-navic').attach(client, bufnr)
 end
