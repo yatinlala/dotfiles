@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PROG=$( basename "$0" )
+
+TMP=/tmp/sway-prop-$$.tmp
+
+trap 'rm $TMP' EXIT
+
+swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true)' > "$TMP"
+
+foot -F bash -c "less $TMP"
