@@ -18,6 +18,7 @@ bluez-utils
 bspwm
 btop
 calibre
+chafa
 checkbashisms
 clang
 cmake
@@ -38,6 +39,7 @@ dunst
 easyeffects
 efibootmgr
 element-desktop
+emacs-nativecomp
 exa
 fakeroot
 fd
@@ -70,7 +72,7 @@ grub-customizer
 gtk2fontsel
 guvcview
 hugo
-i3-gaps
+i3-wm
 i3lock
 i3status-rust
 intel-media-driver
@@ -78,6 +80,21 @@ jq
 kdeconnect
 lazygit
 lf
+lib32-giflib
+lib32-gnutls
+lib32-gst-plugins-base-libs
+lib32-gtk3
+lib32-libjpeg-turbo
+lib32-libpng
+lib32-libpulse
+lib32-libva
+lib32-libxcomposite
+lib32-libxinerama
+lib32-libxslt
+lib32-mpg123
+lib32-ocl-icd
+lib32-openal
+lib32-v4l-utils
 libsixel
 libtool
 light
@@ -200,6 +217,7 @@ vulkan-intel
 w3m
 wget
 which
+wine-staging
 wireplumber
 wmctrl
 wtype
