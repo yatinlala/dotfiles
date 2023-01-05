@@ -38,7 +38,7 @@ bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+w exec toggler notes
 
 #File Manager
-bindsym $mod+a exec $term -e ~/code/scripts/lf/lf
+bindsym $mod+a exec $term -e lf
 
 #Audio Consumption
 bindsym $mod+s exec toggler music
@@ -74,10 +74,9 @@ mode "$mega" {
 bindsym $mod+shift+s exec ~/.config/rofi/powermenu/powermenu.sh
 
 #Games
-set $games Action: [h]eroic [l]ichess [m]inecraft [s]team [t]etris
+set $games Action: [l]ichess [m]inecraft [s]team [t]etris
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
-    bindsym h exec heroic; mode "default"
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m exec xdg-launch minecraft-launcher; mode "default"
     bindsym s exec xdg-launch steam; mode "default"

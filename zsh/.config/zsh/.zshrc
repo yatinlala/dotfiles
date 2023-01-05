@@ -95,9 +95,9 @@ zle -N zle-line-init
 #         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 #     fi
 # }
-lf() {
-    $HOME/code/scripts/lf/lf
-}
+# lf() {
+#     $HOME/code/scripts/lf/lf
+# }
 
 tmux-sessionizer() {
     $HOME/code/scripts/tmux-sessionizer
