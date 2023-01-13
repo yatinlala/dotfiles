@@ -19,6 +19,7 @@ gradience
 grimshot
 gruvbox-dark-icons-gtk
 gruvbox-material-gtk-theme-git
+heroic-games-launcher-bin
 htim
 hyprland-bin
 keyd
@@ -46,6 +47,7 @@ python-colored
 python-cssutils
 python-gbinder
 python-material-color-utilities
+python-pep517
 python-proton-client
 python-protonvpn-nm-lib
 python-pytube
@@ -70,7 +72,6 @@ ttf-ms-fonts
 ulauncher
 ungoogled-chromium-xdg-bin
 urlview
-waybar-hyprland
 waydroid
 wdisplays
 wev

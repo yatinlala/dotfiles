@@ -1,5 +1,5 @@
 Package               Version
---------------------- ---------
+--------------------- ----------
 anyio                 3.5.0
 Brotli                1.0.9
 bs4                   0.0.1
@@ -36,7 +36,7 @@ rfc3986               1.5.0
 rich                  12.0.0
 scikit-learn          1.1.2
 scipy                 1.9.1
-simber                0.2.4
+simber                0.2.5
 sniffio               1.2.0
 spotipy               2.19.0
 SQLAlchemy            1.4.42
@@ -44,5 +44,5 @@ threadpoolctl         3.1.0
 websockets            10.2
 Werkzeug              2.2.2
 youtube-search-python 1.6.3
-ytmdl                 2022.3.16
+ytmdl                 2022.12.25
 ytmusicapi            0.21.0

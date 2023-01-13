@@ -25,7 +25,6 @@ cmake
 cmatrix
 cmus
 code
-cool-retro-term
 cups
 dash
 debugedit
@@ -59,6 +58,7 @@ foot
 fprintd
 fwupd
 fzf
+gamemode
 gammastep
 gcc
 gifsicle
@@ -72,13 +72,16 @@ grub-customizer
 gtk2fontsel
 guvcview
 hugo
+i2pd
 i3-wm
 i3lock
 i3status-rust
 intel-media-driver
+intel-ucode
 jq
 kdeconnect
 lazygit
+lib32-gamemode
 lib32-giflib
 lib32-gnutls
 lib32-gst-plugins-base-libs
@@ -94,14 +97,17 @@ lib32-mpg123
 lib32-ocl-icd
 lib32-openal
 lib32-v4l-utils
+lib32-vkd3d
 libsixel
 libtool
+libva-intel-driver
 light
 linux
 linux-firmware
 linux-headers
 linux-zen
 linux-zen-headers
+lutris
 lxappearance
 lxsession
 lynx
@@ -115,7 +121,6 @@ mtools
 musescore
 nautilus
 ncdu
-nemo
 neofetch
 network-manager-applet
 networkmanager
@@ -156,7 +161,6 @@ qt5ct
 qt6-wayland
 rclone
 reaper
-redshift
 reflector
 ripgrep
 rofi
@@ -211,6 +215,7 @@ unrar
 unzip
 usbutils
 virtualbox
+vkd3d
 vlc
 vulkan-intel
 w3m
