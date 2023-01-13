@@ -1,4 +1,3 @@
-zmodload zsh/zprof
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -85,16 +84,17 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-# # Use lf to switch directories
-# lf() {
-#     tmp="$(mktemp)"
-#     $HOME/code/scripts/lf/lf -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         rm -f "$tmp" >/dev/null
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
+# Use lf to switch directories
+lf() {
+    tmp="$(mktemp)"
+    command lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp" >/dev/null
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+
 # lf() {
 #     $HOME/code/scripts/lf/lf
 # }
@@ -155,4 +155,10 @@ then
 fi
 
 eval "$(fasd --init auto)"
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
+source $XDG_DATA_HOME/zsh/agkozak-zsh-prompt/agkozak-zsh-prompt.plugin.zsh
+AGKOZAK_BLANK_LINES=1 
+AGKOZAK_MULTILINE=0
+AGKOZAK_USER_HOST_DISPLAY=0
+AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+AGKOZAK_COLORS_PROMPT_CHAR='yellow'
