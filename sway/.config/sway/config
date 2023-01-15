@@ -48,13 +48,14 @@ bindsym $mod+minus exec "playerctl --player=spotify,cmus,%all volume .05-"
 bindsym $mod+equal exec "playerctl --player=spotify,cmus,%all volume .05+"
 bindsym $mod+u exec toggler cmus
 bindsym $mod+shift+u exec toggler spotify
+bindsym $mod+period exec toggler spotify-tui
 bindsym $mod+slash exec toggler music-player
 bindsym $mod+shift+slash exec toggler spotifyd
 
 #Browser
 bindsym $mod+b exec brave
 bindsym $mod+shift+t exec torbrowser-launcher
-bindsym $mod+shift+w exec $term -e w3m -v
+bindsym $mod+shift+w exec $term -e xdg-launch w3m -v
 
 #Communication
 bindsym $mod+m exec toggler ferdium
@@ -99,11 +100,12 @@ bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; exec pkill -S
 bindsym XF86Bluetooth exec "echo 'power off' | bluetoothctl"; exec notify-send -t 1000 "Bluetooth off."
 bindsym $mod+shift+b exec toggler blueman-manager
 #Other
-set $toggles Action: [b]lueman-applet next[c]loud [n]m-applet 
+set $toggles Action: [b]lueman-applet next[c]loud [m]egasync [n]m-applet 
 bindsym $mod+shift+n mode "$toggles"
 mode "$toggles" {
     bindsym b exec toggler blueman-applet; mode "default"
     bindsym c exec toggler nextcloud; mode "default"
+    bindsym m exec toggler megasync; mode "default"
     bindsym n exec toggler nm-applet; mode "default"
     bindsym $mod+shift+n mode "default"
     bindsym Escape mode "default"
@@ -129,7 +131,7 @@ bindsym $mod+i exec rofi -show emoji -modi emoji
 bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --all
 bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
-bindsym $mod+backslash exec systemd-inhibit --what=handle-lid-switch sleep 1d
+bindsym $mod+backslash exec systemd-inhibit --what=handle-lid-switch sleep 1h
 bindsym $mod+shift+p exec swayprop
 
 
@@ -182,6 +184,8 @@ for_window [app_id="foot"] opacity set .985
 
 #Vimwiki
 for_window [app_id="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
+#Spt
+for_window [app_id="spt"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
 #Todoist
 for_window [instance="crx_elldfnmogicegdcphgljaoaklkpcnbnn"] move scratchpad, floating enable, resize set 1900 1020
 #Habitica
