@@ -119,6 +119,7 @@ moreutils
 mpv
 mtools
 musescore
+nasm
 nautilus
 ncdu
 neofetch
@@ -131,8 +132,8 @@ noto-fonts
 noto-fonts-emoji
 noto-fonts-extra
 npm
-obs-studio
 obsidian
+opam
 os-prober
 pacman-contrib
 pamixer
