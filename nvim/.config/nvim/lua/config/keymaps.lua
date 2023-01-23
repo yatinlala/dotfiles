@@ -67,81 +67,7 @@ map("x", "K", ":move '<-2<CR>gv=gv", opts)
 -- Force save a sudoer file
 map("c", "w!!", "w !sudo tee %", {})
 
--- local opts = {
---     mode = "n", -- NORMAL mode
---     prefix = "<leader>",
---     buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
---     silent = true, -- use `silent` when creating keymaps
---     noremap = true, -- use `noremap` when creating keymaps
---     nowait = true, -- use `nowait` when creating keymaps
--- }
 
--- local leader = {
---   ["w"] = {
---     name = "+windows",
---     ["w"] = { "<C-W>p", "other-window" },
---     ["d"] = { "<C-W>c", "delete-window" },
---     ["-"] = { "<C-W>s", "split-window-below" },
---     ["|"] = { "<C-W>v", "split-window-right" },
---     ["2"] = { "<C-W>v", "layout-double-columns" },
---     ["h"] = { "<C-W>h", "window-left" },
---     ["j"] = { "<C-W>j", "window-below" },
---     ["l"] = { "<C-W>l", "window-right" },
---     ["k"] = { "<C-W>k", "window-up" },
---     ["H"] = { "<C-W>5<", "expand-window-left" },
---     ["J"] = { ":resize +5", "expand-window-below" },
---     ["L"] = { "<C-W>5>", "expand-window-right" },
---     ["K"] = { ":resize -5", "expand-window-up" },
---     ["="] = { "<C-W>=", "balance-window" },
---     ["s"] = { "<C-W>s", "split-window-below" },
---     ["v"] = { "<C-W>v", "split-window-right" },
---   },
---   c = {
---     name = "+code",
---   },
---   b = {
---     name = "+buffer",
---     ["b"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
---     ["p"] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
---     ["["] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
---     ["n"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
---     ["]"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
---     -- ["D"] = { "<cmd>:bd<CR>", "Delete Buffer & Window" },
---   },
---   g = {
---     name = "+git",
---     l = {
---       function()
---         require("util").float_terminal("lazygit", { border = "none" })
---       end,
---       "LazyGit",
---     },
---     c = { "<Cmd>Telescope git_commits<CR>", "commits" },
---     b = { "<Cmd>Telescope git_branches<CR>", "branches" },
---     s = { "<Cmd>Telescope git_status<CR>", "status" },
---     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
---     h = { name = "+hunk" },
---   },
---   ["h"] = {
---     name = "+help",
---     t = { "<cmd>:Telescope builtin<cr>", "Telescope" },
---     c = { "<cmd>:Telescope commands<cr>", "Commands" },
---     h = { "<cmd>:Telescope help_tags<cr>", "Help Pages" },
---     m = { "<cmd>:Telescope man_pages<cr>", "Man Pages" },
---     k = { "<cmd>:Telescope keymaps<cr>", "Key Maps" },
---     s = { "<cmd>:Telescope highlights<cr>", "Search Highlight Groups" },
---     l = { vim.show_pos, "Highlight Groups at cursor" },
---     f = { "<cmd>:Telescope filetypes<cr>", "File Types" },
---     o = { "<cmd>:Telescope vim_options<cr>", "Options" },
---     a = { "<cmd>:Telescope autocommands<cr>", "Auto Commands" },
---     p = {
---       name = "+packer",
---       p = { "<cmd>PackerSync<cr>", "Sync" },
---       s = { "<cmd>PackerStatus<cr>", "Status" },
---       i = { "<cmd>PackerInstall<cr>", "Install" },
---       c = { "<cmd>PackerCompile<cr>", "Compile" },
---     },
---   },
 --   s = {
 --     name = "+search",
 --     g = { "<cmd>Telescope live_grep<cr>", "Grep" },
@@ -177,17 +103,6 @@ map("c", "w!!", "w !sudo tee %", {})
 --     n = { "<cmd>enew<cr>", "New File" },
 --     z = "Zoxide",
 --     d = "Dot Files",
---   },
---   o = {
---     name = "+open",
---     p = { "<cmd>Peek<cr>", "Peek (Markdown Preview)" },
---     g = { "<cmd>Glow<cr>", "Markdown Glow" },
---     n = { "<cmd>lua require('github-notifications.menu').notifications()<cr>", "GitHub Notifications" },
---   },
---   p = {
---     name = "+project",
---     p = "Open Project",
---     b = { ":Telescope file_browser cwd=~/projects<CR>", "Browse ~/projects" },
 --   },
 --   t = {
 --     name = "toggle",
@@ -255,7 +170,6 @@ map("c", "w!!", "w !sudo tee %", {})
 --     l = { "<cmd>lopen<cr>", "Open Location List" },
 --     q = { "<cmd>copen<cr>", "Open Quickfix List" },
 --   },
---   z = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
 --   T = {
 --     function()
 --       util.test(true)
@@ -300,9 +214,26 @@ local leader = {
 		h = { "<cmd>:Telescope help_tags<CR>", "help tags" },
 		n = { "<cmd>:Telescope find_files cwd=~/.config/nvim<CR>", "edit neovim" },
 		p = { require("telescope").extensions.projects.projects, "projects" },
+--   p = {
+--     name = "+project",
+--     p = "Open Project",
+--     b = { ":Telescope file_browser cwd=~/projects<CR>", "Browse ~/projects" },
+--   },
 
 		r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
 		s = { ":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} }", "recent files" },
+--   ["h"] = {
+--     name = "+help",
+--     t = { "<cmd>:Telescope builtin<cr>", "Telescope" },
+--     c = { "<cmd>:Telescope commands<cr>", "Commands" },
+--     h = { "<cmd>:Telescope help_tags<cr>", "Help Pages" },
+--     m = { "<cmd>:Telescope man_pages<cr>", "Man Pages" },
+--     k = { "<cmd>:Telescope keymaps<cr>", "Key Maps" },
+--     s = { "<cmd>:Telescope highlights<cr>", "Search Highlight Groups" },
+--     l = { vim.show_pos, "Highlight Groups at cursor" },
+--     f = { "<cmd>:Telescope filetypes<cr>", "File Types" },
+--     o = { "<cmd>:Telescope vim_options<cr>", "Options" },
+--     a = { "<cmd>:Telescope autocommands<cr>", "Auto Commands" },
 	},
 
 	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
@@ -333,6 +264,12 @@ local leader = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+--     c = { "<Cmd>Telescope git_commits<CR>", "commits" },
+--     b = { "<Cmd>Telescope git_branches<CR>", "branches" },
+--     s = { "<Cmd>Telescope git_status<CR>", "status" },
+--     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
+--     h = { name = "+hunk" },
+--   },
 	},
 
 	l = {
@@ -374,15 +311,6 @@ local leader = {
 		"new file",
 	},
 
-	-- p = {
-	--     name = "Packer",
-	--     c = { "<cmd>PackerCompile<cr>", "Compile" },
-	--     i = { "<cmd>PackerInstall<cr>", "Install" },
-	--     s = { "<cmd>PackerSync<cr>", "Sync" },
-	--     S = { "<cmd>PackerStatus<cr>", "Status" },
-	--     u = { "<cmd>PackerUpdate<cr>", "Update" },
-	-- },
-
 	-- p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
 	q = {
@@ -423,11 +351,10 @@ local leader = {
 		name = "Vimwiki",
 		w = { "<cmd>e ~/documents/wiki/index.<cr>", "Wiki Index" },
 	},
-}
 
--- for i = 0, 10 do
---   leader[tostring(i)] = "which_key_ignore"
--- end
+-- require("illuminate").goto_next_reference(false)
+-- require("illuminate").goto_prev_reference(false)
+}
 
 wk.register(leader, { prefix = "<leader>" })
 

@@ -1,5 +1,3 @@
--- require("luasnip/loaders/from_vscode").lazy_load()
---
 -- local check_backspace = function()
 --     local col = vim.fn.col "." - 1
 --     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -159,7 +157,7 @@ function M.config()
 		mapping = cmp.mapping.preset.insert({
 			["<C-b>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
-			["<C-Space>"] = cmp.mapping.complete({}),
+			-- ["<C-Space>"] = cmp.mapping.complete({}),
 			["<C-e>"] = cmp.mapping.close(),
 			["<C-Space>"] = cmp.mapping.confirm({ select = false }),
 		}),

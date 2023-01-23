@@ -5,7 +5,7 @@ local M = {
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason-lspconfig.nvim" },
 	},
-	event = "VeryLazy",
+	event = "BufReadPost",
 }
 
 M.tools = {

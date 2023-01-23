@@ -41,12 +41,6 @@ return {
 				-- block-comment keymap
 				block = "gbc",
 			},
-
-			-- Pre-hook, called before commenting the line
-			-- pre_hook = pre_hook,
-
-			-- Post-hook, called after commenting is done
-			post_hook = nil,
 		})
 	end,
 }

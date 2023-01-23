@@ -1,5 +1,5 @@
 return {
-	{ "lifepillar/vim-gruvbox8", lazy = false },
+	{ "lifepillar/vim-gruvbox8" },
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"ahmedkhalf/project.nvim",
@@ -12,7 +12,7 @@ return {
 	{
 		"andymass/vim-matchup",
 		event = "BufReadPost",
-		config = function()
+		setup = function()
 			vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 			vim.g.matchup_matchparen_deferred = 1
 			vim.b.matchup_matchparen_enabled = 0

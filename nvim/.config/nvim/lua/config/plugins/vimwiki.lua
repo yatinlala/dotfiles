@@ -4,7 +4,7 @@ return {
     disable = true,
     -- cmd = { "VimwikiIndex", "VimwikiDiaryIndex", "VimwikiMakeDiaryNote" },
     -- ft = { "vimwiki" },
-    config = function()
+    setup = function()
         vim.g.vimwiki_list = {
             path = "/home/nitay/documents/wiki",
             syntax = "markdown",
@@ -14,7 +14,7 @@ return {
         }
 
         vim.g.vimwiki_key_mappings = {
-            global = 0,
+            global = 1,
             headers = 1,
             text_obj = 1,
             table_format = 1,
