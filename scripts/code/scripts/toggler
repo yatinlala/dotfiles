@@ -1,4 +1,4 @@
-#!/usr/bin/bash -e
+#!/usr/bin/env sh
 case $1 in
     bc)
         pgrep -x bc || $TERMINAL -name calc -e bc -q
@@ -40,6 +40,9 @@ case $1 in
     mailspring)
         pgrep -x mailspring || setsid mailspring &
         i3-msg "workspace 9; [class=Mailspring] focus";;
+    megasync)
+        QT_QPA_PLATFORM='xcb' 
+        pgrep -x "megasync" && killall megasync || setsid megasync &;;
     music)
         pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
     music-player)
@@ -54,8 +57,8 @@ case $1 in
     notes)
         wmctrl -l | grep -q "pointer notes" || \
         # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL --class notes --title notes -e nvim ~/documents/wiki/index.md && sleep 0.1
-        i3-msg "[instance=notes] scratchpad show; [instance=notes] move position center";;
+        $TERMINAL -a notes -e nvim ~/documents/wiki/index.md && sleep 0.1
+        i3-msg "[app_id=notes] scratchpad show; [app_id=notes] move position center";;
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
         i3-msg "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
@@ -90,8 +93,8 @@ case $1 in
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
     spotify-tui)
         pgrep -x "spotifyd" || spotifyd &
-        pgrep -x spt || ($TERMINAL --class spt -e spt && sleep .1)
-        i3-msg "[instance=spt] scratchpad show; [instance=spt] move position center";;
+        pgrep -x spt || ($TERMINAL -a spt -e spt && sleep .1)
+        i3-msg "[app_id=spt] scratchpad show; [app_id=spt] move position center";;
     tmux);;
     todoist)
         wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)
