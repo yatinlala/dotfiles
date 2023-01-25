@@ -22,7 +22,7 @@ vim.opt.splitright = true                       -- force all vertical splits to 
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
 vim.opt.updatetime = 50                         -- faster completion (4000ms default)
-vim.opt.timeoutlen = 400                        -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 100                        -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- persistent undo
 vim.opt.autochdir = false                       -- change cwd on buffer open and buffer switch
 vim.opt.backup = false                          -- creates a backup file
@@ -40,3 +40,5 @@ vim.opt.signcolumn = "yes"                      -- always show the sign column
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.shortmess:append "c"                    -- Get rid of "pattern not found" during completions
 vim.opt.laststatus = 3                          -- global statusline
+
+vim.api.nvim_create_user_command('ToggleBackground', require('util').toggleBg, {})
