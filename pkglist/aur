@@ -4,6 +4,7 @@ brave-bin
 breeze-snow-cursor-theme
 c-lolcat
 cargo-make
+catch2-git
 clipman
 dashbinsh
 devour
@@ -72,6 +73,7 @@ ttf-ms-fonts
 ulauncher
 ungoogled-chromium-xdg-bin
 urlview
+waybar-hyprland-git
 waydroid
 wdisplays
 wev
