@@ -278,5 +278,4 @@ map ge cd /etc
 
 # Swat Jumps --------------------
 map gs<space> cd ~/documents/swat
-map gsr cd ~/documents/swat/summer-research
-map gsp cd ~/documents/swat/junior/epistemology
+map gsl cd ~/documents/swat/junior/linear-algebra
