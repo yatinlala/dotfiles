@@ -24,7 +24,8 @@ bindsym $mod+return exec $term
 bindsym $mod+shift+return exec $term2
 
 #Menus
-bindsym $mod+space exec ulauncher-toggle
+# bindsym $mod+space exec ulauncher-toggle
+bindsym $mod+space exec rofi -show drun
 bindsym $mod+semicolon exec tessen --action=both
 bindsym $mod+apostrophe exec sadmenu
 
@@ -35,7 +36,7 @@ bindsym $mod+shift+v exec pavucontrol
 bindsym $mod+e exec $term -e nvim
 bindsym $mod+shift+e exec GDK_BACKEND=x11 emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
-bindsym $mod+w exec toggler notes
+# bindsym $mod+w exec toggler notes
 
 #File Manager
 bindsym $mod+a exec $term -e lf
@@ -126,7 +127,8 @@ mode "$redshift" {
 bindsym $mod+t exec toggler habitica
 bindsym $mod+shift+d exec gtk-launch dash
 bindsym $mod+shift+c exec toggler calendar
-bindsym $mod+i exec rofi -show emoji -modi emoji
+bindsym $mod+i exec rofi -show unicode -modi 'unicode:~/.config/rofiemoji-rofiunicode/rofiunicode.sh,emoji:~/.config/rofiemoji-rofiunicode/rofiemoji.sh'
+# bindsym $mod+i exec rofi -show emoji -modi emoji
 # bindsym $mod+shift+i exec rofi -show calc -modi calc -no-show-match -no-sort
 bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --all
@@ -136,8 +138,8 @@ bindsym $mod+shift+p exec swayprop
 
 
 # Screenshots
-bindsym --release XF86Favorites exec grimshot copy area
-bindsym --release shift+XF86Favorites exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
+bindsym --release Print exec grimshot copy area
+bindsym --release shift+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 # Troll
 # bindsym XF86Favorites exec ffplay -nodisp -autoexit ~/audio/alright-christmas.m4a
@@ -150,7 +152,7 @@ bindsym --release shift+XF86Favorites exec grim -e 'mv $f ~/pictures/screenshots
 
 #Startup
 # exec albert
-exec ulauncher
+# exec ulauncher
 exec gammastep
 exec wl-paste -t text --watch clipman store
 exec dunst
@@ -337,7 +339,7 @@ set $gray #a89984
 set $darkgray #1d2021
 
 # class                 border|backgr|text|indicator|child_border
-client.focused #689d6a #689d6a #282828 #282828
+client.focused #689d6a #689d6a #282828 #ebdbb2
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
