@@ -35,6 +35,42 @@ return {
             })
         end,
     },
+    {
+        "folke/noice.nvim",
+        config = function()
+            require("noice").setup({
+                presets = {
+                    -- bottom_search = true, -- use a classic bottom cmdline for search
+                    -- command_palette = true, -- position the cmdline and popupmenu together
+                    -- long_message_to_split = false, -- long messages will be sent to a split
+                    -- inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                },
+                cmdline = {
+                    view = "cmdline",
+                },
+            })
+        end,
+        lazy = false,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+    },
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup({
+                background_colour = "Normal",
+                fps = 7,
+                level = 2,
+                minimum_width = 50,
+                render = "compact",
+                stages = "fade",
+                timeout = 5000,
+                top_down = true,
+            })
+        end,
+    },
     -- {
     --     "Exafunction/codeium.vim",
     --     cmd = "Codeium",
