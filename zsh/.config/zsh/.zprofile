@@ -11,7 +11,7 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 # export XCURSOR_THEME=Breeze_Snow
 
 #QT Styling
-QT_QPA_PLATFORMTHEME=qt5ct
+QT_QPA_PLATFORMTHEME='qt5ct'
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}

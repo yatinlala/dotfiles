@@ -11,6 +11,7 @@ alias ls='exa --icons'
 
 #Shorten frequently used commands
 alias e='$EDITOR'
+alias emacs='emacs -nw'
 alias t='tmux'
 alias lg='lazygit'
 alias la='ls -alh'

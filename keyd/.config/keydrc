@@ -7,9 +7,9 @@ esc = capslock
 meta = layer(alt)
 leftalt = layer(meta)
 rightalt = overload(meta, oneshot(control))
-sysrq = layer(num)
+sysrq = layer(nav)
 
-[num]
+[nav]
 a = 1
 s = 2
 d = 3
