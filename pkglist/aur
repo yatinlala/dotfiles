@@ -70,6 +70,7 @@ tessen
 times-newer-roman
 topgrade
 ttf-ms-fonts
+typeracer-bin
 ulauncher
 ungoogled-chromium-xdg-bin
 urlview
@@ -78,5 +79,6 @@ waydroid
 wdisplays
 wev
 wlr-randr
+xpadneo-dkms
 xwinwrap-git
 zsh-autocomplete-git
