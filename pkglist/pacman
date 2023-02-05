@@ -139,7 +139,7 @@ opam
 os-prober
 pacman-contrib
 pamixer
-pandoc
+pandoc-cli
 pass
 pass-otp
 patch

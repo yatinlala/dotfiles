@@ -1,4 +1,7 @@
 /home/nitay/.local/share/npm/lib
 ├── neovim@4.10.1
-└── tree-sitter-cli@0.20.7
+├── tree-sitter-cli@0.20.7
+├── webpack-cli@5.0.1
+├── webpack-dev-server@4.11.1
+└── webpack@5.75.0
 
