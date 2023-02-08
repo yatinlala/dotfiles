@@ -1,5 +1,6 @@
 archcraft-gtk-theme-gruvbox
 auto-cpufreq
+autotiling
 brave-bin
 breeze-snow-cursor-theme
 c-lolcat
@@ -67,6 +68,7 @@ slides
 spotify-tui
 system-monitoring-center
 tessen
+theme.sh
 times-newer-roman
 topgrade
 ttf-ms-fonts
