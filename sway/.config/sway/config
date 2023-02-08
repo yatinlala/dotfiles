@@ -5,7 +5,7 @@
 set $mod Mod4
 set $mod2 Mod1
 set $term footclient
-set $term2 alac
+set $term2 kitty
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
@@ -34,8 +34,9 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e exec GDK_BACKEND=x11 emacs
+bindsym $mod+shift+e exec emacsclient -c
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
+bindsym $mod+shift+o exec obsidian
 # bindsym $mod+w exec toggler notes
 
 #File Manager
@@ -138,7 +139,8 @@ bindsym $mod+shift+p exec swayprop
 
 
 # Screenshots
-bindsym --release Print exec grimshot copy area
+# bindsym --release Print exec grimshot copy area
+bindsym --release XF86Favorites exec grimshot copy area
 bindsym --release shift+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 # Troll
@@ -160,6 +162,7 @@ exec foot --server
 exec swaystart
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
+exec GDK_BACKEND=x11 emacs --daemon
 
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 800 500
@@ -205,7 +208,7 @@ for_window [instance="spotify"] floating enable, resize set 1700 1020, move scra
 for_window [app_id="calc"] floating enable, resize set 800 400, move scratchpad, border pixel 8
 
 #--------------------------------------------------
-#-------------------Movement---------------------
+#-------------------Movement-----------------------
 #--------------------------------------------------
 
 # Kill focused window
