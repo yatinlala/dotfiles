@@ -230,7 +230,7 @@ local leader = {
 --   },
 
 		r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
-		s = { ":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} }", "recent files" },
+		s = { ":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} }<cr>", "recent files" },
 --   ["h"] = {
 --     name = "+help",
 --     t = { "<cmd>:Telescope builtin<cr>", "Telescope" },

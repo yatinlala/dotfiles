@@ -9,6 +9,7 @@ local M = {
         { "debugloop/telescope-undo.nvim" },
         { "nvim-telescope/telescope-project.nvim" },
         { "nvim-telescope/telescope-symbols.nvim" },
+        { "p00f/nvim-ts-rainbow" },
     },
 }
 
@@ -38,6 +39,17 @@ function M.config()
     require("telescope").load_extension("fzy_native")
     require("telescope").load_extension("projects")
     require("telescope").load_extension("undo")
+
+    require("nvim-treesitter.configs").setup {
+        rainbow = {
+            enable = true,
+            -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+            extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+            max_file_lines = nil, -- Do not enable for files with more than n lines, int
+            -- colors = {}, -- table of hex strings
+            -- termcolors = {} -- table of colour name strings
+        }
+    }
 end
 
 M.search_dotfiles = function()

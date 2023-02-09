@@ -61,12 +61,12 @@ return {
         config = function()
             require("notify").setup({
                 background_colour = "Normal",
-                fps = 7,
+                fps = 30,
                 level = 2,
                 minimum_width = 50,
                 render = "compact",
                 stages = "fade",
-                timeout = 5000,
+                timeout = 2500,
                 top_down = true,
             })
         end,
