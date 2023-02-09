@@ -59,7 +59,7 @@ alias wmc='$EDITOR ~/.config/sway/config'
 alias wiki='$EDITOR ~/documents/wiki/index.md'
 
 #Media
-alias yt='yt-dlp --embed-metadata'
+alias yt='yt-dlp --embed-chapters --embed-metadata'
 alias yta='yt-dlp --extract-audio'
 alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
