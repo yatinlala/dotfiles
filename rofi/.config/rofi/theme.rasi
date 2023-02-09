@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"BlexMono Nerd Font 10";
+	font:							"BlexMono Nerd Font 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -74,7 +74,7 @@ listview {
     background-color:               @al;
     padding:                        0px;
     columns:                        1;
-    lines:                          7;
+    lines:                          8;
     spacing:                        0%;
     cycle:                          true;
     dynamic:                        true;
