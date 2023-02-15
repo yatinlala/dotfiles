@@ -11,6 +11,7 @@ base-devel
 bat
 bc
 beets
+bind
 bison
 bitwarden
 blueman
@@ -101,6 +102,7 @@ lib32-ocl-icd
 lib32-openal
 lib32-v4l-utils
 lib32-vkd3d
+libreoffice-still
 libsixel
 libtool
 libva-intel-driver
@@ -124,7 +126,6 @@ mtools
 musescore
 nasm
 nautilus
-ncdu
 neofetch
 network-manager-applet
 networkmanager
