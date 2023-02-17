@@ -2,7 +2,7 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["git_repos","vim","containers","config_update"]
+disable = ["git_repos","vim","containers","config_update","node","emacs","opam"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
