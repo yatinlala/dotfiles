@@ -34,7 +34,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e exec emacsclient -c
+bindsym $mod+shift+e exec emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+shift+o exec obsidian
 # bindsym $mod+w exec toggler notes
@@ -162,7 +162,7 @@ exec foot --server
 exec swaystart
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
-exec GDK_BACKEND=x11 emacs --daemon
+# exec GDK_BACKEND=x11 emacs --daemon
 
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 800 500
