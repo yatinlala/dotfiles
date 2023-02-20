@@ -28,6 +28,7 @@ function M.setColors()
     hi def IlluminatedWordText guibg=#504945
     hi def IlluminatedWordRead guibg=#504945
     hi def IlluminatedWordWrite guibg=#504945
+    hi MatchWord cterm=underline gui=underline
     ]])
 end
 

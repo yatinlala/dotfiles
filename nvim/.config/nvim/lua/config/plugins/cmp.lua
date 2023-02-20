@@ -1,3 +1,80 @@
+local M = {
+	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
+	dependencies = {
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-nvim-lsp",
+		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-cmdline",
+		"dmitmel/cmp-cmdline-history",
+		"hrsh7th/cmp-path",
+	},
+}
+
+function M.config()
+	vim.o.completeopt = "menuone,noselect"
+
+	-- Setup nvim-cmp.
+	local cmp = require("cmp")
+
+	cmp.setup({
+		completion = {
+			completeopt = "menu,menuone,noinsert",
+		},
+		performance = {
+			-- debounce = 500,
+			throttle = 500,
+		},
+		snippet = {
+			expand = function(args)
+				require("luasnip").lsp_expand(args.body)
+			end,
+		},
+		mapping = cmp.mapping.preset.insert({
+			["<C-Space>"] = cmp.mapping.confirm({ select = false }),
+			["<C-e>"] = cmp.mapping.close(),
+			-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+			-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+			-- ["<C-n>"] = cmp.mapping.select_next_item(),
+			-- ["<C-p>"] = cmp.mapping.select_prev_item(),
+			-- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+			-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+			-- ["<C-e>"] = cmp.mapping {
+			--     i = cmp.mapping.abort(),
+			--     c = cmp.mapping.close(),
+			-- },
+			-- ["<CR>"] = cmp.mapping.confirm { select = false },
+		}),
+		sources = cmp.config.sources({
+			{ name = "nvim_lua" },
+			{ name = "nvim_lsp" },
+			{ name = "luasnip", max_item_count = 5 },
+			{ name = "buffer", keyword_length = 5 },
+			{ name = "path" },
+			{ name = "emoji" },
+			{ name = "neorg" },
+		}),
+		formatting = {
+			format = require("config.plugins.lsp.kind").cmp_format(),
+		},
+	})
+
+	-- cmp.setup.cmdline(":", {
+	--   mapping = cmp.mapping.preset.cmdline(),
+	--   sources = cmp.config.sources({
+	--     -- { name = "noice_popupmenu" },
+	--     { name = "path" },
+	--     { name = "cmdline" },
+	--     -- { name = "cmdline_history" },
+	--   }),
+	-- })
+end
+
+return M
+
 -- local check_backspace = function()
 --     local col = vim.fn.col "." - 1
 --     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -39,15 +116,6 @@
 --         end,
 --     },
 --     mapping = {
---         ["<C-p>"] = cmp.mapping.select_prev_item(),
---         ["<C-n>"] = cmp.mapping.select_next_item(),
---         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
---         ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
---         ["<C-e>"] = cmp.mapping {
---             i = cmp.mapping.abort(),
---             c = cmp.mapping.close(),
---         },
---         ["<CR>"] = cmp.mapping.confirm { select = false },
 --         ["<Tab>"] = cmp.mapping(function(fallback)
 --             if cmp.visible() then
 --                 cmp.select_next_item()
@@ -123,90 +191,3 @@
 --         { name = 'buffer' }
 --     }
 -- })
-
-local M = {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-emoji",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-cmdline",
-        "dmitmel/cmp-cmdline-history",
-        "hrsh7th/cmp-path",
-        "saadparwaiz1/cmp_luasnip",
-    },
-}
-
-function M.config()
-    vim.o.completeopt = "menuone,noselect"
-
-    -- Setup nvim-cmp.
-    local cmp = require("cmp")
-
-    cmp.setup({
-        completion = {
-            completeopt = "menu,menuone,noinsert",
-        },
-        performance = {
-            -- debounce = 500,
-            throttle = 500,
-        },
-        snippet = {
-            expand = function(args)
-                require("luasnip").lsp_expand(args.body)
-            end,
-        },
-        mapping = cmp.mapping.preset.insert({
-            ["<C-b>"] = cmp.mapping.scroll_docs( -4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            -- ["<C-Space>"] = cmp.mapping.complete({}),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<C-Space>"] = cmp.mapping.confirm({ select = false }),
-        }),
-        sources = cmp.config.sources({
-            { name = "nvim_lsp" },
-            { name = "luasnip", max_item_count = 5 },
-            { name = "buffer",  max_item_count = 5 },
-            { name = "path" },
-            { name = "emoji" },
-            { name = "neorg" },
-        }),
-        formatting = {
-            format = require("config.plugins.lsp.kind").cmp_format(),
-        },
-        -- documentation = {
-        --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-        --   winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-        -- },
-        experimental = {
-            -- ghost_text = {
-            --   hl_group = "LspCodeLens",
-            -- },
-        },
-        -- sorting = {
-        --   comparators = {
-        --     cmp.config.compare.sort_text,
-        --     cmp.config.compare.offset,
-        --     -- cmp.config.compare.exact,
-        --     cmp.config.compare.score,
-        --     -- cmp.config.compare.kind,
-        --     -- cmp.config.compare.length,
-        --     cmp.config.compare.order,
-        --   },
-        -- },
-    })
-
-    -- cmp.setup.cmdline(":", {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = cmp.config.sources({
-    --     -- { name = "noice_popupmenu" },
-    --     { name = "path" },
-    --     { name = "cmdline" },
-    --     -- { name = "cmdline_history" },
-    --   }),
-    -- })
-end
-
-return M

@@ -9,6 +9,22 @@ return {
     },
 
     { "tamton-aquib/duck.nvim" },
+
+    -- {
+    --     "crispgm/nvim-tabline",
+    --     lazy = false,
+    --     dependencies = { "kyazdani42/nvim-web-devicons" },
+    --     config = function()
+    --         require("tabline").setup({
+    --             show_index = true, -- show tab index
+    --             show_modify = true, -- show buffer modification indicator
+    --             show_icon = false, -- show file extension icon
+    --             modify_indicator = "[+]", -- modify indicator
+    --             no_name = "No name", -- no name buffer name
+    --             brackets = { "[", "]" }, -- file name brackets surrounding
+    --         })
+    --     end,
+    -- },
     {
         "andymass/vim-matchup",
         event = "BufReadPost",
@@ -35,49 +51,36 @@ return {
             })
         end,
     },
-    {
-        "folke/noice.nvim",
-        config = function()
-            require("noice").setup({
-                presets = {
-                    -- bottom_search = true, -- use a classic bottom cmdline for search
-                    -- command_palette = true, -- position the cmdline and popupmenu together
-                    -- long_message_to_split = false, -- long messages will be sent to a split
-                    -- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                },
-                cmdline = {
-                    view = "cmdline",
-                },
-            })
-        end,
-        lazy = false,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-    },
-    {
-        "rcarriga/nvim-notify",
-        config = function()
-            require("notify").setup({
-                background_colour = "Normal",
-                fps = 30,
-                level = 2,
-                minimum_width = 50,
-                render = "compact",
-                stages = "fade",
-                timeout = 2500,
-                top_down = true,
-            })
-        end,
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     config = function()
+    --         require("noice").setup({
+    --             cmdline = {
+    --                 view = "cmdline",
+    --             },
+    --         })
+    --     end,
+    --     lazy = false,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "rcarriga/nvim-notify",
+    --     },
+    -- },
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     config = function()
+    --         require("notify").setup({
+    --             background_colour = "Normal",
+    --             fps = 30,
+    --             level = 2,
+    --             minimum_width = 50,
+    --             render = "compact",
+    --             stages = "fade",
+    --             timeout = 2500,
+    --             top_down = true,
+    --         })
+    --     end,
+    -- },
     -- {
     --     "Exafunction/codeium.vim",
     --     cmd = "Codeium",
@@ -112,14 +115,6 @@ return {
     --  { "tpope/vim-sexp-mappings-for-regular-people", ft = { "clojure" } },
     --  { "guns/vim-sexp", ft = { "clojure" } },
     --  {
-    --    "norcalli/nvim-terminal.lua",
-    --    ft = "terminal",
-    --    config = function()
-    --      require("terminal").setup()
-    --    end,
-    --  },
-    --
-    --  {
     --    "folke/persistence.nvim",
     --    event = "BufReadPre",
     --    config = function()
@@ -130,10 +125,4 @@ return {
     --  },
     --
     --  {
-    --    "andymass/vim-matchup",
-    --    event = "BufReadPost",
-    --    config = function()
-    --      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-    --    end,
-    --  },
 }
