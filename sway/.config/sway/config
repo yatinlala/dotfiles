@@ -34,7 +34,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e exec emacs
+bindsym $mod+shift+e exec GDK_BACKEND=x11 emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+shift+o exec obsidian
 # bindsym $mod+w exec toggler notes
@@ -186,6 +186,7 @@ assign [title="newsboat"] 10
 
 for_window [instance="urxvt"] opacity set .98
 for_window [app_id="foot"] opacity set .985
+for_window [app_id="kitty"] opacity set .985
 
 #Vimwiki
 for_window [app_id="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
