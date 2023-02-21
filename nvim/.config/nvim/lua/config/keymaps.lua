@@ -44,8 +44,8 @@ vim.keymap.set("i", ".", ".<c-g>u", opts)
 vim.keymap.set("i", "(", "(<c-g>u", opts)
 
 -- Adjust bullet level
-vim.keymap.set("i", "<C-f>", "<esc><<A", opts)
-vim.keymap.set("i", "<C-j>", "<esc>>>A", opts)
+vim.keymap.set("i", "<C-g>", "<esc><<A", opts)
+vim.keymap.set("i", "<C-h>", "<esc>>>A", opts)
 
 vim.keymap.set("i", "<C-<BS>>", "<C-w>", opts)
 
