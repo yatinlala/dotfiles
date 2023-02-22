@@ -1,27 +1,27 @@
+[theme]
 theme = "native"
-icons = "awesome"
+[icons]
+icons = "material-nf"
 
 [[block]]
 block = "focused_window"
-max_width = 55
-show_marks = "none"
 
 [[block]]
 block = "custom"
 command = "cat ~/.cache/pomo.cache"
 signal = 4
 interval = "once"
-hide_when_empty = false
+hide_when_empty = true
 
 [[block]]
 block = "music"
 #buttons = ["prev", "next"]
 interface_name_exclude = [".*kdeconnect.*", "mpd", "chromium*"]
-max_width = 25
-dynamic_width = true
+# max_width = 25
+# dynamic_width = true
 # smart_trim = true
-hide_when_empty	= true
-on_click = "playerctl --player=spotify,cmus,%any play-pause"
+# hide_when_empty	= true
+# on_click = "playerctl --player=spotify,cmus,%any play-pause"
 
 # [[block]]
 # block = "docker"
@@ -38,15 +38,20 @@ root_scaling = 2
 block = "sound"
 
 [[block]]
-block = "networkmanager"
-on_click = "$TERMINAL -e nmtui connect"
-device_format= "{icon}{ap}"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
+block = "net"
+format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
+# on_click = "$TERMINAL -e nmtui connect"
+# device_format= "{icon}{ap}"
+# interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+# interface_name_include = []
+
+[[block]]
+block = "hueshift"
+format = " $temperature° "
 
 [[block]]
 block = "weather"
-format = "{weather} {temp}"
+format = "$weather $temp"
 service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "4561628", units = "imperial" }   # Swarthmore
 #service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c", city_id = "5380748", units = "imperial" }  # Palo Alto
 
@@ -58,12 +63,19 @@ service = { name = "openweathermap", api_key = "c9594a53527d5db3dd809f5c0f32315c
 # threshold_critical = 10
 # display_type = "new"
 
+# [[block]]
+# block = "time"
+# interval = 60
+# format = "%a %m/%d %I:%M %P"
+
 [[block]]
 block = "time"
 interval = 60
-format = "%a %m/%d %I:%M %P"
+[block.format]
+full = " $icon $timestamp.datetime(f:'%I:%M %p %a %m/%d') "
+# short = " $icon $timestamp.datetime(f:%I) "
 
 [[block]]
 block = "battery"
 interval = 5
-format = " {percentage}"
+format = " $percentage $icon "
