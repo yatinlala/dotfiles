@@ -128,6 +128,12 @@ bindkey '^a' lf
 zle -N tmux-sessionizer
 bindkey '^f' tmux-sessionizer
 
+lark-toggle() {
+    lark toggle
+}
+zle -N lark-toggle
+bindkey '^y' lark-toggle
+
 # Edit line in vim with e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd e edit-command-line
