@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.spell = false
+vim.opt.ignorecase = true                       -- ignore search case
 vim.opt.smartcase = true                        -- Unless using a capital letter in search
 vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
 vim.opt.tildeop = true                          -- ~ is now a motion

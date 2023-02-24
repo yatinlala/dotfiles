@@ -1,3 +1,4 @@
+theme.sh $(lark print)
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -99,9 +100,9 @@ lf() {
 #     $HOME/code/scripts/lf/lf
 # }
 
-tmux-sessionizer() {
-    $HOME/code/scripts/tmux-sessionizer
-}
+# tmux-sessionizer() {
+#     $HOME/code/scripts/tmux-sessionizer
+# }
 
 # FZF
 fzf-history-widget() {
@@ -125,8 +126,8 @@ bindkey '^R' fzf-history-widget
 zle -N lf
 bindkey '^a' lf
 
-zle -N tmux-sessionizer
-bindkey '^f' tmux-sessionizer
+# zle -N tmux-sessionizer
+# bindkey '^f' tmux-sessionizer
 
 lark-toggle() {
     lark toggle
@@ -170,4 +171,3 @@ AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
 AGKOZAK_COLORS_PROMPT_CHAR='yellow'
 
 # [[ ! -r /home/nitay/.local/share/opam/opam-init/init.zsh ]] || source /home/nitay/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-theme.sh $(lark print)

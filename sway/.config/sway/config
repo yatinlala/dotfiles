@@ -140,7 +140,7 @@ bindsym $mod+shift+p exec swayprop
 
 # Screenshots
 # bindsym --release Print exec grimshot copy area
-bindsym --release XF86Favorites exec grimshot copy area
+bindsym --release Print exec grimshot copy area
 bindsym --release shift+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%d-%H-%M-%S.png'
 
 # Troll

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-# Don't terminate
-trap -- '' SIGINT SIGTERM
-
-echo "" > $XDG_CACHE_HOME/pomo.cache
+echo "" > $XDG_CACHE_HOME/gammadark.cache
 
 notify-send "Start work!"
 
@@ -13,8 +10,6 @@ nmcli device disconnect wlp0s20f3
 
 min=5
 sec=0
-
-i3-msg 'bindsym Mod4+0 workspace 1'
 
 while [ $min -ge 0 ]; do
     while [ $sec -ge 0 ]; do
@@ -32,7 +27,5 @@ echo "" > $XDG_CACHE_HOME/pomo.cache
 pkill -SIGRTMIN+4 i3status-rs
 
 wifi on
-
-i3-msg 'bindsym Mod4+0 workspace 10'
 
 notify-send "Done!"
