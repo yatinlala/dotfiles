@@ -2,6 +2,8 @@ typeset -U PATH path
 
 export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/.local/share/go/bin:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
 
+
+export SCRIPT_PATH="$HOME/code/scripts"
 # FZF
 export FZF_DEFAULT_OPTS='--cycle'
 export FZF_DEFAULT_COMMAND='fd -H .'
@@ -85,5 +87,5 @@ export LC_ALL="en_US.UTF-8"
 
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep i3  || $HOME/code/scripts/startwm
+	pgrep sway  || sway
 fi
