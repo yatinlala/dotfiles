@@ -177,10 +177,11 @@ for_window [app_id="albert"] move position 650 300
 
 assign [title="Tor Browser"] 7
 assign [class="discord"] 9
+assign [class="Ferdium"] 9
 assign [class="Slack"] 9
 assign [class="Signal"] 9
 assign [class="Element"] 9
-assign [title="pipe-viewer"] 10
+assign [app_id="gtk-pipe-viewer"] 10
 assign [title="ytfzf"] 10
 assign [class="LBRY"] 10
 assign [title="newsboat"] 10
