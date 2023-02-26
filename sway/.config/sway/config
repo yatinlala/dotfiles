@@ -55,7 +55,7 @@ bindsym $mod+slash exec toggler music-player
 bindsym $mod+shift+slash exec toggler spotifyd
 
 #Browser
-bindsym $mod+b exec brave
+bindsym $mod+b exec gtk-launch brave-browser
 bindsym $mod+shift+t exec torbrowser-launcher
 bindsym $mod+shift+w exec $term -e xdg-launch w3m -v
 
