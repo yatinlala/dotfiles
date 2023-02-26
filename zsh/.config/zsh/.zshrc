@@ -1,4 +1,4 @@
-theme.sh $(lark print)
+# theme.sh $(lark print)
 # some useful options (man zshoptions)
 setopt autocd extendedglob nomatch
 setopt interactive_comments
@@ -170,4 +170,5 @@ AGKOZAK_USER_HOST_DISPLAY=0
 AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
 AGKOZAK_COLORS_PROMPT_CHAR='yellow'
 
-# [[ ! -r /home/nitay/.local/share/opam/opam-init/init.zsh ]] || source /home/nitay/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+# opam configuration
+[[ ! -r /home/nitay/.local/share/opam/opam-init/init.zsh ]] || source /home/nitay/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null

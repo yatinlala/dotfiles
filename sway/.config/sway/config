@@ -99,7 +99,7 @@ bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; exec pkill -S
 
 #TOGGLES
 #Bluetooth
-bindsym XF86Bluetooth exec "echo 'power off' | bluetoothctl"; exec notify-send -t 1000 "Bluetooth off."
+bindsym XF86Favorites exec rfkill toggle bluetooth
 bindsym $mod+shift+b exec toggler blueman-manager
 #Other
 set $toggles Action: [b]lueman-applet next[c]loud [m]egasync [n]m-applet 
@@ -162,6 +162,7 @@ exec foot --server
 exec swaystart
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
+exec_always nm-applet
 # exec GDK_BACKEND=x11 emacs --daemon
 
 for_window [app_id="blueman-manager"] floating enable
@@ -329,7 +330,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #--------------------------------------------------
 
 # Wallpaper
-output * bg ~/pictures/wallpapers/lone-tree.jpg fill
+exec swaybg -i ~/pictures/wallpapers/lone-tree.jpg
 
 # set primary gruvbox colorscheme colors
 set $bg #282828

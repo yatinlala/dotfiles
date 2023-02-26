@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-echo  "[a]wesome [b]spwm [h]yprland [i]3wm [s]way"
-
-read input
-
-case $input in
-    "a") startx "$HOME/.config/X11/xinitrc.awesome";;
-    "b") startx "$HOME/.config/X11/xinitrc.bspwm";;
-    "h") wrappedhl;;
-    "i") startx "$HOME/.config/X11/xinitrc.i3";;
-    "s") wrappedsway;;
-esac
+# echo  "[a]wesome [b]spwm [h]yprland [i]3wm [s]way"
+#
+# read input
+#
+# case $input in
+#     "a") startx "$HOME/.config/X11/xinitrc.awesome";;
+#     "b") startx "$HOME/.config/X11/xinitrc.bspwm";;
+#     "h") wrappedhl;;
+#     "i") startx "$HOME/.config/X11/xinitrc.i3";;
+#     "s") wrappedsway;;
+# esac
