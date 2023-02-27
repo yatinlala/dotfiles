@@ -32,9 +32,9 @@ cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) exec $EDITOR "$f";;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
-        application/pdf) swallow zathura "$f";;
-        video/*|audio/*) swallow mpv --force-window=yes "$f";;
-        image/*) swallow feh --scale-down "$f";;
+        application/pdf) swayhide zathura "$f";;
+        video/*|audio/*) swayhide mpv --force-window=yes "$f";;
+        image/*) swayhide feh --scale-down "$f";;
         *) xdg-open "$f";;
     esac
 }}
@@ -259,7 +259,7 @@ map gv cd ~/videos
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
-map glx cd ~/.local/xdgify
+map glx cd ~/.local/xdg-garbage
 
 map glm<space> cd ~/.local/mount
 map glmc cd ~/.local/mount/cslab
