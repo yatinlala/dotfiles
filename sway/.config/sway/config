@@ -128,7 +128,7 @@ mode "$redshift" {
 bindsym $mod+t exec toggler habitica
 bindsym $mod+shift+d exec gtk-launch dash
 bindsym $mod+shift+c exec toggler calendar
-bindsym $mod+i exec rofi -show unicode -modi 'unicode:~/.config/rofiemoji-rofiunicode/rofiunicode.sh,emoji:~/.config/rofiemoji-rofiunicode/rofiemoji.sh'
+bindsym $mod+i exec rofimoji
 # bindsym $mod+i exec rofi -show emoji -modi emoji
 # bindsym $mod+shift+i exec rofi -show calc -modi calc -no-show-match -no-sort
 bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
