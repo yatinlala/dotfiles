@@ -63,7 +63,7 @@ export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-
+export NLTK_DATA="$XDG_DATA_HOME"/nltk
 # Default Apps
 export EDITOR="nvim"
 export READER="zathura"
@@ -85,6 +85,13 @@ export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"
 
+# SWAY WAYLAND STUFF
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NOREPARENTING=1
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export GDK_BACKEND="wayland,x11"
+export MOZ_ENABLE_WAYLAND=1
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
 	pgrep sway  || sway
