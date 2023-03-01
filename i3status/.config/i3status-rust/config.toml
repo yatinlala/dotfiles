@@ -44,7 +44,9 @@ block = "sound"
 
 [[block]]
 block = "net"
-format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
+format = " $icon {$ssid $signal_strength } "
+# format = " $icon {$ssid $signal_strength $frequency|Wired connection} via $device "
+# format = " $icon $ssid "
 # on_click = "$TERMINAL -e nmtui connect"
 # device_format= "{icon}{ap}"
 # interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
