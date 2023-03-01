@@ -5,7 +5,7 @@
 set $mod Mod4
 set $mod2 Mod1
 set $term footclient
-set $term2 kitty
+set $term2 kitty -1
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
