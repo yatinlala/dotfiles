@@ -34,7 +34,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
-bindsym $mod+shift+e exec GDK_BACKEND=x11 emacs
+bindsym $mod+shift+e exec emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+shift+o exec obsidian
 # bindsym $mod+w exec toggler notes
@@ -61,14 +61,15 @@ bindsym $mod+shift+w exec $term -e xdg-launch w3m -v
 
 #Communication
 bindsym $mod+m exec toggler ferdium
-set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
+# set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
+set $mega Action: [e]lement [s]ignal
 bindsym $mod+c mode "$mega"
 mode "$mega" {
-    bindsym d exec discord; workspace 9; mode "default"
+    # bindsym d exec discord; workspace 9; mode "default"
     bindsym e exec element-desktop; workspace 9; mode "default"
-    bindsym l exec slack; workspace 9; mode "default"
+    # bindsym l exec slack; workspace 9; mode "default"
     bindsym s exec signal-desktop; workspace 9; mode "default"
-    bindsym w exec toggler whatsapp; mode "default"
+    # bindsym w exec toggler whatsapp; mode "default"
     bindsym $mod+c mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -81,8 +82,8 @@ set $games Action: [l]ichess [m]inecraft [s]team [t]etris
 bindsym $mod+shift+g mode "$games"
 mode "$games" {
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
-    bindsym m exec xdg-launch minecraft-launcher; mode "default"
-    bindsym s exec xdg-launch steam; mode "default"
+    bindsym m exec multimc; mode "default"
+    bindsym s exec gtk-launch steam; mode "default"
     bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
@@ -115,14 +116,15 @@ mode "$toggles" {
 }
 bindsym $mod+Tab exec toggler espanso
 bindsym $mod+grave exec dunstctl close
-set $redshift Action: [r]edshift redshift-[d]ark
-bindsym $mod+shift+r mode "$redshift"
-mode "$redshift" {
-    bindsym r exec toggler gammastep; mode "default"
-    bindsym d exec toggler gammastep-dark; mode "default"
-    bindsym $mod+shift+r mode "default"
-    bindsym Escape mode "default"
-}
+bindsym $mod+shift+r exec toggler gammastep
+# set $redshift Action: [r]edshift redshift-[d]ark
+# bindsym $mod+shift+r mode "$redshift"
+# mode "$redshift" {
+#     bindsym r exec toggler gammastep; mode "default"
+#     bindsym d exec toggler gammastep-dark; mode "default"
+#     bindsym $mod+shift+r mode "default"
+#     bindsym Escape mode "default"
+# }
 
 #Utility
 bindsym $mod+t exec toggler habitica
@@ -156,13 +158,14 @@ bindsym --release shift+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 # exec albert
 # exec ulauncher
 exec gammastep
-exec wl-paste -t text --watch clipman store
+exec wl-paste -t text --watch clipman store --no-persist
 exec dunst
 exec foot --server
 exec swaystart
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
-exec_always nm-applet
+# exec swayidle
+# exec_always nm-applet
 # exec GDK_BACKEND=x11 emacs --daemon
 
 for_window [app_id="blueman-manager"] floating enable
@@ -172,7 +175,6 @@ for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="ulauncher"] floating enable
 for_window [app_id="ulauncher"] border none
 for_window [app_id="ulauncher"] move position 650 250
-
 for_window [app_id="albert"] move position 650 300
 
 assign [title="Tor Browser"] 7
@@ -309,11 +311,14 @@ bar {
 #--------------------------------------------------
 
 # adjust screen brightness
-bindsym XF86MonBrightnessUp exec light -A 1
-bindsym XF86MonBrightnessDown exec light -U 1
+bindsym XF86MonBrightnessUp exec light -A .7
+bindsym XF86MonBrightnessDown exec light -U .7
 bindsym $mod2+1 exec light -U 5
 bindsym $mod2+2 exec light -A 5
 bindsym $mod+shift+a exec light -S .01 #Min Brightness
+bindsym $mod+$mod2+j exec gdark dec
+bindsym $mod+$mod2+k exec gdark inc
+
 
 # Use pactl to adjust volume in PulseAudio.
 # bindsym $mod+i exec pactl set-sink-volume @DEFAULT_SINK@ -5%
