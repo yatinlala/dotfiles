@@ -34,8 +34,8 @@ alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirro
 alias tpv='command mpv --vo=tct'
 
 #Devouring
-alias feh='swayhide feh --scale-down'
-alias mpv='swayhide mpv'
+alias feh='swallow feh --scale-down'
+alias mpv='swallow mpv'
 
 #Git
 alias gs='git status'
