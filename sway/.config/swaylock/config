@@ -1,0 +1,12 @@
+fade-in=1 
+indicator
+clock
+show-failed-attempts
+daemonize
+screenshots
+effect-blur=5x2
+effect-vignette=.7:.7
+indicator-caps-lock
+indicator-radius=100
+inside-color=282828
+text-color=ebdbb2
