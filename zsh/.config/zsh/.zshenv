@@ -28,6 +28,7 @@ export SXHKD_SHELL="sh"
 
 # Fixing Paths
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export STACK_ROOT="$XDG_DATA_HOME"/stack
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export CONAN_USER_HOME="$XDG_CONFIG_HOME/conan/"
 export DOOMDIR="$XDG_CONFIG_HOME/doom"
