@@ -48,3 +48,4 @@ set recolor                     true
 map p print
 
 set font "monospace normal 14"
+set selection-clipboard clipboard
