@@ -60,7 +60,7 @@ disable = ["git_repos","vim","containers","config_update","node","emacs","opam"]
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
-"Update pacman pkglist" = "pacman -Qqe | grep -v \"$(pacman -Qqm)\" > ~/.dotfiles/pkglist/pacman"
+"Update pacman pkglist" = "pacman -Qqne > ~/.dotfiles/pkglist/pacman"
 "Update aur pkglist" = "pacman -Qqm > ~/.dotfiles/pkglist/aur"
 "Update cargo pkglist" = "cargo install --list > ~/.dotfiles/pkglist/cargo"
 "Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm"
