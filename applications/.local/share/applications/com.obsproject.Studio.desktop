@@ -3,7 +3,7 @@ Version=1.0
 Name=OBS Studio
 GenericName=Streaming/Recording Software
 Comment=Free and Open Source Streaming/Recording Software
-Exec=/home/nitay/scripts/code/xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=obs com.obsproject.Studio
+Exec=/home/nitay/code/scripts/xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=obs com.obsproject.Studio
 Icon=com.obsproject.Studio
 Terminal=false
 Type=Application
