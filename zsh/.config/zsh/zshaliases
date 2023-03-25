@@ -21,6 +21,7 @@ alias ka='killall'
 alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
+alias mkaealias="alias mkae='make'"
 
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
