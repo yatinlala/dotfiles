@@ -5,8 +5,12 @@ set shellopts '-eu'
 
 %[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
 
-set previewer ~/code/scripts/lf/preview
-set cleaner ~/code/scripts/lf/cleaner
+# set previewer ~/.config/lf/preview
+# set cleaner ~/.config/lf/cleaner
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
 
 # Basic Settings
 set preview
@@ -15,17 +19,17 @@ set drawbox
 set icons
 set ignorecase
 
-#Dynamically set number of columns
-%{{
-    w=$(tput cols)
-    if [ $w -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ $w -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
+# #Dynamically set number of columns
+# %{{
+#     w=$(tput cols)
+#     if [ $w -le 80 ]; then
+#         lf -remote "send $id set ratios 1:2"
+#     elif [ $w -le 160 ]; then
+#         lf -remote "send $id set ratios 1:2:3"
+#     else
+#         lf -remote "send $id set ratios 1:2:3:5"
+#     fi
+# }}
 
 # Custom Functions
 cmd open ${{
@@ -178,9 +182,6 @@ map t
 
 map w smart_w
 
-# Not really image preview
-# map P $~/.local/scripts/lf/draw_img "$f"
-
 # File Openers
 map EE $$EDITOR "$f"
 map ES sudoedit
@@ -280,3 +281,5 @@ map ge cd /etc
 map gs<space> cd ~/documents/swat
 map gsl cd ~/documents/swat/junior/linear-algebra
 map gsa cd ~/documents/swat/junior/algo
+
+map gr cd ~/projects/grodner-research
