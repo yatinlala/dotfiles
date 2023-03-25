@@ -106,7 +106,6 @@ local leader = {
 
 		[":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
 		t = { "<cmd>:Telescope builtin<cr>", "Telescope" },
-		K = { "<cmd>:Telescope keymaps<cr>", "Key Maps" },
 		S = { "<cmd>:Telescope highlights<cr>", "Search Highlight Groups" },
 		l = { vim.show_pos, "Highlight Groups at cursor" },
 		f = { "<cmd>:Telescope filetypes<cr>", "File Types" },
