@@ -42,11 +42,23 @@ block = "sound"
 # format = " $temperature° "
 # hue_shifter = "gammastep"
 
+# [[block]]
+# block = "notify"
+# # format = " $icon {($notification_count.eng(1)) |}"
+# format = " $icon $notification_count "
+# driver = "swaync"
+# [[block.click]]
+# button = "left"
+# action = "show"
+# [[block.click]]
+# button = "right"
+# action = "toggle_paused"
+
 [[block]]
 block = "net"
-format = " $icon {$ssid $signal_strength } "
+format = " $icon $ssid "
+# format = " $icon {$ssid $signal_strength } "
 # format = " $icon {$ssid $signal_strength $frequency|Wired connection} via $device "
-# format = " $icon $ssid "
 # on_click = "$TERMINAL -e nmtui connect"
 # device_format= "{icon}{ap}"
 # interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
