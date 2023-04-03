@@ -244,8 +244,8 @@ map b bulk-rename
 map ga cd ~/audio
 map gC cd ~/.config
 
-map gc cd ~/code
-map gS cd ~/code/scripts
+map gc cd ~/projects
+map gS cd ~/projects/scripts
 
 map gd cd ~/documents
 map gb cd ~/documents/books
