@@ -55,7 +55,7 @@ GenericName[uk]=Поштова програма
 GenericName[vi]=Phần mềm khách quản lý thư điện tử
 GenericName[zh_CN]=邮件新闻客户端
 GenericName[zh_TW]=郵件用戶端
-Exec=/home/nitay/code/scripts/xdg-launch env DICPATH=/usr/share/hunspell /opt/thunderbird-beta/thunderbird %u
+Exec=/home/nitay/projects/scripts/xdg-launch env DICPATH=/usr/share/hunspell /opt/thunderbird-beta/thunderbird %u
 Terminal=false
 Type=Application
 Icon=thunderbird-beta
