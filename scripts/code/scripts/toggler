@@ -62,23 +62,20 @@ case $1 in
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
         sway "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
-    picom)
-        pgrep -x picom && killall picom || setsid picom;;
+    # picom)
+    #     pgrep -x picom && killall picom || setsid picom;;
     pulsemixer)
         pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .20)
         sway "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
-    redshift)
-        pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
-    redshift-dark)
-        pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-        (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
+    # redshift)
+    #     pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
+    #     (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
+    # redshift-dark)
+    #     pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
+    #     (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
     gammastep)
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
-    gammastep-dark)
-        pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
-        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep -b 1:.5);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop --ozone-platform=wayland &
         sway "workspace 9; [class=Signal] focus";;
