@@ -1,5 +1,6 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
+    "debugloop/telescope-undo.nvim",
     event = "VeryLazy",
 }
 
@@ -52,6 +53,7 @@ function M.config()
 		},
     })
     require("nvim-treesitter.install").prefer_git = true
+    require("telescope").load_extension("undo")
 end
 
 return M

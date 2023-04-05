@@ -34,19 +34,9 @@ function M.config()
 			end,
 		},
 		mapping = cmp.mapping.preset.insert({
+			-- I think the C-n (next), C-p (prev), and C-y (disable) are enabled by default
 			["<C-Space>"] = cmp.mapping.confirm({ select = false }),
 			["<C-e>"] = cmp.mapping.close(),
-			-- ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-			-- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-			-- ["<C-n>"] = cmp.mapping.select_next_item(),
-			-- ["<C-p>"] = cmp.mapping.select_prev_item(),
-			-- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-			-- ["<C-e>"] = cmp.mapping {
-			--     i = cmp.mapping.abort(),
-			--     c = cmp.mapping.close(),
-			-- },
-			-- ["<CR>"] = cmp.mapping.confirm { select = false },
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lua" },
@@ -58,136 +48,36 @@ function M.config()
 			{ name = "neorg" },
 		}),
 		formatting = {
-			format = require("config.plugins.lsp.kind").cmp_format(),
+			format = function(_entry, vim_item)
+				local icons = {
+					Class = " ",
+					Color = " ",
+					Constant = " ",
+					Constructor = " ",
+					Enum = "了 ",
+					EnumMember = " ",
+					Field = " ",
+					File = " ",
+					Folder = " ",
+					Function = " ",
+					Interface = "ﰮ ",
+					Keyword = " ",
+					Method = "ƒ ",
+					Property = " ",
+					Snippet = "﬌ ",
+					Struct = " ",
+					Text = " ",
+					Unit = " ",
+					Value = " ",
+					Variable = " ",
+				}
+				if icons[vim_item.kind] then
+					vim_item.kind = icons[vim_item.kind] .. vim_item.kind
+				end
+				return vim_item
+			end,
 		},
 	})
-
-	-- cmp.setup.cmdline(":", {
-	--   mapping = cmp.mapping.preset.cmdline(),
-	--   sources = cmp.config.sources({
-	--     -- { name = "noice_popupmenu" },
-	--     { name = "path" },
-	--     { name = "cmdline" },
-	--     -- { name = "cmdline_history" },
-	--   }),
-	-- })
 end
 
 return M
-
--- local check_backspace = function()
---     local col = vim.fn.col "." - 1
---     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
--- end
---
--- --   פּ ﯟ   some other good icons
--- local kind_icons = {
---     Text = "",
---     Method = "m",
---     Function = "",
---     Constructor = "",
---     Field = "",
---     Variable = "",
---     Class = "",
---     Interface = "",
---     Module = "",
---     Property = "",
---     Unit = "",
---     Value = "",
---     Enum = "",
---     Keyword = "",
---     Snippet = "",
---     Color = "",
---     File = "",
---     Reference = "",
---     Folder = "",
---     EnumMember = "",
---     Constant = "",
---     Struct = "",
---     Event = "",
---     Operator = "",
---     TypeParameter = "",
--- }
---
--- cmp.setup {
---     snippet = {
---         expand = function(args)
---             luasnip.lsp_expand(args.body) -- For `luasnip` users.
---         end,
---     },
---     mapping = {
---         ["<Tab>"] = cmp.mapping(function(fallback)
---             if cmp.visible() then
---                 cmp.select_next_item()
---             elseif luasnip.expandable() then
---                 luasnip.expand()
---             elseif luasnip.expand_or_jumpable() then
---                 luasnip.expand_or_jump()
---             elseif check_backspace() then
---                 fallback()
---             else
---                 fallback()
---             end
---         end, {
---             "i",
---             "s",
---         }),
---         ["<S-Tab>"] = cmp.mapping(function(fallback)
---             if cmp.visible() then
---                 cmp.select_prev_item()
---             elseif luasnip.jumpable(-1) then
---                 luasnip.jump(-1)
---             else
---                 fallback()
---             end
---         end, {
---             "i",
---             "s",
---         }),
---     },
---     formatting = {
---         fields = { "abbr", "kind", "menu" },
---         format = function(entry, vim_item)
---             -- Kind icons
---             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
---             -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
---             vim_item.menu = ({
---                 nvim_lsp = "[LSP]",
---                 nvim_lua = "[Nvim_Lua]",
---                 luasnip = "[Snippet]",
---                 buffer = "[Buffer]",
---                 path = "[Path]",
---             })[entry.source.name]
---             return vim_item
---         end,
---     },
---     sources = {
---         { name = "orgmode" },
---         { name = "nvim_lsp" },
---         { name = "nvim_lua" },
---         { name = "luasnip" },
---         { name = "buffer", max_item_count = 10 },
---         { name = "path" },
---     },
---     confirm_opts = {
---         behavior = cmp.ConfirmBehavior.Replace,
---         select = false,
---     },
---     window = {
---         documentation = {
---             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
---         }
---     },
---     experimental = {
---         ghost_text = false,
---         native_menu = false,
---     },
--- }
---
--- -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline({ '/', '?' }, {
---     mapping = cmp.mapping.preset.cmdline(),
---     sources = {
---         { name = 'buffer' }
---     }
--- })
