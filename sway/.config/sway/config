@@ -4,8 +4,8 @@
 
 set $mod Mod4
 set $mod2 Mod1
-set $term footclient
-set $term2 kitty -1
+set $term kitty -1 --instance-group main
+set $term2 foot
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
@@ -24,10 +24,9 @@ bindsym $mod+return exec $term
 bindsym $mod+shift+return exec $term2
 
 #Menus
-# bindsym $mod+space exec ulauncher-toggle
 bindsym $mod+space exec rofi -show drun
 bindsym $mod+semicolon exec tessen --action=both
-bindsym $mod+apostrophe exec sadmenu
+# bindsym $mod+apostrophe exec sadmenu
 
 #Camera and Audio
 bindsym $mod+shift+v exec pavucontrol
@@ -56,8 +55,8 @@ bindsym $mod+shift+slash exec toggler spotifyd
 
 #Browser
 bindsym $mod+b exec gtk-launch brave-browser
+bindsym $mod+apostrophe exec gtk-launch librewolf
 bindsym $mod+shift+t exec torbrowser-launcher
-bindsym $mod+shift+w exec $term -e xdg-launch w3m -v
 
 #Communication
 bindsym $mod+m exec toggler ferdium
@@ -91,9 +90,9 @@ mode "$games" {
 }
 
 #Video Entertainment
-bindsym $mod+n exec $term -e news; workspace 10; mode "default"
-# bindsym $mod+p exec $term -e pipe-viewer --resolution=480; workspace 10
-bindsym $mod+p exec gtk-pipe-viewer
+bindsym $mod+n exec $term --class newsboat -e newsboat; workspace 10; mode "default"
+bindsym $mod+p exec $term --class pipe-viewer -e pipe-viewer --resolution=480; workspace 10
+bindsym $mod+shift+p exec gtk-pipe-viewer
 bindsym XF86Tools exec pomo
 bindsym shift+XF86Tools exec echo "" > $XDG_CACHE_HOME/pomo.cache; exec pkill -SIGRTMIN+4 i3status-rs
 
@@ -115,7 +114,8 @@ mode "$toggles" {
     bindsym Return mode "default"
 }
 bindsym $mod+Tab exec toggler espanso
-bindsym $mod+grave exec dunstctl close
+# bindsym $mod+grave exec dunstctl close
+bindsym $mod+grave exec swaync-client -t -sw
 bindsym $mod+shift+r exec toggler gammastep
 # set $redshift Action: [r]edshift redshift-[d]ark
 # bindsym $mod+shift+r mode "$redshift"
@@ -137,7 +137,7 @@ bindsym $mod+shift+semicolon exec clipman pick --tool=rofi
 bindsym $mod+shift+apostrophe exec clipman clear --all
 bindsym XF86Display exec feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers
 bindsym $mod+backslash exec systemd-inhibit --what=handle-lid-switch sleep 1h
-bindsym $mod+shift+p exec swayprop
+bindsym $mod+$mod2+p exec swayprop
 
 
 # Screenshots
@@ -159,9 +159,12 @@ bindsym --release shift+Print exec grim -e 'mv $f ~/pictures/screenshots/%Y-%m-%
 # exec ulauncher
 exec gammastep
 exec wl-paste -t text --watch clipman store --no-persist
-exec dunst
-exec foot --server
+# exec dunst
+exec swaync
+# exec sway-osd
+# exec foot --server
 exec swaystart
+exec kitty --class kitty-daemon -1 --instance-group main
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
 # exec swayidle
@@ -183,10 +186,11 @@ assign [class="Ferdium"] 9
 assign [class="Slack"] 9
 assign [class="Signal"] 9
 assign [class="Element"] 9
+assign [app_id="pipe-viewer"] 10
 assign [app_id="gtk-pipe-viewer"] 10
 assign [title="ytfzf"] 10
 assign [class="LBRY"] 10
-assign [title="newsboat"] 10
+assign [app_id="newsboat"] 10
 
 for_window [instance="urxvt"] opacity set .98
 for_window [app_id="foot"] opacity set .985
@@ -211,6 +215,8 @@ for_window [instance="spotify"] floating enable, resize set 1700 1020, move scra
 #Calculator
 
 for_window [app_id="calc"] floating enable, resize set 800 400, move scratchpad, border pixel 8
+
+for_window [app_id="kitty-daemon"] move scratchpad
 
 #--------------------------------------------------
 #-------------------Movement-----------------------
@@ -312,19 +318,22 @@ bar {
 
 # adjust screen brightness
 bindsym XF86MonBrightnessUp exec light -A .7
+# bindsym XF86MonBrightnessUp exec swayosd --brightness raise
 bindsym XF86MonBrightnessDown exec light -U .7
+# bindsym XF86MonBrightnessDown exec swayosd --brightness lower
 bindsym $mod2+1 exec light -U 5
 bindsym $mod2+2 exec light -A 5
 bindsym $mod+shift+a exec light -S .01 #Min Brightness
 bindsym $mod+$mod2+j exec gdark dec
 bindsym $mod+$mod2+k exec gdark inc
 
+# bindsym --release Caps_Lock exec swayosd --caps-lock
 
 # Use pactl to adjust volume in PulseAudio.
-# bindsym $mod+i exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bindsym $mod+shift+i exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioRaiseVolume exec swayosd --output-volume raise
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym XF86AudioLowerVolume exec swayosd --output-volume lower
 bindsym shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 bindsym shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
