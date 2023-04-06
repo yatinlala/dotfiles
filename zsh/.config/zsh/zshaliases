@@ -21,7 +21,7 @@ alias ka='killall'
 alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
-alias mkaealias="alias mkae='make'"
+alias kek="make"
 
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
@@ -35,8 +35,8 @@ alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirro
 alias tpv='command mpv --vo=tct'
 
 #Devouring
-alias feh='swallow feh --scale-down'
-alias mpv='swallow mpv'
+# alias feh='swallow feh --scale-down'
+# alias mpv='swallow mpv'
 
 #Git
 alias gs='git status'
@@ -56,7 +56,7 @@ alias rmdir='rmdirtrash'
 # alias rm='rm -I'
 
 #File Jumps
-alias wmc='$EDITOR ~/.config/sway/config'
+alias wmc='$EDITOR ~/.config/hypr/hyprland.conf'
 alias wiki='$EDITOR ~/documents/wiki/index.md'
 
 #Media
@@ -89,3 +89,9 @@ alias devour='devour '
 # alias sf='fasd -sif'     # interactive file selection
 # alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 # alias zz='fasd_cd -d -i' # cd with interactive selection
+
+
+# alias 'git pull'="echo '\'git: \'pull\' is not a git command. See \'git --help\'.
+#
+# The most similar command is
+# 	tug'"

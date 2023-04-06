@@ -172,3 +172,15 @@ AGKOZAK_COLORS_PROMPT_CHAR='yellow'
 
 # opam configuration
 [[ ! -r /home/nitay/.local/share/opam/opam-init/init.zsh ]] || source /home/nitay/.local/share/opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# Some fun
+# git() {
+#     if [ "$1" = "pull" ]; then
+#         echo "WARNING: 'git pull' has been deprecated, use 'git tug' instead."
+#         echo "git: 'foo' is not a git command. See 'git --help'."
+#         echo "The most similar command is"
+#         echo "  hook"
+#     else
+#         command git "$@"
+#     fi
+# }
