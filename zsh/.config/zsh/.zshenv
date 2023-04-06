@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/.local/share/go/bin:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$HOME/.config/dynamic-colors/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/projects/scripts/toggles:$HOME/.local/share/go/bin:$HOME/projects/scripts/launch-wrappers:$HOME/projects/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$PATH"
 
 
 export SCRIPT_PATH="$HOME/code/scripts"
@@ -95,5 +95,5 @@ export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep sway  || sway
+	pgrep Hyprland  || Hyprland
 fi
