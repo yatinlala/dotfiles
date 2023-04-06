@@ -27,7 +27,8 @@ case $1 in
         setsid espanso daemon &;;
     ferdium)
         pgrep -x ferdium || gtk-launch ferdium &
-        sway "workspace 9; [class=Ferdium] focus";;
+        # sway "workspace 9; [class=Ferdium] focus";;
+        hyprctl dispatch workspace 9;;
     gmail)
         wmctrl -l | grep -q "pointer Gmail" || \
         (gtk-launch gmail; sleep 1)
@@ -78,7 +79,8 @@ case $1 in
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop --ozone-platform=wayland &
-        sway "workspace 9; [class=Signal] focus";;
+        # sway "workspace 9; [class=Signal] focus";;
+        hyprctl dispatch workspace 9;;
     spotify)
         (wmctrl -l | grep -q "pointer Spotify") || setsid spotify-launcher &
         sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
