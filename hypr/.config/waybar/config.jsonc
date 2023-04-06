@@ -2,11 +2,13 @@
 
   "layer": "top",
   "position": "top", 
-  "height": 32,
+  "height": 35,
   
   "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
-  // "modules-center": ["mpd"],
-  "modules-right":  ["tray", "pulseaudio", "network", "clock#date", "clock#time", "custom/power"],
+  // "modules-left":   ["wlr/workspaces"],
+  // "modules-center": ["mpris"],
+  // "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+  "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 
   "wlr/taskbar": {
 	"format": "{icon} {app_id}",
@@ -17,7 +19,7 @@
 	"on-click-middle": "close",
   "on-click-right": "minimize-raise",
 	"ignore-list": [
-	    "Alacritty"
+	    "kitty"
 	],
 	"app_ids-mapping": {
 	}
@@ -49,7 +51,7 @@
   },
 
   "tray": {
-    "icon-size": 14,
+    "icon-size": 16,
     "spacing": 10
   },
 
@@ -90,11 +92,33 @@
       "default": ["   ", "   ", " 墳 ", "   "]
     }
   },
-
-  "custom/power": {
-    "format": " ⏻ ",
-    "on-click": "~/.config/hypr/scripts/rofi-power"
+  "battery": {
+          "bat": "BAT0",
+          "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+          },
+          "format": "{capacity}% {icon}",
+          "format-charging": "{capacity}% ",
+          "format-plugged": "{capacity}% ",
+          "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
   },
+ 
+//   "battery": {
+//     "bat": "BAT0",
+//     "interval": 60,
+//     "states": {
+//         "warning": 30,
+//         "critical": 15
+//     },
+//     "format": "{capacity}% {icon}",
+//     "format-icons": ["", "", "", "", ""],
+//     "max-length": 25
+// },
 
   // "mpd": {
   //   "format": " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})    ",
@@ -104,6 +128,24 @@
   //   "consume-icons": {
   //     "on": " " // Icon shows only when "consume" is on
   //   },
+  "mpris": {
+	"format": "{player_icon} {dynamic}",
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+        "max-length": 35,
+	"player-icons": {
+		"default": "⏸",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "▶"
+	},
+	// "ignored-players": ["firefox"]
+},
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", ""]
+   },
     "random-icons": {
       "off": "<span color=\"#fb4934\"> </span>", // Icon grayed out when "random" is off
       "on": " "
