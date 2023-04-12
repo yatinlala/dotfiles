@@ -95,5 +95,5 @@ export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep Hyprland  || Hyprland
+	pgrep sway  || sway
 fi
