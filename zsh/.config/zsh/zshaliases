@@ -68,6 +68,7 @@ alias newsboat='news'
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
+alias spotdl='xdg-launch spotdl'
 alias firefox='xdg-launch firefox'
 alias flatpak='xdg-launch flatpak'
 alias librewolf='xdg-launch librewolf'
