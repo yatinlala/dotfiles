@@ -17,8 +17,10 @@ case $1 in
         sway "[instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] scratchpad show; \
         [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
     cmus)
-        pgrep -x cmus || $TERMINAL -a cmus -e cmus
-        sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+        # pgrep -x cmus || $TERMINAL -a cmus -e cmus
+        pgrep -x cmus || $TERMINAL --class cmus -e cmus
+        hyprctl dispatch workspace 8;;
+        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
         sway "workspace 9; [class=discord] focus";;
