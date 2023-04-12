@@ -4,7 +4,7 @@
 display_preamble = false
 
 # Disable specific steps - same options as the command line flag
-disable = ["git_repos","vim","containers","config_update","node","emacs","opam"]
+disable = ["cargo","git_repos","vim","containers","config_update","node","emacs","opam"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
