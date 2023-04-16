@@ -19,8 +19,8 @@ case $1 in
     cmus)
         # pgrep -x cmus || $TERMINAL -a cmus -e cmus
         pgrep -x cmus || $TERMINAL --class cmus -e cmus
-        hyprctl dispatch workspace 8;;
-        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+        # hyprctl dispatch workspace 8;;
+        sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
         sway "workspace 9; [class=discord] focus";;
@@ -29,8 +29,8 @@ case $1 in
         setsid espanso daemon &;;
     ferdium)
         pgrep -x ferdium || gtk-launch ferdium &
-        # sway "workspace 9; [class=Ferdium] focus";;
-        hyprctl dispatch workspace 9;;
+        sway "workspace 9; [class=Ferdium] focus";;
+        # hyprctl dispatch workspace 9;;
     gmail)
         wmctrl -l | grep -q "pointer Gmail" || \
         (gtk-launch gmail; sleep 1)
@@ -81,8 +81,8 @@ case $1 in
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
     signal)
         pgrep -x signal-desktop || setsid signal-desktop --ozone-platform=wayland &
-        # sway "workspace 9; [class=Signal] focus";;
-        hyprctl dispatch workspace 9;;
+        sway "workspace 9; [class=Signal] focus";;
+        # hyprctl dispatch workspace 9;;
     spotify)
         (wmctrl -l | grep -q "pointer Spotify") || setsid spotify-launcher &
         sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;

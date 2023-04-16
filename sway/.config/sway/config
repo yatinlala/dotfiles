@@ -4,13 +4,13 @@
 
 set $mod Mod4
 set $mod2 Mod1
-set $term kitty -1 --instance-group main
-set $term2 foot
+set $term wezterm start
+set $term2 kitty
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
 smart_borders on
-gaps inner 0
+gaps inner 3
 gaps outer 0
 default_border pixel 3
 floating_modifier $mod
@@ -33,6 +33,7 @@ bindsym $mod+shift+v exec pavucontrol
 
 #Editor
 bindsym $mod+e exec $term -e nvim
+bindsym $mod+shift+c exec code
 bindsym $mod+shift+e exec emacs
 bindsym $mod+o exec QT_QPA_PLATFORM=xcb onlyoffice-desktopeditors
 bindsym $mod+shift+o exec obsidian
@@ -60,19 +61,20 @@ bindsym $mod+shift+t exec torbrowser-launcher
 
 #Communication
 bindsym $mod+m exec toggler ferdium
+bindsym $mod+c exec toggler signal
 # set $mega Action: [d]iscord [e]lement s[l]ack [s]ignal [w]hatsapp
-set $mega Action: [e]lement [s]ignal
-bindsym $mod+c mode "$mega"
-mode "$mega" {
-    # bindsym d exec discord; workspace 9; mode "default"
-    bindsym e exec element-desktop; workspace 9; mode "default"
-    # bindsym l exec slack; workspace 9; mode "default"
-    bindsym s exec signal-desktop; workspace 9; mode "default"
-    # bindsym w exec toggler whatsapp; mode "default"
-    bindsym $mod+c mode "default"
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
+# set $mega Action: [e]lement [s]ignal
+# bindsym $mod+c mode "$mega"
+# mode "$mega" {
+#     # bindsym d exec discord; workspace 9; mode "default"
+#     bindsym e exec element-desktop; workspace 9; mode "default"
+#     # bindsym l exec slack; workspace 9; mode "default"
+#     bindsym s exec signal-desktop; workspace 9; mode "default"
+#     # bindsym w exec toggler whatsapp; mode "default"
+#     bindsym $mod+c mode "default"
+#     bindsym Escape mode "default"
+#     bindsym Return mode "default"
+# }
 
 bindsym $mod+shift+s exec ~/.config/rofi/powermenu/powermenu.sh
 
@@ -83,7 +85,7 @@ mode "$games" {
     bindsym l exec brave --profile-directory=Default --app-id=pdihgkikjgccndbckbcgjmcnpkockcjg; mode "default"
     bindsym m exec multimc; mode "default"
     bindsym s exec gtk-launch steam; mode "default"
-    bindsym t exec $term -e netris -k "hHklLJjs frn"; mode "default"
+    bindsym t exec $term -e netris -k "hHklLJjs frn" -i .15; mode "default"
     bindsym $mod+shift+g mode "default"
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -129,7 +131,7 @@ bindsym $mod+shift+r exec toggler gammastep
 #Utility
 bindsym $mod+t exec toggler habitica
 bindsym $mod+shift+d exec gtk-launch dash
-bindsym $mod+shift+c exec toggler calendar
+# bindsym $mod+shift+c exec toggler calendar
 bindsym $mod+i exec rofimoji
 # bindsym $mod+i exec rofi -show emoji -modi emoji
 # bindsym $mod+shift+i exec rofi -show calc -modi calc -no-show-match -no-sort
@@ -164,11 +166,12 @@ exec swaync
 # exec sway-osd
 # exec foot --server
 exec swaystart
-exec kitty --class kitty-daemon -1 --instance-group main
+# exec kitty --class kitty-daemon -1 --instance-group main
 exec blueman-applet
 exec QT_QPA_PLATFORM='xcb' megasync
 # exec swayidle
 # exec_always nm-applet
+exec_always autotiling -w 1 2 3 4 5 6 7 8 10 -l 2
 # exec GDK_BACKEND=x11 emacs --daemon
 
 for_window [app_id="blueman-manager"] floating enable
@@ -195,6 +198,8 @@ assign [app_id="newsboat"] 10
 for_window [instance="urxvt"] opacity set .98
 for_window [app_id="foot"] opacity set .985
 for_window [app_id="kitty"] opacity set .985
+for_window [app_id="org.wezfurlong.wezterm"] opacity set .97
+for_window [app_id="newsboat"] opacity set .97
 
 #Vimwiki
 for_window [app_id="notes"] floating enable, resize set 1200 900, move scratchpad, border pixel 8
