@@ -1,7 +1,7 @@
 return {
 	{ "lifepillar/vim-gruvbox8" },
 	{ "tamton-aquib/duck.nvim" },
-	{ "tpope/vim-sleuth" },
+	{ "tpope/vim-sleuth", event =  "BufReadPost" },
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"ahmedkhalf/project.nvim",

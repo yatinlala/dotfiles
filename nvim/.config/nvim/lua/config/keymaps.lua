@@ -32,6 +32,8 @@ vim.keymap.set("n", "<c-\\>", ":ToggleTerm<CR>", {})
 
 vim.keymap.set("n", "gf", ":e <cfile><CR>", opts)
 
+vim.keymap.set("n","<c-p>", ":lua require('telescope.builtin').find_files()<cr>")
+
 -- -- Smart(ish) compilation
 -- vim.keymap.set('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
 -- -- Enable spell checking
@@ -114,7 +116,6 @@ local leader = {
 	},
 	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
-	[" "] = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find files" },
 	["."] = { ":Telescope file_browser<CR>", "Browse Files" },
 	g = {
 		name = "Git",
