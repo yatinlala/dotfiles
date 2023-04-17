@@ -57,7 +57,7 @@ alias rmdir='rmdirtrash'
 # alias rm='rm -I'
 
 #File Jumps
-alias wmc='$EDITOR ~/.config/sway/config'
+alias wmc='$EDITOR ~/.config/hypr/hyprland.conf'
 alias wiki='$EDITOR ~/documents/wiki/index.md'
 
 #Media
