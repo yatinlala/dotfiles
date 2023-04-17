@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ferdium
-Exec=/home/nitay/projects/scripts/xdg-lauch /usr/bin/ferdium %U
+Exec=/home/nitay/code/scripts/xdg-lauch /usr/bin/ferdium %U
 Terminal=false
 Type=Application
 Icon=ferdium

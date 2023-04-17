@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=The Dash
-Exec=/home/nitay/projects/scripts/xdg-launch /opt/brave-bin/brave --test-type --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib
+Exec=/home/nitay/code/scripts/xdg-launch /opt/brave-bin/brave --test-type --profile-directory=Default --app-id=aaplghibfpkoiagapjbmhemjhkehncib
 Icon=brave-aaplghibfpkoiagapjbmhemjhkehncib-Default
 StartupWMClass=crx_aaplghibfpkoiagapjbmhemjhkehncib

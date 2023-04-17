@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Muse Hub
-Exec=/home/nitay/projects/scripts/xdg-launch muse-hub
+Exec=/home/nitay/code/scripts/xdg-launch muse-hub
 Icon=muse-hub
 Terminal=false
 Type=Application
