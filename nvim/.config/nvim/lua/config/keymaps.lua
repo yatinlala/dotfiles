@@ -148,6 +148,7 @@ local leader = {
 	l = {
 		name = "LSP",
 		-- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		c = { "<cmd>lua require('codeium').setup({})<cr>", "Activate Codeium" },
 		d = {
 			"<cmd>Telescope lsp_document_diagnostics<cr>",
 			"Document Diagnostics",

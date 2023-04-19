@@ -40,9 +40,10 @@ function M.config()
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lua" },
+			{ name = "codeium" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip", max_item_count = 5 },
-			{ name = "buffer", keyword_length = 5 },
+			{ name = "buffer",  keyword_length = 5 },
 			{ name = "path" },
 			{ name = "emoji" },
 			{ name = "neorg" },
@@ -51,6 +52,7 @@ function M.config()
 			format = function(_entry, vim_item)
 				local icons = {
 					Class = " ",
+					Codeium = "",
 					Color = " ",
 					Constant = " ",
 					Constructor = " ",

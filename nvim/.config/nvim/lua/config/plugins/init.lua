@@ -1,7 +1,7 @@
 return {
 	{ "lifepillar/vim-gruvbox8" },
 	{ "tamton-aquib/duck.nvim" },
-	{ "tpope/vim-sleuth", event =  "BufReadPost" },
+	{ "tpope/vim-sleuth", event = "BufReadPost" },
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"ahmedkhalf/project.nvim",
@@ -24,17 +24,29 @@ return {
 		config = true,
 	},
 
+	-- {
+	-- 	"nvim-orgmode/orgmode",
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("orgmode").setup_ts_grammar()
+	-- 		require("orgmode").setup({
+	-- 			org_agenda_files = "~/documents/org/*",
+	-- 			org_default_notes_file = "~/documents/org/refile.org",
+	-- 		})
+	-- 	end,
+	-- },
 	{
-		"nvim-orgmode/orgmode",
-		lazy = false,
-		config = function()
-			require("orgmode").setup_ts_grammar()
-			require("orgmode").setup({
-				org_agenda_files = "~/documents/org/*",
-				org_default_notes_file = "~/documents/org/refile.org",
-			})
-		end,
+		"jcdickinson/codeium.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		-- config = function()
+		-- 	require("codeium").setup({})
+		-- end,
+		lazy = true,
 	},
+
 	-- {
 	--     "folke/noice.nvim",
 	--     config = function()
