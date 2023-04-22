@@ -35,8 +35,8 @@ cmd open ${{
         application/pdf) zathura "$f";;
         # video/*|audio/*) swallow mpv --force-window=yes "$f";;
         video/*|audio/*) mpv --force-window=yes "$f";;
-        image/*) swallow feh --scale-down "$f";;
-        # image/*) feh --scale-down "$f";;
+        # image/*) swallow feh --scale-down "$f";;
+        image/*) feh --scale-down "$f";;
         *) xdg-open "$f";;
     esac
 }}
