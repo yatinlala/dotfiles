@@ -1,7 +1,14 @@
 #!/bin/sh
 
 image() {
-    chafa "$1" -s "$(($2-2))x$3" | sed 's/#/\n#/g'
+    file=$1
+    w=$2
+    h=$3
+    x=$4
+    y=$5
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+    exit 1
+
 }
 
 batorcat() {
@@ -17,7 +24,6 @@ batorcat() {
 
 CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 mkdir -p "$HOME/.cache/lf"
-
 case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.tgz|*.tar.gz) tar tzf "$1" ;;
 	*.tar.bz2|*.tbz2) tar tjf "$1" ;;
