@@ -6,10 +6,10 @@
   
   // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
   "modules-left":   ["wlr/workspaces"],
-  // "modules-center": ["mpris"],
+  "modules-center": ["mpris"],
   // "modules-center": ["mpd"],
-  // "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
-  "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+  "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+  // "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 
   "wlr/taskbar": {
 	"format": "{icon} {app_id}",
@@ -65,12 +65,12 @@
 
   "clock#date": {
     "interval": 10,
-    "format": "    {:%e %b %y} ", // icon: calendar-alt
+    "format": "    {:%b%e} ", // icon: calendar-alt
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
   "network": {
-    "format-wifi": " 直 {essid} ",
+    "format-wifi": "   {essid} ",
     "format-ethernet": "   {essid} ",
     "format-linked": "{ifname} (no ip)  ",
     "format-disconnected": " 睊 disconnected ",
@@ -91,7 +91,7 @@
       "phone": "   ",
       "portable": "   ",
       "car": "    ",
-      "default": ["   ", "   ", " 墳 ", "   "]
+      "default": ["   ", "   ", " 󰕾  ", "   "]
     }
   },
   "battery": {

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Waydroid
+Exec=waydroid show-full-ui
+X-Purism-FormFactor=Workstation;Mobile;
+Icon=waydroid

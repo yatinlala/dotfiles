@@ -126,6 +126,30 @@ bindkey '^R' fzf-history-widget
 zle -N lf
 bindkey '^a' lf
 
+ff() {
+    files_list="$(fzf -m)"
+    return_code="$?"
+
+    if [ "$return_code" -ne 0 ]; then
+        echo "Nothing to do; fzf return_code = $return_code"
+        return "$return_code"
+    fi
+
+    echo "FILES SELECTED:"
+    echo "$files_list"
+
+    # Convert the above list of newline-separated file names into an array
+    # - See: https://stackoverflow.com/a/24628676/4561887
+    SAVEIFS=$IFS   # Save current IFS (Internal Field Separator)
+    IFS=$'\n'      # Change IFS to newline char
+    files_array=($files_list) # split this newline-separated string into an array
+    IFS=$SAVEIFS   # Restore original IFS
+
+    # Call vim with each member of the array as an argument
+    nvim "${files_array[@]}"
+}
+
+
 # zle -N tmux-sessionizer
 # bindkey '^f' tmux-sessionizer
 

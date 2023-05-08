@@ -12,7 +12,7 @@ alias ls='exa --icons'
 
 #Shorten frequently used commands
 alias e='$EDITOR'
-alias emacs='emacsclient -nw'
+# alias emacs='emacsclient -nw'
 alias t='tmux'
 alias lg='lazygit'
 alias la='ls -alh'

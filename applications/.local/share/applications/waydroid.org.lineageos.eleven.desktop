@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Music
+Exec=waydroid app launch org.lineageos.eleven
+Icon=/home/nitay/.local/share/waydroid/data/icons/org.lineageos.eleven.png
+X-Purism-FormFactor=Workstation;Mobile;

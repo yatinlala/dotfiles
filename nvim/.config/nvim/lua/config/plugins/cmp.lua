@@ -66,7 +66,7 @@ function M.config()
 					Keyword = " ",
 					Method = "ƒ ",
 					Property = " ",
-					Snippet = "﬌ ",
+					Snippet = " ",
 					Struct = " ",
 					Text = " ",
 					Unit = " ",

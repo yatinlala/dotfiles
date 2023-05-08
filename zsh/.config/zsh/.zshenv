@@ -20,6 +20,7 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_JUNK_DIR="$HOME/.local/xdg-garbage"
+export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 export CALIBRE_USE_DARK_PALETTE=1
 #export GTK_THEME='Adwaita:dark'
@@ -72,7 +73,7 @@ export VISUAL="nvim"
 export BROWSER="xdg-launch brave-browser"
 export TERMINAL="kitty -1"
 export VIDEO="mpv"
-export IMAGE="feh"
+export IMAGE="imv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="bat --paging=always"

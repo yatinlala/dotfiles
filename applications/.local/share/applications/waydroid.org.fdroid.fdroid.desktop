@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=F-Droid
+Exec=waydroid app launch org.fdroid.fdroid
+Icon=/home/nitay/.local/share/waydroid/data/icons/org.fdroid.fdroid.png
+X-Purism-FormFactor=Workstation;Mobile;
