@@ -50,19 +50,6 @@ cmd bulk-rename ${{
 
 }}
 
-
-cmd mkdir ${{
-  printf "Directory Name: "
-  read ans
-  mkdir "$ans"
-}}
-
-cmd mkfile ${{
-  printf "File Name: "
-  read ans
-  $EDITOR $ans
-}}
-
 cmd chmod ${{
   printf "Mode Bits: "
   read ans
@@ -77,11 +64,6 @@ cmd chmod ${{
 
 cmd sudoedit ${{
   sudoedit "$f"
-}}
-cmd sudomkfile ${{
-  printf "File Name: "
-  read ans
-  sudo $EDITOR $ans
 }}
 
 cmd smart_w ${{
@@ -220,9 +202,9 @@ map x cut
 map y copy
 map C clear
 map <enter> open
-map mf mkfile
-map mr sudomkfile
-map md mkdir
+map mr :push %sudo<space>touch<space>
+map mf :push %touch<space>
+map md :push %mkdir<space>
 map ch chmod
 map H top
 map L bottom

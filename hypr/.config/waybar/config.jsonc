@@ -74,7 +74,7 @@
     "format-ethernet": "   {essid} ",
     "format-linked": "{ifname} (no ip)  ",
     "format-disconnected": " 睊 disconnected ",
-    "tooltip-format-wifi": "signal strenght: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}"
+    "tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}"
   },
 
   "pulseaudio": {
