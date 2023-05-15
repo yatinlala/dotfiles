@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
-	keys = { "gc", "gcc", "gbc", "v", "V" },
+	keys = { "gc", "gb", "gcc", "gbc", "v", "V" },
 	config = function()
 		local comment_ft = require("Comment.ft")
 

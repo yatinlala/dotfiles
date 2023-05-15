@@ -1,6 +1,25 @@
 return {
 	{ "lifepillar/vim-gruvbox8" },
 	{ "tamton-aquib/duck.nvim" },
+	{
+		"yashlala/vim-sayonara",
+		keys = { "gs", "gS" },
+		config = function()
+			vim.g.sayonara_confirm_quit = true
+			vim.g.sayonara_dont_quit = true
+			vim.keymap.set("n", "gs", ":Sayonara<CR>", { silent = true })
+			vim.keymap.set("n", "gS", ":Sayonara!<CR>", { silent = true })
+		end,
+	},
+	{
+		"kylechui/nvim-surround",
+		keys = { "ys", "ds", "cs" },
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup()
+		end,
+	},
+
 	{ "tpope/vim-sleuth", event = "BufReadPost" },
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
