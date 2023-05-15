@@ -21,7 +21,7 @@ Name[zh_Hans]=Gradience
 Name[ro]=Gradience
 Name[uk]=Gradience
 Name=Gradience
-Exec=/home/nitay/code/scripts/xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gradience com.github.GradienceTeam.Gradience
+Exec=xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=gradience com.github.GradienceTeam.Gradience
 Icon=com.github.GradienceTeam.Gradience
 Terminal=false
 Type=Application
