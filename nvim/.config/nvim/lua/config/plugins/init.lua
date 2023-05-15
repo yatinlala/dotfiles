@@ -23,6 +23,7 @@ return {
 		event = "BufWinEnter",
 		config = true,
 	},
+	{ "lewis6991/gitsigns.nvim", config = true, event = "BufWinEnter" },
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -41,7 +42,7 @@ return {
 		event = "BufWinEnter",
 		config = function()
 			require("indent_blankline").setup({
-				char = '┆',
+				char = "┆",
 			})
 		end,
 	},
