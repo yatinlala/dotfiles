@@ -1,7 +1,8 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     "debugloop/telescope-undo.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    event = "BufWinEnter",
 }
 
 function M.config()

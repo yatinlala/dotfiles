@@ -1,10 +1,9 @@
 return {
     "vimwiki/vimwiki",
     lazy = false,
-    disable = true,
     -- cmd = { "VimwikiIndex", "VimwikiDiaryIndex", "VimwikiMakeDiaryNote" },
     -- ft = { "vimwiki" },
-    setup = function()
+    config = function()
         vim.g.vimwiki_list = {
             path = "/home/nitay/documents/wiki",
             syntax = "markdown",

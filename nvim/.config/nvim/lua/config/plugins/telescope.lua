@@ -57,11 +57,4 @@ function M.config()
 
 end
 
-M.search_dotfiles = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< vimrc >",
-		cwd = "~/.dotfiles/nvim/.config/nvim/",
-	})
-end
-
 return M

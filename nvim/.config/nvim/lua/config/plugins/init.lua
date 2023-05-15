@@ -12,7 +12,7 @@ return {
 	{
 		"andymass/vim-matchup",
 		event = "BufReadPost",
-		setup = function()
+		init = function()
 			vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 			vim.g.matchup_matchparen_deferred = 1
 			vim.b.matchup_matchparen_enabled = 0
@@ -22,6 +22,28 @@ return {
 		"ethanholz/nvim-lastplace",
 		event = "BufWinEnter",
 		config = true,
+	},
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"kyazdani42/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+		event = "BufWinEnter",
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("indent_blankline").setup({
+				char = '┆',
+			})
+		end,
 	},
 
 	-- {

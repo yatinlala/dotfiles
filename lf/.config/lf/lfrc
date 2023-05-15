@@ -167,6 +167,7 @@ cmd trash ${{
     fi
   done
 }}
+
 cmd restore_trash ${{
   trash-restore
 }}
