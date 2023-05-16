@@ -66,17 +66,19 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"nvim-orgmode/orgmode",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("orgmode").setup_ts_grammar()
-	-- 		require("orgmode").setup({
-	-- 			org_agenda_files = "~/documents/org/*",
-	-- 			org_default_notes_file = "~/documents/org/refile.org",
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"nvim-orgmode/orgmode",
+		-- event = "VeryLazy",
+		lazy = false,
+		dependencies = 'nvim-treesitter/nvim-treesitter',
+		config = function()
+			require("orgmode").setup_ts_grammar()
+			require("orgmode").setup({
+				org_agenda_files = "~/documents/org/*",
+				org_default_notes_file = "~/documents/org/refile.org",
+			})
+		end,
+	},
 	{
 		"jcdickinson/codeium.nvim",
 		dependencies = {
@@ -89,21 +91,21 @@ return {
 		lazy = true,
 	},
 
-	-- {
-	--     "folke/noice.nvim",
-	--     config = function()
-	--         require("noice").setup({
-	--             cmdline = {
-	--                 view = "cmdline",
-	--             },
-	--         })
-	--     end,
-	--     lazy = false,
-	--     dependencies = {
-	--         "MunifTanjim/nui.nvim",
-	--         "rcarriga/nvim-notify",
-	--     },
-	-- },
+	{
+	    "folke/noice.nvim",
+	    config = function()
+	        require("noice").setup({
+	            cmdline = {
+	                view = "cmdline",
+	            },
+	        })
+	    end,
+	    lazy = false,
+	    dependencies = {
+	        "MunifTanjim/nui.nvim",
+	        "rcarriga/nvim-notify",
+	    },
+	},
 	-- {
 	--     "rcarriga/nvim-notify",
 	--     config = function()

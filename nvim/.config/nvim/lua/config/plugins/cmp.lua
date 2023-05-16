@@ -43,10 +43,10 @@ function M.config()
 			{ name = "codeium" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip", max_item_count = 5 },
-			{ name = "buffer",  keyword_length = 5 },
+			{ name = "buffer", keyword_length = 5 },
 			{ name = "path" },
 			{ name = "emoji" },
-			{ name = "neorg" },
+			{ name = "orgmode" },
 		}),
 		formatting = {
 			format = function(_entry, vim_item)
@@ -58,7 +58,7 @@ function M.config()
 					Constructor = " ",
 					Enum = "了 ",
 					EnumMember = " ",
-					Field = " ",
+					Field = "󰜢 ",
 					File = " ",
 					Folder = " ",
 					Function = " ",
@@ -70,7 +70,7 @@ function M.config()
 					Struct = " ",
 					Text = " ",
 					Unit = " ",
-					Value = " ",
+					Value = "󰎠 ",
 					Variable = " ",
 				}
 				if icons[vim_item.kind] then
@@ -78,6 +78,27 @@ function M.config()
 				end
 				return vim_item
 			end,
+		},
+	})
+
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{
+				name = "cmdline",
+				option = {
+					ignore_cmds = { "Man", "!" },
+				},
+			},
+		}),
+	})
+	-- `/` cmdline setup.
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
 		},
 	})
 end

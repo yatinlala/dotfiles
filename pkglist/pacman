@@ -23,6 +23,7 @@ docker-compose
 dosfstools
 dunst
 efibootmgr
+emacs-nativecomp
 exa
 fd
 ffmpeg
@@ -71,6 +72,7 @@ mpv
 mtools
 musescore
 nasm
+ncdu
 ncmpcpp
 neofetch
 neovim
