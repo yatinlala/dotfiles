@@ -1,6 +1,13 @@
 return {
-	{ "lifepillar/vim-gruvbox8" },
 	{ "tamton-aquib/duck.nvim" },
+	{
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function(_, _)
+			vim.cmd.colorscheme("gruvbox")
+		end,
+	},
 	{
 		"yashlala/vim-sayonara",
 		keys = { "gs", "gS" },
@@ -32,6 +39,7 @@ return {
 		"andymass/vim-matchup",
 		event = "BufReadPost",
 		init = function()
+			vim.cmd([[ hi MatchWord cterm=underline gui=underline ]])
 			vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
 			vim.g.matchup_matchparen_deferred = 1
 			vim.b.matchup_matchparen_enabled = 0
@@ -54,7 +62,7 @@ return {
 		opts = {
 			-- configurations go here
 		},
-		event = "BufWinEnter",
+		cmd = "Barbecue",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -70,7 +78,7 @@ return {
 		"nvim-orgmode/orgmode",
 		-- event = "VeryLazy",
 		lazy = false,
-		dependencies = 'nvim-treesitter/nvim-treesitter',
+		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("orgmode").setup_ts_grammar()
 			require("orgmode").setup({
@@ -79,6 +87,45 @@ return {
 			})
 		end,
 	},
+	-- {
+	-- 	"nvim-neorg/neorg",
+	-- 	event = "VeryLazy",
+	-- 	build = ":Neorg sync-parsers",
+	-- 	config = function()
+	-- 		require("neorg").setup({
+	-- 			load = {
+	-- 				["core.defaults"] = {},
+	-- 				["core.concealer"] = {},
+	-- 				["core.dirman"] = { -- Manage your directories with Neorg
+	-- 					config = {
+	-- 						workspaces = {
+	-- 							notes = "~/documents/org",
+	-- 						},
+	-- 						default_workspace = "notes",
+	-- 						--[[ autodetect = true, ]]
+	-- 						--[[ autochdir = true, ]]
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	-- 		{
+	-- 			"nvim-treesitter/nvim-treesitter",
+	-- 			opts = {
+	-- 				auto_install = true,
+	-- 				highlight = {
+	-- 					enable = true,
+	-- 					additional_vim_regex_highlighting = false,
+	-- 				},
+	-- 			},
+	-- 			config = function(_, opts)
+	-- 				require("nvim-treesitter.configs").setup(opts)
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"jcdickinson/codeium.nvim",
 		dependencies = {
@@ -91,21 +138,21 @@ return {
 		lazy = true,
 	},
 
-	{
-	    "folke/noice.nvim",
-	    config = function()
-	        require("noice").setup({
-	            cmdline = {
-	                view = "cmdline",
-	            },
-	        })
-	    end,
-	    lazy = false,
-	    dependencies = {
-	        "MunifTanjim/nui.nvim",
-	        "rcarriga/nvim-notify",
-	    },
-	},
+	-- {
+	--     "folke/noice.nvim",
+	--     config = function()
+	--         require("noice").setup({
+	--             cmdline = {
+	--                 view = "cmdline",
+	--             },
+	--         })
+	--     end,
+	--     lazy = false,
+	--     dependencies = {
+	--         "MunifTanjim/nui.nvim",
+	--         "rcarriga/nvim-notify",
+	--     },
+	-- },
 	-- {
 	--     "rcarriga/nvim-notify",
 	--     config = function()

@@ -62,8 +62,8 @@ function M.config()
 	end
 
 	local lf = Terminal:new({
-		cmd = "zsh -ic lf",
-		-- dir = "git_dir",
+		cmd = "lf " .. vim.fn.expand('%:p'),
+		-- dir = vim.fn.expand('%:p'):match("(.*[/\\])"),
 		direction = "float",
 		float_opts = {
 			border = "curved",

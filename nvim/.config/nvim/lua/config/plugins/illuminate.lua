@@ -5,6 +5,10 @@ local M = {
 }
 
 function M.config()
+	vim.cmd [[
+        hi def IlluminatedWordText guibg=#504945
+        hi def IlluminatedWordRead guibg=#504945
+        hi def IlluminatedWordWrite guibg=#504945 ]]
 	require("illuminate").configure({
 		-- providers: provider used to get references in the buffer, ordered by priority
 		providers = {

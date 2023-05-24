@@ -23,12 +23,12 @@ function M.toggleBg()
 end
 
 function M.setColors()
-	vim.cmd("colorscheme gruvbox8")
+	vim.cmd("colorscheme gruvbox")
 	vim.cmd([[
-    hi def IlluminatedWordText guibg=#504945
-    hi def IlluminatedWordRead guibg=#504945
-    hi def IlluminatedWordWrite guibg=#504945
-    hi MatchWord cterm=underline gui=underline
+        hi def IlluminatedWordText guibg=#504945
+        hi def IlluminatedWordRead guibg=#504945
+        hi def IlluminatedWordWrite guibg=#504945
+        hi MatchWord cterm=underline gui=underline
     ]])
 end
 

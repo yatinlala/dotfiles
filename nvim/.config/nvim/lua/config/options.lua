@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -14,6 +14,8 @@ vim.opt.splitbelow = true                       -- force all horizontal splits t
 vim.opt.splitright = true                       -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
+vim.o.tabstop = 4
+vim.o.conceallevel = 2
 
 -- vim.opt.updatetime = 100                        -- faster completion (4000ms default)
 -- vim.opt.timeoutlen = 100                        -- time to wait for a mapped sequence to complete (in milliseconds)

@@ -14,6 +14,7 @@ downgrade
 dragon-drop
 espanso-wayland
 ferdium-bin
+github-desktop-bin
 grimshot
 htim
 keyd
@@ -26,12 +27,14 @@ multimc-bin
 muse-hub-bin
 netris-git
 nsync
+nvm
 nwg-look-bin
 paru
 pcsx2-bin
 pipe-viewer-git
 python-coloredlogs
 python-gbinder
+python2-bin
 rmtrash
 rofi-lbonn-wayland-git
 snap-pac-grub

@@ -1,6 +1,7 @@
 return {
     "vimwiki/vimwiki",
     lazy = false,
+    -- enabled = false,
     -- cmd = { "VimwikiIndex", "VimwikiDiaryIndex", "VimwikiMakeDiaryNote" },
     -- ft = { "vimwiki" },
     config = function()
