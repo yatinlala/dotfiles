@@ -23,15 +23,13 @@ libglibutil
 librewolf-bin
 mailspring
 megasync-bin
-multimc-bin
 muse-hub-bin
 netris-git
 nsync
-nvm
 nwg-look-bin
 paru
-pcsx2-bin
 pipe-viewer-git
+prismlauncher-qt5-bin
 python-coloredlogs
 python-gbinder
 python2-bin
@@ -39,6 +37,7 @@ rmtrash
 rofi-lbonn-wayland-git
 snap-pac-grub
 snapper-gui-git
+spacecadetpinball-git
 swayfx-git
 swaylock-effects-git
 swaync

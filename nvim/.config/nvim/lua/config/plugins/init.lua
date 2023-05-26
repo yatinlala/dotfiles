@@ -55,6 +55,7 @@ return {
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
 		version = "*",
+		event = "VeryLazy",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"kyazdani42/nvim-web-devicons", -- optional dependency
@@ -62,7 +63,6 @@ return {
 		opts = {
 			-- configurations go here
 		},
-		cmd = "Barbecue",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",

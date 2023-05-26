@@ -19,8 +19,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 
-vim.keymap.set("n", "<S-B>", ":Barbecue toggle<CR>", opts)
-
 -- Centered searches
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
@@ -77,6 +75,7 @@ local leader = {
 		end,
 		"buffers",
 	},
+	B = { "<cmd>Barbecue toggle<CR>", "toggle barbecue" },
 	c = { "<cmd>ColorizerToggle<CR>", "toggle colorizer" },
 	C = { require("util").toggleBg, "toggle dark/light" },
 	D = {
