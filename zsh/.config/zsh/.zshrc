@@ -12,8 +12,8 @@ unsetopt BEEP # Beeping sucks
 # setopt interactive_comments
 
 # History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE="$XDG_CACHE_HOME"/history.zsh
 
 # Basic auto/tab complete:

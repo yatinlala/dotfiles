@@ -49,6 +49,9 @@ alias gr='git restore'
 alias gd='git diff'
 alias gp='git push'
 
+#Docker
+alias dl='docker logs --follow --timestamps'
+
 #rmtrash
 alias rm='rmtrash -I'
 alias rmdir='rmdirtrash'
