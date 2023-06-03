@@ -8,6 +8,6 @@ systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal
 systemctl --user start wireplumber
 
 # Get mouse cursor theme to be respected
-gsettings set org.gnome.desktop.interface cursor-theme "Breeze_Snow"
+# gsettings set org.gnome.desktop.interface cursor-theme "Breeze_Snow"
 
 # import-gsettings
