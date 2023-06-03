@@ -254,6 +254,7 @@ map gw cd ~/pictures/wallpapers
 map gm cd ~/audio/music
 
 map gv cd ~/videos
+map gT cd ~/videos/todo
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
