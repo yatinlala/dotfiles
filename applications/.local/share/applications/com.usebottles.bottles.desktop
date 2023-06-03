@@ -60,7 +60,7 @@ Comment[ta]=விண்டோஸ் மென்பொருளை இயக்
 Comment[ie]=Executer programmas por Windows
 Comment=Run Windows Software
 Icon=com.usebottles.bottles
-Exec=/home/nitay/code/scripts/xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=bottles --file-forwarding com.usebottles.bottles @@u %u @@
+Exec=xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=bottles --file-forwarding com.usebottles.bottles @@u %u @@
 Terminal=false
 Type=Application
 Categories=Utility;GNOME;GTK;
