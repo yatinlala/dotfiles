@@ -254,7 +254,7 @@ map gw cd ~/pictures/wallpapers
 map gm cd ~/audio/music
 
 map gv cd ~/videos
-map gT cd ~/videos/todo
+map gt cd ~/videos/todo
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
@@ -270,7 +270,7 @@ map gul cd /usr/local
 map gus<space> cd /usr/share
 map gusa cd /usr/share/applications
 
-map gt cd ~/.local/share/Trash/files
+map gT cd ~/.local/share/Trash/files
 
 map g/ cd /
 map ge cd /etc
