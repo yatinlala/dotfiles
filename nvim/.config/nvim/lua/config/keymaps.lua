@@ -5,7 +5,7 @@ local wk = require("which-key")
 -- Normal --
 
 -- Clear search highlights
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<CR><esc>")
 
 -- Don't yank on x
 vim.keymap.set("n", "x", '"_x', opts)
@@ -28,11 +28,11 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 -- Centered line cat
 vim.keymap.set("n", "J", "mzJ'z", opts)
 
-vim.keymap.set("n", "<c-\\>", ":ToggleTerm<CR>", {})
+vim.keymap.set("n", "<c-\\>", ":ToggleTerm<CR>", opts)
 
 vim.keymap.set("n", "gf", ":e <cfile><CR>", opts)
 
-vim.keymap.set("n","<c-p>", ":lua require('telescope.builtin').find_files()<cr>")
+vim.keymap.set("n","<c-p>", ":lua require('telescope.builtin').find_files()<CR>", opts)
 
 -- -- Smart(ish) compilation
 -- vim.keymap.set('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
