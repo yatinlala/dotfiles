@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ferdium
-Exec=xdg-launch /usr/bin/ferdium %U
+Exec=xdg-launch /usr/bin/ferdium --ozone-platform=wayland %U
 Terminal=false
 Type=Application
 Icon=ferdium
