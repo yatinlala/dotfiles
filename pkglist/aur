@@ -17,6 +17,10 @@ ferdium-bin
 github-desktop-bin
 gnome-metronome-git
 grimshot
+haskell-connection
+haskell-x509-store
+haskell-x509-system
+haskell-x509-validation
 htim
 keyd
 libgbinder
@@ -35,7 +39,9 @@ python-coloredlogs
 python-gbinder
 python2-bin
 rmtrash
+rofi-blocks-git
 rofi-lbonn-wayland-git
+rofi-search-git
 snap-pac-grub
 snapper-gui-git
 spacecadetpinball-git
