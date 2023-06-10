@@ -4,6 +4,10 @@ return {
 	config = function()
 		require("bufferline").setup({
 			options = {
+				style_preset = require('bufferline').style_preset.no_italic,
+				buffer_selected = {
+					italic = false,
+				},
 			-- 	max_name_length = 20,
 			-- 	max_prefix_length = 20, -- prefix used when a buffer is de-duplicated
 			-- 	tab_size = 20,
