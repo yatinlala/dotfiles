@@ -258,7 +258,7 @@ map gt cd ~/videos/todo
 
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
-map glx cd ~/.local/xdg-garbage
+# map glx cd ~/.local/xdg-garbage
 
 map glm<space> cd ~/.local/mount
 map glmc cd ~/.local/mount/cslab
