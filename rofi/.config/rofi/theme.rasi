@@ -8,7 +8,8 @@
  */
 
 configuration {
-	font:							"BlexMono Nerd Font 11";
+	/*font:							"BlexMono Nerd Font 11"; */
+	font:							"Ligalex Mono 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";

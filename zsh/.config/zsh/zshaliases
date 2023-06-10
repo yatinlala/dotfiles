@@ -61,7 +61,7 @@ alias rmdir='rmdirtrash'
 
 #File Jumps
 alias wmc='$EDITOR ~/.config/hypr/hyprland.conf'
-alias wiki='$EDITOR ~/documents/wiki/index.md'
+alias wiki='emacsclient -a -nw ~/documents/org/main.org'
 
 #Media
 alias yt="yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*'"
@@ -69,6 +69,8 @@ alias yta='yt-dlp --extract-audio'
 alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 # alias newsboat='news'
+
+alias S="rofi -theme /home/nitay/.config/rofi/rofi-search-theme.rasi -modi blocks -blocks-wrap /usr/bin/rofi-search -show blocks -lines 4 -eh 4 -kb-custom-1 'Control+y'"
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
