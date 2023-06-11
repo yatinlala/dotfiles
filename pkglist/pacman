@@ -23,7 +23,6 @@ docker-compose
 dosfstools
 dunst
 efibootmgr
-emacs-nativecomp
 exa
 fd
 ffmpeg
