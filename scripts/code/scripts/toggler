@@ -85,7 +85,7 @@ case $1 in
         # sway "workspace 9; [class=Signal] focus";;
         hyprctl dispatch workspace 9;;
     spotify)
-        (wmctrl -l | grep -q "pointer Spotify") || setsid spotify-launcher &
+        (wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
         # sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
         hyprctl dispatch workspace 8;;
     spotify-web)
