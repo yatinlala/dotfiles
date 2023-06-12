@@ -1,4 +1,5 @@
 refresh-on-startup no
+reload-threads 50
 show-title-bar no
 external-url-viewer urlview
 browser lynx
@@ -28,6 +29,9 @@ bind-key d pagedown
 bind-key u pageup
 bind-key u show-urls
 
+
+#include /usr/share/doc/newsboat/contrib/colorschemes/gruvbox
+
 # colors color background color229   default
 color listnormal          color229   default
 color listnormal_unread   color229   default bold
@@ -43,3 +47,7 @@ highlight article "https?://[^ ]+" color46 default underline
 highlight article "\\[[0-9]+\\]" color63 default bold
 highlight article "\\[image\\ [0-9]+\\]" color63 default bold
 highlight feedlist "^─.*$" color61 color235 bold
+
+
+highlight feedlist "---.*---" color116 default bold
+highlight feedlist ".*0/0.." default default invis

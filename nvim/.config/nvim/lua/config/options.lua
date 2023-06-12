@@ -16,6 +16,7 @@ vim.opt.swapfile = false                        -- creates a swapfile
 vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
 vim.o.tabstop = 4
 vim.o.conceallevel = 2
+vim.o.pumheight = 15
 
 -- vim.opt.updatetime = 100                        -- faster completion (4000ms default)
 -- vim.opt.timeoutlen = 100                        -- time to wait for a mapped sequence to complete (in milliseconds)
