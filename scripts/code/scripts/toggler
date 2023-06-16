@@ -59,10 +59,9 @@ case $1 in
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
-        wmctrl -l | grep -q "pointer notes" || \
-        # swaymsg -t get_tree | grep "\"app_id\": \"notes\"" || \
-        $TERMINAL -a notes -e nvim ~/documents/wiki/index.md && sleep 0.1
-        sway "[app_id=notes] scratchpad show; [app_id=notes] move position center";;
+        pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
+        hyprctl dispatch workspace 7;;
+        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
         sway "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;

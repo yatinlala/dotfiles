@@ -61,7 +61,7 @@ alias rmdir='rmdirtrash'
 
 #File Jumps
 alias wmc='$EDITOR ~/.config/hypr/hyprland.conf'
-alias wiki='emacsclient -a -nw ~/documents/org/main.org'
+alias wiki='emacs -nw ~/documents/org/main.org'
 
 #Media
 alias yt="yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*'"

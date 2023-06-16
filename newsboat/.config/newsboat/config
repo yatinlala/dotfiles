@@ -1,5 +1,5 @@
 refresh-on-startup no
-reload-threads 50
+reload-threads 100
 show-title-bar no
 external-url-viewer urlview
 browser lynx

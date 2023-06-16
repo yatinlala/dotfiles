@@ -23,6 +23,7 @@ docker-compose
 dosfstools
 dunst
 efibootmgr
+emacs-nativecomp
 exa
 fd
 ffmpeg
@@ -144,6 +145,7 @@ powertop
 pv
 pycharm-community-edition
 python-pip
+python-pipx
 rclone
 reflector
 retroarch
@@ -225,6 +227,7 @@ wl-clipboard
 wlroots
 wmctrl
 wtype
+xorg-xev
 xorg-xwayland
 yt-dlp
 zathura

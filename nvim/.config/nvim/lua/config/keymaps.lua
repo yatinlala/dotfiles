@@ -180,6 +180,7 @@ local leader = {
 		},
 	},
 	L = { "<cmd>:Lazy<cr>", "Lazy" },
+	m = { "<cmd>:Mason<cr>", "Mason" },
 	n = {
 		":ene <BAR> startinsert <CR>",
 		"new file",

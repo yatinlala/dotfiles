@@ -10,9 +10,9 @@ c-lolcat
 clipman
 code-marketplace
 dashbinsh
+dotool
 downgrade
 dragon-drop
-emacs-gcc-wayland-devel-bin
 espanso-wayland
 ferdium-bin
 github-desktop-bin
@@ -32,12 +32,15 @@ megasync-bin
 muse-hub-bin
 netris-git
 nsync
+numen
 nwg-look-bin
 paru
 pipe-viewer-git
 prismlauncher-qt5-bin
 python-coloredlogs
 python-gbinder
+python-srt
+python-vosk-bin
 python2-bin
 rmtrash
 rofi-blocks-git
@@ -52,6 +55,7 @@ swaync
 tessen
 theme.sh
 topgrade-bin
+vosk-api
 waybar-hyprland-git
 waydroid
 wdisplays
