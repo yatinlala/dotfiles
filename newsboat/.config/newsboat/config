@@ -29,7 +29,6 @@ bind-key d pagedown
 bind-key u pageup
 bind-key u show-urls
 
-
 #include /usr/share/doc/newsboat/contrib/colorschemes/gruvbox
 
 # colors color background color229   default
