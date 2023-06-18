@@ -65,6 +65,7 @@ disable = ["cargo","git_repos","vim","containers","config_update","node","emacs"
 "Update cargo pkglist" = "cargo install --list > ~/.dotfiles/pkglist/cargo"
 "Update npm pkglist" = "npm -g list > ~/.dotfiles/pkglist/npm"
 "Update pip pkglist" = "pip3 list --user > ~/.dotfiles/pkglist/pip3"
+"Update pipx pkglist" = "pipx list > ~/.dotfiles/pkglist/pipx"
 "Update flatpak pkglist" = "flatpak list --app > ~/.dotfiles/pkglist/flatpak"
 "Prune paccache" = "paccache -d -k 8"
 
