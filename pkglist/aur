@@ -1,3 +1,4 @@
+abook-configdir
 anki-bin
 auto-cpufreq
 autotiling
@@ -30,6 +31,7 @@ librewolf-bin
 mailspring
 megasync-bin
 muse-hub-bin
+mutt-wizard
 netris-git
 nsync
 numen
