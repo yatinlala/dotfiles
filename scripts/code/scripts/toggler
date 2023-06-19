@@ -40,6 +40,9 @@ case $1 in
         wmctrl -l | grep -q "pointer Habitica" || (gtk-launch habitica; sleep 1)
         sway "[instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] scratchpad show; \
             [instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] move position center";;
+    inhibit-lid)
+    pgrep -x sleep && (killall sleep & notify-send 'Stop inhibiting sleep on lid-close.') || \
+        (systemd-inhibit --what=handle-lid-switch sleep 1h & notify-send 'Inhibit sleep on lid-close.');;
     mailspring)
         pgrep -x mailspring || setsid mailspring &
         sway "workspace 9; [class=Mailspring] focus";;
