@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Browser
-Exec=waydroid app launch org.lineageos.jelly
-Icon=/home/nitay/.local/share/waydroid/data/icons/org.lineageos.jelly.png
-X-Purism-FormFactor=Workstation;Mobile;

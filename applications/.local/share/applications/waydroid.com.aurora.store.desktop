@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Aurora Store
-Exec=waydroid app launch com.aurora.store
-Icon=/home/nitay/.local/share/waydroid/data/icons/com.aurora.store.png
-X-Purism-FormFactor=Workstation;Mobile;
