@@ -3,7 +3,6 @@ anki-bin
 auto-cpufreq
 autotiling
 bettergruvbox-gtk-theme
-binder_linux-dkms
 brave-bin
 breeze-snow-cursor-theme
 bukubrow-bin
@@ -14,6 +13,8 @@ dashbinsh
 dotool
 downgrade
 dragon-drop
+electron19
+electron21
 espanso-wayland
 ferdium-bin
 github-desktop-bin
@@ -25,8 +26,6 @@ haskell-x509-system
 haskell-x509-validation
 htim
 keyd
-libgbinder
-libglibutil
 librewolf-bin
 mailspring
 megasync-bin
@@ -38,9 +37,9 @@ numen
 nwg-look-bin
 paru
 pipe-viewer-git
+postman-bin
 prismlauncher-qt5-bin
 python-coloredlogs
-python-gbinder
 python-srt
 python-vosk-bin
 python2-bin
@@ -59,5 +58,4 @@ theme.sh
 topgrade-bin
 vosk-api
 waybar-hyprland-git
-waydroid
 wdisplays

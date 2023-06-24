@@ -13,6 +13,7 @@ alias ls='exa --icons'
 #Shorten frequently used commands
 alias e='$EDITOR'
 # alias emacs='emacsclient -nw'
+alias ed='sudo systemctl start docker'
 alias t='tmux'
 alias lg='lazygit'
 alias la='ls -alh'
