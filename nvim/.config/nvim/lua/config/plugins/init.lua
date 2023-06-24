@@ -95,19 +95,22 @@ return {
 		end,
 	},
 
-	{
-		"nvim-orgmode/orgmode",
-		-- event = "VeryLazy",
-		lazy = false,
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("orgmode").setup_ts_grammar()
-			require("orgmode").setup({
-				org_agenda_files = "~/documents/org/*",
-				org_default_notes_file = "~/documents/org/refile.org",
-			})
-		end,
-	},
+	-- {
+	-- 	"nvim-orgmode/orgmode",
+	-- 	-- event = "VeryLazy",
+	-- 	lazy = false,
+	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
+	-- 	config = function()
+	-- 		require("orgmode").setup_ts_grammar()
+	-- 		require("orgmode").setup({
+	-- 			org_agenda_files = "~/documents/org/*",
+	-- 			org_default_notes_file = "~/documents/org/refile.org",
+	-- 		})
+	-- 	end,
+	-- },
+
+	{ 'liuchengxu/vim-clap', lazy=false, build = ':call clap#installer#build_maple()' },
+
 	-- {
 	-- 	"nvim-neorg/neorg",
 	-- 	event = "VeryLazy",

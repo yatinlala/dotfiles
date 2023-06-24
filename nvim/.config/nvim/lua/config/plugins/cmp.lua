@@ -43,10 +43,10 @@ function M.config()
 			{ name = "codeium" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip", max_item_count = 5 },
-			{ name = "buffer", keyword_length = 5 },
 			{ name = "path" },
 			{ name = "emoji" },
 			{ name = "orgmode" },
+			{ name = "buffer", keyword_length = 5 },
 		}),
 		formatting = {
 			format = function(_entry, vim_item)

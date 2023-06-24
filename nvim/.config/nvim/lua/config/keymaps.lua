@@ -118,7 +118,8 @@ local leader = {
 	},
 	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
-	["."] = { ":Telescope file_browser<CR>", "Browse Files" },
+	-- ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
+	["."] = { ":Clap filer<CR>", "Browse Files" },
 	g = {
 		-- name = "Git",
 		-- g = {
