@@ -83,12 +83,13 @@ local leader = {
 		h = { "<cmd>lua require('duck').hatch()<CR>", "Hatch a duck" },
 		k = { "<cmd>lua require('duck').cook()<CR>", "Cook the duck" },
 	},
-	e = {
-		function()
-			_lf_toggle()
-		end,
-		"Lf",
-	},
+	-- e = {
+	-- 	function()
+	-- 		_lf_toggle()
+	-- 	end,
+	-- 	"Lf",
+	-- },
+	e = { ":Lf<CR>", "Lf" },
 	f = {
 		name = "Telescope",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -119,13 +120,14 @@ local leader = {
 	["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
 	["."] = { ":Telescope file_browser<CR>", "Browse Files" },
 	g = {
-		name = "Git",
-		g = {
-			function()
-				_lazygit_toggle()
-			end,
-			"Lazygit",
-		},
+		-- name = "Git",
+		-- g = {
+		-- 	function()
+		-- 		_lazygit_toggle()
+		-- 	end,
+		-- 	"Lazygit",
+		-- },
+		g = { "<cmd>Lazygit<cr>", "Lazygit" },
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
 		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },

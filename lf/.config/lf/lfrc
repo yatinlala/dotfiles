@@ -30,7 +30,7 @@ set ignorecase
 # Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json) exec nvr -sl "$f";;
+        text/*|application/json) $EDITOR "$f";;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
         # application/pdf) swallow zathura "$f";;
         application/pdf) zathura "$f";;
