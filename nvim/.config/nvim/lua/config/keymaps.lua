@@ -116,8 +116,7 @@ local leader = {
 		o = { "<cmd>:Telescope vim_options<cr>", "Options" },
 		a = { "<cmd>:Telescope autocommands<cr>", "Auto Commands" },
 	},
-	F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-	["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
+	["/"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	-- ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
 	["."] = { ":Clap filer<CR>", "Browse Files" },
 	g = {
