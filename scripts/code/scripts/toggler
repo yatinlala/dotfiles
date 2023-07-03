@@ -89,7 +89,7 @@ case $1 in
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
     signal)
-        pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop %u > /dev/null 2>&1 &
+        pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop &
         # sway "workspace 9; [class=Signal] focus";;
         hyprctl dispatch workspace 9;;
     spotify)
