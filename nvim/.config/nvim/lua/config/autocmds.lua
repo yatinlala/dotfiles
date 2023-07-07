@@ -9,7 +9,7 @@ function M.setup()
 	--         au BufWinEnter ?* silent! loadview 1
 	--     augroup END]]
 
-	vim.api.nvim_create_autocmd("BufEnter", {
+	vim.api.nvim_create_autocmd("FileType", {
 		callback = function()
 			vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
 		end,

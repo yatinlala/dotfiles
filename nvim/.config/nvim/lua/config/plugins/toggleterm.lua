@@ -62,7 +62,7 @@ function M.config()
 	end
 
 	local lf = Terminal:new({
-		cmd = "lf " .. vim.fn.expand('%:p'),
+		cmd = "lf " .. vim.fn.expand("%:p"),
 		-- dir = vim.fn.expand('%:p'):match("(.*[/\\])"),
 		direction = "float",
 		float_opts = {

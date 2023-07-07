@@ -4,8 +4,8 @@
 
 set $mod Mod4
 set $mod2 Mod1
-set $term wezterm start
-set $term2 kitty
+set $term kitty
+set $term2 wezterm start
 
 font pango:BlexMono Nerd Font 12
 smart_gaps on 
@@ -202,7 +202,7 @@ assign [app_id="newsboat"] 10
 
 for_window [instance="urxvt"] opacity set .98
 for_window [app_id="foot"] opacity set .985
-for_window [app_id="kitty"] opacity set .985
+for_window [app_id="kitty"] opacity set .93
 for_window [app_id="org.wezfurlong.wezterm"] opacity set .97
 for_window [app_id="newsboat"] opacity set .97
 

@@ -32,7 +32,7 @@ vim.keymap.set("n", "<c-\\>", ":ToggleTerm<CR>", opts)
 
 vim.keymap.set("n", "gf", ":e <cfile><CR>", opts)
 
-vim.keymap.set("n","<c-p>", ":lua require('telescope.builtin').find_files()<CR>", opts)
+vim.keymap.set("n", "<c-p>", ":lua require('telescope.builtin').find_files()<CR>", opts)
 
 -- -- Smart(ish) compilation
 -- vim.keymap.set('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
@@ -68,7 +68,20 @@ vim.keymap.set("x", "K", ":move '<-2<CR>gv=gv", opts)
 -- Force save a sudoer file
 vim.keymap.set("c", "w!!", "w !sudo tee %", {})
 
+local chatgpt = require("chatgpt")
+wk.register({
+	a = {
+		function()
+			chatgpt.edit_with_instructions()
+		end,
+		"Chatgpt Edit with instructions",
+	},
+}, {
+	prefix = "<leader>",
+	mode = "v",
+})
 local leader = {
+	a = { "<cmd>ChatGPT<CR>", "ChatGPT" },
 	b = {
 		function()
 			require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
