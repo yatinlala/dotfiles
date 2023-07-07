@@ -77,3 +77,8 @@
 ;; they are implemented.
 
 (setq org-startup-folded t)
+
+(after! evil
+  (evil-define-key 'normal 'global
+    (kbd "H") #'previous-buffer
+    (kbd "L") #'next-buffer))

@@ -109,7 +109,7 @@ return {
 	-- 	end,
 	-- },
 
-	{ 'liuchengxu/vim-clap', lazy=false, build = ':call clap#installer#build_maple()' },
+	{ "liuchengxu/vim-clap", lazy = false, build = ":call clap#installer#build_maple()" },
 
 	-- {
 	-- 	"nvim-neorg/neorg",
@@ -150,16 +150,46 @@ return {
 	-- 		},
 	-- 	},
 	-- },
+	-- {
+	-- 	"jcdickinson/codeium.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"hrsh7th/nvim-cmp",
+	-- 	},
+	-- 	config = function()
+	-- 		require("codeium").setup({})
+	--
+	-- 		vim.g.codeium_disable_bindings = 1
+	-- 		vim.keymap.set("i", "<C-g>", function()
+	-- 			return vim.fn["codeium#Accept"]()
+	-- 		end, { expr = true })
+	-- 		vim.keymap.set("i", "<c-;>", function()
+	-- 			return vim.fn["codeium#CycleCompletions"](1)
+	-- 		end, { expr = true })
+	-- 		vim.keymap.set("i", "<c-,>", function()
+	-- 			return vim.fn["codeium#CycleCompletions"](-1)
+	-- 		end, { expr = true })
+	-- 		vim.keymap.set("i", "<c-x>", function()
+	-- 			return vim.fn["codeium#Clear"]()
+	-- 		end, { expr = true })
+	-- 		vim.cmd([[let g:codeium_enabled = v:false]])
+	-- 	end,
+	-- 	event = "VeryLazy",
+	-- },
+
 	{
-		"jcdickinson/codeium.nvim",
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup({
+				api_key_cmd = "pass show api/openai",
+			})
+		end,
 		dependencies = {
+			"MunifTanjim/nui.nvim",
 			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
 		},
-		-- config = function()
-		-- 	require("codeium").setup({})
-		-- end,
-		lazy = true,
 	},
 
 	-- {
