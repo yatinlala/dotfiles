@@ -15,6 +15,14 @@ function M.setup()
 		end,
 		group = main_group,
 	})
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = 'clap_input',
+		callback = function()
+			require'cmp'.setup.buffer {completion = { autocomplete = false } }
+		end,
+		group = main_group
+	})
+
 	-- vim.api.nvim_create_autocmd("ColorScheme", {
 	-- 	callback = function()
 	-- 		if vim.o.background == "dark" then

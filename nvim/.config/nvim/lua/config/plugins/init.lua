@@ -1,4 +1,18 @@
 return {
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup({
+				api_key_cmd = "pass show api/openai",
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 	{ "tamton-aquib/duck.nvim" },
 	{
 		"ellisonleao/gruvbox.nvim",
@@ -58,6 +72,7 @@ return {
 			require("project_nvim").setup({})
 		end,
 	},
+	{ "liuchengxu/vim-clap", lazy = false, build = ":call clap#installer#build_maple()" },
 	{
 		"andymass/vim-matchup",
 		event = "BufReadPost",
@@ -84,7 +99,6 @@ return {
 			"kyazdani42/nvim-web-devicons", -- optional dependency
 		},
 	},
-	-- { "Bekaboo/dropbar.nvim", lazy = false },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufWinEnter",
@@ -95,6 +109,7 @@ return {
 		end,
 	},
 
+	-- { "Bekaboo/dropbar.nvim", lazy = false },
 	-- {
 	-- 	"nvim-orgmode/orgmode",
 	-- 	-- event = "VeryLazy",
@@ -109,7 +124,6 @@ return {
 	-- 	end,
 	-- },
 
-	{ "liuchengxu/vim-clap", lazy = false, build = ":call clap#installer#build_maple()" },
 
 	-- {
 	-- 	"nvim-neorg/neorg",
@@ -176,21 +190,6 @@ return {
 	-- 	end,
 	-- 	event = "VeryLazy",
 	-- },
-
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup({
-				-- api_key_cmd = "pass show api/openai",
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
 
 	-- {
 	--     "folke/noice.nvim",

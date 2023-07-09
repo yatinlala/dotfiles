@@ -2,18 +2,14 @@ return {
 	{
 		"echasnovski/mini.ai",
 		version = "*",
-		config = function()
-			require("mini.ai").setup()
-		end,
+		config = true,
 		event = "CursorMoved",
 	},
 
 	{
 		"echasnovski/mini.align",
 		version = false,
-		config = function()
-			require("mini.align").setup()
-		end,
+		config = true,
 		keys = "ga",
 	},
 	-- {
@@ -27,9 +23,7 @@ return {
 	{
 		"echasnovski/mini.move",
 		version = false,
-		config = function()
-			require("mini.move").setup()
-		end,
+		config = true,
 		keys = { "<M-h>", "<M-j>", "<M-k>", "<M-l>" },
 	},
 	-- {
