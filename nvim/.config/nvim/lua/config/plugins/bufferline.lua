@@ -1,6 +1,7 @@
 return {
 	"akinsho/bufferline.nvim",
 	event = "BufReadPre",
+	enabled = true,
 	config = function()
 		require("bufferline").setup({
 			options = {

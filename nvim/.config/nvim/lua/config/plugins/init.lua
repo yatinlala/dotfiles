@@ -108,19 +108,19 @@ return {
 	},
 
 	-- { "Bekaboo/dropbar.nvim", lazy = false },
-	-- {
-	-- 	"nvim-orgmode/orgmode",
-	-- 	-- event = "VeryLazy",
-	-- 	lazy = false,
-	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
-	-- 	config = function()
-	-- 		require("orgmode").setup_ts_grammar()
-	-- 		require("orgmode").setup({
-	-- 			org_agenda_files = "~/documents/org/*",
-	-- 			org_default_notes_file = "~/documents/org/refile.org",
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"nvim-orgmode/orgmode",
+		-- event = "VeryLazy",
+		lazy = false,
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("orgmode").setup_ts_grammar()
+			require("orgmode").setup({
+				org_agenda_files = "~/documents/org/*",
+				org_default_notes_file = "~/documents/org/main.org",
+			})
+		end,
+	},
 
 
 	-- {
