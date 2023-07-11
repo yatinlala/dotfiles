@@ -1,0 +1,5 @@
+plugins = [
+    # "Duckonaut/split-monitor-workspaces",
+    # "horriblename/hyprland-touch-gestures",
+    # "zakk4223/hyprRiver",
+]
