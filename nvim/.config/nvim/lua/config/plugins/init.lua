@@ -15,9 +15,9 @@ return {
 	},
 	{ "tamton-aquib/duck.nvim" },
 	{
-		'stevearc/dressing.nvim',
+		"stevearc/dressing.nvim",
 		config = true,
-		lazy = 'VeryLazy',
+		lazy = "VeryLazy",
 		opts = {},
 	},
 	{ "yashlala/marker.nvim" },
@@ -69,7 +69,7 @@ return {
 		config = true,
 	},
 
-	{ "tpope/vim-sleuth",         event = "BufReadPost" },
+	{ "tpope/vim-sleuth", event = "BufReadPost" },
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"ahmedkhalf/project.nvim",
@@ -77,7 +77,7 @@ return {
 			require("project_nvim").setup({})
 		end,
 	},
-	{ "liuchengxu/vim-clap",     lazy = false,  build = ":call clap#installer#build_maple()" },
+	{ "liuchengxu/vim-clap", lazy = false, build = ":call clap#installer#build_maple()" },
 	{
 		"andymass/vim-matchup",
 		event = "BufReadPost",
@@ -128,7 +128,6 @@ return {
 			})
 		end,
 	},
-
 
 	-- {
 	-- 	"nvim-neorg/neorg",

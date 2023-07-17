@@ -32,7 +32,7 @@ vim.keymap.set("n", "<c-\\>", ":ToggleTerm<CR>", opts)
 
 vim.keymap.set("n", "gf", ":e <cfile><CR>", opts)
 
-vim.keymap.set("n", "<c-p>", ":lua require('telescope.builtin').find_files()<CR>", opts)
+vim.keymap.set("n", "<c-p>", function() require('telescope.builtin').find_files() end, opts)
 
 -- -- Smart(ish) compilation
 -- vim.keymap.set('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
@@ -117,7 +117,7 @@ local leader = {
 		r = { "<cmd>:Telescope oldfiles<CR>", "recent files" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		s = {
-			":lua require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} }<cr>",
+			function() require'telescope.builtin'.symbols{ sources = {'emoji', 'kaomoji', 'gitmoji'} } end,
 			"recent files",
 		},
 
@@ -200,6 +200,7 @@ local leader = {
 		":ene <BAR> startinsert <CR>",
 		"new file",
 	},
+	o = { function() vim.ui.open(vim.fn.expand('%')) end, "vim.open file" },
 	q = {
 		name = "Quickfix",
 		l = { "<cmd>lopen<cr>", "Open Location List" },
