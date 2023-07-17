@@ -37,4 +37,5 @@ vim.opt.signcolumn = 'yes' -- always show the sign column
 vim.opt.wrap = false -- display lines as one long line
 vim.o.breakindent = true -- Wrapped lines preserve indent level
 vim.opt.shortmess:append 'c' -- Get rid of "pattern not found" during completions
+vim.opt.shortmess:append 'I' -- Hide intro
 vim.opt.laststatus = 3 -- global statusline
