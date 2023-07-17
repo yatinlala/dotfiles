@@ -15,17 +15,31 @@ set drawbox
 set icons
 set ignorecase
 
-# #Dynamically set number of columns
-# %{{
-#     w=$(tput cols)
-#     if [ $w -le 80 ]; then
-#         lf -remote "send $id set ratios 1:2"
-#     elif [ $w -le 160 ]; then
-#         lf -remote "send $id set ratios 1:2:3"
-#     else
-#         lf -remote "send $id set ratios 1:2:3:5"
-#     fi
-# }}
+# Get rid of line under file in nested dir
+set cursorpreviewfmt ""
+# set cursorpreviewfmt "\033[7;90m"	 #Grey Cursor
+
+#Dynamically set number of columns
+%{{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+cmd toggle_preview %{{
+    if [ "$lf_preview" = "true" ]; then
+        lf -remote "send $id :set preview false; set ratios 1:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 1:2:3"
+    fi
+}}
+
+map zp toggle_preview
 
 # Custom Functions
 cmd open ${{

@@ -208,3 +208,5 @@ AGKOZAK_COLORS_PROMPT_CHAR='yellow'
 #         command git "$@"
 #     fi
 # }
+
+# pfetch

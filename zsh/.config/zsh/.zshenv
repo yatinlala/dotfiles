@@ -81,8 +81,9 @@ export PAGER="bat --paging=always"
 # Disable less history files 
 export LESSHISTFILE=-
 
-# MANPAGER
-export MANPAGER="sh -c 'col -bx | bat  -l man -p'"
+# Colored man pages
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c" # Fix formatting errors
 
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"
