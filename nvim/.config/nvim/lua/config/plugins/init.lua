@@ -1,7 +1,7 @@
 return {
 	{
 		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
+		event = "VeryLazy", -- kills splash
 		config = function()
 			require("chatgpt").setup({
 				api_key_cmd = "pass show api/openai",
@@ -114,20 +114,23 @@ return {
 		end,
 	},
 
+------------------------------------------------------
 	-- { "Bekaboo/dropbar.nvim", lazy = false },
-	{
-		"nvim-orgmode/orgmode",
-		-- event = "VeryLazy",
-		lazy = false,
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("orgmode").setup_ts_grammar()
-			require("orgmode").setup({
-				org_agenda_files = "~/documents/org/*",
-				org_default_notes_file = "~/documents/org/main.org",
-			})
-		end,
-	},
+	-- {
+	-- 	"nvim-orgmode/orgmode",
+	-- 	-- event = "VeryLazy",
+	-- 	lazy = false,
+	-- 	dependencies = "nvim-treesitter/nvim-treesitter",
+	-- 	config = function()
+	-- 		require("orgmode").setup_ts_grammar()
+	-- 		require("orgmode").setup({
+	-- 			org_agenda_files = "~/documents/org/*",
+	-- 			org_default_notes_file = "~/documents/org/main.org",
+	-- 		})
+	-- 	end,
+	-- },
+
+------------------------------------------------------
 
 	-- {
 	-- 	"nvim-neorg/neorg",
