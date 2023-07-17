@@ -1,33 +1,11 @@
 return {
-  { 'tamton-aquib/duck.nvim' },
   {
     'stevearc/dressing.nvim',
     config = true,
     lazy = 'VeryLazy',
     opts = {},
   },
-  { 'yashlala/marker.nvim' },
-  {
-    'kylechui/nvim-surround',
-    keys = { 'ys', 'ds', 'cs' },
-    version = '*', -- Use for stability; omit to use `main` branch for the latest features
-    config = true,
-  },
-
-  { 'tpope/vim-sleuth', event = 'BufReadPost' },
-  { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
-  {
-    'ahmedkhalf/project.nvim',
-    config = function()
-      require('project_nvim').setup {}
-    end,
-  },
-  { 'liuchengxu/vim-clap', lazy = false, build = ':call clap#installer#build_maple()' },
-  {
-    'ethanholz/nvim-lastplace',
-    event = 'BufWinEnter',
-    config = true,
-  },
+  { 'tamton-aquib/duck.nvim' },
   { 'lewis6991/gitsigns.nvim', config = true, event = 'BufWinEnter' },
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -38,6 +16,27 @@ return {
       }
     end,
   },
+  { 'yashlala/marker.nvim' },
+  {
+    'ethanholz/nvim-lastplace',
+    event = 'BufWinEnter',
+    config = true,
+  },
+  {
+    'kylechui/nvim-surround',
+    keys = { 'ys', 'ds', 'cs' },
+    version = '*', -- Use for stability; omit to use `main` branch for the latest features
+    config = true,
+  },
+  {
+    'ahmedkhalf/project.nvim',
+    config = function()
+      require('project_nvim').setup {}
+    end,
+  },
+  { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
+  { 'liuchengxu/vim-clap', lazy = false, build = ':call clap#installer#build_maple()' },
+  { 'tpope/vim-sleuth', event = 'BufReadPost' },
 
   ------------------------------------------------------
   -- { "Bekaboo/dropbar.nvim", lazy = false },
@@ -53,13 +52,6 @@ return {
   -- 			org_default_notes_file = "~/documents/org/main.org",
   -- 		})
   -- 	end,
-  -- },
-  -- {
-  -- 	"goolord/alpha-nvim",
-  -- 	event = "VimEnter",
-  -- 	lazy = false,
-  -- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- 	opts = { require("alpha.themes.dashboard").config },
   -- },
   -- {
   -- 	"utilyre/barbecue.nvim",

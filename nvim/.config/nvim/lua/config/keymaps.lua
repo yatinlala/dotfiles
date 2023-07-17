@@ -70,11 +70,10 @@ vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv", opts)
 -- Force save a sudoer file
 vim.keymap.set('c', 'w!!', 'w !sudo tee %', {})
 
-local chatgpt = require 'chatgpt'
 wk.register({
   a = {
     function()
-      chatgpt.edit_with_instructions()
+      require('chatgpt').edit_with_instructions()
     end,
     'Chatgpt Edit with instructions',
   },

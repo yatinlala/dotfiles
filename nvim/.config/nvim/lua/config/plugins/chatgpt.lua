@@ -1,6 +1,7 @@
 return {
   'jackMort/ChatGPT.nvim',
-  event = 'VeryLazy', -- kills splash
+  keys = '<space>a',
+  cmd = 'ChatGPT',
   config = function()
     require('chatgpt').setup {
       api_key_cmd = 'pass show api/openai',
