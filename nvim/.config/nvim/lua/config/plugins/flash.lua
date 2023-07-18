@@ -1,7 +1,7 @@
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',
-  enabled = false,
+  enabled = true,
   opts = {
     -- labels = "abcdefghijklmnopqrstuvwxyz",
     labels = 'asdfghjklqwertyuiopzxcvbnm',
@@ -143,7 +143,7 @@ return {
       -- options used when flash is activated through
       -- `f`, `F`, `t`, `T`, `;` and `,` motions
       char = {
-        enabled = true,
+        enabled = false,
         -- dynamic configuration for ftFT motions
         config = function(opts)
           -- autohide flash when in operator-pending mode
@@ -237,6 +237,11 @@ return {
       motion = false,
     },
   },
+  config = function(_, opts)
+    vim.cmd [[ hi def FlashMatch guibg=#fbf1c7 ]]
+
+    require('flash').setup(opts)
+  end,
   keys = {
     {
       's',
