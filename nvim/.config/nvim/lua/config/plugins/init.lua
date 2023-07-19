@@ -1,5 +1,11 @@
 return {
   {
+    'yatinlala/neovim.nvim',
+    dir = '~/code/neovim/neovim.nvim',
+    config = true,
+    lazy = false,
+  },
+  {
     'stevearc/dressing.nvim',
     config = true,
     lazy = 'VeryLazy',
@@ -35,10 +41,10 @@ return {
     end,
   },
   { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
-  { 'liuchengxu/vim-clap', lazy = false, build = ':call clap#installer#build_maple()' },
   { 'tpope/vim-sleuth', event = 'BufReadPost' },
 
   ------------------------------------------------------
+  -- { 'liuchengxu/vim-clap', lazy = false, build = ':call clap#installer#build_maple()' },
   -- { "Bekaboo/dropbar.nvim", lazy = false },
   -- {
   -- 	"nvim-orgmode/orgmode",
