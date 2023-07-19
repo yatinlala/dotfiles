@@ -142,7 +142,7 @@
 	"status-icons": {
 		"paused": "▶"
 	},
-	// "ignored-players": ["firefox"]
+	"ignored-players": ["chromium","brave","firefox"]
 },
   "backlight": {
     "device": "intel_backlight",
