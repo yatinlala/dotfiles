@@ -9,6 +9,8 @@ vim.keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<CR><esc>')
 
 -- Don't yank on x
 vim.keymap.set('n', 'x', '"_x', opts)
+vim.keymap.set("n", "<leader><leader>d", [["_d]], opts)
+
 -- Sensible split movement
 vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
 vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
@@ -97,12 +99,6 @@ local leader = {
     h = { "<cmd>lua require('duck').hatch()<CR>", 'Hatch a duck' },
     k = { "<cmd>lua require('duck').cook()<CR>", 'Cook the duck' },
   },
-  -- e = {
-  -- 	function()
-  -- 		_lf_toggle()
-  -- 	end,
-  -- 	"Lf",
-  -- },
   e = { ':Lf<CR>', 'Lf' },
   f = {
     name = 'Telescope',
@@ -144,15 +140,15 @@ local leader = {
     -- 	"Lazygit",
     -- },
     g = { '<cmd>Lazygit<cr>', 'Lazygit' },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", 'Next Hunk' },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", 'Prev Hunk' },
-    l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", 'Blame' },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", 'Preview Hunk' },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", 'Reset Hunk' },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", 'Reset Buffer' },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", 'Stage Hunk' },
+    j = { function() require 'gitsigns'.next_hunk() end, 'Next Hunk' },
+    k = { function() require 'gitsigns'.prev_hunk() end, 'Prev Hunk' },
+    l = { function() require 'gitsigns'.blame_line() end, 'Blame' },
+    p = { function() require 'gitsigns'.preview_hunk() end, 'Preview Hunk' },
+    r = { function() require 'gitsigns'.reset_hunk() end, 'Reset Hunk' },
+    R = { function() require 'gitsigns'.reset_buffer() end, 'Reset Buffer' },
+    s = { function() require 'gitsigns'.stage_hunk() end, 'Stage Hunk' },
     u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+      function() require 'gitsigns'.undo_stage_hunk() end,
       'Undo Stage Hunk',
     },
     o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
@@ -167,7 +163,7 @@ local leader = {
   l = {
     name = 'LSP',
     -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    c = { "<cmd>lua require('codeium').setup({})<cr>", 'Activate Codeium' },
+    c = { function() require('codeium').setup({}) end, 'Activate Codeium' },
     d = {
       '<cmd>Telescope lsp_document_diagnostics<cr>',
       'Document Diagnostics',
@@ -176,21 +172,21 @@ local leader = {
       '<cmd>Telescope lsp_workspace_diagnostics<cr>',
       'Workspace Diagnostics',
     },
-    f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'Format' },
+    f = { function() vim.lsp.buf.format() end, 'Format' },
     i = { '<cmd>LspInfo<cr>', 'Info' },
     I = { '<cmd>LspInstallInfo<cr>', 'Installer Info' },
     j = {
-      '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
+      function() vim.lsp.diagnostic.goto_next() end,
       'Next Diagnostic',
     },
     k = {
-      '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>',
+       function() vim.lsp.diagnostic.goto_prev() end,
       'Prev Diagnostic',
     },
-    l = { '<cmd>lua vim.lsp.codelens.run()<cr>', 'CodeLens Action' },
+    l = { function() vim.lsp.codelens.run() end, 'CodeLens Action' },
     o = { '<cmd>:SymbolsOutline<CR>', 'Symbols Outline' },
-    q = { '<cmd>lua vim.diagnostic.setloclist({ open = false })<cr>', 'Quickfix' },
-    r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename' },
+    q = { function() vim.diagnostic.setloclist({ open = false }) end, 'Quickfix' },
+    r = { function() vim.lsp.buf.rename() end, 'Rename' },
     s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
     S = {
       '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
@@ -226,10 +222,10 @@ local leader = {
     '<cmd>:Telescope undo<CR>',
     'Undo',
   },
-  w = {
-    name = 'Vimwiki',
-    w = { '<cmd>e ~/documents/wiki/index.<cr>', 'Wiki Index' },
-  },
+  -- w = {
+  --   name = 'Vimwiki',
+  --   w = { '<cmd>e ~/documents/wiki/index.<cr>', 'Wiki Index' },
+  -- },
   --   t = {
   --     name = "toggle",
   --     f = {

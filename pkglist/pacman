@@ -12,6 +12,7 @@ calibre
 chafa
 checkbashisms
 clang
+cliphist
 cmake
 cmatrix
 cmus
@@ -29,6 +30,7 @@ fd
 ffmpeg
 ffmpegthumbnailer
 figlet
+filelight
 fish
 flatpak
 fontforge
@@ -41,7 +43,9 @@ gammastep
 gdb
 gimp
 git
+glm
 gnuplot
+go
 grub
 guvcview
 hyprland
@@ -155,6 +159,7 @@ retroarch-assets-ozone
 retroarch-assets-xmb
 rofimoji
 rsync
+rustup
 signal-desktop
 snapper
 sof-firmware
@@ -164,6 +169,7 @@ sshfs
 steam
 stow
 sudo
+swaybg
 swayidle
 syncthing
 tcpdump
@@ -229,7 +235,6 @@ wl-clipboard
 wlroots
 wmctrl
 wtype
-xorg-xev
 xorg-xwayland
 yt-dlp
 zathura

@@ -7,7 +7,6 @@ brave-bin
 breeze-snow-cursor-theme
 bukubrow-bin
 c-lolcat
-clipman
 code-marketplace
 dashbinsh
 dotool
@@ -20,10 +19,6 @@ ferdium-bin
 github-desktop-bin
 gnome-metronome
 grimshot
-haskell-connection
-haskell-x509-store
-haskell-x509-system
-haskell-x509-validation
 htim
 keyd
 librewolf-bin
@@ -34,6 +29,7 @@ mutt-wizard
 netris-git
 nsync
 numen
+nwg-displays
 nwg-look-bin
 paru
 pfetch-rs-bin
@@ -60,4 +56,5 @@ thunderbird-beta-bin
 topgrade-bin
 vosk-api
 waybar-hyprland-git
-wdisplays
+wev
+wlr-randr
