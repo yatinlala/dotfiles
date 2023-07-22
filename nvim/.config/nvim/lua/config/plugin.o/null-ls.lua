@@ -4,6 +4,7 @@ local M = {
     'neovim/nvim-lspconfig',
   },
   event = 'VeryLazy', -- kills splash, CursorMove fixed (haven't completely confirmed)
+  enabled = false,
 }
 
 function M.config()
