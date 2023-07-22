@@ -6,76 +6,14 @@ return {
     enabled = false,
     lazy = false,
   },
-  {
-    'stevearc/dressing.nvim',
-    config = true,
-    lazy = 'VeryLazy',
-    opts = {},
-  },
   { 'tamton-aquib/duck.nvim' },
-  { 'lewis6991/gitsigns.nvim', config = true, event = 'BufWinEnter' },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufWinEnter',
-    config = function()
-      require('indent_blankline').setup {
-        char = '┆',
-      }
-    end,
-  },
   { 'yashlala/marker.nvim' },
   {
     'ethanholz/nvim-lastplace',
     event = 'BufWinEnter',
     config = true,
   },
-  {
-    'kylechui/nvim-surround',
-    keys = { 'ys', 'ds', 'cs' },
-    version = '*', -- Use for stability; omit to use `main` branch for the latest features
-    config = true,
-  },
-  {
-    'ahmedkhalf/project.nvim',
-    config = function()
-      require('project_nvim').setup {}
-    end,
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-    event = 'BufWinEnter',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('treesitter-context').setup {
-        enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-        max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
-        min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-        line_numbers = true,
-        multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
-        trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-        mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
-        -- Separator between context and content. Should be a single character string, like '-'.
-        -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-        separator = nil,
-        zindex = 20,     -- The Z-index of the context window
-        on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-      }
-    end,
-  },
-  {
-    'windwp/nvim-ts-autotag',
-    event = 'BufWinEnter',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        autotag = {
-          enable = true,
-        }
-      }
-    end,
-  },
   { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
-  { 'tpope/vim-sleuth',         event = 'BufReadPost' },
 
   ------------------------------------------------------
   -- {
@@ -242,3 +180,28 @@ return {
   --
   --  {
 }
+-------------------------------------
+-- local M = {
+--   'jose-elias-alvarez/null-ls.nvim',
+--   dependencies = {
+--     'neovim/nvim-lspconfig',
+--   },
+--   event = 'VeryLazy', -- kills splash, CursorMove fixed (haven't completely confirmed)
+--   enabled = false,
+-- }
+--
+-- function M.config()
+--   local null_ls = require 'null-ls'
+--   null_ls.setup {
+--     sources = {
+--       null_ls.builtins.formatting.stylua,
+--       null_ls.builtins.formatting.shfmt,
+--       null_ls.builtins.diagnostics.eslint,
+--       null_ls.builtins.completion.spell,
+--       null_ls.builtins.formatting.ocamlformat,
+--       null_ls.builtins.formatting.black,
+--     },
+--   }
+-- end
+--
+-- return M

@@ -1,3 +1,4 @@
+-- Jump plugin
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',

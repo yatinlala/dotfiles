@@ -1,5 +1,6 @@
 local M = {
   'nvim-treesitter/nvim-treesitter',
+  dependencies = { 'p00f/nvim-ts-rainbow' },
   -- event = "VeryLazy",
   event = 'BufWinEnter',
 }

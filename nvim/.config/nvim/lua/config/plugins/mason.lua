@@ -13,6 +13,7 @@ local M = {
     'folke/neodev.nvim',
   },
   event = 'BufReadPost',
+  cmd = 'Mason'
 }
 
 M.tools = {

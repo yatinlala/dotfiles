@@ -1,3 +1,4 @@
+-- Supercharge %, replace matchparen, add g%, [%, ]%, z%
 return {
   'andymass/vim-matchup',
   event = 'BufReadPost',

@@ -9,7 +9,6 @@ local M = {
     { 'nvim-telescope/telescope-project.nvim' },
     { 'nvim-telescope/telescope-symbols.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
-    { 'p00f/nvim-ts-rainbow' },
   },
 }
 
