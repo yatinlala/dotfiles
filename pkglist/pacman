@@ -24,7 +24,6 @@ docker-compose
 dosfstools
 dunst
 efibootmgr
-emacs-nativecomp
 exa
 fd
 ffmpeg
@@ -151,6 +150,7 @@ pv
 pycharm-community-edition
 python-pip
 python-pipx
+qpwgraph
 rclone
 reflector
 retroarch

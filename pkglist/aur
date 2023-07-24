@@ -14,6 +14,7 @@ downgrade
 dragon-drop
 electron19
 electron21
+emacs-gcc-wayland-devel-bin
 espanso-wayland
 ferdium-bin
 github-desktop-bin
@@ -47,7 +48,7 @@ rofi-search-git
 snap-pac-grub
 snapper-gui-git
 spacecadetpinball-git
-swayfx-git
+swayfx
 swaylock-effects-git
 swaync
 tessen
