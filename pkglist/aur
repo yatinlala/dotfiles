@@ -19,6 +19,7 @@ espanso-wayland
 ferdium-bin
 github-desktop-bin
 gnome-metronome
+gradience
 grimshot
 htim
 keyd
@@ -38,9 +39,12 @@ pipe-viewer-git
 postman-bin
 prismlauncher-qt5-bin
 python-coloredlogs
+python-cssutils
+python-material-color-utilities
 python-srt
 python-vosk-bin
 python2-bin
+ripdrag
 rmtrash
 rofi-blocks-git
 rofi-lbonn-wayland-git
