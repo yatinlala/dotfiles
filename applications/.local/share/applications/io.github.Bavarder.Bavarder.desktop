@@ -22,7 +22,7 @@ Name[cs]=Bavarder
 Name[uk]=Bavarder
 Name[et]=Bavarder
 Name=Bavarder
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=bavarder io.github.Bavarder.Bavarder
+Exec=xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=bavarder io.github.Bavarder.Bavarder
 Icon=io.github.Bavarder.Bavarder
 Terminal=false
 Type=Application

@@ -19,7 +19,7 @@ Name[az]=Imaginer
 Name[cs]=Imaginer
 Name[uk]=Imaginer
 Name=Imaginer
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=imaginer page.codeberg.Imaginer.Imaginer
+Exec=xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=imaginer page.codeberg.Imaginer.Imaginer
 Icon=page.codeberg.Imaginer.Imaginer
 Terminal=false
 Type=Application
