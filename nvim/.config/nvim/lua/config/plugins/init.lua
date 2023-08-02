@@ -1,11 +1,4 @@
 return {
-  {
-    'yatinlala/neovim.nvim',
-    dir = '~/code/neovim/neovim.nvim',
-    config = true,
-    enabled = false,
-    lazy = false,
-  },
   { 'tamton-aquib/duck.nvim' },
   { 'yashlala/marker.nvim' },
   {
@@ -16,6 +9,13 @@ return {
   { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
 
   ------------------------------------------------------
+  -- {
+  --   'yatinlala/neovim.nvim',
+  --   dir = '~/code/neovim/neovim.nvim',
+  --   config = true,
+  --   enabled = false,
+  --   lazy = false,
+  -- },
   -- {
   --   'folke/noice.nvim',
   --   config = function()
