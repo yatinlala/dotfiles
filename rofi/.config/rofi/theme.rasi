@@ -9,7 +9,8 @@
 
 configuration {
 	/*font:							"BlexMono Nerd Font 11"; */
-	font:							"Ligalex Mono 11";
+	/*font:							"Ligalex Mono 11"; */
+	font:							"JetBrains Mono Nerd Font 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
