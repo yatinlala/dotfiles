@@ -72,6 +72,8 @@ alias wmc='$EDITOR ~/.config/hypr/hyprland.conf'
 alias wiki='emacs -nw ~/documents/org/main.org'
 
 #Media
+alias yt-dlp="xdg-launch yt-dlp"
+alias youtube-dl="xdg-launch youtube-dl"
 alias yt="yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*'"
 alias yta='yt-dlp --extract-audio'
 alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
