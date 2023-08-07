@@ -5,7 +5,7 @@ local wk = require 'which-key'
 -- Normal --
 
 -- Clear search highlights
-vim.keymap.set({ 'i', 'n' }, '<esc>', ':noh<CR><esc>')
+vim.keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<CR><esc>')
 
 -- Don't yank on x
 vim.keymap.set('n', 'x', '"_x', opts)
