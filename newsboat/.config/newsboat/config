@@ -5,7 +5,8 @@ external-url-viewer urlview
 browser lynx
 
 
-macro b set browser "xdg-open %u > /dev/null 2>&1" ; open-in-browser ; set browser lynx
+macro b set browser "xdg-launch brave --test-type %u > /dev/null 2>&1" ; open-in-browser ; set browser lynx
+macro B set browser "xdg-open %u > /dev/null 2>&1" ; open-in-browser ; set browser lynx
 macro i set pager "$XDG_CONFIG_HOME/newsboat/kitty-img-pager.sh"; open; set pager internal
 macro q set browser "setsid mpv --no-terminal --ytdl-format='bestvideo[height<=1080]+bestaudio/best[height<=1080]' %u > $XDG_CACHE_HOME/newsboat.setsid 2>&1 &" ; open-in-browser ; set browser lynx
 macro v set browser "setsid mpv --no-terminal --ytdl-format='bestvideo[height<=720]+bestaudio/best[height<=720]' %u > $XDG_CACHE_HOME/newsboat.setsid 2>&1 &" ; open-in-browser ; set browser lynx
@@ -27,8 +28,8 @@ bind-key g home
 bind-key h quit
 bind-key l open
 bind-key d pagedown
-bind-key u pageup
-bind-key u show-urls
+bind-key u halfpageup
+bind-key U show-urls
 
 #include /usr/share/doc/newsboat/contrib/colorschemes/gruvbox
 
