@@ -4,11 +4,11 @@
   "position": "top", 
   "height": 35,
   
-  // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
-  "modules-left":   ["wlr/workspaces"],
+  "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
+  // "modules-left":   ["wlr/workspaces"],
   "modules-center": ["mpris"],
   // "modules-center": ["mpd"],
-  "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+  "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
   // "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 
   "wlr/taskbar": {
@@ -52,11 +52,17 @@
     }
   },
 
+  "custom/weather": {
+      "format": "{}",
+      "exec": "curl \"wttr.in/94303?format=%c%t\"",
+      "interval": 6000,
+      "spacing": 10
+
+  },
   "tray": {
     "icon-size": 16,
     "spacing": 10
   },
-
   "clock#time": {
     "interval": 1,
     "format": "    {:%I:%M %p} ",
