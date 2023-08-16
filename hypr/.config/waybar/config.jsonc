@@ -4,9 +4,10 @@
   "position": "top", 
   "height": 35,
   
-  "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
-  // "modules-left":   ["wlr/workspaces"],
-  "modules-center": ["mpris"],
+  // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
+  "modules-left":   ["wlr/workspaces" ],
+  "modules-center": [ ],
+  // "modules-center": [ "mpris"],
   // "modules-center": ["mpd"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
   // "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
