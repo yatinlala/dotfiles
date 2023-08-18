@@ -111,6 +111,7 @@ mariadb-clients
 moreutils
 mpd
 mpv
+mpv-mpris
 mtools
 musescore
 nasm
