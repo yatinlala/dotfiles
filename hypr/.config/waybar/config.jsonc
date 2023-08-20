@@ -6,7 +6,7 @@
   
   // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
   "modules-left":   ["wlr/workspaces" ],
-  "modules-center": [ ],
+  "modules-center": [ "mpris" ],
   // "modules-center": [ "mpris"],
   // "modules-center": ["mpd"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
@@ -141,7 +141,7 @@
   "mpris": {
 	"format": "{player_icon} {dynamic}",
 	"format-paused": "{status_icon} <i>{dynamic}</i>",
-        "max-length": 70,
+        "max-length": 47,
 	"player-icons": {
 		"default": "⏸",
 		"mpv": "🎵"
@@ -149,7 +149,8 @@
 	"status-icons": {
 		"paused": "▶"
 	},
-	"ignored-players": ["chromium","brave","firefox"]
+	// "ignored-players": ["chromium","brave","firefox"]
+	"ignored-players": []
 },
   "backlight": {
     "device": "intel_backlight",
