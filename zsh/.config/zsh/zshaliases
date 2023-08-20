@@ -76,7 +76,7 @@ alias yt-dlp="xdg-launch yt-dlp"
 alias youtube-dl="xdg-launch youtube-dl"
 alias yt="yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*'"
 alias yta='yt-dlp --extract-audio'
-alias ytp="youtube-dl --add-metadata -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
+alias ytp="yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 # alias newsboat='news'
 
