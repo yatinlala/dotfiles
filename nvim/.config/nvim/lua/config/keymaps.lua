@@ -18,8 +18,8 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', ':bnext<CR>', opts)
-vim.keymap.set('n', '<S-h>', ':bprevious<CR>', opts)
+vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
+vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Centered searches
 vim.keymap.set('n', 'n', 'nzzzv', opts)
@@ -30,18 +30,18 @@ vim.keymap.set('n', 'N', 'Nzzzv', opts)
 -- Centered line cat
 vim.keymap.set('n', 'J', "mzJ'z", opts)
 
-vim.keymap.set('n', '<c-\\>', ':ToggleTerm<CR>', opts)
+vim.keymap.set('n', '<c-\\>', '<cmd>ToggleTerm<CR>', opts)
 
-vim.keymap.set('n', 'gf', ':e <cfile><CR>', opts)
+vim.keymap.set('n', 'gf', '<cmd>e <cfile><CR>', opts)
 
 vim.keymap.set('n', '<c-p>', function()
   require('telescope.builtin').find_files()
 end, opts)
 
 -- -- Smart(ish) compilation
--- vim.keymap.set('n', '<leader>c',  ':w! \\| !comp <c-r>%<CR><CR>', {})
+-- vim.keymap.set('n', '<leader>c',  '<cmd>w! \\| !comp <c-r>%<CR><CR>', {})
 -- -- Enable spell checking
--- vim.keymap.set('n', '<leader><leader>s', ':setlocal spell! spelllang=en_us<CR>', {})
+-- vim.keymap.set('n', '<leader><leader>s', '<cmd>setlocal spell! spelllang=en_us<CR>', {})
 
 -- Insert --
 -- Undo break points
@@ -65,8 +65,8 @@ vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down and indent it
-vim.keymap.set('x', 'J', ":move '>+1<CR>gv=gv", opts)
-vim.keymap.set('x', 'K', ":move '<-2<CR>gv=gv", opts)
+vim.keymap.set('x', 'J', "<cmd>move '>+1<CR>gv=gv", opts)
+vim.keymap.set('x', 'K', "<cmd>move '<-2<CR>gv=gv", opts)
 
 -- Command --
 -- Force save a sudoer file
@@ -84,35 +84,35 @@ wk.register({
   mode = 'v',
 })
 local leader = {
-  a = { ':ChatGPT<CR>', 'ChatGPT' },
+  a = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
   b = {
     function()
       require('telescope.builtin').buffers(require('telescope.themes').get_dropdown { previewer = false })
     end,
     'buffers',
   },
-  B = { ':Barbecue toggle<CR>', 'toggle barbecue' },
-  c = { ':ColorizerToggle<CR>', 'toggle colorizer' },
+  B = { '<cmd>Barbecue toggle<CR>', 'toggle barbecue' },
+  c = { '<cmd>ColorizerToggle<CR>', 'toggle colorizer' },
   C = { require('util').toggleBg, 'toggle dark/light' },
   D = {
     name = 'Duck',
     h = { require('duck').hatch(), 'Hatch a duck' },
     k = { require('duck').cook(), 'Cook the duck' },
   },
-  e = { ':Lf<CR>', 'Lf' },
+  e = { '<cmd>Lf<CR>', 'Lf' },
   f = {
     name = 'Telescope',
-    b = { ':Telescope git_branches<cr>', 'Checkout branch' },
-    B = { ':Telescope current_buffer_fuzzy_find<cr>', 'Buffer' },
-    c = { ':Telescope commands<cr>', 'Commands' },
-    h = { ':Telescope help_tags<CR>', 'help tags' },
-    k = { ':Telescope keymaps<cr>', 'Keymaps' },
-    m = { ':Telescope man_pages<cr>', 'Man Pages' },
-    u = { ':Telescope undo<cr>', 'Undo' },
-    n = { ':Telescope find_files cwd=~/.config/nvim<CR>', 'edit neovim' },
+    b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+    B = { '<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Buffer' },
+    c = { '<cmd>Telescope commands<cr>', 'Commands' },
+    h = { '<cmd>Telescope help_tags<CR>', 'help tags' },
+    k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
+    m = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
+    u = { '<cmd>Telescope undo<cr>', 'Undo' },
+    n = { '<cmd>Telescope find_files cwd=~/.config/nvim<CR>', 'edit neovim' },
     p = { require('telescope').extensions.projects.projects, 'projects' },
-    r = { ':Telescope oldfiles<CR>', 'recent files' },
-    R = { ':Telescope registers<cr>', 'Registers' },
+    r = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
+    R = { '<cmd>Telescope registers<cr>', 'Registers' },
     s = {
       function()
         require('telescope.builtin').symbols { sources = { 'emoji', 'kaomoji', 'gitmoji' } }
@@ -121,16 +121,16 @@ local leader = {
     },
 
     [':'] = { ':Telescope command_history<cr>', 'Command History' },
-    t = { ':Telescope builtin<cr>', 'Telescope' },
-    S = { ':Telescope highlights<cr>', 'Search Highlight Groups' },
+    t = { '<cmd>Telescope builtin<cr>', 'Telescope' },
+    S = { '<cmd>Telescope highlights<cr>', 'Search Highlight Groups' },
     l = { vim.show_pos, 'Highlight Groups at cursor' },
-    f = { ':Telescope filetypes<cr>', 'File Types' },
-    o = { ':Telescope vim_options<cr>', 'Options' },
-    a = { ':Telescope autocommands<cr>', 'Auto Commands' },
+    f = { '<cmd>Telescope filetypes<cr>', 'File Types' },
+    o = { '<cmd>Telescope vim_options<cr>', 'Options' },
+    a = { '<cmd>Telescope autocommands<cr>', 'Auto Commands' },
   },
-  ['/'] = { ':Telescope live_grep theme=ivy<cr>', 'Find Text' },
-  -- ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
-  ['.'] = { ':Telescope file_browser<CR>', 'Browse Files' },
+  ['/'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
+  -- ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
+  ['.'] = { '<cmd>Telescope file_browser<CR>', 'Browse Files' },
   g = {
     -- name = "Git",
     -- g = {
@@ -139,7 +139,7 @@ local leader = {
     -- 	end,
     -- 	"Lazygit",
     -- },
-    g = { ':Lazygit<cr>', 'Lazygit' },
+    g = { '<cmd>Lazygit<cr>', 'Lazygit' },
     j = {
       function()
         require('gitsigns').next_hunk()
@@ -188,11 +188,11 @@ local leader = {
       end,
       'Undo Stage Hunk',
     },
-    o = { ':Telescope git_status<cr>', 'Open changed file' },
-    b = { ':Telescope git_branches<cr>', 'Checkout branch' },
-    c = { ':Telescope git_commits<cr>', 'Checkout commit' },
+    o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
+    b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+    c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
     d = {
-      ':Gitsigns diffthis HEAD<cr>',
+      '<cmd>Gitsigns diffthis HEAD<cr>',
       'Diff',
     },
     --     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
@@ -207,11 +207,11 @@ local leader = {
       'Activate Codeium',
     },
     d = {
-      ':Telescope lsp_document_diagnostics<cr>',
+      '<cmd>Telescope lsp_document_diagnostics<cr>',
       'Document Diagnostics',
     },
     w = {
-      ':Telescope lsp_workspace_diagnostics<cr>',
+      '<cmd>Telescope lsp_workspace_diagnostics<cr>',
       'Workspace Diagnostics',
     },
     f = {
@@ -220,8 +220,8 @@ local leader = {
       end,
       'Format',
     },
-    i = { ':LspInfo<cr>', 'Info' },
-    I = { ':LspInstallInfo<cr>', 'Installer Info' },
+    i = { '<cmd>LspInfo<cr>', 'Info' },
+    I = { '<cmd>LspInstallInfo<cr>', 'Installer Info' },
     j = {
       function()
         vim.lsp.diagnostic.goto_next()
@@ -240,7 +240,7 @@ local leader = {
       end,
       'CodeLens Action',
     },
-    o = { ':SymbolsOutline<CR>', 'Symbols Outline' },
+    o = { '<cmd>SymbolsOutline<CR>', 'Symbols Outline' },
     q = {
       function()
         vim.diagnostic.setloclist { open = false }
@@ -253,16 +253,16 @@ local leader = {
       end,
       'Rename',
     },
-    s = { ':Telescope lsp_document_symbols<cr>', 'Document Symbols' },
+    s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
     S = {
-      ':Telescope lsp_dynamic_workspace_symbols<cr>',
+      '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
       'Workspace Symbols',
     },
   },
-  L = { '<cmd>:Lazy<cr>', 'Lazy' },
-  m = { '<cmd>:Mason<cr>', 'Mason' },
+  L = { '<cmd>Lazy<cr>', 'Lazy' },
+  m = { '<cmd>Mason<cr>', 'Mason' },
   n = {
-    ':ene <BAR> startinsert <CR>',
+    '<cmd>ene <BAR> startinsert <CR>',
     'new file',
   },
   o = { function() vim.ui.open(vim.fn.expand '%') end, 'vim.open file' },
@@ -273,14 +273,14 @@ local leader = {
   },
   t = {
     name = 'Terminal',
-    f = { ':ToggleTerm direction=float<cr>', 'Term Float' },
-    h = { ':ToggleTerm size=10 direction=horizontal<cr>', 'Term Horizontal' },
+    f = { '<cmd>ToggleTerm direction=float<cr>', 'Term Float' },
+    h = { '<cmd>ToggleTerm size=10 direction=horizontal<cr>', 'Term Horizontal' },
     -- p = { _PYTHON_TOGGLE(), "Python" },
     t = { '<cmd>ToggleTerm direction=tab<cr>', 'Term Tab' },
     v = { '<cmd>ToggleTerm size=80 direction=vertical<cr>', 'Term Vertical' },
   },
   u = {
-    ':Telescope undo<CR>',
+    '<cmd>Telescope undo<CR>',
     'Undo',
   },
   -- w = {
