@@ -17,6 +17,7 @@ electron21
 emacs-gcc-wayland-devel-bin
 espanso-wayland
 ferdium-bin
+fmt9
 github-desktop-bin
 gnome-metronome
 gradience
@@ -53,6 +54,7 @@ rofi-search-git
 snap-pac-grub
 snapper-gui-git
 spacecadetpinball-git
+spdlog-git
 swayfx
 swaylock-effects-git
 swaync
