@@ -42,6 +42,7 @@ alias xevsym="xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3
 alias myip='curl -4 https://icanhazip.com'
 alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirrorlist"
 alias tpv='command mpv --vo=tct'
+alias batreport='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 
 #Devouring
 # alias feh='swallow feh --scale-down'
