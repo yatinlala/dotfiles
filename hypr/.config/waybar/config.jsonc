@@ -6,7 +6,6 @@
   
   // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
   "modules-left":   ["wlr/workspaces" ],
-  "modules-center": [ "mpris" ],
   // "modules-center": [ "mpris"],
   // "modules-center": ["mpd"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
