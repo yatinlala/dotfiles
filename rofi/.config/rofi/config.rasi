@@ -4,4 +4,4 @@ configuration {
   show-icons:         true;
   icon-theme:         "Papirus";
 }
-@theme "/home/nitay/.config/rofi/theme.rasi"
+@theme "theme.rasi"
