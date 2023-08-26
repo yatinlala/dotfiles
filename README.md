@@ -11,4 +11,4 @@ directory, and type `stow <foldername>`.
 
 Keydrc needs to be linked to /etc/keyd/default.conf. Run
 
-`sudo ln -sf ~/.dotfiles/keyd/.config/keydrc /etc/keyd/default.conf`
+`sudo ln -sf ~/.dotfiles/keyd /etc/keyd`
