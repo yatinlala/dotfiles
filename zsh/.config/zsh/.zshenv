@@ -70,7 +70,7 @@ export NLTK_DATA="$XDG_DATA_HOME"/nltk
 export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
-export BROWSER="xdg-launch vivaldi-stable"
+export BROWSER="gtk-launch brave-browser"
 export TERMINAL="kitty -1"
 export VIDEO="mpv"
 export IMAGE="imv"
@@ -80,6 +80,11 @@ export PAGER="bat --paging=always"
 
 # Disable less history files 
 export LESSHISTFILE=-
+
+#Rofipass wayland
+export ROFI_PASS_BACKEND=wtype 
+export ROFI_PASS_CLIPBOARD_BACKEND=wl-clipboard
+
 
 # Colored man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
