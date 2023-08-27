@@ -2,3 +2,4 @@
 
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
+inode/x-empty=nvim.desktop
