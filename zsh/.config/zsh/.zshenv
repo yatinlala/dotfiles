@@ -81,11 +81,6 @@ export PAGER="bat --paging=always"
 # Disable less history files 
 export LESSHISTFILE=-
 
-#Rofipass wayland
-export ROFI_PASS_BACKEND=wtype 
-export ROFI_PASS_CLIPBOARD_BACKEND=wl-clipboard
-
-
 # Colored man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c" # Fix formatting errors
