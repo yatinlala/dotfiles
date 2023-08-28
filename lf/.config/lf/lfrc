@@ -46,11 +46,8 @@ cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
         application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
-        # application/pdf) swallow zathura "$f";;
         application/pdf) zathura "$f";;
-        # video/*|audio/*) swallow mpv --force-window=yes "$f";;
         video/*|audio/*) mpv --force-window=yes "$f";;
-        # image/*) swallow feh --scale-down "$f";;
         image/*) imv "$f";;
         *) xdg-open "$f";;
     esac
