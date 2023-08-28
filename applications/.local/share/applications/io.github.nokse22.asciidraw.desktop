@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ASCII Draw
+Exec=xdg-launch /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=ascii-draw io.github.nokse22.asciidraw
+Icon=io.github.nokse22.asciidraw
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
+X-Flatpak=io.github.nokse22.asciidraw
