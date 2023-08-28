@@ -67,8 +67,8 @@ case $1 in
     nm-applet)
         pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
     notes)
-        # pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
-        pgrep -x emacs || emacs ~/documents/org/main.org
+        pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
+        # pgrep -x emacs || emacs ~/documents/org/main.org
         hyprctl dispatch workspace 7;;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     pavucontrol)
