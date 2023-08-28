@@ -20,7 +20,7 @@ set cursorpreviewfmt ""
 # set cursorpreviewfmt "\033[7;90m"	 #Grey Cursor
 
 #Dynamically set number of columns
-%{{
+cmd recol &{{
     w=$(tput cols)
     if [ $w -le 80 ]; then
         lf -remote "send $id set ratios 1:2"
