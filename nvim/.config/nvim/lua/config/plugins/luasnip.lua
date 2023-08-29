@@ -3,10 +3,10 @@ return {
   dependencies = { 'rafamadriz/friendly-snippets' },
   config = function()
     require('luasnip.loaders.from_vscode').lazy_load()
-    local ls = require 'luasnip'
-    local types = require 'luasnip.util.types'
+    local ls = require('luasnip')
+    local types = require('luasnip.util.types')
 
-    ls.config.set_config {
+    ls.config.set_config({
       -- This tells LuaSnip to remember to keep around the last snippet.
       -- You can jump back into it even if you move outside of the selection
       history = false,
@@ -14,7 +14,7 @@ return {
       updateevents = 'TextChanged,TextChangedI',
       -- -- Autosnippets:
       -- enable_autosnippets = true,
-    }
+    })
 
     -- <c-k> is my expansion key
     -- this will expand the current item or jump to the next item within the snippet.
@@ -40,6 +40,6 @@ return {
       end
     end)
 
-    vim.keymap.set('i', '<c-u>', require 'luasnip.extras.select_choice')
+    vim.keymap.set('i', '<c-u>', require('luasnip.extras.select_choice'))
   end,
 }

@@ -3,7 +3,7 @@ local M = {
 }
 
 function M.config()
-  local wk = require 'which-key'
+  local wk = require('which-key')
 
   local setup = {
     plugins = {

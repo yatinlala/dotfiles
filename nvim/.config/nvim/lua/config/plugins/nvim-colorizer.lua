@@ -2,7 +2,7 @@ return {
   'NVChad/nvim-colorizer.lua',
   cmd = 'ColorizerToggle',
   config = function()
-    require('colorizer').setup {
+    require('colorizer').setup({
 
       filetypes = {},
       user_default_options = {
@@ -26,6 +26,6 @@ return {
       },
       -- all the sub-options of filetypes apply to buftypes
       buftypes = {},
-    }
+    })
   end,
 }

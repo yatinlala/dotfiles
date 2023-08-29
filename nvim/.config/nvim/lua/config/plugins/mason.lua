@@ -13,7 +13,7 @@ local M = {
     'folke/neodev.nvim',
   },
   event = 'BufReadPost',
-  cmd = 'Mason'
+  cmd = 'Mason',
 }
 
 M.tools = {
@@ -31,7 +31,7 @@ M.tools = {
 }
 
 function M.check()
-  local mr = require 'mason-registry'
+  local mr = require('mason-registry')
   for _, tool in ipairs(M.tools) do
     local p = mr.get_package(tool)
     if not p:is_installed() then
@@ -43,7 +43,7 @@ end
 function M.config()
   require('mason').setup()
   M.check()
-  require('mason-lspconfig').setup { automatic_installation = true }
+  require('mason-lspconfig').setup({ automatic_installation = true })
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -116,12 +116,12 @@ function M.config()
   -- map buffer local keybindings when the language server attaches
   local servers = { 'cssls', 'bashls', 'pyright', 'ocamllsp' }
   for _, lsp in pairs(servers) do
-    require('lspconfig')[lsp].setup {
+    require('lspconfig')[lsp].setup({
       on_attach = on_attach,
-    }
+    })
   end
 
-  require('lspconfig').lua_ls.setup {
+  require('lspconfig').lua_ls.setup({
     on_attach = on_attach,
     settings = {
       Lua = {
@@ -130,7 +130,7 @@ function M.config()
         },
       },
     },
-  }
+  })
 
   -- require('lspconfig')['tsserver'].setup{
   --     on_attach = on_attach,

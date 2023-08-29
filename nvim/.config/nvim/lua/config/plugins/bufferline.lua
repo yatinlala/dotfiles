@@ -3,7 +3,7 @@ return {
   event = 'BufReadPre',
   enabled = true,
   config = function()
-    require('bufferline').setup {
+    require('bufferline').setup({
       options = {
         style_preset = require('bufferline').style_preset.no_italic,
         buffer_selected = {
@@ -30,6 +30,6 @@ return {
         -- 	--   return buffer_a.modified > buffer_b.modified
         -- 	-- end
       },
-    }
+    })
   end,
 }

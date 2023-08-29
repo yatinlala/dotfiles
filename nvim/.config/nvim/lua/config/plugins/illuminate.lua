@@ -5,11 +5,11 @@ local M = {
 }
 
 function M.config()
-  vim.cmd [[
+  vim.cmd([[
         hi def IlluminatedWordText guibg=#504945
         hi def IlluminatedWordRead guibg=#504945
-        hi def IlluminatedWordWrite guibg=#504945 ]]
-  require('illuminate').configure {
+        hi def IlluminatedWordWrite guibg=#504945 ]])
+  require('illuminate').configure({
     -- providers: provider used to get references in the buffer, ordered by priority
     providers = {
       'lsp',
@@ -50,7 +50,7 @@ function M.config()
     -- Supports the same keys passed to .configure
     -- If nil, vim-illuminate will be disabled for large files.
     large_file_overrides = nil,
-  }
+  })
 end
 
 return M

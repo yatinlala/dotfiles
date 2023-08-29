@@ -2,11 +2,11 @@ return {
   'numToStr/Comment.nvim',
   keys = { 'gc', 'gb', 'gcc', 'gbc', 'v', 'V' },
   config = function()
-    local comment_ft = require 'Comment.ft'
+    local comment_ft = require('Comment.ft')
 
     comment_ft.set('lua', { '--%s', '--[[%s]]' })
 
-    require('Comment').setup {
+    require('Comment').setup({
       ignore = nil,
 
       -- LHS of operator-pending mapping in NORMAL + VISUAL mode
@@ -41,6 +41,6 @@ return {
         -- block-comment keymap
         block = 'gbc',
       },
-    }
+    })
   end,
 }

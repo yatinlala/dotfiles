@@ -148,7 +148,7 @@ return {
         -- dynamic configuration for ftFT motions
         config = function(opts)
           -- autohide flash when in operator-pending mode
-          opts.autohide = vim.fn.mode(true):find 'no' and vim.v.operator == 'y'
+          opts.autohide = vim.fn.mode(true):find('no') and vim.v.operator == 'y'
 
           -- disable jump labels when enabled and when using a count
           opts.jump_labels = opts.jump_labels and vim.v.count == 0
@@ -239,7 +239,7 @@ return {
     },
   },
   config = function(_, opts)
-    vim.cmd [[ hi def FlashMatch guibg=#fbf1c7 ]]
+    vim.cmd([[ hi def FlashMatch guibg=#fbf1c7 ]])
 
     require('flash').setup(opts)
   end,

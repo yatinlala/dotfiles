@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local wk = require 'which-key'
+local wk = require('which-key')
 
 -- Normal --
 
@@ -87,7 +87,7 @@ local leader = {
   a = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
   b = {
     function()
-      require('telescope.builtin').buffers(require('telescope.themes').get_dropdown { previewer = false })
+      require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
     end,
     'buffers',
   },
@@ -115,7 +115,7 @@ local leader = {
     R = { '<cmd>Telescope registers<cr>', 'Registers' },
     s = {
       function()
-        require('telescope.builtin').symbols { sources = { 'emoji', 'kaomoji', 'gitmoji' } }
+        require('telescope.builtin').symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji' } })
       end,
       'recent files',
     },
@@ -202,7 +202,7 @@ local leader = {
     -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     c = {
       function()
-        require('codeium').setup {}
+        require('codeium').setup({})
       end,
       'Activate Codeium',
     },
@@ -243,7 +243,7 @@ local leader = {
     o = { '<cmd>SymbolsOutline<CR>', 'Symbols Outline' },
     q = {
       function()
-        vim.diagnostic.setloclist { open = false }
+        vim.diagnostic.setloclist({ open = false })
       end,
       'Quickfix',
     },
@@ -265,7 +265,12 @@ local leader = {
     '<cmd>ene <BAR> startinsert <CR>',
     'new file',
   },
-  o = { function() vim.ui.open(vim.fn.expand '%') end, 'vim.open file' },
+  o = {
+    function()
+      vim.ui.open(vim.fn.expand('%'))
+    end,
+    'vim.open file',
+  },
   q = {
     name = 'Quickfix',
     l = { '<cmd>lopen<cr>', 'Open Location List' },
@@ -328,4 +333,4 @@ local leader = {
 
 wk.register(leader, { prefix = '<leader>' })
 
-wk.register { g = { name = '+goto' } }
+wk.register({ g = { name = '+goto' } })

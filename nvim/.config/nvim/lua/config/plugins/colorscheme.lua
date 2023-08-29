@@ -4,7 +4,7 @@ return {
   priority = 1000,
   config = function(_, _)
     -- Defaults are commented out
-    require('gruvbox').setup {
+    require('gruvbox').setup({
       -- undercurl = true,
       -- underline = true,
       -- bold = true,
@@ -25,7 +25,7 @@ return {
       -- overrides = {},
       -- dim_inactive = false,
       -- transparent_mode = false,
-    }
-    vim.cmd.colorscheme 'gruvbox'
+    })
+    vim.cmd.colorscheme('gruvbox')
   end,
 }

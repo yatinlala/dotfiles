@@ -18,9 +18,9 @@ function M.config()
   vim.o.completeopt = 'menuone,noselect'
 
   -- Setup nvim-cmp.
-  local cmp = require 'cmp'
+  local cmp = require('cmp')
 
-  cmp.setup {
+  cmp.setup({
     completion = {
       completeopt = 'menu,menuone,noinsert',
     },
@@ -33,12 +33,12 @@ function M.config()
         require('luasnip').lsp_expand(args.body)
       end,
     },
-    mapping = cmp.mapping.preset.insert {
+    mapping = cmp.mapping.preset.insert({
       -- I think the C-n (next), C-p (prev), and C-y (disable) are enabled by default
-      ['<C-Space>'] = cmp.mapping.confirm { select = false },
+      ['<C-Space>'] = cmp.mapping.confirm({ select = false }),
       ['<C-e>'] = cmp.mapping.close(),
-    },
-    sources = cmp.config.sources {
+    }),
+    sources = cmp.config.sources({
       { name = 'nvim_lua' },
       { name = 'codeium' },
       { name = 'nvim_lsp' },
@@ -47,7 +47,7 @@ function M.config()
       { name = 'emoji' },
       { name = 'orgmode' },
       { name = 'buffer', keyword_length = 5 },
-    },
+    }),
     formatting = {
       format = function(_entry, vim_item)
         local icons = {
@@ -79,7 +79,7 @@ function M.config()
         return vim_item
       end,
     },
-  }
+  })
 
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),

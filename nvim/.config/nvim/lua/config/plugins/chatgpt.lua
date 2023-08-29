@@ -3,9 +3,9 @@ return {
   keys = '<space>a',
   cmd = 'ChatGPT',
   config = function()
-    require('chatgpt').setup {
+    require('chatgpt').setup({
       api_key_cmd = 'pass show api/openai',
-    }
+    })
   end,
   dependencies = {
     'MunifTanjim/nui.nvim',

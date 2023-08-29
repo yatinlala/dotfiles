@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  require('toggleterm').setup {
+  require('toggleterm').setup({
     size = 50,
     open_mapping = [[<c-\>]],
     hide_numbers = true,
@@ -25,7 +25,7 @@ function M.config()
         background = 'Normal',
       },
     },
-  }
+  })
 
   function _G.set_terminal_keymaps()
     local opts = { noremap = true }
@@ -36,10 +36,10 @@ function M.config()
     vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
   end
 
-  vim.cmd 'autocmd! TermOpen term://* lua set_terminal_keymaps()'
+  vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
   local Terminal = require('toggleterm.terminal').Terminal
-  local lazygit = Terminal:new {
+  local lazygit = Terminal:new({
     cmd = 'lazygit',
     -- dir = "git_dir",
     direction = 'float',
@@ -48,21 +48,21 @@ function M.config()
     },
     -- function to run on opening the terminal
     on_open = function(term)
-      vim.cmd 'startinsert!'
+      vim.cmd('startinsert!')
       vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
     end,
     -- function to run on closing the terminal
     on_close = function(term)
-      vim.cmd 'startinsert!'
+      vim.cmd('startinsert!')
     end,
-  }
+  })
 
   function _lazygit_toggle()
     lazygit:toggle()
   end
 
-  local lf = Terminal:new {
-    cmd = 'lf ' .. vim.fn.expand '%:p',
+  local lf = Terminal:new({
+    cmd = 'lf ' .. vim.fn.expand('%:p'),
     -- dir = vim.fn.expand('%:p'):match("(.*[/\\])"),
     direction = 'float',
     float_opts = {
@@ -70,14 +70,14 @@ function M.config()
     },
     -- function to run on opening the terminal
     on_open = function(term)
-      vim.cmd 'startinsert!'
+      vim.cmd('startinsert!')
       -- vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
     end,
     -- function to run on closing the terminal
     on_close = function(term)
-      vim.cmd 'startinsert!'
+      vim.cmd('startinsert!')
     end,
-  }
+  })
 
   function _lf_toggle()
     lf:toggle()

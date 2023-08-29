@@ -6,7 +6,7 @@ return {
       return
     end
 
-    require('lualine').setup {
+    require('lualine').setup({
       options = {
         icons_enabled = true,
         theme = 'auto',
@@ -52,6 +52,6 @@ return {
       -- },
 
       extensions = {},
-    }
+    })
   end,
 }

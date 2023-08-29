@@ -1,12 +1,10 @@
 vim.loader.enable()
 
-require 'config.options'
-require 'config.lazy'
+require('config.options')
+require('config.lazy')
 require('config.autocmds').setup()
-require 'config.keymaps'
-require 'config.commands'
-
--- require("util").setColors()
+require('config.keymaps')
+require('config.commands')
 
 -- vim.api.nvim_create_autocmd("User", {
 -- 	pattern = "VeryLazy",

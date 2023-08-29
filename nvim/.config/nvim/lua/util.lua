@@ -23,13 +23,13 @@ function M.toggleBg()
 end
 
 function M.setColors()
-  vim.cmd 'colorscheme gruvbox'
-  vim.cmd [[
+  vim.cmd('colorscheme gruvbox')
+  vim.cmd([[
         hi def IlluminatedWordText guibg=#504945
         hi def IlluminatedWordRead guibg=#504945
         hi def IlluminatedWordWrite guibg=#504945
         hi MatchWord cterm=underline gui=underline
-    ]]
+    ]])
 end
 
 local pwconfig = {
@@ -91,9 +91,9 @@ local function on_exit()
   for _, func in ipairs(pwconfig.on_close) do
     func()
   end
-  checkFile '/tmp/fm-nvim'
-  checkFile(vim.fn.getenv 'HOME' .. '/.cache/fff/opened_file')
-  vim.cmd [[ checktime ]]
+  checkFile('/tmp/fm-nvim')
+  checkFile(vim.fn.getenv('HOME') .. '/.cache/fff/opened_file')
+  vim.cmd([[ checktime ]])
 end
 
 local function postCreation(suffix)
@@ -134,10 +134,10 @@ end
 
 local function createWin(cmd, suffix)
   M.buf = vim.api.nvim_create_buf(false, true)
-  local win_height = math.ceil(vim.api.nvim_get_option 'lines' * pwconfig.ui.float.height - 4)
-  local win_width = math.ceil(vim.api.nvim_get_option 'columns' * pwconfig.ui.float.width)
-  local col = math.ceil((vim.api.nvim_get_option 'columns' - win_width) * pwconfig.ui.float.x)
-  local row = math.ceil((vim.api.nvim_get_option 'lines' - win_height) * pwconfig.ui.float.y - 1)
+  local win_height = math.ceil(vim.api.nvim_get_option('lines') * pwconfig.ui.float.height - 4)
+  local win_width = math.ceil(vim.api.nvim_get_option('columns') * pwconfig.ui.float.width)
+  local col = math.ceil((vim.api.nvim_get_option('columns') - win_width) * pwconfig.ui.float.x)
+  local row = math.ceil((vim.api.nvim_get_option('lines') - win_height) * pwconfig.ui.float.y - 1)
   local opts = {
     style = 'minimal',
     relative = 'editor',
@@ -150,7 +150,7 @@ local function createWin(cmd, suffix)
   M.win = vim.api.nvim_open_win(M.buf, true, opts)
   postCreation(suffix)
   vim.fn.termopen(cmd, { on_exit = on_exit })
-  vim.api.nvim_command 'startinsert'
+  vim.api.nvim_command('startinsert')
   vim.api.nvim_win_set_option(
     M.win,
     'winhl',
@@ -168,9 +168,9 @@ local function createSplit(cmd, suffix)
   M.buf = vim.api.nvim_get_current_buf()
   postCreation(suffix)
   vim.fn.termopen(cmd, { on_exit = on_exit })
-  vim.api.nvim_command 'startinsert'
+  vim.api.nvim_command('startinsert')
   M.closeCmd = function()
-    vim.cmd 'bdelete!'
+    vim.cmd('bdelete!')
   end
 end
 

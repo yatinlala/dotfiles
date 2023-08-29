@@ -14,9 +14,9 @@ local M = {
 
 function M.config()
   -- local trouble = require("trouble.providers.telescope")
-  local telescope = require 'telescope'
+  local telescope = require('telescope')
 
-  telescope.setup {
+  telescope.setup({
     defaults = {
       prompt_prefix = '  ',
       selection_caret = ' ',
@@ -52,11 +52,11 @@ function M.config()
       -- i = { ["<c-t>"] = trouble.open_with_trouble },
       -- n = { ["<c-t>"] = trouble.open_with_trouble },
     },
-  }
-  require('telescope').load_extension 'fzy_native'
-  require('telescope').load_extension 'projects'
-  require('telescope').load_extension 'undo'
-  require('telescope').load_extension 'file_browser'
+  })
+  require('telescope').load_extension('fzy_native')
+  require('telescope').load_extension('projects')
+  require('telescope').load_extension('undo')
+  require('telescope').load_extension('file_browser')
 end
 
 return M

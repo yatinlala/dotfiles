@@ -18,7 +18,7 @@ function M.setup()
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'clap_input',
     callback = function()
-      require('cmp').setup.buffer { completion = { autocomplete = false } }
+      require('cmp').setup.buffer({ completion = { autocomplete = false } })
     end,
     group = main_group,
   })
@@ -43,7 +43,7 @@ function M.setup()
   -- })
   vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()
-      vim.highlight.on_yank { timeout = 200 }
+      vim.highlight.on_yank({ timeout = 200 })
     end,
     group = main_group,
   })
@@ -51,7 +51,7 @@ end
 
 function M.lsp_hov_highlight()
   -- Document highlight
-  vim.api.nvim_command [[ hi LspReferenceText guibg=#504945]]
+  vim.api.nvim_command([[ hi LspReferenceText guibg=#504945]])
   vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
       vim.lsp.buf.document_highlight()
