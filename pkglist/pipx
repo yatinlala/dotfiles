@@ -1,8 +1,6 @@
-venvs are in /home/nitay/.local/pipx/venvs
-apps are exposed on your $PATH at /home/nitay/.local/bin
+venvs are in /home/lala/.local/pipx/venvs
+apps are exposed on your $PATH at /home/lala/.local/bin
    package spotdl 4.2.0, installed using Python 3.11.3
     - spotdl
-   package textual-paint 0.1.0, installed using Python 3.11.3
-    - textual-paint
    package xkcdpass 1.19.4, installed using Python 3.11.3
     - xkcdpass
