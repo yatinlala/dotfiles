@@ -72,7 +72,7 @@ mock                            3.0.5
 more-itertools                  10.1.0
 msgpack                         1.0.5
 multivolumefile                 0.2.3
-mutagen                         1.46.0
+mutagen                         1.47.0
 netifaces                       0.11.0
 ordered-set                     4.1.0
 packaging                       23.1
@@ -132,7 +132,7 @@ setuptools-scm                  7.1.0
 sgmllib3k                       1.0.0
 shellingham                     1.5.0.post1
 six                             1.16.0
-soupsieve                       2.4.1
+soupsieve                       2.5
 svglib                          1.5.1
 texttable                       1.6.7
 tinycss2                        1.2.1

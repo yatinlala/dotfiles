@@ -99,6 +99,7 @@ sshfs
 steam
 stow
 swaybg
+swayidle
 tealdeer
 terminus-font
 torbrowser-launcher
@@ -153,6 +154,7 @@ unrar
 unzip
 vivaldi
 vivaldi-ffmpeg-codecs
+waybar
 wget
 wl-clipboard
 wtype
