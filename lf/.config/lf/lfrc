@@ -31,6 +31,22 @@ cmd recol &{{
     fi
 }}
 
+cmd onecol &{{
+    lf -remote "send $id set ratios 1"
+}}
+
+cmd twocol &{{
+    lf -remote "send $id set ratios 1:2"
+}}
+
+cmd threecol &{{
+    lf -remote "send $id set ratios 1:2"
+}}
+
+map z1 onecol
+map z2 twocol
+map z3 threecol
+
 cmd toggle_preview %{{
     if [ "$lf_preview" = "true" ]; then
         lf -remote "send $id :set preview false; set ratios 1:5"
@@ -54,7 +70,7 @@ cmd open ${{
 }}
 
 cmd bulk-rename ${{
-    vimv --git -- $(basename -a -- $fx)
+    vimv -- $(basename -a -- $fx)
 
     lf -remote "send $id load"
     lf -remote "send $id unselect"
