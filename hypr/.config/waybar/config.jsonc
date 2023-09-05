@@ -5,7 +5,7 @@
   "height": 35,
   
   // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
-  "modules-left":   ["wlr/workspaces" ],
+  "modules-left":   ["hyprland/workspaces" ],
   // "modules-center": [ "mpris"],
   // "modules-center": ["mpd"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
@@ -27,13 +27,10 @@
 	}
   },
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     // "disable-scroll": true,
     "sort-by-number": true,
     "all-outputs": true,
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format": "{icon}",
     "format-icons": {
       "1": "<span color=\"#EBDBB2\">1</span>",
@@ -54,7 +51,8 @@
 
   "custom/weather": {
       "format": "{}",
-      "exec": "curl \"wttr.in/94303?format=%c%t\"",
+      // "exec": "curl \"wttr.in/94303?format=%c%t\"",
+      "exec": "curl \"wttr.in/19081?format=%c%t\"",
       "interval": 6000,
       "spacing": 10
 
