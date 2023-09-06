@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Ligalex Mono" :size 15)
-     doom-variable-pitch-font (font-spec :family "Ligalex Mono" :size 15))
+(setq doom-font (font-spec :family "BlexMono Nerd Font" :size 15)
+     doom-variable-pitch-font (font-spec :family "BlexMono Nerd Font" :size 15))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -41,8 +41,6 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/documents/org/")
-
-(setq confirm-kill-emacs nil)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -82,3 +80,4 @@
   (evil-define-key 'normal 'global
     (kbd "H") #'previous-buffer
     (kbd "L") #'next-buffer))
+(setq confirm-kill-emacs nil)
