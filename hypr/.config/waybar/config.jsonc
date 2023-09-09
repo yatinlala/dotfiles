@@ -9,6 +9,7 @@
   // "modules-center": [ "mpris"],
   // "modules-center": ["mpd"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+  // "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
   // "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 
   "wlr/taskbar": {

@@ -8,7 +8,7 @@ alias tetris='netris -k "hHklLJjs frn" -i .1'
 
 #Colorize!
 alias grep='grep --color=auto --exclude-dir=.git'
-alias ls='exa --icons'
+alias ls='eza --icons'
 
 #Shorten frequently used commands
 alias e='$EDITOR'
