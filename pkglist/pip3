@@ -112,7 +112,7 @@ PyQt6-sip                       13.5.2
 PyQt6-WebEngine                 6.5.0
 pyrsistent                      0.19.3
 PySocks                         1.7.1
-pytest                          7.4.1
+pytest                          7.4.2
 python-dateutil                 2.8.2
 python-dbusmock                 0.29.1
 PyYAML                          6.0.1
@@ -146,7 +146,7 @@ trove-classifiers               2023.8.8
 typing_extensions               4.7.1
 unrardll                        0.1.7
 urllib3                         1.26.15
-userpath                        1.9.0
+userpath                        1.9.1
 validate-pyproject              0.13.post1.dev0+gb752273.d20230520
 virtualenv                      20.24.3
 webencodings                    0.5.1

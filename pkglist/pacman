@@ -20,7 +20,7 @@ docker-compose
 dosfstools
 efibootmgr
 emacs-wayland
-exa
+eza
 fd
 ffmpegthumbnailer
 flatpak
