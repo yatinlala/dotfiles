@@ -90,6 +90,7 @@ python-pip
 python-pipx
 rclone
 reflector
+ripgrep
 rofimoji
 rsync
 signal-desktop
