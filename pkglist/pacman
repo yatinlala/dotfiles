@@ -13,6 +13,7 @@ btrfs-progs
 calibre
 clang
 cliphist
+cmatrix
 cmus
 cups
 docker
@@ -94,6 +95,7 @@ ripgrep
 rofimoji
 rsync
 signal-desktop
+sl
 sof-firmware
 spotify-launcher
 sshfs
