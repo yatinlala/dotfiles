@@ -145,7 +145,7 @@ torbrowser-launcher             0.3.6
 tqdm                            4.66.1
 trash-cli                       0.23.2.13.2
 trove-classifiers               2023.8.8
-typing_extensions               4.7.1
+typing_extensions               4.8.0
 unrardll                        0.1.7
 urllib3                         1.26.15
 userpath                        1.9.1
