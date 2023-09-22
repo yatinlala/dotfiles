@@ -144,7 +144,7 @@ tomlkit                         0.12.1
 torbrowser-launcher             0.3.6
 tqdm                            4.66.1
 trash-cli                       0.23.2.13.2
-trove-classifiers               2023.8.8
+trove-classifiers               2023.9.22
 typing_extensions               4.8.0
 unrardll                        0.1.7
 urllib3                         1.26.15
