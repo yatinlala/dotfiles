@@ -35,9 +35,9 @@ dnspython                       2.3.0
 dulwich                         0.21.6
 fasteners                       0.18
 fastjsonschema                  2.18.0
-faust-cchardet                  2.1.18
+faust-cchardet                  2.1.19
 feedparser                      6.0.10
-filelock                        3.12.2
+filelock                        3.12.4
 gpg                             1.22.0
 html2text                       2020.1.16
 html5-parser                    0.4.11
@@ -56,7 +56,7 @@ jaraco.test                     5.3.0
 jaraco.text                     3.11.1
 jeepney                         0.8.0
 Jinja2                          3.1.2
-jsonschema                      4.19.0
+jsonschema                      4.19.1
 jsonschema-specifications       2023.7.1
 keyring                         24.2.0
 lark                            1.1.7
@@ -127,7 +127,7 @@ reportlab                       3.6.12
 requests                        2.28.2
 requests-toolbelt               1.0.0
 rofimoji                        6.2.0
-rpds-py                         0.9.2
+rpds-py                         0.10.3
 SecretStorage                   3.3.3
 setuptools                      68.0.0
 setuptools-scm                  7.1.0
@@ -150,10 +150,10 @@ unrardll                        0.1.7
 urllib3                         1.26.15
 userpath                        1.9.1
 validate-pyproject              0.13.post1.dev0+gb752273.d20230520
-virtualenv                      20.24.3
+virtualenv                      20.24.5
 webencodings                    0.5.1
 wheel                           0.40.0
 Yapsy                           1.12.2
-yt-dlp                          2023.7.6
+yt-dlp                          2023.9.24
 zeroconf                        0.63.0
 zipp                            3.16.2
