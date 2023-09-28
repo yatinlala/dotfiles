@@ -40,7 +40,7 @@ require('lazy').setup('config.plugins', {
         'netrwSettings',
         'netrwFileHandlers',
         'tohtml',
-        'tutor',
+        -- 'tutor',
       },
     },
   },
