@@ -29,6 +29,7 @@ foot
 fprintd
 fzf
 gammastep
+gdb
 gimp
 git
 gnuplot
@@ -129,6 +130,7 @@ texlive-plaingeneric
 texlive-pstricks
 texlive-publishers
 texlive-xetex
+tmux
 torbrowser-launcher
 traceroute
 trash-cli
