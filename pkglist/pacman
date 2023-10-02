@@ -37,6 +37,7 @@ go
 grub
 grub-btrfs
 guvcview
+hyfetch
 hyprland
 imagemagick
 imv
@@ -70,6 +71,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+ollama
 opam
 os-prober
 otf-aurulent-nerd

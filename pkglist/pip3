@@ -42,6 +42,7 @@ gpg                             1.22.0
 html2text                       2020.1.16
 html5-parser                    0.4.11
 html5lib                        1.1
+HyFetch                         1.4.10
 idna                            3.4
 ifaddr                          0.2.0
 importlib-metadata              5.0.0
