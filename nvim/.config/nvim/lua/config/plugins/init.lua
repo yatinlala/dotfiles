@@ -7,6 +7,13 @@ return {
     config = true,
   },
   { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
+  {
+    'David-Kunz/gen.nvim',
+    event = 'InsertEnter',
+    config = function()
+      require('gen').model = 'mistral'
+    end,
+  },
 
   ------------------------------------------------------
   -- {
