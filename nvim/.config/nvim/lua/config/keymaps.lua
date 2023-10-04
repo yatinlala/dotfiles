@@ -35,7 +35,7 @@ vim.keymap.set('n', '<c-\\>', '<cmd>ToggleTerm<CR>', opts)
 vim.keymap.set('n', 'gf', '<cmd>e <cfile><CR>', opts)
 
 vim.keymap.set('n', '<c-p>', function()
-  require('telescope.builtin').find_files()
+    require('telescope.builtin').find_files()
 end, opts)
 
 -- -- Smart(ish) compilation
@@ -73,262 +73,262 @@ vim.keymap.set('x', 'K', "<cmd>move '<-2<CR>gv=gv", opts)
 vim.keymap.set('c', 'w!!', 'w !sudo tee %', {})
 
 wk.register({
-  a = {
-    function()
-      require('chatgpt').edit_with_instructions()
-    end,
-    'Chatgpt Edit with instructions',
-  },
+    a = {
+        function()
+            require('chatgpt').edit_with_instructions()
+        end,
+        'Chatgpt Edit with instructions',
+    },
 }, {
-  prefix = '<leader>',
-  mode = 'v',
+    prefix = '<leader>',
+    mode = 'v',
 })
 local leader = {
-  a = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
-  b = {
-    function()
-      require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
-    end,
-    'buffers',
-  },
-  B = { '<cmd>Barbecue toggle<CR>', 'toggle barbecue' },
-  c = { '<cmd>ColorizerToggle<CR>', 'toggle colorizer' },
-  C = { require('util').toggleBg, 'toggle dark/light' },
-  D = {
-    name = 'Duck',
-    h = { require('duck').hatch(), 'Hatch a duck' },
-    k = { require('duck').cook(), 'Cook the duck' },
-  },
-  e = { '<cmd>Lf<CR>', 'Lf' },
-  f = {
-    name = 'Telescope',
-    b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
-    B = { '<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Buffer' },
-    c = { '<cmd>Telescope commands<cr>', 'Commands' },
-    h = { '<cmd>Telescope help_tags<CR>', 'help tags' },
-    k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
-    m = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
-    u = { '<cmd>Telescope undo<cr>', 'Undo' },
-    n = { '<cmd>Telescope find_files cwd=~/.config/nvim<CR>', 'edit neovim' },
-    p = { require('telescope').extensions.projects.projects, 'projects' },
-    r = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
-    R = { '<cmd>Telescope registers<cr>', 'Registers' },
-    s = {
-      function()
-        require('telescope.builtin').symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji' } })
-      end,
-      'recent files',
+    a = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
+    b = {
+        function()
+            require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
+        end,
+        'buffers',
     },
+    B = { '<cmd>Barbecue toggle<CR>', 'toggle barbecue' },
+    c = { '<cmd>ColorizerToggle<CR>', 'toggle colorizer' },
+    C = { require('util').toggleBg, 'toggle dark/light' },
+    D = {
+        name = 'Duck',
+        h = { require('duck').hatch(), 'Hatch a duck' },
+        k = { require('duck').cook(), 'Cook the duck' },
+    },
+    e = { '<cmd>Lf<CR>', 'Lf' },
+    f = {
+        name = 'Telescope',
+        b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+        B = { '<cmd>Telescope current_buffer_fuzzy_find<cr>', 'Buffer' },
+        c = { '<cmd>Telescope commands<cr>', 'Commands' },
+        h = { '<cmd>Telescope help_tags<CR>', 'help tags' },
+        k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
+        m = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
+        u = { '<cmd>Telescope undo<cr>', 'Undo' },
+        n = { '<cmd>Telescope find_files cwd=~/.config/nvim<CR>', 'edit neovim' },
+        p = { require('telescope').extensions.projects.projects, 'projects' },
+        r = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
+        R = { '<cmd>Telescope registers<cr>', 'Registers' },
+        s = {
+            function()
+                require('telescope.builtin').symbols({ sources = { 'emoji', 'kaomoji', 'gitmoji' } })
+            end,
+            'recent files',
+        },
 
-    [':'] = { ':Telescope command_history<cr>', 'Command History' },
-    t = { '<cmd>Telescope builtin<cr>', 'Telescope' },
-    S = { '<cmd>Telescope highlights<cr>', 'Search Highlight Groups' },
-    l = { vim.show_pos, 'Highlight Groups at cursor' },
-    f = { '<cmd>Telescope filetypes<cr>', 'File Types' },
-    o = { '<cmd>Telescope vim_options<cr>', 'Options' },
-    a = { '<cmd>Telescope autocommands<cr>', 'Auto Commands' },
-  },
-  ['/'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
-  -- ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
-  ['.'] = { '<cmd>Telescope file_browser<CR>', 'Browse Files' },
-  g = {
-    -- name = "Git",
-    -- g = {
-    -- 	function()
-    -- 		_lazygit_toggle()
-    -- 	end,
-    -- 	"Lazygit",
-    -- },
-    g = { '<cmd>Lazygit<cr>', 'Lazygit' },
-    j = {
-      function()
-        require('gitsigns').next_hunk()
-      end,
-      'Next Hunk',
+        [':'] = { ':Telescope command_history<cr>', 'Command History' },
+        t = { '<cmd>Telescope builtin<cr>', 'Telescope' },
+        S = { '<cmd>Telescope highlights<cr>', 'Search Highlight Groups' },
+        l = { vim.show_pos, 'Highlight Groups at cursor' },
+        f = { '<cmd>Telescope filetypes<cr>', 'File Types' },
+        o = { '<cmd>Telescope vim_options<cr>', 'Options' },
+        a = { '<cmd>Telescope autocommands<cr>', 'Auto Commands' },
     },
-    k = {
-      function()
-        require('gitsigns').prev_hunk()
-      end,
-      'Prev Hunk',
+    ['/'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
+    -- ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
+    ['.'] = { '<cmd>Telescope file_browser<CR>', 'Browse Files' },
+    g = {
+        -- name = "Git",
+        -- g = {
+        -- 	function()
+        -- 		_lazygit_toggle()
+        -- 	end,
+        -- 	"Lazygit",
+        -- },
+        g = { '<cmd>Lazygit<cr>', 'Lazygit' },
+        j = {
+            function()
+                require('gitsigns').next_hunk()
+            end,
+            'Next Hunk',
+        },
+        k = {
+            function()
+                require('gitsigns').prev_hunk()
+            end,
+            'Prev Hunk',
+        },
+        l = {
+            function()
+                require('gitsigns').blame_line()
+            end,
+            'Blame',
+        },
+        p = {
+            function()
+                require('gitsigns').preview_hunk()
+            end,
+            'Preview Hunk',
+        },
+        r = {
+            function()
+                require('gitsigns').reset_hunk()
+            end,
+            'Reset Hunk',
+        },
+        R = {
+            function()
+                require('gitsigns').reset_buffer()
+            end,
+            'Reset Buffer',
+        },
+        s = {
+            function()
+                require('gitsigns').stage_hunk()
+            end,
+            'Stage Hunk',
+        },
+        u = {
+            function()
+                require('gitsigns').undo_stage_hunk()
+            end,
+            'Undo Stage Hunk',
+        },
+        o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
+        b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+        c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
+        d = {
+            '<cmd>Gitsigns diffthis HEAD<cr>',
+            'Diff',
+        },
+        --     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
     },
     l = {
-      function()
-        require('gitsigns').blame_line()
-      end,
-      'Blame',
+        name = 'LSP',
+        -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        c = {
+            function()
+                require('codeium').setup({})
+            end,
+            'Activate Codeium',
+        },
+        d = {
+            '<cmd>Telescope lsp_document_diagnostics<cr>',
+            'Document Diagnostics',
+        },
+        w = {
+            '<cmd>Telescope lsp_workspace_diagnostics<cr>',
+            'Workspace Diagnostics',
+        },
+        f = {
+            function()
+                vim.lsp.buf.format()
+            end,
+            'Format',
+        },
+        i = { '<cmd>LspInfo<cr>', 'Info' },
+        I = { '<cmd>LspInstallInfo<cr>', 'Installer Info' },
+        j = {
+            function()
+                vim.lsp.diagnostic.goto_next()
+            end,
+            'Next Diagnostic',
+        },
+        k = {
+            function()
+                vim.lsp.diagnostic.goto_prev()
+            end,
+            'Prev Diagnostic',
+        },
+        l = {
+            function()
+                vim.lsp.codelens.run()
+            end,
+            'CodeLens Action',
+        },
+        o = { '<cmd>SymbolsOutline<CR>', 'Symbols Outline' },
+        q = {
+            function()
+                vim.diagnostic.setloclist({ open = false })
+            end,
+            'Quickfix',
+        },
+        r = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            'Rename',
+        },
+        s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
+        S = {
+            '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
+            'Workspace Symbols',
+        },
     },
-    p = {
-      function()
-        require('gitsigns').preview_hunk()
-      end,
-      'Preview Hunk',
+    L = { '<cmd>Lazy<cr>', 'Lazy' },
+    m = { '<cmd>Mason<cr>', 'Mason' },
+    n = {
+        '<cmd>ene <BAR> startinsert <CR>',
+        'new file',
     },
-    r = {
-      function()
-        require('gitsigns').reset_hunk()
-      end,
-      'Reset Hunk',
+    o = {
+        function()
+            vim.ui.open(vim.fn.expand('%'))
+        end,
+        'vim.open file',
     },
-    R = {
-      function()
-        require('gitsigns').reset_buffer()
-      end,
-      'Reset Buffer',
+    q = {
+        name = 'Quickfix',
+        l = { '<cmd>lopen<cr>', 'Open Location List' },
+        q = { '<cmd>copen<cr>', 'Open Quickfix List' },
     },
-    s = {
-      function()
-        require('gitsigns').stage_hunk()
-      end,
-      'Stage Hunk',
+    t = {
+        name = 'Terminal',
+        f = { '<cmd>ToggleTerm direction=float<cr>', 'Term Float' },
+        h = { '<cmd>ToggleTerm size=10 direction=horizontal<cr>', 'Term Horizontal' },
+        -- p = { _PYTHON_TOGGLE(), "Python" },
+        t = { '<cmd>ToggleTerm direction=tab<cr>', 'Term Tab' },
+        v = { '<cmd>ToggleTerm size=80 direction=vertical<cr>', 'Term Vertical' },
     },
     u = {
-      function()
-        require('gitsigns').undo_stage_hunk()
-      end,
-      'Undo Stage Hunk',
+        '<cmd>Telescope undo<CR>',
+        'Undo',
     },
-    o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
-    b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
-    c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
-    d = {
-      '<cmd>Gitsigns diffthis HEAD<cr>',
-      'Diff',
-    },
-    --     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
-  },
-  l = {
-    name = 'LSP',
-    -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    c = {
-      function()
-        require('codeium').setup({})
-      end,
-      'Activate Codeium',
-    },
-    d = {
-      '<cmd>Telescope lsp_document_diagnostics<cr>',
-      'Document Diagnostics',
-    },
-    w = {
-      '<cmd>Telescope lsp_workspace_diagnostics<cr>',
-      'Workspace Diagnostics',
-    },
-    f = {
-      function()
-        vim.lsp.buf.format()
-      end,
-      'Format',
-    },
-    i = { '<cmd>LspInfo<cr>', 'Info' },
-    I = { '<cmd>LspInstallInfo<cr>', 'Installer Info' },
-    j = {
-      function()
-        vim.lsp.diagnostic.goto_next()
-      end,
-      'Next Diagnostic',
-    },
-    k = {
-      function()
-        vim.lsp.diagnostic.goto_prev()
-      end,
-      'Prev Diagnostic',
-    },
-    l = {
-      function()
-        vim.lsp.codelens.run()
-      end,
-      'CodeLens Action',
-    },
-    o = { '<cmd>SymbolsOutline<CR>', 'Symbols Outline' },
-    q = {
-      function()
-        vim.diagnostic.setloclist({ open = false })
-      end,
-      'Quickfix',
-    },
-    r = {
-      function()
-        vim.lsp.buf.rename()
-      end,
-      'Rename',
-    },
-    s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
-    S = {
-      '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
-      'Workspace Symbols',
-    },
-  },
-  L = { '<cmd>Lazy<cr>', 'Lazy' },
-  m = { '<cmd>Mason<cr>', 'Mason' },
-  n = {
-    '<cmd>ene <BAR> startinsert <CR>',
-    'new file',
-  },
-  o = {
-    function()
-      vim.ui.open(vim.fn.expand('%'))
-    end,
-    'vim.open file',
-  },
-  q = {
-    name = 'Quickfix',
-    l = { '<cmd>lopen<cr>', 'Open Location List' },
-    q = { '<cmd>copen<cr>', 'Open Quickfix List' },
-  },
-  t = {
-    name = 'Terminal',
-    f = { '<cmd>ToggleTerm direction=float<cr>', 'Term Float' },
-    h = { '<cmd>ToggleTerm size=10 direction=horizontal<cr>', 'Term Horizontal' },
-    -- p = { _PYTHON_TOGGLE(), "Python" },
-    t = { '<cmd>ToggleTerm direction=tab<cr>', 'Term Tab' },
-    v = { '<cmd>ToggleTerm size=80 direction=vertical<cr>', 'Term Vertical' },
-  },
-  u = {
-    '<cmd>Telescope undo<CR>',
-    'Undo',
-  },
-  -- w = {
-  --   name = 'Vimwiki',
-  --   w = { '<cmd>e ~/documents/wiki/index.<cr>', 'Wiki Index' },
-  -- },
-  --   t = {
-  --     name = "toggle",
-  --     f = {
-  --       require("config.plugins.lsp.formatting").toggle,
-  --       "Format on Save",
-  --     },
-  --     s = {
-  --       function()
-  --         util.toggle("spell")
-  --       end,
-  --       "Spelling",
-  --     },
-  --     w = {
-  --       function()
-  --         util.toggle("wrap")
-  --       end,
-  --       "Word Wrap",
-  --     },
-  --     n = {
-  --       function()
-  --         util.toggle("relativenumber", true)
-  --         util.toggle("number")
-  --       end,
-  --       "Line Numbers",
-  --     },
-  --   },
-  --   ["<tab>"] = {
-  --     name = "tabs",
-  --     ["<tab>"] = { "<cmd>tabnew<CR>", "New Tab" },
-  --     n = { "<cmd>tabnext<CR>", "Next" },
-  --     d = { "<cmd>tabclose<CR>", "Close" },
-  --     p = { "<cmd>tabprevious<CR>", "Previous" },
-  --     ["]"] = { "<cmd>tabnext<CR>", "Next" },
-  --     ["["] = { "<cmd>tabprevious<CR>", "Previous" },
-  --     f = { "<cmd>tabfirst<CR>", "First" },
-  --     l = { "<cmd>tablast<CR>", "Last" },
-  --   },
+    -- w = {
+    --   name = 'Vimwiki',
+    --   w = { '<cmd>e ~/documents/wiki/index.<cr>', 'Wiki Index' },
+    -- },
+    --   t = {
+    --     name = "toggle",
+    --     f = {
+    --       require("config.plugins.lsp.formatting").toggle,
+    --       "Format on Save",
+    --     },
+    --     s = {
+    --       function()
+    --         util.toggle("spell")
+    --       end,
+    --       "Spelling",
+    --     },
+    --     w = {
+    --       function()
+    --         util.toggle("wrap")
+    --       end,
+    --       "Word Wrap",
+    --     },
+    --     n = {
+    --       function()
+    --         util.toggle("relativenumber", true)
+    --         util.toggle("number")
+    --       end,
+    --       "Line Numbers",
+    --     },
+    --   },
+    --   ["<tab>"] = {
+    --     name = "tabs",
+    --     ["<tab>"] = { "<cmd>tabnew<CR>", "New Tab" },
+    --     n = { "<cmd>tabnext<CR>", "Next" },
+    --     d = { "<cmd>tabclose<CR>", "Close" },
+    --     p = { "<cmd>tabprevious<CR>", "Previous" },
+    --     ["]"] = { "<cmd>tabnext<CR>", "Next" },
+    --     ["["] = { "<cmd>tabprevious<CR>", "Previous" },
+    --     f = { "<cmd>tabfirst<CR>", "First" },
+    --     l = { "<cmd>tablast<CR>", "Last" },
+    --   },
 }
 
 wk.register(leader, { prefix = '<leader>' })

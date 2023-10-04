@@ -14,7 +14,7 @@ vim.opt.splitbelow = true -- force all horizontal splits to go below current win
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.o.tabstop = 2
+vim.o.tabstop = 4
 vim.o.conceallevel = 2
 vim.o.pumheight = 15
 
