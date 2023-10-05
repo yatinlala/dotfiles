@@ -7,5 +7,5 @@ return {
     --         char = '┆',
     --     })
     -- end,
-    config = true,
+    main = 'ibl',
 }
