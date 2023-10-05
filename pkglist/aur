@@ -6,7 +6,7 @@ bukubrow-bin
 dragon-drop
 ferdium-bin
 gmetronome
-gradience
+gradience-git
 grimshot-bin-sway
 htim
 httpdirfs
@@ -17,6 +17,7 @@ pam-fprint-grosshack
 paru
 pipe-viewer-git
 python-cssutils
+python-libsass
 python-material-color-utilities
 rmtrash
 rofi-lbonn-wayland-git
