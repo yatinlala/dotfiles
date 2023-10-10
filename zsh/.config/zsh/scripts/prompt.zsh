@@ -1,0 +1,6 @@
+source $XDG_DATA_HOME/zsh/agkozak-zsh-prompt/agkozak-zsh-prompt.plugin.zsh
+AGKOZAK_BLANK_LINES=1 
+AGKOZAK_MULTILINE=0
+AGKOZAK_USER_HOST_DISPLAY=0
+AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+AGKOZAK_COLORS_PROMPT_CHAR='yellow'
