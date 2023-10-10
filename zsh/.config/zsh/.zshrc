@@ -169,7 +169,12 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #Source aliases
-source "$ZDOTDIR/zshaliases"
+# source "$ZDOTDIR/zshaliases"
+# Load any supplementary scripts
+for config in "$ZDOTDIR"/scripts/*.zsh ; do
+    source "$config"
+done
+unset -v config
 
 # # Create a tmux session if none exist
 # case $- in *i*)

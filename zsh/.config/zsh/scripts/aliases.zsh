@@ -1,3 +1,6 @@
+# TODO convert aliases to shell commands 
+# https://blog.sanctum.geek.nz/custom-commands/
+
 #Improve Defaults
 alias df='df -h'
 alias cat='bat -pp'
@@ -23,14 +26,15 @@ alias ka='killall'
 alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
-alias update-pkglist='pacman -Qqne > ~/.dotfiles/pkglist/pacman && \
-                        pacman -Qqm > ~/.dotfiles/pkglist/aur && \
-                        cargo install --list > ~/.dotfiles/pkglist/cargo && \
-                        npm -g list > ~/.dotfiles/pkglist/npm && \
-                        pip3 list > ~/.dotfiles/pkglist/pip3 && \
-                        pipx list > ~/.dotfiles/pkglist/pipx && \
-                        flatpak list --app > ~/.dotfiles/pkglist/flatpak' && \
-
+update-pkglist() {
+    pacman -Qqne > ~/.dotfiles/pkglist/pacman
+    pacman -Qqm > ~/.dotfiles/pkglist/aur
+    cargo install --list > ~/.dotfiles/pkglist/cargo
+    npm -g list > ~/.dotfiles/pkglist/npm
+    pip3 list > ~/.dotfiles/pkglist/pip3
+    pipx list > ~/.dotfiles/pkglist/pipx
+    flatpak list --app > ~/.dotfiles/pkglist/flatpak
+}
 
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
@@ -59,7 +63,7 @@ alias gd='git diff'
 alias gp='git push'
 
 #Docker
-alias dl='docker logs --follow --timestamps'
+alias dl='nocker logs --follow --timestamps'
 
 #rmtrash
 alias rm='rmtrash -I'
@@ -80,8 +84,6 @@ alias yta='yt-dlp --extract-audio'
 alias ytp="yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 # alias newsboat='news'
-
-alias S="rofi -theme /home/nitay/.config/rofi/rofi-search-theme.rasi -modi blocks -blocks-wrap /usr/bin/rofi-search -show blocks -lines 4 -eh 4 -kb-custom-1 'Control+y'"
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
