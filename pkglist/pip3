@@ -16,7 +16,7 @@ buku                            4.8
 CacheControl                    0.13.1
 cachy                           0.3.0
 certifi                         2023.7.22
-cffi                            1.15.1
+cffi                            1.16.0
 chardet                         5.2.0
 cleo                            2.0.1
 click                           8.1.7
@@ -33,7 +33,7 @@ distlib                         0.3.7
 distro                          1.8.0
 dnspython                       2.4.2
 dulwich                         0.21.6
-fasteners                       0.18
+fasteners                       0.19
 fastjsonschema                  2.18.1
 faust-cchardet                  2.1.19
 feedparser                      6.0.10
@@ -83,8 +83,8 @@ pbr                             5.11.1
 pdftotext                       2.2.2
 pexpect                         4.8.0
 picard                          2.10
-Pillow                          10.0.1
-pip                             23.2.1
+Pillow                          10.1.0
+pip                             23.3
 pipx                            1.2.0
 pkginfo                         1.9.6
 platformdirs                    3.11.0
@@ -132,13 +132,13 @@ rofimoji                        6.2.0
 rpds-py                         0.10.3
 SecretStorage                   3.3.3
 setuptools                      68.0.0
-setuptools-scm                  7.1.0
+setuptools-scm                  8.0.4
 sgmllib3k                       1.0.0
 shellingham                     1.5.0.post1
 six                             1.16.0
 soupsieve                       2.5
 svglib                          1.5.1
-texttable                       1.6.7
+texttable                       1.7.0
 tinycss2                        1.2.1
 toml                            0.10.2
 tomli                           2.0.1
