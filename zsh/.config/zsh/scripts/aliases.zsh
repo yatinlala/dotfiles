@@ -26,6 +26,9 @@ alias ka='killall'
 alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
+
+alias jup='source $HOME/.local/venv/jupl/bin/activate'
+
 update-pkglist() {
     pacman -Qqne > ~/.dotfiles/pkglist/pacman
     pacman -Qqm > ~/.dotfiles/pkglist/aur
@@ -87,8 +90,10 @@ alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
+# alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 alias firefox='xdg-launch firefox'
+alias jupyter='xdg-launch jupyter'
 alias flatpak='xdg-launch flatpak'
 alias librewolf='xdg-launch librewolf'
 alias minecraft-launcher='xdg-launch minecraft-launcher'
