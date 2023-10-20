@@ -18,6 +18,7 @@ cachy                           0.3.0
 certifi                         2023.7.22
 cffi                            1.16.0
 chardet                         5.2.0
+charset-normalizer              3.3.0
 cleo                            2.0.1
 click                           8.1.7
 ConfigArgParse                  1.5.3
@@ -70,7 +71,7 @@ Markdown                        3.5
 MarkupSafe                      2.1.3
 material-color-utilities-python 0.1.5
 mechanize                       0.4.8
-meson                           1.2.2
+meson                           1.2.3
 mock                            3.0.5
 more-itertools                  10.1.0
 msgpack                         1.0.5
@@ -84,7 +85,7 @@ pdftotext                       2.2.2
 pexpect                         4.8.0
 picard                          2.10
 Pillow                          10.1.0
-pip                             23.3
+pip                             23.3.1
 pipx                            1.2.0
 pkginfo                         1.9.6
 platformdirs                    3.11.0
@@ -126,7 +127,7 @@ referencing                     0.30.2
 Reflector                       2023.6.28.0.36.1
 regex                           2023.6.3
 reportlab                       3.6.12
-requests                        2.28.2
+requests                        2.31.0
 requests-toolbelt               1.0.0
 rofimoji                        6.2.0
 rpds-py                         0.10.3
@@ -146,7 +147,7 @@ tomlkit                         0.12.1
 torbrowser-launcher             0.3.6
 tqdm                            4.66.1
 trash-cli                       0.23.2.13.2
-trove-classifiers               2023.9.22
+trove-classifiers               2023.10.20
 typing_extensions               4.8.0
 unrardll                        0.1.7
 urllib3                         1.26.15
