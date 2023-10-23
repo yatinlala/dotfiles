@@ -9,9 +9,11 @@ return {
     { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
     {
         'David-Kunz/gen.nvim',
-        event = 'InsertEnter',
+        -- event = 'InsertEnter',
+        lazy = false,
         config = function()
             require('gen').model = 'mistral'
+            -- require('gen').command = 'HOME=$HOME/.local/xdg-garbage ollama run $model $prompt'
         end,
     },
 
