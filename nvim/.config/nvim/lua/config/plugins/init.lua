@@ -1,11 +1,6 @@
 return {
     { 'tamton-aquib/duck.nvim' },
     { 'yashlala/marker.nvim' },
-    {
-        'ethanholz/nvim-lastplace',
-        event = 'BufWinEnter',
-        config = true,
-    },
     { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
     {
         'David-Kunz/gen.nvim',
