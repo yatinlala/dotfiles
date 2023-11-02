@@ -37,7 +37,6 @@ go
 grub
 grub-btrfs
 guvcview
-hyfetch
 hyprland
 imagemagick
 imv
@@ -186,6 +185,7 @@ unzip
 vivaldi
 vivaldi-ffmpeg-codecs
 waybar
+wev
 wget
 wl-clipboard
 wtype
