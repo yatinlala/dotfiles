@@ -1,8 +1,0 @@
-#!/bin/bash
-
-currenttime=$(date +%H:%M)
-if [[ "$currenttime" > "13:00" ]]; then
-  newsboat
-else
-  echo 'newsboat available at 1pm'
-fi
