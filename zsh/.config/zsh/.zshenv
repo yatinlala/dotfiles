@@ -54,6 +54,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export OPAMROOT="$XDG_DATA_HOME/opam"
+export OLLAMA_MODELS="$XDG_DATA_HOME/ollama"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 #export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
