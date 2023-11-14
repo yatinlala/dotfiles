@@ -55,6 +55,7 @@ lynx
 macchanger
 man-db
 man-pages
+mitmproxy
 mpv
 mpv-mpris
 mtools
@@ -70,6 +71,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+obsidian
 ollama
 opam
 os-prober
