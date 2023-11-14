@@ -67,6 +67,7 @@ export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export NLTK_DATA="$XDG_DATA_HOME"/nltk
+
 # Default Apps
 export EDITOR="nvim"
 export READER="zathura"
@@ -78,6 +79,10 @@ export IMAGE="imv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="bat --paging=always"
+
+# Configure zsh_autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="newsboat|pipe-viewer"
 
 # Disable less history files 
 export LESSHISTFILE=-
