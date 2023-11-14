@@ -69,7 +69,7 @@ case $1 in
     notes)
         # pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
         pgrep -x emacs || emacs --name notes ~/documents/org/main.org
-        hyprctl dispatch workspace 7;;
+        hyprctl dispatch workspace 1;;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     pavucontrol)
         pgrep -x "pavucontrol" || setsid pavucontrol &
