@@ -2,4 +2,4 @@
 
 current=$(date '+%H%M') || exit 1 # or whatever error handle
 (( current=(10#$current) )) # force bash to consider current in radix 10
-(( current > 1600 )) && (sleep 10 && /usr/bin/newsboat) # || error_handle
+(( current > 1600  || current < 0500 )) && (sleep 10 && /usr/bin/newsboat) # || error_handle
