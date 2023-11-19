@@ -65,6 +65,7 @@ neofetch
 neovim
 network-manager-applet
 networkmanager
+networkmanager-openvpn
 newsboat
 noto-fonts
 noto-fonts-cjk
@@ -186,6 +187,7 @@ unrar
 unzip
 vivaldi
 vivaldi-ffmpeg-codecs
+vmpk
 waybar
 wev
 wget
