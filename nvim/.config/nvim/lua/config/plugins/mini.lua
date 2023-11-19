@@ -6,12 +6,12 @@ return {
         event = 'CursorMoved',
     },
 
-    {
-        'echasnovski/mini.align',
-        version = false,
-        config = true,
-        keys = 'ga',
-    },
+    -- {
+    --     'echasnovski/mini.align',
+    --     version = false,
+    --     config = true,
+    --     keys = 'ga',
+    -- },
     -- {
     -- 	"echasnovski/mini.indentscope",
     -- 	version = false,
