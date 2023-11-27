@@ -14,7 +14,7 @@
 
   "wlr/taskbar": {
 	"format": "{icon} {app_id}",
-	"icon-size": 14,
+	"icon-size": 13,
 	"icon-theme": "Papirus",
 	"tooltip-format": "{title}",
 	"on-click": "activate",
