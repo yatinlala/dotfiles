@@ -15,9 +15,11 @@ clang
 cliphist
 cmatrix
 cmus
+code
 cups
 docker
 docker-compose
+dog
 dosfstools
 efibootmgr
 emacs-wayland
@@ -25,6 +27,7 @@ eza
 fd
 ffmpegthumbnailer
 flatpak
+fontforge
 foot
 fprintd
 fzf
@@ -106,6 +109,7 @@ sl
 sof-firmware
 spotify-launcher
 sshfs
+sshuttle
 steam
 stow
 swaybg

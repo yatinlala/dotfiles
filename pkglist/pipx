@@ -2,5 +2,5 @@ venvs are in /home/lala/.local/pipx/venvs
 apps are exposed on your $PATH at /home/lala/.local/bin
    package spotdl 4.2.2, installed using Python 3.11.3
     - spotdl
-   package xkcdpass 1.19.6, installed using Python 3.11.3
+   package xkcdpass 1.19.8, installed using Python 3.11.3
     - xkcdpass
