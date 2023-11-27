@@ -27,7 +27,8 @@ alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
 
-alias jup='source $HOME/.local/venv/jupl/bin/activate'
+
+alias jupl='source $HOME/.local/venv/jupl/bin/activate'
 
 update-pkglist() {
     pacman -Qqne > ~/.dotfiles/pkglist/pacman
@@ -92,6 +93,7 @@ alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 alias audacity='xdg-launch audacity'
 # alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
+alias code='xdg-launch code'
 alias firefox='xdg-launch firefox'
 alias jupyter='xdg-launch jupyter'
 alias flatpak='xdg-launch flatpak'
