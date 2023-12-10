@@ -49,6 +49,7 @@ intel-undervolt
 kitty
 lazygit
 lf
+libreoffice-fresh
 light
 linux
 linux-firmware
@@ -96,6 +97,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+plocate
 pv
 python-pip
 python-pipx
