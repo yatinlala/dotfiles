@@ -16,6 +16,7 @@ cliphist
 cmatrix
 cmus
 code
+cowsay
 cups
 docker
 docker-compose
@@ -98,6 +99,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 plocate
+ponysay
 pv
 python-pip
 python-pipx

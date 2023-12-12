@@ -40,7 +40,7 @@ dulwich                         0.21.7
 fasteners                       0.19
 fastjsonschema                  2.19.0
 faust-cchardet                  2.1.19
-feedparser                      6.0.10
+feedparser                      6.0.11
 filelock                        3.12.4
 Flask                           2.3.3
 gpg                             1.23.2
@@ -181,7 +181,7 @@ urllib3                         1.26.18
 urwid                           2.2.3
 userpath                        1.9.1
 validate-pyproject              0.13.post1.dev0+gb752273.d20230520
-virtualenv                      20.24.6
+virtualenv                      20.25.0
 webencodings                    0.5.1
 Werkzeug                        2.3.8
 wheel                           0.40.0
