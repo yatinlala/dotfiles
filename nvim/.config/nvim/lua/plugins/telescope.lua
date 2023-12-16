@@ -14,27 +14,39 @@ function M.config()
     -- local trouble = require("trouble.providers.telescope")
     local telescope = require('telescope')
 
-    require('telescope').setup {
+    require('telescope').setup({
         defaults = {
             prompt_prefix = '  ',
             selection_caret = ' ',
+            file_ignore_patterns = {
+                '.git/',
+                '.cache',
+                '%.o',
+                '%.a',
+                '%.out',
+                '%.class',
+                '%.pdf',
+                '%.mkv',
+                '%.mp4',
+                '%.zip',
+            },
         },
 
         pickers = {
             find_files = {
-                follow = true,            -- follow symlinks
-                hidden = true,            -- include hidden files
+                follow = true, -- follow symlinks
+                hidden = true, -- include hidden files
             },
         },
-      extensions = {
-        fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-        }
-      }
-    }
+        extensions = {
+            fzf = {
+                fuzzy = true,                   -- false will only do exact matching
+                override_generic_sorter = true, -- override the generic sorter
+                override_file_sorter = true,    -- override the file sorter
+                case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
+            },
+        },
+    })
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
     require('telescope').load_extension('fzf')
