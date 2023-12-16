@@ -13,7 +13,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 -- load plugins
-require('lazy').setup('config.plugins', {
+require('lazy').setup('plugins', {
     defaults = { lazy = true },
     install = { colorscheme = { 'gruvbox.nvim' } },
     checker = { enabled = false },

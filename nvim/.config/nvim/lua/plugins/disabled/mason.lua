@@ -5,8 +5,6 @@ local M = {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
 
-        -- Useful status updates for LSP
-        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
         -- Additional lua configuration, makes nvim stuff amazing!
@@ -45,9 +43,6 @@ function M.config()
     M.check()
     require('mason-lspconfig').setup({ automatic_installation = true })
     local opts = { noremap = true, silent = true }
-    vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
     local signs = {
         { name = 'DiagnosticSignError', text = '' },
@@ -92,6 +87,9 @@ function M.config()
         vim.keymap.set('n', '<space>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, bufopts)
+        vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+        vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+        vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
         vim.keymap.set('n', 'gl', vim.diagnostic.open_float, bufopts)
         vim.keymap.set('n', '<space>d', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<space>lr', vim.lsp.buf.rename, bufopts)

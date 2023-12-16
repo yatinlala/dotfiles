@@ -12,10 +12,10 @@ vim.keymap.set('n', 'x', '"_x', opts)
 vim.keymap.set('n', '<leader><leader>d', [["_d]], opts)
 
 -- Sensible split movement
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+-- vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+-- vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+-- vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+-- vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- Navigate buffers
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
@@ -99,7 +99,7 @@ local leader = {
         h = { require('duck').hatch(), 'Hatch a duck' },
         k = { require('duck').cook(), 'Cook the duck' },
     },
-    e = { '<cmd>Lf %<CR>', 'Lf' },
+    e = { '<cmd>Lf "%"<CR>', 'Lf' },
     f = {
         name = 'Telescope',
         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },

@@ -1,13 +1,13 @@
 local M = {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'p00f/nvim-ts-rainbow' },
+    dependencies = { 'andymass/vim-matchup' },
     -- event = "VeryLazy",
-    event = 'BufWinEnter',
+    lazy = false,
 }
 
 function M.config()
     require('nvim-treesitter.configs').setup({
-        ensure_installed = { 'c', 'lua', 'org' },
+        ensure_installed = { },
         -- List of parsers to ignore installing (for "all")
         ignore_install = { '' },
 
@@ -39,17 +39,6 @@ function M.config()
             },
         },
 
-        matchup = {
-            enable = true, -- mandatory, false will disable the whole extension
-            -- disable = { "c", "ruby" }, -- optional, list of language that will be disabled
-            disable_virtual_text = false,
-        },
-        rainbow = {
-            enable = true,
-            -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-            extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-            max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        },
     })
     require('nvim-treesitter.install').prefer_git = true
 end

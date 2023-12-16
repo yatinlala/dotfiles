@@ -1,5 +1,4 @@
 return {
-    { 'tamton-aquib/duck.nvim' },
     -- { 'yashlala/marker.nvim' },
     { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
     {
@@ -11,7 +10,6 @@ return {
             -- require('gen').command = 'HOME=$HOME/.local/xdg-garbage ollama run $model $prompt'
         end,
     },
-    { 'tpope/vim-obsession', lazy = false },
 
     ------------------------------------------------------
     -- { 'liuchengxu/vim-clap', lazy = false, build = ':call clap#installer#build_maple()' },
