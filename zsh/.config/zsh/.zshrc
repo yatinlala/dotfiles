@@ -82,3 +82,8 @@ eval "$(fasd --init auto)"
 # }
 
 # pfetch
+
+
+if [ -z "$TMUX" ]; then
+    muxterm mix
+fi
