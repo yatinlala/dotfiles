@@ -99,7 +99,7 @@ local leader = {
         h = { require('duck').hatch(), 'Hatch a duck' },
         k = { require('duck').cook(), 'Cook the duck' },
     },
-    e = { '<cmd>Lf<CR>', 'Lf' },
+    e = { '<cmd>Lf %<CR>', 'Lf' },
     f = {
         name = 'Telescope',
         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
