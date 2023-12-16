@@ -13,7 +13,7 @@ beautifulsoup4                  4.12.2
 blinker                         1.6.3
 Brotli                          1.1.0
 brotlicffi                      1.1.0.0
-btrfsutil                       6.6.2
+btrfsutil                       6.6.3
 build                           1.0.3
 buku                            4.8
 CacheControl                    0.13.1
