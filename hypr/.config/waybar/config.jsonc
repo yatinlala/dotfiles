@@ -7,11 +7,16 @@
   // "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
   "modules-left":   ["hyprland/workspaces" ],
   // "modules-center": [ "mpris"],
-  // "modules-center": ["mpd"],
+  "modules-center": ["hyprland/window"],
   "modules-right":  [ "custom/weather", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
   // "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
   // "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 
+  "hyprland/window": {  
+  //"format": "{}"   // <--- these is the default value  
+    "format": "<span font='10' rise='-4444'>{}</span>",
+    "max-length": 60
+  },
   "wlr/taskbar": {
 	"format": "{icon} {app_id}",
 	"icon-size": 13,
