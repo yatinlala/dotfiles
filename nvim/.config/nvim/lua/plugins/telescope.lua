@@ -1,6 +1,7 @@
 local M = {
     'nvim-telescope/telescope.nvim',
     cmd = { 'Telescope' },
+    cond = not vim.ui.vscode,
     dependencies = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-tree/nvim-web-devicons' },

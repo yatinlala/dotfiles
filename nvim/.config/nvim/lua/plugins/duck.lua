@@ -1,1 +1,1 @@
-return { 'tamton-aquib/duck.nvim' }
+return { 'tamton-aquib/duck.nvim', cond = not vim.ui.vscode }
