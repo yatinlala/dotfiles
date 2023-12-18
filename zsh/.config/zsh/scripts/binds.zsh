@@ -2,11 +2,11 @@
 bindkey -v
 export KEYTIMEOUT=1
 
-# Use vim keys in tab complete menu:
-bindkey -M menuselect '^h' vi-backward-char
-bindkey -M menuselect '^k' vi-up-line-or-history
-bindkey -M menuselect '^l' vi-forward-char
-bindkey -M menuselect '^j' vi-down-line-or-history
+# # Use vim keys in tab complete menu:
+# bindkey -M menuselect '^h' vi-backward-char
+# bindkey -M menuselect '^k' vi-up-line-or-history
+# bindkey -M menuselect '^l' vi-forward-char
+# bindkey -M menuselect '^j' vi-down-line-or-history
 
 clear-screen-scrollback () {
   echo -ne '\033c' # clear scrollback buffer as well
@@ -23,10 +23,11 @@ zle -N clear-screen-scrollback
 zle -N clear-screen-scrollback-insert
 
 # clear screen scrolleback keybindings
-bindkey -M main '^K' clear-screen-scrollback
-bindkey -M viins '^K' clear-screen-scrollback-insert
-bindkey -M vicmd '^K' clear-screen-scrollback
+bindkey -M main '^[k' clear-screen-scrollback
+bindkey -M viins '^[k' clear-screen-scrollback-insert
+bindkey -M vicmd '^[k' clear-screen-scrollback
 
+bindkey -M main '^[l' clear-screen
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
