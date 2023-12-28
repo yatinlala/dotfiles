@@ -32,6 +32,8 @@ cmd recol &{{
 }}
 
 cmd onecol &{{
+
+    lf -remote "send $id :set preview false"
     lf -remote "send $id set ratios 1"
 }}
 
