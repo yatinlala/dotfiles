@@ -51,6 +51,7 @@ html2text                       2020.1.16
 html5-parser                    0.4.11
 html5lib                        1.1
 hyperframe                      6.0.1
+i3ipc                           2.2.1
 idna                            3.5
 ifaddr                          0.2.0
 importlib-metadata              5.0.0
@@ -69,7 +70,7 @@ Jinja2                          3.1.2
 jsonschema                      4.20.0
 jsonschema-specifications       2023.11.2
 kaitaistruct                    0.10
-keyring                         24.2.0
+keyring                         24.3.0
 lark                            1.1.7
 ldap3                           2.9
 lensfun                         0.3.4
@@ -81,7 +82,7 @@ Markdown                        3.5.1
 MarkupSafe                      2.1.3
 material-color-utilities-python 0.1.5
 mechanize                       0.4.8
-meson                           1.3.0
+meson                           1.3.1
 mitmproxy                       10.1.5
 mitmproxy_rs                    0.4.1
 mock                            3.0.5
@@ -90,6 +91,7 @@ msgpack                         1.0.5
 multivolumefile                 0.2.3
 mutagen                         1.47.0
 netifaces                       0.11.0
+nwg-displays                    0.3.10
 ordered-set                     4.1.0
 packaging                       23.2
 passlib                         1.7.4
@@ -141,6 +143,7 @@ PySocks                         1.7.1
 pytest                          7.4.3
 python-dateutil                 2.8.2
 python-dbusmock                 0.30.0
+python-xlib                     0.33
 PyYAML                          6.0.1
 pyzstd                          0.15.9
 rapidfuzz                       3.4.0
@@ -156,7 +159,7 @@ ruamel.yaml                     0.17.40
 ruamel.yaml.clib                0.2.7
 SecretStorage                   3.3.3
 service-identity                23.1.0
-setuptools                      69.0.2
+setuptools                      69.0.3
 setuptools-scm                  8.0.4
 sgmllib3k                       1.0.0
 shellingham                     1.5.0.post1
