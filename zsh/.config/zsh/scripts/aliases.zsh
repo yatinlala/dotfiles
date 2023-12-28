@@ -40,6 +40,14 @@ update-pkglist() {
     flatpak list --app > ~/.dotfiles/pkglist/flatpak
 }
 
+stable-diffusion() {
+    cd ~/code/stable-diffusion-webui/
+    export PYTORCH_TRACING_MODE=TORCHFX
+    export COMMANDLINE_ARGS="--skip-torch-cuda-test --precision full --no-half" 
+    source sd_env/bin/activate
+    ./webui.sh
+}
+
 alias mmute='echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness'
 alias musb='sudo mount /dev/sda1 ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
