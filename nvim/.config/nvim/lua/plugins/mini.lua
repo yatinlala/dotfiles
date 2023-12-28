@@ -1,10 +1,11 @@
 return {
-    {
-        'echasnovski/mini.ai',
-        version = '*',
-        config = true,
-        event = 'CursorMoved',
-    },
+    -- {
+    --     -- TODO dupe with textobjects?
+    --     'echasnovski/mini.ai',
+    --     version = '*',
+    --     config = true,
+    --     event = 'CursorMoved',
+    -- },
 
     -- {
     --     'echasnovski/mini.align',

@@ -40,9 +40,9 @@ function M.config()
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lua' },
-            { name = 'codeium' },
             { name = 'nvim_lsp' },
             { name = 'luasnip', max_item_count = 5 },
+            { name = 'codeium' },
             { name = 'path' },
             { name = 'emoji' },
             { name = 'orgmode' },

@@ -84,7 +84,23 @@ wk.register({
     mode = 'v',
 })
 local leader = {
-    a = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
+    A = { '<cmd>lua vim.g.codeium_enabled = true<CR>', 'Enable codeium' },
+    a = {
+        name = 'ChatGPT',
+        c = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
+        e = { '<cmd>ChatGPTEditWithInstruction<CR>', 'Edit with instruction', mode = { 'n', 'v' } },
+        g = { '<cmd>ChatGPTRun grammar_correction<CR>', 'Grammar Correction', mode = { 'n', 'v' } },
+        t = { '<cmd>ChatGPTRun translate<CR>', 'Translate', mode = { 'n', 'v' } },
+        k = { '<cmd>ChatGPTRun keywords<CR>', 'Keywords', mode = { 'n', 'v' } },
+        d = { '<cmd>ChatGPTRun docstring<CR>', 'Docstring', mode = { 'n', 'v' } },
+        a = { '<cmd>ChatGPTRun add_tests<CR>', 'Add Tests', mode = { 'n', 'v' } },
+        o = { '<cmd>ChatGPTRun optimize_code<CR>', 'Optimize Code', mode = { 'n', 'v' } },
+        s = { '<cmd>ChatGPTRun summarize<CR>', 'Summarize', mode = { 'n', 'v' } },
+        f = { '<cmd>ChatGPTRun fix_bugs<CR>', 'Fix Bugs', mode = { 'n', 'v' } },
+        x = { '<cmd>ChatGPTRun explain_code<CR>', 'Explain Code', mode = { 'n', 'v' } },
+        r = { '<cmd>ChatGPTRun roxygen_edit<CR>', 'Roxygen Edit', mode = { 'n', 'v' } },
+        l = { '<cmd>ChatGPTRun code_readability_analysis<CR>', 'Code Readability Analysis', mode = { 'n', 'v' } },
+    },
     b = {
         function()
             require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
@@ -99,7 +115,7 @@ local leader = {
         h = { require('duck').hatch(), 'Hatch a duck' },
         k = { require('duck').cook(), 'Cook the duck' },
     },
-    e = { '<cmd>Lf "%"<CR>', 'Lf' },
+    e = { "<cmd>Lf '%'<CR>", 'Lf' },
     f = {
         name = 'Telescope',
         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },

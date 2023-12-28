@@ -12,7 +12,7 @@ return {
         require("mason-lspconfig").setup{
             ensure_installed = { "bashls", "clangd", "cmake", "cssls", "dockerls",
                 "docker_compose_language_service", "gopls", "html", "jsonls",
-                "tsserver", "lua_ls", "autotools_ls", "marksman",
+                "eslint", "tailwindcss", "tsserver", "lua_ls", "autotools_ls", "marksman",
                 "ocamllsp", "pyright", "svelte"},
             automatic_installation = true,
         }

@@ -22,6 +22,7 @@ function M.config()
             file_ignore_patterns = {
                 '.git/',
                 '.cache',
+                'node_modules',
                 '%.o',
                 '%.a',
                 '%.out',
