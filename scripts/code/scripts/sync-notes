@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rclone bisync dropbox:/notes ~/documents/notes
