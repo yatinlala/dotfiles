@@ -14,7 +14,7 @@ vim.opt.swapfile = false -- creates a swapfile
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.conceallevel = 2
 vim.opt.pumheight = 15
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 0
 
 vim.opt.inccommand = "split"
 
