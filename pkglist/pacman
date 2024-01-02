@@ -69,6 +69,7 @@ mpv-mpris
 mtools
 musescore
 nasm
+ncspot
 neofetch
 neovim
 network-manager-applet
@@ -119,6 +120,7 @@ sshfs
 sshuttle
 steam
 stow
+strace
 swaybg
 swayidle
 syncthing
