@@ -35,8 +35,11 @@ function M.config()
         },
         mapping = cmp.mapping.preset.insert({
             -- I think the C-n (next), C-p (prev), and C-y (disable) are enabled by default
-            ['<C-Space>'] = cmp.mapping.confirm({ select = false }),
-            ['<C-e>'] = cmp.mapping.close(),
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lua' },
