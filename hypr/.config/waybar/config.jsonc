@@ -67,9 +67,9 @@
 		"tooltip": false,
 		"min-length": 5,
 		"exec": "$HOME/.config/waybar/modules/timer.sh",
-		"on-click": "date --date='5 minutes' +%s > /var/tmp/waybar_timer",
+		"on-click": "date --date='20 minutes' +%s > /var/tmp/waybar_timer",
 		"on-click-right": "echo READY > /var/tmp/waybar_timer",
-		"on-click-middle": "date --date='1 minute' +%s > /var/tmp/waybar_timer",
+		"on-click-middle": "date --date='5 minute' +%s > /var/tmp/waybar_timer",
 		"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
 		"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
 		"interval": 1

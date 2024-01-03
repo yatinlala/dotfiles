@@ -13,7 +13,7 @@ case "$1" in
         fi
 
         if [ "$CURRENT_TIMER" != "READY" ]; then
-            NEW_TIMER=$((CURRENT_TIMER + 1 * 60))
+            NEW_TIMER=$((CURRENT_TIMER + 1 * 10))
      
             echo $NEW_TIMER > "$TIMER_FILE"
         fi
@@ -31,7 +31,7 @@ case "$1" in
             CURRENT_TIMER=$(date +%s)
         fi
 
-        NEW_TIMER=$((CURRENT_TIMER - 1 * 60))
+        NEW_TIMER=$((CURRENT_TIMER - 1 * 10))
 
         if [ "$NEW_TIMER" -lt "$CURRENT_TIMER" ]; then
 
