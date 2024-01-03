@@ -1,22 +1,37 @@
 return {
-    "williamboman/mason.nvim",
+    'williamboman/mason.nvim',
     dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
         'folke/neodev.nvim',
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
     lazy = false,
     config = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup{
-            ensure_installed = { "bashls", "clangd", "cmake", "cssls", "dockerls",
-                "docker_compose_language_service", "gopls", "html", "jsonls",
-                "eslint", "tailwindcss", "tsserver", "lua_ls", "autotools_ls", "marksman",
-                "ocamllsp", "pyright", "svelte"},
+        require('mason').setup()
+        require('mason-lspconfig').setup({
+            ensure_installed = {
+                'bashls',
+                'clangd',
+                'cmake',
+                'cssls',
+                'dockerls',
+                'docker_compose_language_service',
+                'gopls',
+                'html',
+                'jsonls',
+                'eslint',
+                'tailwindcss',
+                'tsserver',
+                'lua_ls',
+                'autotools_ls',
+                'marksman',
+                'ocamllsp',
+                'pyright',
+                'svelte',
+            },
             automatic_installation = true,
-        }
-
+        })
 
         local on_attach = function(client, bufnr)
             local opts = { noremap = true, silent = true }
@@ -43,8 +58,8 @@ return {
             -- 	vim.lsp.buf.format({ async = true })
             -- end, bufopts)
 
-            vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-                {
+            vim.lsp.handlers['textDocument/publishDiagnostics'] =
+                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
                     virtual_text = false,
                     underline = true,
                     signs = true,
@@ -52,20 +67,24 @@ return {
             -- require('config.autocmds').lsp_hov_highlight()
             -- require("config.autocmds").lsp_hov_diagnostics()
         end
-        require("mason-lspconfig").setup_handlers {
+
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        require('mason-lspconfig').setup_handlers({
             -- The first entry (without a key) will be the default handler
             -- and will be called for each installed server that doesn't have
             -- a dedicated handler.
-            function(server_name)  -- default handler (optional)
-                require("lspconfig")[server_name].setup {
+            function(server_name) -- default handler (optional)
+                require('lspconfig')[server_name].setup({
                     on_attach = on_attach,
-                }
+                    capabilities = capabilities,
+                })
             end,
             -- Next, you can provide a dedicated handler for specific servers.
             -- For example, a handler override for the `rust_analyzer`:
-            ["lua_ls"] = function()
+            ['lua_ls'] = function()
                 require('lspconfig').lua_ls.setup({
                     on_attach = on_attach,
+                    capabilities = capabilities,
                     settings = {
                         Lua = {
                             diagnostics = {
@@ -74,9 +93,7 @@ return {
                         },
                     },
                 })
-            end
-
-        }
+            end,
+        })
     end,
-
 }
