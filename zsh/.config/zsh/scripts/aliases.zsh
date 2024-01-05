@@ -8,9 +8,7 @@ alias free='free -m'
 alias info='info --vi-keys'
 alias bc='bc -lq'
 alias tetris='netris -k "hHklLJjs frn" -i .1'
-
-#Colorize!
-alias grep='grep --color=auto --exclude-dir=.git'
+alias grep='grep --color=auto --exclude-dir=.git -I'
 alias ls='eza --icons'
 
 #Shorten frequently used commands
