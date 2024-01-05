@@ -112,8 +112,8 @@ local leader = {
     C = { require('util').toggleBg, 'toggle dark/light' },
     D = {
         name = 'Duck',
-        h = { require('duck').hatch(), 'Hatch a duck' },
-        k = { require('duck').cook(), 'Cook the duck' },
+        h = { "<cmd>lua require('duck').hatch()<CR>", 'Hatch a duck' },
+        k = { "<cmd>require('duck').cook()<CR>", 'Cook the duck' },
     },
     e = { "<cmd>Lf '%'<CR>", 'Lf' },
     f = {
