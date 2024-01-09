@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -f ~/.cache/newsboat.log ]; then
+    now=$(date +%s)
+    last=$(stat -c %Y ~/.cache/newsboat.log)
+    diff=$((now - last))
+    (( diff > 1800 )) && /usr/bin/newsboat || notify-send "$((diff / 60)) minutes since last invocation"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') $*" > ~/.cache/newsboat.log
+else
+    echo "$(date '+%Y-%m-%d %H:%M:%S') $*" > ~/.cache/newsboat.log
+    /usr/bin/newsboat
+fi
+
+

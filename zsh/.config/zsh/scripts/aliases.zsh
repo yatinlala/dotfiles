@@ -93,7 +93,10 @@ alias yt="yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.
 alias yta='yt-dlp -audio-format opus --extract-audio'
 alias ytp="yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i"
 alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
-# alias newsboat='news'
+alias newsboat="~/code/scripts/newsboat"
+alias \newsboat="~/code/scripts/newsboat"
+alias /usr/bin/newsboat='echo no'
+alias \\/usr/bin/newsboat='echo no'
 
 #XDG Compliance
 alias audacity='xdg-launch audacity'
