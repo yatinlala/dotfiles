@@ -47,7 +47,7 @@ prompt {
 	padding: 						0.30% 1% 0% -0.5%;
 	background-color: 				@al;
 	text-color: 					@bg;
-	font:							"FantasqueSansMono Nerd Font 12";
+	font:						    "Liga SFMono Nerd Font 11";
 }
 
 entry {
