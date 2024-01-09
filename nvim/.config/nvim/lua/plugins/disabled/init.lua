@@ -3,12 +3,11 @@ return {
     { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
     {
         'David-Kunz/gen.nvim',
-        -- event = 'InsertEnter',
         lazy = false,
-        config = function()
-            require('gen').model = 'mistral'
-            -- require('gen').command = 'HOME=$HOME/.local/xdg-garbage ollama run $model $prompt'
-        end,
+        opts = {
+            model = 'mistral', -- The default model to use.
+            debug = false, -- Prints errors and the command which is run.
+        },
     },
 
     ------------------------------------------------------
