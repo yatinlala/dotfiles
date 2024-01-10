@@ -252,7 +252,7 @@ map <enter> open
 map mr :push %sudo<space>touch<space>
 map mf :push %touch<space>
 map md :push %mkdir<space>
-map ch chmod
+# map ch chmod
 map H top
 map L bottom
 map R reload
@@ -261,10 +261,12 @@ map U unselect
 map T tag-toggle
 
 # Rename Commands --------------------
-map r rename 
+map r :rename; cmd-end
 map i :rename; cmd-home
-map e :rename; cmd-word-back; cmd-left
+map e rename
 map b bulk-rename
+map c :rename; cmd-delete-home # delete everything before extension
+map C :rename; cmd-end; cmd-delete-home #delete everything
 
 # Movement --------------------
 map ga cd ~/audio
