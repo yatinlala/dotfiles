@@ -114,13 +114,13 @@ psutil                          5.9.7
 ptyprocess                      0.7.0
 publicsuffix2                   2.20191221
 py7zr                           0.20.6
-pyasn1                          0.4.8
-pyasn1-modules                  0.2.8
+pyasn1                          0.5.0
+pyasn1_modules                  0.3.0
 pybcj                           1.0.1
 pycairo                         1.25.1
 pychm                           0.8.6
 pycparser                       2.21
-pycryptodome                    3.19.1
+pycryptodome                    3.20.0
 pycryptodomex                   3.12.0
 pydantic                        2.5.3
 pydantic_core                   2.14.6

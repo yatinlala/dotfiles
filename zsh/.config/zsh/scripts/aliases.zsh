@@ -9,6 +9,8 @@ alias info='info --vi-keys'
 alias bc='bc -lq'
 alias tetris='netris -k "hHklLJjs frn" -i .1'
 alias grep='grep --color=auto --exclude-dir=.git -I'
+alias egrep='grep -E'
+alias fgrep='grep -F'
 alias ls='eza --icons'
 
 #Shorten frequently used commands
