@@ -29,6 +29,17 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 -- Centered line cat
 vim.keymap.set('n', 'J', "mzJ'z", opts)
+-- Centered search
+vim.cmd [[
+    nnoremap n nzvzz
+    nnoremap N Nzvzz
+    nnoremap <C-o> <C-o>zvzz
+    nnoremap <C-i> <C-i>zvzz
+
+    cnoremap <silent><expr> <enter> index(['/', '?'], getcmdtype()) >= 0 ? '<enter>zvzz' : '<enter>'
+]]
+
+
 
 vim.keymap.set('n', '<c-\\>', '<cmd>ToggleTerm<CR>', opts)
 
@@ -84,6 +95,11 @@ wk.register({
     mode = 'v',
 })
 local leader = {
+    -- [' '] = {
+    --     name = 'splitjoin',
+    --     j = '<cmd>TSJSplit', 'split',
+    --     s = '<cmd>TSJJoin', 'join',
+    -- },
     A = { '<cmd>lua vim.g.codeium_enabled = true<CR>', 'Enable codeium' },
     a = {
         name = 'ChatGPT',
@@ -256,6 +272,7 @@ local leader = {
             end,
             'CodeLens Action',
         },
+        m = { '<cmd>TSJToggle<CR>', 'Join/Split', },
         o = { '<cmd>SymbolsOutline<CR>', 'Symbols Outline' },
         q = {
             function()
