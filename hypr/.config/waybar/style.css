@@ -8,7 +8,8 @@
 }
 
 window#waybar {
-  background: #1d2021;
+  /* background: #1d2021; */
+  background: rgba(29, 32, 33, .85);
   color: #ebdbb2;
 }
 
@@ -58,7 +59,7 @@ tooltip {
 #workspaces,
 #mpris,
 #tray {
-  background: #32302f;
+  /* background: #32302f; */
   padding: 0 0.6em;
   margin-right: 4px;
   margin-left: 4px;
