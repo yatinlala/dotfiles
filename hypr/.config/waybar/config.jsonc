@@ -5,7 +5,8 @@
 	// "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
 	"modules-left": [
 		"hyprland/workspaces",
-		"custom/timer"
+		"custom/timer",
+		"mpris"
 	],
 	// "modules-center": [ "mpris"],
 	"modules-center": [
@@ -168,7 +169,7 @@
 	"mpris": {
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} <i>{dynamic}</i>",
-		"max-length": 47,
+		"max-length": 30,
 		"player-icons": {
 			"default": "⏸",
 			"mpv": "🎵"
@@ -177,7 +178,7 @@
 			"paused": "▶"
 		},
 		// "ignored-players": ["chromium","brave","firefox"]
-		"ignored-players": []
+		"ignored-players": [ "mpv" ]
 	},
 	"backlight": {
 		"device": "intel_backlight",
