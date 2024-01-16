@@ -1,6 +1,5 @@
 return {
     -- { 'yashlala/marker.nvim' },
-    { 'ThePrimeagen/vim-be-good', cmd = 'VimBeGood' },
     {
         'David-Kunz/gen.nvim',
         lazy = false,
