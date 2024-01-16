@@ -1,21 +1,5 @@
 #!/usr/bin/env sh
 case $1 in
-    bc)
-        pgrep -x bc || $TERMINAL -name calc -e bc -q
-        sway "[instance=calc] scratchpad show; [instance=calc] move position center";;
-    blueman-applet)
-        pgrep -x "blueman-applet" && killall blueman-applet || setsid blueman-applet &;;
-    blueman-manager)
-        pgrep -x "blueman-manager" && killall blueman-manager || setsid blueman-manager &;;
-    bluetooth)
-        rfkill unblock 0
-        pgrep -x bluetoothctl || ($TERMINAL --class bluetooth -e bluetoothctl && sleep .1)
-        sway "[instance=bluetooth] scratchpad show; [instance=bluetooth] move position center";;
-    calendar)
-        wmctrl -l | grep -q "pointer Google Calendar" || \
-        (gtk-launch calendar; sleep 1)
-        sway "[instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] scratchpad show; \
-        [instance=crx_kjbdgfilnfhdoflbpgamdcdgpehopbep] move position center";;
     cmus)
         # pgrep -x cmus || $TERMINAL -a cmus -e cmus
         pgrep -x cmus || $TERMINAL --class cmus -e cmus
@@ -31,15 +15,6 @@ case $1 in
         pgrep -x ferdium || gtk-launch ferdium &
         # sway "workspace 9; [class=Ferdium] focus";;
         hyprctl dispatch workspace 2;;
-    gmail)
-        wmctrl -l | grep -q "pointer Gmail" || \
-        (gtk-launch gmail; sleep 1)
-        sway "[instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] scratchpad show; \
-        [instance=crx_fmgjjmmmlfnkbppncabfkddbjimcfncm] move position center";;
-    habitica)
-        wmctrl -l | grep -q "pointer Habitica" || (gtk-launch habitica; sleep 1)
-        sway "[instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] scratchpad show; \
-            [instance=crx_pdigihnmoiplkhocekidmdcmhchhdpjo] move position center";;
     inhibit-lid)
     pgrep -x sleep && (killall sleep & notify-send 'Stop inhibiting sleep on lid-close.') || \
         (systemd-inhibit --what=handle-lid-switch sleep 1h & notify-send 'Inhibit sleep on lid-close.');;
@@ -71,20 +46,6 @@ case $1 in
         pgrep -x emacs || emacs --name notes ~/documents/org/main.org
         hyprctl dispatch workspace 1;;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
-    pavucontrol)
-        pgrep -x "pavucontrol" || setsid pavucontrol &
-        sway "[title=pavucontrol] scratchpad show; [title=pavucontrol] move position center";;
-    # picom)
-    #     pgrep -x picom && killall picom || setsid picom;;
-    pulsemixer)
-        pgrep -x pulsemixer || ($TERMINAL --class pulsemixer -e pulsemixer && sleep .20)
-        sway "[instance=pulsemixer] scratchpad show; [instance=pulsemixer] move position center";;
-    # redshift)
-    #     pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-    #     (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:1);;
-    # redshift-dark)
-    #     pgrep -x "redshift" && (killall redshift; notify-send -t 1000 "Killing redshift.") || \
-    #     (notify-send -t 1000 "Starting Redshift."; setsid redshift -b 1:.5);;
     gammastep)
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
         (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
@@ -96,9 +57,6 @@ case $1 in
         (wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
         # sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
         hyprctl dispatch workspace 9;;
-    spotify-web)
-        wmctrl -l | grep -q "pointer Spotify" || (gtk-launch spotify; sleep 1)
-        sway "[instance=crx_pjibgclleladliembfgfagdaldikeohf] scratchpad show; [instance=crx_pjibgclleladliembfgfagdaldikeohf] move position center";;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
@@ -107,16 +65,8 @@ case $1 in
         pgrep -x spt || ($TERMINAL -a spt -e spt && sleep .1)
         sway "[app_id=spt] scratchpad show; [app_id=spt] move position center";;
     tmux);;
-    todoist)
-        wmctrl -l | grep -q "pointer Todoist" || (gtk-launch todoist; sleep 1)
-        sway "[instance=crx_elldfnmogicegdcphgljaoaklkpcnbnn] scratchpad show; [instance=crx_elldfnmogicegdcphgljaoaklkpcnbnn] move position center";;
     torbrowser)
         wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
         sway "workspace 7";;
-    whatsapp)
-        wmctrl -l | grep -q "pointer WhatsApp" || (gtk-launch whatsapp; sleep 1)
-        sway workspace 9;;
-        # pgrep whatsapp || flatpak run io.github.mimbrero.WhatsAppDesktop
-        # sway workspace 9;;
-    # *) echo "Invalid argument.";;
+    *) echo "Invalid argument." >&2; exit 1;;
 esac
