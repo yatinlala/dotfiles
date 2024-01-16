@@ -87,3 +87,5 @@ eval "$(fasd --init auto)"
 # if [ -z "$TMUX" ]; then
 #     muxterm mix
 # fi
+
+fortune | lolcat

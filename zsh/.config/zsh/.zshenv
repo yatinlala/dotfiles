@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/code/scripts/toggles:$HOME/.local/share/go/bin:$HOME/code/scripts/launch-wrappers:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$HOME/.local/share/applications:$PATH"
+export PATH="$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:$HOME/code/scripts:$HOME/.local/share/cargo/bin:$PATH"
 
 
 export SCRIPT_PATH="$HOME/code/scripts"
