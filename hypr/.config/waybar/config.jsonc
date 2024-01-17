@@ -178,7 +178,7 @@
 			"paused": "▶"
 		},
 		// "ignored-players": ["chromium","brave","firefox"]
-		"ignored-players": [ "mpv" ]
+		"ignored-players": [ "brave", "mpv" ]
 	},
 	"backlight": {
 		"device": "intel_backlight",
