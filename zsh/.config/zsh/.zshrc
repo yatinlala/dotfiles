@@ -12,8 +12,8 @@ unsetopt BEEP # Beeping sucks
 # setopt interactive_comments
 
 # History in cache directory:
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE="$XDG_CACHE_HOME"/history.zsh
 
 # Basic auto/tab complete:
@@ -88,4 +88,5 @@ eval "$(fasd --init auto)"
 #     muxterm mix
 # fi
 
-fortune | lolcat
+fortune -s wisdom | lolcat
+echo
