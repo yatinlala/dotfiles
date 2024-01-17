@@ -1,12 +1,28 @@
+# vim: foldmethod=marker:foldlevel=0
+
+#: Sets {{{
+
 # interpreter for shell commands
 set shell sh
 
+# set '-eu' options for shell commands
+# These options are used to have safer shell commands. Option '-e' is used to
+# exit on error and option '-u' is used to give error for unset variables.
+# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
+# $fx variables contain names with '*' or '?' characters. However, this option
+# is used selectively within individual commands as it can be limiting at
+# times.
 set shellopts '-eu'
 
-%[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
+# set internal field separator (IFS) to "\n" for shell commands
+# This is useful to automatically split file names in $fs and $fx properly
+# since default file separator used in these variables (i.e. 'filesep' option)
+# is newline. You need to consider the values of these options and create your
+# commands accordingly.
+set ifs "\n"
 
 set previewer ~/.config/lf/preview
-set cleaner ~/.config/lf/lf_kitty_clean
+set cleaner ~/.config/lf/kitty_clean
 
 # Basic Settings
 set preview
@@ -15,160 +31,12 @@ set drawbox
 set icons
 set ignorecase
 
-# Get rid of line under file in nested dir
-set cursorpreviewfmt ""
-# set cursorpreviewfmt "\033[7;90m"	 #Grey Cursor
+# set cursorpreviewfmt "" # Get rid of cursor in preview pane
+set cursorpreviewfmt "\033[7;2m" # Use the `dim` attribute instead of underline for the cursor in the preview pane
 
-#Dynamically set number of columns
-cmd recol &{{
-    w=$(tput cols)
-    if [ $w -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ $w -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
+#: }}}
 
-cmd onecol &{{
-
-    lf -remote "send $id :set preview false"
-    lf -remote "send $id set ratios 1"
-}}
-
-cmd twocol &{{
-    lf -remote "send $id set ratios 1:2"
-}}
-
-cmd threecol &{{
-    lf -remote "send $id set ratios 1:2"
-}}
-
-map z1 onecol
-map z2 twocol
-map z3 threecol
-
-cmd toggle_preview %{{
-    if [ "$lf_preview" = "true" ]; then
-        lf -remote "send $id :set preview false; set ratios 1:5"
-    else
-        lf -remote "send $id :set preview true; set ratios 1:2:3"
-    fi
-}}
-
-map zp toggle_preview
-
-# Custom Functions
-cmd open ${{
-    case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
-        application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
-        application/pdf) zathura "$f";;
-        video/*|audio/*) mpv --force-window=yes "$f";;
-        image/*) imv "$f";;
-        *) xdg-open "$f";;
-    esac
-}}
-
-cmd bulk-rename ${{
-    vimv -- $(basename -a -- $fx)
-
-    lf -remote "send $id load"
-    lf -remote "send $id unselect"
-
-  # files=$(printf "$fx" | tr '\n' ';')
-  # while [ "$files" ]; do
-  #   # extract the substring from start of string up to delimiter.
-  #   # this is the first "element" of the string.
-  #   file=${files%%;*}
-  #
-  #   trash-put "$(basename "$file")"
-  #   # if there's only one element left, set `files` to an empty string.
-  #   # this causes us to exit this `while` loop.
-  #   # else, we delete the first "element" of the string from files, and move onto the next.
-  #   if [ "$files" = "$file" ]; then
-  #     files=''
-  #   else
-  #     files="${files#*;}"
-  #   fi
-  # done
-
-}}
-
-cmd chmod ${{
-  printf "Mode Bits: "
-  read ans
-
-  for file in "$fx"
-  do
-    chmod $ans $file
-  done
-
-  lf -remote 'send reload'
-}}
-
-cmd sudoedit ${{
-  sudoedit "$f"
-}}
-
-cmd smart_w ${{
-  if [ $LF_LEVEL -eq 1 ]; then
-      zsh
-  else
-      lf -remote "send $id quit"
-  fi
-}}
-
-cmd fzf_jump ${{
-  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
-  if [ -f "$res" ]; then
-    cmd="select"
-  elif [ -d "$res" ]; then
-    cmd="cd"
-  fi
-  lf -remote "send $id $cmd \"$res\""
-}}
-
-cmd share $curl -F"file=@$fx" https://0x0.st | xclip -selection c
-
-cmd dragon %dragon-drop -a -x "$fx"
-cmd dragon-stay %dragon-drop -a "$fx"
-cmd dragon-individual %dragon-drop "$fx"
-cmd dragon-target %dragon-drop -t "$fx"
-cmd dlfile %dlfile
-
-# Archive bindings
-cmd unarchive ${{
-  case "$f" in
-      *.rar) unrar e "$f" ;;
-      *.zip) unzip "$f" ;;
-      *.tar.gz) tar -xzvf "$f" ;;
-      *.tar.xz) tar -xf "$f" ;;
-      *.tar.bz2) tar -xjvf "$f" ;;
-      *.tar) tar -xvf "$f" ;;
-      *) echo "Unsupported format" ;;
-  esac
-}}
-
-cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar" "$f"
-cmd targz %tar cvzf "$f.tar.gz" "$f"
-cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
-
-
-cmd fasd_dir ${{
-    res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty | sed 's/\\/\\\\/g;s/"/\\"/g')"
-    if [ -d "$res" ]; then
-        cmd="cd"
-    else
-        cmd="select"
-    fi
-    lf -remote "send $id $cmd \"$res\""
-}}
-
-
-# Bindings
+#: Bindings {{{
 # Remove some defaults
 map m
 map o
@@ -182,72 +50,20 @@ map f
 map r
 map t
 
-map w smart_w
 
 # File Openers
 map EE $$EDITOR "$f"
 map ES sudoedit
 
-# Archive Mappings
-map az zip
-map at tar
-map ag targz
-map ab targz
-map au unarchive
 
-cmd trash ${{
-  files=$(printf "$fx" | tr '\n' ';')
-  while [ "$files" ]; do
-    # extract the substring from start of string up to delimiter.
-    # this is the first "element" of the string.
-    file=${files%%;*}
-
-    trash-put "$(basename "$file")"
-    # if there's only one element left, set `files` to an empty string.
-    # this causes us to exit this `while` loop.
-    # else, we delete the first "element" of the string from files, and move onto the next.
-    if [ "$files" = "$file" ]; then
-      files=''
-    else
-      files="${files#*;}"
-    fi
-  done
-}}
-
-cmd restore_trash ${{
-  trash-restore
-}}
-cmd empty_trash %trash-empty
-
-# Trash Mappings
-map dd trash
-map te empty_trash
-map tr restore_trash
-
-# Fasd
-map go :fasd_dir
-
-# FZF
-map <c-p> fzf_jump
-
-map <c-s> share
-
-# Dragon Mapping
-map dr dragon
-map ds dragon-stay
-map di dragon-individual
-map dt dragon-target
-map dl dlfile
-
-map ss stripspace
 
 # Basic Functions
+map f find
 map . set hidden!
 map DD delete
 map p paste
 map x cut
 map y copy
-map C clear
 map <enter> open
 map mr :push %sudo<space>touch<space>
 map mf :push %touch<space>
@@ -260,20 +76,27 @@ map C clear
 map U unselect
 map T tag-toggle
 
+# show the result of execution of previous commands
+map ` !true
+
 # Rename Commands --------------------
-map r :rename; cmd-end
-map i :rename; cmd-home
-map e rename
+# unmap the default rename keybinding
+map r
+
+map i rename
+map I :rename; cmd-home
+map A :rename; cmd-end
+map c :rename; cmd-delete-home
+map <a-c> :rename; cmd-end; cmd-delete-home
 map b bulk-rename
-map c :rename; cmd-delete-home # delete everything before extension
-map C :rename; cmd-end; cmd-delete-home #delete everything
+map <a-d> :rename-done
 
 # Movement --------------------
 map ga cd ~/audio
 map gC cd ~/.config
 
 map gc cd ~/code
-map gS cd ~/code/scripts
+map gS cd ~/.local/scripts
 
 map gd cd ~/documents
 map gb cd ~/documents/books
@@ -312,3 +135,295 @@ map gsa cd ~/documents/swat/junior/algo
 
 map gr cd ~/projects/grodner-research
 map gn cd ~/code/peakengage/
+#: }}}
+
+#: Hooks & Autorun {{{
+# TODO these two don't work
+cmd on-cd &{{
+    # display git repository status in your prompt
+    source /usr/share/git/completion/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=auto
+    GIT_PS1_SHOWSTASHSTATE=auto
+    GIT_PS1_SHOWUNTRACKEDFILES=auto
+    GIT_PS1_SHOWUPSTREAM=auto
+    GIT_PS1_COMPRESSSPARSESTATE=auto
+    git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
+    fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+
+#Dynamically set number of columns
+cmd on-redraw %{{
+    echo "$lf_width"
+    if [ $lf_width -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $lf_width -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+%[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
+
+#: }}}
+
+#: Column {{{
+
+cmd onecol &{{
+    lf -remote "send $id :set preview false"
+    lf -remote "send $id set ratios 1"
+}}
+cmd twocol &{{
+    lf -remote "send $id set ratios 1:2"
+}}
+cmd threecol &{{
+    lf -remote "send $id set ratios 1:2"
+}}
+
+map z1 onecol
+map z2 twocol
+map z3 threecol
+
+cmd toggle_preview %{{
+    if [ "$lf_preview" = "true" ]; then
+        lf -remote "send $id :set preview false; set ratios 1:5"
+    else
+        lf -remote "send $id :set preview true; set ratios 1:2:3"
+    fi
+}}
+
+map zp toggle_preview
+#: }}}
+
+#: Improve Default {{{
+cmd open ${{
+    case $(file --mime-type "$f" -bL) in
+        text/*|application/json) $EDITOR "$f";;
+        application/msword|application/*officedocument.*) setsid onlyoffice-desktopeditors "$f" &;;
+        application/pdf) zathura "$f";;
+        video/*|audio/*) mpv --force-window=yes "$f";;
+        image/*) imv "$f";;
+        *) xdg-open "$f";;
+    esac
+}}
+
+cmd bulk-rename ${{
+    vimv -- $(basename -a -- $fx)
+
+    lf -remote "send $id load"
+    lf -remote "send $id unselect"
+
+
+}}
+
+# TODO make toggle
+cmd rename-done ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    mv "$(basename "$file")" "DONE $(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+  lf -remote "send $id load"
+  lf -remote "send $id unselect"
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+cmd sudoedit ${{
+  sudoedit "$f"
+}}
+
+cmd smart_w ${{
+  if [ $LF_LEVEL -eq 1 ]; then
+      zsh
+  else
+      lf -remote "send $id quit"
+  fi
+}}
+
+map w smart_w
+
+#: }}}
+
+#: FZF {{{
+
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+# FZF
+map <c-p> fzf_jump
+#: }}}
+
+#: fasd {{{
+
+cmd fasd_dir ${{
+    res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty)"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi  
+}}
+map go :fasd_dir
+
+#: }}}
+
+#: Dragon {{{
+cmd dragon %dragon-drop -a -x "$fx"
+cmd dragon-stay %dragon-drop -a "$fx"
+cmd dragon-individual %dragon-drop "$fx"
+cmd dragon-target %dragon-drop -t "$fx"
+cmd dlfile %dlfile
+
+# Dragon Mapping
+map dr dragon
+map ds dragon-stay
+map di dragon-individual
+map dt dragon-target
+map dl dlfile
+
+#: }}}
+
+#: Share {{{
+cmd share $curl -F"file=@$fx" https://0x0.st | wl-copy
+map <c-s> share
+
+#: }}}
+
+#: Archives {{{
+# Archive bindings
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar) tar -xvf $f;;
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd targz ${{
+    set -f
+    mkdir ${1}.tmp
+    cp -r $fx ${1}.tmp
+    tar czf $1.tar.gz ${1}.tmp
+    rm -rf ${1}.tmp
+}}
+
+# compress current file or selected files into tar
+cmd tar ${{
+    set -f
+    mkdir ${1}.tmp
+    cp -r $fx ${1}.tmp
+    tar cvf $1.tar ${1}.tmp
+    rm -rf ${1}.tmp
+}}
+
+cmd tarbz2 ${{
+    set -f
+    mkdir ${1}.tmp
+    cp -r $fx ${1}.tmp
+    tar cjvf $1.tar.bz2 ${1}.tmp
+    rm -rf ${1}.tmp
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir ${1}.tmp
+    cp -r $fx ${1}.tmp
+    zip -r $1.zip ${1}.tmp
+    rm -rf ${1}.tmp
+}}
+
+# Archive Mappings
+map az :push :zip<space>
+map at :push :tar<space>
+map ag :push :targz<space>
+map ab :push :tarbz2<space>
+map au extract
+
+#: }}}
+
+#! Trash {{{
+#trash integration
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    # extract the substring from start of string up to delimiter.
+    # this is the first "element" of the string.
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    # if there's only one element left, set `files` to an empty string.
+    # this causes us to exit this `while` loop.
+    # else, we delete the first "element" of the string from files, and move onto the next.
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd restore_trash ${{
+  trash-restore
+}}
+cmd empty_trash %trash-empty
+
+
+# Trash Mappings
+map dd trash
+map te empty_trash
+map tr restore_trash
+#: }}}
+
+#: Wallpaper {{{
+
+cmd setwallpaper ${{
+    pgrep -x swaybg && killall swaybg
+    nohup swaybg -i $f &
+    lf -remote "send $id load"
+
+}}
+
+map W setwallpaper
+
+#: }}}
