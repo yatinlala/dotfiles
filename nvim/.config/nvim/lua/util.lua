@@ -51,7 +51,6 @@ local pwconfig = {
         },
     },
     edit_cmd = 'edit',
-    on_close = {},
     on_open = {},
     cmds = {
         lf_cmd = 'lf',
@@ -97,39 +96,7 @@ local function on_exit()
 end
 
 local function postCreation(suffix)
-    for _, func in ipairs(pwconfig.on_open) do
-        func()
-    end
     vim.api.nvim_buf_set_option(M.buf, 'filetype', 'Fm')
-    vim.api.nvim_buf_set_keymap(
-        M.buf,
-        't',
-        pwconfig.mappings.edit,
-        '<C-\\><C-n>:lua require("fm-nvim").setMethod("edit")<CR>i' .. suffix,
-        { silent = true }
-    )
-    vim.api.nvim_buf_set_keymap(
-        M.buf,
-        't',
-        pwconfig.mappings.tabedit,
-        '<C-\\><C-n>:lua require("fm-nvim").setMethod("tabedit")<CR>i' .. suffix,
-        { silent = true }
-    )
-    vim.api.nvim_buf_set_keymap(
-        M.buf,
-        't',
-        pwconfig.mappings.horz_split,
-        '<C-\\><C-n>:lua require("fm-nvim").setMethod("split | edit")<CR>i' .. suffix,
-        { silent = true }
-    )
-    vim.api.nvim_buf_set_keymap(
-        M.buf,
-        't',
-        pwconfig.mappings.vert_split,
-        '<C-\\><C-n>:lua require("fm-nvim").setMethod("vsplit | edit")<CR>i' .. suffix,
-        { silent = true }
-    )
-    vim.api.nvim_buf_set_keymap(M.buf, 't', '<ESC>', pwconfig.mappings.ESC, { silent = true })
 end
 
 local function createWin(cmd, suffix)
@@ -175,7 +142,13 @@ local function createSplit(cmd, suffix)
 end
 
 function M.Lf(dir)
-    dir = dir or '.'
+    -- if dir = 
+    -- check if string is empty
+    if vim.fn.expand('%') == '' then
+        dir = '.'
+    else
+        dir = vim.fn.expand('%')
+    end
     createWin(pwconfig.cmds.lf_cmd .. ' -selection-path /tmp/fm-nvim ' .. dir, 'l')
 end
 

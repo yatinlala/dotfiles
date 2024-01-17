@@ -131,7 +131,7 @@ local leader = {
         h = { "<cmd>lua require('duck').hatch()<CR>", 'Hatch a duck' },
         k = { "<cmd>require('duck').cook()<CR>", 'Cook the duck' },
     },
-    e = { "<cmd>Lf '%'<CR>", 'Lf' },
+    e = { "<cmd>Lf<CR>", 'Lf' },
     f = {
         name = 'Telescope',
         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
