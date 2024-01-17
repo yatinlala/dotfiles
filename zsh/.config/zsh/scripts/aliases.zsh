@@ -17,7 +17,6 @@ alias ls='eza --icons'
 alias e='$EDITOR'
 # alias emacs='emacsclient -nw'
 alias ed='sudo systemctl start docker'
-alias t='tmux'
 alias lg='lazygit'
 alias la='ls -ah'
 alias ll='ls -lh'
@@ -75,7 +74,7 @@ alias gd='git diff'
 alias gp='git push'
 
 #Docker
-alias dl='nocker logs --follow --timestamps'
+alias dl='docker logs --follow --timestamps'
 
 #rmtrash
 alias rm='rmtrash -I'

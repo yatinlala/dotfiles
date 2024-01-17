@@ -58,7 +58,6 @@ map ES sudoedit
 
 
 # Basic Functions
-map f find
 map . set hidden!
 map DD delete
 map p paste
@@ -67,7 +66,9 @@ map y copy
 map <enter> open
 map mr :push %sudo<space>touch<space>
 map mf :push %touch<space>
-map md :push %mkdir<space>
+cmd mkdir %IFS=" "; mkdir -p -- "$*"
+map md push :mkdir<space>
+map <c-z> $ kill -STOP $PPID
 # map ch chmod
 map H top
 map L bottom
@@ -137,6 +138,7 @@ map gr cd ~/projects/grodner-research
 map gn cd ~/code/peakengage/
 #: }}}
 
+
 #: Hooks & Autorun {{{
 # TODO these two don't work
 cmd on-cd &{{
@@ -194,6 +196,18 @@ cmd toggle_preview %{{
 }}
 
 map zp toggle_preview
+#: }}}
+
+#: Dironly {{{
+
+cmd move-parent &{{
+    dironly="setlocal '$(dirname "$PWD")' dironly"
+    lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
+
+map J move-parent down
+map K move-parent up
+
 #: }}}
 
 #: Improve Default {{{
@@ -267,21 +281,88 @@ map w smart_w
 
 #: }}}
 
-#: FZF {{{
+#: Jump {{{
+set incfilter
+set user_filter false
 
-cmd fzf_jump ${{
-  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
-  if [ -f "$res" ]; then
-    cmd="select"
-  elif [ -d "$res" ]; then
-    cmd="cd"
-  fi
-  lf -remote "send $id $cmd \"$res\""
+map f :filter; set user_filter true
+
+cmap <enter> &{{
+    # select and open file
+    if [ "$lf_user_filter" = true ]; then
+        lf -remote "send $id :cmd-enter; set user_filter false; setfilter; open"
+    else
+        lf -remote "send $id cmd-enter"
+    fi
 }}
 
-# FZF
-map <c-p> fzf_jump
+cmap <esc> &{{
+    # exit filter mode
+    if [ "$lf_user_filter" = true ]; then
+        lf -remote "send $id :cmd-escape; set user_filter false"
+    else
+        lf -remote "send $id cmd-escape"
+    fi
+}}
+
+cmap <a-n> &{{
+    # go to next file
+    if [ "$lf_user_filter" = true ]; then
+        lf -remote "send $id down"
+    fi
+}}
+
+cmap <a-p> &{{
+    # go to previous file
+    if [ "$lf_user_filter" = true ]; then
+        lf -remote "send $id up"
+    fi
+}}
+
+# cmd fzf_jump ${{
+#     res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+#     if [ -n "$res" ]; then
+#         if [ -d "$res" ]; then
+#             cmd="cd"
+#         else
+#             cmd="select"
+#         fi
+#         res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+#         lf -remote "send $id $cmd \"$res\""
+#     fi
+# }}
+# map f :fzf_jump
+
+cmd fzf_deep_jump ${{
+    res="$((find . -maxdepth 5 2>/dev/null) | fzf --reverse --header='Jump to location')"
+
+find . 2>&1 > files_and_folders | grep -v 'Permission denied' >&2
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-p> :fzf_deep_jump
+
+cmd file_grep_search ${{
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+    res="$(
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
+    )"
+    [ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map <c-/> :file_grep_search
+
 #: }}}
+
 
 #: fasd {{{
 
