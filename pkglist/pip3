@@ -54,7 +54,7 @@ hyperframe                      6.0.1
 i3ipc                           2.2.1
 idna                            3.6
 ifaddr                          0.2.0
-importlib-metadata              5.0.0
+importlib_metadata              5.1.0
 inflate64                       0.3.1
 inflect                         7.0.0
 iniconfig                       2.0.0
@@ -91,7 +91,7 @@ msgpack                         1.0.5
 multivolumefile                 0.2.3
 mutagen                         1.47.0
 netifaces                       0.11.0
-nwg-displays                    0.3.10
+nwg-displays                    0.3.11
 ordered-set                     4.1.0
 packaging                       23.2
 passlib                         1.7.4
@@ -173,7 +173,7 @@ tinycss2                        1.2.1
 toml                            0.10.2
 tomli                           2.0.1
 tomlkit                         0.12.3
-torbrowser-launcher             0.3.6
+torbrowser-launcher             0.3.7
 tornado                         6.3.2
 tqdm                            4.66.1
 trash-cli                       0.23.2.13.2
