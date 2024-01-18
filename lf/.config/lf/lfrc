@@ -31,8 +31,8 @@ set drawbox
 set icons
 set ignorecase
 
-# set cursorpreviewfmt "" # Get rid of cursor in preview pane
-set cursorpreviewfmt "\033[7;2m" # Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "" # Get rid of cursor in preview pane
+# set cursorpreviewfmt "\033[7;2m" # Use the `dim` attribute instead of underline for the cursor in the preview pane
 
 #: }}}
 
@@ -137,7 +137,6 @@ map gsa cd ~/documents/swat/junior/algo
 map gr cd ~/projects/grodner-research
 map gn cd ~/code/peakengage/
 #: }}}
-
 
 #: Hooks & Autorun {{{
 # TODO these two don't work
@@ -362,7 +361,6 @@ cmd file_grep_search ${{
 map <c-/> :file_grep_search
 
 #: }}}
-
 
 #: fasd {{{
 
