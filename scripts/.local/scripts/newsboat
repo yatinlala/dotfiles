@@ -20,12 +20,13 @@ if [ -f "$log_file" ]; then
     diff=$((now - last))
 
     if [ "$diff" -gt 1800 ]; then
+        echo "$(date +%Y-%m-%d' '%H:%M:%S) $*" > "$log_file"
         /usr/bin/newsboat
     else
         notify-send "$((diff / 60)) minutes since last invocation"
     fi
 else
-    /usr/bin/newsboat
     echo "$(date +%Y-%m-%d' '%H:%M:%S) $*" > "$log_file"
+    /usr/bin/newsboat
 fi
 
