@@ -16,6 +16,7 @@ heroic-games-launcher-bin
 htim
 httpdirfs
 hyprpicker
+hyprshade
 keyd
 light
 megasync-bin
@@ -29,6 +30,7 @@ python-libsass
 python-material-color-utilities
 rmtrash
 rofi-lbonn-wayland-git
+spicetify-cli
 swaync
 tessen
 ticktick
