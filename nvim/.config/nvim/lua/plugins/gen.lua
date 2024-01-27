@@ -2,7 +2,7 @@ return {
     -- { 'yashlala/marker.nvim' },
     {
         'David-Kunz/gen.nvim',
-        lazy = false,
+        enabled = false,
         opts = {
             model = 'mistral', -- The default model to use.
             debug = false, -- Prints errors and the command which is run.
