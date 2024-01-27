@@ -2,7 +2,7 @@
 local M = {}
 
 local function augroup(name)
-    return vim.api.nvim_create_augroup("lala_" .. name, { clear = true })
+    return vim.api.nvim_create_augroup('lala_' .. name, { clear = true })
 end
 
 function M.setup()
@@ -17,16 +17,21 @@ function M.setup()
         callback = function()
             vim.opt.formatoptions = vim.opt.formatoptions - { 'c', 'r', 'o' }
         end,
-        group = augroup("format_options"),
+        group = augroup('format_options'),
     })
 
+    -- lastplace replacement. TODO test with folds to see if this is sufficient
+    -- vim.cmd([[
+    --   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    -- ]])
+
     -- resize splits if window got resized
-    vim.api.nvim_create_autocmd({ "VimResized" }, {
-        group = augroup("resize_splits"),
+    vim.api.nvim_create_autocmd({ 'VimResized' }, {
+        group = augroup('resize_splits'),
         callback = function()
             local current_tab = vim.fn.tabpagenr()
-            vim.cmd("tabdo wincmd =")
-            vim.cmd("tabnext " .. current_tab)
+            vim.cmd('tabdo wincmd =')
+            vim.cmd('tabnext ' .. current_tab)
         end,
     })
 
@@ -72,9 +77,8 @@ function M.setup()
         callback = function()
             vim.highlight.on_yank({ timeout = 200 })
         end,
-        group = augroup("highlight_yank"),
+        group = augroup('highlight_yank'),
     })
-
 
     -- -- close some filetypes with <q>
     -- vim.api.nvim_create_autocmd("FileType", {
@@ -132,21 +136,21 @@ function M.lsp_hov_highlight()
             vim.lsp.buf.document_highlight()
         end,
         buffer = 0,
-        group = augroup("lsp_doc_highlight"),
+        group = augroup('lsp_doc_highlight'),
     })
     vim.api.nvim_create_autocmd('CursorHoldI', {
         callback = function()
             vim.lsp.buf.document_highlight()
         end,
         buffer = 0,
-        group = augroup("lsp_cursor_highlight"),
+        group = augroup('lsp_cursor_highlight'),
     })
     vim.api.nvim_create_autocmd('CursorMoved', {
         callback = function()
             vim.lsp.buf.clear_references()
         end,
         buffer = 0,
-        group = augroup("lsp_clear_highlight"),
+        group = augroup('lsp_clear_highlight'),
     })
 end
 
@@ -157,7 +161,7 @@ function M.lsp_hov_diagnostics()
             vim.diagnostic.open_float()
         end,
         buffer = 0,
-        group = augroup("lsp_open_diagnostic"),
+        group = augroup('lsp_open_diagnostic'),
     })
     -- vim.api.nvim_create_autocmd("CursorHoldI", {
     -- 	callback = function()
