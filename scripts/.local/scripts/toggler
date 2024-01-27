@@ -3,7 +3,7 @@ case $1 in
     cmus)
         # pgrep -x cmus || $TERMINAL -a cmus -e cmus
         pgrep -x cmus || $TERMINAL --class cmus -e cmus
-        hyprctl dispatch workspace 9;;
+        hyprctl dispatch focuswindow "^(cmus)$";;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     discord)
         pgrep -x discord || setsid discord &
@@ -14,7 +14,7 @@ case $1 in
     ferdium)
         pgrep -x ferdium || gtk-launch ferdium &
         # sway "workspace 9; [class=Ferdium] focus";;
-        hyprctl dispatch workspace 2;;
+    hyprctl dispatch focuswindow "^(ferdium)$";;
     inhibit-lid)
     pgrep -x sleep && (killall sleep & notify-send 'Stop inhibiting sleep on lid-close.') || \
         (systemd-inhibit --what=handle-lid-switch sleep 1h & notify-send 'Inhibit sleep on lid-close.');;
@@ -35,7 +35,7 @@ case $1 in
     neomutt)
         # pgrep -x cmus || $TERMINAL -a cmus -e cmus
         pgrep -x neomutt || $TERMINAL --class neomutt -e neomutt
-        hyprctl dispatch workspace 6;;
+        hyprctl dispatch focuswindow "^(neomutt)$";;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
             ;;
@@ -44,7 +44,7 @@ case $1 in
     notes)
         # pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
         pgrep -x emacs || emacs --name notes ~/documents/org/main.org
-        hyprctl dispatch workspace 1;;
+        hyprctl dispatch focuswindow "^(notes)$";;
         # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
     gammastep)
         pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
@@ -52,11 +52,11 @@ case $1 in
     signal)
         pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop &
         # sway "workspace 9; [class=Signal] focus";;
-        hyprctl dispatch workspace 2;;
+        hyprctl dispatch focuswindow "^(Signal)$";;
     spotify)
         (wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
         # sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
-        hyprctl dispatch workspace 9;;
+        hyprctl dispatch focuswindow "^(Spotify)$";;
     spotifyd)
         pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
         (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
