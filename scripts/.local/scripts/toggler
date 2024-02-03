@@ -64,6 +64,10 @@ case $1 in
         pgrep -x "spotifyd" || spotifyd &
         pgrep -x spt || ($TERMINAL -a spt -e spt && sleep .1)
         sway "[app_id=spt] scratchpad show; [app_id=spt] move position center";;
+    ticktick)
+        pgrep -x ticktick || gtk-launch ticktick
+        # sway "workspace 9; [class=Signal] focus";;
+        hyprctl dispatch focuswindow "^(ticktick)$";;
     tmux);;
     torbrowser)
         wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
