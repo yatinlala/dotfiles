@@ -1,76 +1,126 @@
 #!/usr/bin/env sh
 case $1 in
-    cmus)
-        # pgrep -x cmus || $TERMINAL -a cmus -e cmus
-        pgrep -x cmus || $TERMINAL --class cmus -e cmus
-        hyprctl dispatch focuswindow "^(cmus)$";;
-        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
-    discord)
-        pgrep -x discord || setsid discord &
-        sway "workspace 9; [class=discord] focus";;
-    espanso)
-        pgrep -x espanso && (espanso stop; notify-send -t 1000 "Espanso stopped.") || \
-        setsid espanso daemon &;;
-    ferdium)
-        pgrep -x ferdium || gtk-launch ferdium &
-        # sway "workspace 9; [class=Ferdium] focus";;
-    hyprctl dispatch focuswindow "^(ferdium)$";;
-    inhibit-lid)
-    pgrep -x sleep && (killall sleep & notify-send 'Stop inhibiting sleep on lid-close.') || \
-        (systemd-inhibit --what=handle-lid-switch sleep 1h & notify-send 'Inhibit sleep on lid-close.');;
-    mailspring)
-        pgrep -x mailspring || setsid mailspring &
-        sway "workspace 9; [class=Mailspring] focus";;
-    megasync)
-        QT_QPA_PLATFORM='xcb' 
-        pgrep -x "megasync" && killall megasync || setsid megasync &;;
-    music)
-        # pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
-        playerctl --player=spotify,cmus,spotifyd,%any play-pause;;
-    music-player)
-        sway "[instance=spotify] scratchpad show; [instance=spotify] move \
+cmus)
+	# pgrep -x cmus || $TERMINAL -a cmus -e cmus
+	pgrep -x cmus || $TERMINAL --class cmus -e cmus
+	hyprctl dispatch focuswindow "^(cmus)$"
+	;;
+	# sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+discord)
+	pgrep -x discord || setsid discord &
+	sway "workspace 9; [class=discord] focus"
+	;;
+display)
+	if hyprctl monitors | grep -q "eDP-1"; then
+		hyprctl keyword monitor "eDP-1, disable"
+	else
+		hyprctl keyword monitor ",preferred,auto,1"
+	fi
+	;;
+espanso)
+	pgrep -x espanso && (
+		espanso stop
+		notify-send -t 1000 "Espanso stopped."
+	) ||
+		setsid espanso daemon &
+	;;
+ferdium)
+	pgrep -x ferdium || gtk-launch ferdium &
+	# sway "workspace 9; [class=Ferdium] focus";;
+	hyprctl dispatch focuswindow "^(ferdium)$"
+	;;
+inhibit-lid)
+	pgrep -x sleep && (
+		killall sleep &
+		notify-send 'Stop inhibiting sleep on lid-close.'
+	) ||
+		(
+			systemd-inhibit --what=handle-lid-switch sleep 1h &
+			notify-send 'Inhibit sleep on lid-close.'
+		)
+	;;
+mailspring)
+	pgrep -x mailspring || setsid mailspring &
+	sway "workspace 9; [class=Mailspring] focus"
+	;;
+megasync)
+	QT_QPA_PLATFORM='xcb'
+	pgrep -x "megasync" && killall megasync || setsid megasync &
+	;;
+music)
+	# pgrep -x "spotify|cmus|spotifyd" && playerctl --player=spotify,cmus,spotifyd play-pause;;
+	playerctl --player=spotify,cmus,spotifyd,%any play-pause
+	;;
+music-player)
+	sway "[instance=spotify] scratchpad show; [instance=spotify] move \
         position center; [app_id=cmus] scratchpad show; [app_id=cmus] move \
         position center"
-        ;;
-    neomutt)
-        # pgrep -x cmus || $TERMINAL -a cmus -e cmus
-        pgrep -x neomutt || $TERMINAL --class neomutt -e neomutt
-        hyprctl dispatch focuswindow "^(neomutt)$";;
-        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
-    nextcloud) pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
-            ;;
-    nm-applet)
-        pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &;;
-    notes)
-        # pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
-        pgrep -x emacs || emacs --name notes ~/documents/org/main.org
-        hyprctl dispatch focuswindow "^(notes)$";;
-        # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
-    gammastep)
-        pgrep -x "gammastep" && (killall gammastep; notify-send -t 1000 "Killing gammastep") || \
-        (notify-send -t 1000 "Starting Gammastep."; setsid gammastep);;
-    signal)
-        pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop &
-        # sway "workspace 9; [class=Signal] focus";;
-        hyprctl dispatch focuswindow "^(Signal)$";;
-    spotify)
-        (wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
-        # sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
-        hyprctl dispatch focuswindow "^(Spotify)$";;
-    spotifyd)
-        pgrep -x spotifyd && (notify-send -t 1000 "Killing spotifyd."; killall spotifyd) || \
-        (notify-send -t 1000 "Starting spotifyd."; setsid spotifyd &);;
-    spotify-tui)
-        pgrep -x "spotifyd" || spotifyd &
-        pgrep -x spt || ($TERMINAL -a spt -e spt && sleep .1)
-        sway "[app_id=spt] scratchpad show; [app_id=spt] move position center";;
-    ticktick)
-        pgrep -x ticktick || gtk-launch ticktick
-        # sway "workspace 9; [class=Signal] focus";;
-        hyprctl dispatch focuswindow "^(ticktick)$";;
-    tmux);;
-    torbrowser)
-        wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
-        sway "workspace 7";;
-    *) echo "Invalid argument." >&2; exit 1;;
+	;;
+neomutt)
+	# pgrep -x cmus || $TERMINAL -a cmus -e cmus
+	pgrep -x neomutt || $TERMINAL --class neomutt -e neomutt
+	hyprctl dispatch focuswindow "^(neomutt)$"
+	;;
+	# sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+nextcloud)
+	pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
+	;;
+nm-applet)
+	pgrep -x "nm-applet" && killall nm-applet || setsid nm-applet &
+	;;
+notes)
+	# pgrep -x emacs || $TERMINAL --class notes -e emacs -nw ~/documents/org/main.org
+	pgrep -x emacs || emacs --name notes ~/documents/org/main.org
+	hyprctl dispatch focuswindow "^(notes)$"
+	;;
+	# sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+gammastep)
+	pgrep -x "gammastep" && (
+		killall gammastep
+		notify-send -t 1000 "Killing gammastep"
+	) ||
+		(
+			notify-send -t 1000 "Starting Gammastep."
+			setsid gammastep
+		)
+	;;
+signal)
+	pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop &
+	# sway "workspace 9; [class=Signal] focus";;
+	hyprctl dispatch focuswindow "^(Signal)$"
+	;;
+spotify)
+	(wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
+	# sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
+	hyprctl dispatch focuswindow "^(Spotify)$"
+	;;
+spotifyd)
+	pgrep -x spotifyd && (
+		notify-send -t 1000 "Killing spotifyd."
+		killall spotifyd
+	) ||
+		(
+			notify-send -t 1000 "Starting spotifyd."
+			setsid spotifyd &
+		)
+	;;
+spotify-tui)
+	pgrep -x "spotifyd" || spotifyd &
+	pgrep -x spt || ($TERMINAL -a spt -e spt && sleep .1)
+	sway "[app_id=spt] scratchpad show; [app_id=spt] move position center"
+	;;
+ticktick)
+	pgrep -x ticktick || gtk-launch ticktick
+	# sway "workspace 9; [class=Signal] focus";;
+	hyprctl dispatch focuswindow "^(ticktick)$"
+	;;
+tmux) ;;
+torbrowser)
+	wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
+	sway "workspace 7"
+	;;
+*)
+	echo "Invalid argument." >&2
+	exit 1
+	;;
 esac
