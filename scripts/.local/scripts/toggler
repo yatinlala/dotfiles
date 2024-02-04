@@ -15,6 +15,7 @@ display)
 		hyprctl keyword monitor "eDP-1, disable"
 	else
 		hyprctl keyword monitor ",preferred,auto,1"
+		hyprctl reload
 	fi
 	;;
 espanso)

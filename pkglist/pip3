@@ -126,8 +126,8 @@ pychm                           0.8.6
 pycparser                       2.21
 pycryptodome                    3.20.0
 pycryptodomex                   3.12.0
-pydantic                        2.5.3
-pydantic_core                   2.14.6
+pydantic                        2.6.0
+pydantic_core                   2.16.1
 Pygments                        2.17.2
 PyGObject                       3.46.0
 PyJWT                           2.8.0
@@ -185,7 +185,7 @@ trove-classifiers               2024.2.2
 typing_extensions               4.9.0
 unrardll                        0.1.7
 urllib3                         1.26.18
-urwid                           2.4.1
+urwid                           2.5.1
 userpath                        1.9.1
 validate-pyproject              0.13.post1.dev0+gb752273.d20230520
 virtualenv                      20.25.0
