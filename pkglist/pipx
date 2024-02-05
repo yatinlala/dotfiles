@@ -3,7 +3,7 @@ apps are exposed on your $PATH at /home/lala/.local/bin
 manual pages are exposed at /home/lala/.local/share/man
    package chatgpt-cli 0.2.4, installed using Python 3.11.6
     - chatgpt-cli
-   package pyprland 1.8.3, installed using Python 3.11.6
+   package pyprland 1.8.6, installed using Python 3.11.6
     - pypr
    package spotdl 4.2.4, installed using Python 3.11.3
     - spotdl
