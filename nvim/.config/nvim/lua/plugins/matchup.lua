@@ -2,9 +2,9 @@
 return {
     'andymass/vim-matchup',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    lazy = false,
+    event = 'VeryLazy',
     init = function()
-        vim.cmd([[ hi MatchWord cterm=underline gui=underline ]])
+        vim.cmd([[ hi MatchWord guibg=#504945 ]])
         vim.g.matchup_matchparen_offscreen = { method = 'status_manual' }
         vim.g.matchup_matchparen_deferred = 1
         vim.b.matchup_matchparen_enabled = 0

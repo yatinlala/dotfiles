@@ -1,4 +1,3 @@
--- TODO BROKEN
 return {
     'simrat39/symbols-outline.nvim',
     cmd = 'SymbolsOutline',

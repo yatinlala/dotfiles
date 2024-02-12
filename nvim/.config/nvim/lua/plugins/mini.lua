@@ -25,7 +25,12 @@ return {
         'echasnovski/mini.move',
         version = false,
         config = true,
-        keys = { '<M-h>', '<M-j>', '<M-k>', '<M-l>' },
+        keys = {
+            { '<M-h>', mode = {"n", "v"} },
+            { '<M-j>', mode = {"n", "v"} },
+            { '<M-k>', mode = {"n", "v"} },
+            { '<M-l>', mode = {"n", "v"} },
+        },
     },
     -- {
     -- 	"echasnovski/mini.sessions",
