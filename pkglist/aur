@@ -15,7 +15,10 @@ grimshot-bin-sway
 heroic-games-launcher-bin
 htim
 httpdirfs
+hyprevents-git
+hyprfreeze-git
 hyprpicker
+hyprprop-git
 hyprshade
 keyd
 libinput-gestures
@@ -29,6 +32,7 @@ pipe-viewer-git
 python-cssutils
 python-libsass
 python-material-color-utilities
+qt-installer-framework
 rmtrash
 rofi-lbonn-wayland-git
 spicetify-cli
@@ -36,4 +40,4 @@ swaync
 tessen
 ticktick
 topgrade-bin
-ttf-ms-win11-auto
+yai

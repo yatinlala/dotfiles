@@ -26,6 +26,8 @@ alias p='pacman'
 alias sp='sudo pacman'
 alias '?'='duck'
 
+alias ask='yai -e'
+alias aske='shell-genie --explain ask'
 
 alias jupl='source $HOME/.local/venv/jupl/bin/activate'
 
@@ -53,7 +55,6 @@ alias uusb='sudo umount ~/.local/usb'
 alias wallpaper='feh --bg-fill --no-fehbg --recursive --randomize ~/pictures/wallpapers'
 alias domains="sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8"
 alias orphans='pacman -Qtdq'
-alias xevsym="xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'"
 alias myip='curl -4 https://icanhazip.com'
 alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirrorlist"
 alias tpv='command mpv --vo=tct'
