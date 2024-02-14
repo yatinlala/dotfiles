@@ -16,6 +16,12 @@ function M.config()
 
     require('telescope').setup({
         defaults = {
+            mappings = {
+                i = {
+                    -- ['<CR>'] = require('telescope.actions').select_tab,
+                    -- ['<C-t>'] = require('telescope.actions').select_default,
+                },
+            },
             prompt_prefix = '  ',
             selection_caret = ' ',
             file_ignore_patterns = {
@@ -41,10 +47,10 @@ function M.config()
         },
         extensions = {
             fzf = {
-                fuzzy = true,                   -- false will only do exact matching
+                fuzzy = true, -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true,    -- override the file sorter
-                case_mode = 'smart_case',       -- or "ignore_case" or "respect_case"
+                override_file_sorter = true, -- override the file sorter
+                case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
             },
         },
     })

@@ -18,8 +18,8 @@ vim.keymap.set('n', '<leader><leader>d', [["_d]], opts)
 -- vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
-vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
+vim.keymap.set('n', '<S-l>', '<cmd>tabnext<CR>', opts)
+vim.keymap.set('n', '<S-h>', '<cmd>tabprevious<CR>', opts)
 
 -- Centered searches
 vim.keymap.set('n', 'n', 'nzzzv', opts)
