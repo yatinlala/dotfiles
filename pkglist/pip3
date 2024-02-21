@@ -81,7 +81,7 @@ libsass                         0.23.0
 lockfile                        0.12.2
 lxml                            4.9.2
 Mako                            1.3.2
-Markdown                        3.5.1
+Markdown                        3.5.2
 MarkupSafe                      2.1.4
 material-color-utilities-python 0.1.5
 mechanize                       0.4.8
@@ -117,10 +117,10 @@ protobuf                        4.25.2
 psutil                          5.9.8
 ptyprocess                      0.7.0
 publicsuffix2                   2.20191221
-py7zr                           0.20.6
+py7zr                           0.20.8
 pyasn1                          0.5.0
 pyasn1_modules                  0.3.0
-pybcj                           1.0.1
+pybcj                           1.0.2
 pycairo                         1.26.0
 pychm                           0.8.6
 pycparser                       2.21
@@ -135,7 +135,7 @@ pylsqpack                       0.3.18
 pyOpenSSL                       24.0.0
 pyparsing                       3.1.1
 pyperclip                       1.8.2
-pyppmd                          1.0.0
+pyppmd                          1.1.0
 pyproject_hooks                 1.0.0
 PyQt5                           5.15.10
 PyQt5-sip                       12.13.0
@@ -166,11 +166,11 @@ service-identity                23.1.0
 setuptools                      69.0.3
 setuptools-scm                  8.0.4
 sgmllib3k                       1.0.0
-shellingham                     1.5.0.post1
+shellingham                     1.5.4
 six                             1.16.0
 sortedcontainers                2.4.0
 soupsieve                       2.5
-sshuttle                        1.1.1
+sshuttle                        1.1.2
 svglib                          1.5.1
 texttable                       1.7.0
 tinycss2                        1.2.1
