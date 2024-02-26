@@ -8,7 +8,7 @@ local wk = require('which-key')
 vim.keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<CR><esc>')
 
 -- Don't yank on x
-vim.keymap.set('n', 'x', '"_x', opts)
+-- vim.keymap.set('n', 'x', '"_x', opts)
 vim.keymap.set('n', '<leader><leader>d', [["_d]], opts)
 
 -- Sensible split movement
@@ -45,9 +45,7 @@ vim.keymap.set('n', '<c-\\>', '<cmd>ToggleTerm<CR>', opts)
 
 vim.keymap.set('n', 'gf', '<cmd>e <cfile><CR>', opts)
 
-vim.keymap.set('n', '<c-p>', function()
-    require('telescope.builtin').find_files()
-end, opts)
+vim.keymap.set('n', '<c-p>', "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
 
 -- -- Smart(ish) compilation
 -- vim.keymap.set('n', '<leader>c',  '<cmd>w! \\| !comp <c-r>%<CR><CR>', {})
@@ -142,7 +140,7 @@ local leader = {
         m = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
         u = { '<cmd>Telescope undo<cr>', 'Undo' },
         n = { '<cmd>Telescope find_files cwd=~/.config/nvim<CR>', 'edit neovim' },
-        p = { require('telescope').extensions.projects.projects, 'projects' },
+        p = { "<cmd>lua require('telescope').extensions.projects.projects<CR>", 'projects' },
         r = { '<cmd>Telescope oldfiles<CR>', 'recent files' },
         R = { '<cmd>Telescope registers<cr>', 'Registers' },
         s = {

@@ -1,5 +1,6 @@
 local M = {
     'folke/which-key.nvim',
+    keys = { 'g', "'", '"', '[', ']', 'z', 'y', 'd', 'c', '<space>' },
 }
 
 function M.config()

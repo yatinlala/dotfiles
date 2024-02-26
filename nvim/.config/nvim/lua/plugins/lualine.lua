@@ -1,6 +1,7 @@
 return {
     'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy', -- kills splash
+    -- event = 'VeryLazy', -- kills splash
+    lazy = false,
     enabled = true,
     config = function()
         if vim.g.started_by_firenvim then

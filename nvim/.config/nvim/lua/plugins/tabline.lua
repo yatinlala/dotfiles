@@ -1,6 +1,7 @@
 return {
     'mkitt/tabline.vim',
     dependencies = 'ellisonleao/gruvbox.nvim',
+    enabled = false,
     lazy = false,
     config = function()
         vim.cmd([[

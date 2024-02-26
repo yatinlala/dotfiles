@@ -6,7 +6,7 @@ return {
         'folke/neodev.nvim',
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
     },
-    lazy = false,
+    event = 'BufWinEnter',
     config = function()
         require('mason').setup()
         require('mason-lspconfig').setup({

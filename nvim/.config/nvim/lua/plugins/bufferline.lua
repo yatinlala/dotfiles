@@ -2,7 +2,8 @@ return {
     {
         'akinsho/bufferline.nvim',
         event = 'BufReadPre',
-        enabled = false,
+        -- lazy = false,
+        enabled = true,
         config = function()
             require('bufferline').setup({
                 options = {
@@ -18,8 +19,8 @@ return {
     },
     {
         'tiagovla/scope.nvim',
-        event = 'BufReadPre',
-        enabled = false,
+        lazy = false,
+        enabled = true,
         opts = {},
     },
 }
