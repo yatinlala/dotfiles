@@ -60,6 +60,7 @@ kitty
 lazygit
 lf
 libreoffice-fresh
+libva-utils
 linux
 linux-firmware
 linux-headers
@@ -156,6 +157,7 @@ texlive-plaingeneric
 texlive-pstricks
 texlive-publishers
 texlive-xetex
+tlp
 tmux
 torbrowser-launcher
 traceroute
