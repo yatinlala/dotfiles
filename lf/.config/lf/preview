@@ -8,6 +8,8 @@ image() {
     y=$5
     kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
     exit 1
+    # geometry="$(($2-2))x$3"
+    # chafa "$1" -f sixel -s "$geometry" --animate false
 
 }
 
