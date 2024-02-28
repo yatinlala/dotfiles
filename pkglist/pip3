@@ -126,7 +126,7 @@ pychm                           0.8.6
 pycparser                       2.21
 pycryptodome                    3.20.0
 pycryptodomex                   3.12.0
-pydantic                        2.6.2
+pydantic                        2.6.3
 pydantic_core                   2.16.3
 Pygments                        2.17.2
 PyGObject                       3.46.0
@@ -154,7 +154,7 @@ rapidfuzz                       3.6.0
 referencing                     0.33.0
 Reflector                       2023.6.28.0.36.1
 regex                           2023.12.25
-reportlab                       3.6.12
+reportlab                       4.1.0
 requests                        2.31.0
 requests-toolbelt               1.0.0
 rofimoji                        6.2.0
@@ -174,16 +174,16 @@ sshuttle                        1.1.2
 svglib                          1.5.1
 texttable                       1.7.0
 tinycss2                        1.2.1
-tlp-ui                          1.6.2
+tlp-ui                          1.6.4
 toml                            0.10.2
 tomli                           2.0.1
-tomlkit                         0.12.3
+tomlkit                         0.12.4
 torbrowser-launcher             0.3.7
 tornado                         6.3.2
 tqdm                            4.66.2
 trash-cli                       0.23.11.10
 trove-classifiers               2024.2.2
-typing_extensions               4.9.0
+typing_extensions               4.10.0
 unrardll                        0.1.7
 urllib3                         1.26.18
 urwid                           2.6.1

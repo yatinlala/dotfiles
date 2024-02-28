@@ -295,6 +295,15 @@ cmap <enter> &{{
     fi
 }}
 
+# cmap <enter> &{{
+#     # exit filter mode
+#     if [ "$lf_user_filter" = true ]; then
+#         lf -remote "send $id :cmd-escape; set user_filter false"
+#     else
+#         lf -remote "send $id cmd-escape"
+#     fi
+# }}
+#
 cmap <esc> &{{
     # exit filter mode
     if [ "$lf_user_filter" = true ]; then

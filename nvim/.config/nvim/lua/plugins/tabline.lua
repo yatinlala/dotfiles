@@ -5,9 +5,9 @@ return {
     lazy = false,
     config = function()
         vim.cmd([[
-            hi TabLine      guifg=#ebdbb2  guibg=#3c3836     gui=NONE
-            hi TabLineFill  guifg=#ebdbb2  guibg=#3c3836     gui=NONE
-            hi TabLineSel   guifg=#ebdbb2  guibg=#928374     gui=NONE
+            hi TabLine      guifg=#bdae93  guibg=#282828     gui=NONE
+            hi TabLineFill  guifg=#bdae93  guibg=#282828     gui=NONE
+            hi TabLineSel   guifg=#ebdbb2  guibg=#282828     gui=NONE
         ]])
     end,
 }

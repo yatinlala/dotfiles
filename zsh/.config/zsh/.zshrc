@@ -88,5 +88,4 @@ eval "$(fasd --init auto)"
 #     muxterm mix
 # fi
 
-fortune -s wisdom | lolcat
-echo
+fortune -s | lolcat

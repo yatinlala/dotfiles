@@ -60,6 +60,8 @@ kitty
 lazygit
 lf
 libreoffice-fresh
+libva-intel-driver
+libva-mesa-driver
 libva-utils
 linux
 linux-firmware
@@ -111,6 +113,7 @@ pipewire-jack
 pipewire-pulse
 plocate
 ponysay
+powertop
 pv
 python-pip
 python-pipx
