@@ -22,7 +22,6 @@ code
 cowsay
 cpio
 cups
-discord
 docker
 docker-compose
 dog
@@ -46,6 +45,7 @@ gimp
 git
 gnuplot
 go
+grim
 grub
 grub-btrfs
 gum
@@ -56,6 +56,7 @@ imv
 intel-media-driver
 intel-ucode
 intel-undervolt
+keyd
 kitty
 lazygit
 lf
@@ -165,6 +166,7 @@ tmux
 torbrowser-launcher
 traceroute
 trash-cli
+tree-sitter
 ttf-3270-nerd
 ttf-agave-nerd
 ttf-anonymouspro-nerd

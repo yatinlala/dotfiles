@@ -1,5 +1,3 @@
-# vim: foldmethod=marker:foldlevel=0
-
 #: Sets {{{
 
 # interpreter for shell commands
@@ -515,3 +513,5 @@ cmd setwallpaper ${{
 map W setwallpaper
 
 #: }}}
+
+# vim: foldmethod=marker:foldlevel=0
