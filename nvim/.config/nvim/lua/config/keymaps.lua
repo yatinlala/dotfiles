@@ -24,15 +24,13 @@ vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 -- Centered searches
 vim.keymap.set('n', 'n', 'nzzzv', opts)
 vim.keymap.set('n', 'N', 'Nzzzv', opts)
--- Centered half page movements
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
+-- -- Centered half page movements
+-- vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
+-- vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 -- Centered line cat
 vim.keymap.set('n', 'J', "mzJ'z", opts)
 -- Centered search
 vim.cmd [[
-    nnoremap n nzvzz
-    nnoremap N Nzvzz
     nnoremap <C-o> <C-o>zvzz
     nnoremap <C-i> <C-i>zvzz
 
@@ -319,10 +317,6 @@ local leader = {
         '<cmd>Telescope undo<CR>',
         'Undo',
     },
-    -- w = {
-    --   name = 'Vimwiki',
-    --   w = { '<cmd>e ~/documents/wiki/index.<cr>', 'Wiki Index' },
-    -- },
     --   t = {
     --     name = "toggle",
     --     f = {

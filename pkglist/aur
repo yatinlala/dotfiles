@@ -32,6 +32,7 @@ pipe-viewer-git
 python-cssutils
 python-libsass
 python-material-color-utilities
+python-mock
 qt-installer-framework
 rmtrash
 rofi-lbonn-wayland-git

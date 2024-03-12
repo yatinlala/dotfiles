@@ -2,7 +2,7 @@ return {
     'nvim-lualine/lualine.nvim',
     -- event = 'VeryLazy', -- kills splash
     lazy = false,
-    enabled = true,
+    enabled = false,
     config = function()
         if vim.g.started_by_firenvim then
             return

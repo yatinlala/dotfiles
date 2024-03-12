@@ -24,14 +24,32 @@ return {
     {
         'echasnovski/mini.move',
         version = false,
-        config = true,
+        opts = {},
         keys = {
-            { '<M-h>', mode = {"n", "v"} },
-            { '<M-j>', mode = {"n", "v"} },
-            { '<M-k>', mode = {"n", "v"} },
-            { '<M-l>', mode = {"n", "v"} },
+            { '<M-h>', mode = { 'n', 'v' } },
+            { '<M-j>', mode = { 'n', 'v' } },
+            { '<M-k>', mode = { 'n', 'v' } },
+            { '<M-l>', mode = { 'n', 'v' } },
         },
     },
+    {
+        'echasnovski/mini.statusline',
+        version = false,
+        config = function()
+            local statusline = require('mini.statusline')
+            statusline.setup()
+
+            -- You can configure sections in the statusline by overriding their
+            -- default behavior. For example, here we set the section for
+            -- cursor location to LINE:COLUMN
+            ---@diagnostic disable-next-line: duplicate-set-field
+            statusline.section_location = function()
+                return '%2l:%-2v'
+            end
+        end,
+        lazy = false,
+    },
+
     -- {
     -- 	"echasnovski/mini.sessions",
     -- 	version = "*",
