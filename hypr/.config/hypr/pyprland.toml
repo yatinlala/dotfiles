@@ -6,32 +6,14 @@ plugins = ["magnify", "scratchpads"]
 command = "HOME=$HOME/.local/xdg-garbage signal-desktop"
 class = "Signal"
 size = "75% 90%"
-animation = "fromTop"
+animation = ""
 lazy = true
 
 [scratchpads.notes]
 command = "emacs --name notes ~/documents/org/main.org"
 class = "notes"
-animation = "fromTop"
+animation = ""
 margin = 50
 size = "90% 90%"
 max_size = "1920px 100%"
 lazy = true
-
-# [scratchpads.ferdium]
-# command = "xdg-launch /usr/bin/ferdium --ozone-platform=wayland"
-# class = "ferdium"
-# animation = "fromTop"
-# margin = 50
-# size = "95% 90%"
-# max_size = "1920px 100%"
-# lazy = true
-
-# [scratchpads.ticktick]
-# command = "gtk-launch ticktick"
-# class = "ticktick"
-# animation = ""
-# margin = 50
-# size = "95% 95%"
-# max_size = "1920px 100%"
-# lazy = true

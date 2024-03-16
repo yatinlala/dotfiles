@@ -1,6 +1,6 @@
 Package                         Version
 ------------------------------- ----------------------------------
-aioquic                         0.9.25
+aioquic                         1.0.0
 annotated-types                 0.6.0
 anyascii                        0.3.2
 apsw                            3.43.1.0
@@ -53,7 +53,7 @@ html2text                       2020.1.16
 html5-parser                    0.4.11
 html5lib                        1.1
 hyperframe                      6.0.1
-hyprshade                       3.2.0
+hyprshade                       3.2.1
 i3ipc                           2.2.1
 idna                            3.6
 ifaddr                          0.2.0
@@ -79,9 +79,9 @@ ldap3                           2.9
 lensfun                         0.3.4
 libsass                         0.23.0
 lockfile                        0.12.2
-lxml                            4.9.2
+lxml                            5.1.0
 Mako                            1.3.2
-Markdown                        3.5.2
+Markdown                        3.6
 MarkupSafe                      2.1.4
 material-color-utilities-python 0.1.5
 mechanize                       0.4.8
@@ -193,7 +193,7 @@ virtualenv                      20.25.0
 wcwidth                         0.2.13
 webencodings                    0.5.1
 Werkzeug                        2.3.8
-wheel                           0.42.0
+wheel                           0.43.0
 wsproto                         1.2.0
 xxhash                          3.4.1
 Yapsy                           1.12.2

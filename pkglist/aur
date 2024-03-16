@@ -28,6 +28,7 @@ nwg-displays
 nwg-look-bin
 pam-fprint-grosshack
 paru
+paru-debug
 pipe-viewer-git
 python-cssutils
 python-libsass
