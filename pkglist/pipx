@@ -1,7 +1,7 @@
 venvs are in /home/lala/.local/pipx/venvs
 apps are exposed on your $PATH at /home/lala/.local/bin
 manual pages are exposed at /home/lala/.local/share/man
-   package pyprland 2.0.8, installed using Python 3.11.6
+   package pyprland 2.0.9, installed using Python 3.11.6
     - pypr
    package shell-genie 0.2.10, installed using Python 3.11.6
     - shell-genie
