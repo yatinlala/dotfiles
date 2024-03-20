@@ -34,6 +34,7 @@ python-cssutils
 python-libsass
 python-material-color-utilities
 python-mock
+python-yapsy
 qt-installer-framework
 rmtrash
 rofi-lbonn-wayland-git
