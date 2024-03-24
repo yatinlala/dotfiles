@@ -3,7 +3,7 @@ plugins = ["magnify", "scratchpads"]
 
 
 [scratchpads.signal]
-command = "HOME=$HOME/.local/xdg-garbage signal-desktop"
+command = "HOME=$HOME/.local/xdg-launch signal-desktop"
 class = "Signal"
 size = "75% 90%"
 animation = ""

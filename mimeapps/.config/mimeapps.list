@@ -1,6 +1,7 @@
 [Added Associations]
 
 [Default Applications]
+text/plain=nvim.desktop
 application/javascript=nvim.desktop
 application/json=nvim.desktop
 application/pdf=org.pwmt.zathura.desktop
@@ -10,3 +11,4 @@ image/gif=imv.desktop
 inode/x-empty=nvim.desktop
 x-scheme-handler/http=vivaldi-stable.desktop
 x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/ferdium=ferdium.desktop
