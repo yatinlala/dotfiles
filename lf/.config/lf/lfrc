@@ -1,4 +1,4 @@
-#: Sets {{{
+# Sets {{{
 
 # interpreter for shell commands
 set shell sh
@@ -34,7 +34,7 @@ set cursorpreviewfmt "" # Get rid of cursor in preview pane
 
 #: }}}
 
-#: Bindings {{{
+# Bindings {{{
 # Remove some defaults
 map m
 map o
@@ -137,7 +137,7 @@ map gr cd ~/projects/grodner-research
 map gn cd ~/code/peakengage/
 #: }}}
 
-#: Hooks & Autorun {{{
+# Hooks & Autorun {{{
 # TODO these two don't work
 cmd on-cd &{{
     # display git repository status in your prompt
@@ -168,7 +168,7 @@ cmd on-redraw %{{
 
 #: }}}
 
-#: Column {{{
+# Column {{{
 
 cmd onecol &{{
     lf -remote "send $id :set preview false"
@@ -196,7 +196,7 @@ cmd toggle_preview %{{
 map zp toggle_preview
 #: }}}
 
-#: Dironly {{{
+# Dironly {{{
 
 cmd move-parent &{{
     dironly="setlocal '$(dirname "$PWD")' dironly"
@@ -208,7 +208,7 @@ map K move-parent up
 
 #: }}}
 
-#: Improve Default {{{
+# Improve Default {{{
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
@@ -315,7 +315,7 @@ map w smart_w
 
 #: }}}
 
-#: Jump {{{
+# Jump {{{
 set incfilter
 set user_filter false
 
@@ -406,7 +406,7 @@ map <c-/> :file_grep_search
 
 #: }}}
 
-#: fasd {{{
+# fasd {{{
 
 cmd fasd_dir ${{
     res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty)"
@@ -424,7 +424,7 @@ map go :fasd_dir
 
 #: }}}
 
-#: Dragon {{{
+# Dragon {{{
 cmd dragon %dragon-drop -a -x "$fx"
 cmd dragon-stay %dragon-drop -a "$fx"
 cmd dragon-individual %dragon-drop "$fx"
@@ -440,13 +440,13 @@ map dl dlfile
 
 #: }}}
 
-#: Share {{{
+# Share {{{
 cmd share $curl -F"file=@$fx" https://0x0.st | wl-copy
 map <c-s> share
 
 #: }}}
 
-#: Archives {{{
+# Archives {{{
 # Archive bindings
 cmd extract ${{
     set -f
@@ -505,7 +505,7 @@ map au extract
 
 #: }}}
 
-#! Trash {{{
+# Trash {{{
 #trash integration
 cmd trash ${{
   files=$(printf "$fx" | tr '\n' ';')
@@ -538,7 +538,7 @@ map te empty_trash
 map tr restore_trash
 #: }}}
 
-#: Wallpaper {{{
+# Wallpaper {{{
 
 cmd setwallpaper ${{
     pgrep -x swaybg && killall swaybg
