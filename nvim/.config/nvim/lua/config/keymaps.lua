@@ -28,12 +28,18 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+local opts = { noremap = true, silent = true }
+
 -- Navigate buffers
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
+-- Lf
+vim.keymap.set('n', '<leader>e', '<cmd>Lf<CR>', opts)
 
--- local opts = { noremap = true, silent = true }
+-- Git
+vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', opts)
+
 --
 -- local wk = require('which-key')
 --
@@ -156,7 +162,6 @@ vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 --         h = { "<cmd>lua require('duck').hatch()<CR>", 'Hatch a duck' },
 --         k = { "<cmd>require('duck').cook()<CR>", 'Cook the duck' },
 --     },
---     e = { '<cmd>Lf<CR>', 'Lf' },
 --     f = {
 --         name = 'Telescope',
 --         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
