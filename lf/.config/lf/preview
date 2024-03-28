@@ -6,11 +6,15 @@ image() {
     h=$3
     x=$4
     y=$5
-    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
-    exit 1
-    # geometry="$(($2-2))x$3"
-    # chafa "$1" -f sixel -s "$geometry" --animate false
 
+    if [ -n "$TMUX" ]; then
+        chafa -f symbols -s "$wx$h" --animate off --polite on "$file"
+	exit 1
+    fi
+
+    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+
+    exit 1
 }
 
 batorcat() {
