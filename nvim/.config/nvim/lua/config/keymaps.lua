@@ -35,10 +35,12 @@ vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Lf
-vim.keymap.set('n', '<leader>e', '<cmd>Lf<CR>', opts)
+vim.keymap.set('n', '<leader>e', '<cmd>Lf ' .. vim.fn.expand('%') .. '<CR>', { desc = 'open lf' })
 
 -- Git
-vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', opts)
+vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
+
+vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { desc = 'Enable Codeium' })
 
 --
 -- local wk = require('which-key')
@@ -131,7 +133,6 @@ vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', opts)
 --     --     j = '<cmd>TSJSplit', 'split',
 --     --     s = '<cmd>TSJJoin', 'join',
 --     -- },
---     A = { '<cmd>lua vim.g.codeium_enabled = true<CR>', 'Enable codeium' },
 --     a = {
 --         name = 'ChatGPT',
 --         c = { '<cmd>ChatGPT<CR>', 'ChatGPT' },

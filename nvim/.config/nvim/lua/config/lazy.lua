@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- load plugins
 require('lazy').setup('plugins', {
-    -- defaults = { lazy = true },
+    defaults = { lazy = true },
     install = { colorscheme = { 'gruvbox.nvim' } },
     checker = { enabled = false },
     performance = {

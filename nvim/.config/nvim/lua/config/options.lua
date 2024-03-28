@@ -7,8 +7,8 @@ vim.g.maplocalleader = ' '
 -- [[ Setting options ]]
 -- `:help vim.opt`, `:help option-list`
 
--- vim.opt.number = true -- set numbered lines
--- vim.opt.relativenumber = true -- set relative numbered lines
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = true -- set relative numbered lines
 
 vim.opt.mouse = 'a' -- enable mouse
 
@@ -34,6 +34,10 @@ vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.tabstop = 4 -- number of spaces that <tab> counts for
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -48,6 +52,9 @@ vim.opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below 
 
 vim.opt.laststatus = 3 -- global statusline
 
+vim.opt.formatoptions:remove { "c", "r", "o" }
+
+
 -- vim.opt.smartindent = true -- make indenting smart
 -- vim.opt.swapfile = false -- creates a swapfile
 -- vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
@@ -59,14 +66,11 @@ vim.opt.laststatus = 3 -- global statusline
 -- vim.opt.undofile = true -- persistent undo
 -- vim.opt.writebackup = false -- make backup before overwriting
 --
--- vim.opt.expandtab = true -- convert tabs to spaces
--- vim.opt.tabstop = 4 -- number of spaces that <tab> counts for
 --
 -- vim.opt.numberwidth = 2 -- set min number column width to 2 {default 4}
 -- vim.opt.signcolumn = 'yes' -- always show the sign column
 -- vim.opt.wrap = false -- display lines as one long line
 -- vim.opt.breakindent = true -- Wrapped lines preserve indent level
--- vim.opt.laststatus = 3 -- global statusline
 --
 -- -- vim.opt.shortmess:append('I') -- Hide intro
 --

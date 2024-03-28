@@ -1,9 +1,9 @@
 return {
     'nvim-orgmode/orgmode',
     dependencies = {
-        { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        { 'nvim-treesitter/nvim-treesitter' },
     },
-    event = 'VeryLazy',
+    lazy = false,
     config = function()
         -- Load treesitter grammar for org
         require('orgmode').setup_ts_grammar()
