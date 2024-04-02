@@ -14,6 +14,7 @@ return { -- LSP Configuration & Plugins
         -- used for completion, annotations and signatures of Neovim apis
         { 'folke/neodev.nvim', opts = {} },
     },
+    event = "VeryLazy",
     config = function()
         -- Brief aside: **What is LSP?**
         --
@@ -96,6 +97,9 @@ return { -- LSP Configuration & Plugins
                 -- WARN: This is not Goto Definition, this is Goto Declaration.
                 --  For example, in C this would take you to the header.
                 map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+
+                map('<leader>lf', vim.lsp.buf.format, 'format document')
 
                 -- -- The following two autocommands are used to highlight references of the
                 -- -- word under your cursor when your cursor rests there for a little while.
