@@ -7,9 +7,9 @@ return {
       search = {
         enabled = false,
       },
-    },
     char = {
       enabled = false,
+    },
     },
     -- options for the floating window that shows the prompt,
     -- for regular jumps

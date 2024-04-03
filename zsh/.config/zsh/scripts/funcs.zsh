@@ -53,15 +53,15 @@ batreport() { upower -i /org/freedesktop/UPower/devices/battery_BAT0 }
 
 ###  alias jupl='source $HOME/.local/venv/jupl/bin/activate'
 
-###  update-pkglist() {
-    ###  pacman -Qqne > ~/.dotfiles/pkglist/pacman
-    ###  pacman -Qqm > ~/.dotfiles/pkglist/aur
-    ###  cargo install --list > ~/.dotfiles/pkglist/cargo
-    ###  npm -g list > ~/.dotfiles/pkglist/npm
-    ###  pip3 list > ~/.dotfiles/pkglist/pip3
-    ###  pipx list > ~/.dotfiles/pkglist/pipx
-    ###  flatpak list --app > ~/.dotfiles/pkglist/flatpak
-###  }
+update-pkglist() {
+    pacman -Qqne > ~/.dotfiles/pkglist/pacman
+    pacman -Qqm > ~/.dotfiles/pkglist/aur
+    cargo install --list > ~/.dotfiles/pkglist/cargo
+    npm -g list > ~/.dotfiles/pkglist/npm
+    pip3 list > ~/.dotfiles/pkglist/pip3
+    pipx list > ~/.dotfiles/pkglist/pipx
+    flatpak list --app > ~/.dotfiles/pkglist/flatpak
+}
 
 ###  stable-diffusion() {
     ###  cd ~/code/stable-diffusion-webui/

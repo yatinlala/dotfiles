@@ -10,31 +10,21 @@ export FZF_DEFAULT_COMMAND='fd -H .'
 
 export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 
-# Cursor
-# export XCURSOR_PATH=${XCURSOR_PATH}:~/.local/share/icons
-# export XCURSOR_THEME=Breeze_Snow
-
-#QT Styling
-QT_QPA_PLATFORMTHEME='qt5ct'
-
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
-export XDG_JUNK_DIR="$HOME/.local/xdg-garbage"
 export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 export CALIBRE_USE_DARK_PALETTE=1
 #export GTK_THEME='Adwaita:dark'
 export DIFFPROG="nvim -d"
-export SXHKD_SHELL="sh"
 
 # Fixing Paths
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export CONAN_USER_HOME="$XDG_CONFIG_HOME/conan/"
-export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
@@ -59,15 +49,12 @@ export OPAMROOT="$XDG_DATA_HOME/opam"
 export OLLAMA_MODELS="$XDG_DATA_HOME/ollama"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 #export WGETRC="$XDG_CONFIG_HOME/wgetrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export ZDOTDIR="$HOME/.config/zsh" 
-export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
-export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
-export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export NLTK_DATA="$XDG_DATA_HOME"/nltk
 
 # Default Apps
@@ -108,5 +95,4 @@ source ~/.config/zsh/.secret.env
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
 	pgrep Hyprland || Hyprland
-	# pgrep sway || sway
 fi

@@ -52,9 +52,6 @@ vim.opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below 
 
 vim.opt.laststatus = 3 -- global statusline
 
-vim.opt.formatoptions:remove { "c", "r", "o" }
-
-
 -- vim.opt.smartindent = true -- make indenting smart
 -- vim.opt.swapfile = false -- creates a swapfile
 -- vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
