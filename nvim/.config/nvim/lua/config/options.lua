@@ -44,13 +44,14 @@ vim.opt.tabstop = 4 -- number of spaces that <tab> counts for
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split' -- live substitution preview
 
 vim.opt.cursorline = false -- Show which line your cursor is on
 
 vim.opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.opt.laststatus = 3 -- global statusline
+vim.cmd [[ set statusline=%!v:lua.require'config.statusline'.line() ]]
 
 -- vim.opt.smartindent = true -- make indenting smart
 -- vim.opt.swapfile = false -- creates a swapfile
@@ -58,16 +59,9 @@ vim.opt.laststatus = 3 -- global statusline
 --
 -- vim.opt.conceallevel = 2
 --
--- vim.opt.inccommand = 'split' -- live substitution preview
---
--- vim.opt.undofile = true -- persistent undo
--- vim.opt.writebackup = false -- make backup before overwriting
---
 --
 -- vim.opt.numberwidth = 2 -- set min number column width to 2 {default 4}
--- vim.opt.signcolumn = 'yes' -- always show the sign column
 -- vim.opt.wrap = false -- display lines as one long line
--- vim.opt.breakindent = true -- Wrapped lines preserve indent level
 --
 -- -- vim.opt.shortmess:append('I') -- Hide intro
 --

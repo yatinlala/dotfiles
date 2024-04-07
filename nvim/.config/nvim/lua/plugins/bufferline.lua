@@ -19,7 +19,7 @@ return {
     },
     {
         'tiagovla/scope.nvim',
-        lazy = false,
+        event = 'BufReadPre',
         enabled = true,
         opts = {},
     },

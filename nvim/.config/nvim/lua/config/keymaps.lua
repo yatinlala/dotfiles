@@ -8,16 +8,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'show diagnostic error' })
+vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'show diagnostic error' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'open diagnostic quickfix' })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'exit terminal mode' })
+-- exit terminal mode
+-- vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'exit terminal mode' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -35,7 +30,7 @@ vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Lf
-vim.keymap.set('n', '<leader>e', '<cmd>Lf ' .. vim.fn.expand('%') .. '<CR>', { desc = 'open lf' })
+vim.keymap.set('n', '<leader>e', "<cmd>Lf " .. vim.fn.expand('%') .. "<CR>", { desc = 'open lf' })
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })

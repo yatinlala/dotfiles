@@ -6,9 +6,9 @@ return { -- Useful plugin to show you pending keybinds.
 
         -- Document existing key chains
         require('which-key').register({
-            ['<leader>c'] = { name = 'code', _ = 'which_key_ignore' },
             ['<leader>d'] = { name = 'document', _ = 'which_key_ignore' },
             ['<leader>r'] = { name = 'rename', _ = 'which_key_ignore' },
+            ['<leader>l'] = { name = 'lsp', _ = 'which_key_ignore' },
             ['<leader>f'] = { name = 'find', _ = 'which_key_ignore' },
             ['<leader>w'] = { name = 'workspace', _ = 'which_key_ignore' },
         })
