@@ -2,6 +2,7 @@
 
 [Default Applications]
 text/plain=nvim.desktop
+application/octet-stream=nvim.desktop
 application/javascript=nvim.desktop
 application/json=nvim.desktop
 application/pdf=org.pwmt.zathura.desktop
