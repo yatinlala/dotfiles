@@ -12,14 +12,14 @@
 # fi
 
 
-log_file=~/.cache/newsboat.log
+log_file=/tmp/newsboat.log
 
 if [ -f "$log_file" ]; then
     now=$(date +%s)
     last=$(stat -c %Y "$log_file")
     diff=$((now - last))
 
-    if [ "$diff" -gt 1800 ]; then
+    if [ "$diff" -gt 300 ]; then
         echo "$(date +%Y-%m-%d' '%H:%M:%S) $*" > "$log_file"
         /usr/bin/newsboat
     else

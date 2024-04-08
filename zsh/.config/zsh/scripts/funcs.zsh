@@ -1,9 +1,9 @@
-###  # TODO convert aliases to shell commands 
-###  # https://blog.sanctum.geek.nz/custom-commands/
+# TODO convert aliases to shell commands 
+# https://blog.sanctum.geek.nz/custom-commands/
 
 #XDG Compliance
-flatpak() { xdg-launch flatpak "$@" }
-yt-dlp() { xdg-launch yt-dlp "$@" }
+alias flatpak='xdg-launch flatpak'
+alias yt-dlp='xdg-launch yt-dlp'
 ###  alias audacity='xdg-launch audacity'
 ###  # alias ollama='xdg-launch ollama'
 ###  alias spotdl='xdg-launch spotdl'
@@ -97,9 +97,10 @@ update-pkglist() {
 ###  # alias rm='rm -I'
 
 #Media
-yt() { yt-dlp --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
+yt() { yt-dlp -f "bv*[height<=1080]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
 yta() { yt-dlp --extract-audio "$@" }
 ytp() { yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i "$@" }
+ytd() { yt -o '~/videos/📒 %(title)s.%(ext)s' "$@" }
 ###  alias ffmp3="ffmpeg -i '${FILE}' -vn -ab 128k -ar 44100 -y '${FILE%.webm}.mp3'"
 ###  alias \newsboat="~/.local/scripts/newsboat"
 ###  alias /usr/bin/newsboat='echo no'
