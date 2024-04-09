@@ -151,7 +151,6 @@ vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { 
 --         'buffers',
 --     },
 --     B = { '<cmd>Barbecue toggle<CR>', 'toggle barbecue' },
---     c = { '<cmd>ColorizerToggle<CR>', 'toggle colorizer' },
 --     C = { require('util').toggleBg, 'toggle dark/light' },
 --     D = {
 --         name = 'Duck',

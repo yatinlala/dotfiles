@@ -1,15 +1,24 @@
 -- Jump plugin
 return {
   'folke/flash.nvim',
-  event = 'InsertEnter',
+  keys = {
+    {
+      's',
+      mode = { 'n', 'x', 'o' },
+      function()
+        require('flash').jump()
+      end,
+      desc = 'Flash',
+    },
+  },
   opts = {
     modes = {
       search = {
         enabled = false,
       },
-    char = {
-      enabled = false,
-    },
+      char = {
+        enabled = false,
+      },
     },
     -- options for the floating window that shows the prompt,
     -- for regular jumps
@@ -26,16 +35,6 @@ return {
       -- `false`: use the window's cursor position and jump target
       -- `nil`: act as `true` for remote windows, `false` for the current window
       motion = false,
-    },
-  },
-  keys = {
-    {
-      's',
-      mode = { 'n', 'x', 'o' },
-      function()
-        require('flash').jump()
-      end,
-      desc = 'Flash',
     },
   },
 }
