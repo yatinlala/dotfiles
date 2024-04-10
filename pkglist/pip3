@@ -83,6 +83,7 @@ ordered-set                     4.1.0
 packaging                       23.2
 pathspec                        0.12.1
 pdftotext                       2.2.2
+perf                            0.1
 pexpect                         4.9.0
 picard                          2.11
 pillow                          10.2.0
@@ -158,6 +159,6 @@ wheel                           0.43.0
 xattr                           0.10.1
 xxhash                          3.4.1
 Yapsy                           1.12.2
-yt-dlp                          2024.3.10
+yt-dlp                          2024.4.9
 zeroconf                        0.63.0
 zipp                            3.17.0
