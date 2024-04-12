@@ -111,7 +111,7 @@ pyppmd                          1.1.0
 pyproject_hooks                 1.0.0
 PyQt5                           5.15.10
 PyQt5-sip                       12.13.0
-PyQt6                           6.6.1
+PyQt6                           6.7.0.dev2404081550
 PyQt6-sip                       13.6.0
 PyQt6-WebEngine                 6.6.0
 pyrsistent                      0.19.3
