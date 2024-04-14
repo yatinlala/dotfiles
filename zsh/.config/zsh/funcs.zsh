@@ -28,7 +28,6 @@ ls() { eza --icons "$@" }
 e() { $EDITOR "$@" }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
-lg() { lazygit "$@" }
 ll() { ls -l "$@" }
 la() { ll -a "$@" }
 ed() { sudo systemctl start docker }

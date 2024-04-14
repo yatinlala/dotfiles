@@ -30,14 +30,28 @@ vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Lf
-vim.keymap.set('n', '<leader>e', "<cmd>Lf " .. vim.fn.expand('%') .. "<CR>", { desc = 'open lf' })
+vim.keymap.set('n', '<leader>e', '<cmd>Lf ' .. vim.fn.expand('%') .. '<CR>', { desc = 'open lf' })
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
+vim.keymap.set('n', '<leader>gj', "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = 'next hunk' })
+vim.keymap.set('n', '<leader>gk', "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = 'previous hunk' })
+vim.keymap.set('n', '<leader>gl', "<cmd>lua require('gitsigns').blame_line()<CR>", { desc = 'blame line' })
+vim.keymap.set('n', '<leader>gp', "<cmd>lua require('gitsigns').blame_line()<CR>", { desc = 'blame line' })
+--         p = { function() require('gitsigns').preview_hunk() end, 'Preview Hunk', },
+--         r = { function() require('gitsigns').reset_hunk() end, 'Reset Hunk', },
+--         R = { function() require('gitsigns').reset_buffer() end, 'Reset Buffer', },
+--         s = { function() require('gitsigns').stage_hunk() end, 'Stage Hunk', },
+--         u = { function() require('gitsigns').undo_stage_hunk() end, 'Undo Stage Hunk', },
+--         o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
+--         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+--         c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
+--         d = { '<cmd>Gitsigns diffthis HEAD<cr>', 'Diff', }, 
+--         d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
 
+-- Codeium
 vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { desc = 'enable codeium' })
 
---
 -- local wk = require('which-key')
 --
 -- -- Normal --
@@ -188,71 +202,6 @@ vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { 
 --     ['/'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
 --     -- ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
 --     ['.'] = { '<cmd>Telescope file_browser<CR>', 'Browse Files' },
---     g = {
---         -- name = "Git",
---         -- g = {
---         -- 	function()
---         -- 		_lazygit_toggle()
---         -- 	end,
---         -- 	"Lazygit",
---         -- },
---         j = {
---             function()
---                 require('gitsigns').next_hunk()
---             end,
---             'Next Hunk',
---         },
---         k = {
---             function()
---                 require('gitsigns').prev_hunk()
---             end,
---             'Prev Hunk',
---         },
---         l = {
---             function()
---                 require('gitsigns').blame_line()
---             end,
---             'Blame',
---         },
---         p = {
---             function()
---                 require('gitsigns').preview_hunk()
---             end,
---             'Preview Hunk',
---         },
---         r = {
---             function()
---                 require('gitsigns').reset_hunk()
---             end,
---             'Reset Hunk',
---         },
---         R = {
---             function()
---                 require('gitsigns').reset_buffer()
---             end,
---             'Reset Buffer',
---         },
---         s = {
---             function()
---                 require('gitsigns').stage_hunk()
---             end,
---             'Stage Hunk',
---         },
---         u = {
---             function()
---                 require('gitsigns').undo_stage_hunk()
---             end,
---             'Undo Stage Hunk',
---         },
---         o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
---         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
---         c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
---         d = {
---             '<cmd>Gitsigns diffthis HEAD<cr>',
---             'Diff',
---         },
---         --     d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
---     },
 --     l = {
 --         name = 'LSP',
 --         -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

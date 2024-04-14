@@ -130,8 +130,8 @@ map ge cd /etc
 
 # Swat Jumps --------------------
 map gs<space> cd ~/documents/swat
-map gsl cd ~/documents/swat/junior/linear-algebra
-map gsa cd ~/documents/swat/junior/algo
+map gsh cd ~/documents/swat/senior/hist
+map gse cd ~/documents/swat/senior/econ/
 
 map gr cd ~/projects/grodner-research
 map gn cd ~/code/peakengage/
