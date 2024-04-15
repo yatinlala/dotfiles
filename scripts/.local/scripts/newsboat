@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # if [ -f ~/.cache/newsboat.log ]; then
 #     now=$(date +%s)

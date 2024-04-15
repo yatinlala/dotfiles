@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 case $1 in
 cmus)
 	# pgrep -x cmus || $TERMINAL -a cmus -e cmus

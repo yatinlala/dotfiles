@@ -1,4 +1,4 @@
-#!/usr/bin/sh -e
+#!/usr/bin/env bash
 chosen=$(echo -e "mount cslab\nmount ibis\nunmount cslab\nunmount ibis\ninternal\nhdmi\nmanual" | rofi -matching fuzzy -dmenu -i -p "ssh & display menu")
 case $chosen in
     "mount cslab") sshfs ylala1@lab.cs.swarthmore.edu:/home/ylala1 ~/.local/mount/cslab;;
