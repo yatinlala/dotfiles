@@ -9,6 +9,7 @@ bc
 blueman
 bluez
 bluez-utils
+bob
 browserpass
 browserpass-chromium
 browserpass-firefox
@@ -36,6 +37,7 @@ ffmpegthumbnailer
 figlet
 firefox
 flatpak
+fortune-mod
 fprintd
 fwupd
 fzf
@@ -80,7 +82,6 @@ mpv
 mpv-mpris
 mtools
 musescore
-neovim
 network-manager-applet
 networkmanager
 newsboat

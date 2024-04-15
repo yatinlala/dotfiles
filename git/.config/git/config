@@ -5,3 +5,13 @@
 	defaultBranch = main
 [merge]
 	tool = "nvim"
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[commit]
+	verbose = true
+[help]
+	autocorrect = prompt
+[url "git@github.com:"]
+	insteadOf = https://github.com/

@@ -40,17 +40,17 @@ end
 function M.mode()
   local mode = vim.api.nvim_get_mode().mode
   if mode == 'n' then
-    return 'Normal'
+    return 'normal'
   elseif mode == 'i' then
-    return 'Insert'
+    return 'ins'
   elseif mode == 'v' then
-    return 'Visual'
-  elseif mode == "^V" then -- TODO doesn't work!
-    return 'Visual Block'
+    return 'visual'
+  -- elseif mode == "^V" then -- TODO doesn't work!
+  --   return 'Visual Block'
   elseif mode == 'c' then
-    return 'Command'
+    return 'command'
   elseif mode == 'R' then
-    return 'Replace'
+    return 'replace'
   else
     return mode
   end
@@ -59,11 +59,11 @@ end
 
 function M.line()
   local parts = {
-    "%#ModeMsg#",
+    "%#Visual#",
     [[%{luaeval("require'config.statusline'.mode()")}]],
     " %* ",
     -- [[ %<» %{luaeval("require'config.statusline'.file_or_lsp_status()")} %m%r%= ]],
-    [[%=%< %F %m%r%=%=]],
+    [[%=%< %F %m%r%=]],
     [[%{luaeval("require'config.statusline'.diagnostic_status()")}]],
     -- [[%{luaeval("require'dap'.status()")} %=]],
 

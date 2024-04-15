@@ -198,5 +198,3 @@ eval "$(fasd --init auto)"
 # [[ PROMPT ]]
 # PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
 eval "$(starship init zsh)"
-
-

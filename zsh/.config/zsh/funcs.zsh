@@ -32,6 +32,8 @@ ll() { ls -l "$@" }
 la() { ll -a "$@" }
 ed() { sudo systemctl start docker }
 wiki() { nvim ~/documents/org/main.org }
+ai() { sgpt "$@" }
+ais() { sgpt -s "$@" }
 alias '?'='duck'
 
 
@@ -72,15 +74,16 @@ update-pkglist() {
 #Docker
 alias dl='docker logs --follow --timestamps'
 
-#rmtrash
-alias rm='rmtrash -I'
-alias rmdir='rmdirtrash'
+# #rmtrash
+# alias rm='rmtrash -I'
+# alias rmdir='rmdirtrash'
 
 #Confirm before danger
-# alias rm='rm -I'
+alias rm='rm -I'
 
 #Media
 yt() { xdg-launch yt-dlp -f "bv*[height<=1080]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
+ytl() { xdg-launch yt-dlp -f "bv*[height<=720]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
 yta() { xdg-launch yt-dlp --extract-audio "$@" }
 ytp() { yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i "$@" }
 ytd() { yt -o '~/videos/📒 %(title)s.%(ext)s' "$@" }
