@@ -1,7 +1,7 @@
 venvs are in /home/yatin/.local/share/pipx/venvs
 apps are exposed on your $PATH at /home/yatin/.local/bin
 manual pages are exposed at /home/yatin/.local/share/man
-   package pyprland 2.2.7, installed using Python 3.11.8
+   package pyprland 2.2.8, installed using Python 3.11.8
     - pypr
    package shell-gpt 1.4.3, installed using Python 3.11.8
     - sgpt

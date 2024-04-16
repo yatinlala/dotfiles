@@ -48,6 +48,9 @@ return { -- Autocompletion
             },
             completion = { completeopt = 'menu,menuone,noinsert' },
 
+           performance = {
+               throttle = 500,
+           },
             -- For an understanding of why these mappings were
             -- chosen, you will need to read `:help ins-completion`
             --
@@ -128,10 +131,6 @@ return { -- Autocompletion
 --     cmp.setup({
 --         completion = {
 --             completeopt = 'menu,menuone,noinsert',
---         },
---         performance = {
---             -- debounce = 500,
---             throttle = 500,
 --         },
 --         snippet = {
 --             expand = function(args)

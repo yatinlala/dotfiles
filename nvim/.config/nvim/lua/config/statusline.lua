@@ -42,7 +42,7 @@ function M.mode()
   if mode == 'n' then
     return 'normal'
   elseif mode == 'i' then
-    return 'ins'
+    return 'insert'
   elseif mode == 'v' then
     return 'visual'
   -- elseif mode == "^V" then -- TODO doesn't work!
