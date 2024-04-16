@@ -89,8 +89,6 @@ vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { 
 --
 -- vim.keymap.set('n', 'gf', '<cmd>e <cfile><CR>', opts)
 --
--- vim.keymap.set('n', '<c-p>', "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
---
 -- -- -- Smart(ish) compilation
 -- -- vim.keymap.set('n', '<leader>c',  '<cmd>w! \\| !comp <c-r>%<CR><CR>', {})
 -- -- -- Enable spell checking

@@ -9,7 +9,6 @@ bc
 blueman
 bluez
 bluez-utils
-bob
 browserpass
 browserpass-chromium
 browserpass-firefox
@@ -82,6 +81,7 @@ mpv
 mpv-mpris
 mtools
 musescore
+neovim
 network-manager-applet
 networkmanager
 newsboat

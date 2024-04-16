@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:$HOME/.local/scripts:$HOME/.local/share/cargo/bin:$PATH"
+export PATH="$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:$HOME/.local/scripts:$HOME/.local/share/cargo/bin:$PATH"
 
 
 export SCRIPT_PATH="$HOME/.local/scripts"
