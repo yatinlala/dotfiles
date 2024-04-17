@@ -50,7 +50,6 @@ bindkey -M menuselect '^j' vi-down-line-or-history
 
 
 # [[ BINDS ]]
-bindkey '^R' history-incremental-pattern-search-backward
 
 ### clear-screen-scrollback () {
 ###   echo -ne '\033c' # clear scrollback buffer as well
@@ -108,24 +107,27 @@ bindkey '^R' history-incremental-pattern-search-backward
 ### # zle -N tmux-sessionizer
 ### # bindkey '^f' tmux-sessionizer
 ### 
-### # FZF
-### fzf-history-widget() {
-###   local selected num
-###   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-###   selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
-###     FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(echo "fzf")) )
-###   local ret=$?
-###   if [ -n "$selected" ]; then
-###     num=$selected[1]
-###     if [ -n "$num" ]; then
-###       zle vi-fetch-history -n $num
-###     fi
-###   fi
-###   zle reset-prompt
-###   return $ret
-### }
-### zle     -N   fzf-history-widget
-### bindkey '^R' fzf-history-widget
+# FZF
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  selected=( $(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(echo "fzf")) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget
+
+# bindkey '^R' history-incremental-pattern-search-backward
+
 ### 
 ### ff() {
 ###     files_list="$(fzf -m)"

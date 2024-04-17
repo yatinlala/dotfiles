@@ -1,5 +1,7 @@
+-- TODO add text objects dif
 return { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    event = 'BufWinEnter',
     build = ':TSUpdate',
     opts = {
         ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },

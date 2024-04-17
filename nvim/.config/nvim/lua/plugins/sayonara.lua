@@ -1,5 +1,6 @@
 return {
     'yashlala/vim-sayonara',
+    enabled = false,
     keys = { 'gs', 'gS' },
     config = function()
         vim.g.sayonara_confirm_quit = true
