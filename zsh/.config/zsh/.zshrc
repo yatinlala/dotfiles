@@ -196,7 +196,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 eval "$(fasd --init auto)"
 
+fortune | lolcrab
+
 
 # [[ PROMPT ]]
 # PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
 eval "$(starship init zsh)"
+
