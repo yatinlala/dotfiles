@@ -139,6 +139,7 @@ spotify-launcher
 starship
 stow
 strace
+swaync
 tcpdump
 tealdeer
 tmux
@@ -214,6 +215,7 @@ zathura-cb
 zathura-djvu
 zathura-pdf-mupdf
 zathura-ps
+zellij
 zip
 zsh
 zsh-autosuggestions

@@ -8,15 +8,15 @@ compinit -C
 _comp_options+=(globdots)		# Include hidden files.
 
 
-# # [[ SUPPLEMENTARY SCRIPTS ]]
-# for config in "$ZDOTDIR"/scripts/*.zsh ; do
-#     source "$config"
-# done
-# unset -v config
+# [[ SUPPLEMENTARY SCRIPTS ]]
+for config in "$ZDOTDIR"/scripts/*.zsh ; do
+    source "$config"
+done
+unset -v config
 
 
-# [[ LOAD SHELL FUNCTIONS ]]
-source "$ZDOTDIR/funcs.zsh"
+# # [[ LOAD SHELL FUNCTIONS ]]
+# source "$ZDOTDIR/funcs.zsh"
 
 
 # [[ VI-MODE ]]
@@ -195,8 +195,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 eval "$(fasd --init auto)"
-
-fortune | lolcrab
 
 
 # [[ PROMPT ]]

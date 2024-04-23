@@ -4,7 +4,7 @@
 # [[ XDG COMPLIANCE ]]
 # alias flatpak='xdg-launch flatpak'
 # alias audacity='xdg-launch audacity'
-# alias ollama='xdg-launch ollama'
+alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 # alias code='xdg-launch code'
 # alias firefox='xdg-launch firefox'

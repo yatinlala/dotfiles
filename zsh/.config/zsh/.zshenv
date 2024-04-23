@@ -91,8 +91,8 @@ export XDG_SESSION_DESKTOP=sway
 export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
 
-source ~/.config/zsh/.secret.env
+# source ~/.config/zsh/.secret.env # I moved this to $ZDOTDIR/scripts
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep Hyprland || Hyprland
+	pgrep Hyprland || exec Hyprland
 fi
