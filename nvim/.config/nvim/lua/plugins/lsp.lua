@@ -15,6 +15,7 @@ return { -- LSP Configuration & Plugins
         { 'folke/neodev.nvim', opts = {} },
     },
     event = "BufRead",
+    cmd = "Mason",
     config = function()
         -- Brief aside: **What is LSP?**
         --
