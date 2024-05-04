@@ -96,14 +96,14 @@
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
 	},
 	"network": {
-		"format-wifi": "   {essid} ",
+		"format-wifi": "    {essid} ",
 		"format-ethernet": "   {essid} ",
 		"format-linked": "{ifname} (no ip)  ",
 		"format-disconnected": " 󱚼 disconnected ",
 		"tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}"
 	},
 	"pulseaudio": {
-		"format": "{icon} {volume}% ",
+		"format": "{icon}  {volume}% ",
 		"format-muted": "   muted ",
 		"scroll-step": 5,
 		"on-click": "pactl set-sink-mute 0 toggle",
@@ -181,7 +181,7 @@
 	},
 	"backlight": {
 		"device": "intel_backlight",
-		"format": "{percent}% {icon}",
+		"format": " {icon}   {percent}%",
 		"format-icons": [
 			"",
 			""
