@@ -87,24 +87,24 @@
 	},
 	"clock#time": {
 		"interval": 1,
-		"format": "    {:%I:%M %p} ",
+		"format": "   {:%I:%M %p} ",
 		"tooltip": false
 	},
 	"clock#date": {
 		"interval": 10,
-		"format": "    {:%a %b %e} ", // icon: calendar-alt
+		"format": "   {:%a %b %e} ", // icon: calendar-alt
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
 	},
 	"network": {
-		"format-wifi": "    {essid} ",
+		"format-wifi": "   {essid} ",
 		"format-ethernet": "   {essid} ",
 		"format-linked": "{ifname} (no ip)  ",
 		"format-disconnected": " 󱚼 disconnected ",
 		"tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}"
 	},
 	"pulseaudio": {
-		"format": "{icon}  {volume}% ",
-		"format-muted": "   muted ",
+		"format": "{icon}{volume}% ",
+		"format-muted": " muted ",
 		"scroll-step": 5,
 		"on-click": "pactl set-sink-mute 0 toggle",
 		"on-click-middle": "pavucontrol",
@@ -181,7 +181,7 @@
 	},
 	"backlight": {
 		"device": "intel_backlight",
-		"format": " {icon}   {percent}%",
+		"format": " {icon} {percent}%",
 		"format-icons": [
 			"",
 			""

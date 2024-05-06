@@ -1,6 +1,6 @@
 return { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
         -- Snippet Engine & its associated nvim-cmp source
         {
@@ -48,9 +48,14 @@ return { -- Autocompletion
             },
             completion = { completeopt = 'menu,menuone,noinsert' },
 
-           performance = {
-               throttle = 500,
-           },
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
+            },
+
+            performance = {
+                throttle = 500,
+            },
             -- For an understanding of why these mappings were
             -- chosen, you will need to read `:help ins-completion`
             --
