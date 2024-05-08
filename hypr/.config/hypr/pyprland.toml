@@ -1,5 +1,5 @@
 [pyprland]
-plugins = ["magnify", "scratchpads"]
+plugins = ["magnify", "scratchpads", "toggle_special"]
 
 
 [scratchpads.signal]

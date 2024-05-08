@@ -376,21 +376,21 @@ cmap <a-p> &{{
 # }}
 # map f :fzf_jump
 
-cmd fzf_deep_jump ${{
-    res="$((find . -maxdepth 5 2>/dev/null) | fzf --reverse --header='Jump to location')"
-
-find . 2>&1 > files_and_folders | grep -v 'Permission denied' >&2
-    if [ -n "$res" ]; then
-        if [ -d "$res" ]; then
-            cmd="cd"
-        else
-            cmd="select"
-        fi
-        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-        lf -remote "send $id $cmd \"$res\""
-    fi
-}}
-map <c-p> :fzf_deep_jump
+# cmd fzf_deep_jump ${{
+#     res="$((find . -maxdepth 5 2>/dev/null) | fzf --reverse --header='Jump to location')"
+#
+# find . 2>&1 > files_and_folders | grep -v 'Permission denied' >&2
+#     if [ -n "$res" ]; then
+#         if [ -d "$res" ]; then
+#             cmd="cd"
+#         else
+#             cmd="select"
+#         fi
+#         res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+#         lf -remote "send $id $cmd \"$res\""
+#     fi
+# }}
+# map <c-p> :fzf_deep_jump
 
 cmd file_grep_search ${{
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
