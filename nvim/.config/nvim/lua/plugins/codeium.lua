@@ -1,13 +1,14 @@
 -- TODO figure out how to display in statusline. check github
 return {
     'Exafunction/codeium.vim',
-    event = 'InsertEnter',
+    -- event = 'BufWinEnter',
+    cmd = "CodeiumToggle",
     dependencies = {
         'nvim-lua/plenary.nvim',
         'hrsh7th/nvim-cmp',
     },
     config = function()
-        vim.g.codeium_enabled = false
+        vim.g.codeium_enabled = true
         vim.keymap.set('i', '<Tab>', function()
             return vim.fn['codeium#Accept']()
         end, { expr = true, silent = true })

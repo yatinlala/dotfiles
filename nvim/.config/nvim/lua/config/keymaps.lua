@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>gr', "<cmd>lua require('gitsigns').reset_hunk()<CR>
 --         d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
 
 -- Codeium
-vim.keymap.set('n', '<leader>A', '<cmd>lua vim.g.codeium_enabled = true<CR>', { desc = 'enable codeium' })
+vim.keymap.set('n', '<leader>a', '<cmd>CodeiumToggle<CR>', { desc = 'toggle codeium' })
 
 -- local wk = require('which-key')
 --

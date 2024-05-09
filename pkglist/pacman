@@ -37,6 +37,7 @@ figlet
 firefox
 flatpak
 fontforge
+foot
 fortune-mod
 fprintd
 fwupd
@@ -84,6 +85,7 @@ mpv
 mpv-mpris
 mtools
 musescore
+nautilus
 neovim
 network-manager-applet
 networkmanager
