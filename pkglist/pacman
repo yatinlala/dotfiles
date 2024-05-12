@@ -147,6 +147,7 @@ strace
 swaync
 tcpdump
 tealdeer
+tlp
 tmux
 torbrowser-launcher
 traceroute
