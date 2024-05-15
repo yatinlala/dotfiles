@@ -73,9 +73,6 @@ export PAGER="bat --paging=always"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="newsboat|pipe-viewer"
 
-# Disable less history files 
-export LESSHISTFILE=-
-
 # Colored man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c" # Fix formatting errors

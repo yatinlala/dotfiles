@@ -16,6 +16,7 @@ python-libsass
 python-material-color-utilities
 python-mock
 python-yapsy
+ripdrag-git
 rofi-lbonn-wayland-git
 tessen
 topgrade-bin
