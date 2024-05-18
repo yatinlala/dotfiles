@@ -6,10 +6,11 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'show diagnostic error' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'open diagnostic quickfix' })
+-- these two are now default w/ 0.10
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 
 -- exit terminal mode
 -- vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'exit terminal mode' })

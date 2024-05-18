@@ -1,6 +1,7 @@
 return {
     'numToStr/Comment.nvim',
     keys = { 'gc', 'gb', 'gcc', 'gbc', 'v', 'V' },
+    enabled = false,
     config = function()
         local comment_ft = require('Comment.ft')
         comment_ft.set('lua', { '--%s', '--[[%s]]' })

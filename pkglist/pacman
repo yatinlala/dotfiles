@@ -72,6 +72,8 @@ libmad
 libmp4v2
 libmpcdec
 libreoffice-fresh
+libva-intel-driver
+libva-vdpau-driver
 linux
 linux-firmware
 linux-headers
@@ -87,7 +89,6 @@ mpv-mpris
 mtools
 musescore
 nautilus
-neovim
 network-manager-applet
 networkmanager
 newsboat
@@ -209,6 +210,7 @@ unzip
 vivaldi
 wavpack
 waybar
+weechat
 wev
 wget
 wireplumber

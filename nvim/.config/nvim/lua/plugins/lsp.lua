@@ -14,8 +14,8 @@ return { -- LSP Configuration & Plugins
         -- used for completion, annotations and signatures of Neovim apis
         { 'folke/neodev.nvim', opts = {} },
     },
-    event = "BufRead",
-    cmd = "Mason",
+    event = 'BufRead',
+    cmd = 'Mason',
     config = function()
         -- Brief aside: **What is LSP?**
         --
@@ -93,14 +93,16 @@ return { -- LSP Configuration & Plugins
 
                 -- Opens a popup that displays documentation about the word under your cursor
                 --  See `:help K` for why this keymap.
-                map('K', vim.lsp.buf.hover, 'hover documentation')
+                -- NOTE. this is bound by default w/ 0.10
+                -- map('K', vim.lsp.buf.hover, 'hover documentation')
 
                 -- WARN: This is not Goto Definition, this is Goto Declaration.
                 --  For example, in C this would take you to the header.
                 map('gD', vim.lsp.buf.declaration, 'goto declaration')
 
-
-                map('<leader>lf', vim.lsp.buf.format, 'format document')
+                vim.keymap.set('n', '<leader>li', function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                end)
 
                 -- -- The following two autocommands are used to highlight references of the
                 -- -- word under your cursor when your cursor rests there for a little while.
@@ -162,6 +164,7 @@ return { -- LSP Configuration & Plugins
                         completion = {
                             callSnippet = 'Replace',
                         },
+                        hint = { enable = true },
                         -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                         -- diagnostics = { disable = { 'missing-fields' } },
                     },
