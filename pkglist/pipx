@@ -3,7 +3,7 @@ apps are exposed on your $PATH at /home/yatin/.local/bin
 manual pages are exposed at /home/yatin/.local/share/man
    package hyprshade 3.2.1, installed using Python 3.12.3
     - hyprshade
-   package pyprland 2.3.0, installed using Python 3.12.3
+   package pyprland 2.3.5, installed using Python 3.12.3
     - pypr
    package shell-gpt 1.4.3, installed using Python 3.12.3
     - sgpt
