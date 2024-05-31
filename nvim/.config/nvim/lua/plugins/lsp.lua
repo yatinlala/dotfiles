@@ -91,6 +91,8 @@ return { -- LSP Configuration & Plugins
                 -- or a suggestion from your LSP for this to activate.
                 map('<leader>la', vim.lsp.buf.code_action, 'code action')
 
+                map('<leader>lf', vim.lsp.buf.format, 'format')
+
                 -- Opens a popup that displays documentation about the word under your cursor
                 --  See `:help K` for why this keymap.
                 -- NOTE. this is bound by default w/ 0.10

@@ -68,7 +68,7 @@ Mako                      1.3.3.dev0
 Markdown                  3.6
 MarkupSafe                2.1.5
 mechanize                 0.4.10
-meson                     1.4.0
+meson                     1.4.1
 more-itertools            10.2.0
 msgpack                   1.0.5
 multivolumefile           0.2.3

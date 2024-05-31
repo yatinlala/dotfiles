@@ -1,8 +1,7 @@
 return {
     'nvim-lualine/lualine.nvim',
-    -- event = 'VeryLazy', -- kills splash
-    lazy = false,
-    enabled = false,
+    event = 'BufWinEnter', -- kills splash
+    enabled = true,
     config = function()
         if vim.g.started_by_firenvim then
             return
@@ -10,17 +9,26 @@ return {
 
         require('lualine').setup({
             options = {
-                icons_enabled = true,
-                theme = 'auto',
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
-                disabled_filetypes = {},
-                always_divide_middle = true,
             },
             sections = {
                 lualine_a = { 'mode' },
                 lualine_b = { 'branch', 'diagnostics' },
-                lualine_c = { { 'filename', path = 3 } },
+                lualine_c = {
+                    {
+                        'buffers',
+                        path = 3,
+                        buffers_color = {
+                            -- Same values as the general color option can be used here.
+                            active = 'lualine_c_visual', -- Color for active buffer.
+                            inactive = 'lualine_c_inactive', -- Color for inactive buffer.
+                        },
+                        symbols = {
+                            alternate_file = '', -- Text to show to identify the alternate file
+                        },
+                    },
+                },
                 -- lualine_c = {
                 -- 	-- {'filename', path = 2 }, { require('nvim-navic').get_location, cond = require('nvim-navic').is_available },
                 -- },
@@ -52,8 +60,6 @@ return {
             --     lualine_y = {},
             --     lualine_z = { 'tabs' }
             -- },
-
-            extensions = {},
         })
     end,
 }
