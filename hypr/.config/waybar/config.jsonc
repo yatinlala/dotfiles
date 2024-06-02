@@ -76,8 +76,8 @@
 	},
 	"custom/weather": {
 		"format": "{}",
-		// "exec": "curl \"wttr.in/94303?format=%c%t\"",
-		"exec": "curl \"wttr.in/19081?format=%c%t\"",
+		 "exec": "curl \"wttr.in/94303?format=%c%t\"",
+		//"exec": "curl \"wttr.in/19081?format=%c%t\"",
 		"interval": 6000,
 		"spacing": 10
 	},

@@ -138,7 +138,7 @@ map gn cd ~/code/peakengage/
 #: }}}
 
 # Hooks & Autorun {{{
-# TODO these two don't work
+# TODO this doesn't work
 cmd on-cd &{{
     # display git repository status in your prompt
     source /usr/share/git/completion/git-prompt.sh
@@ -157,10 +157,11 @@ cmd on-redraw %{{
     echo "$lf_width"
     if [ $lf_width -le 80 ]; then
         lf -remote "send $id set ratios 1:2"
-    elif [ $lf_width -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
+    # elif [ $lf_width -le 160 ]; then
+    #     lf -remote "send $id set ratios 1:2:3"
     else
-        lf -remote "send $id set ratios 1:2:3:5"
+        # lf -remote "send $id set ratios 1:2:3:5"
+        lf -remote "send $id set ratios 1:2:3"
     fi
 }}
 

@@ -116,13 +116,13 @@ python-dateutil           2.9.0
 PyYAML                    6.0.1
 pyzstd                    0.16.0
 rapidfuzz                 3.6.2
-referencing               0.33.0
+referencing               0.35.1
 regex                     2024.5.15
 reportlab                 4.1.0
 requests                  2.32.3
 requests-toolbelt         1.0.0
 rofimoji                  6.3.1
-rpds-py                   0.17.1
+rpds-py                   0.18.1
 SecretStorage             3.3.3
 setuptools                69.0.3
 setuptools-scm            8.1.0
@@ -146,7 +146,7 @@ unrardll                  0.1.7
 urllib3                   1.26.18
 userpath                  1.9.2
 validate-pyproject        0.16
-virtualenv                20.25.0
+virtualenv                20.26.2
 webencodings              0.5.1
 websockets                12.0
 Werkzeug                  3.0.1

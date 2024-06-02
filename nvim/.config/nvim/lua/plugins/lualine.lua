@@ -14,7 +14,7 @@ return {
             },
             sections = {
                 lualine_a = { 'mode' },
-                lualine_b = { 'branch', 'diagnostics' },
+                lualine_b = { 'diagnostics' },
                 lualine_c = {
                     {
                         'buffers',
@@ -28,11 +28,16 @@ return {
                             alternate_file = '', -- Text to show to identify the alternate file
                         },
                     },
+                    {
+                        'filename',
+                        path = 3,
+                        shorting_target = 40,
+                    },
                 },
                 -- lualine_c = {
                 -- 	-- {'filename', path = 2 }, { require('nvim-navic').get_location, cond = require('nvim-navic').is_available },
                 -- },
-                lualine_x = { 'diff', 'filetype' },
+                lualine_x = { 'branch', 'diff', 'filetype' },
                 lualine_y = {},
 
                 lualine_z = { 'location' },
