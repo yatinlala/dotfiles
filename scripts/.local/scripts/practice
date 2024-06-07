@@ -1,0 +1,59 @@
+#!/bin/bash
+# A handy script that picks a random note, displays it,
+# and plays the note after a few seconds. Handy for learning
+# notes on the guitar neck, practicing scale shapes or arpeggios
+# in a position, etc.
+# TODO: j/k adjust display duration during program execution,
+# add toggle to disable tone.
+
+notes=("A" "Bb" "B" "C" "C#" "D" "Eb" "E" "F" "F#" "G" "G#")
+pick_random_note() {
+  local new_note
+  while true; do
+    new_note=${notes[$RANDOM % ${#notes[@]}]}
+    if [ "$new_note" != "$previous_note" ]; then
+      echo $new_note
+      return
+    fi
+  done
+}
+
+terminate() {
+  tput cnorm # Show cursor
+  clear
+  echo "Terminating..."
+  exit 0
+}
+
+trap terminate SIGINT
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <number_of_seconds>"
+  exit 1
+fi
+
+display_duration=$1
+
+previous_note=""
+
+# Hide the cursor
+tput civis
+
+while true; do
+  note=$(pick_random_note)
+  previous_note=$note
+
+  clear
+
+  lines=$(tput lines)
+  half_lines=$((lines / 2))
+  for ((i = 0; i < half_lines - 5; i++)); do
+    echo
+  done
+
+  figlet -c -t "$note"
+
+  sleep $display_duration
+
+  play -n synth 1 sine $note > /dev/null 2>&1
+done

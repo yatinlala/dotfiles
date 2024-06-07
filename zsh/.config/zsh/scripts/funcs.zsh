@@ -43,7 +43,6 @@ alias uusb='sudo umount ~/.local/usb'
 domains() { sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8 }
 orphans() { pacman -Qtdq }
 myip() { curl -4 https://icanhazip.com }
-batreport() { upower -i /org/freedesktop/UPower/devices/battery_BAT0 }
 # alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirrorlist"
 tpv() { command mpv --vo=tct "$@" }
 
