@@ -1,6 +1,6 @@
 -- Improve vim.ui
 return {
     'stevearc/dressing.nvim',
-    event = 'BufWinEnter',
+    event = 'VeryLazy',
     opts = {},
 }

@@ -25,7 +25,7 @@ alias bc='bc -lq'
 ls() { eza --icons "$@" }
 
 # [[ SHORTEN FREQUENTS ]]
-e() { $EDITOR "$@" }
+vi() { $EDITOR "$@" }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
 ll() { ls -l "$@" }

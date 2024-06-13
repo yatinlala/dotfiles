@@ -35,11 +35,11 @@ vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. vim.fn.expand('%'))
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
-vim.keymap.set('n', '<leader>gj', "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = 'next hunk' })
-vim.keymap.set('n', '<leader>gk', "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = 'previous hunk' })
-vim.keymap.set('n', '<leader>gl', "<cmd>lua require('gitsigns').blame_line()<CR>", { desc = 'blame line' })
-vim.keymap.set('n', '<leader>gp', "<cmd>lua require('gitsigns').blame_line()<CR>", { desc = 'blame line' })
-vim.keymap.set('n', '<leader>gr', "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = 'reset hunk' })
+vim.keymap.set('n', '<leader>gj', function() require('gitsigns').next_hunk() end, { desc = 'next hunk' })
+vim.keymap.set('n', '<leader>gk', function() require('gitsigns').prev_hunk() end, { desc = 'previous hunk' })
+vim.keymap.set('n', '<leader>gl', function() require('gitsigns').blame_line() end, { desc = 'blame line' })
+vim.keymap.set('n', '<leader>gp', function() require('gitsigns').blame_line() end, { desc = 'blame line' })
+vim.keymap.set('n', '<leader>gr', function() require('gitsigns').reset_hunk() end, { desc = 'reset hunk' })
 --         p = { function() require('gitsigns').preview_hunk() end, 'Preview Hunk', },
 --         R = { function() require('gitsigns').reset_buffer() end, 'Reset Buffer', },
 --         s = { function() require('gitsigns').stage_hunk() end, 'Stage Hunk', },

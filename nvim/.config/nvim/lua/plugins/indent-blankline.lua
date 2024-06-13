@@ -1,6 +1,6 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
-    event = 'BufWinEnter',
+    event = 'VeryLazy',
     main = "ibl",
     opts = {
         indent = { char = '┆' },

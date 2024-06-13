@@ -1,6 +1,6 @@
 return {
     'nvim-lualine/lualine.nvim',
-    event = 'BufWinEnter', -- kills splash
+    event = 'VeryLazy',
     enabled = true,
     config = function()
         if vim.g.started_by_firenvim then
@@ -14,8 +14,8 @@ return {
             },
             sections = {
                 lualine_a = { 'mode' },
-                lualine_b = { 'diagnostics' },
-                lualine_c = {
+                lualine_b = {
+                    'diagnostics',
                     {
                         'buffers',
                         path = 3,
@@ -28,6 +28,9 @@ return {
                             alternate_file = '', -- Text to show to identify the alternate file
                         },
                     },
+                },
+                lualine_c = {
+                    -- '%=',
                     {
                         'filename',
                         path = 3,
@@ -37,7 +40,11 @@ return {
                 -- lualine_c = {
                 -- 	-- {'filename', path = 2 }, { require('nvim-navic').get_location, cond = require('nvim-navic').is_available },
                 -- },
-                lualine_x = { 'branch', 'diff', 'filetype' },
+                lualine_x = {
+                    'branch',
+                    'diff',
+                    'filetype'
+                },
                 lualine_y = {},
 
                 lualine_z = { 'location' },

@@ -8,8 +8,8 @@ return {
     -- {
     --     'echasnovski/mini.ai',
     --     version = '*',
-    --     config = true,
-    --     event = 'CursorMoved',
+    --     opts = {},
+    --     keys = { "ca", "ci", "va", "vi", "da", "di", "ya", "yi" }
     -- },
 
     -- {

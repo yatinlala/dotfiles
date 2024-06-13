@@ -9,33 +9,10 @@ return { -- LSP Configuration & Plugins
         -- Useful status updates for LSP.
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         { 'j-hui/fidget.nvim', opts = {} },
-
     },
-    event = 'BufRead',
+    event = 'VeryLazy',
     cmd = 'Mason',
     config = function()
-        -- Brief aside: **What is LSP?**
-        --
-        -- LSP is an initialism you've probably heard, but might not understand what it is.
-        --
-        -- LSP stands for Language Server Protocol. It's a protocol that helps editors
-        -- and language tooling communicate in a standardized fashion.
-        --
-        -- In general, you have a "server" which is some tool built to understand a particular
-        -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-        -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-        -- processes that communicate with some "client" - in this case, Neovim!
-        --
-        -- LSP provides Neovim with features like:
-        --  - Go to definition
-        --  - Find references
-        --  - Autocompletion
-        --  - Symbol Search
-        --  - and more!
-        --
-        -- Thus, Language Servers are external tools that must be installed separately from
-        -- Neovim. This is where `mason` and related plugins come into play.
-        --
         -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
         -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
@@ -44,11 +21,8 @@ return { -- LSP Configuration & Plugins
         --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
         --    function will be executed to configure the current buffer
         vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+            group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
             callback = function(event)
-                -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-                -- to define small helper and utility functions so you don't have to repeat yourself.
-                --
                 -- In this case, we create a function that lets us more easily define mappings specific
                 -- for LSP related items. It sets the mode, buffer and description for us each time.
                 local map = function(keys, func, desc)
@@ -90,18 +64,28 @@ return { -- LSP Configuration & Plugins
 
                 map('<leader>lf', vim.lsp.buf.format, 'format')
 
-                -- Opens a popup that displays documentation about the word under your cursor
-                --  See `:help K` for why this keymap.
-                -- NOTE. this is bound by default w/ 0.10
-                -- map('K', vim.lsp.buf.hover, 'hover documentation')
+                -- NOTE. K is bound to vim.lsp.buf.hover by default in version >= 0.10
 
-                -- WARN: This is not Goto Definition, this is Goto Declaration.
-                --  For example, in C this would take you to the header.
+                map('gl', vim.diagnostic.open_float, 'open diagnostic float')
+
                 map('gD', vim.lsp.buf.declaration, 'goto declaration')
 
-                vim.keymap.set('n', '<leader>li', function()
+                map('<leader>li', function()
                     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-                end)
+                end, 'toggle inlay hints')
+
+                local function ToggleVirtualText()
+                    -- Get the current diagnostics configuration
+                    local current_config = vim.diagnostic.config()
+
+                    -- Toggle the virtual_text setting
+                    if current_config.virtual_text then
+                        vim.diagnostic.config({ virtual_text = false })
+                    else
+                        vim.diagnostic.config({ virtual_text = true })
+                    end
+                end
+                map('<leader>lv', ToggleVirtualText, 'toggle virtual text')
 
                 -- -- The following two autocommands are used to highlight references of the
                 -- -- word under your cursor when your cursor rests there for a little while.
@@ -142,7 +126,13 @@ return { -- LSP Configuration & Plugins
         local servers = {
             astro = {},
             -- clangd = {},
-            -- gopls = {},
+            gopls = {
+                completeUnimported = true,
+                usePlaceholders = true,
+                analyses = {
+                    unusedparams = true,
+                },
+            },
             -- pyright = {},
             -- rust_analyzer = {},
             -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
