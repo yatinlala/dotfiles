@@ -3,7 +3,7 @@ return {
         'akinsho/bufferline.nvim',
         event = 'BufReadPre',
         -- lazy = false,
-        enabled = false,
+        enabled = true,
         config = function()
             require('bufferline').setup({
                 options = {

@@ -14,8 +14,7 @@ display)
 	if hyprctl monitors | grep -q "eDP-1"; then
 		hyprctl keyword monitor "eDP-1, disable"
 	else
-		hyprctl keyword monitor ",preferred,auto,1"
-		hyprctl reload
+		hyprctl keyword monitor "eDP-1, enable"
 	fi
 	;;
 espanso)

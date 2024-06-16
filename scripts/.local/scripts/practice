@@ -27,12 +27,18 @@ terminate() {
 
 trap terminate SIGINT
 
-if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 <number_of_seconds>"
-  exit 1
-fi
+# Default values
+display_duration=3
+volume=0.5
 
-display_duration=$1
+# Parse command line arguments
+while getopts ":d:v:" opt; do
+  case $opt in
+    d) display_duration=$OPTARG ;;
+    v) volume=$OPTARG ;;
+    \?) echo "Invalid option -$OPTARG" >&2; exit 1 ;;
+  esac
+done
 
 previous_note=""
 
@@ -55,5 +61,5 @@ while true; do
 
   sleep $display_duration
 
-  play -n synth 1 sine $note > /dev/null 2>&1
+  play -n synth 1 sine $note vol $volume > /dev/null 2>&1
 done

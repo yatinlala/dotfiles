@@ -305,11 +305,11 @@ cmd sudoedit ${{
 }}
 
 cmd smart_w ${{
-  if [ $LF_LEVEL -eq 1 ]; then
-      zsh
-  else
-      lf -remote "send $id quit"
-  fi
+    if [ $SHLVL -eq 1 ]; then
+        zsh
+    else
+        lf -remote "send $id quit"
+    fi
 }}
 
 map w smart_w
