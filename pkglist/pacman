@@ -84,6 +84,7 @@ macchanger
 man-db
 man-pages
 mediainfo
+mold
 mpv
 mpv-mpris
 mtools
@@ -227,7 +228,6 @@ zathura-cb
 zathura-djvu
 zathura-pdf-mupdf
 zathura-ps
-zed
 zellij
 zip
 zsh
