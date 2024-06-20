@@ -26,6 +26,7 @@ cpio
 docker
 docker-compose
 dog
+dosbox
 efibootmgr
 emacs-wayland
 eza
@@ -36,6 +37,7 @@ ffmpegthumbnailer
 figlet
 firefox
 flatpak
+fluidsynth
 fontforge
 foot
 fortune-mod

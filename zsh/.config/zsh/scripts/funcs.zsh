@@ -6,6 +6,7 @@
 # alias audacity='xdg-launch audacity'
 alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
+dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
 # alias firefox='xdg-launch firefox'
 # alias jupyter='xdg-launch jupyter'
