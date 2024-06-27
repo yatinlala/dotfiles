@@ -7,8 +7,12 @@ ferdium-bin
 gmetronome
 gradience-git
 htim
+hyprcursor-git
+hyprland-git
 hyprlang-git
+hyprpaper-git
 hyprutils-git
+hyprwayland-scanner-git
 light
 lolcat-rs
 paru
@@ -25,3 +29,4 @@ tessen
 topgrade-bin
 tree-sitter-git
 ttf-times-new-roman
+xdg-desktop-portal-hyprland-git

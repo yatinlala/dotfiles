@@ -38,7 +38,7 @@ feedparser                6.0.11
 filelock                  3.13.3
 gpg                       1.23.2
 hatchling                 1.24.2
-html2text                 2020.1.16
+html2text                 2024.2.26
 html5-parser              0.4.12
 html5lib                  1.1
 idna                      3.6
@@ -95,7 +95,7 @@ psutil                    5.9.8
 ptyprocess                0.7.0
 py7zr                     0.21.0
 pybcj                     1.0.2
-pycairo                   1.26.0
+pycairo                   1.26.1
 pychm                     0.8.6
 pycparser                 2.22
 pycryptodome              3.20.0

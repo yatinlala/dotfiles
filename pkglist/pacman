@@ -59,8 +59,6 @@ grub
 guvcview
 hugo
 hypridle
-hyprland
-hyprpaper
 imagemagick
 imv
 intel-ucode
@@ -222,7 +220,6 @@ wget
 wireplumber
 wl-clipboard
 wtype
-xdg-desktop-portal-hyprland
 ydotool
 yt-dlp
 zathura

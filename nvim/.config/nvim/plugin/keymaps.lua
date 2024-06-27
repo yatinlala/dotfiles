@@ -31,7 +31,7 @@ vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Lf
-vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. vim.fn.expand('%')) end, { desc = 'open lf' })
+vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. "\"" .. vim.fn.expand('%') .. "\"") end, { desc = 'open lf' })
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
