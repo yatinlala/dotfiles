@@ -9,7 +9,7 @@ autocommand               2.2.2
 beautifulsoup4            4.12.3
 Brotli                    1.1.0
 brotlicffi                1.1.0.0
-btrfsutil                 6.9
+btrfsutil                 6.9.2
 build                     1.2.1
 CacheControl              0.14.0
 cachy                     0.3.0
@@ -81,7 +81,7 @@ pathspec                  0.12.1
 pdftotext                 2.2.2
 perf                      0.1
 pexpect                   4.9.0
-picard                    2.11
+picard                    2.12
 pillow                    10.3.0
 pip                       24.0
 pipx                      1.6.0
@@ -100,7 +100,7 @@ pychm                     0.8.6
 pycparser                 2.22
 pycryptodome              3.20.0
 pycryptodomex             3.20.0
-Pygments                  2.17.2
+Pygments                  2.18.0
 PyGObject                 3.48.2
 PyJWT                     2.8.0
 pyppmd                    1.1.0

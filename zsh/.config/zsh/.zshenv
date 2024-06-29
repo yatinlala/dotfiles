@@ -5,8 +5,8 @@ export PATH="$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/.local/share/go/b
 
 export SCRIPT_PATH="$HOME/.local/scripts"
 # FZF
-export FZF_DEFAULT_OPTS='--cycle'
-export FZF_DEFAULT_COMMAND='fd -H .'
+export FZF_DEFAULT_OPTS='--cycle --scroll-off=0'
+# export FZF_DEFAULT_COMMAND='fd -H .'
 
 export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 
