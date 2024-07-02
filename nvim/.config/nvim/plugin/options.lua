@@ -45,7 +45,7 @@ vim.opt.cursorline = false -- Show which line your cursor is on
 vim.opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.opt.laststatus = 3 -- global statusline
--- vim.cmd [[ set statusline=%!v:lua.require'config.statusline'.line() ]]
+vim.cmd [[ set statusline=%!v:lua.require'custom.statusline'.line() ]]
 
 -- vim.opt.smartindent = true -- make indenting smart
 -- vim.opt.swapfile = false -- creates a swapfile

@@ -6,7 +6,7 @@ local api = vim.api
 function M.file_or_lsp_status()
   -- Neovim keeps the messages sent from the language server in a buffer and
   -- get_progress_messages polls the messages
-  local messages = vim.lsp.util.get_progress_messages()
+  local messages = vim.lsp.status()
   local mode = api.nvim_get_mode().mode
 
   -- If neovim isn't in normal mode, or if there are no messages from the
@@ -45,7 +45,7 @@ function M.mode()
     return 'insert'
   elseif mode == 'v' then
     return 'visual'
-  -- elseif mode == "^V" then -- TODO doesn't work!
+  -- elseif mode == "CTRL-V" then -- TODO doesn't work!
   --   return 'Visual Block'
   elseif mode == 'c' then
     return 'command'
@@ -60,15 +60,16 @@ end
 function M.line()
   local parts = {
     "%#Visual#",
-    [[%{luaeval("require'config.statusline'.mode()")}]],
+    [[%{luaeval("require'custom.statusline'.mode()")}]],
     " %* ",
     -- [[ %<» %{luaeval("require'config.statusline'.file_or_lsp_status()")} %m%r%= ]],
     [[%=%< %F %m%r%=]],
-    [[%{luaeval("require'config.statusline'.diagnostic_status()")}]],
+    [[%{luaeval("require'custom.statusline'.diagnostic_status()")}]],
+    "%#Visual#",
+    [[%l:%c]],
     -- [[%{luaeval("require'dap'.status()")} %=]],
-
-    " %{&ff}",
-    " %{&fenc} ",
+    -- " %{&ff}",
+    -- " %{&fenc} ",
   }
 
   return table.concat(parts, '')
