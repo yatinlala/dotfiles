@@ -13,7 +13,7 @@ btrfsutil                 6.9.2
 build                     1.2.1
 CacheControl              0.14.0
 cachy                     0.3.0
-certifi                   2024.6.2
+certifi                   2024.7.4
 cffi                      1.16.0
 chardet                   5.2.0
 charset-normalizer        3.3.2
@@ -71,7 +71,7 @@ Markdown                  3.6
 MarkupSafe                2.1.5
 mechanize                 0.4.10
 meson                     1.4.1
-more-itertools            10.2.0
+more-itertools            10.3.0
 msgpack                   1.0.5
 multivolumefile           0.2.3
 mutagen                   1.47.0
@@ -84,7 +84,7 @@ perf                      0.1
 pexpect                   4.9.0
 picard                    2.12
 pillow                    10.4.0
-pip                       24.1.1
+pip                       24.1.2
 pipx                      1.6.0
 pkginfo                   1.10.0
 platformdirs              4.2.2
@@ -92,7 +92,7 @@ pluggy                    1.5.0
 poetry                    1.8.3
 poetry-core               1.9.0
 poetry-plugin-export      1.8.0
-psutil                    5.9.8
+psutil                    6.0.0
 ptyprocess                0.7.0
 py7zr                     0.21.1
 pybcj                     1.0.2
@@ -148,7 +148,7 @@ typing_extensions         4.12.2
 unrardll                  0.1.7
 urllib3                   1.26.18
 userpath                  1.9.2
-validate-pyproject        0.16
+validate-pyproject        0.18
 virtualenv                20.26.2
 webencodings              0.5.1
 websockets                12.0
@@ -156,7 +156,7 @@ Werkzeug                  3.0.1
 wheel                     0.43.0
 xattr                     0.10.1
 xxhash                    3.4.1
-yt-dlp                    2024.7.2
+yt-dlp                    2024.7.9
 zeroconf                  0.63.0
 zipp                      3.18.1
 zstandard                 0.22.0

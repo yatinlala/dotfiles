@@ -36,6 +36,7 @@ fd
 ffmpegthumbnailer
 figlet
 firefox
+fish
 flatpak
 fluidsynth
 fontforge
@@ -59,7 +60,13 @@ grim
 grub
 guvcview
 hugo
+hyprcursor
 hypridle
+hyprland
+hyprlang
+hyprpaper
+hyprutils
+hyprwayland-scanner
 imagemagick
 imv
 intel-ucode
@@ -159,6 +166,7 @@ tmux
 torbrowser-launcher
 traceroute
 trash-cli
+tree-sitter
 ttf-0xproto-nerd
 ttf-3270-nerd
 ttf-agave-nerd
@@ -222,6 +230,7 @@ wget
 wireplumber
 wl-clipboard
 wtype
+xdg-desktop-portal-hyprland
 ydotool
 yt-dlp
 zathura
