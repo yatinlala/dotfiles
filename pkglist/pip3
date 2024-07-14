@@ -70,7 +70,7 @@ Mako                      1.3.5.dev0
 Markdown                  3.6
 MarkupSafe                2.1.5
 mechanize                 0.4.10
-meson                     1.4.1
+meson                     1.5.0
 more-itertools            10.3.0
 msgpack                   1.0.5
 multivolumefile           0.2.3
@@ -126,7 +126,7 @@ requests-toolbelt         1.0.0
 rofimoji                  6.3.2
 rpds-py                   0.18.1
 SecretStorage             3.3.3
-setuptools                69.0.3
+setuptools                69.5.1
 setuptools-scm            8.1.0
 sgmllib3k                 1.0.0
 shellingham               1.5.4

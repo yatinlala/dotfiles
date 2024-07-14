@@ -27,11 +27,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'focus upper window' })
 local opts = { noremap = true, silent = true }
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
-vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
+vim.keymap.set('n', '<S-l>', '<cmd>tabnext<CR>', opts)
+vim.keymap.set('n', '<S-h>', '<cmd>tabprevious<CR>', opts)
 
 -- Lf
-vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. "\"" .. vim.fn.expand('%') .. "\"") end, { desc = 'open lf' })
+vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. "\"" .. vim.fn.expand('%') .. "\"") end, { desc = 'Open Lf' })
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
@@ -52,6 +52,9 @@ vim.keymap.set('n', '<leader>gr', function() require('gitsigns').reset_hunk() en
 
 -- Codeium
 vim.keymap.set('n', '<leader>a', '<cmd>CodeiumToggle<CR>', { desc = 'toggle codeium' })
+
+-- Colorizer
+vim.keymap.set('n', '<leader>C', '<cmd>ColorizerToggle<CR>', { desc = 'toggle colorizer' })
 
 -- local wk = require('which-key')
 --
