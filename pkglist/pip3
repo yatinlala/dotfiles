@@ -107,9 +107,9 @@ PyJWT                     2.8.0
 pyppmd                    1.1.0
 pyproject_hooks           1.1.0
 PyQt5                     5.15.10
-PyQt5_sip                 12.13.0
+PyQt5_sip                 12.15.0
 PyQt6                     6.7.0
-PyQt6_sip                 13.6.0
+PyQt6_sip                 13.8.0
 PyQt6-WebEngine           6.7.0
 pyrsistent                0.19.3
 PySocks                   1.7.1

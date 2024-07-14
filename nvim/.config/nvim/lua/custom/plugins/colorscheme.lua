@@ -17,17 +17,8 @@ return {
                     emphasis = true,
                     folds = false,
                 },
-                -- strikethrough = true,
-                -- invert_selection = false,
-                -- invert_signs = false,
-                invert_tabline = true,
-                -- invert_intend_guides = false,
-                -- inverse = true, -- invert background for search, diffs, statuslines and errors
+                -- invert_tabline = true,
                 contrast = '', -- can be "hard", "soft" or empty string
-                -- palette_overrides = {},
-                -- overrides = {},
-                -- dim_inactive = false,
-                -- transparent_mode = false,
             })
             vim.cmd.colorscheme('gruvbox')
 
@@ -65,5 +56,16 @@ return {
     --         vim.g.gruvbox_material_foreground = "material"
     --         vim.cmd([[colorscheme gruvbox-material]])
     --     end,
+    -- },
+    -- {
+    --     'f4z3r/gruvbox-material.nvim',
+    --     name = 'gruvbox-material',
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {
+    --         comments = {
+    --             italics = false,
+    --         },
+    --     },
     -- },
 }
