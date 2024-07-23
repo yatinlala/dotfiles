@@ -4,7 +4,9 @@ return {
     config = function()
         local wk = require('which-key')
 
-        wk.setup({ preset = 'helix' })
+        wk.setup({
+            -- preset = 'helix'
+        })
 
         wk.add({
             { '<leader>f', group = '[F]ind' }, -- group

@@ -142,8 +142,10 @@ python-pipx
 python-pycryptodome
 python-websockets
 python-xattr
+qbittorrent
 qpwgraph
 qrencode
+qt6ct
 rclone
 ripgrep-all
 rofimoji

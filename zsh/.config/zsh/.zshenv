@@ -18,6 +18,7 @@ export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 export CALIBRE_USE_DARK_PALETTE=1
 #export GTK_THEME='Adwaita:dark'
+QT_QPA_PLATFORMTHEME=qt6ct
 export DIFFPROG="nvim -d"
 
 # Fixing Paths
