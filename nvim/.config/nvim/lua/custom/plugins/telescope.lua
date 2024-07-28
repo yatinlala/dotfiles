@@ -1,6 +1,6 @@
 return { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    keys = { '<leader>f' },
+    keys = { '<leader>f', '<leader><leader>' },
     cmd = 'Telescope',
     dependencies = {
         'nvim-lua/plenary.nvim',
