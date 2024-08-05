@@ -89,6 +89,7 @@ lsof
 lvm2
 lynx
 macchanger
+magic-wormhole
 man-db
 man-pages
 mediainfo
@@ -102,6 +103,7 @@ neovim
 network-manager-applet
 networkmanager
 newsboat
+notcurses
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
