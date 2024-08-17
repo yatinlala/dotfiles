@@ -5,7 +5,7 @@ manual pages are exposed at /home/yatin/.local/share/man
     - hyprshade
    package pyprland 2.4.0, installed using Python 3.12.3
     - pypr
-   package shell-gpt 1.4.3, installed using Python 3.12.3
+   package shell-gpt 1.4.4, installed using Python 3.12.3
     - sgpt
    package spotdl 4.2.5, installed using Python 3.12.3
     - spotdl
