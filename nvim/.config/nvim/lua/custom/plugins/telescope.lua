@@ -66,7 +66,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[f]ind [d]iagnostics' })
         vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[f]ind [r]esume' })
         vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = '[f]ind recent Files ("." for repeat)' })
-        vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'find existing buffers' })
+        vim.keymap.set('n', '<leader><leader>', '<cmd>Telescope scope buffers<CR>', { desc = 'find existing buffers' })
 
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set('n', '<leader>/', function()

@@ -27,8 +27,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'focus upper window' })
 local opts = { noremap = true, silent = true }
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', '<cmd>tabnext<CR>', opts)
-vim.keymap.set('n', '<S-h>', '<cmd>tabprevious<CR>', opts)
+vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
+vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 
 -- Lf
 vim.keymap.set('n', '<leader>e', function() vim.cmd("Lf " .. "\"" .. vim.fn.expand('%') .. "\"") end, { desc = 'Open Lf' })

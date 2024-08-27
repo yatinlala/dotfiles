@@ -7,7 +7,7 @@ manual pages are exposed at /home/yatin/.local/share/man
     - pypr
    package shell-gpt 1.4.4, installed using Python 3.12.3
     - sgpt
-   package spotdl 4.2.5, installed using Python 3.12.3
+   package spotdl 4.2.7, installed using Python 3.12.3
     - spotdl
    package xkcdpass 1.19.9, installed using Python 3.12.3
     - xkcdpass

@@ -12,7 +12,7 @@ dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias jupyter='xdg-launch jupyter'
 # alias librewolf='xdg-launch librewolf'
 # alias minecraft-launcher='xdg-launch minecraft-launcher'
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+wget() { wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # [[ IMPROVE DEFAULTS ]]
@@ -40,7 +40,7 @@ alias '?'='duck'
 
 
 # [[ NOVELTY ]]
-alias musb='sudo mount /dev/sda1 ~/.local/usb'
+alias musb='sudo mount /dev/sda ~/.local/usb'
 alias uusb='sudo umount ~/.local/usb'
 domains() { sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8 }
 orphans() { pacman -Qtdq }
@@ -75,12 +75,14 @@ update-pkglist() {
 #Docker
 alias dl='docker logs --follow --timestamps'
 
-# #rmtrash
+#rmtrash
 # alias rm='rmtrash -I'
 # alias rmdir='rmdirtrash'
 
 #Confirm before danger
-alias rm='rm -I'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -Iv'
 
 #Media
 yt() { xdg-launch yt-dlp -f "bv*[height<=1080]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }

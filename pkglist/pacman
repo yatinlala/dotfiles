@@ -1,3 +1,4 @@
+adw-gtk-theme
 aria2
 asciiquarium
 atomicparsley
@@ -138,10 +139,16 @@ plocate
 polkit-gnome
 powertop
 pv
+python-anyascii
 python-brotli
+python-cssselect2
+python-jinja
 python-mutagen
 python-pipx
 python-pycryptodome
+python-reportlab
+python-svglib
+python-tinycss2
 python-websockets
 python-xattr
 qbittorrent
@@ -153,6 +160,7 @@ ripgrep-all
 rofimoji
 rsync
 rtmpdump
+rustup
 signal-desktop
 slurp
 sof-firmware

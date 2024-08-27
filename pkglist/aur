@@ -1,11 +1,10 @@
-adw-gtk3
 brave-bin
 buku
 bukubrow-bin
 dragon-drop
 ferdium-bin
 gmetronome
-gradience-git
+gradience
 htim
 ianny-git
 light
@@ -14,11 +13,8 @@ mullvad-vpn-bin
 paru
 paru-debug
 pipe-viewer-git
-python-cssutils
-python-libsass
 python-material-color-utilities
-python-mock
-python-yapsy
+python-yapsy-git
 ripdrag-git
 rofi-lbonn-wayland-git
 tessen

@@ -128,13 +128,7 @@ map gt cd ~/.local/share/Trash/files
 map g/ cd /
 map ge cd /etc
 
-# Swat Jumps --------------------
-map gs<space> cd ~/documents/swat
-map gsh cd ~/documents/swat/senior/hist
-map gse cd ~/documents/swat/senior/econ/
-
-map gr cd ~/projects/grodner-research
-map gn cd ~/code/peakengage/
+map gn cd ~/documents/org
 #: }}}
 
 # Hooks & Autorun {{{

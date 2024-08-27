@@ -2,6 +2,12 @@ typeset -U PATH path
 
 export PATH="$HOME/.local/share/npm/bin:$HOME/.local/bin:$HOME/.local/share/go/bin:$HOME/.local/scripts:$HOME/.local/share/cargo/bin:$PATH"
 
+# XDG paths
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
+export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
+
 
 export SCRIPT_PATH="$HOME/.local/scripts"
 # FZF
@@ -10,11 +16,6 @@ export FZF_DEFAULT_OPTS='--cycle --scroll-off=0'
 
 export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 
-# XDG paths
-export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
-export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 export CALIBRE_USE_DARK_PALETTE=1
 #export GTK_THEME='Adwaita:dark'
@@ -28,7 +29,6 @@ export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"
 export CONAN_USER_HOME="$XDG_CONFIG_HOME/conan/"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
-export ZSH_CUSTOM="$XDG_CONFIG_HOME/zsh"
 export SSB_HOME="$XDG_DATA_HOME/zoom"
 export GEM_PATH="$XDG_DATA_HOME/ruby/gems"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
@@ -52,8 +52,6 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 #export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export ZDOTDIR="$HOME/.config/zsh" 
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
 export VSCODE_PORTABLE="$XDG_DATA_HOME"/vscode
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export NLTK_DATA="$XDG_DATA_HOME"/nltk
@@ -69,6 +67,14 @@ export IMAGE="imv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="bat --paging=always"
+
+
+
+export ZDOTDIR="$HOME/.config/zsh" 
+# [[ HISTORY ]]
+HISTSIZE=1000000
+SIZEHIST=1000000
+HISTFILE="$XDG_CACHE_HOME"/zhistory
 
 # Configure zsh_autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -90,7 +96,3 @@ export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
 
 # source ~/.config/zsh/.secret.env # I moved this to $ZDOTDIR/scripts
-
-if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep Hyprland || exec Hyprland
-fi
