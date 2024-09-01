@@ -1,24 +1,50 @@
-source $XDG_DATA_HOME/zsh-defer/zsh-defer.plugin.zsh
+echo -ne "\e[5 q"
 
-# [[ AUTOCOMPLETE ]]
-# Basic auto/tab complete:
-autoload -Uz compinit
-zmodload zsh/complist
-zsh-defer compinit -C
+function zcompile-many() {
+  local f
+  for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+
+# Clone and compile to wordcode missing plugins.
+if [[ ! -e $XDG_DATA_HOME/zsh-syntax-highlighting ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git $XDG_DATA_HOME/zsh-syntax-highlighting
+  zcompile-many $XDG_DATA_HOME/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
+fi
+if [[ ! -e $XDG_DATA_HOME/zsh-autosuggestions ]]; then
+  git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git $XDG_DATA_HOME/zsh-autosuggestions
+  zcompile-many $XDG_DATA_HOME/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+fi
+if [[ ! -e $XDG_DATA_HOME/powerlevel10k ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $XDG_DATA_HOME/powerlevel10k
+  make -C $XDG_DATA_HOME/powerlevel10k pkg
+fi
+
+# Activate Powerlevel10k Instant Prompt.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Enable the "new" completion system (compsys).
+autoload -Uz compinit && compinit
+[[ $ZDOTDIR/.zcompdump.zwc -nt $ZDOTDIR/.zcompdump ]] || zcompile-many $ZDOTDIR/.zcompdump
+unfunction zcompile-many
 _comp_options+=(globdots)		# Include hidden files.
+# # [[ AUTOCOMPLETE ]]
+# # Basic auto/tab complete:
+# autoload -Uz compinit
+# zmodload zsh/complist
+# compinit -C
 
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # [[ SUPPLEMENTARY SCRIPTS ]]
 for config in "$ZDOTDIR"/conf.d/*.zsh ; do
-    zsh-defer source "$config"
+    source "$config"
 done
 unset -v config
 
-
-
 # [[ VI-MODE ]]
-bindkey -v # vi mode
-export KEYTIMEOUT=1 #esc works instantly
+KEYTIMEOUT=1 #esc works instantly
 
 function zle-keymap-select () {
 case $KEYMAP in
@@ -27,56 +53,31 @@ case $KEYMAP in
 esac
 }
 zle -N zle-keymap-select
-echo -ne "\e[5 q"
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-
 # Use vim keys in tab complete menu:
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
-
-# [[ HISTORY ]]
-# HISTSIZE=1000
-# SIZEHIST=1000000
-# HISTFILE="$HOME"/.cache/foo
-# setopt append_history
-HISTFILE=~/.cache/zhistory
-HISTSIZE=1000
-SAVEHIST=100000
-setopt inc_append_history_time hist_ignore_space
+eval "$(fasd --init auto)"
+eval "$(fzf --zsh)"
 
 
-# [[ OPTIONS ]]
-setopt nomatch interactive_comments
-# from cs machines
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate # order of completer preferences
-zstyle ':completion:*' format 'Completing %d' # specify whether you are completing option, filename, etc.
-# zstyle ':completion:*' group-name '' #don't separate completions by group name
-zstyle ':completion:*' menu select=2 # two options max visible at time
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-# zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-# zstyle ':completion:*' menu select=long
-zstyle ':completion:*' menu select
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-
-
-# [[ PLUGINS ]]
-zsh-defer source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-zsh-defer source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-zsh-defer eval "$(fasd --init auto)"
-zsh-defer eval "$(fzf --zsh)"
-
-
+# # [[ PLUGINS ]]
+# Load plugins.
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $XDG_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $XDG_DATA_HOME/powerlevel10k/powerlevel10k.zsh-theme
+source $ZDOTDIR/.p10k.zsh
 
 # [[ PROMPT ]]
-# PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
-eval "$(starship init zsh)"
+# # PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
+# eval "$(starship init zsh)"
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

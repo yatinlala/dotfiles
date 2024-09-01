@@ -74,5 +74,5 @@
 # 
 # Edit line in vim with ^e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-# bindkey -M vicmd '^e' edit-command-line
+# bindkey '^e' edit-command-line
+bindkey -M vicmd e edit-command-line
