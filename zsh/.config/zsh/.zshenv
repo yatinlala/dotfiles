@@ -18,9 +18,11 @@ export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 
 
 export CALIBRE_USE_DARK_PALETTE=1
-#export GTK_THEME='Adwaita:dark'
-QT_QPA_PLATFORMTHEME=qt6ct
 export DIFFPROG="nvim -d"
+
+# export GTK_THEME='Adwaita:dark'
+# export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Fixing Paths
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
@@ -69,12 +71,7 @@ export OPENER="xdg-open"
 export PAGER="bat --paging=always"
 
 
-
 export ZDOTDIR="$HOME/.config/zsh" 
-# [[ HISTORY ]]
-HISTSIZE=1000000
-SIZEHIST=1000000
-HISTFILE="$XDG_CACHE_HOME"/zhistory
 
 # Configure zsh_autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)

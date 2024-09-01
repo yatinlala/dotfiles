@@ -54,6 +54,7 @@ gimp
 git
 github-cli
 gnome-boxes
+gnome-themes-extra
 gnuplot
 go
 graphicsmagick
@@ -100,6 +101,7 @@ mpv-mpris
 mtools
 musescore
 nautilus
+ncdu
 neovim
 network-manager-applet
 networkmanager

@@ -38,9 +38,19 @@ bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
 
+# [[ HISTORY ]]
+# HISTSIZE=1000
+# SIZEHIST=1000000
+# HISTFILE="$HOME"/.cache/foo
+# setopt append_history
+HISTFILE=~/.cache/zhistory
+HISTSIZE=1000
+SAVEHIST=100000
+setopt inc_append_history_time hist_ignore_space
+
 
 # [[ OPTIONS ]]
-setopt nomatch interactive_comments hist_ignore_space
+setopt nomatch interactive_comments
 # from cs machines
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate # order of completer preferences

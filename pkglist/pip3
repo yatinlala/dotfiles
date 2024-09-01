@@ -15,7 +15,7 @@ btrfsutil                 6.10
 build                     1.2.1
 CacheControl              0.14.0
 cachy                     0.3.0
-certifi                   2024.7.4
+certifi                   2024.8.30
 cffi                      1.16.0
 chardet                   5.2.0
 charset-normalizer        3.3.2
@@ -86,7 +86,7 @@ packaging                 24.1
 pdftotext                 2.2.2
 perf                      0.1
 pexpect                   4.9.0
-picard                    2.12.1
+picard                    2.12.2
 pillow                    10.4.0
 pip                       24.2
 pipx                      1.6.0
@@ -130,7 +130,7 @@ regex                     2024.7.24
 reportlab                 4.2.2
 requests                  2.32.3
 requests-toolbelt         1.0.0
-rofimoji                  6.3.2
+rofimoji                  6.4.0
 rpds-py                   0.19.0
 SecretStorage             3.3.3
 service-identity          23.1.0
@@ -170,5 +170,5 @@ Yapsy                     2.0.0
 yt-dlp                    2024.8.6
 zeroconf                  0.132.2
 zipstream-ng              1.7.1
-zope.interface            6.3
+zope.interface            7.0.3
 zstandard                 0.22.0
