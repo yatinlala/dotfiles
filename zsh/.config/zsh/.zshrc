@@ -67,10 +67,22 @@ eval "$(fasd --init auto)"
 eval "$(fzf --zsh)"
 
 
+# [[ HISTORY ]]
+# HISTSIZE=1000
+# SIZEHIST=1000000
+# HISTFILE="$HOME"/.cache/foo
+# setopt append_history
+HISTFILE=~/.cache/zhistory
+HISTSIZE=1000
+SAVEHIST=100000
+setopt inc_append_history_time hist_ignore_space
+
+
 # # [[ PLUGINS ]]
 # Load plugins.
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/lf/lf.zsh
 source $XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $XDG_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $XDG_DATA_HOME/powerlevel10k/powerlevel10k.zsh-theme

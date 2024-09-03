@@ -54,9 +54,12 @@ gimp
 git
 github-cli
 gnome-boxes
+gnome-disk-utility
 gnome-themes-extra
 gnuplot
 go
+gparted
+gptfdisk
 graphicsmagick
 grim
 grub
@@ -111,6 +114,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 npm
+ntfs-3g
 obsidian
 ocaml
 ollama
@@ -246,6 +250,7 @@ wireplumber
 wl-clipboard
 wtype
 xdg-desktop-portal-hyprland
+xorg-xhost
 ydotool
 yt-dlp
 zathura

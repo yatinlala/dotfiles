@@ -1,4 +1,4 @@
-# Sets {{{
+# General {{{
 
 # interpreter for shell commands
 set shell sh
@@ -31,6 +31,8 @@ set ignorecase
 
 set cursorpreviewfmt "" # Get rid of cursor in preview pane
 # set cursorpreviewfmt "\033[7;2m" # Use the `dim` attribute instead of underline for the cursor in the preview pane
+
+%[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
 
 #: }}}
 
@@ -112,14 +114,11 @@ map gv cd ~/videos
 map gl<space> cd ~/.local
 map gls cd ~/.local/share
 map glx cd ~/.local/xdg-launch
-
-map glm<space> cd ~/.local/mount
-map glmc cd ~/.local/mount/cslab
-map glmu cd ~/.local/mount/usb
+map glm cd ~/.local/mount
+map gM cd /run/media/yatin
 
 
 map gu<space> cd /usr
-map gul cd /usr/local
 map gus<space> cd /usr/share
 map gusa cd /usr/share/applications
 
@@ -131,20 +130,7 @@ map ge cd /etc
 map gn cd ~/documents/org
 #: }}}
 
-# Hooks & Autorun {{{
-# TODO this doesn't work
-# cmd on-cd &{{
-#     # display git repository status in your prompt
-#     source /usr/share/git/completion/git-prompt.sh
-#     GIT_PS1_SHOWDIRTYSTATE=auto
-#     GIT_PS1_SHOWSTASHSTATE=auto
-#     GIT_PS1_SHOWUNTRACKEDFILES=auto
-#     GIT_PS1_SHOWUPSTREAM=auto
-#     GIT_PS1_COMPRESSSPARSESTATE=auto
-#     git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
-#     fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
-#     lf -remote "send $id set promptfmt \"$fmt\""
-# }}
+# Columns {{{
 
 #Dynamically set number of columns
 # cmd on-redraw %{{
@@ -158,12 +144,6 @@ map gn cd ~/documents/org
 #         lf -remote "send $id set ratios 1:2:3"
 #     fi
 # }}
-
-%[ $LF_LEVEL -eq 1 ] || echo "Warning: You're in a nested lf instance!"
-
-#: }}}
-
-# Column {{{
 
 cmd onecol &{{
     lf -remote "send $id :set preview false"
@@ -298,16 +278,26 @@ cmd sudoedit ${{
   sudoedit "$f"
 }}
 
-cmd smart_w ${{
-    if [ $SHLVL -eq 1 ]; then
-        zsh
-    else
-        lf -remote "send $id quit"
-    fi
+# cmd smart_w ${{
+#     if [ $SHLVL -eq 1 ]; then
+#         zsh
+#     else
+#         lf -remote "send $id quit"
+#     fi
+# }}
+#
+# map w smart_w
+
+cmd quit-and-cd &{{
+    pwd > "$LF_CD_FILE"
+    lf -remote "send $id quit"
 }}
+map w quit-and-cd
 
-map w smart_w
-
+cmd launchshell ${{
+    zsh
+}}
+map W launchshell
 #: }}}
 
 # Jump {{{
@@ -535,14 +525,14 @@ map tr restore_trash
 
 # Wallpaper {{{
 
-cmd setwallpaper ${{
-    pgrep -x swaybg && killall swaybg
-    nohup swaybg -i $f &
-    lf -remote "send $id load"
-
-}}
-
-map W setwallpaper
+# cmd setwallpaper ${{
+#     pgrep -x swaybg && killall swaybg
+#     nohup swaybg -i $f &
+#     lf -remote "send $id load"
+#
+# }}
+#
+# map W setwallpaper
 
 #: }}}
 
