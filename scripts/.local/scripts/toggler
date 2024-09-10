@@ -85,7 +85,7 @@ gammastep)
 		)
 	;;
 signal)
-	pgrep -x signal-desktop || HOME=$HOME/.local/xdg-garbage setsid signal-desktop &
+	pgrep -x signal-desktop || gtk-launch signal-desktop &
 	# sway "workspace 9; [class=Signal] focus";;
 	hyprctl dispatch focuswindow "^(Signal)$"
 	;;
