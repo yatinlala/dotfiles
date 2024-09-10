@@ -20,8 +20,8 @@ export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 export CALIBRE_USE_DARK_PALETTE=1
 export DIFFPROG="nvim -d"
 
-# export GTK_THEME='Adwaita:dark'
-# export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export GTK_THEME='Adwaita:dark'
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Fixing Paths
