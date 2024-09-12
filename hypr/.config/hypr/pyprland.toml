@@ -17,6 +17,14 @@ margin = 50
 size = "90% 90%"
 lazy = true
 
+[scratchpads.lollypop]
+command = "lollypop"
+class = "lollypop"
+animation = ""
+margin = 50
+size = "90% 90%"
+lazy = true
+
 [scratchpads.cmus]
 command = "kitty --class cmus -e cmus"
 class = "cmus"

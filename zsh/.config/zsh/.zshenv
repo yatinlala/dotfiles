@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 
-export SCRIPT_PATH="$HOME/.local/scripts"
+export SCRIPTS="$HOME/.local/scripts"
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --scroll-off=0'
 # export FZF_DEFAULT_COMMAND='fd -H .'

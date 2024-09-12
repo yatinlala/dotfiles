@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+DATE=$(date +"%Y-%m-%d")
+FILE_DATE=$(date +"%m/%d/%y")
+DIARY_DIR="$HOME/documents/org/diary"
+FILE_PATH="$DIARY_DIR/$DATE.org"
+
+if [ ! -f "$FILE_PATH" ]; then
+  echo "$FILE_DATE" > "$FILE_PATH"
+  echo "" >> "$FILE_PATH"
+  echo "meals:" >> "$FILE_PATH"
+  echo "" >> "$FILE_PATH"
+  echo "total: " >> "$FILE_PATH"
+  echo "goal: 120g" >> "$FILE_PATH"
+  echo "needed: " >> "$FILE_PATH"
+fi
+
+# Open the file in Neovim
+exec nvim "$FILE_PATH"
