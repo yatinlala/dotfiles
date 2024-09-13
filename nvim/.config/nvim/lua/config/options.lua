@@ -9,10 +9,13 @@ vim.opt.splitright = true
 
 vim.opt.undofile = true -- persistent undo
 
+vim.opt.laststatus = 3 -- global statusline
+vim.opt.showmode = false -- hide -- INSERT --
+
+vim.opt.path:append('**') -- Hide intro
+
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines
---
--- vim.opt.showmode = false -- hide -- INSERT --
 --
 -- vim.opt.breakindent = true -- wrapped lines preserve indent level
 --
@@ -21,7 +24,6 @@ vim.opt.undofile = true -- persistent undo
 -- vim.opt.ignorecase = true
 -- vim.opt.smartcase = true
 --
--- vim.opt.signcolumn = 'yes' -- Keep signcolumn on by default
 --
 -- vim.opt.updatetime = 250 -- Decrease update time
 -- vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time
@@ -42,7 +44,6 @@ vim.opt.undofile = true -- persistent undo
 --
 -- vim.opt.scrolloff = 0 -- Minimal number of screen lines to keep above and below the cursor.
 --
--- vim.opt.laststatus = 3 -- global statusline
 --
 -- -- vim.opt.smartindent = true -- make indenting smart
 -- -- vim.opt.swapfile = false -- creates a swapfile

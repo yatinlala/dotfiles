@@ -1,5 +1,7 @@
 -- vim.api.nvim_create_user_command('ToggleBackground', require('custom.util').toggleBg, {})
 --
+vim.api.nvim_create_user_command('EC', 'e $MYVIMRC', {})
+--
 -- vim.api.nvim_create_user_command('OpenGithubRepo', function(_)
 --     local ghpath = vim.api.nvim_eval("shellescape(expand('<cfile>'))")
 --     local formatpath = ghpath:sub(2, #ghpath - 1)

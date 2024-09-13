@@ -55,14 +55,14 @@ return {
     -- 	lazy = false,
     -- },
 
-    {
-        'echasnovski/mini.splitjoin',
-        version = false,
-        config = function()
-            require('mini.splitjoin').setup()
-        end,
-        keys = 'gS',
-    },
+    -- {
+    --     'echasnovski/mini.splitjoin',
+    --     version = false,
+    --     config = function()
+    --         require('mini.splitjoin').setup()
+    --     end,
+    --     keys = 'gS',
+    -- },
 }
 
 -- return { -- Collection of various small independent plugins/modules
