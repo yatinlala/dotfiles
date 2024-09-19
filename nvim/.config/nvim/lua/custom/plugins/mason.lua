@@ -13,6 +13,7 @@ return {
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('lsp_attach', { clear = true }),
                 callback = function(event)
+                    vim.opt.signcolumn = 'yes'
                     local map = function(keys, func, desc, mode)
                         mode = mode or 'n'
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -45,11 +46,11 @@ return {
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
-                    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+                    map('<leader>ln', vim.lsp.buf.rename, '[L]sp Re[n]ame')
 
                     -- Execute a code action, usually your cursor needs to be on top of an error
                     -- or a suggestion from your LSP for this to activate.
-                    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+                    map('<leader>lc', vim.lsp.buf.code_action, '[L]sp [C]ode Action', { 'n', 'x' })
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.
@@ -62,7 +63,7 @@ return {
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+                        local highlight_augroup = vim.api.nvim_create_augroup('lsp_highlight', { clear = false })
                         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                             buffer = event.buf,
                             group = highlight_augroup,
@@ -76,10 +77,10 @@ return {
                         })
 
                         vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+                            group = vim.api.nvim_create_augroup('lsp_detach', { clear = true }),
                             callback = function(event2)
                                 vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds({ group = 'kickstart-lsp-highlight', buffer = event2.buf })
+                                vim.api.nvim_clear_autocmds({ group = 'lsp_highlight', buffer = event2.buf })
                             end,
                         })
                     end
@@ -89,9 +90,9 @@ return {
                     --
                     -- This may be unwanted, since they displace some of your code
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-                        map('<leader>th', function()
+                        map('<leader>li', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-                        end, '[T]oggle Inlay [H]ints')
+                        end, '[L]sp Toggle [I]nlay Hints')
                     end
                 end,
             })

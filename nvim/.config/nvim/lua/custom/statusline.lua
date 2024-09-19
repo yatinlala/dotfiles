@@ -59,11 +59,11 @@ end
 function M.line()
     local parts = {
         '%#Visual#',
-        [[%{luaeval("require'statusline'.mode()")}]],
+        [[%{luaeval("require'custom.statusline'.mode()")}]],
         ' %* ',
         -- [[ %<» %{luaeval("require'config.statusline'.file_or_lsp_status()")} %m%r%= ]],
         [[%=%< %F %m%r%=]],
-        [[%{luaeval("require'statusline'.diagnostic_status()")}]],
+        [[%{luaeval("require'custom.statusline'.diagnostic_status()")}]],
         '%#Visual#',
         [[%l:%c]],
         -- [[%{luaeval("require'dap'.status()")} %=]],

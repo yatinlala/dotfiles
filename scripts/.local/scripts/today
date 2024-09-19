@@ -11,7 +11,7 @@ if [ ! -f "$FILE_PATH" ]; then
   echo "meals:" >> "$FILE_PATH"
   echo "" >> "$FILE_PATH"
   echo "total: " >> "$FILE_PATH"
-  echo "goal: 120g" >> "$FILE_PATH"
+  echo "goal: 110g" >> "$FILE_PATH"
   echo "needed: " >> "$FILE_PATH"
 fi
 

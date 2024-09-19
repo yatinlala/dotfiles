@@ -1,38 +1,37 @@
 -- [[ Autocommands ]]
 --  See `:help lua-guide-autocommands`
+--
+local function augroup(name)
+    return vim.api.nvim_create_augroup('custom_' .. name, { clear = true })
+end
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight on yanking',
-    group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
+    group = augroup('highlight_yank'),
     callback = function()
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 300 })
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-  desc = 'Update Protein Totals',
-  group = vim.api.nvim_create_augroup('update_totals', { clear = true }),
-  pattern = vim.fn.expand('~') .. "/documents/org/diary/*.org",
-  callback = function() 
-    require('util').update_protein_totals() 
-  end,
+vim.api.nvim_create_autocmd('BufWritePre', {
+    desc = 'Update Protein Totals',
+    group = augroup('update_totals'),
+    pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
+    callback = function()
+        require('custom.util').update_protein_totals()
+    end,
 })
 
-
-
--- local function augroup(name)
---   return vim.api.nvim_create_augroup('lala_' .. name, { clear = true })
--- end
---
--- vim.api.nvim_create_autocmd('FileType', {
---   callback = function()
---     vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
---   end,
---   group = augroup('format_options'),
--- })
+vim.api.nvim_create_autocmd('FileType', {
+    desc = ':set formatoptions-=cro',
+    group = augroup('format_options'),
+    callback = function()
+        vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+    end,
+})
 
 -- -- -- TODO maybe move each autocmd into a function and comment out in setup
 -- -- local M = {}

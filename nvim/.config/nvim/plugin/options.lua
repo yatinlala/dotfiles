@@ -1,7 +1,9 @@
 -- [[ Options ]]
 -- `:help vim.opt`, `:help option-list`
 
-vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+vim.schedule(function()
+    vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+end)
 
 -- Split below and to the right
 vim.opt.splitbelow = true
@@ -12,12 +14,17 @@ vim.opt.undofile = true -- persistent undo
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false -- hide -- INSERT --
 
-vim.opt.path:append('**') -- Hide intro
+vim.opt.path:append('**') -- :find searches subdirs
+
+vim.opt.breakindent = true -- wrapped lines preserve indent level
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`, `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines
---
--- vim.opt.breakindent = true -- wrapped lines preserve indent level
 --
 --
 -- -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -32,11 +39,6 @@ vim.opt.path:append('**') -- Hide intro
 -- vim.opt.expandtab = true -- convert tabs to spaces
 -- vim.opt.tabstop = 4 -- number of spaces that <tab> counts for
 --
--- -- Sets how neovim will display certain whitespace characters in the editor.
--- --  See `:help 'list'`
--- --  and `:help 'listchars'`
--- vim.opt.list = true
--- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --
 -- vim.opt.inccommand = 'split' -- live substitution preview
 --

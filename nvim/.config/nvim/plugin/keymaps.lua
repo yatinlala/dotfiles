@@ -1,26 +1,61 @@
 -- [[ Basic Keymaps ]]
 
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'focus left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'focus right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'focus lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'focus upper window' })
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<M-h>', '<C-w><', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<M-l>', '<C-w>>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<M-j>', '<C-w>-', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<M-k>', '<C-w>+', { desc = 'Move focus to the upper window' })
 
 -- File Explorer
 vim.keymap.set('n', '<leader>e', function()
     vim.cmd('Lf ' .. '"' .. vim.fn.expand('%') .. '"')
 end, { desc = 'Open Lf' })
 
--- A text object selects whole file
-vim.cmd([[ onoremap A :<c-u>normal! mzggVG<cr>`z ]])
-
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
---
+
+-- Open Files
+-- vim.keymap.set('n', '<leader>f', ':find *')
+vim.cmd([[
+    nnoremap ,f :find *
+    nnoremap ,s :sfind *
+    nnoremap ,v :vert sfind *
+    nnoremap ,t :tabfind *
+    "nnoremap ,F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+    "nnoremap ,S :sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+    "nnoremap ,V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+    "nnoremap ,T :tabfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+
+    nnoremap gb :ls<CR>:buffer<Space>
+    nnoremap gB :ls<CR>:sbuffer<Space>
+    nnoremap ,b :buffer *
+    nnoremap ,B :sbuffer *
+
+    "" autoexpansion
+    "inoremap (<CR> (<CR>)<Esc>O
+    "inoremap {<CR> {<CR>}<Esc>O
+    "inoremap {; {<CR>};<Esc>O
+    "inoremap {, {<CR>},<Esc>O
+    "inoremap [<CR> [<CR>]<Esc>O
+    "inoremap [; [<CR>];<Esc>O
+    "inoremap [, [<CR>],<Esc>O
+
+]])
+
+-- Navigate buffers
+vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
+
 -- -- Diagnostic keymaps
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 -- vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'show diagnostic error' })
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'open diagnostic quickfix' })
+--
 -- -- these two are now default w/ 0.10
 -- -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
 -- -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
@@ -30,22 +65,10 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 --
 -- local opts = { noremap = true, silent = true }
 --
--- -- Navigate buffers
--- vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', opts)
--- vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', opts)
 --
 --
 -- -- Git
 -- vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<CR>', { desc = 'open lazygit' })
--- vim.keymap.set('n', '<leader>gj', function() require('gitsigns').next_hunk() end, { desc = 'next hunk' })
--- vim.keymap.set('n', '<leader>gk', function() require('gitsigns').prev_hunk() end, { desc = 'previous hunk' })
--- vim.keymap.set('n', '<leader>gl', function() require('gitsigns').blame_line() end, { desc = 'blame line' })
--- vim.keymap.set('n', '<leader>gp', function() require('gitsigns').blame_line() end, { desc = 'blame line' })
--- vim.keymap.set('n', '<leader>gr', function() require('gitsigns').reset_hunk() end, { desc = 'reset hunk' })
--- --         p = { function() require('gitsigns').preview_hunk() end, 'Preview Hunk', },
--- --         R = { function() require('gitsigns').reset_buffer() end, 'Reset Buffer', },
--- --         s = { function() require('gitsigns').stage_hunk() end, 'Stage Hunk', },
--- --         u = { function() require('gitsigns').undo_stage_hunk() end, 'Undo Stage Hunk', },
 -- --         o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
 -- --         b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
 -- --         c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
