@@ -18,35 +18,31 @@ end, { desc = 'Open Lf' })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
 -- Open Files
--- vim.keymap.set('n', '<leader>f', ':find *')
-vim.cmd([[
-    nnoremap ,f :find *
-    nnoremap ,s :sfind *
-    nnoremap ,v :vert sfind *
-    nnoremap ,t :tabfind *
-    "nnoremap ,F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-    "nnoremap ,S :sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-    "nnoremap ,V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-    "nnoremap ,T :tabfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
-
-    nnoremap gb :ls<CR>:buffer<Space>
-    nnoremap gB :ls<CR>:sbuffer<Space>
-    nnoremap ,b :buffer *
-    nnoremap ,B :sbuffer *
-
-    "" autoexpansion
-    "inoremap (<CR> (<CR>)<Esc>O
-    "inoremap {<CR> {<CR>}<Esc>O
-    "inoremap {; {<CR>};<Esc>O
-    "inoremap {, {<CR>},<Esc>O
-    "inoremap [<CR> [<CR>]<Esc>O
-    "inoremap [; [<CR>];<Esc>O
-    "inoremap [, [<CR>],<Esc>O
-
-]])
+-- vim.keymap.set('n', ',f', ':find *', { desc = '[F]ind file' })
+-- vim.keymap.set('n', ',s', ':sfind *', { desc = '[S]plit find file' })
+-- vim.keymap.set('n', ',v', ':vert :sfind *', { desc = '[V]ertical split find file' })
+-- vim.keymap.set('n', ',t', ':tabfind *', { desc = 'Find file in new [T]ab' })
+-- nnoremap ,F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+-- nnoremap ,S :sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+-- nnoremap ,V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+-- nnoremap ,T :tabfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+-- vim.cmd([[
+--     nnoremap gb :ls<CR>:buffer<Space>
+--     nnoremap gB :ls<CR>:sbuffer<Space>
+--     nnoremap ,b :buffer *
+--     nnoremap ,B :sbuffer *
+--     " autoexpansion
+--     "inoremap (<CR> (<CR>)<Esc>O
+--     "inoremap {<CR> {<CR>}<Esc>O
+--     "inoremap {; {<CR>};<Esc>O
+--     "inoremap {, {<CR>},<Esc>O
+--     "inoremap [<CR> [<CR>]<Esc>O
+--     "inoremap [; [<CR>];<Esc>O
+--     "inoremap [, [<CR>],<Esc>O
+-- ]])
 
 -- Navigate buffers
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
@@ -61,10 +57,9 @@ vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
 -- -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 --
 -- -- exit terminal mode
--- -- vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'exit terminal mode' })
+-- -- vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 --
 -- local opts = { noremap = true, silent = true }
---
 --
 --
 -- -- Git

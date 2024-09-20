@@ -18,6 +18,45 @@ end
 --     ]])
 -- end
 
+local function get_buffer_date()
+    local filename = vim.fn.expand('%:t')
+
+    -- Extract the date part (assuming format YYYY-MM-DD.org)
+    local date_str = filename:match('(%d%d%d%d%-%d%d%-%d%d)')
+
+    -- If the buffer doesn't have a valid date, return current date
+    if not date_str then
+        return os.time()
+    end
+
+    -- Convert the extracted date to a timestamp
+    local year, month, day = date_str:match('(%d%d%d%d)%-(%d%d)%-(%d%d)')
+    return os.time({ year = year, month = month, day = day })
+end
+
+function M.open_diary_date(offset)
+    offset = offset or 0
+    local get_time = get_buffer_date()
+    -- local get_time = get_buffer_date() or os.time
+    local time = get_time + (offset * 24 * 60 * 60)
+    -- local time = os.time() + (offset * 24 * 60 * 60)
+    local date = os.date('%Y-%m-%d', time)
+    local diary_path = '~/documents/org/diary/' .. date .. '.org'
+    local expanded_diary_path = vim.fn.expand(diary_path)
+
+    -- Check if the file exists
+    if vim.fn.filereadable(expanded_diary_path) == 1 then
+        -- File exists, open it
+        vim.cmd('edit ' .. expanded_diary_path)
+    else
+        -- File does not exist, run the `today -gen` command
+        vim.fn.system('today -gen ' .. date)
+
+        -- Open the newly generated file
+        vim.cmd('edit ' .. expanded_diary_path)
+    end
+end
+
 function M.update_protein_totals()
     -- only operate on a diary file
     local file_path = vim.fn.expand('%:p')

@@ -24,23 +24,42 @@ return {
             desc = 'Blame Line',
         },
         {
-            '<leader>gp',
-            function()
-                require('gitsigns').blame_line()
-            end,
-            desc = 'Blame Line',
-        },
-        {
             '<leader>gr',
             function()
                 require('gitsigns').reset_hunk()
             end,
             desc = 'Reset Hunk',
         },
-        --         p = { function() require('gitsigns').preview_hunk() end, 'Preview Hunk', },
+        {
+            '<leader>gs',
+            function()
+                require('gitsigns').stage_hunk()
+            end,
+            desc = 'Stage Hunk',
+        },
+        {
+            '<leader>gu',
+            function()
+                require('gitsigns').undo_stage_hunk()
+            end,
+            desc = 'Undo Stage Hunk',
+        },
+        {
+            '<leader>gp',
+            function()
+                require('gitsigns').preview_hunk()
+            end,
+            desc = 'Undo Stage Hunk',
+        },
         --         R = { function() require('gitsigns').reset_buffer() end, 'Reset Buffer', },
-        --         s = { function() require('gitsigns').stage_hunk() end, 'Stage Hunk', },
-        --         u = { function() require('gitsigns').undo_stage_hunk() end, 'Undo Stage Hunk', },
     },
-    opts = {},
+    opts = {
+        -- signs = {
+        --     add = { text = '+' },
+        --     change = { text = '~' },
+        --     delete = { text = '_' },
+        --     topdelete = { text = '‾' },
+        --     changedelete = { text = '~' },
+        -- },
+    },
 }

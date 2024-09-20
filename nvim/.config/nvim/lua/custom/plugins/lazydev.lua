@@ -1,15 +1,15 @@
 return {
     {
+        -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+        -- used for completion, annotations and signatures of Neovim apis
         'folke/lazydev.nvim',
-        ft = 'lua', -- only load on lua files
+        ft = 'lua',
         opts = {
             library = {
                 -- Library items can be absolute paths
                 -- "~/projects/my-awesome-lib",
-                -- Or relative, which means they will be resolved as a plugin
-                -- "LazyVim",
-                -- When relative, you can also provide a path to the library in the plugin dir
-                'luvit-meta/library', -- see below
+                -- Load luvit types when the `vim.uv` word is found
+                { path = 'luvit-meta/library', words = { 'vim%.uv' } },
             },
         },
     },

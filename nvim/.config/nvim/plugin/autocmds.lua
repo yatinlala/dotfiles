@@ -18,12 +18,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('BufWritePre', {
     desc = 'Update Protein Totals',
-    group = augroup('update_totals'),
+    group = augroup('diary_protein'),
     pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
     callback = function()
         require('custom.util').update_protein_totals()
     end,
 })
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+    desc = 'Register :Yesterday and :Tomorrow',
+    group = augroup('diary_navigation'),
+    pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
+    callback = function()
+        vim.api.nvim_create_user_command('Yesterday', function()
+            require('custom.util').open_diary_date(-1)
+        end, {})
+        vim.api.nvim_create_user_command('Tomorrow', function()
+            require('custom.util').open_diary_date(1)
+        end, {})
+    end,
+})
+-- vim.cmd([[cab Y Yesterday]])
+-- vim.cmd([[cab T Tomorrow]])
 
 vim.api.nvim_create_autocmd('FileType', {
     desc = ':set formatoptions-=cro',

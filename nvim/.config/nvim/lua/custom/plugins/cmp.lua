@@ -49,13 +49,13 @@ return { -- Autocompletion
             completion = { completeopt = 'menu,menuone,noinsert' },
 
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
+                -- documentation = cmp.config.window.bordered(),
             },
 
-            performance = {
-                throttle = 500,
-            },
+            -- performance = {
+            --     throttle = 500,
+            -- },
             -- For an understanding of why these mappings were
             -- chosen, you will need to read `:help ins-completion`
             --

@@ -12,7 +12,7 @@
 # fi
 
 
-log_file=/tmp/newsboat.log
+log_file=$(mktemp --suffix=newsboat)
 
 if [ -f "$log_file" ]; then
     now=$(date +%s)
