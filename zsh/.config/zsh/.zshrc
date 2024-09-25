@@ -38,7 +38,7 @@ _comp_options+=(globdots)		# Include hidden files.
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 # [[ SUPPLEMENTARY SCRIPTS ]]
-for config in "$ZDOTDIR"/conf.d/*.zsh ; do
+for config in "$ZDOTDIR"/conf.d/* ; do
     source "$config"
 done
 unset -v config

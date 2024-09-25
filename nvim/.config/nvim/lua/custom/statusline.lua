@@ -64,6 +64,7 @@ function M.line()
         -- [[ %<» %{luaeval("require'config.statusline'.file_or_lsp_status()")} %m%r%= ]],
         [[%=%< %F %m%r%=]],
         [[%{luaeval("require'custom.statusline'.diagnostic_status()")}]],
+        -- [[\{…\}%3{codeium#GetStatusString()}]],
         '%#Visual#',
         [[%l:%c]],
         -- [[%{luaeval("require'dap'.status()")} %=]],

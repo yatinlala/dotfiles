@@ -2,6 +2,11 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     event = 'VeryLazy',
+    dependencies = {
+        {
+            'echasnovski/mini.icons',
+        },
+    },
     config = function()
         require('mini.splitjoin').setup()
 
@@ -13,7 +18,7 @@ return {
             },
         })
 
-        require('mini.icons').setup()
+        -- require('mini.icons').setup()
 
         require('mini.tabline').setup()
 

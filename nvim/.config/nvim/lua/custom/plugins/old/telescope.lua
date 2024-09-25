@@ -1,39 +1,39 @@
-return {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-        'nvim-lua/plenary.nvim',
-        'echasnovski/mini.nvim', --icons
-    },
-    keys = {
-        { '<leader>f', '<cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find [F]iles' },
-        { '<leader>h', '<cmd>Telescope help_tags theme=dropdown<CR>', { desc = 'Find [H]elp' } },
-        { '<leader>G', '<cmd>Telescope live_grep theme=dropdown<CR>', { desc = 'Live [G]rep' } },
-        { '<leader><leader>', '<cmd>Telescope buffers theme=dropdown<CR>', { desc = 'Find Buffers' } },
-        -- { '<leader>fk', function() require('telescope.builtin').keymaps end, { desc = '[f]ind [k]eymaps'} },
-        -- { '<leader>fs', function() require('telescope.builtin').builtin end, { desc = '[f]ind [s]elect Telescope'} },
-        -- { '<leader>fw', function() require('telescope.builtin').grep_string end, { desc = '[f]ind current [w]ord'} },
-        -- { '<leader>fd', function() require('telescope.builtin').diagnostics end, { desc = '[f]ind [d]iagnostics'} },
-        -- { '<leader>fr', function() require('telescope.builtin').resume end, { desc = '[f]ind [r]esume'} },
-        -- { '<leader>f.', function() require('telescope.builtin').oldfiles end, { desc = '[f]ind recent Files ("." for repeat)'} },
-    },
-    cmd = 'Telescope',
-    opts = {
-        pickers = {
-            find_files = {
-                layout_config = {
-                    prompt_position = 'top',
-                },
-                sorting_strategy = 'ascending',
-            },
-        },
-
-        defaults = {
-            prompt_prefix = '  ',
-            selection_caret = ' ',
-        },
-    },
-}
+-- return {
+--     'nvim-telescope/telescope.nvim',
+--     branch = '0.1.x',
+--     dependencies = {
+--         'nvim-lua/plenary.nvim',
+--         'echasnovski/mini.nvim', --icons
+--     },
+--     keys = {
+--         { '<leader>f', '<cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find [F]iles' },
+--         { '<leader>h', '<cmd>Telescope help_tags theme=dropdown<CR>', { desc = 'Find [H]elp' } },
+--         { '<leader>G', '<cmd>Telescope live_grep theme=dropdown<CR>', { desc = 'Live [G]rep' } },
+--         { '<leader><leader>', '<cmd>Telescope buffers theme=dropdown<CR>', { desc = 'Find Buffers' } },
+--         -- { '<leader>fk', function() require('telescope.builtin').keymaps end, { desc = '[f]ind [k]eymaps'} },
+--         -- { '<leader>fs', function() require('telescope.builtin').builtin end, { desc = '[f]ind [s]elect Telescope'} },
+--         -- { '<leader>fw', function() require('telescope.builtin').grep_string end, { desc = '[f]ind current [w]ord'} },
+--         -- { '<leader>fd', function() require('telescope.builtin').diagnostics end, { desc = '[f]ind [d]iagnostics'} },
+--         -- { '<leader>fr', function() require('telescope.builtin').resume end, { desc = '[f]ind [r]esume'} },
+--         -- { '<leader>f.', function() require('telescope.builtin').oldfiles end, { desc = '[f]ind recent Files ("." for repeat)'} },
+--     },
+--     cmd = 'Telescope',
+--     opts = {
+--         pickers = {
+--             find_files = {
+--                 layout_config = {
+--                     prompt_position = 'top',
+--                 },
+--                 sorting_strategy = 'ascending',
+--             },
+--         },
+--
+--         defaults = {
+--             prompt_prefix = '  ',
+--             selection_caret = ' ',
+--         },
+--     },
+-- }
 
 -- return { -- Fuzzy Finder (files, lsp, etc)
 --     'nvim-telescope/telescope.nvim',

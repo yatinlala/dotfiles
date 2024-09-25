@@ -1,2 +1,3 @@
 .zcompdump
-.secret.env
+.zcompdump.zwc
+secret.env

@@ -5,7 +5,8 @@
 	// "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
 	"modules-left": [
 		"hyprland/workspaces",
-		"custom/timer"
+		"custom/202020"
+		//"custom/timer",
 	],
 	// "modules-center": [ "mpris"],
 	"modules-center": [
@@ -63,17 +64,29 @@
 			"default": ""
 		}
 	},
-	"custom/timer": {
+	"custom/202020": {
 		"tooltip": false,
 		"min-length": 5,
-		"exec": "$HOME/.config/waybar/modules/timer.sh",
-		"on-click": "date --date='20 minutes' +%s > /var/tmp/waybar_timer",
-		"on-click-right": "echo READY > /var/tmp/waybar_timer",
-		"on-click-middle": "date --date='5 minute' +%s > /var/tmp/waybar_timer",
-		"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
-		"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
+		"exec": "$HOME/.config/waybar/modules/202020.sh",
+		"on-click": "date --date='20 minutes' +%s > /var/tmp/202020_timer", // TODO make this a pause?
+		"on-click-right": "echo PAUSED > /var/tmp/202020_timer",
+		//"on-click-right": "echo READY > /var/tmp/waybar_timer",
+		//"on-click-middle": "date --date='5 minute' +%s > /var/tmp/202020_timer",
+		//"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
+		//"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
 		"interval": 1
 	},
+	//"custom/timer": {
+	//	"tooltip": false,
+	//	"min-length": 5,
+	//	"exec": "$HOME/.config/waybar/modules/timer.sh",
+	//	"on-click": "date --date='20 minutes' +%s > /var/tmp/waybar_timer",
+	//	"on-click-right": "echo READY > /var/tmp/waybar_timer",
+	//	"on-click-middle": "date --date='5 minute' +%s > /var/tmp/waybar_timer",
+	//	"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
+	//	"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
+	//	"interval": 1
+	//},
 	"custom/weather": {
 		"format": "{}",
 		 "exec": "curl \"wttr.in/94303?format=%c%t\"",

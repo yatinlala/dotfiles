@@ -12,7 +12,7 @@ dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias jupyter='xdg-launch jupyter'
 # alias librewolf='xdg-launch librewolf'
 # alias minecraft-launcher='xdg-launch minecraft-launcher'
-wget() { wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
+wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 # [[ IMPROVE DEFAULTS ]]

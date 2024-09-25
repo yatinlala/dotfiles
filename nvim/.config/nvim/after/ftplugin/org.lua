@@ -1,1 +1,1 @@
-vim.opt.foldlevelstart = 3
+vim.opt.foldlevel = 3
