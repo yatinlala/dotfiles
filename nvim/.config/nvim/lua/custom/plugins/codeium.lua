@@ -1,20 +1,44 @@
+-- latest update broke escape
 return {
-    'Exafunction/codeium.vim',
-    keys = { { '<c-;>', mode = 'i' } },
-    config = function()
-        vim.g.codeium_disable_bindings = 1
-
-        vim.keymap.set('i', '<Tab>', function()
-            return vim.fn['codeium#Accept']()
-        end, { desc = 'Accept Codeium Suggestion', expr = true, silent = true })
-        vim.keymap.set('i', '<C-;>', function()
-            return vim.fn['codeium#CycleCompletions'](1)
-        end, { desc = 'Codeium Cycle Forward', expr = true, silent = true })
-        vim.keymap.set('i', '<C-,>', function()
-            return vim.fn['codeium#CycleCompletions'](-1)
-        end, { desc = 'Codeium Cycle Backward', expr = true, silent = true })
-        vim.keymap.set('i', '<c-x>', function()
-            return vim.fn['codeium#Clear']()
-        end, { desc = 'Codeium Clear', expr = true, silent = true })
-    end,
+    'dimfeld/codeium.nvim',
+    event = 'VeryLazy',
+    branch = 'virtual-text',
+    enabled = true,
+    -- main = 'codeium',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+    },
+    keys = {
+        {
+            '<M-]>',
+            function()
+                require('codeium.virtual_text').cycle_or_complete()
+            end,
+            mode = 'i',
+            desc = 'Codeium Complete/Cycle',
+        },
+    },
+    opts = {
+        enable_cmp_source = false,
+        virtual_text = {
+            enabled = true,
+            manual = true,
+            map_keys = true,
+            -- Key bindings for managing completions in virtual text mode.
+            key_bindings = {
+                -- Accept the current completion.
+                accept = '<Tab>',
+                -- Accept the next word.
+                accept_word = false,
+                -- Accept the next line.
+                accept_line = false,
+                -- Clear the virtual text.
+                clear = '<M-c>',
+                -- Cycle to the next completion.
+                next = false,
+                -- Cycle to the previous completion.
+                prev = '<M-[>',
+            },
+        },
+    },
 }

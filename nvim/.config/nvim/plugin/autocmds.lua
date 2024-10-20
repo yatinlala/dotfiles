@@ -36,6 +36,8 @@ vim.api.nvim_create_autocmd('BufReadPost', {
         vim.api.nvim_create_user_command('Tomorrow', function()
             require('custom.util').open_diary_date(1)
         end, {})
+        vim.keymap.set('n', '<M-h>', '<cmd>Yesterday<CR>', { desc = 'Go back in diary' })
+        vim.keymap.set('n', '<M-l>', '<cmd>Tomorrow<CR>', { desc = 'Go back in diary' })
     end,
 })
 -- vim.cmd([[cab Y Yesterday]])

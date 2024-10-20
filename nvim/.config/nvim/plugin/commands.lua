@@ -4,6 +4,9 @@ vim.api.nvim_create_user_command('EC', 'silent cd ~/.config/nvim | e $MYVIMRC', 
 
 vim.api.nvim_create_user_command('SC', 'vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile', {})
 
+-- vim.api.nvim_create_user_command('Redir', ":0put=execute('highlight')", {})
+require('custom.redir')
+
 vim.api.nvim_create_user_command('Today', function()
     require('custom.util').open_diary_date()
 end, {})

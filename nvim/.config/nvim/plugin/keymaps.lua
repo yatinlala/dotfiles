@@ -20,6 +20,10 @@ end, { desc = 'Open Lf' })
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
 
+vim.keymap.set('n', '<C-n>', function()
+    vim.opt.number = not vim.opt.number:get()
+end, { desc = 'Toggle number' })
+
 -- Open Files
 -- vim.keymap.set('n', ',f', ':find *', { desc = '[F]ind file' })
 -- vim.keymap.set('n', ',s', ':sfind *', { desc = '[S]plit find file' })

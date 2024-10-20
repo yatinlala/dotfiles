@@ -10,6 +10,13 @@ return {
             desc = 'Find [F]iles',
         },
         {
+            '<leader>h',
+            function()
+                require('fzf-lua').help_tags()
+            end,
+            desc = 'Find [F]iles',
+        },
+        {
             '<leader>G',
             function()
                 require('fzf-lua').live_grep_native()

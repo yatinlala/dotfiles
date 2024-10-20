@@ -16,6 +16,7 @@ export FZF_DEFAULT_OPTS='--cycle --scroll-off=0'
 
 export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 
+export SUDO_ASKPASS="$SCRIPTS/rofi-askpass"
 
 export CALIBRE_USE_DARK_PALETTE=1
 export DIFFPROG="nvim -d"

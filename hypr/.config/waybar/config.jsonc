@@ -13,7 +13,7 @@
 		"hyprland/window"
 	],
 	"modules-right": [
-		"custom/weather",
+		//"custom/weather",
 		"tray",
 		"backlight",
 		"pulseaudio",
