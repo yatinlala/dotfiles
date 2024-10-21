@@ -293,11 +293,11 @@ cmd quit-and-cd &{{
     lf -remote "send $id quit"
 }}
 map w quit-and-cd
-
-cmd launchshell ${{
-    zsh
-}}
-map W launchshell
+#
+# cmd launchshell ${{
+#     zsh
+# }}
+# map W launchshell
 #: }}}
 
 # Jump {{{
@@ -347,35 +347,19 @@ cmap <a-p> &{{
     fi
 }}
 
-# cmd fzf_jump ${{
-#     res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
-#     if [ -n "$res" ]; then
-#         if [ -d "$res" ]; then
-#             cmd="cd"
-#         else
-#             cmd="select"
-#         fi
-#         res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-#         lf -remote "send $id $cmd \"$res\""
-#     fi
-# }}
-# map f :fzf_jump
-
-# cmd fzf_deep_jump ${{
-#     res="$((find . -maxdepth 5 2>/dev/null) | fzf --reverse --header='Jump to location')"
-#
-# find . 2>&1 > files_and_folders | grep -v 'Permission denied' >&2
-#     if [ -n "$res" ]; then
-#         if [ -d "$res" ]; then
-#             cmd="cd"
-#         else
-#             cmd="select"
-#         fi
-#         res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
-#         lf -remote "send $id $cmd \"$res\""
-#     fi
-# }}
-# map <c-p> :fzf_deep_jump
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 3 | fzf --reverse --header="Jump to location")"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-p> :fzf_jump
 
 cmd file_grep_search ${{
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
@@ -431,7 +415,7 @@ map <c-s> share
 
 #: }}}
 
-# Archives {{{
+# Archive {{{
 # Archive bindings
 cmd extract ${{
     set -f
@@ -521,19 +505,6 @@ cmd empty_trash %trash-empty
 map dd trash
 map te empty_trash
 map tr restore_trash
-#: }}}
-
-# Wallpaper {{{
-
-# cmd setwallpaper ${{
-#     pgrep -x swaybg && killall swaybg
-#     nohup swaybg -i $f &
-#     lf -remote "send $id load"
-#
-# }}
-#
-# map W setwallpaper
-
 #: }}}
 
 # vim: foldmethod=marker:foldlevel=0

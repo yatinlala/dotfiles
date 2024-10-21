@@ -1,0 +1,9 @@
+#!/usr/bin/dash
+
+window_id=$(hyprctl activewindow | grep -Eo 'Window [0-9a-f]+' | cut -d' ' -f2)
+
+if hyprctl activewindow | grep -E "grouped: [^0$]" >/dev/null; then
+	hyprctl dispatch moveoutofgroup
+else
+	hyprctl dispatch moveintogroup "$1"
+fi

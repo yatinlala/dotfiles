@@ -1,0 +1,17 @@
+#!/usr/bin/dash
+
+activewindow=$(hyprctl activewindow)
+group=$(echo "$activewindow" | grep -E "grouped: [^0$]")
+
+if [ -z "$group" ]; then
+	hyprctl dispatch movewindow "$1"
+else
+	window_id=$(echo "$activewindow" | grep -Eo 'Window [0-9a-f]+' | cut -d' ' -f2)
+	if [ "$1" = "r" ]; then
+		echo "$group" | grep -q "$window_id$" && hyprctl dispatch movefocus r || hyprctl dispatch changegroupactive f
+	elif [ "$1" = "l" ]; then
+		echo "$group" | grep -q ": $window_id" && hyprctl dispatch movefocus l || hyprctl dispatch changegroupactive l
+	else
+		hyprctl dispatch movefocus "$1"
+	fi
+fi

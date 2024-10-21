@@ -24,6 +24,13 @@ vim.keymap.set('n', '<C-n>', function()
     vim.opt.number = not vim.opt.number:get()
 end, { desc = 'Toggle number' })
 
+-- Navigate buffers
+vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
+
+-- exit terminal mode
+vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 -- Open Files
 -- vim.keymap.set('n', ',f', ':find *', { desc = '[F]ind file' })
 -- vim.keymap.set('n', ',s', ':sfind *', { desc = '[S]plit find file' })
@@ -48,10 +55,6 @@ end, { desc = 'Toggle number' })
 --     "inoremap [, [<CR>],<Esc>O
 -- ]])
 
--- Navigate buffers
-vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
-
 -- -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 -- vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, { desc = 'show diagnostic error' })
@@ -60,8 +63,6 @@ vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
 -- -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'previous diagnostic' })
 -- -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 --
--- -- exit terminal mode
--- -- vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 --
 -- local opts = { noremap = true, silent = true }
 --
