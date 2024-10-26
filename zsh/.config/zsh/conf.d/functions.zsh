@@ -58,7 +58,7 @@ update-pkglist() {
     pacman -Qqm > ~/.dotfiles/pkglist/aur
     cargo install --list > ~/.dotfiles/pkglist/cargo
     npm -g list > ~/.dotfiles/pkglist/npm
-    pip3 list > ~/.dotfiles/pkglist/pip3
+    # pip3 list > ~/.dotfiles/pkglist/pip3
     pipx list > ~/.dotfiles/pkglist/pipx
     flatpak list --app > ~/.dotfiles/pkglist/flatpak
 }

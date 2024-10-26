@@ -1,8 +1,8 @@
--- latest update broke escape
 return {
     'dimfeld/codeium.nvim',
-    event = 'VeryLazy',
     branch = 'virtual-text',
+    -- 'Exafunction/codeium.nvim',
+    event = 'VeryLazy',
     enabled = true,
     -- main = 'codeium',
     dependencies = {

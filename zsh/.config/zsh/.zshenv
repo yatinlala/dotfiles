@@ -9,7 +9,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
 
-export SCRIPTS="$HOME/.local/scripts"
+SCRIPTS="$HOME/.local/scripts"
 # FZF
 export FZF_DEFAULT_OPTS='--cycle --scroll-off=0'
 # export FZF_DEFAULT_COMMAND='fd -H .'
@@ -21,8 +21,8 @@ export SUDO_ASKPASS="$SCRIPTS/rofi-askpass"
 export CALIBRE_USE_DARK_PALETTE=1
 export DIFFPROG="nvim -d"
 
-export GTK_THEME='Adwaita:dark'
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+# export GTK_THEME='Gruvbox-Dark'
+# export GTK2_RC_FILES=$XDG_DATA_HOME/themes/Gruvbox-Dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Fixing Paths

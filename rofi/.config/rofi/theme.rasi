@@ -5,7 +5,7 @@
 configuration {
 	/*font:							"BlexMono Nerd Font 11"; */
 	/*font:							"Ligalex Mono 11"; */
-	font:							"JetBrains Mono Nerd Font 10";
+	font:							"JetBrains Mono Nerd Font 11";
 	/*font:							"CaskaydiaMono Nerd Font 10"; */
     show-icons:                     true;
 	icon-theme: 					"Papirus";
@@ -25,24 +25,25 @@ configuration {
 }
 
 window {
-    transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
-	border:							0px;
-	border-color:					@ac;
-    /* border-radius:                  12px; */
-	width:							40%;
-    location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
+	transparency:		"real";
+	background-color:	@bg;
+	text-color:		@fg;
+	border:			0px;
+	border-color:		@ac;
+	border-radius:		3px;
+	width:			40%;
+	location:		center;
+	x-offset:		0;
+	y-offset:		0;
 }
 
 prompt {
     enabled: 						true;
-	padding: 						0.30% 1% 0% -0.5%;
+	padding: 					0.30% 1% 0% -0.5%;
 	background-color: 				@al;
 	text-color: 					@bg;
-	font:						    "Liga SFMono Nerd Font 11";
+	/* font:					"Liga SFMono Nerd Font 11"; */
+	font:						"JetBrains Mono Nerd Font 11";
 }
 
 entry {
@@ -62,7 +63,7 @@ inputbar {
     text-color:                     @bg;
     expand:                         false;
 	border:							0% 0% 0% 0%;
-    border-radius:                  0px;
+    border-radius:                  3px;
 	border-color:					@ac;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
@@ -93,7 +94,7 @@ element {
     background-color:               @al;
     text-color:                     @fg;
     orientation:                    horizontal;
-    border-radius:                  0%;
+    border-radius:                  3%;
     padding:                        1% 0.5% 1% 0.5%;
 }
 
@@ -119,6 +120,6 @@ element selected {
     background-color:               @se;
     text-color:                     @fg;
 	border:							0% 0% 0% 0%;
-    border-radius:                  0px;
+    border-radius:                  3px;
     border-color:                  	@bg;
 }
