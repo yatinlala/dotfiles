@@ -24,6 +24,14 @@ vim.keymap.set('n', '<C-n>', function()
     vim.opt.number = not vim.opt.number:get()
 end, { desc = 'Toggle number' })
 
+vim.keymap.set('n', '<C-s>', function()
+    if vim.opt.laststatus:get() == 0 then
+        vim.opt.laststatus = 3
+    else
+        vim.opt.laststatus = 0
+    end
+end, { desc = 'Toggle statusline' })
+
 -- Navigate buffers
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')

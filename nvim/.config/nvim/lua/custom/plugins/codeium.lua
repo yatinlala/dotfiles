@@ -1,7 +1,5 @@
 return {
-    'dimfeld/codeium.nvim',
-    branch = 'virtual-text',
-    -- 'Exafunction/codeium.nvim',
+    'Exafunction/codeium.nvim',
     event = 'VeryLazy',
     enabled = true,
     -- main = 'codeium',

@@ -78,9 +78,11 @@ export ZDOTDIR="$HOME/.config/zsh"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="newsboat|pipe-viewer"
 
+
+export MANPAGER='nvim +Man!'
 # Colored man pages
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c" # Fix formatting errors
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANROFFOPT="-c" # Fix formatting errors
 
 # Get LF icons to work
 export LC_ALL="en_US.UTF-8"

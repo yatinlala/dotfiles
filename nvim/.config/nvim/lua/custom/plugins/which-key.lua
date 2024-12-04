@@ -17,6 +17,7 @@ return { -- Useful plugin to show you pending keybinds.
             { '<leader>l', group = '[L]sp' },
             { '<leader>g', group = '[G]it' },
             { '<leader>a', group = '[A]I' },
+            { '<leader>q', group = 'Persistence' },
             -- -- { '<leader>d', group = '[D]ocument' },
             -- { '<leader>g', group = '[G]it' },
             -- { '<leader>l', group = '[L]sp' },

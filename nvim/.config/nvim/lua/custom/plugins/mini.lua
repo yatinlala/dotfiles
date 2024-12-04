@@ -5,11 +5,14 @@ return {
     dependencies = {
         {
             'echasnovski/mini.icons',
+            'nvim-treesitter/nvim-treesitter-textobjects', -- needed for diF
         },
     },
+    -- TODO troubleshoot why diF is so flakey. try in a few spots on this file to understand
     config = function()
         require('mini.splitjoin').setup()
 
+        -- try cina, cila. need to get these under my fingers
         local ai = require('mini.ai')
         ai.setup({
             custom_textobjects = {
@@ -22,6 +25,11 @@ return {
 
         require('mini.tabline').setup()
 
+        -- require('mini.files').setup()
+        -- vim.keymap.set('n', '-', function()
+        --     MiniFiles.open()
+        -- end, { desc = 'Open Mini Files' })
+
         -- -- TODO figure out how this works
         -- require('mini.sessions').setup({ autoread = true })
 
@@ -31,36 +39,36 @@ return {
             -- to operate on textobject and line, in Visual - on selection.
 
             -- Evaluate text and replace with output
-            evaluate = {
-                -- prefix = 'g=',
-                prefix = '',
-            },
-            exchange = {
-                prefix = 'gx',
-                -- Whether to reindent new text to match previous indent
-                reindent_linewise = true,
-            },
-            -- Multiply (duplicate) text
-            multiply = {
-                prefix = 'gm',
-                -- Function which can modify text before multiplying
-                func = nil,
-            },
+            -- evaluate = {
+            --     -- prefix = 'g=',
+            --     prefix = '',
+            -- },
+            -- exchange = {
+            --     prefix = 'gx',
+            --     -- Whether to reindent new text to match previous indent
+            --     reindent_linewise = true,
+            -- },
+            -- -- Multiply (duplicate) text
+            -- multiply = {
+            --     prefix = 'gm',
+            --     -- Function which can modify text before multiplying
+            --     func = nil,
+            -- },
             -- Replace text with register
             replace = {
-                prefix = 'gr',
+                prefix = 'gR',
                 -- Whether to reindent new text to match previous indent
                 reindent_linewise = true,
             },
 
             -- Sort text
-            sort = {
-                prefix = '',
-                -- prefix = 'gs',
-
-                -- Function which does the sort
-                func = nil,
-            },
+            -- sort = {
+            --     prefix = '',
+            --     -- prefix = 'gs',
+            --
+            --     -- Function which does the sort
+            --     func = nil,
+            -- },
         }) -- gr, g=, gx, gm, gs
 
         -- require('mini.completion').setup()

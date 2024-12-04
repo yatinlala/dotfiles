@@ -2,7 +2,7 @@ return {
     {
         'neovim/nvim-lspconfig',
         -- VeryLazy won't work b/c LSPs rely on FileType autocmd
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = { 'BufReadPre', 'BufNewFile' },
         cmd = { 'LspInfo' },
 
         dependencies = {
@@ -26,7 +26,7 @@ return {
                     map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 
                     -- Find references for the word under your cursor.
-                    -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+                    map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
 
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
@@ -114,8 +114,8 @@ return {
                 end,
             })
 
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+            -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+            -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
             require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls' } })
 
@@ -125,14 +125,9 @@ return {
                     require('lspconfig')[server_name].setup({})
                 end,
                 -- dedicated handler
-                -- ['lua_ls'] = function()
-                --     require('lua_ls').setup({})
-                -- end,
-                -- -- Next, you can provide a dedicated handler for specific servers.
-                -- -- For example, a handler override for the `rust_analyzer`:
-                -- ['rust_analyzer'] = function()
-                --     require('rust-tools').setup({})
-                -- end,
+                ['harper_ls'] = function()
+                    require('lspconfig').harper_ls.setup({ autostart = false })
+                end,
             })
         end,
     },

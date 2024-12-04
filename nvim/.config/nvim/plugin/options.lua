@@ -11,7 +11,7 @@ vim.opt.splitright = true
 
 vim.opt.undofile = true -- persistent undo
 
-vim.opt.laststatus = 3 -- global statusline
+vim.opt.laststatus = 0
 vim.opt.showmode = false -- hide -- INSERT --
 
 vim.opt.path:append('**') -- :find searches subdirs
@@ -22,12 +22,12 @@ vim.opt.breakindent = true -- wrapped lines preserve indent level
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
+-- Sets how Neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`, `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-vim.opt.winblend = 5
+vim.opt.winblend = 10
 
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines

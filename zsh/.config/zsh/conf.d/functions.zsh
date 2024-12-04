@@ -23,7 +23,7 @@ alias bc='bc -lq'
 # alias tetris='netris -k "hHklLJjs frn" -i .1'
 # alias grep='grep --color=auto --exclude-dir=.git -I'
 # alias egrep='grep -E'
-ls() { eza --icons "$@" }
+ls() { eza --icons=auto "$@" }
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }

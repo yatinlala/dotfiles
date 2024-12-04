@@ -69,5 +69,4 @@ if vim.loop.fs_stat(vim.fn.stdpath('config') .. '/lua/custom/plugins') then
     })
 end
 
-require('custom.statusline')
--- vim.cmd([[ set statusline=%!v:lua.require'custom.statusline'.line() ]])
+-- require('custom.statusline')

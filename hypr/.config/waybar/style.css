@@ -3,7 +3,7 @@
   border-radius: 0px;
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 15px;
   min-height: 0;
 }
 
@@ -15,7 +15,7 @@ window#waybar {
 
 tooltip {
   background: #282828;
-  border-radius: 10px;
+  border-radius: 6px;
   border-width: 2px;
   border-style: solid;
   border-color: #1d2021;
