@@ -33,13 +33,14 @@ vim.keymap.set('n', '<C-s>', function()
 end, { desc = 'Toggle statusline' })
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
+-- vim.keymap.set('n', '[[', '<cmd>bnext<CR>')
+-- vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
 
 -- exit terminal mode
 vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Open Files
+-- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
 -- vim.keymap.set('n', ',f', ':find *', { desc = '[F]ind file' })
 -- vim.keymap.set('n', ',s', ':sfind *', { desc = '[S]plit find file' })
 -- vim.keymap.set('n', ',v', ':vert :sfind *', { desc = '[V]ertical split find file' })

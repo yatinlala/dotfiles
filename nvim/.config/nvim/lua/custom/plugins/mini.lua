@@ -5,25 +5,50 @@ return {
     dependencies = {
         {
             'echasnovski/mini.icons',
-            'nvim-treesitter/nvim-treesitter-textobjects', -- needed for diF
+            {
+                'nvim-treesitter/nvim-treesitter-textobjects', -- needed for diF
+                dependencies = { 'nvim-treesitter/nvim-treesitter' },
+            },
         },
     },
-    -- TODO troubleshoot why diF is so flakey. try in a few spots on this file to understand
+    -- TODO dif doesn't work if end of function is more than 50 lines away.
+    -- figure out what 'cover' and all that does. feels like if function
+    -- definition is right above you mini.ai should be able to figure things out
     config = function()
         require('mini.splitjoin').setup()
 
         -- try cina, cila. need to get these under my fingers
-        local ai = require('mini.ai')
-        ai.setup({
+        local spec_treesitter = require('mini.ai').gen_spec.treesitter
+        require('mini.ai').setup({
+            n_lines = 100,
+            search_method = 'cover_or_nearest',
             custom_textobjects = {
                 B = require('mini.extra').gen_ai_spec.buffer(),
-                F = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+                f = spec_treesitter({ a = '@function.outer', i = '@function.inner' }),
             },
         })
 
         -- require('mini.icons').setup()
 
-        require('mini.tabline').setup()
+        -- require('mini.tabline').setup()
+
+        require('mini.pick').setup({
+            window = {
+                config = {
+                    border = 'single',
+                },
+                prompt_prefix = '',
+            },
+        })
+        vim.keymap.set('n', '<leader>f', function()
+            MiniPick.builtin.files()
+        end, { desc = 'Pick [F]iles' })
+        vim.keymap.set('n', '<leader>G', function()
+            MiniPick.builtin.grep_live()
+        end, { desc = 'Live [G]rep' })
+        vim.keymap.set('n', '<leader>h', function()
+            MiniPick.builtin.help()
+        end, { desc = 'Pick [H]elp' })
 
         -- require('mini.files').setup()
         -- vim.keymap.set('n', '-', function()

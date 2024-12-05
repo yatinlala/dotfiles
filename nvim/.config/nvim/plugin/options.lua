@@ -11,7 +11,7 @@ vim.opt.splitright = true
 
 vim.opt.undofile = true -- persistent undo
 
-vim.opt.laststatus = 0
+vim.opt.laststatus = 3
 vim.opt.showmode = false -- hide -- INSERT --
 
 vim.opt.path:append('**') -- :find searches subdirs
@@ -27,7 +27,7 @@ vim.opt.smartcase = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-vim.opt.winblend = 10
+vim.opt.winblend = 5
 
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines

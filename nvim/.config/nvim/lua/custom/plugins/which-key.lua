@@ -14,9 +14,9 @@ return { -- Useful plugin to show you pending keybinds.
         spec = {
             -- { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
             { '<leader>o', group = '[O]rg Mode' },
-            { '<leader>l', group = '[L]sp' },
+            { '<leader>l', group = '[L]sp', mode = { 'n', 'x' } },
             { '<leader>g', group = '[G]it' },
-            { '<leader>a', group = '[A]I' },
+            { '<leader>a', group = '[A]I', mode = { 'n', 'x' } },
             { '<leader>q', group = 'Persistence' },
             -- -- { '<leader>d', group = '[D]ocument' },
             -- { '<leader>g', group = '[G]it' },

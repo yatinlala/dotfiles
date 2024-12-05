@@ -4,12 +4,12 @@
 set shell sh
 
 # set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
+# -e = exit on error.
+# -u = give error for unset variables.
+# -f = disable pathname expansion, which can be useful when $f, $fs, and
+#      $fx variables contain names with '*' or '?' characters. However, this option
+#      is used selectively within individual commands as it can be limiting at
+#      times.
 set shellopts '-eu'
 
 # set internal field separator (IFS) to "\n" for shell commands
@@ -393,18 +393,17 @@ map go :fasd_dir
 
 #: }}}
 
-# Dragon {{{
-cmd dragon %dragon-drop -a -x "$fx"
-cmd dragon-stay %dragon-drop -a "$fx"
-cmd dragon-individual %dragon-drop "$fx"
-cmd dragon-target %dragon-drop -t "$fx"
+# ripdrag {{{
+cmd ripdrag %ripdrag -a -x $fx
+cmd ripdrag-stay %ripdrag-drop -a $fx
+cmd ripdrag-individual %ripdrag-drop $fx
+cmd ripdrag-target %ripdrag-drop -t $fx
 cmd dlfile %dlfile
 
-# Dragon Mapping
-map dr dragon
-map ds dragon-stay
-map di dragon-individual
-map dt dragon-target
+map dr ripdrag
+map ds ripdrag-stay
+map di ripdrag-individual
+map dt ripdrag-target
 map dl dlfile
 
 #: }}}
