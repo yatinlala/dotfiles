@@ -37,19 +37,19 @@ return {
                 config = {
                     border = 'single',
                 },
-                prompt_prefix = '',
+                prompt_prefix = ' 🔎 ',
             },
         })
-        vim.keymap.set('n', '<leader>f', function()
-            MiniPick.builtin.files()
-        end, { desc = 'Pick [F]iles' })
-        vim.keymap.set('n', '<leader>G', function()
-            MiniPick.builtin.grep_live()
-        end, { desc = 'Live [G]rep' })
-        vim.keymap.set('n', '<leader>h', function()
-            MiniPick.builtin.help()
-        end, { desc = 'Pick [H]elp' })
-
+        -- vim.keymap.set('n', '<leader>f', function()
+        --     MiniPick.builtin.files()
+        -- end, { desc = 'Pick [F]iles' })
+        -- vim.keymap.set('n', '<leader>G', function()
+        --     MiniPick.builtin.grep_live()
+        -- end, { desc = 'Live [G]rep' })
+        -- vim.keymap.set('n', '<leader>h', function()
+        --     MiniPick.builtin.help()
+        -- end, { desc = 'Pick [H]elp' })
+        --
         -- require('mini.files').setup()
         -- vim.keymap.set('n', '-', function()
         --     MiniFiles.open()

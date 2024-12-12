@@ -1,23 +1,53 @@
--- return {
---     'nvim-telescope/telescope.nvim',
---     branch = '0.1.x',
---     dependencies = {
---         'nvim-lua/plenary.nvim',
---         'echasnovski/mini.nvim', --icons
---     },
---     keys = {
---         { '<leader>f', '<cmd>Telescope find_files theme=dropdown<CR>', desc = 'Find [F]iles' },
---         { '<leader>h', '<cmd>Telescope help_tags theme=dropdown<CR>', { desc = 'Find [H]elp' } },
---         { '<leader>G', '<cmd>Telescope live_grep theme=dropdown<CR>', { desc = 'Live [G]rep' } },
---         { '<leader><leader>', '<cmd>Telescope buffers theme=dropdown<CR>', { desc = 'Find Buffers' } },
---         -- { '<leader>fk', function() require('telescope.builtin').keymaps end, { desc = '[f]ind [k]eymaps'} },
---         -- { '<leader>fs', function() require('telescope.builtin').builtin end, { desc = '[f]ind [s]elect Telescope'} },
---         -- { '<leader>fw', function() require('telescope.builtin').grep_string end, { desc = '[f]ind current [w]ord'} },
---         -- { '<leader>fd', function() require('telescope.builtin').diagnostics end, { desc = '[f]ind [d]iagnostics'} },
---         -- { '<leader>fr', function() require('telescope.builtin').resume end, { desc = '[f]ind [r]esume'} },
---         -- { '<leader>f.', function() require('telescope.builtin').oldfiles end, { desc = '[f]ind recent Files ("." for repeat)'} },
---     },
---     cmd = 'Telescope',
+return {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'echasnovski/mini.icons',
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+    cmd = 'Telescope',
+    keys = {
+        { '<leader>f', '<cmd>Telescope find_files<CR>', { desc = 'Find [F]iles' } },
+        { '<leader>h', '<cmd>Telescope help_tags<CR>', { desc = 'Find [H]elp' } },
+        { '<leader>G', '<cmd>Telescope live_grep<CR>', { desc = 'Live [G]rep' } },
+        -- { '<leader><leader>', '<cmd>Telescope buffers theme=dropdown<CR>', { desc = 'Find Buffers' } },
+        -- { '<leader>fk', function() require('telescope.builtin').keymaps end, { desc = '[f]ind [k]eymaps'} },
+        -- { '<leader>fs', function() require('telescope.builtin').builtin end, { desc = '[f]ind [s]elect Telescope'} },
+        -- { '<leader>fw', function() require('telescope.builtin').grep_string end, { desc = '[f]ind current [w]ord'} },
+        -- { '<leader>fd', function() require('telescope.builtin').diagnostics end, { desc = '[f]ind [d]iagnostics'} },
+        -- { '<leader>fr', function() require('telescope.builtin').resume end, { desc = '[f]ind [r]esume'} },
+        -- { '<leader>f.', function() require('telescope.builtin').oldfiles end, { desc = '[f]ind recent Files ("." for repeat)'} },
+    },
+    config = function()
+        require('telescope').setup({
+            defaults = {
+                prompt_prefix = '  ',
+                selection_caret = ' ',
+                file_ignore_patterns = {
+                    '.git/',
+                    '.cache',
+                    'node_modules',
+                    '%.o',
+                    '%.a',
+                    '%.out',
+                    '%.class',
+                    '%.pdf',
+                    '%.mkv',
+                    '%.mp4',
+                    '%.zip',
+                },
+            },
+            extensions = { fzf = {} },
+            pickers = {
+                find_files = {
+                    follow = true, -- follow symlinks
+                    hidden = true, -- include hidden files
+                },
+            },
+        })
+        require('telescope').load_extension('fzf')
+    end,
+}
 --     opts = {
 --         pickers = {
 --             find_files = {
@@ -34,7 +64,7 @@
 --         },
 --     },
 -- }
-
+--
 -- return { -- Fuzzy Finder (files, lsp, etc)
 --     'nvim-telescope/telescope.nvim',
 --     cmd = 'Telescope',
@@ -132,46 +162,6 @@
 -- --     -- local trouble = require("trouble.providers.telescope")
 -- --     local telescope = require('telescope')
 -- --
--- --     require('telescope').setup({
--- --         defaults = {
--- --             mappings = {
--- --                 i = {
--- --                     -- ['<CR>'] = require('telescope.actions').select_tab,
--- --                     -- ['<C-t>'] = require('telescope.actions').select_default,
--- --                 },
--- --             },
--- --             prompt_prefix = '  ',
--- --             selection_caret = ' ',
--- --             file_ignore_patterns = {
--- --                 '.git/',
--- --                 '.cache',
--- --                 'node_modules',
--- --                 '%.o',
--- --                 '%.a',
--- --                 '%.out',
--- --                 '%.class',
--- --                 '%.pdf',
--- --                 '%.mkv',
--- --                 '%.mp4',
--- --                 '%.zip',
--- --             },
--- --         },
--- --
--- --         pickers = {
--- --             find_files = {
--- --                 follow = true, -- follow symlinks
--- --                 hidden = true, -- include hidden files
--- --             },
--- --         },
--- --         extensions = {
--- --             fzf = {
--- --                 fuzzy = true, -- false will only do exact matching
--- --                 override_generic_sorter = true, -- override the generic sorter
--- --                 override_file_sorter = true, -- override the file sorter
--- --                 case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
--- --             },
--- --         },
--- --     })
 -- --     -- To get fzf loaded and working with telescope, you need to call
 -- --     -- load_extension, somewhere after setup function:
 -- --     require('telescope').load_extension('fzf')

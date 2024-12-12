@@ -26,6 +26,7 @@ return {
         },
     },
     opts = {
-        quickfile = {},
+        -- notifier = { enabled = true }, -- doesn't seem to work
+        quickfile = { enabled = true },
     },
 }

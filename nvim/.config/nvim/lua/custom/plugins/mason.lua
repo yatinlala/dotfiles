@@ -19,14 +19,39 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
+                    -- - 'omnifunc' is set to |vim.lsp.omnifunc()|, use |i_CTRL-X_CTRL-O| to trigger
+                    --   completion.
+                    -- - 'tagfunc' is set to |vim.lsp.tagfunc()|. This enables features like
+                    --   go-to-definition, |:tjump|, and keymaps like |CTRL-]|, |CTRL-W_]|,
+                    --   |CTRL-W_}| to utilize the language server.
+                    -- - 'formatexpr' is set to |vim.lsp.formatexpr()|, so you can format lines via
+                    --   |gq| if the language server supports it.
+                    --   - To opt out of this use |gw| instead of gq, or clear 'formatexpr' on |LspAttach|.
+                    -- - |K| is mapped to |vim.lsp.buf.hover()| unless |'keywordprg'| is customized or
+                    --   a custom keymap for `K` exists.
+
+                    -- *grr* *gra* *grn* *gri* *i_CTRL-S*
+                    -- Some keymaps are created unconditionally when Nvim starts:
+                    -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
+                    -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
+                    -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
+                    -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
+                    -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
+                    -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
+                    --
+                    -- If not wanted, these keymaps can be removed at any time using
+                    -- |vim.keymap.del()| or |:unmap| (see also |gr-default|).
+
                     -- Jump to the definition of the word under your cursor.
                     --  This is where a variable was first declared, or where a function is defined, etc.
                     --  To jump back, press <C-t>.
                     -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+                    -- THIS IS C-]
                     map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 
                     -- Find references for the word under your cursor.
-                    map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
+                    -- THIS IS GRR by default
+                    -- map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
 
                     -- Jump to the implementation of the word under your cursor.
                     --  Useful when your language has ways of declaring types without an actual implementation.
@@ -47,11 +72,13 @@ return {
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
-                    map('<leader>ln', vim.lsp.buf.rename, '[L]sp Re[n]ame')
+                    -- THIS IS GRN BY DEFAULT!
+                    -- map('<leader>ln', vim.lsp.buf.rename, '[L]sp Re[n]ame')
 
                     -- Execute a code action, usually your cursor needs to be on top of an error
                     -- or a suggestion from your LSP for this to activate.
-                    map('<leader>lc', vim.lsp.buf.code_action, '[L]sp [C]ode Action', { 'n', 'x' })
+                    -- THIS IS GRA BY DEFAULT!
+                    -- map('<leader>lc', vim.lsp.buf.code_action, '[L]sp [C]ode Action', { 'n', 'x' })
 
                     -- WARN: This is not Goto Definition, this is Goto Declaration.
                     --  For example, in C this would take you to the header.

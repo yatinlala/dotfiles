@@ -32,12 +32,25 @@ vim.keymap.set('n', '<C-s>', function()
     end
 end, { desc = 'Toggle statusline' })
 
+-- Source things
+vim.keymap.set('n', '<leader>X', '<cmd>source %<CR>', { desc = 'Source file' })
+vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Source line' })
+vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Source selection' })
+
 -- Navigate buffers
+vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) -- same as C-6 (^)
 -- vim.keymap.set('n', '[[', '<cmd>bnext<CR>')
 -- vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
 
 -- exit terminal mode
 vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Visual --
+local opts = { noremap = true, silent = true }
+-- Stay in indent mode
+-- note: i removed this because i should be using . repeat instead of spamming >
+-- vim.keymap.set('v', '<', '<gv', opts)
+-- vim.keymap.set('v', '>', '>gv', opts)
 
 -- Open Files
 -- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
@@ -73,7 +86,6 @@ vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'next diagnostic' })
 --
 --
--- local opts = { noremap = true, silent = true }
 --
 --
 -- -- Git
@@ -142,10 +154,6 @@ vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 -- --
 -- -- vim.keymap.set('i', '<C-<BS>>', '<C-w>', opts)
 -- --
--- -- -- Visual --
--- -- -- Stay in indent mode
--- -- vim.keymap.set('v', '<', '<gv', opts)
--- -- vim.keymap.set('v', '>', '>gv', opts)
 -- --
 -- -- -- Don't override copy register when pasting into highlight
 -- -- vim.keymap.set('v', 'p', '"_dP', opts)
