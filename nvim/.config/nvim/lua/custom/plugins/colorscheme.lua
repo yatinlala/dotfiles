@@ -91,11 +91,16 @@ return {
             vim.g.gruvbox_material_statusline_style = 'mix'
             vim.g.gruvbox_material_cursor = 'auto'
 
-            -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
-            -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
+            -- vim.cmd([[
+            --     "let g:gruvbox_material_colors_override = { 'bg_statusline1': ['#81a2be', '234'], 'bg0': ['#ffffff', '0'], }
+            --
+            --     let g:gruvbox_material_colors_override = {'bg_statusline1': ['#81a2be', '234'], 'bg2': ['#282828', '235']}
+            --     ]])
             vim.g.gruvbox_material_better_performance = 1
 
             vim.cmd.colorscheme('gruvbox-material')
+
+            -- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')
         end,
     },
 

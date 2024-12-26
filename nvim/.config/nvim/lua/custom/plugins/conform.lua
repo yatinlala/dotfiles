@@ -23,7 +23,9 @@ return {
         formatters_by_ft = {
             lua = { 'stylua' },
             python = { 'isort', 'black' },
-            javascript = { 'prettierd', 'prettier', stop_after_first = true },
+            html = { 'prettierd' },
+            css = { 'prettierd' },
+            javascript = { 'prettierd', 'prettierd', stop_after_first = true },
         },
         -- Set default options
         default_format_opts = {

@@ -47,7 +47,7 @@ return {
                     --  To jump back, press <C-t>.
                     -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
                     -- THIS IS C-]
-                    map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+                    map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition') -- INSTEAD I GLOBALLY REMAP gd to C-].
 
                     -- Find references for the word under your cursor.
                     -- THIS IS GRR by default

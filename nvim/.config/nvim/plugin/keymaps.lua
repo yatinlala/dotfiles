@@ -11,10 +11,7 @@ vim.keymap.set('n', '<M-l>', '<C-w>>', { desc = 'Move focus to the right window'
 vim.keymap.set('n', '<M-j>', '<C-w>-', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<M-k>', '<C-w>+', { desc = 'Move focus to the upper window' })
 
--- File Explorer
-vim.keymap.set('n', '<leader>e', function()
-    vim.cmd('Lf ' .. '"' .. vim.fn.expand('%') .. '"')
-end, { desc = 'Open Lf' })
+-- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -32,6 +29,9 @@ vim.keymap.set('n', '<C-s>', function()
     end
 end, { desc = 'Toggle statusline' })
 
+vim.keymap.set('n', '<S-h>', '<cmd>tabprev<CR>')
+vim.keymap.set('n', '<S-l>', '<cmd>tabnext<CR>')
+
 -- Source things
 vim.keymap.set('n', '<leader>X', '<cmd>source %<CR>', { desc = 'Source file' })
 vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Source line' })
@@ -44,6 +44,8 @@ vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) 
 
 -- exit terminal mode
 vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- vim.keymap.set('n', 'gd', '<C-]>', { silent = true, desc = 'Go to Definition' })
 
 -- Visual --
 local opts = { noremap = true, silent = true }

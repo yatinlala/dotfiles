@@ -5,6 +5,8 @@ vim.schedule(function()
     vim.opt.clipboard = 'unnamedplus' -- use system clipboard
 end)
 
+vim.o.guifont = 'JetBrainsMono Nerd Font:h15' -- text below applies for VimScript
+
 -- Split below and to the right
 vim.opt.splitbelow = true
 vim.opt.splitright = true

@@ -2,14 +2,14 @@ return {
     'folke/snacks.nvim',
     lazy = false,
     keys = {
-        {
-            '<C-\\>',
-            function()
-                Snacks.terminal.toggle()
-            end,
-            mode = { 'n', 't' },
-            desc = '[T]oggle Terminal',
-        },
+        -- {
+        --     '<C-\\>',
+        --     function()
+        --         Snacks.terminal.toggle()
+        --     end,
+        --     mode = { 'n', 't' },
+        --     desc = '[T]oggle Terminal',
+        -- },
         {
             '<leader>.',
             function()

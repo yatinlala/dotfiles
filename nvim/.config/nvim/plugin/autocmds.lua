@@ -40,6 +40,16 @@ vim.api.nvim_create_autocmd('BufReadPost', {
         vim.keymap.set('n', '<M-l>', '<cmd>Tomorrow<CR>', { desc = 'Go back in diary' })
     end,
 })
+
+-- vim.api.nvim_create_autocmd({ 'FileType' }, {
+--     desc = 'Map gd in help files',
+--     group = augroup('help_mapping'),
+--     pattern = { 'help' },
+--     callback = function(opts)
+--         vim.keymap.set('n', 'gd', '<C-]>', { silent = true, buffer = opts.buf })
+--     end,
+-- })
+
 -- vim.cmd([[cab Y Yesterday]])
 -- vim.cmd([[cab T Tomorrow]])
 
