@@ -14,6 +14,7 @@
 	],
 	"modules-right": [
 		//"custom/weather",
+		"custom/eye",
 		"tray",
 		"backlight",
 		"pulseaudio",
@@ -87,9 +88,15 @@
 	//	"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
 	//	"interval": 1
 	//},
+	"custom/eye": {
+		// "format": "{}",
+		"format": "<span font='16'>{}</span>",
+		"exec": "_waybar_blinker",
+		"interval": 3
+	},
 	"custom/weather": {
 		"format": "{}",
-		 "exec": "curl \"wttr.in/94303?format=%c%t\"",
+		"exec": "curl \"wttr.in/94303?format=%c%t\"",
 		//"exec": "curl \"wttr.in/19081?format=%c%t\"",
 		"interval": 6000,
 		"spacing": 10
@@ -190,7 +197,10 @@
 			"paused": "▶"
 		},
 		// "ignored-players": ["chromium","brave","firefox"]
-		"ignored-players": [ "brave", "mpv" ]
+		"ignored-players": [
+			"brave",
+			"mpv"
+		]
 	},
 	"backlight": {
 		"device": "intel_backlight",
