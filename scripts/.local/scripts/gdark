@@ -3,24 +3,24 @@
 gd=$(<"$XDG_CACHE_HOME/gammastep.cache") || echo "1" >"$XDG_CACHE_HOME/gammastep.cache"
 
 case $1 in
-    inc)
-    
-	    if (($(echo "$gd < 1" | bc -l))); then
-	        echo "$gd + .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
-		    gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
-		    killall gammastep
-		    gammastep -b "$gd":"$gd" &
-		    disown
-	    fi
-    
-	    ;;
-    dec)
-	    if (($(echo "$gd > .1" | bc -l))); then
-	        echo "$gd - .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
-	        gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
-	        killall gammastep
-	        gammastep -b "$gd":"$gd" &
-	        disown
+inc)
+
+        if (($(echo "$gd < 1" | bc -l))); then
+                echo "$gd + .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
+                gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
+                killall gammastep
+                gammastep -b "$gd":"$gd" &
+                disown
         fi
-	    ;;
+
+        ;;
+dec)
+        if (($(echo "$gd > .1" | bc -l))); then
+                echo "$gd - .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
+                gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
+                killall gammastep
+                gammastep -b "$gd":"$gd" &
+                disown
+        fi
+        ;;
 esac

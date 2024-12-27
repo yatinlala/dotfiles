@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+blinker=$(<"/tmp/waybar_blinker.cache") || echo "1" >"/tmp/waybar_blinker.cache"
+
+if [ "$blinker" = 1 ]; then
+        echo "😑"
+        echo 0 >/tmp/waybar_blinker.cache
+else
+        echo "🙂"
+        echo 1 >/tmp/waybar_blinker.cache
+
+fi
