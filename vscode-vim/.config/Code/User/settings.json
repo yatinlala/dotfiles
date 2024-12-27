@@ -1,0 +1,122 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.sideBar.location": "right",
+    "editor.minimap.enabled": false,
+    "cmake.showOptionsMovedNotification": false,
+    "window.zoomLevel": 2,
+    "editor.formatOnSave": true,
+    "editor.suggest.insertMode": "replace",
+    // "terminal.integrated.fontFamily": "MesloLGS NF",
+    "editor.linkedEditing": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "launch": {},
+    "[json]": {},
+    // "workbench.statusBar.visible": false,
+    // "breadcrumbs.enabled": false,
+    // "workbench.iconTheme": "material-icon-theme",
+    // "update.showReleaseNotes": false,
+    // "workbench.activityBar.visible": false,
+    "zenMode.hideLineNumbers": false,
+    "editor.lineNumbers": "relative",
+    "vim.leader": "<Space>",
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // NAVIGATION
+        // switch b/w buffers
+        {
+            "before": [
+                "<S-h>"
+            ],
+            "commands": [
+                ":bprevious"
+            ]
+        },
+        {
+            "before": [
+                "<S-l>"
+            ],
+            "commands": [
+                ":bnext"
+            ]
+        },
+        // splits
+        // {
+        //     "before": [
+        //         "leader",
+        //         "v"
+        //     ],
+        //     "commands": [
+        //         ":vsplit"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "leader",
+        //         "s"
+        //     ],
+        //     "commands": [
+        //         ":split"
+        //     ]
+        // },
+        //   // panes
+        //   {
+        //     "before": ["leader", "h"],
+        //     "commands": ["workbench.action.focusLeftGroup"]
+        //   },
+        //   {
+        //     "before": ["leader", "j"],
+        //     "commands": ["workbench.action.focusBelowGroup"]
+        //   },
+        //   {
+        //     "before": ["leader", "k"],
+        //     "commands": ["workbench.action.focusAboveGroup"]
+        //   },
+        //   {
+        //     "before": ["leader", "l"],
+        //     "commands": ["workbench.action.focusRightGroup"]
+        //   },
+        // NICE TO HAVE
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        //   { "before": ["leader", "p"], "commands": ["editor.action.formatDocument"] },
+        //   {
+        //     "before": ["g", "h"],
+        //     "commands": ["editor.action.showDefinitionPreviewHover"]
+        //   }
+    ],
+}
