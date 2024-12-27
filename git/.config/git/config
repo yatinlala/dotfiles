@@ -15,3 +15,5 @@
 	autocorrect = prompt
 ; [url "git@github.com:"]
 ; 	insteadOf = https://github.com/
+[alias]
+	s = status
