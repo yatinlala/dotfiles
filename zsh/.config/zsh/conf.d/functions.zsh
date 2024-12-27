@@ -6,6 +6,7 @@
 # alias audacity='xdg-launch audacity'
 alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
+alias scrcpy='xdg-launch scrcpy'
 dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
 # alias firefox='xdg-launch firefox'
@@ -20,6 +21,15 @@ wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # alias cat='bat -pp'
 alias info='info --vi-keys'
 alias bc='bc -lq'
+alias nix-shell='nix-shell --command zsh'
+nix() {
+  if [[ "$1" == "develop" ]]; then
+    shift  # Remove 'develop' from the arguments
+    command nix develop --command zsh "$@"
+  else
+    command nix "$@"
+  fi
+}
 # alias tetris='netris -k "hHklLJjs frn" -i .1'
 # alias grep='grep --color=auto --exclude-dir=.git -I'
 # alias egrep='grep -E'

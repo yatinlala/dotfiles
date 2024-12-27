@@ -8,6 +8,9 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 
+# https://nixos.wiki/wiki/Locales
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+
 
 SCRIPTS="$HOME/.local/scripts"
 # FZF
@@ -69,7 +72,7 @@ export VIDEO="mpv"
 export IMAGE="imv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
-export PAGER="bat --paging=always"
+export PAGER="less --quit-if-one-screen --ignore-case --raw-control-chars --chop-long-lines"
 
 
 export ZDOTDIR="$HOME/.config/zsh" 
@@ -79,8 +82,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="newsboat|pipe-viewer"
 
 
-export MANWIDTH=999 # resizing window will work! nvim handles wrap
-export MANPAGER='nvim +Man!'
+# export MANWIDTH=60 # resizing window will work! nvim handles wrap
+# export MANPAGER='nvim +Man!'
 # Colored man pages
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANROFFOPT="-c" # Fix formatting errors

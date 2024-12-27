@@ -92,4 +92,5 @@ source $ZDOTDIR/.p10k.zsh
 # # PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
 # eval "$(starship init zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet # Gets rid of error message when launching a nix shell
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
