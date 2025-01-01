@@ -8,10 +8,3 @@ directory, and type `stow <foldername>`.
 
 TODO 
 stow doesn't --target and --dir doesn't work with stow . investigate further
-
-
-## Note:
-
-Keydrc needs to be linked to /etc/keyd/default.conf. Run
-
-`sudo ln -sf ~/.dotfiles/keyd /etc/keyd`
