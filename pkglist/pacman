@@ -45,6 +45,7 @@ gamemode
 gammastep
 gcr
 gdb
+ghostty
 gimp
 git
 gnome-boxes
@@ -139,9 +140,11 @@ plocate
 polkit-gnome
 poppler
 power-profiles-daemon
+powertop
 pv
 python-brotli
 python-brotlicffi
+python-croniter
 python-mutagen
 python-pipx
 python-pycryptodome
@@ -248,12 +251,14 @@ vulkan-intel
 vulkan-tools
 waybar
 waycheck
+wev
 wezterm
 wget
 wl-clipboard
 wtype
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
+xprintidle
 yazi
 yelp
 yt-dlp
