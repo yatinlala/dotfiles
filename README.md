@@ -1,10 +1,15 @@
 # dotfiles
 
-Have I mentioned that I use Arch?
+![desktop](https://github.com/user-attachments/assets/4e7ab6fb-7bcf-4b56-9263-39cea55fb854)
 
-These dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/). 
-To use my dotfiles for a particular program, clone this repo, cd into the root
-directory, and type `stow <foldername>`.
+My personal Arch Linux configuration. Take what you like.
 
-TODO 
-stow doesn't --target and --dir doesn't work with stow . investigate further
+These dotfiles are managed using [GNU Stow](https://www.gnu.org/software/stow/).
+
+Using stow terminology: \
+  `(sudo) make` installs every package in the Stow directory. \
+  `make PACKAGE=<package-name>` installs à la carte.
+
+## Notes:
+1. `stow .` when `--target` and `--dir` is doesn't seem to work, though stowing individual packages is fine. For now, I'm using a makefile to expand a wildcard. I think there is a bug filed for this w/ Stow, but the project is abandoned?
+2. Consider getting rid of makefiles and using .stowrc instead? Could be simpler.
