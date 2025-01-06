@@ -115,7 +115,8 @@ map gl<space> cd ~/.local
 map gls cd ~/.local/share
 map glx cd ~/.local/xdg-launch
 map glm cd ~/.local/mount
-map gM cd /run/media/yatin
+map gM cd /mnt
+# map gM cd /run/media/yatin
 
 
 map gu<space> cd /usr
