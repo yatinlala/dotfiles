@@ -1,0 +1,38 @@
+### APPEARANCE ###
+theme = "GruvboxDark"
+font-size = 14
+
+window-padding-x = 6
+window-padding-y = 4
+unfocused-split-opacity = 0.8
+
+gtk-titlebar = false
+gtk-tabs-location = top
+adw-toolbar-style = raised-border
+gtk-wide-tabs = false
+gtk-adwaita = true
+
+### BEHAVIOUR ###
+mouse-scroll-multiplier = .8
+focus-follows-mouse = false
+copy-on-select = true
+confirm-close-surface = false
+gtk-single-instance = true
+
+
+### KEYBINDS ###
+keybind = ctrl+super+w=close_surface
+
+keybind = ctrl+super+v=new_split:right
+keybind = ctrl+super+s=new_split:down
+
+keybind = ctrl+super+h=goto_split:left
+keybind = ctrl+super+j=goto_split:bottom
+keybind = ctrl+super+k=goto_split:top
+keybind = ctrl+super+l=goto_split:right
+
+keybind = ctrl+super+equal=equalize_splits
+
+keybind = ctrl+super+t=new_tab
+keybind = ctrl+super+n=next_tab
+keybind = ctrl+super+p=previous_tab
