@@ -85,15 +85,13 @@ gammastep)
         )
     ;;
 signal)
-    pgrep -x signal-desktop || gtk-launch signal-desktop &
-    # sway "workspace 9; [class=Signal] focus";;
-    hyprctl dispatch focuswindow "^(Signal)$"
-    ;;
+    pgrep -x signal-desktop || gtk-launch signal-desktop
+    # sway "workspace 9; [class=Ferdium] focus";;
+    hyprctl dispatch togglespecialworkspace signal;;
 spotify)
-    (wmctrl -l | grep -q "pointer Spotify") || gtk-launch spotify-launcher
-    # sway "[instance=spotify] scratchpad show; [instance=spotify] move position center";;
-    hyprctl dispatch focuswindow "^(Spotify)$"
-    ;;
+    pgrep -x spotify || gtk-launch spotify-launcher
+    # sway "workspace 9; [class=Ferdium] focus";;
+    hyprctl dispatch togglespecialworkspace spotify;;
 spotifyd)
     pgrep -x spotifyd && (
         notify-send -t 1000 "Killing spotifyd."
@@ -115,8 +113,8 @@ ticktick)
     hyprctl dispatch focuswindow "^(ticktick)$"
     ;;
 ticktick-brave)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || gtk-launch ticktick-brave
-    hyprctl dispatch focuswindow "^(brave-cfammbeebmjdpoppachopcohfchgjapd-Default)$"
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
+    hyprctl dispatch focuswindow "class:^(brave-cfammbeebmjdpoppachopcohfchgjapd-Default)$"
     ;;
 tmux) ;;
 torbrowser)

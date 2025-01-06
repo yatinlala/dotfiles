@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/dash
 
 blinker=$(<"/tmp/waybar_blinker.cache") || echo "1" >"/tmp/waybar_blinker.cache"
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mkdir -p $HOME/.local/xdg-launch
 HOME=$HOME/.local/xdg-launch
 
 exec $1 "${@:2}"
