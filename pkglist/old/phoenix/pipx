@@ -1,0 +1,11 @@
+venvs are in /home/yatin/.local/share/pipx/venvs
+apps are exposed on your $PATH at /home/yatin/.local/bin
+manual pages are exposed at /home/yatin/.local/share/man
+   package hyprshade 3.2.1, installed using Python 3.13.1
+    - hyprshade
+   package pyprland 2.4.3, installed using Python 3.13.1
+    - pypr
+   package spotdl 4.2.10, installed using Python 3.13.1
+    - spotdl
+   package xkcdpass 1.19.9, installed using Python 3.13.1
+    - xkcdpass
