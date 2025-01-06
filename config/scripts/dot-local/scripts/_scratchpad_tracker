@@ -10,6 +10,9 @@ fi
 if pgrep -x signal-desktop > /dev/null; then
    output="$output  "
 fi
+if hyprctl clients | grep -q "brave-cfammbeebmjdpoppachopcohfchgjapd-Default"; then
+   output="$output  "
+fi
 
 output="$output "
 

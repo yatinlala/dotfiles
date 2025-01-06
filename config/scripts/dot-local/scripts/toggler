@@ -85,7 +85,7 @@ gammastep)
         )
     ;;
 signal)
-    pgrep -x signal-desktop || gtk-launch signal-desktop
+    pgrep -x spotify || gtk-launch signal-desktop
     # sway "workspace 9; [class=Ferdium] focus";;
     hyprctl dispatch togglespecialworkspace signal;;
 spotify)
@@ -114,7 +114,7 @@ ticktick)
     ;;
 ticktick-brave)
     hyprctl clients -j | jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
-    hyprctl dispatch focuswindow "class:^(brave-cfammbeebmjdpoppachopcohfchgjapd-Default)$"
+    hyprctl dispatch togglespecialworkspace ticktick
     ;;
 tmux) ;;
 torbrowser)
