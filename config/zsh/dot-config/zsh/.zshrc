@@ -75,7 +75,8 @@ eval "$(fzf --zsh)"
 HISTFILE=~/.cache/zhistory
 HISTSIZE=1000
 SAVEHIST=100000
-setopt inc_append_history_time hist_ignore_space
+setopt inc_append_history hist_ignore_space
+
 
 
 # # [[ PLUGINS ]]

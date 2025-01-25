@@ -20,3 +20,4 @@
 	staash = stash --all
 	bb = !git for-each-ref --color --sort=-committerdate --format='%(color: bold magenta)%(align:60,left)%(refname:short)%(color:bold red) %(upstream:track,nobracket)%(end)%(color:nobold yellow)%(align:58,left)%(committerdate:format:%Y-%d-%m %H:%M) (%(committerdate:relative), %(committerdate:format:%A %d))%(end)%(color:green)%(align:24,left)%(authorname)%(end)%(color:green)%(align:64,left)%(contents:lines=1)%(end)' refs/heads/ --count 16 for-each-ref --color --sort=-committerdate --format='%(color: bold magenta)%(align:60,left)%(refname:short)%(color:bold red) %(upstream:track,nobracket)%(end)%(color:nobold yellow)%(align:58,left)%(committerdate:format:%Y-%d-%m %H:%M) (%(committerdate:relative), %(committerdate:format:%A %d))%(end)%(color:green)%(align:24,left)%(authorname)%(end)%(color:green)%(align:64,left)%(contents:lines=1)%(end)' refs/heads/ --count 16
 	BLAME = blame -w -C -C -C
+	spush = push --force-with-lease

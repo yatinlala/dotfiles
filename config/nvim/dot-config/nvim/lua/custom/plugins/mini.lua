@@ -15,6 +15,12 @@ return {
     -- figure out what 'cover' and all that does. feels like if function
     -- definition is right above you mini.ai should be able to figure things out
     config = function()
+        -- require('mini.completion').setup()
+        --
+        require('mini.pairs').setup()
+        vim.keymap.set('n', '<leader>A', function() vim.g.minipairs_disable = not vim.g.minipairs_disable end,
+            { desc = 'Toggle MiniPairs' })
+
         require('mini.splitjoin').setup()
 
         -- try cina, cila. need to get these under my fingers
@@ -32,14 +38,14 @@ return {
 
         -- require('mini.tabline').setup()
 
-        require('mini.pick').setup({
-            window = {
-                config = {
-                    border = 'single',
-                },
-                prompt_prefix = ' 🔎 ',
-            },
-        })
+        -- require('mini.pick').setup({
+        --     window = {
+        --         config = {
+        --             border = 'single',
+        --         },
+        --         prompt_prefix = ' 🔎 ',
+        --     },
+        -- })
         -- vim.keymap.set('n', '<leader>f', function()
         --     MiniPick.builtin.files()
         -- end, { desc = 'Pick [F]iles' })

@@ -6,7 +6,7 @@ return {
         cmd = { 'LspInfo' },
 
         dependencies = {
-            { 'williamboman/mason.nvim', opts = {}, cmd = { 'Mason', 'MasonInstall', 'MasonLog', 'MasonUninstall', 'MasonUninstallAll', 'MasonUpdate' } },
+            { 'williamboman/mason.nvim',           opts = {},                                   cmd = { 'Mason', 'MasonInstall', 'MasonLog', 'MasonUninstall', 'MasonUninstallAll', 'MasonUpdate' } },
             { 'williamboman/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
         },
         config = function()

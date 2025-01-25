@@ -9,7 +9,7 @@ unfocused-split-opacity = 0.8
 gtk-titlebar = false
 gtk-tabs-location = top
 adw-toolbar-style = raised-border
-gtk-wide-tabs = false
+# gtk-wide-tabs = false
 gtk-adwaita = true
 
 ### BEHAVIOUR ###
@@ -30,6 +30,11 @@ keybind = ctrl+super+h=goto_split:left
 keybind = ctrl+super+j=goto_split:bottom
 keybind = ctrl+super+k=goto_split:top
 keybind = ctrl+super+l=goto_split:right
+
+keybind = ctrl+super+alt+h=resize_split:left,10
+keybind = ctrl+super+alt+j=resize_split:down,10
+keybind = ctrl+super+alt+k=resize_split:up,10
+keybind = ctrl+super+alt+l=resize_split:right,10
 
 keybind = ctrl+super+equal=equalize_splits
 

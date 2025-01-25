@@ -1,4 +1,4 @@
-g() { 
+go() { 
   EXTRACTED_JUMPS=$(grep -E "map .* cd .*" ~/.config/lf/lfrc | sed "s/map g//" | sed "s/ cd//")
 
   if [ -z "$1" ]; then

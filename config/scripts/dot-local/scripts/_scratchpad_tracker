@@ -7,6 +7,9 @@ output=" "
 if pgrep -x spotify > /dev/null; then
   output="$output  "
 fi
+if pgrep -x spotifyd > /dev/null; then
+   output="$output 🎶 "
+fi
 if pgrep -x signal-desktop > /dev/null; then
    output="$output  "
 fi

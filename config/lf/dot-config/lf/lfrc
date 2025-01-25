@@ -97,6 +97,8 @@ map <a-t> :rename-todo
 map ga cd ~/audio
 map gC cd ~/.config
 
+map gnc cd ~/.config/nvim
+
 map gc cd ~/git
 
 map gS cd ~/.local/scripts
@@ -413,6 +415,27 @@ map dl dlfile
 # Share {{{
 cmd share $curl -F"file=@$fx" https://0x0.st | wl-copy
 map <c-s> share
+
+#: }}}
+
+# Nested nvim {{{
+cmd vsplit ${{
+    nvim --cmd "vsplit" $f
+}}
+
+cmd split ${{
+    nvim --cmd "split" $f
+}}
+
+cmd tabnew ${{
+    nvim --cmd "tabnew" $f
+}}
+
+
+# Archive Mappings
+map <c-t> tabnew
+map <c-s> split
+map <c-v> vsplit
 
 #: }}}
 

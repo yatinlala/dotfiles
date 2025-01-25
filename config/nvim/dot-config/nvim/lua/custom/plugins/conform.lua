@@ -26,7 +26,7 @@ return {
             html = { 'prettierd' },
             css = { 'prettierd' },
             javascript = { 'prettierd', 'prettierd', stop_after_first = true },
-            -- json = { 'jq' },
+            json = { 'jq' },
             -- jsonl = { 'jq' },
         },
         -- Set default options

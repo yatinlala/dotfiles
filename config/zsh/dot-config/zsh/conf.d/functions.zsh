@@ -33,10 +33,13 @@ nix() {
 # alias tetris='netris -k "hHklLJjs frn" -i .1'
 # alias grep='grep --color=auto --exclude-dir=.git -I'
 # alias egrep='grep -E'
-ls() { eza --icons=auto "$@" }
+if command -v eza > /dev/null; then
+  ls() { eza --icons=auto "$@" }
+fi
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
+g() { git "$@" }
 vis() { $EDITOR -S Session.vim }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }

@@ -85,8 +85,7 @@ gammastep)
         )
     ;;
 signal)
-    pgrep -x spotify || gtk-launch signal-desktop
-    # sway "workspace 9; [class=Ferdium] focus";;
+    pgrep -x signal || gtk-launch signal-desktop
     hyprctl dispatch togglespecialworkspace signal;;
 spotify)
     pgrep -x spotify || gtk-launch spotify-launcher
@@ -99,7 +98,7 @@ spotifyd)
     ) ||
         (
             notify-send -t 1000 "Starting spotifyd."
-            setsid spotifyd &
+            setsid xdg-launch spotifyd &
         )
     ;;
 spotify-tui)

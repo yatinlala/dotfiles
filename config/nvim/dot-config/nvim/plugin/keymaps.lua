@@ -38,12 +38,13 @@ vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Source line' })
 vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Source selection' })
 
 -- Navigate buffers
-vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) -- same as C-6 (^)
--- vim.keymap.set('n', '[[', '<cmd>bnext<CR>')
--- vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>')
+-- vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) -- same as C-6 (^)
+-- These are defaults in 0.11
+-- vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
+-- vim.keymap.set('n', ']b', '<cmd>bnext<CR>')
 
--- exit terminal mode
-vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>b', '<cmd>.!bc<CR>', { desc = 'Filter to bc' })
+
 
 -- vim.keymap.set('n', 'gd', '<C-]>', { silent = true, desc = 'Go to Definition' })
 

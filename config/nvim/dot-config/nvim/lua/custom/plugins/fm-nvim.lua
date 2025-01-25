@@ -1,5 +1,6 @@
 return {
     'is0n/fm-nvim',
+    enabled = false,
     keys = {
         {
             '<leader>e',
