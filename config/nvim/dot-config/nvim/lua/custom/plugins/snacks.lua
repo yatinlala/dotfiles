@@ -57,6 +57,7 @@ return {
     opts = {
         -- notifier = { enabled = true }, -- doesn't seem to work
         -- scope = {},
+        -- image = {},
         quickfile = {},
         picker = {},
     },

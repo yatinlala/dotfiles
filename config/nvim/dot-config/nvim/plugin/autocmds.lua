@@ -16,14 +16,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-    desc = 'Update Protein Totals',
-    group = augroup('diary_protein'),
-    pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
-    callback = function()
-        require('custom.util').update_protein_totals()
-    end,
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--     desc = 'Update Protein Totals',
+--     group = augroup('diary_protein'),
+--     pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
+--     callback = function()
+--         require('custom.util').update_protein_totals()
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd('BufReadPost', {
     desc = 'Register :Yesterday and :Tomorrow',

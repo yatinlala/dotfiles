@@ -74,6 +74,9 @@ notes)
     hyprctl dispatch focuswindow "^(notes)$"
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+obsidian)
+    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || gtk-launch obsidian
+    hyprctl dispatch togglespecialworkspace obsidian;;
 gammastep)
     pgrep -x "gammastep" && (
         killall gammastep

@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+
+while true; do
+    current_window=$(hyprctl activewindow -j | jq -r '.class')
+    
+    if [[ "$current_window" == *"vivaldi-stable"* ]] || [[ "$current_window" == *"firefox"* ]] || [[ "$current_window" == *"zen"* ]]; then
+
+        title=$(hyprctl activewindow -j | jq -r '.title')
+
+        # if [[ "$title" == *"YouTube"* ]]; then
+        #     browser_class=$(echo "$current_window" | tr '[:upper:]' '[:lower:]')
+        #     # Pause browsers
+        #     browser_players=$(playerctl --list-all | grep -i "$browser_class")
+        #     for player in $(playerctl --list-all); do
+        #         if [[ "$player" == *"chromium"* ]] || [[ "$player" == *"firefox"* ]] || [[ "$player" == *"vivaldi"* ]]; then
+        #             echo "Pausing browser player: $player"
+        #             playerctl --player "$player" pause
+        #         fi
+        #     done
+        #     $HOME/.config/hypr/scripts/mindfulness-popup.py
+        # fi
+        if [[ "$title" == *"YouTube"* ]]; then
+            youtube_time=$((youtube_time + 1))
+
+            if [[ $youtube_time -ge 300 ]]; then
+                browser_class=$(echo "$current_window" | tr '[:upper:]' '[:lower:]')
+                # Pause browsers
+                browser_players=$(playerctl --list-all | grep -i "$browser_class")
+                for player in $(playerctl --list-all); do
+                    if [[ "$player" == *"chromium"* ]] || [[ "$player" == *"firefox"* ]] || [[ "$player" == *"vivaldi"* ]]; then
+                        echo "Pausing browser player: $player"
+                        playerctl --player "$player" pause
+                    fi
+                done
+
+                $HOME/.config/hypr/scripts/mindfulness-popup.py
+                youtube_time=0
+            fi
+        fi
+    else
+        youtube_time=0
+    fi
+    sleep 1
+done

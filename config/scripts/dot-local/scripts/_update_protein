@@ -1,0 +1,64 @@
+#!/usr/bin/bash
+
+file_path="$1"
+
+# Only operate on diary files (optional check)
+if ! echo "$file_path" | grep -q "/documents/notes/diary/"; then
+    echo "$file_path"
+    echo "File path does not contain '/documents/notes/diary/'. Quitting."
+    exit
+fi
+
+# Check if a file argument was provided
+if [ $# -eq 0 ]; then
+    echo "Error: Please provide a file path as argument"
+    echo "Usage: $0 filename"
+    exit 1
+fi
+
+# Initialize variables
+total=0
+goal=0
+needed=0
+
+# Process file line by line
+while IFS= read -r line; do
+    # Extract goal value
+    if [[ $line =~ ^goal: ]]; then
+        goal=$(echo "$line" | grep -o 'goal:[[:space:]]*[0-9]*' | grep -o '[0-9]*')
+    fi
+    
+    # Skip lines that are not meals
+    if ! [[ $line =~ ^total: ]] && ! [[ $line =~ ^goal: ]] && ! [[ $line =~ ^needed: ]]; then
+        # Sum up grams for each meal
+        grams=$(echo "$line" | grep -o '[0-9]*g' | grep -o '[0-9]*')
+        if [[ -n $grams ]]; then
+            total=$((total + grams))
+        fi
+    fi
+done < "$file_path"
+
+# Calculate needed
+needed=$((goal - total))
+if [ $needed -lt 0 ]; then
+    needed=0
+fi
+
+# Create a temporary file for storing the modified content
+temp_file=$(mktemp)
+
+# Update file content
+while IFS= read -r line; do
+    if [[ $line =~ ^total: ]]; then
+        echo "total: ${total}g"
+    elif [[ $line =~ ^needed: ]]; then
+        echo "needed: ${needed}g"
+    else
+        echo "$line"
+    fi
+done < "$file_path" > "$temp_file"
+
+# Replace the original file with the updated content
+mv "$temp_file" "$file_path"
+
+echo "Updated protein totals in $file_path (Total: ${total}g, Goal: ${goal}g, Needed: ${needed}g)"

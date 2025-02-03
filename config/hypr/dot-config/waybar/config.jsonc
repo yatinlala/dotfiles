@@ -14,7 +14,7 @@
 	],
 	"modules-right": [
 		//"custom/weather",
-		"custom/eye",
+		// "custom/eye",
 		"custom/scratchpad_tracking",
 		"tray",
 		"backlight",
@@ -92,7 +92,7 @@
 	"custom/eye": {
 		// "format": "{}",
 		"format": "<span font='16'>{}</span>",
-		"exec": "_waybar_blinker",
+		"exec": "$HOME/.config/waybar/modules/waybar_blinker",
 		"interval": 3
 	},
 	"custom/weather": {
@@ -104,7 +104,7 @@
 	},
 	"custom/scratchpad_tracking": {
 		"format": "{}",
-		"exec": "_scratchpad_tracker",
+		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
 		"interval": 3,
 		"spacing": 10
 	},

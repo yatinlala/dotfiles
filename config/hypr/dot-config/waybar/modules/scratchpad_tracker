@@ -4,17 +4,20 @@ set -e
 
 output=" "
 
-if pgrep -x spotify > /dev/null; then
-  output="$output  "
-fi
+# if pgrep -x spotify > /dev/null; then
+#   output="$output  "
+# fi
 if pgrep -x spotifyd > /dev/null; then
    output="$output 🎶 "
 fi
 if pgrep -x signal-desktop > /dev/null; then
-   output="$output  "
+   output="$output 📞"
 fi
 if hyprctl clients | grep -q "brave-cfammbeebmjdpoppachopcohfchgjapd-Default"; then
-   output="$output  "
+   output="$output ✅"
+fi
+if pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1; then
+   output="$output 💎"
 fi
 
 output="$output "

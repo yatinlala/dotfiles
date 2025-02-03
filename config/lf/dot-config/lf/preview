@@ -12,7 +12,11 @@ image() {
 	exit 1
     fi
 
-    kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+    # changed transfer-mode=file to transfer-mode=memory to fix ghostty
+    # previews, but now they aren't in preview box. TODO figure out why this
+    # worked and fully fix. maybe use chafa --format=kitty to remove kitty dependency?
+    # kitty +kitten icat --transfer-mode=file --silent --stdin no --place "${w}x${h}@${x}x${y}" "$file" < /dev/null > /dev/tty
+    kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
 
     exit 1
 }

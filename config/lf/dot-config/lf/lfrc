@@ -131,7 +131,7 @@ map gt cd ~/.local/share/Trash/files
 map g/ cd /
 map ge cd /etc
 
-map gn cd ~/documents/org
+map gn cd ~/documents/notes
 #: }}}
 
 # Columns {{{
