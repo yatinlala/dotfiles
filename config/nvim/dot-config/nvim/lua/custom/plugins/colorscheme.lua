@@ -3,7 +3,7 @@ return {
     --     'ellisonleao/gruvbox.nvim',
     --     priority = 1000,
     --     lazy = false,
-    --     enabled = false,
+    --     enabled = true,
     --     init = function()
     --         require('gruvbox').setup({
     --             -- undercurl = true,
@@ -28,7 +28,7 @@ return {
     -- {
     --     'eddyekofo94/gruvbox-flat.nvim',
     --     lazy = false,
-    --     enabled = false,
+    --     enabled = true,
     --     priority = 1000,
     --     config = function()
     --         vim.g.gruvbox_flat_style = 'dark'
@@ -49,7 +49,7 @@ return {
     --     'luisiacc/gruvbox-baby',
     --     lazy = false,
     --     priority = 1000,
-    --     enabled = false,
+    --     enabled = true,
     --     config = function()
     --         vim.cmd([[colorscheme gruvbox-baby]])
     --     end,
@@ -84,9 +84,9 @@ return {
         enabled = true,
         config = function()
             vim.g.gruvbox_material_transparent_background = 0
-            vim.g.gruvbox_material_foreground = 'mix'
-            vim.g.gruvbox_material_background = 'hard' -- soft, medium, hard
-            vim.g.gruvbox_material_ui_contrast = 'high' -- The contrast of line numbers, indent lines, etc.
+            vim.g.gruvbox_material_foreground = 'material'
+            vim.g.gruvbox_material_background = 'hard'    -- soft, medium, hard
+            vim.g.gruvbox_material_ui_contrast = 'high'   -- The contrast of line numbers, indent lines, etc.
             vim.g.gruvbox_material_float_style = 'bright' -- Background of floating windows
             vim.g.gruvbox_material_statusline_style = 'mix'
             vim.g.gruvbox_material_cursor = 'auto'
@@ -99,6 +99,10 @@ return {
             vim.g.gruvbox_material_better_performance = 1
 
             vim.cmd.colorscheme('gruvbox-material')
+
+            -- vim.cmd("hi NormalFloat guibg=#282828")
+            vim.cmd("hi! link FloatBorder Normal")
+            -- vim.cmd("hi! link NormalFloat Normal")
 
             -- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')
         end,

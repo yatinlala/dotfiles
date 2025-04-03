@@ -30,6 +30,12 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
+                    -- LSP AUTOCOMPLETION
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if client:supports_method('textDocument/completion') then
+                        vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+                    end
+
                     -- - 'omnifunc' is set to |vim.lsp.omnifunc()|, use |i_CTRL-X_CTRL-O| to trigger
                     --   completion.
                     -- - 'tagfunc' is set to |vim.lsp.tagfunc()|. This enables features like
@@ -97,6 +103,8 @@ return {
 
                     -- Open diagnostic float
                     map('gl', vim.diagnostic.open_float, 'Open Float', { 'n', 'x' })
+
+                    vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
                     local function ToggleVirtualText()
                         -- Get the current diagnostics configuration

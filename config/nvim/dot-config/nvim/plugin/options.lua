@@ -14,9 +14,9 @@ vim.opt.splitright = true
 vim.opt.undofile = true -- persistent undo
 
 vim.opt.laststatus = 3
-vim.opt.showmode = false -- hide -- INSERT --
+vim.opt.showmode = false   -- hide -- INSERT --
 
-vim.opt.path:append('**') -- :find searches subdirs
+vim.opt.path:append('**')  -- :find searches subdirs
 
 vim.opt.breakindent = true -- wrapped lines preserve indent level
 
@@ -30,6 +30,12 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.opt.winblend = 5
+vim.opt.winborder = "rounded"
+
+-- Completion
+vim.opt.completeopt = { 'menuone', 'noselect', 'fuzzy' } -- mostly just for cmp
+vim.opt.shortmess:append('c')                            -- Get rid of "pattern not found" during completions
+vim.opt.pumheight = 8                                    -- number of items in completion menu
 
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines
@@ -62,10 +68,6 @@ vim.opt.winblend = 5
 -- --
 -- -- -- vim.opt.shortmess:append('I') -- Hide intro
 -- --
--- -- -- Completion
--- -- vim.opt.completeopt = { 'menuone', 'noselect' } -- mostly just for cmp
--- -- vim.opt.shortmess:append('c') -- Get rid of "pattern not found" during completions
--- -- vim.opt.pumheight = 15 -- number of items in completion menu
 -- --
 -- --
 -- -- if vim.g.neovide then

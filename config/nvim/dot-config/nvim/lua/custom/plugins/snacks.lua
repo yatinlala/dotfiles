@@ -25,6 +25,13 @@ return {
             end,
             desc = 'Select Scratch Buffer',
         },
+        {
+            '<leader>f',
+            function()
+                Snacks.picker.files()
+            end,
+            desc = 'Pick [F]iles',
+        },
         -- {
         --     '<leader>f',
         --     function()
@@ -32,33 +39,30 @@ return {
         --     end,
         --     desc = 'Select Scratch Buffer',
         -- },
-        -- {
-        --     '<leader>f',
-        --     function()
-        --         Snacks.picker.files()
-        --     end,
-        --     desc = 'Select Scratch Buffer',
-        -- },
-        -- {
-        --     '<leader>h',
-        --     function()
-        --         Snacks.picker.help_tags()
-        --     end,
-        --     desc = 'Find [H]iles',
-        -- },
-        -- {
-        --     '<leader>G',
-        --     function()
-        --         Snacks.picker.live_grep_native()
-        --     end,
-        --     desc = 'Live [G]rep',
-        -- },
+        {
+            '<leader>h',
+            function()
+                Snacks.picker.help()
+            end,
+            desc = 'Pick [H]elp',
+        },
+        {
+            '<leader>G',
+            function()
+                Snacks.picker.grep()
+            end,
+            desc = 'Live [G]rep',
+        },
     },
     opts = {
         -- notifier = { enabled = true }, -- doesn't seem to work
         -- scope = {},
         -- image = {},
         quickfile = {},
-        picker = {},
+        picker = {
+            layout = {
+                preset = "ivy_split"
+            }
+        },
     },
 }

@@ -49,7 +49,7 @@ vim.keymap.set('n', '<leader>b', '<cmd>.!bc<CR>', { desc = 'Filter to bc' })
 -- vim.keymap.set('n', 'gd', '<C-]>', { silent = true, desc = 'Go to Definition' })
 
 -- Visual --
-local opts = { noremap = true, silent = true }
+local opts = { silent = true }
 -- Stay in indent mode
 -- note: i removed this because i should be using . repeat instead of spamming >
 -- vim.keymap.set('v', '<', '<gv', opts)
