@@ -23,6 +23,7 @@ return {
         formatters_by_ft = {
             lua = { 'stylua' },
             python = { 'isort', 'black' },
+            go = { 'gofmt' },
             html = { 'prettierd' },
             css = { 'prettierd' },
             javascript = { 'prettierd', 'prettierd', stop_after_first = true },

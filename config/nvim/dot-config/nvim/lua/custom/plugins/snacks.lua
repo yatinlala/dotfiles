@@ -28,7 +28,8 @@ return {
         {
             '<leader>f',
             function()
-                Snacks.picker.files()
+                -- Snacks.picker.files()
+                Snacks.picker.smart()
             end,
             desc = 'Pick [F]iles',
         },
@@ -53,12 +54,33 @@ return {
             end,
             desc = 'Live [G]rep',
         },
+        {
+            '<leader>bd',
+            function()
+                Snacks.bufdelete()
+            end,
+            desc = '[B]uffer [D]elete',
+        },
+        {
+            '<leader>ba',
+            function()
+                Snacks.bufdelete.other()
+            end,
+            desc = 'Delete [B]uffer [A]ll',
+        },
     },
     opts = {
+        bigfile = { enabled = true },
+        -- explorer = { enabled = true },
         -- notifier = { enabled = true }, -- doesn't seem to work
         -- scope = {},
-        -- image = {},
-        quickfile = {},
+        image = { enabled = true },
+        indent = {
+            enabled = true,
+            char = "┆", -- TODO doesn't work?
+            animate = { enabled = false }
+        },
+        quickfile = { enabled = true },
         picker = {
             layout = {
                 preset = "ivy_split"

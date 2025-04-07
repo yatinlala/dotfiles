@@ -43,7 +43,7 @@ vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Source selection' })
 -- vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
 -- vim.keymap.set('n', ']b', '<cmd>bnext<CR>')
 
-vim.keymap.set('n', '<leader>b', '<cmd>.!bc<CR>', { desc = 'Filter to bc' })
+vim.keymap.set('n', '<leader>B', '<cmd>.!bc<CR>', { desc = 'Filter to bc' })
 
 
 -- vim.keymap.set('n', 'gd', '<C-]>', { silent = true, desc = 'Go to Definition' })
