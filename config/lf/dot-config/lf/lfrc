@@ -99,7 +99,7 @@ map gC cd ~/.config
 
 map gnc cd ~/.config/nvim
 
-map gc cd ~/git
+map gs cd ~/software
 
 map gS cd ~/.local/scripts
 
