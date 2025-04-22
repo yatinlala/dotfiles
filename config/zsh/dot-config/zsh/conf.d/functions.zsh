@@ -99,6 +99,7 @@ alias rm='rm -Iv'
 #Media
 yt() { xdg-launch yt-dlp -f "bv*[height<=1080]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
 ytl() { xdg-launch yt-dlp -f "bv*[height<=720]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }
+alias ytl="xdg-launch yt-dlp -f \"bv*[height<=720]+ba\" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*'"
 yta() { xdg-launch yt-dlp --extract-audio "$@" }
 ytp() { yt -o '%(playlist_index)2d - %(title)s.%(ext)s' -i "$@" }
 ytd() { yt -o '~/videos/📒 %(title)s.%(ext)s' "$@" }
