@@ -83,7 +83,7 @@ return {
         quickfile = { enabled = true },
         picker = {
             layout = {
-                preset = "ivy_split"
+                preset = "telescope"
             }
         },
     },
