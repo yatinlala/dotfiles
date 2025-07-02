@@ -8,10 +8,11 @@
 }
 
 window#waybar {
-  /* background: #1d2021; */
-  background: rgba(29, 32, 33, .85);
+  background: #1d2021;
+  /* background: rgba(29, 32, 33, 0.85); */
   color: #ebdbb2;
-  opacity: .85;
+  /* opacity: 0.85; */
+  /* opacity: 1; */
 }
 
 tooltip {
@@ -107,13 +108,21 @@ tooltip {
 
 #mpris.playing {
   background: #32302f;
-  background-image: linear-gradient(62deg, #32302f 0%, rgba(184,187,38,00) 100%);
+  background-image: linear-gradient(
+    62deg,
+    #32302f 0%,
+    rgba(184, 187, 38, 00) 100%
+  );
   color: #ebdbb2;
 }
 
 #mpris.paused {
   background: #32302f;
-  background-image: linear-gradient(62deg, #32302f 0%, rgba(251,73,52,00) 100%);
+  background-image: linear-gradient(
+    62deg,
+    #32302f 0%,
+    rgba(251, 73, 52, 00) 100%
+  );
   color: #ebdbb2;
 }
 

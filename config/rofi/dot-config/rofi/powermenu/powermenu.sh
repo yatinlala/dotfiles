@@ -60,16 +60,19 @@ case $chosen in
 		fi
         ;;
     $suspend)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+		mpc -q pause
+		# amixer set Master mute
+		systemctl suspend
+		# ans=$(confirm_exit &)
+		# if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+		# 	mpc -q pause
+		# 	amixer set Master mute
+		# 	systemctl suspend
+		# elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+		# 	exit 0
+		#       else
+		# 	msg
+		#       fi
         ;;
     $logout)
 		ans=$(confirm_exit &)

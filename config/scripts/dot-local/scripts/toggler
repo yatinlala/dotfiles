@@ -76,8 +76,8 @@ notes)
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
 obsidian)
     pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || gtk-launch obsidian
-    hyprctl dispatch focuswindow "class:^(obsidian)$";;
-    # hyprctl dispatch togglespecialworkspace obsidian;;
+    # hyprctl dispatch focuswindow "class:^(obsidian)$";;
+    hyprctl dispatch togglespecialworkspace obsidian;;
 gammastep)
     pgrep -x "gammastep" && (
         killall gammastep
@@ -118,6 +118,10 @@ ticktick)
 ticktick-brave)
     hyprctl clients -j | jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
     hyprctl dispatch togglespecialworkspace ticktick
+    ;;
+habitica-brave)
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")' || gtk-launch brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default
+    hyprctl dispatch togglespecialworkspace habitica
     ;;
 tmux) ;;
 torbrowser)

@@ -69,4 +69,5 @@ if vim.loop.fs_stat(vim.fn.stdpath('config') .. '/lua/custom/plugins') then
     })
 end
 
--- require('custom.statusline')
+-- vim.opt.cmdheight = 0
+-- require('vim._extui').enable({})

@@ -44,5 +44,3 @@ keybind = ctrl+super+equal=equalize_splits
 keybind = ctrl+super+t=new_tab
 keybind = ctrl+super+n=next_tab
 keybind = ctrl+super+p=previous_tab
-#added by claude code
-keybind = shift+enter=text:\n

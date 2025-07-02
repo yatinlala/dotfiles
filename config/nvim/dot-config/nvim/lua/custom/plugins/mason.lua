@@ -7,7 +7,7 @@ return {
 
         dependencies = {
             {
-                'williamboman/mason.nvim',
+                'mason-org/mason.nvim',
                 opts = {},
                 cmd = {
                     'Mason',
@@ -18,7 +18,7 @@ return {
                     'MasonUpdate'
                 }
             },
-            { 'williamboman/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
+            { 'mason-org/mason-lspconfig.nvim', dependencies = { 'williamboman/mason.nvim' } },
         },
         config = function()
             vim.lsp.enable('ocamllsp')
@@ -31,11 +31,11 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
 
-                    -- LSP AUTOCOMPLETION
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client:supports_method('textDocument/completion') then
-                        vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-                    end
+                    -- -- LSP AUTOCOMPLETION
+                    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    -- if client:supports_method('textDocument/completion') then
+                    --     vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+                    -- end
 
                     -- - 'omnifunc' is set to |vim.lsp.omnifunc()|, use |i_CTRL-X_CTRL-O| to trigger
                     --   completion.
@@ -120,39 +120,28 @@ return {
                     end
                     map('<leader>lv', ToggleVirtualText, 'Toggle [L]sp [V]irtual Text')
 
-                    -- The following two autocommands are used to highlight references of the
-                    -- word under your cursor when your cursor rests there for a little while.
-                    --    See `:help CursorHold` for information about when this is executed
-                    --
-                    -- When you move your cursor, the highlights will be cleared (the second autocommand).
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-                        local highlight_augroup = vim.api.nvim_create_augroup('lsp_highlight', { clear = false })
-                        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.document_highlight,
-                        })
 
-                        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                            buffer = event.buf,
-                            group = highlight_augroup,
-                            callback = vim.lsp.buf.clear_references,
-                        })
-
-                        vim.api.nvim_create_autocmd('LspDetach', {
-                            group = vim.api.nvim_create_augroup('lsp_detach', { clear = true }),
-                            callback = function(event2)
-                                vim.lsp.buf.clear_references()
-                                vim.api.nvim_clear_autocmds({ group = 'lsp_highlight', buffer = event2.buf })
-                            end,
-                        })
-                    end
+                    -- vim.api.nvim_create_autocmd({ 'InsertCharPre', 'CursorMovedI', 'CursorHold', 'CursorHoldI' }, {
+                    --     -- check if the character before the cursor is `{` or it is all spaces
+                    --     group = vim.api.nvim_create_augroup('lsp_signature', { clear = true }),
+                    --     callback = function()
+                    --         vim.lsp.buf.signature_help()
+                    --     end, -- debounce 500ms
+                    -- })
+                    -- vim.api.nvim_create_autocmd("TextChangedI", {
+                    --     pattern = "*",
+                    --     callback = function()
+                    --         local line = vim.api.nvim_get_current_line()
+                    --         local col = vim.fn.col('.') - 1
+                    --         local char = line:sub(col, col)
+                    --         if char == '(' or char == ',' then
+                    --             vim.lsp.buf.signature_help()
+                    --         end
+                    --     end
+                    -- })
 
                     -- The following code creates a keymap to toggle inlay hints in your
                     -- code, if the language server you are using supports them
-                    --
-                    -- This may be unwanted, since they displace some of your code
                     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
                         map('<leader>li', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -164,17 +153,9 @@ return {
             -- local capabilities = vim.lsp.protocol.make_client_capabilities()
             -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-            require('mason-lspconfig').setup({ ensure_installed = { 'lua_ls' } })
-
-            require('mason-lspconfig').setup_handlers({
-                -- default handler
-                function(server_name) -- default handler (optional)
-                    require('lspconfig')[server_name].setup({})
-                end,
-                -- dedicated handler
-                ['harper_ls'] = function()
-                    require('lspconfig').harper_ls.setup({ autostart = false })
-                end,
+            require('mason-lspconfig').setup({
+                ensure_installed = { 'lua_ls' },
+                automatic_enable = true,
             })
         end,
     },

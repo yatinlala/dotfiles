@@ -17,9 +17,9 @@ return {
     config = function()
         -- require('mini.completion').setup()
 
-        -- require('mini.pairs').setup()
-        -- vim.keymap.set('n', '<leader>A', function() vim.g.minipairs_disable = not vim.g.minipairs_disable end,
-        --     { desc = 'Toggle MiniPairs' })
+        require('mini.pairs').setup()
+        vim.keymap.set('n', '<leader>A', function() vim.g.minipairs_disable = not vim.g.minipairs_disable end,
+            { desc = 'Toggle MiniPairs' })
 
         require('mini.splitjoin').setup()
 

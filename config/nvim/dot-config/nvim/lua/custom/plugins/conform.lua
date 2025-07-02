@@ -22,7 +22,7 @@ return {
         -- Define your formatters
         formatters_by_ft = {
             lua = { 'stylua' },
-            python = { 'isort', 'black' },
+            python = { 'black' },
             go = { 'gofmt' },
             html = { 'prettierd' },
             css = { 'prettierd' },

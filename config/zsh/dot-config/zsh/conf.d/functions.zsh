@@ -7,8 +7,11 @@
 alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 alias scrcpy='xdg-launch scrcpy'
+alias gemini='xdg-launch gemini'
+alias claude='xdg-launch claude'
 dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
+alias cursor='xdg-launch cursor'
 # alias firefox='xdg-launch firefox'
 # alias jupyter='xdg-launch jupyter'
 # alias librewolf='xdg-launch librewolf'
@@ -19,6 +22,7 @@ wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # [[ IMPROVE DEFAULTS ]]
 # alias df='df -h'
 # alias cat='bat -pp'
+alias gemini='gemini --show_memory_usage --telemetry=false'
 alias info='info --vi-keys'
 alias bc='bc -lq'
 alias nix-shell='nix-shell --command zsh'
@@ -47,8 +51,6 @@ ll() { ls -l "$@" }
 la() { ll -a "$@" }
 ed() { sudo systemctl start docker }
 wiki() { nvim ~/documents/org/main.org }
-ai() { sgpt "$@" }
-ais() { sgpt -s "$@" }
 alias '?'='duck'
 
 
@@ -92,9 +94,9 @@ alias dl='docker logs --follow --timestamps'
 # alias rmdir='rmdirtrash'
 
 #Confirm before danger
-alias cp='cp -iv'
-alias mv='mv -iv'
-alias rm='rm -Iv'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'
 
 #Media
 yt() { xdg-launch yt-dlp -f "bv*[height<=1080]+ba" --embed-chapters --embed-metadata --embed-subs --sub-langs 'en.*' "$@" }

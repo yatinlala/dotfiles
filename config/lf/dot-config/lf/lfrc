@@ -115,6 +115,7 @@ map gm cd ~/audio/music
 map gv cd ~/videos
 
 map gl<space> cd ~/.local
+map glb cd ~/.local/bin
 map gls cd ~/.local/share
 map glx cd ~/.local/xdg-launch
 map glm cd ~/.local/mount

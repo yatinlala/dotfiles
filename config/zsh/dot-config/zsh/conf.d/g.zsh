@@ -28,4 +28,5 @@ g() {
 
   echo "✨"
   cd "$DIR" || return 1
+  ls
 }

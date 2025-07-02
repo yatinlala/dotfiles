@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 lf() {
+    # echo "disabled"
+    # return
     export LF_CD_FILE="/var/tmp/.lfcd-$$"
     command lf "$@"
     if [ -s "$LF_CD_FILE" ]; then
