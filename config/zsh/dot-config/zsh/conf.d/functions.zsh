@@ -7,7 +7,6 @@
 alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 alias scrcpy='xdg-launch scrcpy'
-alias gemini='xdg-launch gemini'
 alias claude='xdg-launch claude'
 dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
@@ -22,9 +21,10 @@ wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # [[ IMPROVE DEFAULTS ]]
 # alias df='df -h'
 # alias cat='bat -pp'
-alias gemini='gemini --show_memory_usage --telemetry=false'
+alias gemini='xdg-launch gemini --show_memory_usage --telemetry=false'
 alias info='info --vi-keys'
 alias bc='bc -lq'
+# alias ls='ls --color=auto'
 alias nix-shell='nix-shell --command zsh'
 nix() {
   if [[ "$1" == "develop" ]]; then
@@ -40,6 +40,8 @@ nix() {
 if command -v eza > /dev/null; then
   ls() { eza --icons=auto "$@" }
 fi
+ll() { ls -l "$@" }
+la() { ll -a "$@" }
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
@@ -47,8 +49,8 @@ g() { git "$@" }
 vis() { $EDITOR -S Session.vim }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
-ll() { ls -l "$@" }
-la() { ll -a "$@" }
+# ll() { ls -lh "$@" }
+# la() { ll -A "$@" }
 ed() { sudo systemctl start docker }
 wiki() { nvim ~/documents/org/main.org }
 alias '?'='duck'

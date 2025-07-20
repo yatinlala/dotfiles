@@ -62,6 +62,15 @@ neomutt)
     hyprctl dispatch focuswindow "^(neomutt)$"
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+nerd-dictation)
+        if pgrep -f "nerd-dictation begin"; then
+                notify-send "dictation end"
+                nerd-dictation end
+        else
+                notify-send "dictation start"
+                nerd-dictation begin --simulate-input-tool=YDOTOOL
+        fi
+        ;;
 nextcloud)
     pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
     ;;

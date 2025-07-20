@@ -155,7 +155,7 @@ cmd onecol &{{
     lf -remote "send $id set ratios 1"
 }}
 cmd twocol &{{
-    lf -remote "send $id set ratios 1:2"
+    lf -remote "send $id set ratios 1:1"
 }}
 cmd threecol &{{
     lf -remote "send $id set ratios 1:2"

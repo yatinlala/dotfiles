@@ -2,17 +2,17 @@
 --  See `:help lua-guide-autocommands`
 
 local function augroup(name)
-    return vim.api.nvim_create_augroup('custom_' .. name, { clear = true })
+    return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight on yanking',
-    group = augroup('highlight_yank'),
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight on yanking",
+    group = augroup("highlight_yank"),
     callback = function()
-        vim.highlight.on_yank({ higroup = 'Visual', timeout = 300 })
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
     end,
 })
 
@@ -21,23 +21,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --     group = augroup('diary_protein'),
 --     pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
 --     callback = function()
---         require('custom.util').update_protein_totals()
+--         require('protein').update_protein_totals()
 --     end,
 -- })
 
-vim.api.nvim_create_autocmd('BufReadPost', {
-    desc = 'Register :Yesterday and :Tomorrow',
-    group = augroup('diary_navigation'),
-    pattern = vim.fn.expand('~') .. '/documents/org/diary/*.org',
+vim.api.nvim_create_autocmd("BufReadPost", {
+    desc = "Register :Yesterday and :Tomorrow",
+    group = augroup("diary_navigation"),
+    pattern = vim.fn.expand("~") .. "/documents/org/diary/*.org",
     callback = function()
-        vim.api.nvim_create_user_command('Yesterday', function()
-            require('custom.util').open_diary_date(-1)
+        vim.api.nvim_create_user_command("Yesterday", function()
+            require("custom.util").open_diary_date(-1)
         end, {})
-        vim.api.nvim_create_user_command('Tomorrow', function()
-            require('custom.util').open_diary_date(1)
+        vim.api.nvim_create_user_command("Tomorrow", function()
+            require("custom.util").open_diary_date(1)
         end, {})
-        vim.keymap.set('n', '<M-h>', '<cmd>Yesterday<CR>', { desc = 'Go back in diary' })
-        vim.keymap.set('n', '<M-l>', '<cmd>Tomorrow<CR>', { desc = 'Go back in diary' })
+        vim.keymap.set("n", "<M-h>", "<cmd>Yesterday<CR>", { desc = "Go back in diary" })
+        vim.keymap.set("n", "<M-l>", "<cmd>Tomorrow<CR>", { desc = "Go back in diary" })
     end,
 })
 
@@ -53,11 +53,11 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 -- vim.cmd([[cab Y Yesterday]])
 -- vim.cmd([[cab T Tomorrow]])
 
-vim.api.nvim_create_autocmd('FileType', {
-    desc = ':set formatoptions-=cro',
-    group = augroup('format_options'),
+vim.api.nvim_create_autocmd("FileType", {
+    desc = ":set formatoptions-=cro",
+    group = augroup("format_options"),
     callback = function()
-        vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+        vim.opt.formatoptions:remove({ "c", "r", "o" })
     end,
 })
 

@@ -2,7 +2,7 @@
 if true then
     return
 end
-local root_names = { '.git', 'Makefile' }
+local root_names = { ".git", "Makefile" }
 
 -- Cache to use for speed up (at cost of possibly outdated results)
 local root_cache = {}
@@ -10,13 +10,13 @@ local root_cache = {}
 local set_root = function()
     -- Get directory path to start search from
     local path = vim.api.nvim_buf_get_name(0)
-    if path == '' then
+    if path == "" then
         return
     end
     path = vim.fs.dirname(path)
 
     -- don't cd to ~/.dotfiles if im in neovim config
-    local nvim_config_path = vim.fn.expand('~/.config/nvim')
+    local nvim_config_path = vim.fn.expand("~/.config/nvim")
     if string.find(nvim_config_path, path) ~= 0 then
         vim.fn.chdir(nvim_config_path)
         return
@@ -37,5 +37,5 @@ local set_root = function()
     vim.fn.chdir(root)
 end
 
-local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})
-vim.api.nvim_create_autocmd('BufEnter', { group = root_augroup, callback = set_root })
+local root_augroup = vim.api.nvim_create_augroup("MyAutoRoot", {})
+vim.api.nvim_create_autocmd("BufEnter", { group = root_augroup, callback = set_root })

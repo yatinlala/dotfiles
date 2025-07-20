@@ -1,14 +1,20 @@
--- vim.api.nvim_create_user_command('ToggleBackground', require('custom.util').toggleBg, {})
+vim.api.nvim_create_user_command("ToggleBackground", function()
+    if vim.o.background == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
+end, {})
 --
-vim.api.nvim_create_user_command('EC', 'silent cd ~/.config/nvim | e $MYVIMRC', {})
+vim.api.nvim_create_user_command("EC", "silent cd ~/.config/nvim | e $MYVIMRC", {})
 
-vim.api.nvim_create_user_command('SC', 'vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile', {})
+vim.api.nvim_create_user_command("SC", "vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile", {})
 
 -- vim.api.nvim_create_user_command('Redir', ":0put=execute('highlight')", {})
-require('custom.redir')
+require("redir")
 
-vim.api.nvim_create_user_command('Today', function()
-    require('custom.util').open_diary_date()
+vim.api.nvim_create_user_command("Today", function()
+    require("util").open_diary_date()
 end, {})
 
 -- vim.api.nvim_create_user_command('OpenGithubRepo', function(_)

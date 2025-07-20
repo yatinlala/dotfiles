@@ -61,8 +61,27 @@ tooltip {
 #workspaces,
 #mpris,
 #tray {
-  /* background: #32302f; */
+  background: #32302f;
   padding: 0 0.6em;
+  margin-right: 6px;
+  margin-left: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+}
+
+#custom-todo {
+  background: #689d6a;
+  padding: 0 0.4em;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+}
+
+#custom-scratchpad_tracking {
+  background: #32302f;
   margin-right: 4px;
   margin-left: 4px;
   margin-top: 4px;
@@ -70,9 +89,9 @@ tooltip {
   border-radius: 6px;
 }
 
-#tray {
-  margin-right: 6px;
-  background: #32302f;
+#window {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #network {

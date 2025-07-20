@@ -2,10 +2,12 @@
 -- `:help vim.opt`, `:help option-list`
 
 vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+    vim.opt.clipboard = "unnamedplus" -- use system clipboard
 end)
 
-vim.o.guifont = 'JetBrainsMono Nerd Font:h15' -- text below applies for VimScript
+vim.o.guifont = "JetBrainsMono Nerd Font:h15" -- text below applies for VimScript
+
+-- vim.opt.tabstop = 4
 
 -- Split below and to the right
 vim.opt.splitbelow = true
@@ -14,9 +16,9 @@ vim.opt.splitright = true
 vim.opt.undofile = true -- persistent undo
 
 vim.opt.laststatus = 3
-vim.opt.showmode = false   -- hide -- INSERT --
+vim.opt.showmode = false -- hide -- INSERT --
 
-vim.opt.path:append('**')  -- :find searches subdirs
+vim.opt.path:append("**") -- :find searches subdirs
 
 vim.opt.breakindent = true -- wrapped lines preserve indent level
 
@@ -27,15 +29,15 @@ vim.opt.smartcase = true
 -- Sets how Neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`, `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.winblend = 5
 vim.opt.winborder = "rounded"
 
 -- Completion
-vim.opt.completeopt = { 'menuone', 'noselect', 'fuzzy' } -- mostly just for cmp
-vim.opt.shortmess:append('c')                            -- Get rid of "pattern not found" during completions
-vim.opt.pumheight = 8                                    -- number of items in completion menu
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy" } -- mostly just for cmp
+vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
+vim.opt.pumheight = 8 -- number of items in completion menu
 
 -- vim.opt.number = true -- set numbered lines
 -- vim.opt.relativenumber = true -- set relative numbered lines
@@ -48,7 +50,6 @@ vim.opt.pumheight = 8                                    -- number of items in c
 --
 --
 -- vim.opt.expandtab = true -- convert tabs to spaces
--- vim.opt.tabstop = 4 -- number of spaces that <tab> counts for
 --
 --
 -- vim.opt.inccommand = 'split' -- live substitution preview

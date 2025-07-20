@@ -1,41 +1,44 @@
 -- [[ Basic Keymaps ]]
 
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set('n', '<M-h>', '<C-w><', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<M-l>', '<C-w>>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<M-j>', '<C-w>-', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<M-k>', '<C-w>+', { desc = 'Move focus to the upper window' })
-
--- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
+vim.keymap.set("n", "<M-h>", "<C-w><", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<M-l>", "<C-w>>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<M-j>", "<C-w>-", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<M-k>", "<C-w>+", { desc = "Move focus to the upper window" })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlights' })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
-vim.keymap.set('n', '<C-n>', function()
+vim.keymap.set("n", "<S-h>", "<cmd>tabprev<CR>")
+vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>")
+
+-- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
+
+vim.keymap.set('n', 'gF', 'gqaB', { desc = "Format file"})
+
+vim.keymap.set("n", "<C-n>", function()
     vim.opt.number = not vim.opt.number:get()
-end, { desc = 'Toggle number' })
+end, { desc = "Toggle number" })
 
-vim.keymap.set('n', '<C-s>', function()
+vim.keymap.set("n", "<C-s>", function()
     if vim.opt.laststatus:get() == 0 then
         vim.opt.laststatus = 3
     else
         vim.opt.laststatus = 0
     end
-end, { desc = 'Toggle statusline' })
+end, { desc = "Toggle statusline" })
 
-vim.keymap.set('n', '<S-h>', '<cmd>tabprev<CR>')
-vim.keymap.set('n', '<S-l>', '<cmd>tabnext<CR>')
 
 -- Source things
-vim.keymap.set('n', '<leader>X', '<cmd>source %<CR>', { desc = 'Source file' })
-vim.keymap.set('n', '<leader>x', '<cmd>.lua<CR>', { desc = 'Source line' })
-vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Source selection' })
+-- vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Source file" })
+-- vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Source line" })
+-- vim.keymap.set("v", "<leader>x", "<cmd>lua<CR>", { desc = "Source selection" })
 
 -- Navigate buffers
 -- vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) -- same as C-6 (^)
@@ -43,13 +46,12 @@ vim.keymap.set('v', '<leader>x', '<cmd>lua<CR>', { desc = 'Source selection' })
 -- vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
 -- vim.keymap.set('n', ']b', '<cmd>bnext<CR>')
 
-vim.keymap.set('n', '<leader>B', '<cmd>.!bc<CR>', { desc = 'Filter to bc' })
-
+-- vim.keymap.set("n", "<leader>B", "<cmd>.!bc<CR>", { desc = "Filter to bc" })
 
 -- vim.keymap.set('n', 'gd', '<C-]>', { silent = true, desc = 'Go to Definition' })
 
 -- Visual --
-local opts = { silent = true }
+-- local opts = { silent = true }
 -- Stay in indent mode
 -- note: i removed this because i should be using . repeat instead of spamming >
 -- vim.keymap.set('v', '<', '<gv', opts)
