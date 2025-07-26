@@ -45,7 +45,7 @@ la() { ll -a "$@" }
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
-g() { git "$@" }
+et() { nvim +':tabnew' +':edit $@' }
 vis() { $EDITOR -S Session.vim }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
