@@ -98,7 +98,7 @@ gammastep)
         )
     ;;
 signal)
-    pgrep -x signal || gtk-launch signal-desktop
+    pgrep -x signal-desktop || gtk-launch signal-desktop
     hyprctl dispatch togglespecialworkspace signal;;
 spotify)
     pgrep -x spotify || gtk-launch spotify-launcher
