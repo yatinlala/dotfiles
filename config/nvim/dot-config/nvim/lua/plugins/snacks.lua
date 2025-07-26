@@ -42,7 +42,14 @@ return {
     },
     opts = {
         bigfile = { enabled = true },
-        image = { enabled = true },
+        image = {
+            enabled = true,
+            doc = {
+                inline = false,
+                max_width = 40,
+                max_height = 20,
+            },
+        },
         indent = {
             enabled = true,
             char = "┆", -- TODO doesn't work?

@@ -1,7 +1,7 @@
 return {
     "echasnovski/mini.nvim",
     version = false,
-    event = "VeryLazy",
+    lazy = false,
     dependencies = {
         {
             "nvim-treesitter/nvim-treesitter-textobjects", -- needed for diF
@@ -64,77 +64,86 @@ return {
         --     MiniFiles.open()
         -- end, { desc = 'Open Mini Files' })
 
-        -- -- TODO figure out how this works
-        require("mini.sessions").setup({ autoread = true })
-        vim.keymap.set("n", "<leader>sl", function()
+        if vim.fn.argc() == 0 and vim.uv.fs_stat("Session.vim") then
+            require("mini.sessions").setup({ autowrite = true })
+            MiniSessions.read("Session.vim")
+        elseif vim.uv.fs_stat("Session.vim") == nil then
+            require("mini.sessions").setup({ autowrite = true })
+        else
+            require("mini.sessions").setup({ autowrite = false })
+        end
+
+        vim.keymap.set("n", "<leader>sw", function()
+            MiniSessions.write("Session.vim")
+        end, { desc = "Write Local Session" })
+        vim.keymap.set("n", "<leader>sr", function()
+            MiniSessions.read()
+        end, { desc = "Read Session" })
+        vim.keymap.set("n", "<leader>ss", function()
             MiniSessions.select()
-        end, { desc = "[L]oad Session}" })
-    vim.keymap.set("n", "<leader>sd", function()
-        MiniSessions.select("delete", { force = true })
-    end, { desc = "[D]elete Session}" })
+        end, { desc = "Select Session" })
+        vim.keymap.set("n", "<leader>sd", function()
+            MiniSessions.select("delete", { force = true })
+        end, { desc = "Delete Session" })
+        -- local session_file = vim.fn.getcwd() .. '/Session.vim'
+        -- if vim.fn.filereadable(session_file) == 1 then
+        --   local ok, ms = pcall(require, 'mini.sessions')
+        --   if ok then
+        --     ms.read('Session.vim')
+        --   end
+        -- end
 
-            vim.keymap.set('n', '<leader>sw', function()
-              vim.ui.input({ prompt = 'Session name: ' }, function(input)
-                if input and input ~= '' then
-                  require('mini.sessions').write(input)
-                else
-                  print('Session write cancelled')
-                end
-              end)
-            end, { desc = '[W]rite Session' })
-            -- require('mini.sessions').setup()
+        require("mini.operators").setup({
+            replace = {
+                prefix = "g<c-r>",
+                -- Whether to reindent new text to match previous indent
+                reindent_linewise = true,
+            },
+            -- Each entry configures one operator.
+            -- `prefix` defines keys mapped during `setup()`: in Normal mode
+            -- to operate on textobject and line, in Visual - on selection.
 
-            require("mini.operators").setup({
-                -- Each entry configures one operator.
-                -- `prefix` defines keys mapped during `setup()`: in Normal mode
-                -- to operate on textobject and line, in Visual - on selection.
+            -- Evaluate text and replace with output
+            -- evaluate = {
+            --     -- prefix = 'g=',
+            --     prefix = '',
+            -- },
+            -- exchange = {
+            --     prefix = 'gx',
+            --     -- Whether to reindent new text to match previous indent
+            --     reindent_linewise = true,
+            -- },
+            -- -- Multiply (duplicate) text
+            -- multiply = {
+            --     prefix = 'gm',
+            --     -- Function which can modify text before multiplying
+            --     func = nil,
+            -- },
+            -- Replace text with register
 
-                -- Evaluate text and replace with output
-                -- evaluate = {
-                --     -- prefix = 'g=',
-                --     prefix = '',
-                -- },
-                -- exchange = {
-                --     prefix = 'gx',
-                --     -- Whether to reindent new text to match previous indent
-                --     reindent_linewise = true,
-                -- },
-                -- -- Multiply (duplicate) text
-                -- multiply = {
-                --     prefix = 'gm',
-                --     -- Function which can modify text before multiplying
-                --     func = nil,
-                -- },
-                -- Replace text with register
-                replace = {
-                    prefix = "gR",
-                    -- Whether to reindent new text to match previous indent
-                    reindent_linewise = true,
-                },
+            -- Sort text
+            -- sort = {
+            --     prefix = '',
+            --     -- prefix = 'gs',
+            --
+            --     -- Function which does the sort
+            --     func = nil,
+            -- },
+        }) -- gr, g=, gx, gm, gs
 
-                -- Sort text
-                -- sort = {
-                --     prefix = '',
-                --     -- prefix = 'gs',
-                --
-                --     -- Function which does the sort
-                --     func = nil,
-                -- },
-            }) -- gr, g=, gx, gm, gs
+        -- require('mini.completion').setup()
 
-            -- require('mini.completion').setup()
+        -- local hipatterns = require('mini.hipatterns')
+        -- hipatterns.setup({
+        --     highlighters = {
+        --         fixme = { pattern = 'FIXME', group = 'MiniHipatternsHack' },
+        --         hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
+        --         todo = { pattern = 'TODO', group = 'MiniHipatternsHack' },
+        --         note = { pattern = 'NOTE', group = 'MiniHipatternsHack' },
+        --         hex_color = hipatterns.gen_highlighter.hex_color(),
+        --     },
+        -- })
 
-            -- local hipatterns = require('mini.hipatterns')
-            -- hipatterns.setup({
-            --     highlighters = {
-            --         fixme = { pattern = 'FIXME', group = 'MiniHipatternsHack' },
-            --         hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
-            --         todo = { pattern = 'TODO', group = 'MiniHipatternsHack' },
-            --         note = { pattern = 'NOTE', group = 'MiniHipatternsHack' },
-            --         hex_color = hipatterns.gen_highlighter.hex_color(),
-            --     },
-            -- })
-
-            -- require('mini.surround').setup()
+        -- require('mini.surround').setup()
     end,
 }

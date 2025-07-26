@@ -20,7 +20,7 @@ vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>")
 
 -- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
 
-vim.keymap.set('n', 'gF', 'gqaB', { desc = "Format file"})
+-- vim.keymap.set("n", "gQ", "mzgggqG`z<cmd>delmarks z<cr>zz", { desc = "Format buffer" })
 
 vim.keymap.set("n", "<C-n>", function()
     vim.opt.number = not vim.opt.number:get()
@@ -34,14 +34,14 @@ vim.keymap.set("n", "<C-s>", function()
     end
 end, { desc = "Toggle statusline" })
 
+-- Navigate buffers
+vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
 
 -- Source things
 -- vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Source file" })
 -- vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Source line" })
 -- vim.keymap.set("v", "<leader>x", "<cmd>lua<CR>", { desc = "Source selection" })
 
--- Navigate buffers
--- vim.keymap.set('n', '<leader>x', '<cmd>e #<CR>', { desc = 'Alternate buffer' }) -- same as C-6 (^)
 -- These are defaults in 0.11
 -- vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
 -- vim.keymap.set('n', ']b', '<cmd>bnext<CR>')

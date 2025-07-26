@@ -106,15 +106,15 @@ return {
 
             -- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')
 
--- function M.setColors()
---     vim.cmd('colorscheme gruvbox')
---     vim.cmd([[
---         hi def IlluminatedWordText guibg=#504945
---         hi def IlluminatedWordRead guibg=#504945
---         hi def IlluminatedWordWrite guibg=#504945
---         hi MatchWord cterm=underline gui=underline
---     ]])
--- end
+            -- function M.setColors()
+            --     vim.cmd('colorscheme gruvbox')
+            --     vim.cmd([[
+            --         hi def IlluminatedWordText guibg=#504945
+            --         hi def IlluminatedWordRead guibg=#504945
+            --         hi def IlluminatedWordWrite guibg=#504945
+            --         hi MatchWord cterm=underline gui=underline
+            --     ]])
+            -- end
         end,
     },
 
