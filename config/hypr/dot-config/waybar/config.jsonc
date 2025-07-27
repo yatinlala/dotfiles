@@ -111,7 +111,7 @@
 	"custom/scratchpad_tracking": {
 		"format": "{}",
 		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
-		"interval": 1,
+		// "interval": 1,
 		"spacing": 10
 	},
 	"tray": {
