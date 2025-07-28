@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 199309L
+
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +11,13 @@
 #define MAX_OUTPUT_LEN 256
 #define MAX_PATH_LEN 512
 #define MAX_LINE_LEN 1024
+
+void sleep_ms(long milliseconds) {
+  struct timespec ts;
+  ts.tv_sec = milliseconds / 1000;
+  ts.tv_nsec = (milliseconds % 1000) * 1000000;
+  nanosleep(&ts, NULL);
+}
 
 // Function to read the command line of a process from /proc/pid/cmdline
 int read_proc_cmdline(int pid, char *cmdline, size_t max_len) {
@@ -151,7 +160,7 @@ int main() {
     fflush(stdout); // Explicitly flush output buffer
 
     // Sleep for 500 milliseconds (half second)
-    usleep(500000);
+    sleep_ms(500000);
   }
 
   return 0;

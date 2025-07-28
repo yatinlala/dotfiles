@@ -15,6 +15,8 @@
 	"modules-right": [
 		//"custom/weather",
 		// "custom/eye",
+		"privacy",
+		"mpd",
 		"custom/scratchpad_tracking",
 		"tray",
 		"backlight",
@@ -77,6 +79,39 @@
 		//"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
 		//"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
 		"interval": 1
+	},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			// {
+			// 	"type": "audio-out",
+			// 	"tooltip": false,
+			// 	"tooltip-icon-size": 24
+			// },
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		],
+		"ignore-monitor": true,
+		// "ignore": [
+		// 	{
+		// 		"type": "audio-in",
+		// 		"name": "cava"
+		// 	},
+		// 	{
+		// 		"type": "screenshare",
+		// 		"name": "obs"
+		// 	}
+		// ]
 	},
 	//"custom/timer": {
 	//	"tooltip": false,
@@ -200,14 +235,43 @@
 	//     "format-icons": ["", "", "", "", ""],
 	//     "max-length": 25
 	// },
+	"mpd": {
+	  "format": " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+	  "format-disconnected": " Disconnected  ",
+	  "format-stopped": " Stopped  ",
+	  "interval": 2,
+	  "state-icons": {
+	      "playing": "",
+	      "paused": ""
+	  },
+	  "consume-icons": {
+	    "on": " " // Icon shows only when "consume" is on
+	  },
 	// "mpd": {
-	//   "format": " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})    ",
-	//   "format-disconnected": " Disconnected  ",
-	//   "format-stopped": " Stopped  ",
-	//   "interval": 2,
-	//   "consume-icons": {
-	//     "on": " " // Icon shows only when "consume" is on
-	//   },
+	//     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+	//     "format-disconnected": "Disconnected ",
+	//     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+	//     "interval": 10,
+	//     "consume-icons": {
+	// 	"on": " " // Icon shows only when "consume" is on
+	//     },
+	//     "random-icons": {
+	// 	"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+	// 	"on": " "
+	//     },
+	//     "repeat-icons": {
+	// 	"on": " "
+	//     },
+	//     "single-icons": {
+	// 	"on": "1 "
+	//     },
+	//     "state-icons": {
+	// 	"paused": "",
+	// 	"playing": ""
+	//     },
+	//     "tooltip-format": "MPD (connected)",
+	//     "tooltip-format-disconnected": "MPD (disconnected)"
+	// },
 	"mpris": {
 		"format": "{player_icon} {dynamic}",
 		"format-paused": "{status_icon} <i>{dynamic}</i>",

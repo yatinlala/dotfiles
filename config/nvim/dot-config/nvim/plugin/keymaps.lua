@@ -18,6 +18,9 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highl
 vim.keymap.set("n", "<S-h>", "<cmd>tabprev<CR>")
 vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>")
 
+vim.keymap.set("n", "<M-h>", "<cmd>tabmove -1<CR>")
+vim.keymap.set("n", "<M-l>", "<cmd>tabmove +1<CR>")
+
 -- vim.keymap.set('n', '<leader>f', ':find ', { desc = '[F]ind file' })
 
 -- vim.keymap.set("n", "gQ", "mzgggqG`z<cmd>delmarks z<cr>zz", { desc = "Format buffer" })

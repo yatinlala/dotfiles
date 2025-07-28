@@ -1,3 +1,6 @@
+// clang --std=c99 -lcjson -o focus -Wall -Werror focus.c
+#define _POSIX_C_SOURCE 200112L
+
 #include <cjson/cJSON.h>
 #include <stdio.h>
 #include <stdlib.h>
