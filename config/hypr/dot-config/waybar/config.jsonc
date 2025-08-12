@@ -5,8 +5,8 @@
 	// "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
 	"modules-left": [
 		"hyprland/workspaces",
+		"custom/hypridle_toggle",
 		// "custom/202020"
-		"custom/todo",
 		"hyprland/window"
 		//"custom/timer",
 	],
@@ -17,6 +17,7 @@
 		// "custom/eye",
 		"privacy",
 		"mpd",
+		"custom/todo",
 		"custom/scratchpad_tracking",
 		"tray",
 		"backlight",
@@ -129,6 +130,13 @@
 		"format": "<span font='13'>{}</span>",
 		"exec": "$HOME/.config/waybar/modules/todos.sh",
 		"interval": 10,
+		"tooltip": false
+	},
+	"custom/hypridle_toggle": {
+		"format": "<span font='13'>{}</span>",
+		"exec": "$HOME/.config/waybar/modules/hypridle_toggle",
+		"on-click": "$HOME/.config/waybar/modules/hypridle_toggle toggle",
+		"tooltip": false
 	},
 	"custom/eye": {
 		// "format": "{}",
@@ -146,7 +154,6 @@
 	"custom/scratchpad_tracking": {
 		"format": "{}",
 		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
-		// "interval": 1,
 		"spacing": 10
 	},
 	"tray": {
@@ -289,13 +296,18 @@
 			"mpv"
 		]
 	},
+	// "backlight": {
+	// 	"device": "intel_backlight",
+	// 	"format": " {icon} {percent}%",
+	// 	"format-icons": [
+	// 		"",
+	// 		""
+	// 	]
+	// },
 	"backlight": {
-		"device": "intel_backlight",
-		"format": " {icon} {percent}%",
-		"format-icons": [
-			"",
-			""
-		]
+	    "device": "intel_backlight",
+	    "format": "{icon} {percent}%",
+	    "format-icons": ["", ""]
 	},
 	"random-icons": {
 		"off": "<span color=\"#fb4934\"> </span>", // Icon grayed out when "random" is off

@@ -44,3 +44,5 @@ keybind = ctrl+super+equal=equalize_splits
 keybind = ctrl+super+t=new_tab
 keybind = ctrl+super+n=next_tab
 keybind = ctrl+super+p=previous_tab
+
+keybind = ctrl+super+e=write_scrollback_file:open

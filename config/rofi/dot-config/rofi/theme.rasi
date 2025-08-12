@@ -31,7 +31,7 @@ window {
 	border:			0px;
 	border-color:		@ac;
 	border-radius:		3px;
-	width:			40%;
+	width:			50%;
 	location:		center;
 	x-offset:		0;
 	y-offset:		0;

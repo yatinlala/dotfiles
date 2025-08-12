@@ -71,8 +71,18 @@ tooltip {
 }
 
 #custom-todo {
-  background: #689d6a;
+  background: #32302f;
+  /* background: #2a4c1f; */
   padding: 0 0.4em;
+  margin-right: 2px;
+  margin-left: 2px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+}
+
+#custom-hypridle_toggle {
+  padding: 0 0.3em;
   margin-right: 2px;
   margin-left: 2px;
   margin-top: 5px;
@@ -90,8 +100,8 @@ tooltip {
 }
 
 #window {
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 #network {

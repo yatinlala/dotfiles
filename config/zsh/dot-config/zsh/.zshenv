@@ -85,7 +85,8 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="newsboat|pipe-viewer"
 
 
 # export MANWIDTH=60 # resizing window will work! nvim handles wrap
-# export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export MANPAGER='nvim +Man!'
 # Colored man pages
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # export MANROFFOPT="-c" # Fix formatting errors

@@ -1,0 +1,15 @@
+[Added Associations]
+
+[Default Applications]
+text/plain=nvim.desktop
+application/octet-stream=nvim.desktop
+application/javascript=nvim.desktop
+application/json=nvim.desktop
+application/pdf=org.pwmt.zathura.desktop
+image/jpeg=imv.desktop
+image/png=imv.desktop
+image/gif=imv.desktop
+inode/x-empty=nvim.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/ferdium=ferdium.desktop
