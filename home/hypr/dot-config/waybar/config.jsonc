@@ -1,0 +1,334 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 35,
+	// "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
+	"modules-left": [
+		"hyprland/workspaces",
+		"custom/hypridle_toggle",
+		// "custom/202020"
+		"hyprland/window"
+		//"custom/timer",
+	],
+	// "modules-center": [ "mpris"],
+	"modules-center": [ ],
+	"modules-right": [
+		//"custom/weather",
+		// "custom/eye",
+		"privacy",
+		"mpd",
+		"custom/todo",
+		"custom/scratchpad_tracking",
+		"tray",
+		"backlight",
+		"pulseaudio",
+		"network",
+		"clock#date",
+		"clock#time",
+		"battery"
+	],
+	// "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+	// "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+	"hyprland/window": {
+		//"format": "{}"   // <--- these is the default value  
+		"format": "<span font='10' rise='-4444'>{}</span>",
+		"max-length": 60
+	},
+	"wlr/taskbar": {
+		"format": "{icon} {app_id}",
+		"icon-size": 13,
+		"icon-theme": "Papirus",
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"on-click-right": "minimize-raise",
+		"ignore-list": [
+			"kitty",
+			"org.wezfurlong.wezterm"
+		],
+		"app_ids-mapping": {}
+	},
+	"hyprland/workspaces": {
+		// "disable-scroll": true,
+		"sort-by-number": true,
+		"all-outputs": true,
+		"format": "{icon}",
+		"format-icons": {
+			"1": "<span color=\"#EBDBB2\">1</span>",
+			"2": "<span color=\"#EBDBB2\">2</span>",
+			"3": "<span color=\"#EBDBB2\">3</span>",
+			"4": "<span color=\"#EBDBB2\">4</span>",
+			"5": "<span color=\"#EBDBB2\">5</span>",
+			"6": "<span color=\"#EBDBB2\">6</span>",
+			"7": "<span color=\"#EBDBB2\">7</span>",
+			"8": "<span color=\"#EBDBB2\">8</span>",
+			"9": "<span color=\"#EBDBB2\">9</span>",
+			"10": "<span color=\"#EBDBB2\">10</span>",
+			"urgent": "",
+			"focused": "",
+			"default": ""
+		}
+	},
+	"custom/202020": {
+		"tooltip": false,
+		"min-length": 5,
+		"exec": "$HOME/.config/waybar/modules/202020.sh",
+		"on-click": "date --date='20 minutes' +%s > /var/tmp/202020_timer", // TODO make this a pause?
+		"on-click-right": "echo PAUSED > /var/tmp/202020_timer",
+		//"on-click-right": "echo READY > /var/tmp/waybar_timer",
+		//"on-click-middle": "date --date='5 minute' +%s > /var/tmp/202020_timer",
+		//"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
+		//"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
+		"interval": 1
+	},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			// {
+			// 	"type": "audio-out",
+			// 	"tooltip": false,
+			// 	"tooltip-icon-size": 24
+			// },
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		],
+		"ignore-monitor": true,
+		// "ignore": [
+		// 	{
+		// 		"type": "audio-in",
+		// 		"name": "cava"
+		// 	},
+		// 	{
+		// 		"type": "screenshare",
+		// 		"name": "obs"
+		// 	}
+		// ]
+	},
+	//"custom/timer": {
+	//	"tooltip": false,
+	//	"min-length": 5,
+	//	"exec": "$HOME/.config/waybar/modules/timer.sh",
+	//	"on-click": "date --date='20 minutes' +%s > /var/tmp/waybar_timer",
+	//	"on-click-right": "echo READY > /var/tmp/waybar_timer",
+	//	"on-click-middle": "date --date='5 minute' +%s > /var/tmp/waybar_timer",
+	//	"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
+	//	"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
+	//	"interval": 1
+	//},
+	"custom/todo": {
+		"format": "{}",
+		"format": "<span font='13'>{}</span>",
+		"exec": "$HOME/.config/waybar/modules/todos.sh",
+		"interval": 10,
+		"tooltip": false
+	},
+	"custom/hypridle_toggle": {
+		"format": "<span font='13'>{}</span>",
+		"exec": "$HOME/.config/waybar/modules/hypridle_toggle",
+		"on-click": "$HOME/.config/waybar/modules/hypridle_toggle toggle",
+		"tooltip": false
+	},
+	"custom/eye": {
+		// "format": "{}",
+		"format": "<span font='16'>{}</span>",
+		"exec": "$HOME/.config/waybar/modules/waybar_blinker",
+		"interval": 3
+	},
+	"custom/weather": {
+		"format": "{}",
+		"exec": "curl \"wttr.in/94303?format=%c%t\"",
+		//"exec": "curl \"wttr.in/19081?format=%c%t\"",
+		"interval": 6000,
+		"spacing": 10
+	},
+	"custom/scratchpad_tracking": {
+		"format": "{}",
+		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
+		"spacing": 10
+	},
+	"tray": {
+		"icon-size": 16,
+		"spacing": 10,
+		"show-passive-items": true
+	},
+	"clock#time": {
+		"interval": 1,
+		"format": "   {:%I:%M %p} ",
+		"tooltip": false
+	},
+	"clock#date": {
+		"interval": 10,
+		"format": "   {:%a %b %e} ", // icon: calendar-alt
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+	},
+	"pulseaudio": {
+		"format": "{format_source} {icon}{volume}%",
+		"format-muted": " muted {format_source}",
+		"format-source": "",
+		"format-source-muted": "",
+		"scroll-step": 5,
+		"on-click": "pactl set-sink-mute 0 toggle",
+		"on-click-middle": "helvum",
+		"on-click-right": "~/.config/hypr/scripts/pactl_toggle.sh",
+		"format-icons": {
+			"headphone": "   ",
+			"hands-free": "   ",
+			"headset": "   ",
+			"phone": "   ",
+			"portable": "   ",
+			"car": "    ",
+			"default": [
+				"   ",
+				"   ",
+				" 󰕾  ",
+				"   "
+			]
+		}
+	},
+	"network": {
+		// "format-wifi": "   {essid} ",
+		"format-wifi": "  {essid}",
+		"tooltip-format-wifi": " {essid} ({signalStrength}%)",
+		// "tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}",
+		"format-ethernet": "   {essid} ",
+		// "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		"format-linked": "{ifname} (no ip)  ",
+		"format-disconnected": " 󱚼 disconnected ",
+		// "format-disconnected": "", //An empty format will hide the module.
+		"format": "{ifname}",
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected"
+		// "max-length": 50
+	},
+	"battery": {
+		"bat": "BAT0",
+		"states": {
+			// "good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% {icon}",
+		// "format-charging": "{capacity}% ",
+		"format-charging": "{capacity}% ",
+		"format-plugged": "{capacity}% ",
+		"format-alt": "{time} {icon}",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	//   "battery": {
+	//     "bat": "BAT0",
+	//     "interval": 60,
+	//     "states": {
+	//         "warning": 30,
+	//         "critical": 15
+	//     },
+	//     "format": "{capacity}% {icon}",
+	//     "format-icons": ["", "", "", "", ""],
+	//     "max-length": 25
+	// },
+	"mpd": {
+	  "format": " {stateIcon}   {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+	  "format-disconnected": " Disconnected  ",
+	  "format-stopped": " Stopped  ",
+	  "interval": 2,
+	  "state-icons": {
+	      "playing": "",
+	      "paused": ""
+	  },
+	  "consume-icons": {
+	    "on": " " // Icon shows only when "consume" is on
+	  },
+	// "mpd": {
+	//     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+	//     "format-disconnected": "Disconnected ",
+	//     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+	//     "interval": 10,
+	//     "consume-icons": {
+	// 	"on": " " // Icon shows only when "consume" is on
+	//     },
+	//     "random-icons": {
+	// 	"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+	// 	"on": " "
+	//     },
+	//     "repeat-icons": {
+	// 	"on": " "
+	//     },
+	//     "single-icons": {
+	// 	"on": "1 "
+	//     },
+	//     "state-icons": {
+	// 	"paused": "",
+	// 	"playing": ""
+	//     },
+	//     "tooltip-format": "MPD (connected)",
+	//     "tooltip-format-disconnected": "MPD (disconnected)"
+	// },
+	"mpris": {
+		"format": "{player_icon} {dynamic}",
+		"format-paused": "{status_icon} <i>{dynamic}</i>",
+		"max-length": 30,
+		"player-icons": {
+			"default": "⏸",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": "▶"
+		},
+		// "ignored-players": ["chromium","brave","firefox"]
+		"ignored-players": [
+			"brave",
+			"mpv"
+		]
+	},
+	// "backlight": {
+	// 	"device": "intel_backlight",
+	// 	"format": " {icon} {percent}%",
+	// 	"format-icons": [
+	// 		"",
+	// 		""
+	// 	]
+	// },
+	"backlight": {
+	    "device": "intel_backlight",
+	    "format": "{icon} {percent}%",
+	    "format-icons": ["", ""]
+	},
+	"random-icons": {
+		"off": "<span color=\"#fb4934\"> </span>", // Icon grayed out when "random" is off
+		"on": " "
+	},
+	"repeat-icons": {
+		"on": " "
+	},
+	"single-icons": {
+		"on": "1 "
+	},
+	"state-icons": {
+		"paused": "",
+		"playing": ""
+	},
+	"on-click": "playerctl play-pause",
+	"on-scroll-up": "playerctl next",
+	"on-scroll-down": "playerctl previous",
+	"tooltip-format": "MPD (connected)",
+	"tooltip-format-disconnected": "MPD (disconnected)"
+}
+}
