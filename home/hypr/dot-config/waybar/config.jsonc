@@ -29,6 +29,11 @@
 	],
 	// "modules-right":  [ "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 	// "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
+	"backlight": {
+	    "device": "amdgpu_bl1",
+	    "format": "{icon} {percent}%",
+	    "format-icons": ["", ""]
+	},
 	"hyprland/window": {
 		//"format": "{}"   // <--- these is the default value  
 		"format": "<span font='10' rise='-4444'>{}</span>",
@@ -297,19 +302,6 @@
 			"brave",
 			"mpv"
 		]
-	},
-	// "backlight": {
-	// 	"device": "intel_backlight",
-	// 	"format": " {icon} {percent}%",
-	// 	"format-icons": [
-	// 		"",
-	// 		""
-	// 	]
-	// },
-	"backlight": {
-	    "device": "intel_backlight",
-	    "format": "{icon} {percent}%",
-	    "format-icons": ["", ""]
 	},
 	"random-icons": {
 		"off": "<span color=\"#fb4934\"> </span>", // Icon grayed out when "random" is off

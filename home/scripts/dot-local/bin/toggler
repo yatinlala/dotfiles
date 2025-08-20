@@ -10,6 +10,17 @@ discord)
     pgrep -x discord || setsid discord &
     sway "workspace 9; [class=discord] focus"
     ;;
+dpms)
+    MONITOR="eDP-1"
+
+    status=$(hyprctl monitors -j | jq -r ".[] | select(.name==\"$MONITOR\") | .dpmsStatus")
+
+    if [ "$status" = "true" ]; then
+        hyprctl dispatch dpms off "$MONITOR"
+    else
+        hyprctl dispatch dpms on "$MONITOR"
+    fi
+    ;;
 display)
     if hyprctl monitors | grep -q "eDP-1"; then
         hyprctl keyword monitor "eDP-1, disable"
