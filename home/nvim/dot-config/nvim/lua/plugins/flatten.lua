@@ -1,8 +1,3 @@
-return {
-    "willothy/flatten.nvim",
-    opts = {
-        window = {},
-    },
-    lazy = false,
-    priority = 1001,
-}
+vim.pack.add({"https://github.com/willothy/flatten.nvim"})
+
+require('flatten').setup()

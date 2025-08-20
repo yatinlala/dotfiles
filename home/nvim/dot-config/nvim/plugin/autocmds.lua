@@ -1,20 +1,40 @@
--- [[ Autocommands ]]
+-- [ AUTOCOMMANDS ]
 --  See `:help lua-guide-autocommands`
 
 local function augroup(name)
     return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
+--  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight on yanking",
     group = augroup("highlight_yank"),
     callback = function()
-        vim.highlight.on_yank({ higroup = "Visual", timeout = 300 })
+        vim.hl.on_yank({ higroup = "Visual", timeout = 300 })
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    desc = ":set formatoptions-=cro",
+    group = augroup("format_options"),
+    callback = function()
+        vim.opt.formatoptions:remove({ "c", "r", "o" })
+    end,
+})
+
+-- [ TERMINAL ]
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--     pattern = "term://*",
+--     desc = "insert in terminals",
+--     group = vim.api.nvim_create_augroup("insert_term", { clear = true }),
+--     callback = function()
+--         print("hello")
+--         vim.cmd.startinsert()
+--     end,
+-- })
+-- vim.cmd('autocmd BufEnter term://* startinsert')
+
+-- vim.cmd [[ autocmd TermClose * execute 'bdelete! ' . expand('<abuf>') ]]
 
 -- vim.api.nvim_create_autocmd('BufWritePre', {
 --     desc = 'Update Protein Totals',
@@ -24,42 +44,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --         require('protein').update_protein_totals()
 --     end,
 -- })
+-- [ /TERMINAL ]
 
-vim.api.nvim_create_autocmd("BufReadPost", {
-    desc = "Register :Yesterday and :Tomorrow",
-    group = augroup("diary_navigation"),
-    pattern = vim.fn.expand("~") .. "/documents/org/diary/*.org",
-    callback = function()
-        vim.api.nvim_create_user_command("Yesterday", function()
-            require("custom.util").open_diary_date(-1)
-        end, {})
-        vim.api.nvim_create_user_command("Tomorrow", function()
-            require("custom.util").open_diary_date(1)
-        end, {})
-        vim.keymap.set("n", "<M-h>", "<cmd>Yesterday<CR>", { desc = "Go back in diary" })
-        vim.keymap.set("n", "<M-l>", "<cmd>Tomorrow<CR>", { desc = "Go back in diary" })
-    end,
-})
-
--- vim.api.nvim_create_autocmd({ 'FileType' }, {
---     desc = 'Map gd in help files',
---     group = augroup('help_mapping'),
---     pattern = { 'help' },
---     callback = function(opts)
---         vim.keymap.set('n', 'gd', '<C-]>', { silent = true, buffer = opts.buf })
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--     desc = "Register :Yesterday and :Tomorrow",
+--     group = augroup("diary_navigation"),
+--     pattern = vim.fn.expand("~") .. "/documents/org/diary/*.org",
+--     callback = function()
+--         vim.api.nvim_create_user_command("Yesterday", function()
+--             require("custom.util").open_diary_date(-1)
+--         end, {})
+--         vim.api.nvim_create_user_command("Tomorrow", function()
+--             require("custom.util").open_diary_date(1)
+--         end, {})
+--         vim.keymap.set("n", "<M-h>", "<cmd>Yesterday<CR>", { desc = "Go back in diary" })
+--         vim.keymap.set("n", "<M-l>", "<cmd>Tomorrow<CR>", { desc = "Go back in diary" })
 --     end,
 -- })
 
 -- vim.cmd([[cab Y Yesterday]])
 -- vim.cmd([[cab T Tomorrow]])
 
-vim.api.nvim_create_autocmd("FileType", {
-    desc = ":set formatoptions-=cro",
-    group = augroup("format_options"),
-    callback = function()
-        vim.opt.formatoptions:remove({ "c", "r", "o" })
-    end,
-})
 
 -- TODO maybe move each autocmd into a function and comment out in setup
 -- -- local M = {}

@@ -1,15 +1,14 @@
-return {
-    {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
+vim.pack.add({ "https://github.com/folke/lazydev.nvim" })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lua",
+    callback = function()
+        require("lazydev").setup({
             library = {
-                -- Library items can be absolute paths
-                -- "~/projects/my-awesome-lib",
+                -- See the configuration section for more details
                 -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
-        },
-    },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-}
+        })
+    end,
+})

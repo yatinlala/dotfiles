@@ -8,14 +8,11 @@ end, {})
 --
 vim.api.nvim_create_user_command("EC", "silent cd ~/.config/nvim | e $MYVIMRC", {})
 
-vim.api.nvim_create_user_command("SC", "vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile", {})
-
 -- vim.api.nvim_create_user_command('Redir', ":0put=execute('highlight')", {})
-require("redir")
 
-vim.api.nvim_create_user_command("Today", function()
-    require("util").open_diary_date()
-end, {})
+-- vim.api.nvim_create_user_command("Today", function()
+--     require("util").open_diary_date()
+-- end, {})
 
 -- vim.api.nvim_create_user_command('OpenGithubRepo', function(_)
 --     local ghpath = vim.api.nvim_eval("shellescape(expand('<cfile>'))")

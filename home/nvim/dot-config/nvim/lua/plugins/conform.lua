@@ -1,32 +1,6 @@
-return {
-    "stevearc/conform.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    event = { "BufWritePre" },
-    keys = {
-        { "gq" },
-        {
-            "gQ",
-            function()
-                require("conform").format({ async = true })
-            end,
-            mode = "n",
-            desc = "Format buffer",
-        },
-        {
-
-            "<leader>S",
-            function()
-                vim.b[vim.api.nvim_get_current_buf()].format_on_save = not vim.b[vim.api.nvim_get_current_buf()].format_on_save
-            end,
-            mode = "n",
-            desc = "Toggle format on save",
-        },
-    },
-    cmd = { "ConformInfo" },
-    -- This will provide type hinting with LuaLS
-    ---@module "conform"
-    ---@type conform.setupOpts
-    opts = {
+vim.pack.add({"https://github.com/stevearc/conform.nvim"})
+	
+require('conform').setup{
         notify_on_error = false,
         -- Define your formatters
         formatters_by_ft = {
@@ -55,8 +29,8 @@ return {
         end,
         -- Customize formatters
         formatters = { shfmt = { prepend_args = { "-i", "2" } } },
-    },
-    init = function()
+}
+
         -- If you want the formatexpr, here is the place to set it
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
@@ -68,7 +42,8 @@ return {
             callback = function(args)
                 local path = vim.api.nvim_buf_get_name(args.buf)
                 path = vim.fs.normalize(path)
-                vim.b[args.buf].format_on_save = vim.iter({ vim.env.HOME .. "/.dotfiles", vim.env.XDG_CONFIG_HOME }):any(function(folder)
+                vim.b[args.buf].format_on_save = vim.iter({ vim.env.HOME .. "/.dotfiles", vim.env.XDG_CONFIG_HOME }):any(function(
+                    folder)
                     return vim.startswith(path, vim.fs.normalize(folder))
                 end)
             end,
@@ -90,5 +65,13 @@ return {
         end, {
             desc = "Re-enable autoformat-on-save",
         })
-    end,
-}
+
+
+
+vim.keymap.set("n", "gQ",            function() require("conform").format({ async = true }) end, { desc = "Conform format buffer" })
+vim.keymap.set("n", "<leader>S",
+	function()  vim.b[vim.api.nvim_get_current_buf()].format_on_save = not vim.b[vim.api.nvim_get_current_buf()].format_on_save
+         end,
+	 {
+             desc = "Toggle conform format on save",
+        })

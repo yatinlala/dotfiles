@@ -1,5 +1,10 @@
--- [[ Basic Keymaps ]]
+-- [ Basic Keymaps ]
+vim.keymap.set("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>', { desc = "cd to %'s dir" })
+vim.keymap.set("n", "<leader>ps", function()
+    vim.pack.update()
+end, { desc = "update plugins" })
 
+-- [ NORMAL ]
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -39,6 +44,60 @@ end, { desc = "Toggle statusline" })
 
 -- Navigate buffers
 vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
+
+-- [ /NORMAL ]
+
+-- [ OP-PENDING ]
+
+-- Select around buffer
+vim.keymap.set({ "o", "x" }, "aB", function()
+    vim.cmd("normal! gg0")
+    vim.cmd("normal! V")
+    vim.cmd("normal! G$")
+end, { desc = "Select entire buffer" })
+
+vim.keymap.set({ "o", "x" }, "iB", function()
+    local start = 1
+    local last = vim.fn.line("$")
+
+    -- skip leading blank lines
+    while start <= last and vim.fn.getline(start):match("^%s*$") do
+        start = start + 1
+    end
+
+    -- skip trailing blank lines
+    while last >= start and vim.fn.getline(last):match("^%s*$") do
+        last = last - 1
+    end
+
+    -- make selection
+    vim.cmd(string.format("normal! %dGV%dG", start, last))
+end, { desc = "Select inner buffer" })
+
+-- [ /OP-PENDING ]
+
+-- [ TERMINAL ]
+
+-- exit terminal mode
+vim.keymap.set("t", "JK", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
+
+vim.keymap.set("n", "<leader>t", "<cmd>term<CR>i", { desc = "Open terminal" })
+vim.keymap.set("n", "<leader>T", "<cmd>tabnew | term<CR>i", { desc = "Open terminal in new tab" })
+vim.keymap.set("n", "<leader>e", "<cmd>term lf<CR>i", { desc = "Open Lf" })
+
+-- vim.keymap.set("n", "<leader>st", function()
+--     vim.cmd.vnew()
+--     vim.cmd.term()
+--     vim.cmd.wincmd("J")
+--     vim.api.nvim_win_set_height(0, 15)
+--     vim.cmd.startinsert()
+-- end, { desc = "Open Lf" })
+
+-- [ /TERMINAL ]
 
 -- Source things
 -- vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Source file" })
