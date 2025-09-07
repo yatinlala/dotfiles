@@ -1,7 +1,12 @@
-vim.pack.add({
+require("plugins").pack_add({
     {
         src = "https://github.com/nvim-treesitter/nvim-treesitter",
         version = "main",
+        data = {
+            run = function(_)
+                vim.cmd("TSUpdate")
+            end,
+        },
     },
     {
         src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",

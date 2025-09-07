@@ -5,7 +5,13 @@ vim.api.nvim_create_user_command("ToggleBackground", function()
         vim.o.background = "dark"
     end
 end, {})
---
+
+vim.api.nvim_create_user_command("Lf", function()
+    require("lf").show()
+end, {
+    desc = "Show Lf window",
+})
+
 vim.api.nvim_create_user_command("EC", "silent cd ~/.config/nvim | e $MYVIMRC", {})
 
 -- vim.api.nvim_create_user_command('Redir', ":0put=execute('highlight')", {})

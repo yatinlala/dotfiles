@@ -1,10 +1,11 @@
-vim.pack.add({
+require("plugins").pack_add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/mason-org/mason-lspconfig.nvim",
 })
 
--- vim.lsp.enable("ocamllsp")
+vim.lsp.enable("rust_analyzer")
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_attach", { clear = true }),
     callback = function(event)
@@ -66,6 +67,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end,
 })
+
+vim.lsp.on_type_formatting.enable()
 
 require("mason").setup()
 require("mason-lspconfig").setup({

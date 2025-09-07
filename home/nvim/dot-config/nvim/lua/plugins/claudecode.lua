@@ -1,3 +1,6 @@
+if true then
+    return
+end
 vim.pack.add({ "https://github.com/coder/claudecode.nvim" })
 -- depends on  "folke/snacks.nvim"
 

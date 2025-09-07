@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-vim.pack.add({ "https://github.com/echasnovski/mini.nvim" })
+require("plugins").pack_add({ "https://github.com/nvim-mini/mini.nvim" })
 
 -- dependencies
 -- "nvim-treesitter/nvim-treesitter-textobjects", -- needed for diF
@@ -131,16 +131,16 @@ end, { desc = "Delete Session" })
 --         end,
 --     },
 -- })
--- vim.keymap.set("n", "<leader>f", function()
---     MiniPick.builtin.files()
--- end, { desc = "Pick [F]iles" })
--- vim.keymap.set("n", "<leader>G", function()
---     MiniPick.builtin.grep_live()
--- end, { desc = "Live [G]rep" })
+-- -- vim.keymap.set("n", "<leader>f", function()
+-- --     MiniPick.builtin.files()
+-- -- end, { desc = "Pick [F]iles" })
+-- -- vim.keymap.set("n", "<leader>G", function()
+-- --     MiniPick.builtin.grep_live()
+-- -- end, { desc = "Live [G]rep" })
 -- vim.keymap.set("n", "<leader>h", function()
 --     MiniPick.builtin.help()
 -- end, { desc = "Pick [H]elp" })
---: }}}
+-- : }}}
 
 --: files {{{
 

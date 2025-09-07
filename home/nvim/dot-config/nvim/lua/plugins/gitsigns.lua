@@ -1,4 +1,4 @@
-vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+require("plugins").pack_add({ "https://github.com/lewis6991/gitsigns.nvim" })
 
 vim.keymap.set("n", "<leader>gj", function()
     require("gitsigns").next_hunk()

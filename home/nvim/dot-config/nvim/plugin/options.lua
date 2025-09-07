@@ -1,50 +1,53 @@
 -- [[ Options ]]
 -- `:help vim.opt`, `:help option-list`
 
-vim.schedule(function()
-    vim.opt.clipboard = "unnamedplus" -- use system clipboard
-end)
+vim.api.nvim_create_autocmd("UIEnter", {
+    callback = function()
+        vim.o.clipboard = "unnamedplus"
+    end,
+})
 
 vim.o.guifont = "JetBrainsMono Nerd Font:h15" -- text below applies for VimScript
 
 -- vim.opt.tabstop = 4
 
 -- Split below and to the right
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 
-vim.opt.undofile = true -- persistent undo
+vim.o.undofile = true -- persistent undo
 
-vim.opt.laststatus = 3
-vim.opt.showmode = false -- hide -- INSERT --
+vim.o.laststatus = 3
+vim.o.showmode = false -- hide -- INSERT --
 
 vim.opt.path:append("**") -- :find searches subdirs
 
-vim.opt.breakindent = true -- wrapped lines preserve indent level
+vim.o.breakindent = true -- wrapped lines preserve indent level
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
--- Sets how Neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`, `:help 'listchars'`
-vim.opt.list = true
+-- :help 'list' :help, 'listchars'
+vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.opt.winblend = 5
-vim.opt.winborder = "rounded"
+vim.o.winblend = 5
+vim.o.winborder = "rounded"
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.o.confirm = true
+
+vim.o.exrc = true
+vim.o.secure = true
 
 -- Completion
-vim.opt.completeopt = { "menuone", "noselect", "fuzzy" } -- mostly just for cmp
-vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
 vim.opt.pumheight = 8 -- number of items in completion menu
+-- vim.opt.completeopt = { "menuone", "noselect", "fuzzy" } -- mostly just for cmp
+-- vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
 
--- vim.opt.number = true -- set numbered lines
--- vim.opt.relativenumber = true -- set relative numbered lines
---
---
---
---
 -- vim.opt.updatetime = 250 -- Decrease update time
 -- vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time
 --

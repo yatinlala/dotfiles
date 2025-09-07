@@ -1,3 +1,6 @@
+if true then
+    return
+end
 return {
     "Exafunction/codeium.nvim",
     event = "VeryLazy",

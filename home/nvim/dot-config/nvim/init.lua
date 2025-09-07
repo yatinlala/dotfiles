@@ -2,9 +2,14 @@ pcall(function()
     vim.loader.enable()
 end)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+_G.req = function(name)
+    local ok, _ = pcall(require, name)
+    if not ok then
+        print("failed to load " .. name)
+    end
+end
+
+-- for some reason, its good practice to set these early.
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -18,4 +23,4 @@ require("vim._extui").enable({
     },
 })
 
-require("plugins")
+require("plugins").init()

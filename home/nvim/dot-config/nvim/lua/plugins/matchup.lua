@@ -1,5 +1,5 @@
 -- Supercharge %, replace matchparen, add g%, [%, ]%, z%
-vim.pack.add({ "https://github.com/andymass/vim-matchup" })
+require("plugins").pack_add({ "https://github.com/andymass/vim-matchup" })
 
 -- keys = { '%' }, -- TODO this doesn't work for some reason
 -- vim.cmd([[ hi MatchWord guibg=#504945 ]])
