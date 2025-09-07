@@ -1,5 +1,5 @@
-TARGET := /etc
-PACKAGES := $(shell find . -mindepth 1 -maxdepth 1 -type d -not -name Makefile -exec basename {} \;)
+TARGET   := /etc
+PACKAGES := $(shell find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
 
 all:
 	sudo stow --dotfiles --target=$(TARGET) $(PACKAGES)
@@ -7,16 +7,8 @@ all:
 clean:
 	sudo stow --dotfiles -D --target=$(TARGET) $(PACKAGES)
 
-stow:
-	@if [ -z "$(PACKAGE)" ]; then \
-		echo "Error: Please specify a PACKAGE. Usage: make stow PACKAGE=<package_name>"; \
-		exit 1; \
-	fi
-	sudo stow --dotfiles --target=$(TARGET) $(PACKAGE)
+stow-%:
+	sudo stow --dotfiles --target=$(TARGET) $*
 
-unstow:
-	@if [ -z "$(PACKAGE)" ]; then \
-		echo "Error: Please specify a PACKAGE. Usage: make unstow PACKAGE=<package_name>"; \
-		exit 1; \
-	fi
-	sudo stow --dotfiles -D --target=$(TARGET) $(PACKAGE)
+unstow-%:
+	sudo stow --dotfiles -D --target=$(TARGET) $*
