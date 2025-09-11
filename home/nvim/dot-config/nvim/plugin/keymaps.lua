@@ -88,7 +88,7 @@ vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 vim.keymap.set("n", "<leader>t", "<cmd>term<CR>i", { desc = "Open terminal" })
 vim.keymap.set("n", "<leader>T", "<cmd>tabnew | term<CR>i", { desc = "Open terminal in new tab" })
-vim.keymap.set("n", "<leader>e", "<cmd>term lf<CR>i", { desc = "Open Lf" })
+vim.keymap.set("n", "<leader>e", "<cmd>term lf %:h<CR>i", { desc = "Open Lf" })
 
 -- vim.keymap.set("n", "<leader>st", function()
 --     vim.cmd.vnew()

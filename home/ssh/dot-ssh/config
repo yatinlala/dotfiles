@@ -1,3 +1,6 @@
+Host hetz
+	HostName 5.161.48.121
+	User root
 # Host cslab
 #     HostName lab.cs.swarthmore.edu
 #     User ylala1
