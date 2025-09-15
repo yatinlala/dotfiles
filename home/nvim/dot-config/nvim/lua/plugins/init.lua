@@ -10,15 +10,15 @@ function M.init()
         end
     end
 
-    M.pack_add({ "https://github.com/tpope/vim-sleuth" })
-    M.pack_add({ "https://github.com/tpope/vim-eunuch" })
+    vim.pack.add({ "https://github.com/tpope/vim-sleuth" })
+    vim.pack.add({ "https://github.com/tpope/vim-eunuch" })
 end
 
-function M.pack_add(specs, opts)
-    opts = opts or {}
-    opts.confirm = false
-    return vim.pack.add(specs, opts)
-end
+-- function vim.pack.add(specs, opts)
+--     opts = opts or {}
+--     opts.confirm = false
+--     return vim.pack.add(specs, opts)
+-- end
 
 local group = vim.api.nvim_create_augroup("PluginStuff", { clear = true })
 
@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 ---@param plugins (string|vim.pack.Spec)[]
 function M.lazy_load(plugins)
-    M.pack_add(plugins, {
+    vim.pack.add(plugins, {
         load = function(plugin)
             local data = plugin.spec.data or {}
 

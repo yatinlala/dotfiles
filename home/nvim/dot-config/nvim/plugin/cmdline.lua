@@ -1,3 +1,4 @@
+-- :h cmdline-autocompletion
 local group = vim.api.nvim_create_augroup("lala-cmdcomplete", { clear = true })
 
 vim.opt.wildmode = "noselect:lastused,full"

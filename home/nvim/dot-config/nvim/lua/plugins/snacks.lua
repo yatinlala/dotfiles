@@ -1,7 +1,7 @@
 if true then
     return
 end
-require("plugins").pack_add({ "https://github.com/folke/snacks.nvim" })
+vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 
 vim.keymap.set("n", "<leader>f", function()
     -- Snacks.picker.files()

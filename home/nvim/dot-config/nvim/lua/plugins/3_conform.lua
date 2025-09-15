@@ -1,4 +1,4 @@
-require("plugins").pack_add({ "https://github.com/stevearc/conform.nvim" })
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 require("conform").setup({
     notify_on_error = false,

@@ -1,4 +1,4 @@
-require("plugins").pack_add({
+vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/mason-org/mason-lspconfig.nvim",
@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 vim.diagnostic.config({ virtual_text = true })
             end
         end
-        map("<leader>lv", ToggleVirtualText, "Toggle [L]sp [V]irtual Text")
+        map("<leader>v", ToggleVirtualText, "Toggle Lsp Virtual Text")
 
         -- vim.api.nvim_create_autocmd({ 'InsertCharPre', 'CursorMovedI', 'CursorHold', 'CursorHoldI' }, {
         --     -- check if the character before the cursor is `{` or it is all spaces

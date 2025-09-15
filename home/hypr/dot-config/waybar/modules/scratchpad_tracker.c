@@ -7,13 +7,6 @@
 #include <time.h>
 #include <unistd.h>
 
-void sleep_ms(long ms) {
-  struct timespec ts;
-  ts.tv_sec = ms / 1000;
-  ts.tv_nsec = (ms % 1000) * 1000000;
-  nanosleep(&ts, NULL);
-}
-
 int run_command(const char *cmd) {
   int status = system(cmd);
   return (status != -1 && WEXITSTATUS(status) == 0);
@@ -45,12 +38,12 @@ void generate_status(char *out, size_t outlen) {
 
 int main(void) {
   char output[256];
-  setbuf(stdout, NULL);
+  struct timespec sleep_time = {.tv_sec = 0, .tv_nsec = 500000000};
 
   while (1) {
     generate_status(output, sizeof(output));
     printf("%s\n", output);
     fflush(stdout);
-    sleep_ms(500);
+    nanosleep(&sleep_time, NULL);
   }
 }

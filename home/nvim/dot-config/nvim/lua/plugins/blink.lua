@@ -1,7 +1,7 @@
 if true then
     return
 end
-require("plugins").pack_add({
+vim.pack.add({
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.0") },
 })

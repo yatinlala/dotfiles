@@ -24,6 +24,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- [ TERMINAL ]
 
+vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
+    group = augroup("terminal_autoinsert"),
+    pattern = "term://*",
+    callback = function()
+        vim.cmd("startinsert")
+    end,
+})
+
 -- vim.cmd [[ autocmd TermClose * execute 'bdelete! ' . expand('<abuf>') ]]
 
 -- vim.api.nvim_create_autocmd('BufWritePre', {

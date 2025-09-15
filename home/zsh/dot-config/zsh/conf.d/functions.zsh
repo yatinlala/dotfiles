@@ -39,26 +39,26 @@ nix() {
 # alias egrep='grep -E'
 if command -v eza > /dev/null; then
   ls() { eza --icons=auto "$@" }
+else
+  alias ls='ls --color=auto'
 fi
 ll() { ls -l "$@" }
 la() { ll -a "$@" }
-
-# [[ SHORTEN FREQUENTS ]]
-e() { $EDITOR "$@" }
-et() { nvim +':tabnew' +':edit $@' }
 vis() { $EDITOR -S Session.vim }
 wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
 # ll() { ls -lh "$@" }
 # la() { ll -A "$@" }
 ed() { sudo systemctl start docker }
-wiki() { nvim ~/documents/org/main.org }
 alias '?'='duck'
+
+# [[ SHORTEN FREQUENTS ]]
+e() { $EDITOR "$@" }
+ccd() { clang -std=c99 -g -O0 -Wall -Werror -fsanitize=address "$@" }
+ccr() { clang -std=c99 -O3 -Wall -Werror "$@" }
 
 
 # [[ NOVELTY ]]
-alias musb='sudo mount /dev/sda ~/.local/usb'
-alias uusb='sudo umount ~/.local/usb'
 domains() { sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8 }
 orphans() { pacman -Qtdq }
 myip() { curl -4 https://icanhazip.com }

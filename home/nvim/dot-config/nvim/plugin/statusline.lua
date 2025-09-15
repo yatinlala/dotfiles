@@ -47,14 +47,14 @@ local function formatter()
             return f.name
         end, fmt)
         -- 󰷈
-        return "fmt: " .. table.concat(names, " ") .. fmt_on_save
+        return "fmt: " .. table.concat(names, " ") .. fmt_on_save .. " | "
     end
 
     -- this is not part of conform API. not wrapping it in a pcall because if the API
     -- breaks I should do something about it
     local lsp_clients = require("conform.lsp_format").get_format_clients({ bufnr = bufnr })
     if next(lsp_clients or {}) then
-        return "fmt: LSP"
+        return "fmt: LSP" .. fmt_on_save .. " | "
     end
 
     return ""
@@ -64,7 +64,7 @@ local function filetype()
     if vim.bo.filetype == "" then
         return ""
     end
-    return "ft: " .. vim.bo.filetype
+    return "ft: " .. vim.bo.filetype .. " | "
 end
 
 local mode_map = {
@@ -105,12 +105,9 @@ function Statusline()
     return table.concat({
         mode(),
         " %f %m%w%r",
-        -- "| ",
         "%=",
         formatter(),
-        " | ",
         filetype(),
-        " | ",
         "%P %l:%c",
         -- git(),
     })

@@ -1,6 +1,5 @@
-local packadd = require("plugins").pack_add
 
-packadd({ "https://github.com/sainnhe/gruvbox-material" })
+vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 
 -- vim.g.gruvbox_material_transparent_background = 0
 -- vim.g.gruvbox_material_foreground = "material"

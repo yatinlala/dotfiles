@@ -9,7 +9,7 @@ local lazy_load = require("plugins").lazy_load
 
 -- require("plugins.util").packadd({ })
 
-vim.keymap.set("n", "<leader>C", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
+vim.keymap.set("n", "<leader>c", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
 
 lazy_load({
     {

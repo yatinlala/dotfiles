@@ -1,8 +1,5 @@
 -- [ Basic Keymaps ]
-vim.keymap.set("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>', { desc = "cd to %'s dir" })
-vim.keymap.set("n", "<leader>ps", function()
-    vim.pack.update()
-end, { desc = "update plugins" })
+-- vim.keymap.set("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>', { desc = "cd to %'s dir" })
 
 -- [ NORMAL ]
 --  See `:help wincmd` for a list of all window commands
@@ -26,7 +23,8 @@ vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<M-h>", "<cmd>tabmove -1<CR>")
 vim.keymap.set("n", "<M-l>", "<cmd>tabmove +1<CR>")
 
-vim.keymap.set("n", "<leader>f", ":find ", { desc = "[F]ind file" })
+vim.keymap.set("n", "<leader>f", "<cmd>find ", { desc = "[F]ind file" })
+vim.keymap.set("n", "<leader>G", ":copen | sil grep ", { desc = "Grep" })
 vim.keymap.set("n", "<leader>h", ":Help ", { desc = "Search [H]elp" })
 
 -- vim.keymap.set("n", "gQ", "mzgggqG`z<cmd>delmarks z<cr>zz", { desc = "Format buffer" })

@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
-require("plugins").pack_add({ "https://github.com/nvim-mini/mini.nvim" })
+vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
 -- dependencies
 -- "nvim-treesitter/nvim-treesitter-textobjects", -- needed for diF
@@ -47,13 +47,26 @@ vim.keymap.set("n", "yss", "ys_", { remap = true })
 
 --: pairs {{{
 
--- TODO dif doesn't work if end of function is more than 50 lines away.
--- figure out what 'cover' and all that does. feels like if function
--- definition is right above you mini.ai should be able to figure things out
-require("mini.pairs").setup()
+require("mini.pairs").setup( {
+    mappings = {
+
+      ['('] = false,
+      ['['] = false,
+      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\].' },
+
+      [')'] = false,
+      [']'] = false,
+      ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
+
+      ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[^\\].',   register = { cr = false } },
+      ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[^%a\\].', register = { cr = false } },
+      ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].',   register = { cr = false } },
+    },
+  })
+
 vim.g.minipairs_disable = true
 
-vim.keymap.set("n", "<leader>A", function()
+vim.keymap.set("n", "<leader>p", function()
     vim.g.minipairs_disable = not vim.g.minipairs_disable
 end, { desc = "Toggle MiniPairs" })
 
@@ -91,6 +104,11 @@ end, { desc = "Delete Session" })
 --: }}}
 
 --: ai {{{
+
+
+-- TODO dif doesn't work if end of function is more than 50 lines away.
+-- figure out what 'cover' and all that does. feels like if function
+-- definition is right above you mini.ai should be able to figure things out
 -- try cina, cila. need to get these under my fingers
 -- local spec_treesitter = require("mini.ai").gen_spec.treesitter
 -- require("mini.ai").setup({

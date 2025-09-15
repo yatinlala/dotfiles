@@ -1,3 +1,4 @@
+-- autocompmletedelay seems broken. until that is fixed, i'm not going to use this.
 if true then
     return
 end
