@@ -1,8 +1,8 @@
 #define _POSIX_C_SOURCE 199309L
-
 #include <assert.h>
 #include <dirent.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 int yl_strlen(const char *string) {
@@ -92,13 +92,26 @@ int pgrep(const char *process_name) {
   return 0;
 }
 
-int main() {
+int main(int argc, char **argv) {
   struct timespec sleep_time = {.tv_sec = 0, .tv_nsec = 500000000};
+  int result;
+
+  if (argc == 2 && yl_str_is_equal(argv[1], "toggle")) {
+    result = pgrep("hypridle");
+    if (result == -1) {
+      fprintf(stderr, "Error checking process\n");
+      return 1;
+    } else if (result == 1) {
+      system("pkill -x hypridle");
+      return 0;
+    } else {
+      system("nohup hypridle >/dev/null 2>&1 &");
+      return 0;
+    }
+  }
+
   while (1) {
-
-    const char *process_name = "hypridle";
-
-    int result = pgrep(process_name);
+    result = pgrep("hypridle");
 
     if (result == -1) {
       fprintf(stderr, "Error checking process\n");

@@ -139,8 +139,8 @@
 	},
 	"custom/hypridle_toggle": {
 		"format": "<span font='13'>{}</span>",
-		"exec": "$HOME/.config/waybar/modules/hypridle_toggle",
-		"on-click": "$HOME/.config/waybar/modules/hypridle_toggle toggle",
+		"exec": "$HOME/.config/waybar/modules/hypridle_indicator",
+		"on-click": "$HOME/.config/waybar/modules/hypridle_indicator toggle",
 		"tooltip": false
 	},
 	"custom/eye": {
