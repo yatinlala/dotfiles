@@ -1,16 +1,63 @@
+if false then
+    return
+end
+
+-- local function is_cmdline_type_find()
+--     local cmdline_cmd = vim.fn.split(vim.fn.getcmdline(), " ")[1]
+--
+--     return cmdline_cmd == "find" or cmdline_cmd == "fin"
+-- end
+--
+-- vim.api.nvim_create_autocmd({ "CmdlineChanged", "CmdlineLeave" }, {
+--     pattern = { "*" },
+--     group = vim.api.nvim_create_augroup("CmdlineAutocompletion", { clear = true }),
+--     callback = debounce(
+--         vim.schedule_wrap(function(ev)
+--             local function should_enable_autocomplete()
+--                 local cmdline_cmd = vim.fn.split(vim.fn.getcmdline(), " ")[1]
+--                 local cmdline_type = vim.fn.getcmdtype()
+--                 return cmdline_type == "/"
+--                     or cmdline_type == "?"
+--                     or (
+--                         cmdline_type == ":"
+--                         and (is_cmdline_type_find() or cmdline_cmd == "help" or cmdline_cmd == "h" or cmdline_cmd == "buffer" or cmdline_cmd == "b")
+--                     )
+--             end
+--             if ev.event == "CmdlineChanged" and should_enable_autocomplete() then
+--                 vim.opt.wildmode = "noselect:lastused,full"
+--                 vim.fn.wildtrigger()
+--             end
+--             if ev.event == "CmdlineLeave" then
+--                 vim.opt.wildmode = "full"
+--             end
+--         end),
+--         500
+--     ),
+-- })
 -- :h cmdline-autocompletion
 local group = vim.api.nvim_create_augroup("lala-cmdcomplete", { clear = true })
 
 vim.opt.wildmode = "noselect:lastused,full"
 -- vim.opt.wildoptions:append("fuzzy")
 
+local timer = nil
+local running = nil
+
 vim.api.nvim_create_autocmd("CmdlineChanged", {
     group = group,
-    desc = "Auto show command line completion",
+    desc = "Auto show command line completion (debounced)",
     pattern = ":",
     callback = function()
-        vim.schedule(function()
-            vim.fn.wildtrigger()
+        if not running then
+            timer = assert(vim.uv.new_timer())
+        end
+
+        assert(timer):start(300, 0, function()
+            assert(timer):stop()
+            running = nil
+            vim.schedule(function()
+                vim.fn.wildtrigger()
+            end)
         end)
     end,
 })

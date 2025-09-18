@@ -8,10 +8,10 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "<M-h>", "<C-w><", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<M-l>", "<C-w>>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<M-j>", "<C-w>-", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<M-k>", "<C-w>+", { desc = "Move focus to the upper window" })
+-- vim.keymap.set("n", "<M-h>", "<C-w><", { desc = "Resize" })
+-- vim.keymap.set("n", "<M-l>", "<C-w>>", { desc = "Resize" })
+-- vim.keymap.set("n", "<M-j>", "<C-w>-", { desc = "Resize" })
+-- vim.keymap.set("n", "<M-k>", "<C-w>+", { desc = "Resize" })
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -20,12 +20,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highl
 vim.keymap.set("n", "<S-h>", "<cmd>tabprev<CR>")
 vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>")
 
-vim.keymap.set("n", "<M-h>", "<cmd>tabmove -1<CR>")
-vim.keymap.set("n", "<M-l>", "<cmd>tabmove +1<CR>")
+-- vim.keymap.set("n", "<M-H>", "<cmd>tabmove -1<CR>")
+-- vim.keymap.set("n", "<M-L>", "<cmd>tabmove +1<CR>")
 
-vim.keymap.set("n", "<leader>f", "<cmd>find ", { desc = "[F]ind file" })
+vim.keymap.set("n", "<leader>f", ":find ", { desc = "[F]ind file" })
 vim.keymap.set("n", "<leader>G", ":copen | sil grep ", { desc = "Grep" })
-vim.keymap.set("n", "<leader>h", ":Help ", { desc = "Search [H]elp" })
+vim.keymap.set("n", "<leader>h", ":help ", { desc = "Search [H]elp" })
 
 -- vim.keymap.set("n", "gQ", "mzgggqG`z<cmd>delmarks z<cr>zz", { desc = "Format buffer" })
 
@@ -84,8 +84,8 @@ vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
 vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
-vim.keymap.set("n", "<leader>t", "<cmd>term<CR>i", { desc = "Open terminal" })
-vim.keymap.set("n", "<leader>T", "<cmd>tabnew | term<CR>i", { desc = "Open terminal in new tab" })
+vim.keymap.set("n", "<leader>t", "<cmd>term<CR>", { desc = "Open terminal" })
+vim.keymap.set("n", "<leader>T", "<cmd>tabnew | term<CR>", { desc = "Open terminal in new tab" })
 vim.keymap.set("n", "<leader>e", "<cmd>term lf %:h<CR>i", { desc = "Open Lf" })
 
 -- vim.keymap.set("n", "<leader>st", function()
