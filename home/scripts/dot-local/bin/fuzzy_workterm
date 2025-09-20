@@ -1,0 +1,8 @@
+#!/bin/sh
+
+dir=$(fd --ignore-file=$XDG_CONFIG_HOME/fdignore --max-depth 3 --exclude $HOME | fzf)
+
+if [ -n "$dir" ]; then
+        setsid -f ghostty --working-directory=$dir --class="org.yatin.$(basename $dir)" >/dev/null 2>&1
+        kitty @ close-window
+fi

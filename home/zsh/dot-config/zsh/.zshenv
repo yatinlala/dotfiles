@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/scripts:$HOME/.local/share/cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -12,7 +12,8 @@ export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 
-SCRIPTS="$HOME/.local/scripts"
+SCRIPTS="$HOME/.local/bin"
+
 # FZF
 export FZF_DEFAULT_OPTS="--cycle --scroll-off=0 --walker-skip=.git,node_modules,.cache,.local/share/go/pkg,.local/share/Zeal,.local/share/pipx/venvs,.local/xdg-launch,.local/share/Steam,.config/vivaldi,.config/Cursor"
 export FZF_ALT_C_OPTS="--walker=dir,hidden,follow"

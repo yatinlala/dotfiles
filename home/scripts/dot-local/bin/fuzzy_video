@@ -1,0 +1,8 @@
+#!/bin/sh
+
+file=$(fd --full-path '/home/yatin/videos' | fzf)
+
+if [ -n "$file" ]; then
+    setsid -f mpv "$file" >/dev/null 2>&1
+    kitty @ close-window
+fi

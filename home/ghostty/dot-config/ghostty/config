@@ -1,17 +1,13 @@
 ### APPEARANCE ###
-theme = "GruvboxDark"
+theme = "Gruvbox Dark"
 font-size = 16
-adjust-cell-width= -5%
+adjust-cell-width= -4%
 
 window-padding-x = 6
 window-padding-y = 4
 unfocused-split-opacity = 0.8
 
 gtk-titlebar = false
-gtk-tabs-location = top
-adw-toolbar-style = raised-border
-# gtk-wide-tabs = false
-gtk-adwaita = true
 
 ### BEHAVIOUR ###
 mouse-scroll-multiplier = .8
@@ -19,8 +15,9 @@ focus-follows-mouse = false
 copy-on-select = true
 confirm-close-surface = false
 gtk-single-instance = true
-# initial-window=false
 quit-after-last-window-closed=false
+# window-inherit-working-directory=false
+# initial-window=false
 
 
 ### KEYBINDS ###
