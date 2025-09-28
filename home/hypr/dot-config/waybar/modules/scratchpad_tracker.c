@@ -26,7 +26,12 @@ void generate_status(char *out, size_t outlen) {
                   "brave-pdigihnmoiplkhocekidmdcmchhdpjo-Default")) {
     strcat(out, "✅");
   }
-  if (run_command("pgrep -f '/usr/lib/obsidian/app.asar' >/dev/null")) {
+  if (run_command("hyprctl clients | grep -q "
+                  "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")) {
+    strcat(out, "✉️");
+  }
+  if (run_command("pgrep -f '/usr/lib/electron[0-9]*/electron"
+                  "/usr/lib/obsidian/app.asar' >/dev/null")) {
     strcat(out, "💎");
   }
   // if (run_command("pgrep -f 'nerd-dictation begin' >/dev/null")) {

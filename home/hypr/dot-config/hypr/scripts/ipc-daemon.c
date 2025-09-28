@@ -56,21 +56,22 @@ int main() {
           if (!edp_added) {
             system("hyprctl keyword monitor 'eDP-1,disable'");
           }
-        } else if (strncmp(line_buffer, "activewindow>>", 14) == 0) {
-          char *found_zen = strstr(line_buffer, "YouTube — Zen Browser");
-          char *found_brave = NULL;
-          if (!found_zen) {
-            found_brave = strstr(line_buffer, "YouTube - Brave");
-          }
-          if (found_zen || found_brave) {
-            system("hyprshade on grayscale");
-            youtube_window_selected = 1;
-          }
-          if (!found_zen && !found_brave && youtube_window_selected) {
-            system("hyprshade off");
-            youtube_window_selected = 0;
-          }
         }
+        // else if (strncmp(line_buffer, "activewindow>>", 14) == 0) {
+        //   char *found_zen = strstr(line_buffer, "YouTube — Zen Browser");
+        //   char *found_brave = NULL;
+        //   if (!found_zen) {
+        //     found_brave = strstr(line_buffer, "YouTube - Brave");
+        //   }
+        //   if (found_zen || found_brave) {
+        //     system("hyprshade on grayscale");
+        //     youtube_window_selected = 1;
+        //   }
+        //   if (!found_zen && !found_brave && youtube_window_selected) {
+        //     system("hyprshade off");
+        //     youtube_window_selected = 0;
+        //   }
+        // }
         line_pos = 0;
         memset(line_buffer, 0, BUFFER_SIZE);
 

@@ -16,16 +16,25 @@ dpms)
     status=$(hyprctl monitors -j | jq -r ".[] | select(.name==\"$MONITOR\") | .dpmsStatus")
 
     if [ "$status" = "true" ]; then
+        sleep .5
         hyprctl dispatch dpms off "$MONITOR"
     else
+        sleep .5
         hyprctl dispatch dpms on "$MONITOR"
     fi
     ;;
 display)
-    if hyprctl monitors | grep -q "eDP-1"; then
-        hyprctl keyword monitor "eDP-1, disable"
-    else
-        hyprctl keyword monitor "eDP-1, enable"
+	confirm=$(echo "" | rofi -dmenu\
+		-i\
+		-no-fixed-num-lines\
+		-p "Are You Sure? : "\
+        -theme $XDG_CONFIG_HOME/rofi/powermenu/confirm.rasi)
+    if [ $confirm = "y" ]; then
+        if hyprctl monitors | grep -q "eDP-1"; then
+            hyprctl keyword monitor "eDP-1, disable"
+        else
+            hyprctl keyword monitor "eDP-1, enable"
+        fi
     fi
     ;;
 espanso)
@@ -39,6 +48,11 @@ ferdium)
     pgrep -x ferdium || gtk-launch ferdium &
     # sway "workspace 9; [class=Ferdium] focus";;
     hyprctl dispatch focuswindow "^(ferdium)$"
+    ;;
+
+gmail)
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")' || gtk-launch brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default
+    hyprctl dispatch togglespecialworkspace gmail
     ;;
 inhibit-lid)
     pgrep -x sleep && (

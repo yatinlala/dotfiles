@@ -7,8 +7,9 @@
 		"hyprland/workspaces",
 		"custom/hypridle_toggle",
 		// "custom/202020"
-		"hyprland/window"
 		//"custom/timer",
+		"hyprland/window",
+		"hyprland/submap"
 	],
 	// "modules-center": [ "mpris"],
 	"modules-center": [ ],
@@ -17,7 +18,7 @@
 		// "custom/eye",
 		"privacy",
 		"mpd",
-		"custom/todo",
+		// "custom/todo",
 		"custom/scratchpad_tracking",
 		"tray",
 		"backlight",
@@ -33,6 +34,11 @@
 	    "device": "amdgpu_bl1",
 	    "format": "{icon} {percent}%",
 	    "format-icons": ["", ""]
+	},
+	"hyprland/submap": {
+	    "format": "✌️ {}",
+	    "max-length": 80,
+	    "tooltip": false
 	},
 	"hyprland/window": {
 		//"format": "{}"   // <--- these is the default value  
