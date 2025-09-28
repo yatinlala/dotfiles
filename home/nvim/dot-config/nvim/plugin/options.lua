@@ -45,8 +45,8 @@ vim.o.secure = true
 
 -- Completion
 vim.opt.pumheight = 8 -- number of items in completion menu
--- vim.opt.completeopt = { "menuone", "noselect", "fuzzy" } -- mostly just for cmp
--- vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "popup" }
+vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
 
 -- vim.opt.updatetime = 250 -- Decrease update time
 -- vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time
