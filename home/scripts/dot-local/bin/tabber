@@ -142,9 +142,9 @@ find_tab() {
         "archive") prompt="Select archive tab:" ;;
         "both") prompt="Select tab:" ;;
     esac
-    
+
     local selected
-    selected=$(printf '%s\n' "${entries[@]}" | rofi -dmenu -p " $prompt")
+    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi -dmenu -p " $prompt")
     
     if [[ -z "$selected" ]]; then
         echo "No selection made"

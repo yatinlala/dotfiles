@@ -21,7 +21,7 @@ wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # [[ IMPROVE DEFAULTS ]]
 # alias df='df -h'
 # alias cat='bat -pp'
-alias gemini='xdg-launch gemini --show_memory_usage --telemetry=false'
+alias gemini='xdg-launch gemini --telemetry=false'
 alias info='info --vi-keys'
 alias bc='bc -lq'
 # alias ls='ls --color=auto'
@@ -54,8 +54,8 @@ alias '?'='duck'
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
-ccd() { clang -std=c99 -g -O0 -Wall -Werror -fsanitize=address "$@" }
-ccr() { clang -std=c99 -O3 -Wall -Werror "$@" }
+ccd() { clang -std=c99 -g -O0 -Wall -Werror -Wextra -fsanitize=undefined,address "$@" }
+ccr() { clang -std=c99 -O3 "$@" }
 
 
 # [[ NOVELTY ]]
