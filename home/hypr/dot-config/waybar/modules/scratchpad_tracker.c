@@ -20,16 +20,25 @@ void generate_status(char *out, size_t outlen) {
     strcat(out, "🎶 ");
   }
   if (run_command("pgrep -x signal-desktop >/dev/null")) {
-    strcat(out, "📞");
+    strcat(out, "  ");
   }
   if (run_command("hyprctl clients | grep -q "
-                  "brave-pdigihnmoiplkhocekidmdcmchhdpjo-Default")) {
-    strcat(out, "✅");
+                  "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")) {
+    strcat(out, "  ");
   }
   if (run_command("hyprctl clients | grep -q "
                   "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")) {
-    strcat(out, "✉️");
+    strcat(out, " ");
   }
+  if (run_command("hyprctl clients | grep -q "
+                  "brave-magkoliahgffibhgfkmoealggombgknl-Default")) {
+    strcat(out, "  ");
+  }
+  if (run_command("hyprctl clients | grep -q "
+                  "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")) {
+    strcat(out, " ");
+  }
+
   if (run_command("pgrep -f '/usr/lib/electron[0-9]*/electron"
                   "/usr/lib/obsidian/app.asar' >/dev/null")) {
     strcat(out, "💎");

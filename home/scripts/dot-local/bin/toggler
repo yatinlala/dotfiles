@@ -10,6 +10,10 @@ discord)
     pgrep -x discord || setsid discord &
     sway "workspace 9; [class=discord] focus"
     ;;
+discord-brave)
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-magkoliahgffibhgfkmoealggombgknl-Default")' || gtk-launch brave-magkoliahgffibhgfkmoealggombgknl-Default
+    hyprctl dispatch togglespecialworkspace discord
+    ;;
 dpms)
     MONITOR="eDP-1"
 
@@ -161,6 +165,10 @@ tmux) ;;
 torbrowser)
     wmctrl -l | grep -q "Tor Browser" || setsid torbrowser-launcher &
     sway "workspace 7"
+    ;;
+whatsapp)
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")' || gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default
+    hyprctl dispatch togglespecialworkspace whatsapp
     ;;
 *)
     echo "Invalid argument." >&2
