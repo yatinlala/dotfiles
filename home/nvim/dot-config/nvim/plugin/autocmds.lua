@@ -32,6 +32,11 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
     end,
 })
 
+-- :h terminal-scrollback-pager
+vim.api.nvim_create_user_command("TermHl", function()
+    vim.api.nvim_open_term(0, {})
+end, { desc = "Highlights ANSI termcodes in curbuf" })
+
 -- vim.cmd [[ autocmd TermClose * execute 'bdelete! ' . expand('<abuf>') ]]
 
 -- vim.api.nvim_create_autocmd('BufWritePre', {
