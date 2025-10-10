@@ -6,6 +6,10 @@ vim.pack.add({
 
 vim.lsp.enable("rust_analyzer")
 
+-- vim.keymap.set("n", "<leader>al", function()
+--     vim.lsp.enable("copilot")
+-- end, { desc = "enable copilot lsp" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_attach", { clear = true }),
     callback = function(event)
