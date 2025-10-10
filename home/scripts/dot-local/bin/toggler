@@ -28,17 +28,17 @@ dpms)
     fi
     ;;
 display)
-	confirm=$(echo "" | rofi -dmenu\
-		-i\
-		-no-fixed-num-lines\
-		-p "Are You Sure? : "\
-        -theme $XDG_CONFIG_HOME/rofi/powermenu/confirm.rasi)
-    if [ $confirm = "y" ]; then
-        if hyprctl monitors | grep -q "eDP-1"; then
-            hyprctl keyword monitor "eDP-1, disable"
-        else
-            hyprctl keyword monitor "eDP-1, enable"
-        fi
+    rofi -dmenu -theme-str '
+        entry {enabled: false;}
+        listview {lines: 0;}
+        window {height: 5%; width: 10%;}
+    ' -p " Confirm?"
+    ret=$?
+
+    if [ $ret -eq 0 ]; then
+        hyprctl keyword monitor "eDP-1, disable"
+    elif [ $ret -eq 1 ]; then
+        hyprctl keyword monitor "eDP-1, enable"
     fi
     ;;
 espanso)
@@ -49,9 +49,8 @@ espanso)
         setsid espanso daemon &
     ;;
 ferdium)
-    pgrep -x ferdium || gtk-launch ferdium &
-    # sway "workspace 9; [class=Ferdium] focus";;
-    hyprctl dispatch focuswindow "^(ferdium)$"
+    pgrep -x ferdium || gtk-launch org.ferdium.Ferdium &
+    hyprctl dispatch togglespecialworkspace ferdium
     ;;
 
 gmail)
@@ -112,6 +111,10 @@ notes)
     hyprctl dispatch focuswindow "^(notes)$"
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
+instagram)
+    hyprctl clients -j | jq -e '.[] | select(.class == "brave-www.instagram.com__direct_inbox_-Default")' || xdg-launch brave --app='https://www.instagram.com/direct/inbox/' &
+    hyprctl dispatch togglespecialworkspace instagram
+    ;;
 obsidian)
     pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || gtk-launch obsidian
     # hyprctl dispatch focuswindow "class:^(obsidian)$";;

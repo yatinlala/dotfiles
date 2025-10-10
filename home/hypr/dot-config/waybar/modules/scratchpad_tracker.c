@@ -38,16 +38,20 @@ void generate_status(char *out, size_t outlen) {
                   "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")) {
     strcat(out, " ");
   }
+  if (run_command("hyprctl clients | grep -q "
+                  "brave-www.instagram.com__direct_inbox_-Default")) {
+    strcat(out, " ");
+  }
 
-  if (run_command("pgrep -f '/usr/lib/electron[0-9]*/electron"
+  if (run_command("pgrep -f '/usr/lib/electron[0-9]*/electron "
                   "/usr/lib/obsidian/app.asar' >/dev/null")) {
-    strcat(out, "💎");
+    strcat(out, " ");
   }
   // if (run_command("pgrep -f 'nerd-dictation begin' >/dev/null")) {
   //   strcat(out, "🗣️");
   // }
 
-  strcat(out, " ");
+  // strcat(out, " ");
 }
 
 int main(void) {
