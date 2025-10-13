@@ -1,11 +1,10 @@
-
 vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 
 -- vim.g.gruvbox_material_transparent_background = 0
 -- vim.g.gruvbox_material_foreground = "material"
 -- vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
 -- vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
--- vim.g.gruvbox_material_float_style = "bright" -- Background of floating windows
+vim.g.gruvbox_material_float_style = "none" -- Background of floating windows
 -- vim.g.gruvbox_material_statusline_style = "mix"
 -- vim.g.gruvbox_material_cursor = "auto"
 
@@ -15,13 +14,6 @@ vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 --     let g:gruvbox_material_colors_override = {'bg_statusline1': ['#81a2be', '234'], 'bg2': ['#282828', '235']}
 --     ]])
 vim.g.gruvbox_material_better_performance = 1
-
--- -- vim.cmd("hi NormalFloat guibg=#282828")
--- vim.cmd("hi! link FloatBorder Normal")
--- vim.cmd("hi IncSearch guibg=#458588") -- normal colors hard to distinguish
--- -- vim.cmd("hi! link NormalFloat Normal")
-
--- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')
 
 -- function M.setColors()
 --     vim.cmd('colorscheme gruvbox')
@@ -34,3 +26,11 @@ vim.g.gruvbox_material_better_performance = 1
 -- end
 
 vim.cmd.colorscheme("gruvbox-material")
+
+vim.cmd("hi Pmenu guibg=#282828")
+-- -- vim.cmd("hi NormalFloat guibg=#282828")
+-- vim.cmd("hi! link FloatBorder Normal")
+-- vim.cmd("hi IncSearch guibg=#458588") -- normal colors hard to distinguish
+-- -- vim.cmd("hi! link NormalFloat Normal")
+
+-- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')

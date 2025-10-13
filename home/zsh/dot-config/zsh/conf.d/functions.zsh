@@ -8,6 +8,7 @@ alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 alias scrcpy='xdg-launch scrcpy'
 alias claude='xdg-launch claude'
+alias codex='xdg-launch codex'
 dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
 alias cursor='xdg-launch cursor'
@@ -54,7 +55,7 @@ alias '?'='duck'
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
-ccd() { clang -std=c99 -g -O0 -Wall -Werror -Wextra -fsanitize=undefined,address "$@" }
+ccd() { clang -std=c99 -g -O0 -Wall -Wextra -fsanitize=undefined,address "$@" }
 ccr() { clang -std=c99 -O3 "$@" }
 
 
