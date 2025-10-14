@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+INTERFACE=wlp1s0
+
+# Your NextDNS profile IDs
+BLOCK_PROFILE="87bdd5"
+UNBLOCK_PROFILE="9efada"
+
+case "$1" in
+  block)
+    PROFILE_ID=$BLOCK_PROFILE
+    echo "Switching to BLOCK profile (${PROFILE_ID})..."
+    ;;
+  unblock)
+    PROFILE_ID=$UNBLOCK_PROFILE
+    echo "Switching to UNBLOCK profile (${PROFILE_ID})..."
+    ;;
+  *)
+    echo "Usage: $0 {block|unblock}"
+    exit 1
+    ;;
+esac
+
+resolvectl dns ${INTERFACE} \
+  45.90.28.0#${PROFILE_ID}.dns.nextdns.io \
+  2a07:a8c0::#${PROFILE_ID}.dns.nextdns.io \
+  45.90.30.0#${PROFILE_ID}.dns.nextdns.io \
+  2a07:a8c1::#${PROFILE_ID}.dns.nextdns.io
+
+resolvectl dnsovertls ${INTERFACE} yes
+resolvectl domain ${INTERFACE} ~.
+
+echo "✓ Switched to profile: ${PROFILE_ID}"
+echo ""
+echo "Verify at: https://my.nextdns.io"
