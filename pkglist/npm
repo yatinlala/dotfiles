@@ -1,5 +1,5 @@
 /home/yatin/.local/share/npm/lib
-├── @anthropic-ai/claude-code@1.0.72
-├── @executeautomation/playwright-mcp-server@1.0.6
-└── @google/gemini-cli@0.1.13
+├── @anthropic-ai/claude-code@2.0.15
+├── @google/gemini-cli@0.7.0
+└── @openai/codex@0.45.0
 

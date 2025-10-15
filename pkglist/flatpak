@@ -1,8 +1,5 @@
-ATLauncher	com.atlauncher.ATLauncher	3.4.40.1	stable	system
-Flatseal	com.github.tchx84.Flatseal	2.3.1	stable	system
-OBS Studio	com.obsproject.Studio	31.1.2	stable	system
-HandBrake	fr.handbrake.ghb	1.9.2	stable	system
-Mousam	io.github.amit9838.mousam	1.4.0	stable	system
-QDirStat	io.github.shundhammer.qdirstat	1.9	stable	system
-Floorp	one.ablaze.floorp	11.29.0	stable	system
-Raspberry Pi Imager	org.raspberrypi.rpi-imager	1.9.0	stable	system
+ATLauncher	com.atlauncher.ATLauncher	3.4.40.2	stable	system
+Flatseal	com.github.tchx84.Flatseal	2.4.0	stable	system
+Slack	com.slack.Slack	4.46.99	stable	system
+Speech Note	net.mkiol.SpeechNote	4.8.3	stable	system
+Ferdium	org.ferdium.Ferdium	7.1.1	stable	system
