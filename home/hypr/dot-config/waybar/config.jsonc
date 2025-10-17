@@ -5,7 +5,7 @@
 	// "modules-left":   ["wlr/workspaces", "wlr/taskbar"],
 	"modules-left": [
 		"hyprland/workspaces",
-		"custom/hypridle_toggle",
+		// "custom/hypridle_toggle",
 		// "custom/202020"
 		//"custom/timer",
 		"hyprland/window",
@@ -17,6 +17,7 @@
 		//"custom/weather",
 		// "custom/eye",
 		"privacy",
+		"idle_inhibitor",
 		"mpd",
 		// "custom/todo",
 		"custom/scratchpad_tracking",
@@ -34,6 +35,13 @@
 	    "device": "amdgpu_bl1",
 	    "format": "{icon} {percent}%",
 	    "format-icons": ["", ""]
+	},
+	"idle_inhibitor": {
+	    "format": "{icon} ",
+	    "format-icons": {
+		"activated": "",
+		"deactivated": ""
+	    }
 	},
 	"hyprland/submap": {
 	    "format": "✌️ {}",
@@ -143,12 +151,12 @@
 		"interval": 10,
 		"tooltip": false
 	},
-	"custom/hypridle_toggle": {
-		"format": "<span font='13'>{}</span>",
-		"exec": "$HOME/.config/waybar/modules/hypridle_indicator",
-		"on-click": "$HOME/.config/waybar/modules/hypridle_indicator toggle",
-		"tooltip": false
-	},
+	// "custom/hypridle_toggle": {
+	// 	"format": "<span font='13'>{}</span>",
+	// 	"exec": "$HOME/.config/waybar/modules/hypridle_indicator",
+	// 	"on-click": "$HOME/.config/waybar/modules/hypridle_indicator toggle",
+	// 	"tooltip": false
+	// },
 	"custom/eye": {
 		// "format": "{}",
 		"format": "<span font='16'>{}</span>",
@@ -163,6 +171,7 @@
 		"spacing": 10
 	},
 	"custom/scratchpad_tracking": {
+		"tooltip": false,
 		"format": "{}",
 		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
 		"spacing": 10
