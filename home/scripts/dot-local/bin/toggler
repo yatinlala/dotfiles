@@ -11,7 +11,9 @@ discord)
     sway "workspace 9; [class=discord] focus"
     ;;
 discord-brave)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-magkoliahgffibhgfkmoealggombgknl-Default")' || gtk-launch brave-magkoliahgffibhgfkmoealggombgknl-Default
+    hyprctl clients -j | \
+        jq -e '.[] | select(.class == "brave-magkoliahgffibhgfkmoealggombgknl-Default")' || \
+        gtk-launch brave-magkoliahgffibhgfkmoealggombgknl-Default
     hyprctl dispatch togglespecialworkspace discord
     ;;
 dpms)
@@ -49,23 +51,26 @@ espanso)
         setsid espanso daemon &
     ;;
 ferdium)
-    pgrep -x ferdium || gtk-launch org.ferdium.Ferdium &
+    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/ferdium" || \
+    gtk-launch ferdium &
     hyprctl dispatch togglespecialworkspace ferdium
     ;;
 
 gmail)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")' || gtk-launch brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default
+    hyprctl clients -j | jq -e '.[] | \
+        select(.class == "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")' || \
+        gtk-launch brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default
     hyprctl dispatch togglespecialworkspace gmail
     ;;
 inhibit-lid)
-    pgrep -x sleep && (
+    pgrep -x sleep && {
         killall sleep &
         notify-send 'Stop inhibiting sleep on lid-close.'
-    ) ||
-        (
+    } ||
+        {
             systemd-inhibit --what=handle-lid-switch sleep 1h &
             notify-send 'Inhibit sleep on lid-close.'
-        )
+        }
     ;;
 mailspring)
     pgrep -x mailspring || setsid mailspring &
@@ -112,22 +117,25 @@ notes)
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
 instagram)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-www.instagram.com__direct_inbox_-Default")' || xdg-launch brave --app='https://www.instagram.com/direct/inbox/' &
+    hyprctl clients -j | \
+        jq -e '.[] | select(.class == "brave-www.instagram.com__direct_inbox_-Default")' || \
+        xdg-launch brave --app='https://www.instagram.com/direct/inbox/' &
     hyprctl dispatch togglespecialworkspace instagram
     ;;
 obsidian)
-    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || gtk-launch obsidian
+    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || \
+        gtk-launch obsidian
     # hyprctl dispatch focuswindow "class:^(obsidian)$";;
     hyprctl dispatch togglespecialworkspace obsidian;;
 gammastep)
-    pgrep -x "gammastep" && (
+    pgrep -x "gammastep" && {
         killall gammastep
         notify-send -t 1000 "Killing gammastep"
-    ) ||
-        (
+    } ||
+        {
             notify-send -t 1000 "Starting Gammastep."
             setsid gammastep
-        )
+        }
     ;;
 signal)
     pgrep -x signal-desktop || gtk-launch signal-desktop
@@ -157,11 +165,15 @@ ticktick)
     hyprctl dispatch focuswindow "^(ticktick)$"
     ;;
 ticktick-brave)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
+    hyprctl clients -j | \ 
+        jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || \
+        gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
     hyprctl dispatch togglespecialworkspace ticktick
     ;;
 habitica-brave)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")' || gtk-launch brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default
+    hyprctl clients -j | \
+        jq -e '.[] | select(.class == "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")' || \
+        gtk-launch brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default
     hyprctl dispatch togglespecialworkspace habitica
     ;;
 tmux) ;;
@@ -170,7 +182,9 @@ torbrowser)
     sway "workspace 7"
     ;;
 whatsapp)
-    hyprctl clients -j | jq -e '.[] | select(.class == "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")' || gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default
+    hyprctl clients -j | \
+        jq -e '.[] | select(.class == "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")' || \
+        gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default
     hyprctl dispatch togglespecialworkspace whatsapp
     ;;
 *)
