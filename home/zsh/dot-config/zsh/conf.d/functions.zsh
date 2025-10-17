@@ -55,6 +55,7 @@ alias '?'='duck'
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
+lg() { lazygit "$@" }
 ccd() { clang -std=c99 -g -O0 -Wall -Wextra -fsanitize=undefined,address "$@" }
 ccr() { clang -std=c99 -O3 "$@" }
 
