@@ -1,6 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
-mkdir -p $HOME/.local/xdg-launch
-HOME=$HOME/.local/xdg-launch
+# prevent nested $HOME/.local/xdg-launch/.local/xdg-launch
+# situations. even though the ~/.local/xdg-launch/.local
+# symlink nominally makes this a non, issue, trimming
+# makes firefox/zen happy (xdg-open 'https:google.com'
+# errors out unless the new firefox/zen instance is launched
+# in the exact same dir as the parent).
+REAL_HOME="${HOME%/.local/xdg-launch}"
 
-exec $1 "${@:2}"
+mkdir -p "$REAL_HOME/.local/xdg-launch"
+HOME="$REAL_HOME/.local/xdg-launch"
+exec "$@"
