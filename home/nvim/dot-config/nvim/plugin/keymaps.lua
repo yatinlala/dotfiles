@@ -42,7 +42,8 @@ vim.keymap.set("n", "<C-s>", function()
 end, { desc = "Toggle statusline" })
 
 -- Navigate buffers
-vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
+-- vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
+vim.keymap.set("n", "-w", "<cmd>b#<CR>", { desc = "Alternate buffer" })
 
 -- [ /NORMAL ]
 
