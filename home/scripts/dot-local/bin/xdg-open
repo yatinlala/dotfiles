@@ -1,6 +1,9 @@
 #!/bin/sh
 
 case "${1%%:*}" in
+	http|https)
+		xdg-launch /opt/zen-browser-bin/zen-bin "$@"
+		;;
 	# http|https|*.pdf)
 	# 	exec qutebrowser "$1"
 	# 	;;
