@@ -29,7 +29,7 @@ export DIFFPROG="nvim -d"
 
 # export GTK_THEME='Gruvbox-Dark'
 # export GTK2_RC_FILES=$XDG_DATA_HOME/themes/Gruvbox-Dark/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+# export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Fixing Paths
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
