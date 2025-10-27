@@ -1,5 +1,10 @@
-# if [[ "$(tty)" = "/dev/tty1" ]]; then
-# 	pgrep Hyprland || exec Hyprland
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+	# pgrep Hyprland || exec Hyprland
+
+	read "input?> " input
+	if [[ -z "$input" ]]; then
+		exec Hyprland
+	fi
 
 	# read -n1 ans
 	#
@@ -10,4 +15,4 @@
 	# else
 	#   echo "Invalid input"
 	# fi
-# fi
+fi
