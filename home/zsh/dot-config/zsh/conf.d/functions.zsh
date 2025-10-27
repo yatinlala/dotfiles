@@ -56,6 +56,11 @@ alias '?'='duck'
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
 lg() { lazygit "$@" }
+git-clean() {
+  git clean -xfd
+  git reset --hard
+}
+fe() { print -z "$(functions $@ | sed '1d;$d' | sed 's/^[[:space:]]*//')"}
 ccd() { clang -std=c99 -g -O0 -Wall -Wextra -fsanitize=undefined,address "$@" }
 ccr() { clang -std=c99 -O3 "$@" }
 
