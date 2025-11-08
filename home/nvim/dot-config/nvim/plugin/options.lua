@@ -33,8 +33,8 @@ vim.o.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.o.winblend = 5
-vim.o.winborder = "single"
-vim.o.pumborder = "single"
+-- vim.o.winborder = "single"
+-- vim.o.pumborder = "single"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
