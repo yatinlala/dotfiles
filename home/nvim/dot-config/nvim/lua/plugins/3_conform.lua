@@ -5,7 +5,7 @@ require("conform").setup({
     -- Define your formatters
     formatters_by_ft = {
         lua = { "stylua" },
-        python = { "black" },
+        python = { "ruff" },
         go = { "gofmt" },
         html = { "prettierd" },
         css = { "prettierd" },
