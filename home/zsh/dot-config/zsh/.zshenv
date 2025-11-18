@@ -104,3 +104,8 @@ export GDK_BACKEND="wayland,x11"
 export MOZ_ENABLE_WAYLAND=1
 
 # source ~/.config/zsh/.secret.env # I moved this to $ZDOTDIR/scripts
+
+# https://github.com/romkatv/powerlevel10k/issues/1591
+
+# TODO debug OSC133 not working. [[ and ]] in :term is broken
+# typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=true
