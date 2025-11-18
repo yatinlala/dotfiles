@@ -11,7 +11,7 @@ function show_comments()
 	mp.osd_message("Loading comments...")
 
 	-- Path to the bash script
-	local script_path = os.getenv("HOME") .. "/.config/mpv/sutil/show_comments.sh"
+	local script_path = os.getenv("HOME") .. "/.config/mpv/util/show_comments.sh"
 
 	-- Run the script completely detached from MPV
 	local cmd = {
