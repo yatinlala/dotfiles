@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import json
-import sys
 import argparse
 from collections import defaultdict
 
@@ -51,7 +50,7 @@ def format_comment(comment, indent=0):
     # Join with proper indentation
     wrapped_text = f"\n{indent_str}  ".join(wrapped_lines)
 
-    return f"{indent_str}[{likes} likes] @{author}:\n{indent_str}  {wrapped_text}\n"
+    return f"{indent_str}[{likes} likes] {author}:\n{indent_str}  {wrapped_text}\n"
 
 
 def print_comment_tree(comment, replies_by_parent, indent=0, sort_replies=False):
