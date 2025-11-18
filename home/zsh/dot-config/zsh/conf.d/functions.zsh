@@ -9,6 +9,7 @@ alias spotdl='xdg-launch spotdl'
 alias scrcpy='xdg-launch scrcpy'
 alias claude='xdg-launch claude'
 alias codex='xdg-launch codex'
+alias lk='xdg-launch lk'
 dosbox() { dosbox -conf "$XDG_CONFIG_HOME"/dosbox/dosbox.conf "$@" }
 # alias code='xdg-launch code'
 alias cursor='xdg-launch cursor'
