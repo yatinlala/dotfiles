@@ -1,6 +1,3 @@
-if true then
-    return
-end
 vim.pack.add({
     { src = "https://github.com/rafamadriz/friendly-snippets" },
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.0") },
@@ -36,7 +33,8 @@ require("blink.cmp").setup({
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        -- default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        default = { "lsp", "path", "snippets", "buffer" },
         -- per_filetype = {
         --     lua = { inherit_defaults = true, "lazydev" },
         -- },
