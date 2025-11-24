@@ -1,10 +1,8 @@
 vim.pack.add({
     "https://github.com/neovim/nvim-lspconfig",
     "https://github.com/mason-org/mason.nvim",
-    "https://github.com/mason-org/mason-lspconfig.nvim",
+    -- "https://github.com/mason-org/mason-lspconfig.nvim",
 })
-
-vim.lsp.enable("rust_analyzer")
 
 -- vim.keymap.set("n", "<leader>al", function()
 --     vim.lsp.enable("copilot")
@@ -75,7 +73,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.on_type_formatting.enable()
 
 require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" },
-    automatic_enable = true,
-})
+
+-- require("mason-lspconfig").setup({
+--     ensure_installed = { "lua_ls" },
+--     automatic_enable = true,
+-- })
+
+-- Names must be Mason package names
+local ensure_installed = {
+    "clangd",
+    "lua-language-server",
+    "prettierd",
+}
+
+-- https://www.reddit.com/r/neovim/comments/1p1y73n/automatically_downloading_and_installing_lsps/
+local installed_package_names = require("mason-registry").get_installed_package_names()
+for _, v in ipairs(ensure_installed) do
+    if not vim.tbl_contains(installed_package_names, v) then
+        print("foo")
+        vim.cmd(":MasonInstall " .. v)
+    end
+end
+
+local installed_packages = require("mason-registry").get_installed_packages()
+local installed_lsp_names = vim.iter(installed_packages):fold({}, function(acc, pack)
+    table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
+    return acc
+end)
+
+vim.lsp.enable(installed_lsp_names)
+
+-- manually installed
+vim.lsp.enable("rust_analyzer")
