@@ -1,7 +1,12 @@
 {
   "plugins": {
+    "blink.cmp": {
+      "rev": "49f211fe5d729df53df4c042d7c3464cf47d199e",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "1.0.0 - 1.1.0"
+    },
     "conform.nvim": {
-      "rev": "cde4da5",
+      "rev": "1bf8b5b9caee51507aa51eaed3da5b0f2595c6b9",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "flash.nvim": {
@@ -12,12 +17,16 @@
       "rev": "7252779",
       "src": "https://github.com/willothy/flatten.nvim"
     },
+    "friendly-snippets": {
+      "rev": "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
+    },
     "gitsigns.nvim": {
-      "rev": "20ad441",
+      "rev": "cdafc320f03f2572c40ab93a4eecb733d4016d07",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruvbox-material": {
-      "rev": "e3681c7",
+      "rev": "4bfc6983abc249c5943a60d8eb3980a3c2ababe1",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
     "kitty-scrollback.nvim": {
@@ -29,15 +38,15 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "d7b5feb",
+      "rev": "7d527c76c43f46294de9c19d39c5a86317809b4b",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "ad7146a",
+      "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "42dbeaa",
+      "rev": "6e885e4c27743ae6bf5957ea78ce86c032835f09",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neocodeium": {
@@ -54,16 +63,16 @@
       "version": "'devel'"
     },
     "nvim-lspconfig": {
-      "rev": "2010fc6",
+      "rev": "b7c48a7111534b66bee077da8035ac7208a294ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "5eca61b3",
+      "rev": "bb83a676128d95c865e40ba71376d883bdadec14",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "2e5b873",
+      "rev": "227165aaeb07b567fb9c066f224816aa8f3ce63f",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
@@ -82,6 +91,10 @@
     "sidekick.nvim": {
       "rev": "c2bdf8c",
       "src": "https://github.com/folke/sidekick.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+      "src": "https://github.com/folke/snacks.nvim"
     },
     "vim-eunuch": {
       "rev": "e86bb79",

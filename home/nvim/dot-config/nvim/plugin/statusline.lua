@@ -103,7 +103,7 @@ vim.o.statusline = "%{%v:lua.mode_component()%} %f %y %m %= %l:%c %p%%"
 
 function Statusline()
     return table.concat({
-        mode(),
+        -- mode(),
         " %f %m%w%r",
         "%=",
         formatter(),
@@ -113,11 +113,11 @@ function Statusline()
     })
 end
 
-vim.api.nvim_create_autocmd("ModeChanged", {
-    group = vim.api.nvim_create_augroup("statusline_modechange", { clear = true }),
-    callback = function(args)
-        vim.cmd("redrawstatus")
-    end,
-})
+-- vim.api.nvim_create_autocmd("ModeChanged", {
+--     group = vim.api.nvim_create_augroup("statusline_modechange", { clear = true }),
+--     callback = function(args)
+--         vim.cmd("redrawstatus")
+--     end,
+-- })
 
 vim.cmd([[set statusline=%!v:lua.Statusline() ]])
