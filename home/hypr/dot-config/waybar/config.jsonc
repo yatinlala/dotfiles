@@ -67,6 +67,12 @@
 		],
 		"app_ids-mapping": {}
 	},
+	// "hyprland/workspaces": {
+	//     "format": "{icon}: {windows}",
+	//     "workspace-taskbar": {
+	// 	"enable": true
+	//     }
+	// },
 	"hyprland/workspaces": {
 		// "disable-scroll": true,
 		"sort-by-number": true,
