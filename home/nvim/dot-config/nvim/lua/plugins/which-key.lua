@@ -3,11 +3,11 @@ vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 require("which-key").setup({
     spec = {
         -- { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { "<leader>a", group = "AI/Claude Code" },
-        { "<leader>o", group = "Org Mode" },
-        { "<leader>l", group = "Lsp", mode = { "n", "x" } },
-        { "<leader>g", group = "Git" },
+        -- { "<leader>a", group = "AI/Claude Code" },
         { "<leader>a", group = "AI", mode = { "n", "x" } },
+        { "<leader>g", group = "Git" },
+        { "<leader>l", group = "Lsp", mode = { "n", "x" } },
+        { "<leader>o", group = "Org Mode" },
         { "<leader>q", group = "Persistence" },
         { "<leader>s", group = "Sessions" },
         -- -- { '<leader>d', group = '[D]ocument' },

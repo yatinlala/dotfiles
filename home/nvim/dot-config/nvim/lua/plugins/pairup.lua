@@ -1,5 +1,0 @@
--- TODO consider this concept. maybe not
--- the plugin itself, but sending live diffs to
--- LLM as I type. or maybe CI critique is good enough,
--- idk.
--- https://github.com/Piotr1215/pairup.nvim
