@@ -23,7 +23,7 @@ wget() { command wget --hsts-file="$XDG_CACHE_HOME/wget-hsts" "$@" }
 # [[ IMPROVE DEFAULTS ]]
 # alias df='df -h'
 # alias cat='bat -pp'
-alias gemini='xdg-launch gemini --telemetry=false'
+alias gemini='xdg-launch gemini'
 alias info='info --vi-keys'
 alias bc='bc -lq'
 # alias ls='ls --color=auto'

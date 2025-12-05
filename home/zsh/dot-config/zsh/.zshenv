@@ -66,9 +66,9 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export NLTK_DATA="$XDG_DATA_HOME"/nltk
 
 # Default Apps
-export EDITOR="neovide"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export READER="zathura"
-export VISUAL="neovide"
 export BROWSER="gtk-launch zen"
 export TERMINAL="kitty -1"
 export VIDEO="mpv"
