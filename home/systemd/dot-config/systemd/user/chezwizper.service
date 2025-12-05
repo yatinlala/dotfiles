@@ -1,0 +1,23 @@
+[Unit]
+Description=ChezWizper Voice Transcription Service
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/yatin/software/cloned/ChezWizper
+ExecStart=/usr/local/bin/chezwizper
+Restart=always
+RestartSec=5
+Environment="RUST_LOG=info"
+Environment="HOME=/home/yatin"
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+# Memory settings - adjust based on your system
+MemoryMax=8G
+MemorySwapMax=12G
+# CPU settings - let whisper use multiple cores
+# Remove CPUQuota to allow full CPU usage
+# Set thread count for whisper (adjust based on your CPU)
+Environment="OMP_NUM_THREADS=16"
+
+[Install]
+WantedBy=default.target

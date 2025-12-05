@@ -1,0 +1,6 @@
+[Unit]
+Description=Enable hyprshade grayscale
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hyprshade on grayscale
