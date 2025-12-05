@@ -4,6 +4,7 @@ require("conform").setup({
     notify_on_error = false,
     -- Define your formatters
     formatters_by_ft = {
+        sh = { "shfmt" },
         lua = { "stylua" },
         python = { "ruff" },
         go = { "gofmt" },
