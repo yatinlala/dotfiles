@@ -69,7 +69,7 @@ map mf :push %touch<space>
 cmd mkdir %IFS=" "; mkdir -p -- "$*"
 map md push :mkdir<space>
 map <c-z> $ kill -STOP $PPID
-# map ch chmod
+map X chmod
 map H top
 map L bottom
 map R reload
