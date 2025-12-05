@@ -1,0 +1,43 @@
+#!/bin/sh
+
+width=80
+
+while IFS= read -r line; do
+    case "$line" in
+        "// "*) 
+            text="${line#// }"
+
+            border=$(printf '%*s' "$width" '' | tr ' ' '/')
+
+            # text block: "   text   "  (3 spaces on each side)
+            block="   ${text}   "
+            blocklen=${#block}
+
+            # middle line starts with ///
+            prefix="///"
+            prefixlen=${#prefix}
+
+            # total fixed size so far
+            fixed=$((prefixlen + blocklen))
+
+            # remaining width for left/right slash fill
+            remain=$((width - fixed))
+
+            # split remaining slashes evenly for centering
+            left=$((remain / 2))
+            right=$((remain - left))
+
+            middle="$(
+                printf '%s' "$prefix"
+                printf '%*s' "$left" '' | tr ' ' '/'
+                printf '%s' "$block"
+                printf '%*s' "$right" '' | tr ' ' '/'
+            )"
+
+            printf '%s\n%s\n%s\n' "$border" "$middle" "$border"
+            ;;
+        *)
+            printf '%s\n' "$line"
+            ;;
+    esac
+done
