@@ -16,6 +16,7 @@
 	"modules-right": [
 		//"custom/weather",
 		// "custom/eye",
+		"power-profiles-daemon",
 		"privacy",
 		"idle_inhibitor",
 		"mpd",
@@ -37,7 +38,7 @@
 	    "format-icons": ["", ""]
 	},
 	"idle_inhibitor": {
-	    "format": "{icon} ",
+	    "format": " {icon} ",
 	    "format-icons": {
 		"activated": "",
 		"deactivated": ""
@@ -105,6 +106,17 @@
 		//"on-scroll-up": "$HOME/.config/waybar/modules/waybar-timer-steps.sh up",
 		//"on-scroll-down": "$HOME/.config/waybar/modules/waybar-timer-steps.sh down",
 		"interval": 1
+	},
+	"power-profiles-daemon": {
+	  "format": "{icon} ",
+	  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+	  "tooltip": true,
+	  "format-icons": {
+	    "default": "",
+	    "performance": "",
+	    "balanced": "",
+	    "power-saver": ""
+	  }
 	},
 	"privacy": {
 		"icon-spacing": 4,
