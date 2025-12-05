@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+declare -A actions=(
+    ["power profile: balanced"]="powerprofilesctl set balanced"
+    ["power profile: power-saver"]="powerprofilesctl set power-saver"
+    ["power profile: performance"]="powerprofilesctl set performance"
+    ["bluetooth: radio off"]="bluetoothctl power off"
+    ["bluetooth: radio on"]="bluetoothctl power on"
+    ["bluetooth: toggle airpods"]="toggle_bt_device '34:B1:EB:0E:81:DA'"
+    ["bluetooth: toggle headphones"]="toggle_bt_device 'F8:4E:17:B5:46:87'"
+)
+
+toggle_bt_device() {
+    if bluetoothctl info "$1" | grep -q "Connected: yes"; then
+        bluetoothctl disconnect "$1"
+    else
+        bluetoothctl connect "$1"
+    fi
+}
+
+run() {
+    local v="$1"
+    if declare -F "$v" >/dev/null; then
+        "$v" # it's a function
+    else
+        eval "$v" # it's a shell snippet
+    fi
+}
+
+choice=$(printf "%s\n" "${!actions[@]}" | rofi -dmenu)
+
+[ -n "$choice" ] && run "${actions[$choice]}"
