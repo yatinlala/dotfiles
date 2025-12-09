@@ -82,7 +82,7 @@ require("mason").setup()
 -- Names must be Mason package names
 local ensure_installed = {
     "clangd",
-    "lua-language-server",
+    -- "lua-language-server",
     "prettierd",
 }
 
@@ -105,3 +105,4 @@ vim.lsp.enable(installed_lsp_names)
 
 -- manually installed
 vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("lua_ls")
