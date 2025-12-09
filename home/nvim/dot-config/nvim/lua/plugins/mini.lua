@@ -7,13 +7,16 @@ vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 -- "nvim-treesitter/nvim-treesitter"
 
 -- require('mini.misc').setup_auto_root()
+
 require('mini.misc').setup_restore_cursor()
 
 require("mini.icons").setup()
 
 require("mini.splitjoin").setup()
 
--- require('mini.completion').setup()
+require('mini.completion').setup({
+    delay = { completion = 150, info = 100, signature = 50 },
+})
 
 
 --: surround {{{
@@ -132,28 +135,13 @@ end, { desc = "Delete Session" })
 --: }}}
 
 --: pick {{{
+
 require("mini.pick").setup {
     window = {
         prompt_prefix = '❯ ',
     },
 }
--- require("mini.pick").setup({
---     window = {
---         config = function()
---             local width = math.floor(vim.o.columns * 0.3)
---             local height = math.floor(vim.o.lines * 0.6)
---             return {
---                 anchor = "NW",
---                 -- border = 'rounded',
---                 relative = "editor",
---                 row = math.floor((vim.o.lines - height) / 2),
---                 col = math.floor((vim.o.columns - width) / 2),
---                 width = width,
---                 height = height,
---             }
---         end,
---     },
--- })
+
 vim.keymap.set("n", "<leader>f", function()
     MiniPick.builtin.files()
 end, { desc = "Pick [F]iles" })
@@ -163,6 +151,14 @@ end, { desc = "Live [G]rep" })
 vim.keymap.set("n", "<leader>h", function()
     MiniPick.builtin.help()
 end, { desc = "Pick [H]elp" })
+
+-- : }}}
+
+--: cmdline {{{
+
+require("mini.cmdline").setup()
+
+
 -- : }}}
 
 --: files {{{
