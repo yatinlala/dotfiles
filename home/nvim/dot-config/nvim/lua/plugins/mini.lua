@@ -1,4 +1,4 @@
-# vim:fileencoding=utf-8:foldmethod=marker
+-- vim : foldmethod=marker
 
 vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
@@ -8,16 +8,15 @@ vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
 -- require('mini.misc').setup_auto_root()
 
-require('mini.misc').setup_restore_cursor()
+require("mini.misc").setup_restore_cursor()
 
 require("mini.icons").setup()
 
 require("mini.splitjoin").setup()
 
-require('mini.completion').setup({
+require("mini.completion").setup({
     delay = { completion = 150, info = 100, signature = 50 },
 })
-
 
 --: surround {{{
 
@@ -50,22 +49,22 @@ vim.keymap.set("n", "yss", "ys_", { remap = true })
 
 --: pairs {{{
 
-require("mini.pairs").setup( {
+require("mini.pairs").setup({
     mappings = {
 
-      ['('] = false,
-      ['['] = false,
-      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\].' },
+        ["("] = false,
+        ["["] = false,
+        ["{"] = { action = "open", pair = "{}", neigh_pattern = "[^\\]." },
 
-      [')'] = false,
-      [']'] = false,
-      ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
+        [")"] = false,
+        ["]"] = false,
+        ["}"] = { action = "close", pair = "{}", neigh_pattern = "[^\\]." },
 
-      ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[^\\].',   register = { cr = false } },
-      ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[^%a\\].', register = { cr = false } },
-      ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].',   register = { cr = false } },
+        ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\].", register = { cr = false } },
+        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\].", register = { cr = false } },
+        ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\].", register = { cr = false } },
     },
-  })
+})
 
 vim.g.minipairs_disable = true
 
@@ -108,7 +107,6 @@ end, { desc = "Delete Session" })
 
 --: ai {{{
 
-
 -- TODO dif doesn't work if end of function is more than 50 lines away.
 -- figure out what 'cover' and all that does. feels like if function
 -- definition is right above you mini.ai should be able to figure things out
@@ -136,11 +134,16 @@ end, { desc = "Delete Session" })
 
 --: pick {{{
 
-require("mini.pick").setup {
+require("mini.pick").setup({
     window = {
-        prompt_prefix = '❯ ',
+        prompt_prefix = "❯ ",
+        config = {
+            border = "none",
+            height = 10,
+            width = 50,
+        },
     },
-}
+})
 
 vim.keymap.set("n", "<leader>f", function()
     MiniPick.builtin.files()
@@ -157,7 +160,6 @@ end, { desc = "Pick [H]elp" })
 --: cmdline {{{
 
 require("mini.cmdline").setup()
-
 
 -- : }}}
 

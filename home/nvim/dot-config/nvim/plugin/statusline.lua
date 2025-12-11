@@ -98,17 +98,31 @@ local function mode()
     return "%#MiniStatuslineModeInsert# " .. txt .. " %*"
 end
 
+local function filename()
+    local s = vim.api.nvim_eval_statusline("%f", {}).str
+
+    if string.find(s, "minipick://") then
+        return "🔎"
+    end
+
+    return s
+end
+
 -- Example: set statusline
 vim.o.statusline = "%{%v:lua.mode_component()%} %f %y %m %= %l:%c %p%%"
 
 function Statusline()
     return table.concat({
         -- mode(),
-        " %f %m%w%r",
+        " ",
+        filename(),
+        " ",
+        "%m%w%r",
         "%=",
         formatter(),
         filetype(),
         "%P %l:%c",
+        " ",
         -- git(),
     })
 end
