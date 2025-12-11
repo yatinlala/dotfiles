@@ -10,7 +10,7 @@ require("which-key").setup({
         { "<leader>o", group = "Org Mode" },
         { "<leader>q", group = "Persistence" },
         { "<leader>s", group = "Sessions" },
-        -- -- { '<leader>d', group = '[D]ocument' },
+        { "<leader>d", group = "Debug" },
         -- { '<leader>g', group = '[G]it' },
         -- { '<leader>l', group = '[L]sp' },
         -- -- { '<leader>f', group = '[F]ind' },

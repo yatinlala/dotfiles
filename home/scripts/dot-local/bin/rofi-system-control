@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 
 declare -A actions=(
-    ["power profile: balanced"]="powerprofilesctl set balanced"
-    ["power profile: power-saver"]="powerprofilesctl set power-saver"
-    ["power profile: performance"]="powerprofilesctl set performance"
-    ["bluetooth: radio off"]="bluetoothctl power off"
-    ["bluetooth: radio on"]="bluetoothctl power on"
-    ["bluetooth: toggle airpods"]="toggle_bt_device '34:B1:EB:0E:81:DA'"
+    ["bluetooth: toggle radio"]="toggle_bt_radio"
+    ["bluetooth: toggle oldpods"]="toggle_bt_device '34:B1:EB:0E:81:DA'"
+    ["bluetooth: toggle airpods"]="toggle_bt_device 'E4:43:89:36:95:6C'"
     ["bluetooth: toggle headphones"]="toggle_bt_device 'F8:4E:17:B5:46:87'"
+    ["power profile: balanced"]="powerprofilesctl set balanced"
+    ["power profile: power saver"]="powerprofilesctl set power-saver"
+    ["power profile: performance"]="powerprofilesctl set performance"
 )
 
+toggle_bt_radio() {
+    if bluetoothctl show | grep -q "Powered: yes"; then
+        bluetoothctl power off
+    else
+        bluetoothctl power on
+    fi
+}
+
 toggle_bt_device() {
+    if bluetoothctl show | grep -q "Powered: no"; then
+        bluetoothctl power on
+    fi
     if bluetoothctl info "$1" | grep -q "Connected: yes"; then
         bluetoothctl disconnect "$1"
     else
