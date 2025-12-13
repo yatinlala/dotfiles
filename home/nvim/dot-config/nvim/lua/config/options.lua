@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
     end,
 })
 
-vim.o.guifont = "JetBrainsMono Nerd Font:h15" -- text below applies for VimScript
+vim.o.guifont = "JetBrainsMono Nerd Font:h18" -- text below applies for VimScript
 
 -- vim.opt.tabstop = 4
 
@@ -19,6 +19,7 @@ vim.o.undofile = true -- persistent undo
 
 vim.o.laststatus = 3
 vim.o.showmode = false -- hide -- INSERT --
+vim.o.cmdheight = 0
 
 vim.opt.path:append("**") -- :find searches subdirs
 
@@ -42,7 +43,7 @@ vim.opt.relativenumber = true
 vim.o.confirm = true
 
 vim.o.exrc = true
-vim.o.secure = true
+-- vim.o.secure = true
 
 -- Completion
 vim.opt.pumheight = 8 -- number of items in completion menu

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.init()
-    local plugin_files = vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/plugins", "*.lua", false, true)
+    local plugin_files = vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/extern-plugins", "*.lua", false, true)
 
     for _, file in ipairs(plugin_files) do
         local mod = file:match("lua/(.*)%.lua$")

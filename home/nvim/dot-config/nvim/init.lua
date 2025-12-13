@@ -25,4 +25,5 @@ if not vim.g.neovide then
     })
 end
 
-require("plugins").init()
+require("extern-plugins").init()
+require("config")

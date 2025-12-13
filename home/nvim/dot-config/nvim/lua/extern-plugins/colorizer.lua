@@ -1,4 +1,4 @@
-local lazy_load = require("plugins").lazy_load
+local lazy_load = require("extern-plugins").lazy_load
 
 -- vim.api.nvim_create_autocmd("BufReadPre", {
 --     callback = function()
