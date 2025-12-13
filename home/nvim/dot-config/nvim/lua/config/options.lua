@@ -11,6 +11,8 @@ vim.o.guifont = "JetBrainsMono Nerd Font:h18" -- text below applies for VimScrip
 
 -- vim.opt.tabstop = 4
 
+vim.o.title = true
+
 -- Split below and to the right
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -19,7 +21,7 @@ vim.o.undofile = true -- persistent undo
 
 vim.o.laststatus = 3
 vim.o.showmode = false -- hide -- INSERT --
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 
 vim.opt.path:append("**") -- :find searches subdirs
 

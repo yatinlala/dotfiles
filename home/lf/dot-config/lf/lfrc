@@ -201,6 +201,10 @@ cmd open ${{
     esac
 }}
 
+cmd on-load &{{
+    lf -remote "send $id tty-write \"\033]0;lf: $PWD\007\""
+}}
+
 cmd bulk-rename ${{
     vimv -- $(basename -a -- $fx)
 
@@ -400,10 +404,15 @@ map go :fasd_dir
 #: }}}
 
 # ripdrag {{{
-cmd ripdrag %ripdrag -a -x $fx
-cmd ripdrag-stay %ripdrag-drop -a $fx
-cmd ripdrag-individual %ripdrag-drop $fx
-cmd ripdrag-target %ripdrag-drop -t $fx
+
+# cmd ripdrag ${{
+#     # lf -remote "send $id tty-write \"\033]0;ripdrag\007\""
+#     ripdrag -a -x $fx &
+# }}
+cmd ripdrag %ripdrag -a -x $fx &
+cmd ripdrag-stay %ripdrag-drop -a $fx &
+cmd ripdrag-individual %ripdrag-drop $fx &
+cmd ripdrag-target %ripdrag-drop -t $fx &
 cmd dlfile %dlfile
 
 map dr ripdrag
