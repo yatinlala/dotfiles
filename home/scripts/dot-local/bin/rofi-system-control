@@ -14,12 +14,14 @@ toggle_bt_radio() {
     if bluetoothctl show | grep -q "Powered: yes"; then
         bluetoothctl power off
     else
+        rfkill unblock bluetooth
         bluetoothctl power on
     fi
 }
 
 toggle_bt_device() {
     if bluetoothctl show | grep -q "Powered: no"; then
+        rfkill unblock bluetooth
         bluetoothctl power on
     fi
     if bluetoothctl info "$1" | grep -q "Connected: yes"; then
