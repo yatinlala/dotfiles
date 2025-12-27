@@ -47,6 +47,18 @@ vim.keymap.set("n", "yss", "ys_", { remap = true })
 
 --: }}}
 
+--: indentscope {{{
+
+vim.keymap.set("n", "<leader>i", function()
+    require("mini.indentscope").setup({
+        draw = {
+            animation = require("mini.indentscope").gen_animation.none(),
+        },
+    })
+end, {})
+
+--: }}}
+
 --: pairs {{{
 
 require("mini.pairs").setup({

@@ -45,6 +45,8 @@ end, { desc = "Toggle statusline" })
 -- vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
 vim.keymap.set("n", "-w", "<cmd>b#<CR>", { desc = "Alternate buffer" })
 
+vim.keymap.set("n", "<leader>H", "<cmd>.!headerify<CR>", { desc = "Headerify" })
+
 -- [ /NORMAL ]
 
 -- [ OP-PENDING ]

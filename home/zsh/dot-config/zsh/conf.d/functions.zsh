@@ -84,7 +84,8 @@ update-pkglist() {
     cargo install --list > ~/.dotfiles/pkglist/cargo
     npm -g list > ~/.dotfiles/pkglist/npm
     # pip3 list > ~/.dotfiles/pkglist/pip3
-    pipx list > ~/.dotfiles/pkglist/pipx
+    # pipx list > ~/.dotfiles/pkglist/pipx
+    uv tool list > ~/.dotfiles/pkglist/uv
     flatpak list --app > ~/.dotfiles/pkglist/flatpak
 }
 
