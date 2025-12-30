@@ -3,7 +3,7 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 
 	read "input?> " input
 	if [[ -z "$input" ]]; then
-		exec Hyprland
+		exec start-hyprland
 	fi
 
 	# read -n1 ans
