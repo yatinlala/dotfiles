@@ -12,23 +12,23 @@ mkdir -p "$(dirname "$TABBER_FILE")"
 get_page_title() {
     local url="$1"
     local title
-    
+
     # Try to fetch the title using curl with better parsing
     title=$(curl -s -L "$url" | grep -i '<title>' | sed -n 's/.*<title[^>]*>\([^<]*\)<\/title>.*/\1/Ip' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
-    
+
     # If no title found or empty, try alternative method
     if [[ -z "$title" ]]; then
         title=$(curl -s -L "$url" | grep -oP '(?<=<title>)[^<]+' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
     fi
-    
+
     # If still no title found or empty, use a default
     if [[ -z "$title" ]]; then
         title="Untitled"
     fi
-    
+
     # Clean up any remaining HTML entities and limit length
     title=$(echo "$title" | sed 's/&[a-zA-Z0-9#]*;//g' | cut -c1-100)
-    
+
     echo "$title"
 }
 
@@ -37,104 +37,115 @@ store_tab() {
     # Get URL from clipboard
     local url
     url=$(wl-paste)
-    
+
     if [[ -z "$url" ]]; then
         echo "Error: No URL found in clipboard"
         notify-send "Tabber Error" "No URL found in clipboard"
         exit 1
     fi
-    
+
     # Validate URL format (basic check)
     if [[ ! "$url" =~ ^https?:// ]]; then
         echo "Error: Invalid URL format. Must start with http:// or https://"
         notify-send "Tabber Error" "Invalid URL format: $url"
         exit 1
     fi
-    
-    # Get todo/archive choice
+
+    # Get todo/archive choice (now stored as a tag)
     local type
     type=$(echo -e "todo\narchive" | rofi -dmenu -p " Type:")
-    
+
     if [[ -z "$type" ]]; then
         echo "Operation cancelled"
         notify-send "Tabber" "Operation cancelled"
         exit 0
     fi
-    
+
     # Get page title
     echo "Fetching page title..."
     local title
     title=$(get_page_title "$url")
-    
+
     # Get optional tags
     local tags
     tags=$(rofi -dmenu -p " Tags (comma separated, optional):")
-    
-    # If tags is empty, set to empty string (not null)
+
+    # Merge type into tags (type is now a tag)
     if [[ -z "$tags" ]]; then
-        tags=""
+        tags="$type"
+    else
+        tags="$tags,$type"
     fi
-    
+
     # Get current date
     local date
     date=$(date '+%Y-%m-%d')
-    
-    # Create the entry (using actual tab characters)
-    local entry="${url}	${type}	${title}	${date}	${tags}"
-    
+
+    # New file format: URL<TAB>TITLE<TAB>DATE<TAB>TAGS
+    local entry="${url}	${title}	${date}	${tags}"
+
     # Append to file
     echo "$entry" >> "$TABBER_FILE"
-    
+
     echo "Tab stored: $title"
     notify-send "Tabber" "Tab stored: $title" --icon=browser
+}
+
+# Helper: check if a comma-separated tag list contains a specific tag (case-insensitive)
+tags_contain() {
+    local tags="$1"
+    local want="$2"
+    grep -qiE '(^|[[:space:]]*,[[:space:]]*)'"$want"'([[:space:]]*,[[:space:]]*|$)' <<<"$tags"
 }
 
 # Function to find and copy a tab
 find_tab() {
     local filter_type="$1"  # "todo", "archive", "both", or empty for menu
-    
+
     if [[ ! -f "$TABBER_FILE" ]]; then
         echo "No tabs stored yet"
         exit 1
     fi
-    
+
     # If no filter specified, show menu to choose
     if [[ -z "$filter_type" ]]; then
         filter_type=$(echo -e "todo\nboth\narchive" | rofi -dmenu -p " Show which tabs:")
-        
+
         if [[ -z "$filter_type" ]]; then
             echo "No selection made"
             exit 0
         fi
     fi
-    
+
     # Read non-deleted entries and format for rofi
     local entries=()
-    while IFS=$'\t' read -r url type title date tags; do
+    while IFS=$'\t' read -r url title date tags; do
         # Skip deleted entries (starting with #)
         if [[ "$url" =~ ^# ]]; then
             continue
         fi
-        
-        # Apply filter if not "both"
-        if [[ "$filter_type" != "both" && "$type" != "$filter_type" ]]; then
-            continue
+
+        # Apply filter if not "both" (filter is now tag-based)
+        if [[ "$filter_type" != "both" ]]; then
+            if ! tags_contain "$tags" "$filter_type"; then
+                continue
+            fi
         fi
-        
-        # Format: "[TYPE] title | url | date | tags"
+
+        # Format: "title | url | date | tags"
         local display_tags="${tags:-"(no tags)"}"
-        entries+=("[$type] $title | $url | $date | $display_tags")
+        entries+=("$title | $url | $date | $display_tags")
     done < "$TABBER_FILE"
-    
+
     if [[ ${#entries[@]} -eq 0 ]]; then
         if [[ "$filter_type" == "both" ]]; then
             echo "No active tabs found"
         else
-            echo "No active $filter_type tabs found"
+            echo "No tabs found tagged '$filter_type'"
         fi
         exit 1
     fi
-    
+
     # Show in rofi with appropriate prompt
     local prompt="Select tab:"
     case "$filter_type" in
@@ -145,16 +156,16 @@ find_tab() {
 
     local selected
     selected=$(printf '%s\n' "${entries[@]}" | tac | rofi -dmenu -p " $prompt")
-    
+
     if [[ -z "$selected" ]]; then
         echo "No selection made"
         exit 0
     fi
-    
+
     # Extract URL from selection (it is the second field after the first |)
     local selected_url
     selected_url=$(echo "$selected" | cut -d'|' -f2 | xargs)
-    
+
     # Copy to clipboard
     echo -n "$selected_url" | wl-copy
     echo "URL copied to clipboard: $selected_url"
@@ -166,39 +177,40 @@ delete_tab() {
         echo "No tabs stored yet"
         exit 1
     fi
-    
+
     # Read non-deleted entries and format for rofi
     local entries=()
     local line_numbers=()
     local line_num=0
-    
-    while IFS=$'\t' read -r url type title date tags; do
+
+    while IFS=$'\t' read -r url title date tags; do
         ((line_num++))
-        
+
         # Skip already deleted entries
         if [[ "$url" =~ ^# ]]; then
             continue
         fi
-        
-        # Format: "title | url | type | date"
-        entries+=("$title | $url | $type | $date")
+
+        # Format: "title | url | date | tags"
+        local display_tags="${tags:-"(no tags)"}"
+        entries+=("$title | $url | $date | $display_tags")
         line_numbers+=("$line_num")
     done < "$TABBER_FILE"
-    
+
     if [[ ${#entries[@]} -eq 0 ]]; then
         echo "No active tabs found"
         exit 1
     fi
-    
+
     # Show in rofi
     local selected
     selected=$(printf '%s\n' "${entries[@]}" | rofi -dmenu -p " Select tab to delete:")
-    
+
     if [[ -z "$selected" ]]; then
         echo "No selection made"
         exit 0
     fi
-    
+
     # Find which entry was selected
     local selected_index=-1
     for i in "${!entries[@]}"; do
@@ -207,19 +219,20 @@ delete_tab() {
             break
         fi
     done
-    
+
     if [[ $selected_index -eq -1 ]]; then
         echo "Error: Could not find selected entry"
         exit 1
     fi
-    
+
     # Get the line number to modify
     local target_line=${line_numbers[$selected_index]}
-    
+
     # Create a temporary file and mark the entry as deleted
-    local temp_file=$(mktemp)
+    local temp_file
+    temp_file=$(mktemp)
     local current_line=0
-    
+
     while IFS= read -r line; do
         ((current_line++))
         if [[ $current_line -eq $target_line ]]; then
@@ -229,10 +242,10 @@ delete_tab() {
             echo "$line" >> "$temp_file"
         fi
     done < "$TABBER_FILE"
-    
+
     # Replace the original file
     mv "$temp_file" "$TABBER_FILE"
-    
+
     echo "Tab marked as deleted"
 }
 
@@ -242,27 +255,30 @@ prune_tabs() {
         echo "No tabs stored yet"
         exit 1
     fi
-    
+
     # Count lines before pruning
-    local total_lines=$(wc -l < "$TABBER_FILE")
-    
+    local total_lines
+    total_lines=$(wc -l < "$TABBER_FILE")
+
     # Create a temporary file with only non-deleted entries
-    local temp_file=$(mktemp)
-    
+    local temp_file
+    temp_file=$(mktemp)
+
     while IFS= read -r line; do
         # Only keep lines that don't start with #
         if [[ ! "$line" =~ ^# ]]; then
             echo "$line" >> "$temp_file"
         fi
     done < "$TABBER_FILE"
-    
+
     # Count lines after pruning
-    local remaining_lines=$(wc -l < "$temp_file")
+    local remaining_lines
+    remaining_lines=$(wc -l < "$temp_file")
     local deleted_count=$((total_lines - remaining_lines))
-    
+
     # Replace the original file
     mv "$temp_file" "$TABBER_FILE"
-    
+
     echo "Pruned $deleted_count deleted entries"
     echo "Remaining entries: $remaining_lines"
     notify-send "Tabber" "Pruned $deleted_count deleted entries" --icon=edit-delete
@@ -274,15 +290,15 @@ show_help() {
     echo
     echo "Usage:"
     echo "  ./tabber store         - Store URL from clipboard with metadata"
-    echo "  ./tabber find          - Show menu to choose tab type, then find and copy URL"
-    echo "  ./tabber find todo     - Find and copy from todo tabs only"
-    echo "  ./tabber find archive  - Find and copy from archive tabs only"
+    echo "  ./tabber find          - Show menu to choose tag filter, then find and copy URL"
+    echo "  ./tabber find todo     - Find and copy from entries tagged todo"
+    echo "  ./tabber find archive  - Find and copy from entries tagged archive"
     echo "  ./tabber find both     - Find and copy from all tabs"
     echo "  ./tabber delete        - Mark a tab as deleted"
     echo "  ./tabber prune         - Remove all deleted entries from storage"
     echo "  ./tabber help          - Show this help message"
     echo
-    echo "File format: URL<tab>TYPE<tab>TITLE<tab>DATE<tab>TAGS"
+    echo "File format: URL<tab>TITLE<tab>DATE<tab>TAGS"
     echo "Storage location: $TABBER_FILE"
 }
 
