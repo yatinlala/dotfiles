@@ -47,6 +47,8 @@ vim.o.confirm = true
 vim.o.exrc = true
 -- vim.o.secure = true
 
+vim.opt.conceallevel = 1
+
 -- Completion
 vim.opt.pumheight = 8 -- number of items in completion menu
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "popup" }
@@ -69,7 +71,6 @@ vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completio
 -- -- vim.opt.smartindent = true -- make indenting smart
 -- -- vim.opt.swapfile = false -- creates a swapfile
 -- --
--- -- vim.opt.conceallevel = 2
 -- --
 -- -- vim.opt.numberwidth = 2 -- set min number column width to 2 {default 4}
 -- -- vim.opt.wrap = false -- display lines as one long line

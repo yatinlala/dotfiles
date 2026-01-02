@@ -55,7 +55,7 @@ vim.keymap.set("n", "<leader>i", function()
             animation = require("mini.indentscope").gen_animation.none(),
         },
     })
-end, {})
+end, { desc = "Enable Indentscope" })
 
 --: }}}
 
@@ -237,47 +237,69 @@ require("mini.cmdline").setup()
 --     },
 -- })
 
--- local miniclue = require('mini.clue')
+_G.Config = {}
+_G.Config.leader_group_clues = {
+    { mode = "n", keys = "<Leader>a", desc = "AI" },
+    { mode = "x", keys = "<Leader>a", desc = "AI" },
+    { mode = "n", keys = "<Leader>g", desc = "Git" },
+    { mode = "n", keys = "<Leader>l", desc = "Lsp" },
+    { mode = "x", keys = "<Leader>l", desc = "Lsp" },
+    { mode = "n", keys = "<Leader>o", desc = "Org" },
+    { mode = "n", keys = "<Leader>q", desc = "Persistence" },
+    { mode = "n", keys = "<Leader>s", desc = "Sessions" },
+    { mode = "n", keys = "<Leader>d", desc = "Debug" },
+}
+
+-- local miniclue = require("mini.clue")
+-- -- stylua: ignore
 -- miniclue.setup({
---   triggers = {
---     -- Leader triggers
---     { mode = 'n', keys = '<Leader>' },
---     { mode = 'x', keys = '<Leader>' },
---
---     -- Built-in completion
---     { mode = 'i', keys = '<C-x>' },
---
---     -- `g` key
---     { mode = 'n', keys = 'g' },
---     { mode = 'x', keys = 'g' },
---
---     -- Marks
---     { mode = 'n', keys = "'" },
---     { mode = 'n', keys = '`' },
---     { mode = 'x', keys = "'" },
---     { mode = 'x', keys = '`' },
---
---     -- Registers
---     { mode = 'n', keys = '"' },
---     { mode = 'x', keys = '"' },
---     { mode = 'i', keys = '<C-r>' },
---     { mode = 'c', keys = '<C-r>' },
---
---     -- Window commands
---     { mode = 'n', keys = '<C-w>' },
---
---     -- `z` key
---     { mode = 'n', keys = 'z' },
---     { mode = 'x', keys = 'z' },
---   },
---
---   clues = {
---     -- Enhance this by adding descriptions for <Leader> mapping groups
---     miniclue.gen_clues.builtin_completion(),
---     miniclue.gen_clues.g(),
---     miniclue.gen_clues.marks(),
---     miniclue.gen_clues.registers(),
---     miniclue.gen_clues.windows(),
---     miniclue.gen_clues.z(),
---   },
--- })
+--     -- Define which clues to show. By default shows only clues for custom mappings
+--     -- (uses `desc` field from the mapping; takes precedence over custom clue).
+--     window = {
+--       delay = 300,
+--       config = { anchor = 'SW', border = "none", row = 'auto', col = 'auto' },
+--     --   config = {
+--     --     width = vim.fn.winwidth(0) / 2,
+--     -- }
+--     },
+--     clues = {
+--       -- This is defined in 'plugin/20_keymaps.lua' with Leader group descriptions
+--       Config.leader_group_clues,
+--       miniclue.gen_clues.builtin_completion(),
+--       miniclue.gen_clues.g(),
+--       miniclue.gen_clues.marks(),
+--       -- This creates a submode for window resize mappings. Try the following:
+--       miniclue.gen_clues.registers(),
+--       -- - Press `<C-w>s` to make a window split.
+--       -- - Press `<C-w>+` to increase height. Clue window still shows clues as if
+--       --   `<C-w>` is pressed again. Keep pressing just `+` to increase height.
+--       --   Try pressing `-` to decrease height.
+--       -- - Stop submode either by `<Esc>` or by any key that is not in submode.
+--       miniclue.gen_clues.windows({ submode_resize = true }),
+--       miniclue.gen_clues.z(),
+--     },
+--     -- Explicitly opt-in for set of common keys to trigger clue window
+--     triggers = {
+--       { mode = 'n', keys = '<Leader>' }, -- Leader triggers
+--       { mode = 'x', keys = '<Leader>' },
+--       { mode = 'n', keys = '\\' },       -- mini.basics
+--       { mode = 'n', keys = '[' },        -- mini.bracketed
+--       { mode = 'n', keys = ']' },
+--       { mode = 'x', keys = '[' },
+--       { mode = 'x', keys = ']' },
+--       { mode = 'i', keys = '<C-x>' },    -- Built-in completion
+--       { mode = 'n', keys = 'g' },        -- `g` key
+--       { mode = 'x', keys = 'g' },
+--       { mode = 'n', keys = "'" },        -- Marks
+--       { mode = 'n', keys = '`' },
+--       { mode = 'x', keys = "'" },
+--       { mode = 'x', keys = '`' },
+--       { mode = 'n', keys = '"' },        -- Registers
+--       { mode = 'x', keys = '"' },
+--       { mode = 'i', keys = '<C-r>' },
+--       { mode = 'c', keys = '<C-r>' },
+--       { mode = 'n', keys = '<C-w>' },    -- Window commands
+--       { mode = 'n', keys = 'z' },        -- `z` key
+--       { mode = 'x', keys = 'z' },
+--     },
+--   })

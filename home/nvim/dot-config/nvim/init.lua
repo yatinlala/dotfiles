@@ -26,4 +26,5 @@ if not vim.g.neovide then
 end
 
 require("extern-plugins").init()
-require("config")
+require("config.keymaps")
+require("config.options")
