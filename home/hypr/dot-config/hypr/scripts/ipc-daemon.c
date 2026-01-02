@@ -50,11 +50,13 @@ int main() {
         if (strncmp(line_buffer, "monitorremovedv2>>", 18) == 0) {
           if (!strstr(line_buffer, "eDP-1,Lenovo Group Limited")) {
             system("hyprctl keyword monitor 'eDP-1,1920x1200@60,0x0,1'");
+            system("./recenter-floats.sh");
           }
         } else if (strncmp(line_buffer, "monitoraddedv2>>", 16) == 0) {
           char *edp_added = strstr(line_buffer, "eDP-1,Lenovo Group Limited");
           if (!edp_added) {
             system("hyprctl keyword monitor 'eDP-1,disable'");
+            system("./recenter-floats.sh");
           }
         }
         // else if (strncmp(line_buffer, "activewindow>>", 14) == 0) {
