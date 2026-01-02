@@ -1,5 +1,9 @@
 ATLauncher	com.atlauncher.ATLauncher	3.4.40.2	stable	system
+Discord	com.discordapp.Discord	0.0.116	stable	system
 Flatseal	com.github.tchx84.Flatseal	2.4.0	stable	system
 Slack	com.slack.Slack	4.46.99	stable	system
+Bottles	com.usebottles.bottles	60	stable	system
 Speech Note	net.mkiol.SpeechNote	4.8.3	stable	system
 Ferdium	org.ferdium.Ferdium	7.1.1	stable	system
+Camera	org.gnome.Snapshot	49.1	stable	system
+LocalSend	org.localsend.localsend_app	1.17.0	stable	system

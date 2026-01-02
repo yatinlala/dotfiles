@@ -1,5 +1,5 @@
 /home/yatin/.local/share/npm/lib
-├── @anthropic-ai/claude-code@2.0.56
-├── @google/gemini-cli@0.19.1
-└── @openai/codex@0.64.0
+├── @google/gemini-cli@0.22.2
+├── @openai/codex@0.77.0
+└── pnpm@10.14.0
 
