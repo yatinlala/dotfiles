@@ -4,8 +4,27 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <limits.h>
+#include <libgen.h>
 
 const int BUFFER_SIZE = 1024;
+
+void run_script(const char *script_name) {
+  char exe_path[PATH_MAX];
+  ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
+  if (len != -1) {
+    exe_path[len] = '\0';
+    char *dir = dirname(exe_path);
+    char command[PATH_MAX + 128];
+    snprintf(command, sizeof(command), "%s/%s", dir, script_name);
+    system(command);
+  } else {
+    // Fallback if /proc/self/exe fails
+    char command[128];
+    snprintf(command, sizeof(command), "./%s", script_name);
+    system(command);
+  }
+}
 
 int main() {
   const char *instance_signature = getenv("HYPRLAND_INSTANCE_SIGNATURE");
@@ -50,13 +69,13 @@ int main() {
         if (strncmp(line_buffer, "monitorremovedv2>>", 18) == 0) {
           if (!strstr(line_buffer, "eDP-1,Lenovo Group Limited")) {
             system("hyprctl keyword monitor 'eDP-1,1920x1200@60,0x0,1'");
-            system("./recenter-floats.sh");
+            run_script("recenter-floats.sh");
           }
         } else if (strncmp(line_buffer, "monitoraddedv2>>", 16) == 0) {
           char *edp_added = strstr(line_buffer, "eDP-1,Lenovo Group Limited");
           if (!edp_added) {
             system("hyprctl keyword monitor 'eDP-1,disable'");
-            system("./recenter-floats.sh");
+            run_script("recenter-floats.sh");
           }
         }
         // else if (strncmp(line_buffer, "activewindow>>", 14) == 0) {

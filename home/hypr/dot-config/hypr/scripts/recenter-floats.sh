@@ -7,6 +7,7 @@ WORKSPACES=(
         "special:signal"
         "special:ferdium"
         "special:spotify"
+        "special:obsidian"
         # "special:float"
 )
 
