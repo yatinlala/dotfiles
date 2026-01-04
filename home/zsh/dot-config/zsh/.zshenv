@@ -15,10 +15,10 @@ export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 SCRIPTS="$HOME/.local/bin"
 
 # FZF
-export FZF_DEFAULT_OPTS="--cycle --scroll-off=0 --walker-skip=.git,node_modules,.cache,.local/share/go/pkg,.local/share/Zeal,.local/share/pipx/venvs,.local/xdg-launch,.local/share/Steam,.config/vivaldi,.config/Cursor"
-export FZF_ALT_C_OPTS="--walker=dir,hidden,follow"
-export FZF_CTRL_T_OPTS="--walker=file,hidden,follow,dir"
-# export FZF_DEFAULT_COMMAND='fd -H .'
+export FZF_DEFAULT_OPTS="--cycle --scroll-off=0"
+# export FZF_ALT_C_OPTS="--walker=dir,hidden,follow"
+# export FZF_CTRL_T_OPTS="--walker=file,hidden,follow,dir"
+export FZF_DEFAULT_COMMAND='fd -H --ignore-file $HOME/.dotfiles/fd-ignore .'
 
 export GRIM_DEFAULT_DIR="$XDG_SCREENSHOTS_DIR"
 

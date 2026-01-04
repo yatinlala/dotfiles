@@ -1,8 +1,13 @@
 #!/bin/sh
 
-file=$(fd --type f --full-path '/home/yatin/videos' | fzf)
+file=$(
+  fd --type f --full-path /home/yatin/videos |
+    fzf \
+      --bind 'tab:transform-query(_fuzzy_video_toggler {q})' \
+      --preview='fzf-preview.sh {}'
+)
 
 if [ -n "$file" ]; then
-    setsid -f mpv "$file" >/dev/null 2>&1
-    kitty @ close-window
+  setsid -f mpv "$file" >/dev/null 2>&1
+  kitty @ close-window
 fi

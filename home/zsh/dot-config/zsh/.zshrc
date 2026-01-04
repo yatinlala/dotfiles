@@ -64,7 +64,42 @@ bindkey -M menuselect '^l' vi-forward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 
 eval "$(fasd --init auto)"
-eval "$(fzf --zsh)"
+
+# eval "$(fzf --zsh)"
+FZF_CTRL_T_COMMAND= source <(fzf --zsh) # disable default C-T
+
+  _fzf_compgen_path() {
+    fd --ignore-file=$HOME/.dotfiles/fd-ignore --hidden --follow --exclude .git . "${1:-.}"
+  }
+#
+#   _fzf_compgen_dir() {
+#     command find -L "$1" \
+#       -name .git -prune -o -name .hg -prune -o -name .svn -prune -o -type d \
+#       -a -not -path "$1" -print 2> /dev/null | sed 's@^\./@@'
+#   }
+
+fzf-arg-complete() {
+  local args
+  args=$(fc -ln -50 | sed 's/^[^ ]* //' | tr ' ' '\n' | grep -v '^$' | grep -v "^['\"|]$" | tac | fzf)
+  LBUFFER="${LBUFFER}${args}"
+}
+zle -N fzf-arg-complete
+bindkey '^x^a' 'fzf-arg-complete'
+
+__fzf_expand_selection() {
+  LBUFFER="${LBUFFER}**"
+  zle fzf-completion
+
+  # If cancellation left the buffer ending in **, strip it.
+  if [[ $LBUFFER == *'**' ]]; then
+    zle backward-delete-char
+    zle backward-delete-char
+  fi
+}
+
+zle -N __fzf_expand_selection
+bindkey '^T' __fzf_expand_selection
+
 
 
 # [[ HISTORY ]]

@@ -1,0 +1,17 @@
+.var
+software/archive/swatcslab
+.local/share/zsh-autosuggestions
+.local/share/go/pkg
+.local/share/icons
+.local/share/waydroid
+.local/share/Zeal
+.local/share/Steam
+software/cloned/Gruvbox-GTK-Theme/icons
+.cache
+.git
+node_modules
+.local/share/pipx/venvs
+.local/xdg-launch
+.config/vivaldi
+.config/Cursor
+.local/state
