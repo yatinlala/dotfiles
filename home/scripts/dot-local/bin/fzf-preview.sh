@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# Source: https://github.com/junegunn/fzf/blob/master/bin/fzf-preview.sh
+#
 # The purpose of this script is to demonstrate how to preview a file or an
 # image in the preview window of fzf.
 #
