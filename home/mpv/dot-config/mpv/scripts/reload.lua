@@ -71,7 +71,7 @@ local settings = {
 	demuxer_cache_timer_interval = 2,
 	demuxer_cache_timer_timeout = 20,
 	reload_eof_enabled = false,
-	reload_key_binding = "Ctrl+r",
+	reload_key_binding = "Ctrl+shift+r",
 }
 
 -- global state stores properties between reloads
@@ -94,7 +94,7 @@ local property_keep_open = nil
 -- +-------+     +-------+     +-------+
 -- + fetch +<--->+ stale +---->+ stuck |
 -- +-------+     +-------+     +-------+
---   |   ^         |   ^         |   ^
+--   |   ^         |   /         |   ^
 --   +---+         +---+         +---+
 local demuxer_cache = {
 	timer = nil,
