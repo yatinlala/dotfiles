@@ -14,7 +14,7 @@ get_page_title() {
     local title
 
     # Try to fetch the title using curl with better parsing
-    title=$(curl -s -L "$url" | grep -i '<title>' | sed -n 's/.*<title[^>]*>\([^<]*\)<\/title>.*/\1/Ip' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
+    title=$(curl -Ls "$url" | pup --plain 'title text{}')
 
     # If no title found or empty, try alternative method
     if [[ -z "$title" ]]; then
@@ -25,9 +25,6 @@ get_page_title() {
     if [[ -z "$title" ]]; then
         title="Untitled"
     fi
-
-    # Clean up any remaining HTML entities and limit length
-    title=$(echo "$title" | sed 's/&[a-zA-Z0-9#]*;//g' | cut -c1-100)
 
     echo "$title"
 }
