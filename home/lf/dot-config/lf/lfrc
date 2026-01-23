@@ -114,6 +114,7 @@ map gv cd ~/videos
 map gT cd ~/videos/todo
 
 map gL cd ~/.local/linesync
+map gB cd ~/.local/booxsync
 
 map gl<space> cd ~/.local
 map glb cd ~/.local/bin
