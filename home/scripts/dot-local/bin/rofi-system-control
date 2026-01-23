@@ -20,9 +20,11 @@ toggle_bt_radio() {
 }
 
 toggle_bt_device() {
-    if bluetoothctl show | grep -q "Powered: no"; then
+    if bluetoothctl show | grep -q "Powered: no" 2>/dev/null|| \
+        bluetoothctl show | grep -q "No default controller" 2>/dev/null; then
         rfkill unblock bluetooth
         bluetoothctl power on
+        sleep 1
     fi
     if bluetoothctl info "$1" | grep -q "Connected: yes"; then
         bluetoothctl disconnect "$1"
