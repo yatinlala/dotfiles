@@ -24,7 +24,7 @@
 		"custom/scratchpad_tracking",
 		"tray",
 		"backlight",
-		"pulseaudio",
+		"wireplumber",
 		"network",
 		"clock#date",
 		"clock#time",
@@ -209,7 +209,7 @@
 		"format": "   {:%a %b %e} ", // icon: calendar-alt
 		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
 	},
-	"pulseaudio": {
+	"wireplumber": {
 		"format": "{format_source} {icon}{volume}%",
 		"format-muted": " muted {format_source}",
 		"format-source": "",

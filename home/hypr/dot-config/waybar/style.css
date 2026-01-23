@@ -56,7 +56,7 @@ tooltip {
 #backlight,
 #date,
 #clock,
-#pulseaudio,
+#wireplumber,
 #network,
 #workspaces,
 #mpris,
@@ -109,7 +109,7 @@ tooltip {
   margin-right: 6px;
 }
 
-#pulseaudio {
+#wireplumber {
   margin-right: 6px;
   color: #ebdbb2;
 }
