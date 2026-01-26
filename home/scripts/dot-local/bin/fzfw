@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# fzf wrapped w/ fzf-default-opts, useful for scripts
+# i set FZF_DEFAULT_OPTS_FILE because i think ** uses
+# it (TODO look into that), so I'm adding a wrapper for
+# things like fuzzy_video to use default opts + custom opts.
+
+fzf \
+--scroll-off=0 --cycle \
+--prompt '🔎 ❯ ' \
+--bind 'ctrl-u:toggle-preview' \
+--preview="fzf-preview.sh {}" \
+--bind j:down,k:up --bind 'start:unbind(j)+unbind(k)+unbind(i)+hide-preview' \
+--bind 'ctrl-i:transform:
+        [[ $FZF_PROMPT =~ 🔎 ]] &&
+          echo "change-prompt(V ❯ )+rebind(j)+rebind(k)+rebind(i)" ||
+          echo "change-prompt(🔎 ❯ )+unbind(j)+unbind(k)+unbind(i)"
+
+' \
+--bind 'i:unbind(j)+unbind(k)+unbind(i)+change-prompt(🔎 ❯ )' \
+"$@"

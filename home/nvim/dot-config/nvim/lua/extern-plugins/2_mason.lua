@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map("gl", vim.diagnostic.open_float, "Open Float", { "n", "x" })
 
-        vim.diagnostic.config({ virtual_text = true })
+        -- vim.diagnostic.config({ virtual_text = true })
         -- vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
         local function ToggleVirtualText()

@@ -34,6 +34,7 @@
 	// "modules-right":  [ "mpris", "tray", "backlight", "pulseaudio", "network", "clock#date", "clock#time", "battery"],
 	"backlight": {
 	    "device": "amdgpu_bl1",
+	    "tooltip": false,
 	    "format": "{icon} {percent}%",
 	    "format-icons": ["", ""]
 	},
@@ -51,6 +52,7 @@
 	},
 	"hyprland/window": {
 		//"format": "{}"   // <--- these is the default value  
+	         "tooltip": false,
 		"format": "<span font='10' rise='-4444'>{}</span>",
 		"max-length": 60
 	},

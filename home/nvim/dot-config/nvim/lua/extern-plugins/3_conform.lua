@@ -11,6 +11,7 @@ require("conform").setup({
         html = { "prettierd" },
         css = { "prettierd" },
         rust = { "rustfmt" },
+        nix = { "alejandra" },
         javascript = { "prettierd", "prettierd", stop_after_first = true },
         json = { "jq" },
         -- jsonl = { 'jq' },
