@@ -79,21 +79,20 @@ require("mason").setup()
 --     automatic_enable = true,
 -- })
 
--- Names must be Mason package names
-local ensure_installed = {
-    "clangd",
-    -- "lua-language-server",
-    "prettierd",
-}
-
--- https://www.reddit.com/r/neovim/comments/1p1y73n/automatically_downloading_and_installing_lsps/
-local installed_package_names = require("mason-registry").get_installed_package_names()
-for _, v in ipairs(ensure_installed) do
-    if not vim.tbl_contains(installed_package_names, v) then
-        print("foo")
-        vim.cmd(":MasonInstall " .. v)
-    end
-end
+-- -- Names must be Mason package names
+-- local ensure_installed = {
+--     -- "clangd",
+--     -- "lua-language-server",
+--     "prettierd",
+-- }
+--
+-- -- https://www.reddit.com/r/neovim/comments/1p1y73n/automatically_downloading_and_installing_lsps/
+-- local installed_package_names = require("mason-registry").get_installed_package_names()
+-- for _, v in ipairs(ensure_installed) do
+--     if not vim.tbl_contains(installed_package_names, v) then
+--         vim.cmd(":MasonInstall " .. v)
+--     end
+-- end
 
 local installed_packages = require("mason-registry").get_installed_packages()
 local installed_lsp_names = vim.iter(installed_packages):fold({}, function(acc, pack)
@@ -106,3 +105,4 @@ vim.lsp.enable(installed_lsp_names)
 -- manually installed
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("clangd")
