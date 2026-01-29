@@ -26,6 +26,8 @@ get_page_title() {
         title="Untitled"
     fi
 
+    title=$(echo "$title" | tr '\n\t' ' ' | tr =s ' ' | xargs)
+
     echo "$title"
 }
 
