@@ -123,6 +123,7 @@ source $XDG_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $XDG_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $XDG_DATA_HOME/powerlevel10k/powerlevel10k.zsh-theme
 source $ZDOTDIR/.p10k.zsh
+eval "$(direnv hook zsh)"
 
 # [[ PROMPT ]]
 # # PS1='%F{blue}%~ %(?.%F{green}.%F{blue})❯%f '
