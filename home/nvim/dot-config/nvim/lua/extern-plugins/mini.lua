@@ -6,7 +6,7 @@ vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 -- "nvim-treesitter/nvim-treesitter-textobjects", -- needed for diF
 -- "nvim-treesitter/nvim-treesitter"
 
--- require('mini.misc').setup_auto_root()
+require("mini.misc").setup_auto_root()
 
 require("mini.misc").setup_restore_cursor()
 

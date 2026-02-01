@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- vim.diagnostic.config({ virtual_text = true })
         -- vim.diagnostic.config({ virtual_lines = { current_line = true } })
+        vim.diagnostic.config({ underline = false })
 
         local function ToggleVirtualText()
             local current_config = vim.diagnostic.config()
@@ -39,7 +40,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 vim.diagnostic.config({ virtual_text = true })
             end
         end
-        map("<leader>v", ToggleVirtualText, "Toggle Lsp Virtual Text")
+        map("<leader>lv", ToggleVirtualText, "Toggle Lsp Virtual Text")
+
+        local function ToggleUnderline()
+            local current_config = vim.diagnostic.config()
+
+            if current_config.underline then
+                vim.diagnostic.config({ underline = false })
+            else
+                vim.diagnostic.config({ underline = true })
+            end
+        end
+        map("<leader>lu", ToggleUnderline, "Toggle Lsp Underline")
 
         -- vim.api.nvim_create_autocmd({ 'InsertCharPre', 'CursorMovedI', 'CursorHold', 'CursorHoldI' }, {
         --     -- check if the character before the cursor is `{` or it is all spaces

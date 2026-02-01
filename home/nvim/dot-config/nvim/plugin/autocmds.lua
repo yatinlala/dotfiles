@@ -85,7 +85,6 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
 -- vim.cmd([[cab Y Yesterday]])
 -- vim.cmd([[cab T Tomorrow]])
 
--- TODO maybe move each autocmd into a function and comment out in setup
 -- local M = {}
 
 --
@@ -97,11 +96,6 @@ vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
 --     --         au BufWinEnter ?* silent! loadview 1
 --     --     augroup END]]
 --
---
---     -- lastplace replacement. TODO test with folds to see if this is sufficient
---     -- vim.cmd([[
---     --   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
---     -- ]])
 --
 --     -- resize splits if window got resized
 --     vim.api.nvim_create_autocmd({ 'VimResized' }, {
