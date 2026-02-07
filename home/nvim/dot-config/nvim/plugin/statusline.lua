@@ -98,8 +98,12 @@ local function mode()
     return "%#MiniStatuslineModeInsert# " .. txt .. " %*"
 end
 
-local function filename()
-    local s = vim.api.nvim_eval_statusline("%f", {}).str
+local function filename(args)
+    string = "%f"
+    if args and args.tail == true then
+        string = "%t"
+    end
+    local s = vim.api.nvim_eval_statusline(string, {}).str
 
     if string.find(s, "minipick://") then
         return "🔎"
@@ -109,7 +113,7 @@ local function filename()
 end
 
 -- Example: set statusline
-vim.o.statusline = "%{%v:lua.mode_component()%} %f %y %m %= %l:%c %p%%"
+-- vim.o.statusline = "%{%v:lua.mode_component()%} %f %y %m %= %l:%c %p%%"
 
 function Statusline()
     return table.concat({
@@ -127,6 +131,17 @@ function Statusline()
     })
 end
 
+function Rulerformat()
+    return table.concat({
+        filename({ tail = true }),
+        " ",
+        "%m%w%r",
+        formatter(),
+        filetype(),
+        "%P %l:%c",
+        -- git(),
+    })
+end
 -- vim.api.nvim_create_autocmd("ModeChanged", {
 --     group = vim.api.nvim_create_augroup("statusline_modechange", { clear = true }),
 --     callback = function(args)
@@ -135,3 +150,4 @@ end
 -- })
 
 vim.cmd([[set statusline=%!v:lua.Statusline() ]])
+-- vim.cmd([[set rulerformat=%!v:lua.Rulerformat() ]])

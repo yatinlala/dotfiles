@@ -2,6 +2,7 @@
 
 # tabber - A shell script for managing browser tabs
 # Usage: ./tabber {store|find|delete}
+# TODO should be case insensitive, not working
 
 TABBER_FILE="$HOME/.local/share/tabber.txt"
 
@@ -52,7 +53,7 @@ store_tab() {
 
     # Get todo/archive choice (now stored as a tag)
     local type
-    type=$(echo -e "todo\narchive" | rofi -dmenu -p " Type:")
+    type=$(echo -e "todo\narchive" | rofi --case-smart -dmenu -p " Type:")
 
     if [[ -z "$type" ]]; then
         echo "Operation cancelled"
