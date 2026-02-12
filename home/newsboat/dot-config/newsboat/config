@@ -1,3 +1,4 @@
+prepopulate-query-feeds yes
 refresh-on-startup no
 reload-only-visible-feeds yes
 reload-threads 16
