@@ -1,32 +1,43 @@
 #!/usr/bin/env bash
+##
+##
+## NOTE: I'd much prefer to do something like:
+## for class in "${CLASSES[@]}"; do
+#      hyprctl dispatch resizewindowpixel exact 90% 90%,class:$class
+#      hyprctl dispatch centerwindow class:$class
+# done
+# but centerwindow only targets the activewindow, it doesn't let you
+# target an arbitrary window. TODO probably there should be a PR for
+# this, my solution in the meantime works but is probably more
+# cumbersome than necessary.
 
 set -euo pipefail
 
-# Hard-code multiple special workspaces here
-WORKSPACES=(
-        "special:signal"
-        "special:ferdium"
-        "special:spotify"
-        "special:obsidian"
-        # "special:float"
-)
+CLASSES=(signal ferdium spotify obsidian)
 
-sleep 0.2
+mons_json="$(hyprctl monitors -j)"
+clients_json="$(hyprctl clients -j)"
 
-# Use focused monitor geometry (same behavior as the original script)
-read -r MON_W MON_H <<<"$(
-        hyprctl monitors -j |
-                jq -r '.[] | select(.focused) | "\(.width) \(.height)"'
-)"
+# Emit: addr monitorId monX monY monW monH
+jq -r --argjson mons "$mons_json" --argjson cls "$(printf '%s\n' "${CLASSES[@]}" | jq -R . | jq -s .)" '
+  .[]
+  | select(.class? != null)
+  | select((.class | ascii_downcase) as $c | $cls | index($c))
+  | .address as $addr
+  | .monitor as $mid
+  | ($mons[] | select(.id == $mid)) as $m
+  | "\($addr) \($mid) \($m.x) \($m.y) \($m.width) \($m.height)"
+' <<<"$clients_json" |
+        while read -r addr mid mx my mw mh; do
+                # 90% of monitor
+                ww=$((mw * 90 / 100))
+                wh=$((mh * 90 / 100))
 
-# Gather all floating windows in any of the listed workspaces, then center them.
-hyprctl clients -j | jq -r --argjson wss "$(printf '%s\n' "${WORKSPACES[@]}" | jq -R . | jq -s .)" '
-  .[] |
-  select(.floating == true) |
-  select(.workspace.name as $ws | $wss | index($ws)) |
-  "\(.address) \(.size[0]) \(.size[1])"
-' | while read -r addr w h; do
-        x=$(((MON_W - w) / 2))
-        y=$(((MON_H - h) / 2))
-        hyprctl dispatch movewindowpixel exact "$x" "$y,address:$addr" >/dev/null
-done
+                # centered top-left in global coords (monitor has an x/y offset)
+                x=$((mx + (mw - ww) / 2))
+                y=$((my + (mh - wh) / 2))
+
+                # resize + move that specific window
+                hyprctl dispatch resizewindowpixel exact "$ww" "$wh,address:$addr" >/dev/null
+                hyprctl dispatch movewindowpixel exact "$x" "$y,address:$addr" >/dev/null
+        done
