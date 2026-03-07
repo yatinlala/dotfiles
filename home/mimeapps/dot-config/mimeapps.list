@@ -25,3 +25,5 @@ application/xhtml+xml=zen.desktop
 application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
 application/x-ndjson=nvim.desktop
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
