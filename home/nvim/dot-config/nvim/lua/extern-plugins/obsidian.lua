@@ -15,3 +15,6 @@ require("obsidian").setup({
     },
     legacy_commands = false,
 })
+
+vim.keymap.set("n", "<leader>oq", "<cmd>Obsidian quick_switch<CR>", {})
+vim.keymap.set("n", "<leader>os", "<cmd>Obsidian search<CR>", {})

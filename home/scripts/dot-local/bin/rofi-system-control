@@ -24,7 +24,7 @@ toggle_bt_device() {
         bluetoothctl show | grep -q "No default controller" 2>/dev/null; then
         rfkill unblock bluetooth
         bluetoothctl power on
-        sleep 1
+        sleep 3
     fi
     if bluetoothctl info "$1" | grep -q "Connected: yes"; then
         bluetoothctl disconnect "$1"
