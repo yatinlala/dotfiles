@@ -56,6 +56,7 @@ alias '?'='duck'
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
+run() { systemd-run --user "$@" }
 lg() { lazygit "$@" }
 git-clean() {
   git clean -xfd

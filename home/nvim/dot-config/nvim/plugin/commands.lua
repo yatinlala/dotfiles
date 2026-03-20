@@ -14,6 +14,26 @@ end, {
 
 vim.api.nvim_create_user_command("EC", "silent cd ~/.config/nvim | e $MYVIMRC", {})
 
+vim.api.nvim_create_user_command("Pack", function(opts)
+    local args = opts.fargs
+
+    if args[1] == "update" then
+        vim.pack.update()
+    elseif args[1] == "lock" then
+        vim.pack.update(nil, { target = "lockfile" })
+    else
+        print("unknown subcommand")
+    end
+end, {
+    nargs = "+",
+    complete = function(arglead, cmdline, cursorpos)
+        local subcommands = { "update", "lock" }
+        return vim.tbl_filter(function(cmd)
+            return cmd:find("^" .. arglead)
+        end, subcommands)
+    end,
+})
+
 -- vim.api.nvim_create_user_command('Redir', ":0put=execute('highlight')", {})
 
 -- vim.api.nvim_create_user_command("Today", function()
