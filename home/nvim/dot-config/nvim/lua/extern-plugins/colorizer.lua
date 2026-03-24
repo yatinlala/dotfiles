@@ -1,5 +1,3 @@
-local lazy_load = require("extern-plugins").lazy_load
-
 -- vim.api.nvim_create_autocmd("BufReadPre", {
 --     callback = function()
 --
@@ -9,16 +7,8 @@ local lazy_load = require("extern-plugins").lazy_load
 
 -- require("plugins.util").packadd({ })
 
-vim.keymap.set("n", "<leader>C", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
-
-lazy_load({
-    {
-        src = "https://github.com/catgoose/nvim-colorizer.lua",
-        data = {
-            cmd = "ColorizerToggle",
-            config = function()
-                require("colorizer").setup()
-            end,
-        },
-    },
-})
+vim.schedule(function()
+    vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
+    require("colorizer").setup()
+    vim.keymap.set("n", "<leader>C", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
+end)

@@ -147,8 +147,8 @@ end, { desc = "Delete Session" })
 --: pick {{{
 
 local win_config = function()
-    local height = math.floor(0.618 * vim.o.lines)
-    local width = math.floor(0.618 * vim.o.columns)
+    local height = math.floor(0.8 * vim.o.lines)
+    local width = math.floor(0.8 * vim.o.columns)
     return {
         border = "single",
         anchor = "NW",
@@ -175,6 +175,19 @@ end, { desc = "Live [G]rep" })
 vim.keymap.set("n", "<leader>h", function()
     MiniPick.builtin.help()
 end, { desc = "Pick [H]elp" })
+
+vim.keymap.set("n", "<A-c>", function()
+    MiniPick.start({
+        source = {
+            items = vim.fn.systemlist("fd -t d"),
+
+            choose = function(item)
+                vim.cmd.cd(item)
+                return false
+            end,
+        },
+    })
+end)
 
 -- : }}}
 

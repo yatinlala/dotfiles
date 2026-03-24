@@ -1,22 +1,24 @@
-vim.pack.add({ "https://github.com/monkoose/neocodeium" })
+vim.schedule(function()
+    vim.pack.add({ "https://github.com/monkoose/neocodeium" })
 
-local neocodeium = require("neocodeium")
-local cmds = require("neocodeium.commands")
+    local neocodeium = require("neocodeium")
+    local cmds = require("neocodeium.commands")
 
-require("neocodeium").setup({
-    enabled = false,
-    -- bin = "$HOME/.local/xdg-launch/.codeium/bin/1.46.3/language_server_linux_x64",
-})
+    require("neocodeium").setup({
+        enabled = false,
+        -- bin = "$HOME/.local/xdg-launch/.codeium/bin/1.46.3/language_server_linux_x64",
+    })
 
-vim.keymap.set("i", "<c-i>", function()
-    neocodeium.accept()
-end, { desc = "Accept Codeium Suggestion" })
-vim.keymap.set("n", "<leader>ae", function()
-    cmds.enable()
-end, { desc = "Enable Codeium" })
-vim.keymap.set("n", "<leader>ad", function()
-    cmds.disable()
-end, { desc = "Disable Codeium" })
+    vim.keymap.set("i", "<c-i>", function()
+        neocodeium.accept()
+    end, { desc = "Accept Codeium Suggestion" })
+    vim.keymap.set("n", "<leader>ae", function()
+        cmds.enable()
+    end, { desc = "Enable Codeium" })
+    vim.keymap.set("n", "<leader>ad", function()
+        cmds.disable()
+    end, { desc = "Disable Codeium" })
+end)
 
 -- if true then
 --     return
