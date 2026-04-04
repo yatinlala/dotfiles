@@ -1,6 +1,6 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/state/nix/profile/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -52,7 +52,6 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export OPAMROOT="$XDG_DATA_HOME/opam"
-export OLLAMA_MODELS="$XDG_DATA_HOME/ollama"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 #export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export GOPATH="$XDG_DATA_HOME"/go

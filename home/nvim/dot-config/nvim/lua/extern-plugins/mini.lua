@@ -248,16 +248,20 @@ require("mini.cmdline").setup()
 
 --: }}}
 
--- local hipatterns = require('mini.hipatterns')
--- hipatterns.setup({
---     highlighters = {
---         fixme = { pattern = 'FIXME', group = 'MiniHipatternsHack' },
---         hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
---         todo = { pattern = 'TODO', group = 'MiniHipatternsHack' },
---         note = { pattern = 'NOTE', group = 'MiniHipatternsHack' },
---         hex_color = hipatterns.gen_highlighter.hex_color(),
---     },
--- })
+local hipatterns = require("mini.hipatterns")
+hipatterns.setup({
+    highlighters = {
+        fixme = { pattern = "FIXME", group = "MiniHipatternsFixme" },
+        hack = { pattern = "HACK", group = "MiniHipatternsHack" },
+        todo = { pattern = "TODO", group = "MiniHipatternsTodo" },
+        note = { pattern = "NOTE", group = "MiniHipatternsNote" },
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+})
+
+vim.keymap.set("n", "<leader>C", function()
+    MiniHipatterns.toggle()
+end, { desc = "Enable Indentscope" })
 
 _G.Config = {}
 _G.Config.leader_group_clues = {

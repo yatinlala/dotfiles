@@ -53,6 +53,20 @@ mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
 # la() { ll -A "$@" }
 ed() { sudo systemctl start docker }
 alias '?'='duck'
+# ollama() {
+#   if pgrep -x "ollama" >/dev/null && ss -ltnp 2>/dev/null | grep -q ":11434"; then
+#     xdg-launch ollama "$@"
+#   else
+#     # start server in background
+#     nohup ollama serve >/dev/null 2>&1 &
+#     # wait briefly for it to come up
+#     for i in {1..10}; do
+#       ss -ltnp 2>/dev/null | grep -q ":11434" && break
+#       sleep 0.3
+#     done
+#     xdg-launch ollama "$@"
+#   fi
+# }
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }

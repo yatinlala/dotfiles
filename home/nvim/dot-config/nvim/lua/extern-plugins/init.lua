@@ -12,6 +12,12 @@ function M.init()
 
     vim.pack.add({ "https://github.com/tpope/vim-sleuth" })
     vim.pack.add({ "https://github.com/tpope/vim-eunuch" })
+
+    -- vim.schedule(function()
+    --     vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
+    --     require("colorizer").setup()
+    --     vim.keymap.set("n", "<leader>C", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Colorizer" })
+    -- end)
 end
 
 -- function vim.pack.add(specs, opts)
