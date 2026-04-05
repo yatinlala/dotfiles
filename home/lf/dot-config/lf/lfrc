@@ -359,7 +359,7 @@ cmap <a-p> &{{
 }}
 
 cmd fzf_jump ${{
-    res="$(find . -maxdepth 3 | fzf --reverse --header="Jump to location")"
+    res="$(find . -maxdepth 3 | fzf --reverse --header="Jump to location" || true)"
     if [ -n "$res" ]; then
         if [ -d "$res" ]; then
             cmd="cd"
