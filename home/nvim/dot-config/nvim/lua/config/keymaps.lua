@@ -45,7 +45,43 @@ end, { desc = "Toggle statusline" })
 -- vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
 vim.keymap.set("n", "-w", "<cmd>b#<CR>", { desc = "Alternate buffer" })
 
-vim.keymap.set("n", "<leader>H", "<cmd>.!headerify<CR>", { desc = "Headerify" })
+vim.keymap.set("n", "<leader>H", function()
+    local width = 80
+
+    local cs = vim.bo.commentstring
+    if not cs or not cs:find("%%s") then
+        return
+    end
+
+    local prefix = cs:match("^(.*)%%s") or ""
+    prefix = prefix:gsub("%s+$", "")
+
+    local line = vim.api.nvim_get_current_line()
+    local text = line:gsub("^%s*", ""):gsub("%s*$", "")
+
+    local fill = "-"
+    local inner_width = width - #prefix
+
+    local block = " " .. text .. " "
+    local pad = inner_width - #block
+    if pad < 0 then
+        pad = 0
+    end
+
+    local left = math.floor(pad / 2)
+    local right = pad - left
+
+    local border = prefix .. string.rep(fill, inner_width)
+
+    local middle = prefix .. string.rep(fill, left) .. block .. string.rep(fill, right)
+
+    local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+    vim.api.nvim_buf_set_lines(0, row, row + 1, false, {
+        border,
+        middle,
+        border,
+    })
+end, { desc = "headerify", silent = true })
 
 -- [ /NORMAL ]
 
@@ -79,6 +115,10 @@ end, { desc = "Select inner buffer" })
 -- [ /OP-PENDING ]
 
 -- [ TERMINAL ]
+
+-- [ Command ] - -
+-- Force save a sudoer file
+vim.keymap.set("c", "w!!", "w !sudo tee %", {})
 
 -- exit terminal mode
 vim.keymap.set("t", "JK", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -216,6 +256,3 @@ vim.keymap.set("n", "<leader>e", "<cmd>term lf %:h<CR>i", { desc = "Open Lf" })
 -- -- vim.keymap.set('x', 'J', "<cmd>move '>+1<CR>gv=gv", opts)
 -- -- vim.keymap.set('x', 'K', "<cmd>move '<-2<CR>gv=gv", opts)
 -- --
--- -- -- Command --
--- -- -- Force save a sudoer file
--- -- vim.keymap.set('c', 'w!!', 'w !sudo tee %', {})

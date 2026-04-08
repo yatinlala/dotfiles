@@ -38,3 +38,5 @@ end
 require("extern-plugins").init()
 require("config.keymaps")
 require("config.options")
+
+vim.cmd.packadd("nvim.undotree")
