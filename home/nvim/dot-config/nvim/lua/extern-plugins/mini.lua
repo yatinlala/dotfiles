@@ -108,6 +108,11 @@ end, { desc = "Select Session" })
 vim.keymap.set("n", "<leader>sd", function()
     MiniSessions.select("delete", { force = true })
 end, { desc = "Delete Session" })
+
+vim.api.nvim_create_user_command("Restart", function()
+    MiniSessions.restart()
+end, { desc = "Restart w/ session" })
+
 -- local session_file = vim.fn.getcwd() .. '/Session.vim'
 -- if vim.fn.filereadable(session_file) == 1 then
 --   local ok, ms = pcall(require, 'mini.sessions')

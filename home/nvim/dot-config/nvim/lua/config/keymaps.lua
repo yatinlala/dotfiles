@@ -13,6 +13,11 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<M-j>", "<C-w>-", { desc = "Resize" })
 -- vim.keymap.set("n", "<M-k>", "<C-w>+", { desc = "Resize" })
 
+-- Source things
+vim.keymap.set("n", "-X", "<cmd>source %<CR>", { desc = "Source file" })
+vim.keymap.set("n", "-x", "<cmd>.lua<CR>", { desc = "Source line" })
+vim.keymap.set("v", "-x", "<cmd>lua<CR>", { desc = "Source selection" })
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
@@ -43,6 +48,7 @@ end, { desc = "Toggle statusline" })
 
 -- Navigate buffers
 -- vim.keymap.set("n", "<leader>x", "<cmd>e #<CR>", { desc = "Alternate buffer" }) -- same as C-6 (^)
+vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "kill buffer" })
 vim.keymap.set("n", "-w", "<cmd>b#<CR>", { desc = "Alternate buffer" })
 
 vim.keymap.set("n", "<leader>H", function()
@@ -141,14 +147,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>term lf %:h<CR>i", { desc = "Open Lf" })
 
 -- [ /TERMINAL ]
 
--- Source things
--- vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Source file" })
--- vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Source line" })
--- vim.keymap.set("v", "<leader>x", "<cmd>lua<CR>", { desc = "Source selection" })
-
 -- These are defaults in 0.11
--- vim.keymap.set('n', '[b', '<cmd>bprevious<CR>')
--- vim.keymap.set('n', ']b', '<cmd>bnext<CR>')
 
 -- vim.keymap.set("n", "<leader>B", "<cmd>.!bc<CR>", { desc = "Filter to bc" })
 
@@ -203,12 +202,6 @@ vim.keymap.set("n", "<leader>e", "<cmd>term lf %:h<CR>i", { desc = "Open Lf" })
 -- -- -- Don't yank on x
 -- -- -- vim.keymap.set('n', 'x', '"_x', opts)
 -- -- vim.keymap.set('n', '<leader><leader>d', [["_d]], opts)
--- --
--- -- -- Sensible split movement
--- -- -- vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
--- -- -- vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
--- -- -- vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
--- -- -- vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 -- --
 -- -- -- Centered searches
 -- -- vim.keymap.set('n', 'n', 'nzzzv', opts)

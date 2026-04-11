@@ -21,13 +21,35 @@ vim.api.nvim_create_user_command("Pack", function(opts)
         vim.pack.update()
     elseif args[1] == "lock" then
         vim.pack.update(nil, { target = "lockfile" })
+    elseif args[1] == "list" then
+        local pkgs = vim.pack.get()
+        local bufnr = vim.api.nvim_create_buf(true, true)
+
+        vim.api.nvim_buf_set_name(bufnr, "nvim-pack://list#" .. bufnr)
+        vim.cmd.sbuffer({ bufnr, mods = { tab = vim.fn.tabpagenr() } })
+
+        local lines = {}
+
+        for _, pkg in pairs(pkgs) do
+            table.insert(lines, pkg.spec.name)
+            -- local lines = vim.iter(pkgs, function(_, pkg)
+            --     return pkg.spec.name
+            -- end):totable()
+        end
+
+        -- table.sort(lines)
+
+        table.insert(lines, 1, #pkgs .. " plugins")
+        table.insert(lines, 2, "")
+
+        vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
     else
         print("unknown subcommand")
     end
 end, {
     nargs = "+",
     complete = function(arglead, cmdline, cursorpos)
-        local subcommands = { "update", "lock" }
+        local subcommands = { "update", "lock", "list" }
         return vim.tbl_filter(function(cmd)
             return cmd:find("^" .. arglead)
         end, subcommands)
