@@ -1,3 +1,7 @@
+if true then
+    return
+end
+
 vim.pack.add({ { src = "https://github.com/sakhnik/nvim-gdb", version = "devel" } })
 
 vim.g.nvimgdb_disable_start_keymaps = true

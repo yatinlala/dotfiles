@@ -1,5 +1,10 @@
 -- https://gist.github.com/Leenuus/7a2ea47b88bfe16430b42e4e48122718
 
+-- :Redir not needed anymore thanks to vim._core.ui2
+if true then
+    return
+end
+
 vim.g.DEBUG = false
 
 local function redir_open_win(buf, vertical, stderr_p)
