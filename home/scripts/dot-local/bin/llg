@@ -1,0 +1,5 @@
+#!/bin/sh
+# llama configured optimally for gemma per unsloth recs
+
+
+llama-cli -c 8000 --temp 1.0 --top-p 0.95 --top-k 64 --repeat-penalty 1.0 -ngl 999 -b 512 --mmap --mlock -t 8 "$@"

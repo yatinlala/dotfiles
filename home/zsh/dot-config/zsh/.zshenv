@@ -1,6 +1,11 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/bin:$HOME/.local/state/nix/profile/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
+export PATH="$HOME/.local/state/nix/profile/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
+
+# LOCAL PREFIX
+export PATH="$HOME/.local/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -14,6 +19,7 @@ export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 SCRIPTS="$HOME/.local/bin"
 DOTFILES="$HOME/.dotfiles"
+LLMS="$XDG_DATA_HOME/llms"
 
 # FZF
 export FZF_DEFAULT_OPTS_FILE="$DOTFILES/fzf-default-opts"
