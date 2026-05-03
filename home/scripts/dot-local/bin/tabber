@@ -155,7 +155,7 @@ find_tab() {
     esac
 
     local selected
-    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi -dmenu -p " $prompt")
+    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi --case-smart -dmenu -p " $prompt")
 
     if [[ -z "$selected" ]]; then
         echo "No selection made"

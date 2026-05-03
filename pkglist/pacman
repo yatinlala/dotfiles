@@ -130,6 +130,7 @@ odin
 ollama
 ollama-docs
 ollama-rocm
+opam
 openblas
 opencv
 openmp
@@ -218,6 +219,7 @@ swaync
 swh-plugins
 syncthing
 tailscale
+tcpdump
 tealdeer
 terminus-font
 tinyxxd
@@ -316,6 +318,5 @@ zathura-pdf-mupdf
 zathura-ps
 zeal
 zed
-zig
 zip
 zsh

@@ -1,8 +1,11 @@
+-- if true then
+--     return
+-- end
 vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 
 -- vim.g.gruvbox_material_transparent_background = 0
 -- vim.g.gruvbox_material_foreground = "material"
--- vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
+vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
 -- vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
 -- vim.g.gruvbox_material_statusline_style = "mix"
 -- vim.g.gruvbox_material_cursor = "auto"
@@ -15,6 +18,7 @@ vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 --     let g:gruvbox_material_colors_override = {'bg_statusline1': ['#81a2be', '234'], 'bg2': ['#282828', '235']}
 --     ]])
 vim.g.gruvbox_material_better_performance = 1
+vim.g.gruvbox_material_dim_inactive_windows = 1
 
 -- function M.setColors()
 --     vim.cmd('colorscheme gruvbox')

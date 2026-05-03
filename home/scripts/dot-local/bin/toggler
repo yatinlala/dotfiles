@@ -11,8 +11,8 @@ discord)
     sway "workspace 9; [class=discord] focus"
     ;;
 discord-brave)
-    hyprctl clients -j | \
-        jq -e '.[] | select(.class == "brave-magkoliahgffibhgfkmoealggombgknl-Default")' || \
+    hyprctl clients -j |
+        jq -e '.[] | select(.class == "brave-magkoliahgffibhgfkmoealggombgknl-Default")' ||
         gtk-launch brave-magkoliahgffibhgfkmoealggombgknl-Default
     hyprctl dispatch togglespecialworkspace discord
     ;;
@@ -51,14 +51,20 @@ espanso)
         setsid espanso daemon &
     ;;
 ferdium)
-    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/ferdium" || \
-    gtk-launch ferdium &
+    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/ferdium" ||
+        gtk-launch ferdium &
     hyprctl dispatch togglespecialworkspace ferdium
+    ;;
+
+nixpkgs-float)
+    hyprctl clients -j | jq 'any(.[]; .initialTitle == "https://search.nixos.org/packages?channel=unstable&include_home_manager_options=1&include_modular_service_options=1&include_nixos_options=1 - qutebrowser")' ||
+        xdg-launch qutebrowser 'https://search.nixos.org/packages?channel=unstable&include_home_manager_options=1&include_modular_service_options=1&include_nixos_options=1'
+    hyprctl dispatch togglespecialworkspace nixpkgs-float
     ;;
 
 gmail)
     hyprctl clients -j | jq -e '.[] | \
-        select(.class == "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")' || \
+        select(.class == "brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default")' ||
         gtk-launch brave-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default
     hyprctl dispatch togglespecialworkspace gmail
     ;;
@@ -96,14 +102,14 @@ neomutt)
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
 nerd-dictation)
-        if pgrep -f "nerd-dictation begin"; then
-                notify-send "dictation end"
-                nerd-dictation end
-        else
-                notify-send "dictation start"
-                nerd-dictation begin --simulate-input-tool=YDOTOOL
-        fi
-        ;;
+    if pgrep -f "nerd-dictation begin"; then
+        notify-send "dictation end"
+        nerd-dictation end
+    else
+        notify-send "dictation start"
+        nerd-dictation begin --simulate-input-tool=YDOTOOL
+    fi
+    ;;
 nextcloud)
     pgrep -x "nextcloud" && killall nextcloud || setsid nextcloud &
     ;;
@@ -117,16 +123,17 @@ notes)
     ;;
     # sway "[app_id=cmus] scratchpad show; [app_id=cmus] move position center";;
 instagram)
-    hyprctl clients -j | \
-        jq -e '.[] | select(.class == "brave-www.instagram.com__direct_inbox_-Default")' || \
+    hyprctl clients -j |
+        jq -e '.[] | select(.class == "brave-www.instagram.com__direct_inbox_-Default")' ||
         xdg-launch brave --app='https://www.instagram.com/direct/inbox/' &
     hyprctl dispatch togglespecialworkspace instagram
     ;;
 obsidian)
-    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" > /dev/null 2>&1 || \
+    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" >/dev/null 2>&1 ||
         gtk-launch obsidian
     # hyprctl dispatch focuswindow "class:^(obsidian)$";;
-    hyprctl dispatch togglespecialworkspace obsidian;;
+    hyprctl dispatch togglespecialworkspace obsidian
+    ;;
 gammastep)
     pgrep -x "gammastep" && {
         killall gammastep
@@ -139,11 +146,13 @@ gammastep)
     ;;
 signal)
     pgrep -x signal-desktop || gtk-launch signal-desktop
-    hyprctl dispatch togglespecialworkspace signal;;
+    hyprctl dispatch togglespecialworkspace signal
+    ;;
 spotify)
     pgrep -x spotify || gtk-launch spotify-launcher
     # sway "workspace 9; [class=Ferdium] focus";;
-    hyprctl dispatch togglespecialworkspace spotify;;
+    hyprctl dispatch togglespecialworkspace spotify
+    ;;
 spotifyd)
     pgrep -x spotifyd && (
         notify-send -t 1000 "Killing spotifyd."
@@ -166,13 +175,13 @@ ticktick)
     ;;
 ticktick-brave)
     hyprctl clients -j | \ 
-        jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' || \
+    jq -e '.[] | select(.class == "brave-cfammbeebmjdpoppachopcohfchgjapd-Default")' ||
         gtk-launch brave-cfammbeebmjdpoppachopcohfchgjapd-Default
     hyprctl dispatch togglespecialworkspace ticktick
     ;;
 habitica-brave)
-    hyprctl clients -j | \
-        jq -e '.[] | select(.class == "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")' || \
+    hyprctl clients -j |
+        jq -e '.[] | select(.class == "brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default")' ||
         gtk-launch brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default
     hyprctl dispatch togglespecialworkspace habitica
     ;;
@@ -182,8 +191,8 @@ torbrowser)
     sway "workspace 7"
     ;;
 whatsapp)
-    hyprctl clients -j | \
-        jq -e '.[] | select(.class == "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")' || \
+    hyprctl clients -j |
+        jq -e '.[] | select(.class == "brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default")' ||
         gtk-launch brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default
     hyprctl dispatch togglespecialworkspace whatsapp
     ;;

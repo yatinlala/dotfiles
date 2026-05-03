@@ -69,7 +69,7 @@ eval "$(fasd --init auto)"
 FZF_CTRL_T_COMMAND= source <(fzf --zsh) # disable default C-T
 
   _fzf_compgen_path() {
-    fd --ignore-file=$HOME/.dotfiles/fd-ignore --hidden --follow --exclude .git . "${1:-.}"
+    fd --hidden --follow --exclude .git . "${1:-.}"
   }
 #
 #   _fzf_compgen_dir() {
