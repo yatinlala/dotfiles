@@ -53,6 +53,7 @@ tooltip {
 }
 
 #battery,
+#bluetooth,
 #backlight,
 #date,
 #clock,
@@ -63,7 +64,7 @@ tooltip {
 #tray {
   background: #32302f;
   padding: 0 0.6em;
-  margin-right: 6px;
+  margin-right: 2px;
   margin-left: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
@@ -102,31 +103,6 @@ tooltip {
 #window {
   margin-right: 10px;
   margin-left: 10px;
-}
-
-#network {
-  color: #ebdbb2;
-  margin-right: 6px;
-}
-
-#wireplumber {
-  margin-right: 6px;
-  color: #ebdbb2;
-}
-
-#backlight {
-  margin-right: 8px;
-  color: #ebdbb2;
-}
-
-#battery {
-  color: #ebdbb2;
-  background: #32302f;
-}
-
-#clock {
-  color: #ebdbb2;
-  margin-right: 6px;
 }
 
 #mpris {
