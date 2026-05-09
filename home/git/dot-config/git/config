@@ -3,8 +3,6 @@
 	name = Yatin Lala
 [init]
 	defaultBranch = main
-[merge]
-	tool = "nvim"
 [column]
 	ui = auto
 [branch]

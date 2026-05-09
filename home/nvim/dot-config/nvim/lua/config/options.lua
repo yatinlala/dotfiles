@@ -39,8 +39,8 @@ vim.o.winblend = 5
 vim.o.winborder = "solid"
 -- vim.o.pumborder = "single"
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
 
 vim.o.confirm = true
 
