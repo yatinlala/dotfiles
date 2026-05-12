@@ -6,7 +6,6 @@
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "1" })
 
 local laptop_screen_name = "eDP-1"
-hl.monitor({ output = laptop_screen_name, disabled = true })
 
 hl.on("monitor.added", function(m)
 	if m.name ~= laptop_screen_name then

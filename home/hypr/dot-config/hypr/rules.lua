@@ -32,7 +32,7 @@ hl.window_rule({
 	center = true,
 })
 hl.window_rule({
-	match = { class = "blueman-manager|pavucontrol" },
+	match = { class = "blueman-manager|org.pulseaudio.pavucontrol" },
 
 	float = true,
 	size = "monitor_w*.6 monitor_h*.7",

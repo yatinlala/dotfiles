@@ -1,34 +1,58 @@
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
+-- https://wiki.hypr.land/Configuring/Basics/Binds/
 
 local mod = "SUPER"
 local mod2 = "ALT"
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mod .. "+ return", hl.dsp.exec_cmd("kitty"))
-hl.bind(mod .. "+ SHIFT + return", hl.dsp.exec_cmd("ghostty"))
+local function bindexec(keys, cmd)
+	hl.bind(mod .. " + " .. keys, hl.dsp.exec_cmd(cmd))
+end
+
+bindexec("Return", "kitty")
+bindexec("SHIFT + Return", "ghostty")
 hl.bind(mod .. "+ Q", hl.dsp.window.close())
 
 -- local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 
-hl.bind(mod .. "+ b", hl.dsp.exec_cmd("gtk-launch zen"))
-hl.bind(mod .. "+ SHIFT + b", hl.dsp.exec_cmd("gtk-launch brave-browser"))
+bindexec("b", "gtk-launch zen")
+bindexec("SHIFT + b", "gtk-launch brave-browser")
 
 -- ROFI
-hl.bind(mod .. "+ space", hl.dsp.exec_cmd("rofi -show drun"))
-hl.bind(mod .. "+ SHIFT + s", hl.dsp.exec_cmd("~/.config/rofi/powermenu/powermenu.sh"))
-hl.bind(mod .. "+ semicolon", hl.dsp.exec_cmd("tessen -a both"))
-hl.bind(mod .. "+ i", hl.dsp.exec_cmd("rofimoji -a copy"))
-hl.bind(mod .. "+ comma", hl.dsp.exec_cmd("rofi-system-control"))
+bindexec("space", "rofi -show drun")
+bindexec("SHIFT + s", "~/.config/rofi/powermenu/powermenu.sh")
+bindexec("semicolon", "tessen -a both")
+bindexec("i", "rofimoji -a copy")
+bindexec("comma", "rofi-system-control")
 
 -- CLIPBOARD
-hl.bind(mod .. "+ apostrophe", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
-hl.bind(mod .. "+ SHIFT + apostrophe", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist delete"))
-hl.bind(mod .. " + " .. mod2 .. "+ apostrophe", hl.dsp.exec_cmd("cliphist wipe"))
+bindexec("+ apostrophe", "cliphist list | rofi -dmenu | cliphist decode | wl-copy")
+bindexec("+ SHIFT + apostrophe", "cliphist list | rofi -dmenu | cliphist delete")
+bindexec(" + " .. mod2 .. "+ apostrophe", "cliphist wipe")
 
-hl.bind(mod .. "+ tab", hl.dsp.exec_cmd("swaync-client -t -sw"))
+-- NOTIFICATIONS
+bindexec("+ tab", "swaync-client -t -sw")
+
+-- ##### SCREENSHOT #####
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" | swappy -f -'))
+hl.bind(mod .. " + Print", hl.dsp.submap("hypr [O]CR [Q]R [C]OLOR_PICKER)"))
+hl.define_submap("hypr [O]CR [Q]R [C]OLOR_PICKER)", function()
+	hl.bind("o", function()
+		hl.dispatch(hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy'))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("q", function()
+		hl.dispatch(hl.dsp.exec_cmd('grim -g "$(slurp)" - | qrtool decode | wl-copy'))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("c", function()
+		hl.dispatch(hl.dsp.exec_cmd("wl-color-picker clipboard"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
 
 -- hl.bind(
 -- 	mod .. "+ M",
@@ -62,7 +86,6 @@ local function smart_focus(dir)
 		end
 	elseif dir == "left" then
 		if w.group.current_index == 1 then
-			hl.notification.create({ text = "we here", duration = 2000 })
 			hl.dispatch(hl.dsp.focus({ direction = "left" }))
 		else
 			hl.dispatch(hl.dsp.group.prev())
@@ -83,13 +106,14 @@ hl.bind(mod .. " + j", function()
 	smart_focus("down")
 end)
 
+-- TODO fix this
 local function smart_move(dir)
 	local w = hl.get_active_window()
 	if w == nil then
 		return
 	end
 
-	local is_grouped = w.group ~= nil and w.group.size > 1
+	local is_grouped = w.group ~= nil
 
 	if not is_grouped or dir == "up" or dir == "down" then
 		hl.dispatch(hl.dsp.window.move({ direction = dir }))
@@ -98,13 +122,13 @@ local function smart_move(dir)
 
 	if dir == "right" then
 		if w.group.current_index == w.group.size then
-			hl.dispatch(hl.dsp.window.move({ direction = "right" }))
+			hl.dispatch(hl.dsp.window.move({ out_of_group = "right" }))
 		else
 			hl.dispatch(hl.dsp.group.move_window({ direction = "forward" }))
 		end
 	elseif dir == "left" then
 		if w.group.current_index == 1 then
-			hl.dispatch(hl.dsp.window.move({ direction = "left" }))
+			hl.dispatch(hl.dsp.window.move({ out_of_group = "left" }))
 		else
 			hl.dispatch(hl.dsp.group.move_window({ direction = "backward" }))
 		end
@@ -198,7 +222,78 @@ create_toggleable({
 	startup_cmd = "gtk-launch spotify-launcher",
 })
 
-hl.bind(mod .. " + d", hl.dsp.exec_cmd("handy --toggle-transcription"))
+bindexec(" + d", "handy --toggle-transcription")
+
+-- ##### GAMES #####
+-- # bind   = $mod shift,g,submap,game (l,m,s)
+-- # submap = game (l,m,s)
+-- # # bind = ,t,exec,$term -e netris -k "hHklLJjs frn" -i .15
+-- # # bind = ,t,submap,reset
+-- # bind   = ,escape,submap,reset
+-- # submap = reset
+-- bind   = $mod shift,g,submap,game(lms)
+-- submap = game(lms), reset
+-- bind   = ,l,exec,gtk-launch brave-pdihgkikjgccndbckbcgjmcnpkockcjg-Default
+-- bind   = ,m,exec,gtk-launch com.atlauncher.ATLauncher
+-- bind   = ,s,exec,gtk-launch steam
+-- bind   = ,escape,submap,reset
+-- submap = reset
+
+hl.bind(mod .. " + R", hl.dsp.submap("hypr(gikprsw)"))
+hl.define_submap("hypr(gikprsw)", function()
+	hl.bind("g", function()
+		hl.dispatch(hl.dsp.exec_cmd("hyprshade toggle grayscale"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("i", function()
+		hl.dispatch(hl.dsp.exec_cmd("hyprshade toggle invert-colors"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("k", function()
+		hl.dispatch(hl.dsp.exec_cmd("hyprctl kill"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	-- bind=  ,p,exec,~/.config/hypr/scripts/perf
+	-- hl.bind("p", function()
+	-- 	hl.notification.create({ text = "we here", duration = 2000 })
+	-- 	hl.dispatch(hl.dsp.submap("reset"))
+	-- end)
+	hl.bind("r", function()
+		hl.dispatch(hl.dsp.exec_cmd("hyprctl reload && killall waybar && exec waybar"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	-- bind=  ,s,toggleswallow
+	hl.bind("s", function()
+		hl.dispatch(hl.dsp.window.toggle_swallow())
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	-- bind=  ,w,exec,killall waybar && waybar &
+	hl.bind("j", function()
+		hl.notification.create({ text = "we here", duration = 2000 })
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- ### TABBER ###
+hl.bind(mod .. " + t", hl.dsp.submap("tabber(fsd)"))
+hl.define_submap("tabber(fsd)", function()
+	hl.bind("f", function()
+		hl.dispatch(hl.dsp.exec_cmd("tabber find"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("s", function()
+		hl.dispatch(hl.dsp.exec_cmd("tabber store"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("d", function()
+		hl.dispatch(hl.dsp.exec_cmd("tabber delete"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
 
 -- hl.workspace_rule({ workspace = "special:scratchpad", on_created_empty = "foot" })
 -- Example special workspace (scratchpad)
@@ -220,6 +315,7 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
+bindexec(" + SHIFT + v", "pavucontrol")
 
 -- ##### DISPLAY CONTROLS #####
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 1%-"), { locked = true, repeating = true })
@@ -235,8 +331,8 @@ hl.bind(mod .. " + " .. mod2 .. "+ k", hl.dsp.exec_cmd("gdark inc"), { locked = 
 -- bind = $mod,backslash,exec,toggler inhibit-lid
 -- bind = $mod shift,r,exec,toggler gammastep
 
--- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv previous"), { locked = true })
+hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv next"), { locked = true })
+hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv play-pause"), { locked = true })
+
+-- hl.notification.create({ text = "we here", duration = 2000 })
