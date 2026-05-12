@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
 
 vim.o.guifont = "JetBrainsMono Nerd Font:h18" -- text below applies for VimScript
 
--- vim.opt.tabstop = 4
+vim.opt.tabstop = 4
 
 vim.o.title = true
 

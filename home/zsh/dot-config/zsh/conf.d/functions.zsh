@@ -46,8 +46,8 @@ else
 fi
 ll() { ls -l "$@" }
 la() { ll -a "$@" }
-vis() { $EDITOR -S Session.vim }
-wmc() { $EDITOR ~/.config/hypr/hyprland.conf }
+# vis() { $EDITOR -S Session.vim }
+wmc() { nvim -c "cd ~/.config/hypr" ~/.config/hypr/hyprland.lua }
 mmute() { echo 0 | sudo tee /sys/class/leds/platform::micmute/brightness }
 # ll() { ls -lh "$@" }
 # la() { ll -A "$@" }

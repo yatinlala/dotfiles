@@ -50,11 +50,6 @@ espanso)
     ) ||
         setsid espanso daemon &
     ;;
-ferdium)
-    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/ferdium" ||
-        gtk-launch ferdium &
-    hyprctl dispatch togglespecialworkspace ferdium
-    ;;
 
 nixpkgs-float)
     hyprctl clients -j | jq 'any(.[]; .initialTitle == "https://search.nixos.org/packages?channel=unstable&include_home_manager_options=1&include_modular_service_options=1&include_nixos_options=1 - qutebrowser")' ||
@@ -128,12 +123,6 @@ instagram)
         xdg-launch brave --app='https://www.instagram.com/direct/inbox/' &
     hyprctl dispatch togglespecialworkspace instagram
     ;;
-obsidian)
-    pgrep -f "/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar" >/dev/null 2>&1 ||
-        gtk-launch obsidian
-    # hyprctl dispatch focuswindow "class:^(obsidian)$";;
-    hyprctl dispatch togglespecialworkspace obsidian
-    ;;
 gammastep)
     pgrep -x "gammastep" && {
         killall gammastep
@@ -143,15 +132,6 @@ gammastep)
             notify-send -t 1000 "Starting Gammastep."
             setsid gammastep
         }
-    ;;
-signal)
-    pgrep -x signal-desktop || gtk-launch signal-desktop
-    hyprctl dispatch togglespecialworkspace signal
-    ;;
-spotify)
-    pgrep -x spotify || gtk-launch spotify-launcher
-    # sway "workspace 9; [class=Ferdium] focus";;
-    hyprctl dispatch togglespecialworkspace spotify
     ;;
 spotifyd)
     pgrep -x spotifyd && (
