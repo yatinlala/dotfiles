@@ -41,16 +41,88 @@ hl.bind(mod .. "+ SHIFT + f", hl.dsp.window.fullscreen({ action = "toggle" }))
 -- hl.bind(mod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 hl.bind(mod .. "+ g", hl.dsp.group.toggle())
 
--- Move focus with mainMod + arrow keys
-hl.bind(mod .. "+ h", hl.dsp.focus({ direction = "left" }))
-hl.bind(mod .. "+ l", hl.dsp.focus({ direction = "right" }))
-hl.bind(mod .. "+ k", hl.dsp.focus({ direction = "up" }))
-hl.bind(mod .. "+ j", hl.dsp.focus({ direction = "down" }))
+local function smart_focus(dir)
+	local w = hl.get_active_window()
+	if w == nil then
+		return
+	end
 
-hl.bind(mod .. "+ SHIFT + h", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mod .. "+ SHIFT + l", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mod .. "+ SHIFT + k", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mod .. "+ SHIFT + j", hl.dsp.window.move({ direction = "down" }))
+	local is_grouped = w.group ~= nil and w.group.size > 1
+
+	if not is_grouped or dir == "up" or dir == "down" then
+		hl.dispatch(hl.dsp.focus({ direction = dir }))
+		return
+	end
+
+	if dir == "right" then
+		if w.group.current_index == w.group.size then
+			hl.dispatch(hl.dsp.focus({ direction = "right" }))
+		else
+			hl.dispatch(hl.dsp.group.next())
+		end
+	elseif dir == "left" then
+		if w.group.current_index == 1 then
+			hl.notification.create({ text = "we here", duration = 2000 })
+			hl.dispatch(hl.dsp.focus({ direction = "left" }))
+		else
+			hl.dispatch(hl.dsp.group.prev())
+		end
+	end
+end
+
+hl.bind(mod .. " + h", function()
+	smart_focus("left")
+end)
+hl.bind(mod .. " + l", function()
+	smart_focus("right")
+end)
+hl.bind(mod .. " + k", function()
+	smart_focus("up")
+end)
+hl.bind(mod .. " + j", function()
+	smart_focus("down")
+end)
+
+local function smart_move(dir)
+	local w = hl.get_active_window()
+	if w == nil then
+		return
+	end
+
+	local is_grouped = w.group ~= nil and w.group.size > 1
+
+	if not is_grouped or dir == "up" or dir == "down" then
+		hl.dispatch(hl.dsp.window.move({ direction = dir }))
+		return
+	end
+
+	if dir == "right" then
+		if w.group.current_index == w.group.size then
+			hl.dispatch(hl.dsp.window.move({ direction = "right" }))
+		else
+			hl.dispatch(hl.dsp.group.move_window({ direction = "forward" }))
+		end
+	elseif dir == "left" then
+		if w.group.current_index == 1 then
+			hl.dispatch(hl.dsp.window.move({ direction = "left" }))
+		else
+			hl.dispatch(hl.dsp.group.move_window({ direction = "backward" }))
+		end
+	end
+end
+
+hl.bind(mod .. " + SHIFT + H", function()
+	smart_move("left")
+end)
+hl.bind(mod .. " + SHIFT + L", function()
+	smart_move("right")
+end)
+hl.bind(mod .. " + SHIFT + K", function()
+	smart_move("up")
+end)
+hl.bind(mod .. " + SHIFT + J", function()
+	smart_move("down")
+end)
 
 hl.bind(mod .. "+ z", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mod .. "+ x", hl.dsp.focus({ workspace = "e+1" }))
