@@ -5,6 +5,27 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
+-- :help terminal-osc7
+vim.api.nvim_create_autocmd({ "TermRequest" }, {
+    desc = "Handles OSC 7 dir change requests",
+    group = augroup("osc7"),
+    callback = function(ev)
+        local val, n = string.gsub(ev.data.sequence, "\027]7;file://[^/]*", "")
+        if n > 0 then
+            -- OSC 7: dir-change
+            local dir = val
+            if vim.fn.isdirectory(dir) == 0 then
+                vim.notify("invalid dir: " .. dir)
+                return
+            end
+            vim.b[ev.buf].osc7_dir = dir
+            if vim.api.nvim_get_current_buf() == ev.buf then
+                vim.cmd.lcd(dir)
+            end
+        end
+    end,
+})
+
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight on yanking",
