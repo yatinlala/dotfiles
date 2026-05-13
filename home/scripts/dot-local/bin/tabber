@@ -15,11 +15,11 @@ get_page_title() {
     local title
 
     # Try to fetch the title using curl with better parsing
-    title=$(curl -Ls "$url" | pup --plain 'title text{}')
+    title=$(curl -Ls --max-time 10 "$url" | pup --plain 'title text{}')
 
     # If no title found or empty, try alternative method
     if [[ -z "$title" ]]; then
-        title=$(curl -s -L "$url" | grep -oP '(?<=<title>)[^<]+' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
+        title=$(curl -s -L --max-time 10 "$url" | grep -oP '(?<=<title>)[^<]+' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
     fi
 
     # If still no title found or empty, use a default
@@ -61,11 +61,6 @@ store_tab() {
         exit 0
     fi
 
-    # Get page title
-    echo "Fetching page title..."
-    local title
-    title=$(get_page_title "$url")
-
     # Get optional tags
     local tags
     tags=$(rofi -dmenu -p " Tags (comma separated, optional):")
@@ -80,6 +75,11 @@ store_tab() {
     # Get current date
     local date
     date=$(date '+%Y-%m-%d')
+
+    # Get page title (last, so it doesn't block rofi prompts)
+    echo "Fetching page title..."
+    local title
+    title=$(get_page_title "$url")
 
     # New file format: URL<TAB>TITLE<TAB>DATE<TAB>TAGS
     local entry="${url}	${title}	${date}	${tags}"
