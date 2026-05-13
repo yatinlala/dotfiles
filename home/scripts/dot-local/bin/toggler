@@ -16,19 +16,6 @@ discord-brave)
         gtk-launch brave-magkoliahgffibhgfkmoealggombgknl-Default
     hyprctl dispatch togglespecialworkspace discord
     ;;
-dpms)
-    MONITOR="eDP-1"
-
-    status=$(hyprctl monitors -j | jq -r ".[] | select(.name==\"$MONITOR\") | .dpmsStatus")
-
-    if [ "$status" = "true" ]; then
-        sleep .5
-        hyprctl dispatch dpms off "$MONITOR"
-    else
-        sleep .5
-        hyprctl dispatch dpms on "$MONITOR"
-    fi
-    ;;
 display)
     rofi -dmenu -theme-str '
         entry {enabled: false;}

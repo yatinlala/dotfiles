@@ -250,7 +250,7 @@
 		"format-wifi": "  {essid}",
 		"tooltip-format-wifi": " {essid} ({signalStrength}%)",
 		// "tooltip-format-wifi": "signal strength: {signalstrength}% | down speed: {bandwidthdownbits}, up speed: {bandwidthupbits}",
-		"format-ethernet": "   {essid} ",
+		"format-ethernet": "  ",
 		// "format-ethernet": "{ipaddr}/{cidr} 󰊗",
 		"format-linked": "{ifname} (no ip)  ",
 		"format-disconnected": " 󱚼 disconnected ",

@@ -239,8 +239,8 @@ bindexec(" + d", "handy --toggle-transcription")
 -- bind   = ,escape,submap,reset
 -- submap = reset
 
-hl.bind(mod .. " + R", hl.dsp.submap("hypr(gikprsw)"))
-hl.define_submap("hypr(gikprsw)", function()
+hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)"))
+hl.define_submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)", function()
 	hl.bind("g", function()
 		hl.dispatch(hl.dsp.exec_cmd("hyprshade toggle grayscale"))
 		hl.dispatch(hl.dsp.submap("reset"))
@@ -262,14 +262,12 @@ hl.define_submap("hypr(gikprsw)", function()
 		hl.dispatch(hl.dsp.exec_cmd("hyprctl reload && killall waybar && exec waybar"))
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
-	-- bind=  ,s,toggleswallow
 	hl.bind("s", function()
 		hl.dispatch(hl.dsp.window.toggle_swallow())
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
-	-- bind=  ,w,exec,killall waybar && waybar &
-	hl.bind("j", function()
-		hl.notification.create({ text = "we here", duration = 2000 })
+	hl.bind("w", function()
+		hl.dispatch(hl.dsp.exec_cmd("killall waybar && exec waybar"))
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 
@@ -324,10 +322,10 @@ hl.bind(mod .. "+ CTRL + 1", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked 
 hl.bind(mod .. "+ CTRL + 2", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
 hl.bind(mod .. " + " .. mod2 .. "+ j", hl.dsp.exec_cmd("gdark dec"), { locked = true, repeating = true })
 hl.bind(mod .. " + " .. mod2 .. "+ k", hl.dsp.exec_cmd("gdark inc"), { locked = true, repeating = true })
+hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 -- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 --
--- bind = $mod,a,exec,toggler dpms
 -- bind = $mod,backslash,exec,toggler inhibit-lid
 -- bind = $mod shift,r,exec,toggler gammastep
 
