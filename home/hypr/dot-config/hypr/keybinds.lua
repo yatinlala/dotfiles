@@ -148,6 +148,11 @@ hl.bind(mod .. " + SHIFT + J", function()
 	smart_move("down")
 end)
 
+hl.bind(mod2 .. " + h", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+hl.bind(mod2 .. " + j", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+hl.bind(mod2 .. " + k", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+hl.bind(mod2 .. " + l", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+
 hl.bind(mod .. "+ z", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mod .. "+ x", hl.dsp.focus({ workspace = "e+1" }))
 -- Switch workspaces with mainMod + [0-9]
