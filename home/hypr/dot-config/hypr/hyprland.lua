@@ -5,6 +5,7 @@ require("keybinds")
 require("monitors")
 require("rules")
 require("permissions")
+require("shaders")
 require("hlconfig")
 
 -- TODOS

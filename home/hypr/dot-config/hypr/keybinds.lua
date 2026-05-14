@@ -2,6 +2,8 @@
 ---- KEYBINDINGS ----
 ---------------------
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
+-- local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+-- closeWindowBind:set_enabled(false)
 
 local mod = "SUPER"
 local mod2 = "ALT"
@@ -13,9 +15,6 @@ end
 bindexec("Return", "kitty")
 bindexec("SHIFT + Return", "ghostty")
 hl.bind(mod .. "+ Q", hl.dsp.window.close())
-
--- local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
 
 bindexec("b", "gtk-launch zen")
 bindexec("SHIFT + b", "gtk-launch brave-browser")
@@ -124,13 +123,16 @@ local function smart_move(dir)
 		if w.group.current_index == w.group.size then
 			hl.dispatch(hl.dsp.window.move({ out_of_group = "right" }))
 		else
-			hl.dispatch(hl.dsp.group.move_window({ direction = "forward" }))
+			hl.dispatch(hl.dsp.group.move_window({ forward = true }))
 		end
 	elseif dir == "left" then
 		if w.group.current_index == 1 then
 			hl.dispatch(hl.dsp.window.move({ out_of_group = "left" }))
 		else
-			hl.dispatch(hl.dsp.group.move_window({ direction = "backward" }))
+			-- NOT SETTING forward = true moves backward.
+			-- imo a pretty rough API. maybe should file
+			-- a gh discussion
+			hl.dispatch(hl.dsp.group.move_window({}))
 		end
 	end
 end
@@ -138,14 +140,14 @@ end
 hl.bind(mod .. " + SHIFT + H", function()
 	smart_move("left")
 end)
-hl.bind(mod .. " + SHIFT + L", function()
-	smart_move("right")
+hl.bind(mod .. " + SHIFT + J", function()
+	smart_move("down")
 end)
 hl.bind(mod .. " + SHIFT + K", function()
 	smart_move("up")
 end)
-hl.bind(mod .. " + SHIFT + J", function()
-	smart_move("down")
+hl.bind(mod .. " + SHIFT + L", function()
+	smart_move("right")
 end)
 
 hl.bind(mod2 .. " + h", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
@@ -245,13 +247,15 @@ bindexec(" + d", "handy --toggle-transcription")
 -- submap = reset
 
 hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)"))
+
+local shaders = require("shaders")
 hl.define_submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)", function()
 	hl.bind("g", function()
-		hl.dispatch(hl.dsp.exec_cmd("hyprshade toggle grayscale"))
+		shaders.toggle("grayscale.glsl")
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("i", function()
-		hl.dispatch(hl.dsp.exec_cmd("hyprshade toggle invert-colors"))
+		shaders.toggle("invert-colors.glsl")
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 	hl.bind("k", function()

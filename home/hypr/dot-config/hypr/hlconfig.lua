@@ -128,6 +128,7 @@ hl.config({
 
 hl.config({
 	misc = {
+		disable_autoreload = true,
 		-- disable the weeby stuff
 		force_default_wallpaper = 1,
 		disable_hyprland_logo = true,
@@ -135,6 +136,5 @@ hl.config({
 		swallow_regex = "kitty|com.mitchellh.ghostty",
 	},
 })
--- disable_autoreload = true
 -- swallow_exception_regex = ^(.*browser.engineering.*\).* - Nvim)$
 -- # swallow_exception_regex = ^(wev)$ # TODO fix this, include wev
