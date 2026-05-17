@@ -16,27 +16,20 @@ hl.on("monitor.added", function(m)
 end)
 
 hl.on("monitor.removed", function(m)
-	if m.name ~= laptop_screen_name then
-		local monitors = hl.get_monitors()
-		local has_external = false
-		for _, mon in ipairs(monitors) do
-			if mon.name ~= laptop_screen_name then
-				has_external = true
-				break
-			end
-		end
-		if not has_external then
-			hl.monitor({ output = laptop_screen_name, mode = "preferred", position = "auto", scale = "1" })
-		end
+	local monitors = hl.get_monitors()
+	if #monitors ~= 1 or m.name == laptop_screen_name then
+		return
 	end
+	-- aha https://github.com/hyprwm/Hyprland/pull/14547
+	-- TODO remove unnecessary reload when the bug is fixed.
+	hl.exec_cmd("hyprctl reload")
+	hl.monitor({ output = laptop_screen_name, mode = "preferred", position = "auto", scale = 1, disabled = false })
 end)
 
 hl.bind("XF86Display", function()
 	if hl.get_monitor(laptop_screen_name) then
 		hl.monitor({ output = laptop_screen_name, disabled = true })
 	else
-		-- TODO this is broken. need to report
-		-- hl.monitor({ output = laptop_screen_name, mode = "preferred", position = "auto", scale = 1 })
-		hl.exec_cmd("hyprctl reload") -- TEMPORARY WORKAROUND
+		hl.monitor({ output = laptop_screen_name, mode = "preferred", position = "auto", scale = 1, disabled = false })
 	end
 end)
