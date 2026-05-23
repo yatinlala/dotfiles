@@ -1,0 +1,11 @@
+[Unit]
+Description=Startup llama-server
+After=network-online.target
+
+[Service]
+ExecStart=/home/yatin/.local/bin/llama-server --models-dir /home/yatin/.local/share/llms --models-preset /home/yatin/.config/llama/config.ini
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

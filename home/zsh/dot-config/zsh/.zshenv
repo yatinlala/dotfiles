@@ -37,6 +37,8 @@ export DIFFPROG="nvim -d"
 # export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # Fixing Paths
+export LLAMA_CACHE="$XDG_DATA_HOME/llms"
+export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export MBSYNCRC="$XDG_CONFIG_HOME/mbsyncrc"

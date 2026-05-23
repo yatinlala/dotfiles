@@ -71,6 +71,7 @@ alias '?'='duck'
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
 run() { systemd-run --user "$@" }
+start-llama() { llama-server --models-dir $LLMS --models-preset $XDG_CONFIG_HOME/llama/config.ini }
 lg() { lazygit "$@" }
 git-clean() {
   git clean -xfd
