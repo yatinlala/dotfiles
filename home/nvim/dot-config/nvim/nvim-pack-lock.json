@@ -1,7 +1,7 @@
 {
   "plugins": {
     "conform.nvim": {
-      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
+      "rev": "18aeab3d63d350dcf44d64c462cc489a3412af40",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "flash.nvim": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/willothy/flatten.nvim"
     },
     "fzf-lua": {
-      "rev": "44816af2465bb0a17ae0f1f2d8a4f9c3df524fcd",
+      "rev": "3ff77862f6c62f7b850668435ae43aa026de8758",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -25,19 +25,19 @@
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
     "mason.nvim": {
-      "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
+      "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "a5fda91040763cf9ad70bdce1c656b0f4ba1d16e",
+      "rev": "6a8aab4b07c6caa1d0643c1c9dccd5b2d5f5e094",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neocodeium": {
-      "rev": "196b9b5961fb2f2128ece11e5ddb951938398cee",
+      "rev": "7ba4cfe345ca09694d9e215f16090af5c336d7c7",
       "src": "https://github.com/monkoose/neocodeium"
     },
     "nvim": {
-      "rev": "4dbd9cad1f587b147150e7cf71ac517ac31e3858",
+      "rev": "7365b8dede43a82ed1df741275b75333422e5402",
       "src": "https://github.com/ember-theme/nvim"
     },
     "nvim-dap": {
@@ -55,7 +55,7 @@
       "version": "'devel'"
     },
     "nvim-lspconfig": {
-      "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
+      "rev": "3de240997fc3208eb29df5e5c17ba4665961bd84",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {

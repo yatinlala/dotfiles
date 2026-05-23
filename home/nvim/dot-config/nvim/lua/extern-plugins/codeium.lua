@@ -1,3 +1,7 @@
+if true then
+    return
+end
+
 vim.schedule(function()
     vim.pack.add({ "https://github.com/monkoose/neocodeium" })
 
