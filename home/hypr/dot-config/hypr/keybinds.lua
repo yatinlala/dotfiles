@@ -9,34 +9,52 @@ local mod = "SUPER"
 local mod2 = "ALT"
 
 local function bindexec(keys, cmd)
-	hl.bind(mod .. " + " .. keys, hl.dsp.exec_cmd(cmd))
+	local parts = {}
+
+	for _, k in ipairs(keys) do
+		table.insert(parts, tostring(k))
+	end
+
+	local keystr = table.concat(parts, " + ")
+	hl.bind(keystr, hl.dsp.exec_cmd(cmd))
 end
 
-bindexec("Return", "kitty")
-bindexec("SHIFT + Return", "ghostty")
-hl.bind(mod .. "+ Q", hl.dsp.window.close())
+local function bindgeneric(keys, cmd)
+	local parts = {}
 
-bindexec("b", "gtk-launch zen")
-bindexec("SHIFT + b", "gtk-launch brave-browser")
+	for _, k in ipairs(keys) do
+		table.insert(parts, tostring(k))
+	end
+
+	local keystr = table.concat(parts, " + ")
+	hl.bind(keystr, cmd)
+end
+
+bindexec({ mod, "Return" }, "kitty")
+bindexec({ mod, "SHIFT", "Return" }, "ghostty")
+bindgeneric({ mod, "Q" }, hl.dsp.window.close())
+
+bindexec({ mod, "b" }, "gtk-launch zen")
+bindexec({ mod, "SHIFT", "b" }, "gtk-launch brave-browser")
 
 -- ROFI
-bindexec("space", "rofi -show drun")
-bindexec("SHIFT + s", "~/.config/rofi/powermenu/powermenu.sh")
-bindexec("semicolon", "tessen -a both")
-bindexec("i", "rofimoji -a copy")
-bindexec("comma", "rofi-system-control")
+bindexec({ mod, "space" }, "rofi -show drun")
+bindexec({ mod, "SHIFT", "s" }, "~/.config/rofi/powermenu/powermenu.sh")
+bindexec({ mod, "semicolon" }, "tessen -a both")
+bindexec({ mod, "i" }, "rofimoji -a copy")
+bindexec({ mod, "comma" }, "rofi-system-control")
 
 -- CLIPBOARD
-bindexec("+ apostrophe", "cliphist list | rofi -dmenu | cliphist decode | wl-copy")
-bindexec("+ SHIFT + apostrophe", "cliphist list | rofi -dmenu | cliphist delete")
-bindexec(" + " .. mod2 .. "+ apostrophe", "cliphist wipe")
+bindexec({ mod, "apostrophe" }, "cliphist list | rofi -dmenu | cliphist decode | wl-copy")
+bindexec({ mod, "SHIFT", "apostrophe" }, "cliphist list | rofi -dmenu | cliphist delete")
+bindexec({ mod, mod2, "apostrophe" }, "cliphist wipe")
 
 -- NOTIFICATIONS
-bindexec("+ tab", "swaync-client -t -sw")
+bindexec({ mod, "tab" }, "swaync-client -t -sw")
 
 -- ##### SCREENSHOT #####
-hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" | swappy -f -'))
-hl.bind(mod .. " + Print", hl.dsp.submap("hypr [O]CR [Q]R [C]OLOR_PICKER)"))
+bindexec({ "Print" }, 'grim -g "$(slurp)" | swappy -f -')
+bindgeneric({ mod, "Print" }, hl.dsp.submap("hypr [O]CR [Q]R [C]OLOR_PICKER)"))
 hl.define_submap("hypr [O]CR [Q]R [C]OLOR_PICKER)", function()
 	hl.bind("o", function()
 		hl.dispatch(hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract stdin stdout | wl-copy'))
@@ -57,12 +75,11 @@ end)
 -- 	mod .. "+ M",
 -- 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 -- )
-hl.bind(mod .. " + f", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. "+ SHIFT + f", hl.dsp.window.fullscreen({ action = "toggle" }))
+bindgeneric({ mod, "f" }, hl.dsp.window.float({ action = "toggle" }))
+bindgeneric({ mod, "SHIFT", "f" }, hl.dsp.window.fullscreen({ action = "toggle" }))
 
--- hl.bind(mod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind(mod .. "+ g", hl.dsp.group.toggle())
+bindgeneric({ mod, "g" }, hl.dsp.group.toggle())
 
 local function smart_focus(dir)
 	local w = hl.get_active_window()
@@ -92,17 +109,17 @@ local function smart_focus(dir)
 	end
 end
 
-hl.bind(mod .. " + h", function()
+bindgeneric({ mod, "h" }, function()
 	smart_focus("left")
 end)
-hl.bind(mod .. " + l", function()
-	smart_focus("right")
+bindgeneric({ mod, "j" }, function()
+	smart_focus("down")
 end)
-hl.bind(mod .. " + k", function()
+bindgeneric({ mod, "k" }, function()
 	smart_focus("up")
 end)
-hl.bind(mod .. " + j", function()
-	smart_focus("down")
+bindgeneric({ mod, "l" }, function()
+	smart_focus("right")
 end)
 
 -- TODO fix this
@@ -137,26 +154,26 @@ local function smart_move(dir)
 	end
 end
 
-hl.bind(mod .. " + SHIFT + H", function()
+bindgeneric({ mod, "SHIFT", "H" }, function()
 	smart_move("left")
 end)
-hl.bind(mod .. " + SHIFT + J", function()
+bindgeneric({ mod, "SHIFT", "J" }, function()
 	smart_move("down")
 end)
-hl.bind(mod .. " + SHIFT + K", function()
+bindgeneric({ mod, "SHIFT", "K" }, function()
 	smart_move("up")
 end)
-hl.bind(mod .. " + SHIFT + L", function()
+bindgeneric({ mod, "SHIFT", "L" }, function()
 	smart_move("right")
 end)
 
-hl.bind(mod2 .. " + h", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
-hl.bind(mod2 .. " + j", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
-hl.bind(mod2 .. " + k", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
-hl.bind(mod2 .. " + l", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+hl.bind(mod2 .. "+ SHIFT + h", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+hl.bind(mod2 .. "+ SHIFT + j", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+hl.bind(mod2 .. "+ SHIFT + k", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+hl.bind(mod2 .. "+ SHIFT + l", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
 
-hl.bind(mod .. "+ z", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mod .. "+ x", hl.dsp.focus({ workspace = "e+1" }))
+bindgeneric({ mod, "z" }, hl.dsp.focus({ workspace = "e-1" }))
+bindgeneric({ mod, "x" }, hl.dsp.focus({ workspace = "e+1" }))
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
@@ -229,27 +246,30 @@ create_toggleable({
 	startup_cmd = "gtk-launch spotify-launcher",
 })
 
-bindexec(" + d", "handy --toggle-transcription")
+bindexec({ mod, "d" }, "handy --toggle-transcription")
+bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
 
 -- ##### GAMES #####
--- # bind   = $mod shift,g,submap,game (l,m,s)
--- # submap = game (l,m,s)
--- # # bind = ,t,exec,$term -e netris -k "hHklLJjs frn" -i .15
--- # # bind = ,t,submap,reset
--- # bind   = ,escape,submap,reset
--- # submap = reset
--- bind   = $mod shift,g,submap,game(lms)
--- submap = game(lms), reset
--- bind   = ,l,exec,gtk-launch brave-pdihgkikjgccndbckbcgjmcnpkockcjg-Default
--- bind   = ,m,exec,gtk-launch com.atlauncher.ATLauncher
--- bind   = ,s,exec,gtk-launch steam
--- bind   = ,escape,submap,reset
--- submap = reset
+bindgeneric({ mod, "SHIFT", "g" }, hl.dsp.submap("game [l]ichess [m]inecraft [s]team"))
+hl.define_submap("game [l]ichess [m]inecraft [s]team", function()
+	-- # # bind = ,t,exec,$term -e netris -k "hHklLJjs frn" -i .15
+	-- bind   = ,l,exec,gtk-launch brave-pdihgkikjgccndbckbcgjmcnpkockcjg-Default
+	hl.bind("m", function()
+		hl.exec_cmd("gtk-launch com.atlauncher.ATLauncher")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("s", function()
+		hl.exec_cmd("gtk-launch steam")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
 
-hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)"))
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)"))
 
 local shaders = require("shaders")
-hl.define_submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)", function()
+hl.define_submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)", function()
 	hl.bind("g", function()
 		shaders.toggle("grayscale.glsl")
 		hl.dispatch(hl.dsp.submap("reset"))
@@ -282,6 +302,8 @@ hl.define_submap("hypr [g]ray[i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)
 
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
+
+hl.bind(mod .. " + " .. mod2 .. " + B", hl.dsp.exec_cmd("kitty --app-id org.yatin.fzfpopup -e bluetui"))
 
 -- ### TABBER ###
 hl.bind(mod .. " + t", hl.dsp.submap("tabber(fsd)"))
@@ -322,7 +344,7 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
-bindexec(" + SHIFT + v", "pavucontrol")
+bindexec({ mod, "SHIFT", "v" }, "pavucontrol")
 
 -- ##### DISPLAY CONTROLS #####
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 1%-"), { locked = true, repeating = true })
