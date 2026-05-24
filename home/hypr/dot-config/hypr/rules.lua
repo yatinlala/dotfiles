@@ -53,15 +53,15 @@ hl.window_rule({
 	opacity = 0.95,
 	workspace = 10,
 })
--- windowrule {
---     name = fzfpopup
---     match:class = (org.yatin.fzfpopup)
---
---     opacity = .95 .95
---     float = true
---     center = true
---     size = (monitor_w*.8) (monitor_h*.8)
--- }
+
+hl.window_rule({
+	match = { class = "org.yatin.fzfpopup" },
+
+	float = true,
+	size = "monitor_w*0.8 monitor_h*0.8",
+	center = true,
+	opacity = 0.95,
+})
 
 -- # windowrule {
 -- #     name = nixpkgs-float
