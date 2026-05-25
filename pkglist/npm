@@ -1,6 +1,7 @@
 /home/yatin/.local/share/npm/lib
-├── @google/gemini-cli@0.29.5
-├── @openai/codex@0.128.0
-├── npm@11.14.0
-└── pnpm@10.14.0
+├── @earendil-works/pi-coding-agent@0.75.0
+├── @google/gemini-cli@0.42.0
+├── @openai/codex@0.130.0
+├── npm@11.14.1
+└── pnpm@11.1.2
 

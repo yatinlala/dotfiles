@@ -248,6 +248,7 @@ create_toggleable({
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
+bindexec({ mod, "SHIFT", "m" }, "gtk-launch mpv")
 
 -- ##### GAMES #####
 bindgeneric({ mod, "SHIFT", "g" }, hl.dsp.submap("game [l]ichess [m]inecraft [s]team"))
@@ -306,7 +307,7 @@ end)
 hl.bind(mod .. " + " .. mod2 .. " + B", hl.dsp.exec_cmd("kitty --app-id org.yatin.fzfpopup -e bluetui"))
 
 -- ### TABBER ###
-hl.bind(mod .. " + t", hl.dsp.submap("tabber(fsd)"))
+bindgeneric({ mod, "t" }, hl.dsp.submap("tabber(fsd)"))
 hl.define_submap("tabber(fsd)", function()
 	hl.bind("f", function()
 		hl.dispatch(hl.dsp.exec_cmd("tabber find"))

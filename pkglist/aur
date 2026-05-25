@@ -9,7 +9,6 @@ gtk-engine-murrine
 gtk2
 handy-bin
 handy-bin-debug
-hyprshade
 livekit-cli
 livekit-cli-debug
 mullvad-vpn-bin
@@ -20,6 +19,7 @@ opencode-bin
 otf-takao
 pipe-viewer-git
 python-backports-zstd
+python-chevron
 qt5-doc
 qt5-location
 qt5-sensors
