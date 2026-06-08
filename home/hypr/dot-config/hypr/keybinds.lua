@@ -53,7 +53,7 @@ bindexec({ mod, mod2, "apostrophe" }, "cliphist wipe")
 bindexec({ mod, "tab" }, "swaync-client -t -sw")
 
 -- ##### SCREENSHOT #####
-bindexec({ "Print" }, 'grim -g "$(slurp)" | swappy -f -')
+bindexec({ "Print" }, 'grim -g "$(slurp)" - | swappy -f -')
 bindgeneric({ mod, "Print" }, hl.dsp.submap("hypr [O]CR [Q]R [C]OLOR_PICKER)"))
 hl.define_submap("hypr [O]CR [Q]R [C]OLOR_PICKER)", function()
 	hl.bind("o", function()
