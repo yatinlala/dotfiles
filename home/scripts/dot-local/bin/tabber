@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 # tabber - A shell script for managing browser tabs
-# Usage: ./tabber {store|find|delete}
+# Usage: ./tabber {store|find|delete|edit}
 # TODO should be case insensitive, not working
 
 TABBER_FILE="$HOME/.local/share/tabber.txt"
@@ -49,6 +49,21 @@ store_tab() {
         echo "Error: Invalid URL format. Must start with http:// or https://"
         notify-send "Tabber Error" "Invalid URL format: $url"
         exit 1
+    fi
+
+    # Check for duplicate URL (skip deleted entries)
+    if [[ -f "$TABBER_FILE" ]]; then
+        local existing
+        existing=$(grep -F "$url" "$TABBER_FILE" | grep -v '^#' | head -n1)
+        if [[ -n "$existing" ]]; then
+            local existing_title existing_date existing_tags
+            existing_title=$(echo "$existing" | cut -f2)
+            existing_date=$(echo "$existing" | cut -f3)
+            existing_tags=$(echo "$existing" | cut -f4)
+            echo "Error: URL already stored: $existing_title ($existing_date) [$existing_tags]"
+            notify-send "Tabber" "Duplicate URL\n$existing_title\n$existing_date · $existing_tags" --icon=dialog-warning
+            exit 1
+        fi
     fi
 
     # Get todo/archive choice (now stored as a tag)
@@ -169,6 +184,132 @@ find_tab() {
     # Copy to clipboard
     echo -n "$selected_url" | wl-copy
     echo "URL copied to clipboard: $selected_url"
+}
+
+# Function to edit an existing tab
+edit_tab() {
+    if [[ ! -f "$TABBER_FILE" ]]; then
+        echo "No tabs stored yet"
+        exit 1
+    fi
+
+    # Read non-deleted entries and format for rofi
+    local entries=()
+    local line_numbers=()
+    local line_num=0
+
+    while IFS=$'\t' read -r url title date tags; do
+        ((line_num++))
+        if [[ "$url" =~ ^# ]]; then
+            continue
+        fi
+        local display_tags="${tags:-"(no tags)"}"
+        entries+=("$title | $url | $date | $display_tags")
+        line_numbers+=("$line_num")
+    done < "$TABBER_FILE"
+
+    if [[ ${#entries[@]} -eq 0 ]]; then
+        echo "No active tabs found"
+        exit 1
+    fi
+
+    # Pick a tab to edit
+    local selected
+    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi --case-smart -dmenu -p " Select tab to edit:")
+
+    if [[ -z "$selected" ]]; then
+        echo "No selection made"
+        exit 0
+    fi
+
+    # Find the index and line number
+    local selected_index=-1
+    for i in "${!entries[@]}"; do
+        if [[ "${entries[$i]}" == "$selected" ]]; then
+            selected_index=$i
+            break
+        fi
+    done
+
+    if [[ $selected_index -eq -1 ]]; then
+        echo "Error: Could not find selected entry"
+        exit 1
+    fi
+
+    local target_line=${line_numbers[$selected_index]}
+
+    # Read current values directly from the file using the line number
+    local raw_line
+    raw_line=$(sed -n "${target_line}p" "$TABBER_FILE")
+
+    local current_url current_title current_date current_tags
+    current_url=$(echo "$raw_line" | cut -f1)
+    current_title=$(echo "$raw_line" | cut -f2)
+    current_date=$(echo "$raw_line" | cut -f3)
+    current_tags=$(echo "$raw_line" | cut -f4)
+
+    # Edit URL (with duplicate check, excluding current line)
+    local new_url
+    new_url=$(rofi -dmenu -p " URL:" -filter "$current_url" <<< "")
+    if [[ -z "$new_url" ]]; then
+        echo "Operation cancelled"
+        exit 0
+    fi
+    if [[ ! "$new_url" =~ ^https?:// ]]; then
+        echo "Error: Invalid URL format"
+        notify-send "Tabber Error" "Invalid URL format: $new_url"
+        exit 1
+    fi
+    # Duplicate check — skip if URL is unchanged
+    if [[ "$new_url" != "$current_url" ]]; then
+        local dupe
+        dupe=$(grep -F "$new_url" "$TABBER_FILE" | grep -v '^#' | head -n1)
+        if [[ -n "$dupe" ]]; then
+            local dupe_title dupe_date dupe_tags
+            dupe_title=$(echo "$dupe" | cut -f2)
+            dupe_date=$(echo "$dupe" | cut -f3)
+            dupe_tags=$(echo "$dupe" | cut -f4)
+            echo "Error: URL already stored: $dupe_title ($dupe_date) [$dupe_tags]"
+            notify-send "Tabber" "Duplicate URL\n$dupe_title\n$dupe_date · $dupe_tags" --icon=dialog-warning
+            exit 1
+        fi
+    fi
+
+    # Edit title
+    local new_title
+    new_title=$(rofi -dmenu -p " Title:" -filter "$current_title" <<< "")
+    if [[ -z "$new_title" ]]; then
+        echo "Operation cancelled"
+        exit 0
+    fi
+
+    # Edit tags
+    local new_tags
+    new_tags=$(rofi -dmenu -p " Tags:" -filter "$current_tags" <<< "")
+    if [[ -z "$new_tags" ]]; then
+        echo "Operation cancelled"
+        exit 0
+    fi
+
+    # Write updated entry back to file
+    local new_entry="${new_url}	${new_title}	${current_date}	${new_tags}"
+    local temp_file
+    temp_file=$(mktemp)
+    local current_line=0
+
+    while IFS= read -r line; do
+        ((current_line++))
+        if [[ $current_line -eq $target_line ]]; then
+            echo "$new_entry" >> "$temp_file"
+        else
+            echo "$line" >> "$temp_file"
+        fi
+    done < "$TABBER_FILE"
+
+    mv "$temp_file" "$TABBER_FILE"
+
+    echo "Tab updated: $new_title"
+    notify-send "Tabber" "Tab updated: $new_title" --icon=browser
 }
 
 # Function to delete (mark as deleted) a tab
@@ -294,6 +435,7 @@ show_help() {
     echo "  ./tabber find todo     - Find and copy from entries tagged todo"
     echo "  ./tabber find archive  - Find and copy from entries tagged archive"
     echo "  ./tabber find both     - Find and copy from all tabs"
+    echo "  ./tabber edit          - Edit an existing tab's URL, title, or tags"
     echo "  ./tabber delete        - Mark a tab as deleted"
     echo "  ./tabber prune         - Remove all deleted entries from storage"
     echo "  ./tabber help          - Show this help message"
@@ -313,6 +455,9 @@ case "$1" in
         else
             find_tab
         fi
+        ;;
+    "edit")
+        edit_tab
         ;;
     "delete")
         delete_tab
