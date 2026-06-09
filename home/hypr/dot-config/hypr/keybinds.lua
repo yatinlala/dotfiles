@@ -148,8 +148,8 @@ local function smart_move(dir)
 		else
 			-- NOT SETTING forward = true moves backward.
 			-- imo a pretty rough API. maybe should file
-			-- a gh discussion
-			hl.dispatch(hl.dsp.group.move_window({}))
+			-- a gh discussion. ok now you need forward = false?
+			hl.dispatch(hl.dsp.group.move_window({ forward = false }))
 		end
 	end
 end
@@ -254,7 +254,10 @@ bindexec({ mod, "SHIFT", "m" }, "gtk-launch mpv")
 bindgeneric({ mod, "SHIFT", "g" }, hl.dsp.submap("game [l]ichess [m]inecraft [s]team"))
 hl.define_submap("game [l]ichess [m]inecraft [s]team", function()
 	-- # # bind = ,t,exec,$term -e netris -k "hHklLJjs frn" -i .15
-	-- bind   = ,l,exec,gtk-launch brave-pdihgkikjgccndbckbcgjmcnpkockcjg-Default
+	hl.bind("l", function()
+		hl.exec_cmd("gtk-launch brave-pdihgkikjgccndbckbcgjmcnpkockcjg-Default")
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
 	hl.bind("m", function()
 		hl.exec_cmd("gtk-launch com.atlauncher.ATLauncher")
 		hl.dispatch(hl.dsp.submap("reset"))
