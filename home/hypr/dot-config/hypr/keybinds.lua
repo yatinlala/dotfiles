@@ -368,6 +368,9 @@ hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- bind = $mod,backslash,exec,toggler inhibit-lid
 -- bind = $mod shift,r,exec,toggler gammastep
 
+hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
+hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })
+
 hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv previous"), { locked = true })
 hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv next"), { locked = true })
 hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv play-pause"), { locked = true })

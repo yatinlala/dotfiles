@@ -12,24 +12,25 @@ mkdir -p "$(dirname "$TABBER_FILE")"
 # Function to get page title from URL
 get_page_title() {
     local url="$1"
-    local title
+    local fetch_url title
 
-    # Try to fetch the title using curl with better parsing
-    title=$(curl -Ls --max-time 10 "$url" | pup --plain 'title text{}')
+    # Reddit serves an anti-bot interstitial ("Please wait for verification")
+    # to curl on www.reddit.com regardless of headers; old.reddit.com does not.
+    fetch_url=$(sed -E 's#^(https?://)(www\.)?reddit\.com#\1old.reddit.com#' <<<"$url")
 
-    # If no title found or empty, try alternative method
-    if [[ -z "$title" ]]; then
-        title=$(curl -s -L --max-time 10 "$url" | grep -oP '(?<=<title>)[^<]+' | head -n1 | sed 's/&amp;/\&/g; s/&lt;/</g; s/&gt;/>/g; s/&quot;/"/g; s/&#39;/'"'"'/g' | xargs)
-    fi
+    # Fetch with a browser User-Agent and --compressed so sites return the real
+    # page. pup's text{} decodes HTML entities for us. Whitespace is collapsed
+    # and trimmed with tr+sed (NOT xargs, which strips quotes/apostrophes and
+    # truncates titles containing them).
+    title=$(curl -fsSL --compressed --max-time 15 \
+        -A 'Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
+        -H 'Accept-Language: en-US,en;q=0.9' \
+        "$fetch_url" \
+        | pup --plain 'title text{}' \
+        | tr -s '[:space:]' ' ' \
+        | sed 's/^ *//; s/ *$//')
 
-    # If still no title found or empty, use a default
-    if [[ -z "$title" ]]; then
-        title="Untitled"
-    fi
-
-    title=$(echo "$title" | tr '\n\t' ' ' | tr -s ' ' | xargs)
-
-    echo "$title"
+    printf '%s\n' "${title:-Untitled}"
 }
 
 # Function to store a new tab
@@ -51,10 +52,10 @@ store_tab() {
         exit 1
     fi
 
-    # Check for duplicate URL (skip deleted entries)
+    # Check for duplicate URL (exact match on the URL field, skip deleted entries)
     if [[ -f "$TABBER_FILE" ]]; then
         local existing
-        existing=$(grep -F "$url" "$TABBER_FILE" | grep -v '^#' | head -n1)
+        existing=$(awk -F'\t' -v u="$url" '$1==u' "$TABBER_FILE" | head -n1)
         if [[ -n "$existing" ]]; then
             local existing_title existing_date existing_tags
             existing_title=$(echo "$existing" | cut -f2)
@@ -113,6 +114,35 @@ tags_contain() {
     grep -qiE '(^|[[:space:]]*,[[:space:]]*)'"$want"'([[:space:]]*,[[:space:]]*|$)' <<<"$tags"
 }
 
+# Helper: populate the global arrays TAB_ENTRIES (rofi display strings) and
+# TAB_LINES (matching 1-based file line numbers) with active (non-deleted) tabs.
+# Optional $1 = tag filter ("todo"/"archive"); empty or "both" includes all.
+load_tabs() {
+    local filter="$1"
+    local line_num=0 url title date tags
+    TAB_ENTRIES=()
+    TAB_LINES=()
+    while IFS=$'\t' read -r url title date tags; do
+        ((line_num++))
+        [[ "$url" =~ ^# ]] && continue
+        if [[ -n "$filter" && "$filter" != "both" ]] && ! tags_contain "$tags" "$filter"; then
+            continue
+        fi
+        TAB_ENTRIES+=("$title | $url | $date | ${tags:-(no tags)}")
+        TAB_LINES+=("$line_num")
+    done < "$TABBER_FILE"
+}
+
+# Helper: echo the TAB_ENTRIES index whose display string exactly matches $1.
+# Returns non-zero if not found.
+selected_index() {
+    local sel="$1" i
+    for i in "${!TAB_ENTRIES[@]}"; do
+        [[ "${TAB_ENTRIES[$i]}" == "$sel" ]] && { echo "$i"; return 0; }
+    done
+    return 1
+}
+
 # Function to find and copy a tab
 find_tab() {
     local filter_type="$1"  # "todo", "archive", "both", or empty for menu
@@ -124,7 +154,7 @@ find_tab() {
 
     # If no filter specified, show menu to choose
     if [[ -z "$filter_type" ]]; then
-        filter_type=$(echo -e "todo\nboth\narchive" | rofi -dmenu -p " Show which tabs:")
+        filter_type=$(echo -e "both\ntodo\narchive" | rofi -dmenu -p " Show which tabs:")
 
         if [[ -z "$filter_type" ]]; then
             echo "No selection made"
@@ -132,27 +162,9 @@ find_tab() {
         fi
     fi
 
-    # Read non-deleted entries and format for rofi
-    local entries=()
-    while IFS=$'\t' read -r url title date tags; do
-        # Skip deleted entries (starting with #)
-        if [[ "$url" =~ ^# ]]; then
-            continue
-        fi
+    load_tabs "$filter_type"
 
-        # Apply filter if not "both" (filter is now tag-based)
-        if [[ "$filter_type" != "both" ]]; then
-            if ! tags_contain "$tags" "$filter_type"; then
-                continue
-            fi
-        fi
-
-        # Format: "title | url | date | tags"
-        local display_tags="${tags:-"(no tags)"}"
-        entries+=("$title | $url | $date | $display_tags")
-    done < "$TABBER_FILE"
-
-    if [[ ${#entries[@]} -eq 0 ]]; then
+    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
         if [[ "$filter_type" == "both" ]]; then
             echo "No active tabs found"
         else
@@ -166,20 +178,23 @@ find_tab() {
     case "$filter_type" in
         "todo") prompt="Select todo tab:" ;;
         "archive") prompt="Select archive tab:" ;;
-        "both") prompt="Select tab:" ;;
     esac
 
     local selected
-    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi --case-smart -dmenu -p " $prompt")
+    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | tac | rofi -i -dmenu -p " $prompt")
 
     if [[ -z "$selected" ]]; then
         echo "No selection made"
         exit 0
     fi
 
-    # Extract URL from selection (it is the second field after the first |)
+    local idx
+    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
+
+    # Read the URL straight from the file by line number — titles can contain
+    # '|', so parsing the display string is unreliable.
     local selected_url
-    selected_url=$(echo "$selected" | cut -d'|' -f2 | xargs)
+    selected_url=$(sed -n "${TAB_LINES[$idx]}p" "$TABBER_FILE" | cut -f1)
 
     # Copy to clipboard
     echo -n "$selected_url" | wl-copy
@@ -193,50 +208,25 @@ edit_tab() {
         exit 1
     fi
 
-    # Read non-deleted entries and format for rofi
-    local entries=()
-    local line_numbers=()
-    local line_num=0
+    load_tabs
 
-    while IFS=$'\t' read -r url title date tags; do
-        ((line_num++))
-        if [[ "$url" =~ ^# ]]; then
-            continue
-        fi
-        local display_tags="${tags:-"(no tags)"}"
-        entries+=("$title | $url | $date | $display_tags")
-        line_numbers+=("$line_num")
-    done < "$TABBER_FILE"
-
-    if [[ ${#entries[@]} -eq 0 ]]; then
+    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
         echo "No active tabs found"
         exit 1
     fi
 
     # Pick a tab to edit
     local selected
-    selected=$(printf '%s\n' "${entries[@]}" | tac | rofi --case-smart -dmenu -p " Select tab to edit:")
+    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | tac | rofi -i -dmenu -p " Select tab to edit:")
 
     if [[ -z "$selected" ]]; then
         echo "No selection made"
         exit 0
     fi
 
-    # Find the index and line number
-    local selected_index=-1
-    for i in "${!entries[@]}"; do
-        if [[ "${entries[$i]}" == "$selected" ]]; then
-            selected_index=$i
-            break
-        fi
-    done
-
-    if [[ $selected_index -eq -1 ]]; then
-        echo "Error: Could not find selected entry"
-        exit 1
-    fi
-
-    local target_line=${line_numbers[$selected_index]}
+    local idx
+    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
+    local target_line=${TAB_LINES[$idx]}
 
     # Read current values directly from the file using the line number
     local raw_line
@@ -260,10 +250,10 @@ edit_tab() {
         notify-send "Tabber Error" "Invalid URL format: $new_url"
         exit 1
     fi
-    # Duplicate check — skip if URL is unchanged
+    # Duplicate check — skip if URL is unchanged (exact match, excluding this line)
     if [[ "$new_url" != "$current_url" ]]; then
         local dupe
-        dupe=$(grep -F "$new_url" "$TABBER_FILE" | grep -v '^#' | head -n1)
+        dupe=$(awk -F'\t' -v u="$new_url" -v ln="$target_line" 'NR!=ln && $1==u' "$TABBER_FILE" | head -n1)
         if [[ -n "$dupe" ]]; then
             local dupe_title dupe_date dupe_tags
             dupe_title=$(echo "$dupe" | cut -f2)
@@ -291,22 +281,12 @@ edit_tab() {
         exit 0
     fi
 
-    # Write updated entry back to file
+    # Write updated entry back to file (replace the target line in place)
     local new_entry="${new_url}	${new_title}	${current_date}	${new_tags}"
-    local temp_file
-    temp_file=$(mktemp)
-    local current_line=0
-
-    while IFS= read -r line; do
-        ((current_line++))
-        if [[ $current_line -eq $target_line ]]; then
-            echo "$new_entry" >> "$temp_file"
-        else
-            echo "$line" >> "$temp_file"
-        fi
-    done < "$TABBER_FILE"
-
-    mv "$temp_file" "$TABBER_FILE"
+    local lines
+    mapfile -t lines < "$TABBER_FILE"
+    lines[$((target_line - 1))]="$new_entry"
+    printf '%s\n' "${lines[@]}" > "$TABBER_FILE"
 
     echo "Tab updated: $new_title"
     notify-send "Tabber" "Tab updated: $new_title" --icon=browser
@@ -319,73 +299,27 @@ delete_tab() {
         exit 1
     fi
 
-    # Read non-deleted entries and format for rofi
-    local entries=()
-    local line_numbers=()
-    local line_num=0
+    load_tabs
 
-    while IFS=$'\t' read -r url title date tags; do
-        ((line_num++))
-
-        # Skip already deleted entries
-        if [[ "$url" =~ ^# ]]; then
-            continue
-        fi
-
-        # Format: "title | url | date | tags"
-        local display_tags="${tags:-"(no tags)"}"
-        entries+=("$title | $url | $date | $display_tags")
-        line_numbers+=("$line_num")
-    done < "$TABBER_FILE"
-
-    if [[ ${#entries[@]} -eq 0 ]]; then
+    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
         echo "No active tabs found"
         exit 1
     fi
 
     # Show in rofi
     local selected
-    selected=$(printf '%s\n' "${entries[@]}" | rofi -dmenu -p " Select tab to delete:")
+    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | rofi -i -dmenu -p " Select tab to delete:")
 
     if [[ -z "$selected" ]]; then
         echo "No selection made"
         exit 0
     fi
 
-    # Find which entry was selected
-    local selected_index=-1
-    for i in "${!entries[@]}"; do
-        if [[ "${entries[$i]}" == "$selected" ]]; then
-            selected_index=$i
-            break
-        fi
-    done
+    local idx
+    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
 
-    if [[ $selected_index -eq -1 ]]; then
-        echo "Error: Could not find selected entry"
-        exit 1
-    fi
-
-    # Get the line number to modify
-    local target_line=${line_numbers[$selected_index]}
-
-    # Create a temporary file and mark the entry as deleted
-    local temp_file
-    temp_file=$(mktemp)
-    local current_line=0
-
-    while IFS= read -r line; do
-        ((current_line++))
-        if [[ $current_line -eq $target_line ]]; then
-            # Mark as deleted by adding # at the beginning
-            echo "#$line" >> "$temp_file"
-        else
-            echo "$line" >> "$temp_file"
-        fi
-    done < "$TABBER_FILE"
-
-    # Replace the original file
-    mv "$temp_file" "$TABBER_FILE"
+    # Mark the entry as deleted by prepending '#' to its line
+    sed -i "${TAB_LINES[$idx]}s/^/#/" "$TABBER_FILE"
 
     echo "Tab marked as deleted"
 }
