@@ -115,6 +115,7 @@ end)
 vim.lsp.enable(installed_lsp_names)
 
 -- manually installed
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("zls")
