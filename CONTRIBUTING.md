@@ -17,7 +17,7 @@
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[CONTRIBUTING.md Code of Conduct](blob/master/CODE_OF_CONDUCT.md).
+following Code of Conduct.
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to <>. Absolutely *do not* file issues or PRs about Windows 9 or PHP support.
 
