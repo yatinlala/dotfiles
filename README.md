@@ -13,3 +13,5 @@ Using stow terminology: \
 ## Notes:
 1. `stow .` when `--target` and `--dir` is doesn't seem to work, though stowing individual packages is fine. For now, I'm using a makefile to expand a wildcard. I think there is a bug filed for this w/ Stow, but the project is abandoned?
 2. Consider getting rid of makefiles and using .stowrc instead? Could be simpler.
+3. `sudo chown root:root set_charge_threshold`
+   `sudo chmod u+s set_charge_threshold`
