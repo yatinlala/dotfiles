@@ -2,6 +2,8 @@ typeset -U PATH path
 
 export PATH="$HOME/.local/state/nix/profile/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
 
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitten ssh"
+
 # LOCAL PREFIX
 export PATH="$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
