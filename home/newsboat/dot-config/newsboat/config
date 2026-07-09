@@ -8,6 +8,11 @@ browser lynx
 # TODO broken?
 # feedlist-format "    %n %?T?%-17T|  ?%t"
 
+urls-source "miniflux"
+miniflux-url "https://miniflux.tuna-skink.ts.net/"
+miniflux-login "yatin"
+miniflux-passwordeval "pass miniflux-admin | head -n1"
+
 macro b set browser "xdg-open %u > /dev/null 2>&1" ; open-in-browser ; set browser lynx
 macro B set browser "xdg-launch brave --test-type %u > /dev/null 2>&1" ; open-in-browser ; set browser lynx
 macro i set pager "$XDG_CONFIG_HOME/newsboat/kitty-img-pager.sh"; open; set pager internal
