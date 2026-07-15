@@ -1,18 +1,16 @@
-# yozsh — AI shell assistant for kitty + zsh
+# yokit
 #
 # Requirements:
-#   - kitty with allow_remote_control yes in kitty.conf
-#   - curl and jq
+#   - set allow_remote_control yes in kitty.conf
+#   - curl and jq in path
 #   - ~/io/anthropickey containing your Anthropic API key
-#
-# Install:
-#   source /path/to/yozsh.zsh   (add this line to your .zshrc)
+#   - source /path/to/yokit.zsh in your zshrc
 #
 # Usage:
 #   Type yo <your-request> and press enter.
 
 ANTHROPIC_API_KEY=$(<~/io/anthropickey)
-YOZSH_SCROLLBACK_LENGTH=1000
+YOKIT_SCROLLBACK_LENGTH=1000
 
 _YO_PREFIX=$'\033[3;36m'   # italic cyan (matches yosh)
 _YO_RESET=$'\033[0m'
@@ -55,14 +53,14 @@ _yo_call_llm() {
   # We keep tab (0x09) and newline (0x0A), remove everything else in that range.
   local scrollback=$(kitty @ get-text --extent=all 2>/dev/null \
     | tr -d '\000-\010\013-\037\177' \
-    | tail -n $YOZSH_SCROLLBACK_LENGTH)
+    | tail -n $YOKIT_SCROLLBACK_LENGTH)
 
   local payload=$(jq -n \
     --arg  q     "$query" \
     --arg  sb    "$scrollback" \
     --argjson tools "$_yo_tools" \
     '{
-      model:    "claude-sonnet-4-20250514",
+      model:    "claude-sonnet-4-6",
       max_tokens: 1024,
       system:   "You are an assistant called yozsch running in a users shell. You are given recent terminal scrollback for context. You MUST respond using one of the two tools, consult the descriptions to determine which tool is appropriate. Be brief.",
       messages: [{
@@ -78,7 +76,7 @@ _yo_call_llm() {
     }')
 
   if [[ $? -ne 0 ]] || [[ -z "$payload" ]]; then
-    print "yozsh: failed to build request payload" >&2
+    print "yokit: failed to build request payload" >&2
     return 1
   fi
 
@@ -92,7 +90,7 @@ _yo_call_llm() {
     -d "$payload")
 
   if [[ $? -ne 0 ]]; then
-    print "yozsh: curl failed" >&2
+    print "yokit: curl failed" >&2
     return 1
   fi
 
@@ -137,8 +135,8 @@ _yo_accept_line() {
   if ! print -r -- "$response" | jq -e . >/dev/null 2>&1; then
     local preview
     preview=$(printf '%s' "$response" | tr '\n' ' ' | cut -c1-300)
-    print "yozsh: API returned non-JSON response" >&2
-    [[ -n "$preview" ]] && print "yozsh: response preview: $preview" >&2
+    print "yokit: API returned non-JSON response" >&2
+    [[ -n "$preview" ]] && print "yokit: response preview: $preview" >&2
     BUFFER=""
     CURSOR=0
     zle .accept-line
@@ -148,7 +146,7 @@ _yo_accept_line() {
   local api_error
   api_error=$(print -r -- "$response" | jq -r 'if .error then (.error.type // "error") + ": " + (.error.message // "unknown error") else empty end' 2>/dev/null)
   if [[ -n "$api_error" ]]; then
-    print "yozsh: API error: $api_error" >&2
+    print "yokit: API error: $api_error" >&2
     BUFFER=""
     CURSOR=0
     zle .accept-line
@@ -186,9 +184,9 @@ _yo_accept_line() {
       stop_reason=$(print -r -- "$response" | jq -r '.stop_reason // "unknown"' 2>/dev/null)
       content_types=$(print -r -- "$response" | jq -r '[.content[]?.type] | join(",")' 2>/dev/null)
       first_text=$(print -r -- "$response" | jq -r '[.content[] | select(.type=="text")][0].text // empty' 2>/dev/null)
-      print "yozsh: unexpected response (tool=${tool:-none}, type=${response_type:-missing}, stop_reason=${stop_reason:-unknown}, content_types=${content_types:-unknown})" >&2
-      [[ -n "$response_keys" ]] && print "yozsh: response keys: $response_keys" >&2
-      [[ -n "$first_text" ]] && print "yozsh: first text block: $first_text" >&2
+      print "yokit: unexpected response (tool=${tool:-none}, type=${response_type:-missing}, stop_reason=${stop_reason:-unknown}, content_types=${content_types:-unknown})" >&2
+      [[ -n "$response_keys" ]] && print "yokit: response keys: $response_keys" >&2
+      [[ -n "$first_text" ]] && print "yokit: first text block: $first_text" >&2
       BUFFER="$original_buffer"
       CURSOR=${#BUFFER}
       zle .accept-line
