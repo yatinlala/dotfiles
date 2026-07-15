@@ -1,26 +1,237 @@
 #!/usr/bin/env bash
 
-gd=$(<"$XDG_CACHE_HOME/gammastep.cache") || echo "1" >"$XDG_CACHE_HOME/gammastep.cache"
+set -u
 
-case $1 in
-inc)
+readonly DDC_MODEL="Gigabyte M32Q"
+readonly DDC_BRIGHTNESS=0x10
+readonly DDC_CONTRAST=0x12
+readonly CONTRAST_NORMAL=70
+readonly DDC_STEP=5
+readonly GAMMA_STEP=0.1
+readonly GAMMA_MIN=0.1
+readonly GAMMA_MAX=1.0
 
-        if (($(echo "$gd < 1" | bc -l))); then
-                echo "$gd + .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
-                gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
-                killall gammastep
-                gammastep -b "$gd":"$gd" &
-                disown
-        fi
+cache_home=${XDG_CACHE_HOME:-"$HOME/.cache"}
+cache_file="$cache_home/gdark.cache"
 
-        ;;
-dec)
-        if (($(echo "$gd > .1" | bc -l))); then
-                echo "$gd - .1" | bc -l >"$XDG_CACHE_HOME"/gammastep.cache
-                gd=$(<"$XDG_CACHE_HOME/gammastep.cache")
-                killall gammastep
-                gammastep -b "$gd":"$gd" &
-                disown
-        fi
-        ;;
-esac
+gamma=$GAMMA_MAX
+monitor_brightness=
+monitor_contrast=
+
+die() {
+	printf 'gdark: %s\n' "$*" >&2
+	exit 1
+}
+
+usage() {
+	printf 'Usage: %s {inc|dec|--sync}\n' "${0##*/}" >&2
+	exit 2
+}
+
+need() {
+	command -v "$1" >/dev/null 2>&1 || die "required command not found: $1"
+}
+
+normalize_gamma() {
+	local value=$1
+
+	[[ $value =~ ^([0-9]+([.][0-9]*)?|[.][0-9]+)$ ]] || value=$GAMMA_MAX
+	awk -v value="$value" -v min="$GAMMA_MIN" -v max="$GAMMA_MAX" \
+		'BEGIN { if (value < min) value=min; if (value > max) value=max; printf "%.1f", value }'
+}
+
+read_cache() {
+	local key value
+
+	if [[ -r $cache_file ]]; then
+		while IFS='=' read -r key value; do
+			case $key in
+			gamma) gamma=$value ;;
+			brightness) monitor_brightness=$value ;;
+			contrast) monitor_contrast=$value ;;
+			esac
+		done < "$cache_file"
+	fi
+
+	gamma=$(normalize_gamma "$gamma")
+	[[ $monitor_brightness =~ ^[0-9]+$ ]] && ((monitor_brightness <= 100)) || monitor_brightness=
+	[[ $monitor_contrast =~ ^[0-9]+$ ]] && ((monitor_contrast <= 100)) || monitor_contrast=
+}
+
+write_cache() {
+	local temporary="$cache_file.tmp"
+
+	{
+		printf 'gamma=%s\n' "$gamma"
+		printf 'brightness=%s\n' "$monitor_brightness"
+		printf 'contrast=%s\n' "$monitor_contrast"
+	} > "$temporary" || die "could not write cache: $temporary"
+	mv -f "$temporary" "$cache_file" || die "could not replace cache: $cache_file"
+}
+
+set_gamma() {
+	gamma=$1
+
+	write_cache
+	pkill -x gammastep >/dev/null 2>&1 || true
+	# Do not let the long-running child retain this script's advisory-lock fd.
+	gammastep -b "$gamma:$gamma" 9>&- >/dev/null 2>&1 &
+}
+
+gamma_inc() {
+	local value=$1
+
+	awk -v value="$value" -v step="$GAMMA_STEP" -v max="$GAMMA_MAX" \
+		'BEGIN { value += step; if (value > max) value=max; printf "%.1f", value }'
+}
+
+gamma_dec() {
+	local value=$1
+
+	awk -v value="$value" -v step="$GAMMA_STEP" -v min="$GAMMA_MIN" \
+		'BEGIN { value -= step; if (value < min) value=min; printf "%.1f", value }'
+}
+
+read_ddc_value() {
+	local code=$1 output value
+
+	output=$(ddcutil --model "$DDC_MODEL" getvcp "$code" --terse) || \
+		die "could not read VCP $code from $DDC_MODEL"
+	value=$(awk '$1 == "VCP" && $3 == "C" { print $4; exit }' <<< "$output")
+	[[ $value =~ ^[0-9]+$ ]] || die "could not parse VCP $code value: $output"
+	case $code in
+	"$DDC_BRIGHTNESS") monitor_brightness=$value ;;
+	"$DDC_CONTRAST") monitor_contrast=$value ;;
+	esac
+	write_cache
+}
+
+ddc_set() {
+	local code=$1 value=$2
+
+	ddcutil --model "$DDC_MODEL" setvcp "$code" "$value" >/dev/null || \
+		die "could not set VCP $code to $value on $DDC_MODEL"
+	case $code in
+	"$DDC_BRIGHTNESS") monitor_brightness=$value ;;
+	"$DDC_CONTRAST") monitor_contrast=$value ;;
+	esac
+	write_cache
+}
+
+m32q_inc() {
+	local next
+
+	if awk -v value="$gamma" -v max="$GAMMA_MAX" 'BEGIN { exit !(value < max) }'; then
+		set_gamma "$(gamma_inc "$gamma")"
+		return
+	fi
+
+	[[ -n $monitor_contrast ]] || read_ddc_value "$DDC_CONTRAST"
+	if ((monitor_contrast < CONTRAST_NORMAL)); then
+		next=$((monitor_contrast + DDC_STEP))
+		((next > CONTRAST_NORMAL)) && next=$CONTRAST_NORMAL
+		ddc_set "$DDC_CONTRAST" "$next"
+		return
+	fi
+
+	[[ -n $monitor_brightness ]] || read_ddc_value "$DDC_BRIGHTNESS"
+	if ((monitor_brightness < 100)); then
+		next=$((monitor_brightness + DDC_STEP))
+		((next > 100)) && next=100
+		ddc_set "$DDC_BRIGHTNESS" "$next"
+	fi
+}
+
+m32q_dec() {
+	local next
+
+	[[ -n $monitor_brightness ]] || read_ddc_value "$DDC_BRIGHTNESS"
+	if ((monitor_brightness > 0)); then
+		next=$((monitor_brightness - DDC_STEP))
+		((next < 0)) && next=0
+		ddc_set "$DDC_BRIGHTNESS" "$next"
+		return
+	fi
+
+	[[ -n $monitor_contrast ]] || read_ddc_value "$DDC_CONTRAST"
+	if ((monitor_contrast > 0)); then
+		next=$((monitor_contrast - DDC_STEP))
+		((next < 0)) && next=0
+		ddc_set "$DDC_CONTRAST" "$next"
+		return
+	fi
+
+	if awk -v value="$gamma" -v min="$GAMMA_MIN" 'BEGIN { exit !(value > min) }'; then
+		set_gamma "$(gamma_dec "$gamma")"
+	fi
+}
+
+m32q_sync() {
+	read_ddc_value "$DDC_BRIGHTNESS"
+	read_ddc_value "$DDC_CONTRAST"
+}
+
+laptop_inc() {
+	local current_gamma=$1
+
+	if awk -v value="$current_gamma" -v max="$GAMMA_MAX" 'BEGIN { exit !(value < max) }'; then
+		set_gamma "$(gamma_inc "$current_gamma")"
+	else
+		brightnessctl --class backlight --quiet set 1%+ || die "could not increase laptop brightness"
+	fi
+}
+
+laptop_dec() {
+	local current_gamma=$1 brightness
+
+	brightness=$(brightnessctl --class backlight get) || die "could not read laptop brightness"
+	[[ $brightness =~ ^[0-9]+$ ]] || die "could not parse laptop brightness: $brightness"
+	if ((brightness > 0)); then
+		brightnessctl --class backlight --quiet --min-value=0 set 1%- || \
+			die "could not decrease laptop brightness"
+	elif awk -v value="$current_gamma" -v min="$GAMMA_MIN" 'BEGIN { exit !(value > min) }'; then
+		set_gamma "$(gamma_dec "$current_gamma")"
+	fi
+}
+
+main() {
+	local direction=${1:-} monitors enabled_count connector model
+
+	[[ $direction == inc || $direction == dec || $direction == --sync ]] || usage
+	need awk
+	need flock
+	need hyprctl
+	need jq
+
+	mkdir -p "$cache_home" || die "could not create cache directory: $cache_home"
+	exec 9>"$cache_file.lock"
+	flock -x 9
+	read_cache
+	[[ -r $cache_file ]] || write_cache
+
+	monitors=$(hyprctl monitors all -j) || die "could not query Hyprland monitors"
+	enabled_count=$(jq '[.[] | select(.disabled == false)] | length' <<< "$monitors") || \
+		die "could not parse Hyprland monitor data"
+	[[ $enabled_count == 1 ]] || die "expected exactly one enabled display; found $enabled_count"
+
+	connector=$(jq -r '.[] | select(.disabled == false) | .name' <<< "$monitors")
+	model=$(jq -r '.[] | select(.disabled == false) | .model' <<< "$monitors")
+	if [[ $model == *M32Q* ]]; then
+		need ddcutil
+		if [[ $direction == --sync ]]; then
+			m32q_sync
+		else
+			need gammastep
+			"m32q_$direction" "$gamma"
+		fi
+	elif [[ $connector == eDP-* ]]; then
+		[[ $direction != --sync ]] || die "DDC synchronization is only available for $DDC_MODEL"
+		need gammastep
+		need brightnessctl
+		"laptop_$direction" "$gamma"
+	else
+		die "unsupported enabled display: $connector ($model)"
+	fi
+}
+
+main "$@"
