@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup miniflux2 Postgres database to local disk and Google Drive
+Wants=network-online.target
+After=network-online.target postgresql.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/miniflux-backup.py
+Nice=10
+IOSchedulingClass=best-effort
