@@ -162,7 +162,6 @@ bindgeneric({ mod, "l" }, function()
 	smart_focus("right")
 end)
 
--- TODO fix this
 local function smart_move(dir)
 	local w = hl.get_active_window()
 	if w == nil then
@@ -172,19 +171,19 @@ local function smart_move(dir)
 	local is_grouped = w.group ~= nil
 
 	if not is_grouped or dir == "up" or dir == "down" then
-		hl.dispatch(hl.dsp.window.move({ direction = dir }))
+		hl.dispatch(hl.dsp.window.move({ direction = dir, group_aware = true }))
 		return
 	end
 
 	if dir == "right" then
 		if w.group.current_index == w.group.size then
-			hl.dispatch(hl.dsp.window.move({ out_of_group = "right" }))
+			hl.dispatch(hl.dsp.window.move({ direction = dir, group_aware = true }))
 		else
 			hl.dispatch(hl.dsp.group.move_window({ forward = true }))
 		end
 	elseif dir == "left" then
 		if w.group.current_index == 1 then
-			hl.dispatch(hl.dsp.window.move({ out_of_group = "left" }))
+			hl.dispatch(hl.dsp.window.move({ direction = dir, group_aware = true }))
 		else
 			-- NOT SETTING forward = true moves backward.
 			-- imo a pretty rough API. maybe should file
