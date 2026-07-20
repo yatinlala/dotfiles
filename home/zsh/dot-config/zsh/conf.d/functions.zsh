@@ -80,6 +80,8 @@ git-clean() {
 fe() { print -z "$(functions $@ | sed '1d;$d' | sed 's/^[[:space:]]*//')"}
 ccd() { clang -std=c99 -g -O0 -Wall -Wextra -fsanitize=undefined,address "$@" }
 ccr() { clang -std=c99 -O3 "$@" }
+sys() { systemctl "$@" }
+sysu() { systemctl --user "$@" }
 
 domains() { sudo tcpdump -l port 53 2>/dev/null | grep --line-buffered ' A? ' | cut -d' ' -f8 }
 update-nvim() {

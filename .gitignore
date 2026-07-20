@@ -1,3 +1,4 @@
 .zcompdump
 .zcompdump.zwc
 secret.env
+node_modules

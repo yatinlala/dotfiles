@@ -36,6 +36,7 @@ bindgeneric({ mod, "Q" }, hl.dsp.window.close())
 
 bindexec({ mod, "b" }, "gtk-launch zen")
 bindexec({ mod, "SHIFT", "b" }, "gtk-launch brave-browser")
+bindexec({ mod, "SHIFT", "t" }, "gtk-launch org.torproject.torbrowser-launcher")
 
 -- ROFI
 bindexec({ mod, "space" }, "rofi -show drun")
@@ -86,7 +87,46 @@ local function smart_focus(dir)
 	if w == nil then
 		return
 	end
-
+	------
+	--
+	-- local ws = hl.get_active_workspace()
+	--
+	-- for i, g in ipairs(ws:get_groups() or {}) do
+	-- 	log("group " .. i)
+	-- 	log(" size: " .. tostring(g.size))
+	-- 	log(" locked: " .. tostring(g.locked))
+	--
+	-- 	if g.current then
+	-- 		log(" current window: " .. g.current.title)
+	-- 	end
+	--
+	-- 	if type(g.members) == "table" then
+	-- 		for _, win in pairs(g.members) do
+	-- 			log("  - " .. win.title)
+	-- 		end
+	-- 	end
+	-- end
+	------
+	-- local ws = hl.get_active_workspace()
+	-- local wins = ws:get_windows() or {}
+	--
+	-- local group = nil
+	--
+	-- local one_group = true
+	-- for _, w in ipairs(wins) do
+	-- 	if not w.group then
+	-- 		one_group = false
+	-- 		break
+	-- 	end
+	--
+	-- 	if not group then
+	-- 		group = w.group
+	-- 	elseif w.group ~= group then
+	-- 		one_group = false
+	-- 		break
+	-- 	end
+	-- end
+	--
 	local is_grouped = w.group ~= nil and w.group.size > 1
 
 	if not is_grouped or dir == "up" or dir == "down" then
@@ -240,8 +280,8 @@ create_toggleable({
 create_toggleable({
 	bind = mod .. " + U",
 	class = "Spotify",
-	width = 0.8,
-	height = 0.8,
+	width = 0.9,
+	height = 0.9,
 	pgrep = "pgrep -x spotify",
 	startup_cmd = "gtk-launch spotify-launcher",
 })
@@ -249,6 +289,8 @@ create_toggleable({
 bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
 bindexec({ mod, "SHIFT", "m" }, "gtk-launch mpv")
+bindexec({ mod, "n" }, "gtk-launch brave-nlkdodakkfmmlodmicoknbiaipomggoe-Default")
+bindexec({ mod, "e" }, "flatpak run com.bilingify.readest")
 
 -- ##### GAMES #####
 bindgeneric({ mod, "SHIFT", "g" }, hl.dsp.submap("game [l]ichess [m]inecraft [s]team"))
@@ -355,12 +397,12 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
 bindexec({ mod, "SHIFT", "v" }, "pavucontrol")
 
 -- ##### DISPLAY CONTROLS #####
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 1%-"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 1%+"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("gdark dec"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("gdark inc"), { locked = true, repeating = true })
 hl.bind(mod .. "+ CTRL + 1", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
 hl.bind(mod .. "+ CTRL + 2", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
-hl.bind(mod .. " + " .. mod2 .. "+ j", hl.dsp.exec_cmd("gdark dec"), { locked = true, repeating = true })
-hl.bind(mod .. " + " .. mod2 .. "+ k", hl.dsp.exec_cmd("gdark inc"), { locked = true, repeating = true })
+hl.bind(mod .. " + " .. mod2 .. "+ j", hl.dsp.exec_cmd("brightnessctl set 1%-"), { locked = true, repeating = true })
+hl.bind(mod .. " + " .. mod2 .. "+ k", hl.dsp.exec_cmd("brightnessctl set 1%+"), { locked = true, repeating = true })
 hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 -- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
