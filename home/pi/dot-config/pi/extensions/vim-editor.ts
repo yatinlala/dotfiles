@@ -162,6 +162,7 @@ class VimEditor extends CustomEditor {
       case "X": this.repeat(() => this.send("\x7f")); return;
       case "d": this.operator = "delete"; this.redraw(); return;
       case "c": this.operator = "change"; this.redraw(); return;
+      case "C": this.operator = "change"; this.deleteMotion("$"); return;
       case "f": this.beginFind(1, false); return;
       case "F": this.beginFind(-1, false); return;
       case "t": this.beginFind(1, true); return;

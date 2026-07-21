@@ -19,6 +19,9 @@ export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 
+# use custom pi image
+export GONDOLIN_DEFAULT_IMAGE=pi-dev:latest
+
 SCRIPTS="$HOME/.local/bin"
 DOTFILES="$HOME/.dotfiles"
 LLMS="$XDG_DATA_HOME/llms"
