@@ -11,6 +11,10 @@ vim.g.gruvbox_material_background = "hard" -- soft, medium, hard
 -- vim.g.gruvbox_material_cursor = "auto"
 
 -- vim.g.gruvbox_material_float_style = "none" -- Background of floating windows
+--
+vim.cmd([[
+    let g:gruvbox_material_colors_override = {'fg0': ['#C3BDAA', '234'] }
+]])
 
 -- vim.cmd([[
 --     "let g:gruvbox_material_colors_override = { 'bg_statusline1': ['#81a2be', '234'], 'bg0': ['#ffffff', '0'], }
