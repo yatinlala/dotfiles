@@ -4,6 +4,7 @@
 # [[ XDG COMPLIANCE ]]
 # alias flatpak='xdg-launch flatpak'
 # alias audacity='xdg-launch audacity'
+alias soulseek='xdg-launch soulseek'
 alias ollama='xdg-launch ollama'
 alias spotdl='xdg-launch spotdl'
 alias scrcpy='xdg-launch scrcpy'
