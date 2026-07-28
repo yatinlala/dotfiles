@@ -18,9 +18,9 @@ configuration {
 
 * {
   al:  #00000000;
-  bg:  #32302f;
+  bg:  #1d2021;
   se:  #504945;
-  fg:  #ebdbb2;
+  fg:  #c3bdaa;
   ac:  #98971a;
 }
 
