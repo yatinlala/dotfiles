@@ -6,8 +6,12 @@ readonly DDC_MODEL="Gigabyte M32Q"
 readonly DDC_BRIGHTNESS=0x10
 readonly DDC_CONTRAST=0x12
 readonly CONTRAST_NORMAL=70
-readonly DDC_STEP=5
-readonly GAMMA_STEP=0.1
+readonly DDC_STEP_NORMAL=5
+readonly DDC_STEP_BIG=10
+readonly GAMMA_STEP_NORMAL=0.1
+readonly GAMMA_STEP_BIG=0.2
+readonly LAPTOP_STEP_NORMAL=1
+readonly LAPTOP_STEP_BIG=5
 readonly GAMMA_MIN=0.1
 readonly GAMMA_MAX=1.0
 
@@ -17,6 +21,9 @@ cache_file="$cache_home/gdark.cache"
 gamma=$GAMMA_MAX
 monitor_brightness=
 monitor_contrast=
+DDC_STEP=$DDC_STEP_NORMAL
+GAMMA_STEP=$GAMMA_STEP_NORMAL
+LAPTOP_STEP=$LAPTOP_STEP_NORMAL
 
 die() {
 	printf 'gdark: %s\n' "$*" >&2
@@ -24,7 +31,7 @@ die() {
 }
 
 usage() {
-	printf 'Usage: %s {inc|dec|--sync}\n' "${0##*/}" >&2
+	printf 'Usage: %s {inc|dec|biginc|bigdec|--sync}\n' "${0##*/}" >&2
 	exit 2
 }
 
@@ -177,7 +184,8 @@ laptop_inc() {
 	if awk -v value="$current_gamma" -v max="$GAMMA_MAX" 'BEGIN { exit !(value < max) }'; then
 		set_gamma "$(gamma_inc "$current_gamma")"
 	else
-		brightnessctl --class backlight --quiet set 1%+ || die "could not increase laptop brightness"
+		brightnessctl --class backlight --quiet set "${LAPTOP_STEP}%+" || \
+			die "could not increase laptop brightness"
 	fi
 }
 
@@ -187,7 +195,7 @@ laptop_dec() {
 	brightness=$(brightnessctl --class backlight get) || die "could not read laptop brightness"
 	[[ $brightness =~ ^[0-9]+$ ]] || die "could not parse laptop brightness: $brightness"
 	if ((brightness > 0)); then
-		brightnessctl --class backlight --quiet --min-value=0 set 1%- || \
+		brightnessctl --class backlight --quiet --min-value=0 set "${LAPTOP_STEP}%-" || \
 			die "could not decrease laptop brightness"
 	elif awk -v value="$current_gamma" -v min="$GAMMA_MIN" 'BEGIN { exit !(value > min) }'; then
 		set_gamma "$(gamma_dec "$current_gamma")"
@@ -195,9 +203,20 @@ laptop_dec() {
 }
 
 main() {
-	local direction=${1:-} monitors enabled_count connector model
+	local command=${1:-} direction monitors enabled_count connector model
 
-	[[ $direction == inc || $direction == dec || $direction == --sync ]] || usage
+	case $command in
+	inc|dec|--sync)
+		direction=$command
+		;;
+	biginc|bigdec)
+		direction=${command#big}
+		DDC_STEP=$DDC_STEP_BIG
+		GAMMA_STEP=$GAMMA_STEP_BIG
+		LAPTOP_STEP=$LAPTOP_STEP_BIG
+		;;
+	*) usage ;;
+	esac
 	need awk
 	need flock
 	need hyprctl
