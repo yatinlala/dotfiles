@@ -61,7 +61,8 @@ tooltip {
 #network,
 #workspaces,
 #mpris,
-#tray {
+#tray,
+#custom-charge_threshold {
   background: #32302f;
   padding: 0 0.6em;
   margin-right: 2px;

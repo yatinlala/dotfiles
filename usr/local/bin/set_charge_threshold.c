@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
       return 1;
     }
     fclose(f);
-    printf("%ld%%\n", val);
+    printf("%ld\n", val);
     return 0;
   }
 

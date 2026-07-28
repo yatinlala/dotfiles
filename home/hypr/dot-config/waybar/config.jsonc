@@ -19,6 +19,7 @@
 		"power-profiles-daemon",
 		"privacy",
 		"idle_inhibitor",
+		"custom/charge_threshold",
 		"mpd",
 		// "custom/todo",
 		"custom/scratchpad_tracking",
@@ -205,6 +206,16 @@
 		"format": "{}",
 		"exec": "$HOME/.config/waybar/modules/scratchpad_tracker",
 		"spacing": 10
+	},
+	"custom/charge_threshold": {
+		"tooltip": false,
+		"format": "{}",
+		"exec": "$HOME/.config/waybar/modules/charge_threshold",
+		"on-click": "$HOME/.config/waybar/modules/charge_threshold up",
+		"on-click-right": "$HOME/.config/waybar/modules/charge_threshold down",
+		"on-scroll-up": "$HOME/.config/waybar/modules/charge_threshold up",
+		"on-scroll-down": "$HOME/.config/waybar/modules/charge_threshold down",
+		"interval": 2
 	},
 	"tray": {
 		"icon-size": 16,
