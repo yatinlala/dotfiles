@@ -49,6 +49,10 @@ hl.config({
 		enabled = true,
 	},
 
+	input = {
+		repeat_rate = 35,
+	},
+
 	group = {
 		groupbar = {
 			font_family = "JetBrainsMono Nerd Font",
