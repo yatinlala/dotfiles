@@ -3,11 +3,11 @@
 --bind 'ctrl-u:toggle-preview'
 --preview="fzf-preview.sh {}"
 
---bind j:down,k:up --bind 'start:unbind(j)+unbind(k)+unbind(i)+hide-preview'
+--bind j:down,k:up --bind 'start:unbind(j,k,i)+hide-preview'
 --bind 'ctrl-i:transform:
         [[ $FZF_PROMPT =~ 🔎 ]] &&
-          echo "change-prompt(V ❯ )+rebind(j)+rebind(k)+rebind(i)" ||
-          echo "change-prompt(🔎 ❯ )+unbind(j)+unbind(k)+unbind(i)"
+          echo "change-prompt(V ❯ )+rebind(j,k,i)" ||
+          echo "change-prompt(🔎 ❯ )+unbind(j,k,i)"
 
 '
---bind 'i:unbind(j)+unbind(k)+unbind(i)+change-prompt(🔎 ❯ )'
+--bind 'i:unbind(j,k,i)+change-prompt(🔎 ❯ )'
