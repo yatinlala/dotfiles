@@ -3,6 +3,7 @@ amd-ucode
 amdgpu_top
 anki
 arch-wiki-docs
+arch-wiki-lite
 aria2
 atomicparsley
 autoconf-archive
@@ -34,8 +35,11 @@ cups
 cups-pdf
 curl
 dash
+ddcutil
 delve
 devtools
+dialog
+dictd
 direnv
 dmidecode
 docker
@@ -56,6 +60,7 @@ flatpak
 foot
 foot-terminfo
 fprintd
+fuse2
 fwupd
 fzf
 gamescope
@@ -68,6 +73,7 @@ git
 git-delta
 git-lfs
 github-cli
+gnome-keyring
 gnuplot
 go
 gptfdisk
@@ -91,6 +97,7 @@ ibus
 imagemagick
 imv
 inetutils
+jujutsu
 just
 keyd
 kitty
@@ -101,6 +108,7 @@ libcaca
 libva-utils
 linux
 linux-firmware
+lld
 llvm
 lolcat
 lsof
@@ -114,6 +122,7 @@ mediainfo
 mesa-utils
 meson
 mpv
+mullvad-vpn
 nasm
 nautilus
 ncdu
@@ -134,11 +143,10 @@ nss-mdns
 nwg-look
 obsidian
 odin
-ollama
-ollama-docs
-ollama-rocm
 opam
+openai-codex
 openblas
+openbsd-netcat
 opencv
 openmp
 openssh
@@ -159,6 +167,7 @@ pandoc-cli
 papers
 pass
 pass-otp
+patchelf
 pavucontrol
 picard
 piper
@@ -191,6 +200,7 @@ qrtool
 qt6-5compat
 qt6-networkauth
 qt6-tools
+qt6-wayland
 qt6ct
 qutebrowser
 raylib
@@ -201,12 +211,17 @@ ripgrep
 rocm-smi-lib
 rofi
 rofimoji
+rpi-imager
 rtmpdump
+rustup
 sassc
 sc3-plugins
+scdoc
 scrcpy
 sdl3_ttf
+seahorse
 shotcut
+showmethekey
 signal-desktop
 slurp
 smartmontools
@@ -327,17 +342,22 @@ vulkan-radeon
 vulkan-tools
 vulkan-utility-libraries
 vulkan-validation-layers
+watchexec
 waybar
 waydroid
 wayvnc
 wev
 wget
+wine
+wine-mono
 wireplumber
 wl-clip-persist
 wl-clipboard
+wlr-randr
 wtype
 xdg-desktop-portal-hyprland
 xkcdpass
+xorg-xhost
 ydotool
 yodl
 yt-dlp
@@ -348,5 +368,6 @@ zathura-pdf-mupdf
 zathura-ps
 zeal
 zed
+zig
 zip
 zsh

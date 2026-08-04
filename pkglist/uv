@@ -1,8 +1,10 @@
-huggingface-hub v1.15.0
+huggingface-hub v1.18.0
 - hf
 - huggingface-cli
 - tiny-agents
+hyprshade v5.0.0
+- hyprshade
 llm v0.31
 - llm
-spotdl v4.4.4
+spotdl v4.5.0
 - spotdl
