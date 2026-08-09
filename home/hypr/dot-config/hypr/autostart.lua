@@ -20,7 +20,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	hl.exec_cmd("wl-clip-persist --clipboard regular")
 
-	hl.exec_cmd("pw-metadata -n settings 0 clock.quantum 256") -- TODO figure out persistent config change for this
+	hl.exec_cmd("pw-metadata -n settings 0 clock.quantum 128") -- TODO figure out persistent config change for this
 	hl.exec_cmd("hyprshade on grayscale")
 	hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%")
 

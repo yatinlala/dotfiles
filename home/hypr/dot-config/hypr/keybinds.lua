@@ -248,23 +248,23 @@ local function create_toggleable(opts)
 	end)
 end
 
-create_toggleable({
-	bind = mod .. " + M",
-	class = "ferdium",
-	width = 0.96,
-	height = 0.9,
-	pgrep = "pgrep -f ferdium",
-	startup_cmd = "gtk-launch ferdium",
-})
+-- create_toggleable({
+-- 	bind = mod .. " + M",
+-- 	class = "ferdium",
+-- 	width = 0.96,
+-- 	height = 0.9,
+-- 	pgrep = "pgrep -f ferdium",
+-- 	startup_cmd = "gtk-launch ferdium",
+-- })
 
 create_toggleable({
 	bind = mod .. " + O",
-	class = "obsidian",
+	class = "md.Obsidian",
 	width = 0.96,
-	height = 0.88,
-	pgrep = "pgrep -f '/usr/lib/electron[0-9]*/electron /usr/lib/obsidian/app.asar'",
+	height = 0.92,
+	pgrep = "pgrep -f '/usr/lib/electron[0-9]*/electron .* /usr/lib/obsidian/app.asar'",
 	startup_cmd = "gtk-launch obsidian",
-	windowrules = { opacity = 0.98 },
+	-- windowrules = { opacity = 0.98 },
 })
 
 create_toggleable({
@@ -277,12 +277,21 @@ create_toggleable({
 })
 
 create_toggleable({
-	bind = mod .. " + U",
+	bind = mod .. "+ U",
 	class = "Spotify",
 	width = 0.9,
 	height = 0.9,
 	pgrep = "pgrep -x spotify",
 	startup_cmd = "gtk-launch spotify-launcher",
+})
+
+create_toggleable({
+	bind = mod .. " + M",
+	class = "io.m51.Gelly",
+	width = 0.9,
+	height = 0.9,
+	pgrep = "pgrep -x gelly",
+	startup_cmd = "flatpak run io.m51.Gelly",
 })
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
@@ -409,11 +418,11 @@ hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- bind = $mod,backslash,exec,toggler inhibit-lid
 -- bind = $mod shift,r,exec,toggler gammastep
 
-hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
-hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })
+hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
+hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })
 
-hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv previous"), { locked = true })
-hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv next"), { locked = true })
-hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=spotify,mpd,spotifyd,mpv play-pause"), { locked = true })
+hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv previous"), { locked = true })
+hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv next"), { locked = true })
+hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv play-pause"), { locked = true })
 
 -- hl.notification.create({ text = "we here", duration = 2000 })

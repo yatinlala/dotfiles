@@ -16,8 +16,8 @@ void generate_status(char *out, size_t outlen) {
   out[0] = '\0';
   strcat(out, " ");
 
-  if (run_command("pgrep -x spotifyd >/dev/null")) {
-    strcat(out, "🎶 ");
+  if (run_command("pgrep -x gelly >/dev/null")) {
+    strcat(out, " ");
   }
   if (run_command("pgrep -x signal-desktop >/dev/null")) {
     strcat(out, "  ");
