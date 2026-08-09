@@ -82,51 +82,31 @@ bindgeneric({ mod, "SHIFT", "f" }, hl.dsp.window.fullscreen({ action = "toggle" 
 -- hl.bind(mod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 bindgeneric({ mod, "g" }, hl.dsp.group.toggle())
 
+local function is_only_visible_window(w)
+	local ws = w.workspace
+	if ws == nil then
+		return false
+	end
+
+	local visible = 0
+	for _, candidate in ipairs(ws:get_windows() or {}) do
+		if candidate.visible then
+			visible = visible + 1
+			if visible > 1 then
+				return false
+			end
+		end
+	end
+
+	return visible == 1
+end
+
 local function smart_focus(dir)
 	local w = hl.get_active_window()
 	if w == nil then
 		return
 	end
-	------
-	--
-	-- local ws = hl.get_active_workspace()
-	--
-	-- for i, g in ipairs(ws:get_groups() or {}) do
-	-- 	log("group " .. i)
-	-- 	log(" size: " .. tostring(g.size))
-	-- 	log(" locked: " .. tostring(g.locked))
-	--
-	-- 	if g.current then
-	-- 		log(" current window: " .. g.current.title)
-	-- 	end
-	--
-	-- 	if type(g.members) == "table" then
-	-- 		for _, win in pairs(g.members) do
-	-- 			log("  - " .. win.title)
-	-- 		end
-	-- 	end
-	-- end
-	------
-	-- local ws = hl.get_active_workspace()
-	-- local wins = ws:get_windows() or {}
-	--
-	-- local group = nil
-	--
-	-- local one_group = true
-	-- for _, w in ipairs(wins) do
-	-- 	if not w.group then
-	-- 		one_group = false
-	-- 		break
-	-- 	end
-	--
-	-- 	if not group then
-	-- 		group = w.group
-	-- 	elseif w.group ~= group then
-	-- 		one_group = false
-	-- 		break
-	-- 	end
-	-- end
-	--
+
 	local is_grouped = w.group ~= nil and w.group.size > 1
 
 	if not is_grouped or dir == "up" or dir == "down" then
@@ -135,16 +115,18 @@ local function smart_focus(dir)
 	end
 
 	if dir == "right" then
-		if w.group.current_index == w.group.size then
-			hl.dispatch(hl.dsp.focus({ direction = "right" }))
-		else
+		local at_edge = w.group.current_index == w.group.size
+		if not at_edge or is_only_visible_window(w) then
 			hl.dispatch(hl.dsp.group.next())
+		else
+			hl.dispatch(hl.dsp.focus({ direction = "right" }))
 		end
 	elseif dir == "left" then
-		if w.group.current_index == 1 then
-			hl.dispatch(hl.dsp.focus({ direction = "left" }))
-		else
+		local at_edge = w.group.current_index == 1
+		if not at_edge or is_only_visible_window(w) then
 			hl.dispatch(hl.dsp.group.prev())
+		else
+			hl.dispatch(hl.dsp.focus({ direction = "left" }))
 		end
 	end
 end
