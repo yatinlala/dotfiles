@@ -6,6 +6,12 @@ vim.pack.add({
 })
 
 require("obsidian").setup({
+    completion = {
+        min_chars = 1,
+    },
+    frontmatter = {
+        enabled = false,
+    },
 
     workspaces = {
         {

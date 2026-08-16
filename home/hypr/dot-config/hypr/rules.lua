@@ -63,6 +63,12 @@ hl.window_rule({
 	opacity = 0.95,
 })
 
+hl.window_rule({
+	match = { class = "com.mitchellh.ghostty" },
+
+	opacity = 0.98,
+})
+
 -- # windowrule {
 -- #     name = nixpkgs-float
 -- #     initialTitle = "https://search.nixos.org/packages?channel=unstable&include_home_manager_options=1&include_modular_service_options=1&include_nixos_options=1 - qutebrowser"

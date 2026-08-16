@@ -241,7 +241,7 @@ end
 
 create_toggleable({
 	bind = mod .. " + O",
-	class = "md.Obsidian",
+	class = "md.obsidian.Obsidian",
 	width = 0.96,
 	height = 0.92,
 	pgrep = "pgrep -f '/usr/lib/electron[0-9]*/electron .* /usr/lib/obsidian/app.asar'",
@@ -259,7 +259,7 @@ create_toggleable({
 })
 
 create_toggleable({
-	bind = mod .. "+ U",
+	bind = mod .. "+ SHIFT + U",
 	class = "Spotify",
 	width = 0.9,
 	height = 0.9,
@@ -268,12 +268,22 @@ create_toggleable({
 })
 
 create_toggleable({
-	bind = mod .. " + M",
+	bind = mod .. " + U",
 	class = "io.m51.Gelly",
 	width = 0.9,
 	height = 0.9,
 	pgrep = "pgrep -x gelly",
 	startup_cmd = "flatpak run io.m51.Gelly",
+})
+
+create_toggleable({
+	bind = mod .. "+ m",
+	class = "mindwtr",
+	width = 0.9,
+	height = 0.9,
+	pgrep = "pgrep -x mindwtr",
+	startup_cmd = "flatpak run tech.dongdongbh.mindwtr",
+	windowrules = { opacity = 0.98 },
 })
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")

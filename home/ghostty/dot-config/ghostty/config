@@ -1,7 +1,9 @@
 ### APPEARANCE ###
 theme = "Gruvbox Dark"
-font-size = 16
-adjust-cell-width= -4%
+background = #1d2021
+foreground = #c3bdaa
+font-size = 15
+# adjust-cell-width= -4%
 
 window-padding-x = 6
 window-padding-y = 4

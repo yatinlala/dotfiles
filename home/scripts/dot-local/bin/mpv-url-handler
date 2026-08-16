@@ -1,0 +1,10 @@
+#!/bin/sh
+
+uri=$1
+
+case "$uri" in
+    mpv://*)
+        url="https://${uri#mpv://}"
+        exec mpv "$url"
+        ;;
+esac
