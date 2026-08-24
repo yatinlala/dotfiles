@@ -105,7 +105,9 @@ lapack
 lazygit
 lf
 libcaca
+libsixel
 libva-utils
+libxpresent
 linux
 linux-firmware
 lld
@@ -121,7 +123,7 @@ man-pages
 mediainfo
 mesa-utils
 meson
-mpv
+mujs
 mullvad-vpn
 nasm
 nautilus
@@ -197,6 +199,7 @@ qbittorrent
 qemu-full
 qpwgraph
 qrtool
+qt5-wayland
 qt6-5compat
 qt6-networkauth
 qt6-tools
@@ -239,6 +242,7 @@ swappy
 swaybg
 swaync
 swh-plugins
+swtpm
 syncthing
 tailscale
 tcpdump
