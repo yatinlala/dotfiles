@@ -71,7 +71,9 @@ alias '?'='duck'
 
 # [[ SHORTEN FREQUENTS ]]
 e() { $EDITOR "$@" }
-run() { systemd-run --user "$@" }
+run() { systemd-run --user --scope "$@" }
+runc() { systemd-run --user --scope -p CPUQuota=200% "$@" }
+runm() {  systemd-run --user --scope -p MemoryHigh=8G "$@"  }
 start-llama() { llama-server --models-dir $LLMS --models-preset $XDG_CONFIG_HOME/llama/config.ini }
 lg() { lazygit "$@" }
 git-clean() {
