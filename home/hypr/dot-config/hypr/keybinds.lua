@@ -144,6 +144,18 @@ bindgeneric({ mod, "l" }, function()
 	smart_focus("right")
 end)
 
+bindgeneric({ mod, "w" }, function()
+	local w = hl.get_active_window()
+	if not w then
+		return
+	end
+	if w.floating then
+		hl.dispatch(hl.dsp.window.cycle_next({ tiled = true }))
+	else
+		hl.dispatch(hl.dsp.window.cycle_next({ floating = true }))
+	end
+end)
+
 local function smart_move(dir)
 	local w = hl.get_active_window()
 	if w == nil then
