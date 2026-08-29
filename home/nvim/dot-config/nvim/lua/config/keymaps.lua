@@ -1,6 +1,8 @@
 -- [ Basic Keymaps ]
 vim.keymap.set("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>', { desc = "cd to %'s dir" })
 
+-- [ INS ]
+vim.cmd("imap <C-BS> <C-W>")
 -- [ NORMAL ]
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
