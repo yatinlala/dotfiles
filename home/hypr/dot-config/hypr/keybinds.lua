@@ -281,11 +281,11 @@ create_toggleable({
 
 create_toggleable({
 	bind = mod .. " + U",
-	class = "io.m51.Gelly",
+	class = "org.yatin.ratune",
 	width = 0.9,
 	height = 0.9,
-	pgrep = "pgrep -x gelly",
-	startup_cmd = "flatpak run io.m51.Gelly",
+	pgrep = "pgrep -x ratune",
+	startup_cmd = "kitty --app-id org.yatin.ratune -e ratune",
 })
 
 create_toggleable({
