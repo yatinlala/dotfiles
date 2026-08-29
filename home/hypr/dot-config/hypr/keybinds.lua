@@ -302,6 +302,7 @@ bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
 bindexec({ mod, "SHIFT", "m" }, "gtk-launch mpv")
 bindexec({ mod, "n" }, "gtk-launch brave-nlkdodakkfmmlodmicoknbiaipomggoe-Default")
+bindexec({ mod, "p" }, "gtk-launch gtk-pipe-viewer")
 bindexec({ mod, "e" }, "flatpak run com.bilingify.readest")
 
 -- ##### GAMES #####
