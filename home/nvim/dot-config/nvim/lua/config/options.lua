@@ -54,6 +54,11 @@ vim.opt.pumheight = 8 -- number of items in completion menu
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "popup" }
 vim.opt.shortmess:append("c") -- Get rid of "pattern not found" during completions
 
+if not vim.g.neovide then
+    require("vim._core.ui2").enable()
+    -- vim.opt.messagesopt = "timeout:4000"
+end
+
 -- vim.opt.updatetime = 250 -- Decrease update time
 -- vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time
 --

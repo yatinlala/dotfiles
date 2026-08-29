@@ -117,7 +117,7 @@ end
 
 function Statusline()
     return table.concat({
-        -- mode(),
+        mode(),
         " ",
         filename(),
         " ",
