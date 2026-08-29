@@ -30,7 +30,7 @@ local function bindgeneric(keys, cmd)
 	hl.bind(keystr, cmd)
 end
 
-bindexec({ mod, "Return" }, "kitty")
+bindexec({ mod, "Return" }, "kitty -1")
 bindexec({ mod, "SHIFT", "Return" }, "ghostty")
 bindgeneric({ mod, "Q" }, hl.dsp.window.close())
 
