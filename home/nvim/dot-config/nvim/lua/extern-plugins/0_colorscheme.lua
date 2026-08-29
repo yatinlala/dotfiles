@@ -42,4 +42,4 @@ vim.cmd.colorscheme("gruvbox-material")
 -- vim.cmd("hi IncSearch guibg=#458588") -- normal colors hard to distinguish
 -- -- vim.cmd("hi! link NormalFloat Normal")
 
--- vim.cmd('hi StatusLine guibg=#83a598 guifg=#fbf1c7')
+vim.cmd("hi StatusLine guifg=#c3bdaa")
