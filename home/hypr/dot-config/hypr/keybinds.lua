@@ -325,10 +325,10 @@ hl.define_submap("game [l]ichess [m]inecraft [s]team", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
-hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)"))
+hl.bind(mod .. " + r", hl.dsp.submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar [f]acilities"))
 
 local shaders = require("shaders")
-hl.define_submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar)", function()
+hl.define_submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar [f]acilities", function()
 	hl.bind("g", function()
 		shaders.toggle("grayscale.glsl")
 		hl.dispatch(hl.dsp.submap("reset"))
@@ -356,6 +356,10 @@ hl.define_submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar
 	end)
 	hl.bind("w", function()
 		hl.dispatch(hl.dsp.exec_cmd("killall waybar && exec waybar"))
+		hl.dispatch(hl.dsp.submap("reset"))
+	end)
+	hl.bind("f", function()
+		hl.dispatch(hl.dsp.exec_cmd("gtk-launch brave-bhedhngpcaadgpjhkjeoakohbefokbnl-Default"))
 		hl.dispatch(hl.dsp.submap("reset"))
 	end)
 
