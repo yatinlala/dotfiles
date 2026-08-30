@@ -102,6 +102,7 @@ orphans() { pacman -Qtdq }
 myip() { curl -4 https://icanhazip.com }
 # alias reflector="sudo reflector -f 30 -l 30 --verbose --save /etc/pacman.d/mirrorlist"
 tpv() { command mpv --vo=tct "$@" }
+uscvpn() { openconnect-sso --server vpn.usc.edu }
 
 ###  alias ask='yai -e'
 ###  alias aske='shell-genie --explain ask'
