@@ -2,14 +2,23 @@
 #
 # Requirements:
 #   - set allow_remote_control yes in kitty.conf
-#   - curl and jq in path
-#   - ~/io/anthropickey containing your Anthropic API key
+#   - llama-cli, timeout, and jq in path
+#   - for the optional Anthropic backend: curl and ~/io/anthropickey
 #   - source /path/to/yokit.zsh in your zshrc
 #
 # Usage:
 #   Type yo <your-request> and press enter.
+#
+# Configuration:
+#   YOKIT_BACKEND=local|anthropic (default: local)
+#   YOKIT_LOCAL_MODEL=/path/to/model.gguf
+#   YOKIT_GPU_LAYERS=all|N (default: all)
 
-ANTHROPIC_API_KEY=$(<~/io/anthropickey)
+YOKIT_BACKEND=${YOKIT_BACKEND:-anthropic}
+YOKIT_LOCAL_MODEL=${YOKIT_LOCAL_MODEL:-$HOME/.local/share/llms/unsloth/gemma-4-E2B-it-Q4_K_M.gguf}
+YOKIT_LOCAL_TIMEOUT=${YOKIT_LOCAL_TIMEOUT:-45}
+YOKIT_GPU_LAYERS=${YOKIT_GPU_LAYERS:-all}
+YOKIT_LOCAL_SYSTEM_PROMPT=${YOKIT_LOCAL_SYSTEM_PROMPT:-"Translate the user request into one safe zsh command. Return only the command, with no Markdown or explanation."}
 YOKIT_SCROLLBACK_LENGTH=1000
 
 _YO_PREFIX=$'\033[3;36m'   # italic cyan (matches yosh)
@@ -44,8 +53,101 @@ _yo_tools='[
   }
 ]'
 
-_yo_call_llm() {
+_yo_call_local() {
   local query="$1"
+  local output_file
+
+  if [[ ! -r "$YOKIT_LOCAL_MODEL" ]]; then
+    print "yokit: local model is not readable: $YOKIT_LOCAL_MODEL" >&2
+    return 1
+  fi
+
+  if ! (( $+commands[llama-cli] )); then
+    print "yokit: llama-cli is not in PATH" >&2
+    return 1
+  fi
+
+  output_file=$(mktemp /tmp/yokit.XXXXXX) || {
+    print "yokit: failed to create temporary output file" >&2
+    return 1
+  }
+
+  command timeout "${YOKIT_LOCAL_TIMEOUT}s" llama-cli \
+    --model "$YOKIT_LOCAL_MODEL" \
+    --system-prompt "$YOKIT_LOCAL_SYSTEM_PROMPT" \
+    --prompt "$query" \
+    --predict 128 \
+    --temp 0 \
+    --gpu-layers "$YOKIT_GPU_LAYERS" \
+    --single-turn \
+    --no-display-prompt \
+    --no-show-timings \
+    --no-warmup \
+    --simple-io \
+    --log-disable \
+    --output "$output_file" \
+    >/dev/null 2>&1
+  local rc=$?
+
+  if (( rc != 0 )); then
+    rm -f -- "$output_file"
+    if (( rc == 124 )); then
+      print "yokit: local model timed out after ${YOKIT_LOCAL_TIMEOUT}s" >&2
+    else
+      print "yokit: llama-cli failed (exit $rc)" >&2
+    fi
+    return 1
+  fi
+
+  # llama-cli's output file contains a short chat transcript. Extract the
+  # assistant turn and trim surrounding blank lines and optional code fences.
+  local command_text
+  command_text=$(awk '
+    /^Assistant:$/ { capture = 1; next }
+    capture { line[++count] = $0 }
+    END {
+      first = 1
+      while (first <= count && line[first] ~ /^[[:space:]]*$/) first++
+      last = count
+      while (last >= first && line[last] ~ /^[[:space:]]*$/) last--
+      if (line[first] ~ /^```(sh|bash|zsh)?[[:space:]]*$/ && line[last] ~ /^```[[:space:]]*$/) {
+        first++
+        last--
+      }
+      for (i = first; i <= last; i++) print line[i]
+    }
+  ' "$output_file")
+  rm -f -- "$output_file"
+
+  if [[ -z "$command_text" ]]; then
+    print "yokit: local model returned no command" >&2
+    return 1
+  fi
+
+  # Match the Anthropic tool response shape so the ZLE handling below works
+  # identically for both backends.
+  jq -n --arg command "$command_text" '{
+    content: [{
+      type: "tool_use",
+      name: "command",
+      input: {
+        command: $command,
+        explanation: ""
+      }
+    }]
+  }'
+}
+
+_yo_call_anthropic() {
+  local query="$1"
+
+  if [[ -z "$ANTHROPIC_API_KEY" ]]; then
+    if [[ ! -r "$HOME/io/anthropickey" ]]; then
+      print "yokit: Anthropic API key not found at ~/io/anthropickey" >&2
+      return 1
+    fi
+    ANTHROPIC_API_KEY=$(<"$HOME/io/anthropickey")
+  fi
 
   # Strip control characters from scrollback before passing to jq.
   # kitty @ get-text can include CR, ESC remnants, etc. even without --ansi;
@@ -97,6 +199,17 @@ _yo_call_llm() {
   print -r -- "$response"
 }
 
+_yo_call_llm() {
+  case "$YOKIT_BACKEND" in
+    local)     _yo_call_local "$1" ;;
+    anthropic) _yo_call_anthropic "$1" ;;
+    *)
+      print "yokit: unknown backend: $YOKIT_BACKEND (expected local or anthropic)" >&2
+      return 1
+      ;;
+  esac
+}
+
 # Chat responses are deferred to precmd so they print above a fresh prompt.
 _yo_pending_chat=""
 
@@ -119,7 +232,7 @@ _yo_accept_line() {
 
   local original_buffer="$BUFFER"
   local query=${BUFFER#yo }
-  zle -R "Thinking..."
+  zle -R "generating..."
 
   local response
   response=$(_yo_call_llm "$query")

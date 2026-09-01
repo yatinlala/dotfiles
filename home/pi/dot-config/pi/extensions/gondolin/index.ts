@@ -19,6 +19,7 @@
  *   - QEMU installed (for example, `brew install qemu` on macOS)
  */
 
+import fs from "node:fs";
 import path from "node:path";
 import { RealFSProvider, VM } from "@earendil-works/gondolin";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
@@ -45,7 +46,24 @@ import {
 } from "@earendil-works/pi-coding-agent";
 
 const GUEST_WORKSPACE = "/workspace";
+const GUEST_CONFIG = `${GUEST_WORKSPACE}/.config/pi`;
 const DEFAULT_GREP_LIMIT = 100;
+
+function resolveConfigSource(): string | undefined {
+	const configDir = process.env.PI_CODING_AGENT_DIR;
+	if (!configDir) return undefined;
+	try {
+		// The config may contain relative symlinks into a dotfiles checkout.
+		// Mount their concrete parent so they remain usable inside the VM.
+		return path.dirname(fs.realpathSync(path.join(configDir, "extensions")));
+	} catch {
+		try {
+			return fs.realpathSync(configDir);
+		} catch {
+			return undefined;
+		}
+	}
+}
 
 type TextToolResult<TDetails> = {
 	content: Array<{ type: "text"; text: string }>;
@@ -364,6 +382,7 @@ function createGondolinBashOps(vm: VM, localCwd: string, shellPath: string): Bas
 
 export default function (pi: ExtensionAPI) {
 	const localCwd = process.cwd();
+	const configSource = resolveConfigSource();
 	const localRead = createReadTool(localCwd);
 	const localWrite = createWriteTool(localCwd);
 	const localEdit = createEditTool(localCwd);
@@ -378,13 +397,13 @@ export default function (pi: ExtensionAPI) {
 
 	async function startVm(ctx?: ExtensionContext): Promise<VM> {
 		ctx?.ui.setStatus("gondolin", ctx.ui.theme.fg("accent", `Gondolin: starting ${GUEST_WORKSPACE}`));
+		const mounts = {
+			[GUEST_WORKSPACE]: new RealFSProvider(localCwd),
+			...(configSource ? { [GUEST_CONFIG]: new RealFSProvider(configSource) } : {}),
+		};
 		const created = await VM.create({
 			sessionLabel: `pi ${path.basename(localCwd)}`,
-			vfs: {
-				mounts: {
-					[GUEST_WORKSPACE]: new RealFSProvider(localCwd),
-				},
-			},
+			vfs: { mounts },
 		});
 		const bashProbe = await created.exec(["/bin/sh", "-lc", "command -v bash || true"]);
 		shellPath = bashProbe.stdout.trim() || "/bin/sh";
@@ -433,6 +452,8 @@ export default function (pi: ExtensionAPI) {
 					`Gondolin VM: ${activeVm.id}`,
 					`Host workspace: ${localCwd}`,
 					`Guest workspace: ${GUEST_WORKSPACE}`,
+					`Host config: ${configSource ?? "not mounted"}`,
+					`Guest config: ${configSource ? GUEST_CONFIG : "not mounted"}`,
 					`Shell: ${shellPath}`,
 				].join("\n"),
 				"info",

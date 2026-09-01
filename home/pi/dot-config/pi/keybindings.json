@@ -8,5 +8,6 @@
     "ctrl+n"
   ],
   "app.model.cycleForward": "ctrl+shift+p",
-  "app.model.cycleBackward": "ctrl+shift+p"
+  "app.model.cycleBackward": "ctrl+shift+p",
+  "app.session.toggleNamedFilter": "ctrl+shift+n"
 }

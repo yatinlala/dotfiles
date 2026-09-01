@@ -11,6 +11,7 @@ class VimEditor extends CustomEditor {
   private operator: Operator;
   private count = "";
   private pendingFind?: Omit<Find, "character">;
+  private pendingReplace = false;
   private lastFind?: Find;
 
   private redraw(): void {
@@ -20,6 +21,8 @@ class VimEditor extends CustomEditor {
   private insert(): void {
     this.mode = "insert";
     this.operator = undefined;
+    this.pendingFind = undefined;
+    this.pendingReplace = false;
     this.count = "";
     this.redraw();
   }
@@ -27,6 +30,8 @@ class VimEditor extends CustomEditor {
   private normal(): void {
     this.mode = "normal";
     this.operator = undefined;
+    this.pendingFind = undefined;
+    this.pendingReplace = false;
     this.count = "";
     this.redraw();
   }
@@ -65,6 +70,26 @@ class VimEditor extends CustomEditor {
   private beginFind(direction: 1 | -1, till: boolean): void {
     this.pendingFind = { direction, till };
     this.count = "";
+    this.redraw();
+  }
+
+  /** Replace the character(s) under the cursor without entering insert mode. */
+  private replace(character: string): void {
+    const { line, col } = this.getCursor();
+    const available = Math.max(0, (this.getLines()[line] ?? "").length - col);
+    const count = Math.min(available, Math.max(1, Number(this.count) || 1));
+    this.count = "";
+    this.pendingReplace = false;
+    if (count === 0) {
+      this.redraw();
+      return;
+    }
+
+    for (let i = 0; i < count; i++) {
+      this.send("\x1b[3~"); // Delete
+      this.send(character);
+    }
+    this.send("\x1b[D"); // Leave the cursor on the final replacement.
     this.redraw();
   }
 
@@ -124,6 +149,17 @@ class VimEditor extends CustomEditor {
       return;
     }
 
+    if (this.pendingReplace) {
+      if (data.length === 1 && data.charCodeAt(0) >= 32) {
+        this.replace(data);
+      } else {
+        this.pendingReplace = false;
+        this.count = "";
+        super.handleInput(data);
+      }
+      return;
+    }
+
     // Preserve Pi/application shortcuts (Ctrl-C, Ctrl-D, paste, etc.).
     if (data.length !== 1 || data.charCodeAt(0) < 32) {
       super.handleInput(data);
@@ -163,6 +199,7 @@ class VimEditor extends CustomEditor {
       case "d": this.operator = "delete"; this.redraw(); return;
       case "c": this.operator = "change"; this.redraw(); return;
       case "C": this.operator = "change"; this.deleteMotion("$"); return;
+      case "r": this.pendingReplace = true; this.redraw(); return;
       case "f": this.beginFind(1, false); return;
       case "F": this.beginFind(-1, false); return;
       case "t": this.beginFind(1, true); return;
@@ -181,7 +218,13 @@ class VimEditor extends CustomEditor {
   render(width: number): string[] {
     const lines = super.render(width);
     if (lines.length === 0) return lines;
-    const pending = this.operator === "delete" ? " d" : this.operator === "change" ? " c" : "";
+    const pending = this.operator === "delete"
+      ? " d"
+      : this.operator === "change"
+        ? " c"
+        : this.pendingReplace
+          ? " r"
+          : "";
     const label = ` ${this.mode.toUpperCase()}${pending} `;
     const last = lines.length - 1;
     if (visibleWidth(lines[last]!) >= label.length) {
