@@ -51,11 +51,7 @@ $reboot)
   fi
   ;;
 $lock)
-  if [[ -f /usr/bin/i3lock ]]; then
-    i3lock
-  elif [[ -f /usr/bin/betterlockscreen ]]; then
-    betterlockscreen -l
-  fi
+  waylock -fork-on-lock -ignore-empty-password -init-color 0x1d2021 -input-color 0x458588 -fail-color 0xcc241d
   ;;
 $suspend)
   mpc -q pause
