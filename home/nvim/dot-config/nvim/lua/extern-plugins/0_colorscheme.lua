@@ -43,3 +43,31 @@ vim.cmd.colorscheme("gruvbox-material")
 -- -- vim.cmd("hi! link NormalFloat Normal")
 
 vim.cmd("hi StatusLine guifg=#c3bdaa")
+
+local function apply_highlight_overrides()
+    -- Let syntax highlighting determine colors without LSP semantic overlays.
+    for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+        vim.api.nvim_set_hl(0, group, {})
+    end
+
+    -- Keep keyword operators such as sizeof neutral.
+    vim.api.nvim_set_hl(0, "@keyword.operator", { link = "Normal" })
+
+    -- Keep function calls such as malloc neutral; definitions stay highlighted.
+    vim.api.nvim_set_hl(0, "@function.call", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@operator", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@variable.member", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@keyword.repeat", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@keyword.conditional", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@type.builtin", { link = "Normal" })
+
+    -- Slightly dim delimiters such as semicolons, commas, colons, and dots.
+    vim.api.nvim_set_hl(0, "@punctuation.delimiter", { fg = "#96938a" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = vim.api.nvim_create_augroup("DisableLspHighlights", { clear = true }),
+    callback = apply_highlight_overrides,
+})
+
+apply_highlight_overrides()
