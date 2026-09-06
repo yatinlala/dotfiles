@@ -1,6 +1,11 @@
 -- [ Basic Keymaps ]
 vim.keymap.set("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>', { desc = "cd to %'s dir" })
 
+vim.keymap.set("n", "<leader>m", function()
+    local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+    vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+end, { desc = "clear multicursors" })
+
 -- [ INS ]
 vim.cmd("imap <C-BS> <C-W>")
 -- [ NORMAL ]
