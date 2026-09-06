@@ -17,9 +17,12 @@ vim.pack.add({
 require("nvim-treesitter").install({ "c", "html", "javascript", "bash" })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "<filetype>" },
-    callback = function()
-        vim.treesitter.start()
+    pattern = { "*" },
+    callback = function(event)
+        local lang = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
+        if lang and vim.treesitter.language.add(lang) then
+            vim.treesitter.start(event.buf, lang)
+        end
     end,
 })
 
