@@ -26,7 +26,7 @@
 -- Example window rules that are useful
 
 hl.window_rule({
-	match = { title = "MPV: YouTube Comments" },
+	match = { title = "MPV: YouTube (Comments|Description)$" },
 	float = true,
 	size = "monitor_w*.6 monitor_h*.7",
 	center = true,

@@ -1,120 +1,111 @@
 #!/usr/bin/env python3
-import json
+"""Render yt-dlp comments as a compact, colored terminal reader."""
 import argparse
+import json
+import os
+import sys
+import textwrap
 from collections import defaultdict
 
 
-def load_comments(filepath):
-    """Load comments from JSON file."""
-    with open(filepath, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data.get("comments", [])
+def clean(value):
+    # Only our own ANSI styling should reach the terminal.
+    return "".join(c for c in str(value) if c in "\n\t" or (ord(c) >= 32 and not 127 <= ord(c) < 160))
 
 
-def build_comment_tree(comments):
-    """Build a tree structure of comments with their replies."""
-    # Separate root comments and replies
-    root_comments = []
-    replies_by_parent = defaultdict(list)
+def number(comment, key):
+    return comment.get(key) or 0
 
+
+def render(data, width=80, sort="none", reply_limit=3):
+    width = max(20, width)
+    lines = []
+
+    def color(text, code):
+        return f"\033[{code}m{text}\033[0m"
+
+    def paragraph(text, prefix="  ", code=None):
+        for part in clean(text).expandtabs(4).splitlines() or [""]:
+            for line in textwrap.wrap(part, width=max(1, width - len(prefix))) or [""]:
+                lines.append(prefix + (color(line, code) if code else line))
+
+    comments = data.get("comments") or []
+    roots = []
+    replies = defaultdict(list)
     for comment in comments:
-        if comment["parent"] == "root":
-            root_comments.append(comment)
+        if comment.get("parent", "root") == "root":
+            roots.append(comment)
         else:
-            replies_by_parent[comment["parent"]].append(comment)
+            replies[comment["parent"]].append(comment)
 
-    return root_comments, replies_by_parent
+    if sort != "none":
+        key = "like_count" if sort == "likes" else "timestamp"
+        roots.sort(key=lambda c: number(c, key), reverse=True)
 
+    paragraph("YOUTUBE  /  COMMENTS", code="1;36")
+    paragraph(data.get("title") or "Unknown title", code="1")
+    paragraph(data.get("channel") or data.get("uploader") or "Unknown channel", code="33")
+    lines.append("")
 
-def format_comment(comment, indent=0):
-    """Format a single comment with indentation."""
-    indent_str = "    " * indent
-    author = comment["author"]
-    likes = comment["like_count"]
-    text = comment["text"]
+    def comment_block(comment, reply=False):
+        prefix = "    │ " if reply else "  "
+        badges = []
+        if comment.get("is_pinned"):
+            badges.append("PINNED")
+        if comment.get("author_is_uploader"):
+            badges.append("CREATOR")
+        author = comment.get("author") or "Unknown author"
+        paragraph(author + ("  · " + " · ".join(badges) if badges else ""),
+                  prefix, "1;36" if not reply else "36")
+        likes = comment.get("like_count")
+        paragraph(f"{likes:,} likes" if likes is not None else "likes unavailable", prefix, "33")
+        paragraph(comment.get("text") or "[No text]", prefix)
+        lines.append("")
 
-    # Wrap text to 80 chars, accounting for indentation
-    max_width = 80 - len(indent_str) - 2  # -2 for the "  " prefix
-    wrapped_lines = []
-
-    for line in text.split("\n"):
-        while len(line) > max_width:
-            # Find last space before max_width
-            split_pos = line.rfind(" ", 0, max_width)
-            if split_pos == -1:
-                split_pos = max_width
-            wrapped_lines.append(line[:split_pos])
-            line = line[split_pos:].lstrip()
-        wrapped_lines.append(line)
-
-    # Join with proper indentation
-    wrapped_text = f"\n{indent_str}  ".join(wrapped_lines)
-
-    return f"{indent_str}[{likes} likes] {author}:\n{indent_str}  {wrapped_text}\n"
-
-
-def print_comment_tree(comment, replies_by_parent, indent=0, sort_replies=False):
-    """Recursively print a comment and its replies."""
-    output = format_comment(comment, indent)
-
-    # Get replies for this comment
-    replies = replies_by_parent.get(comment["id"], [])
-
-    # Optionally sort by likes
-    if sort_replies:
-        replies = sorted(replies, key=lambda x: x["like_count"], reverse=True)
-
-    for reply in replies:
-        output += print_comment_tree(reply, replies_by_parent, indent + 1, sort_replies)
-
-    return output
+    if not roots:
+        paragraph("No comments available.", code="90")
+    for root in roots:
+        lines.append("  " + color("─" * (width - 4), "90"))
+        lines.append("")
+        comment_block(root)
+        thread = sorted(replies.get(root.get("id"), []),
+                        key=lambda c: number(c, "like_count"), reverse=True)
+        for reply in thread[:reply_limit]:
+            comment_block(reply, reply=True)
+        if len(thread) > reply_limit:
+            paragraph(f"+ {len(thread) - reply_limit} more fetched replies", "    │ ", "90")
+            lines.append("")
+    return "\n".join(lines)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Display YouTube comments")
-    parser.add_argument("json_file", help="Path to the JSON file with comments")
-    parser.add_argument(
-        "--sort",
-        choices=["likes", "time", "none"],
-        default="none",
-        help="Sort order: likes, time, or none (default, use yt-dlp order)",
-    )
-
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("json_file", nargs="?", default="-", help="JSON file, or - for stdin (default)")
+    parser.add_argument("--sort", choices=["none", "likes", "time"], default="none",
+                        help="Root order: preserve YouTube order (default), likes, or time")
+    parser.add_argument("--replies", type=int, default=3, help="Replies displayed per thread (default: 3)")
     args = parser.parse_args()
-
-    # Load and process comments
-    comments = load_comments(args.json_file)
-    root_comments, replies_by_parent = build_comment_tree(comments)
-
-    # Sort root comments based on argument
-    if args.sort == "likes":
-        root_comments_sorted = sorted(
-            root_comments, key=lambda x: x["like_count"], reverse=True
-        )
-        sort_replies = True
-    elif args.sort == "time":
-        root_comments_sorted = sorted(
-            root_comments, key=lambda x: x["timestamp"], reverse=True
-        )
-        sort_replies = True
-    else:  # 'none'
-        root_comments_sorted = root_comments
-        sort_replies = False
-
-    # Generate output
-    output = "=" * 80 + "\n"
-    output += "YOUTUBE COMMENTS\n"
-    output += "=" * 80 + "\n\n"
-
-    for comment in root_comments_sorted:
-        output += print_comment_tree(
-            comment, replies_by_parent, sort_replies=sort_replies
-        )
-        output += "-" * 80 + "\n"
-
-    # Print to stdout (can be piped to less)
-    print(output)
+    if args.replies < 0:
+        parser.error("--replies must be nonnegative")
+    try:
+        if args.json_file == "-":
+            data = json.load(sys.stdin)
+        else:
+            with open(args.json_file, encoding="utf-8") as stream:
+                data = json.load(stream)
+        if not isinstance(data, dict):
+            raise ValueError("Expected a video JSON object")
+        # stdout is captured by Bash, but stderr is still connected to Kitty.
+        try:
+            width = os.get_terminal_size(sys.stderr.fileno()).columns
+        except OSError:
+            width = 80
+        print(render(data, width, args.sort, args.replies))
+    except (OSError, ValueError) as error:
+        print(f"Cannot read comments: {error}", file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -1,65 +1,44 @@
 #!/bin/bash
-# Show YouTube video description in a terminal window
+# Run inside Kitty; keep fetched metadata in memory and pipe text to the pager.
 
 VIDEO_PATH="$1"
-TEMP_JSON="/tmp/yt_description_$$.json"
 
-# Run everything in background, completely detached from MPV
-(
-    # Check if it's a URL or a file
-    if [[ "$VIDEO_PATH" =~ ^https?:// ]]; then
-        # It's already a URL
-        VIDEO_URL="$VIDEO_PATH"
-    else
-        # It's a local file - try to extract YouTube URL from metadata
-        VIDEO_URL=$(ffprobe -v quiet -print_format json -show_format "$VIDEO_PATH" 2>/dev/null | \
-                    grep -oP '"comment":\s*"\K[^"]*' | \
-                    grep -E 'youtube\.com|youtu\.be' | head -1)
-        
-        # If ffprobe didn't work, try mediainfo
-        if [ -z "$VIDEO_URL" ]; then
-            VIDEO_URL=$(mediainfo "$VIDEO_PATH" 2>/dev/null | \
-                       grep -i "^Comment" | \
-                       grep -oE 'https?://[^[:space:]]+' | \
-                       grep -E 'youtube\.com|youtu\.be' | head -1)
-        fi
-        
-        if [ -z "$VIDEO_URL" ]; then
-            notify-send "MPV Description" "No YouTube URL found in video metadata" 2>/dev/null
-            exit 1
-        fi
+youtube_url() {
+    grep -oE 'https?://(www\.|m\.|music\.)?(youtube\.com|youtu\.be)/[^[:space:]"<>]+' | head -1
+}
+
+if [[ "$VIDEO_PATH" =~ ^https?:// ]]; then
+    VIDEO_URL="$VIDEO_PATH"
+else
+    VIDEO_URL=$(ffprobe -v quiet -print_format json -show_format "$VIDEO_PATH" 2>/dev/null |
+        jq -r '.format.tags // {} | to_entries[] | select(.key | ascii_downcase == "comment") | .value' |
+        youtube_url)
+
+    if [ -z "$VIDEO_URL" ]; then
+        VIDEO_URL=$(mediainfo "$VIDEO_PATH" 2>/dev/null |
+            grep -i '^Comment' | youtube_url)
     fi
 
-    # Fetch video info using yt-dlp (silently)
-    yt-dlp --skip-download --write-info-json --output "$TEMP_JSON" "$VIDEO_URL" >/dev/null 2>&1
-
-    # Check if info was fetched
-    if [ ! -f "${TEMP_JSON}.info.json" ]; then
-        notify-send "MPV Description" "Failed to fetch video info" 2>/dev/null
+    if [ -z "$VIDEO_URL" ]; then
+        notify-send "MPV Description" "No YouTube URL found in video metadata" 2>/dev/null
         exit 1
     fi
+fi
 
-    # Extract and format description
-    TITLE=$(jq -r '.title // "Unknown Title"' "${TEMP_JSON}.info.json")
-    CHANNEL=$(jq -r '.channel // .uploader // "Unknown Channel"' "${TEMP_JSON}.info.json")
-    UPLOAD_DATE=$(jq -r '.upload_date // ""' "${TEMP_JSON}.info.json" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/')
-    VIEW_COUNT=$(jq -r '.view_count // ""' "${TEMP_JSON}.info.json" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta')
-    LIKE_COUNT=$(jq -r '.like_count // ""' "${TEMP_JSON}.info.json" | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta')
-    DESCRIPTION=$(jq -r '.description // "No description available"' "${TEMP_JSON}.info.json")
+# Check the fetch before opening less so errors do not leave an empty pager.
+if ! VIDEO_JSON=$(yt-dlp --dump-json --no-playlist -- "$VIDEO_URL"); then
+    notify-send "MPV Description" "Failed to fetch video info" 2>/dev/null
+    exit 1
+fi
 
-    # Open in kitty with less pager
-    kitty --title="MPV: YouTube Description" bash -c "
-        echo -e '\033[1;36m$TITLE\033[0m'
-        echo -e '\033[1;33m$CHANNEL\033[0m'
-        echo ''
-        [ -n '$UPLOAD_DATE' ] && echo -e '\033[0;90mUploaded: $UPLOAD_DATE\033[0m'
-        [ -n '$VIEW_COUNT' ] && echo -e '\033[0;90mViews: $VIEW_COUNT\033[0m'
-        [ -n '$LIKE_COUNT' ] && echo -e '\033[0;90mLikes: $LIKE_COUNT\033[0m'
-        echo ''
-        echo -e '\033[0;37m$DESCRIPTION\033[0m'
-        rm -f '${TEMP_JSON}.info.json'
-    " | less -R
-) &
-
-# Exit immediately so MPV doesn't wait
-exit 0
+jq -r '
+    def count: tostring | gsub("(?<=\\d)(?=(\\d{3})+$)"; ",");
+    "\u001b[1;36m\(.title // "Unknown Title")\u001b[0m",
+    "\u001b[1;33m\(.channel // .uploader // "Unknown Channel")\u001b[0m\n",
+    (if .upload_date then
+        "\u001b[0;90mUploaded: \(.upload_date | sub("^(?<y>[0-9]{4})(?<m>[0-9]{2})(?<d>[0-9]{2})$"; "\(.y)-\(.m)-\(.d)"))\u001b[0m"
+    else empty end),
+    (if .view_count != null then "\u001b[0;90mViews: \(.view_count | count)\u001b[0m" else empty end),
+    (if .like_count != null then "\u001b[0;90mLikes: \(.like_count | count)\u001b[0m" else empty end),
+    "\n\(.description // "No description available")"
+' <<< "$VIDEO_JSON" | less -R

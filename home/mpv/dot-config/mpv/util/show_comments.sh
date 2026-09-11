@@ -1,48 +1,40 @@
 #!/bin/bash
-# Save this as: ~/.config/mpv/scripts/show_comments.sh
-
+# Run inside Kitty. No metadata or rendered text is written to disk.
 VIDEO_PATH="$1"
-TEMP_JSON="/tmp/yt_comments_$$.json"
-PYTHON_SCRIPT="$HOME/.config/mpv/util/sort_comments.py"
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
-# Run everything in background, completely detached from MPV
-(
-    # Check if it's a URL or a file
-    if [[ "$VIDEO_PATH" =~ ^https?:// ]]; then
-        # It's already a URL
-        VIDEO_URL="$VIDEO_PATH"
-    else
-        # It's a local file - try to extract YouTube URL from metadata
-        VIDEO_URL=$(ffprobe -v quiet -print_format json -show_format "$VIDEO_PATH" 2>/dev/null | \
-                    grep -oP '"comment":\s*"\K[^"]*' | \
-                    grep -E 'youtube\.com|youtu\.be' | head -1)
-        
-        # If ffprobe didn't work, try mediainfo
-        if [ -z "$VIDEO_URL" ]; then
-            VIDEO_URL=$(mediainfo "$VIDEO_PATH" 2>/dev/null | \
-                       grep -i "^Comment" | \
-                       grep -oE 'https?://[^[:space:]]+' | \
-                       grep -E 'youtube\.com|youtu\.be' | head -1)
-        fi
-        
-        if [ -z "$VIDEO_URL" ]; then
-            notify-send "MPV Comments" "No YouTube URL found in video metadata" 2>/dev/null
-            exit 1
-        fi
+youtube_url() {
+    grep -oE 'https?://(www\.|m\.|music\.)?(youtube\.com|youtu\.be)/[^[:space:]"<>]+' | head -1
+}
+
+fail() {
+    printf '\n%s\n' "$1" >&2
+    notify-send "MPV Comments" "$1" 2>/dev/null
+    exit 1
+}
+
+if [[ "$VIDEO_PATH" =~ ^https?:// ]]; then
+    VIDEO_URL="$VIDEO_PATH"
+else
+    VIDEO_URL=$(ffprobe -v quiet -print_format json -show_format "$VIDEO_PATH" 2>/dev/null |
+        jq -r '.format.tags // {} | to_entries[] | select(.key | ascii_downcase == "comment") | .value' |
+        youtube_url)
+    if [ -z "$VIDEO_URL" ]; then
+        VIDEO_URL=$(mediainfo "$VIDEO_PATH" 2>/dev/null |
+            grep -i '^Comment' | youtube_url)
     fi
+    [ -n "$VIDEO_URL" ] || fail "No YouTube URL found in video metadata"
+fi
 
-    # Fetch comments using yt-dlp (silently)
-    yt-dlp --skip-download --write-comments --extractor-args "youtube:comment_sort=top;max_comments=100" --output "$TEMP_JSON" "$VIDEO_URL" >/dev/null 2>&1
+printf '\033[1;36mLoading top comments…\033[0m\n'
+# Keep YouTube top order. Fetch up to 30 threads and 10 replies per thread;
+# the renderer displays the three most-liked replies from each fetched sample.
+if ! VIDEO_JSON=$(yt-dlp --dump-json --no-playlist --write-comments \
+    --extractor-args "youtube:comment_sort=top;max_comments=330,30,300,10" -- "$VIDEO_URL"); then
+    fail "Failed to fetch comments"
+fi
 
-    # Check if comments were fetched
-    if [ ! -f "${TEMP_JSON}.info.json" ]; then
-        notify-send "MPV Comments" "Failed to fetch comments" 2>/dev/null
-        exit 1
-    fi
-
-    # Open in kitty with less pager
-    kitty --title="MPV: YouTube Comments" bash -c "python3 '$PYTHON_SCRIPT' '${TEMP_JSON}.info.json' | less -R; rm -f '${TEMP_JSON}.info.json'" >/dev/null 2>&1
-) &
-
-# Exit immediately so MPV doesn't wait
-exit 0
+if ! COMMENTS=$(python3 "$SCRIPT_DIR/sort_comments.py" <<< "$VIDEO_JSON"); then
+    fail "Failed to format comments"
+fi
+printf '%s\n' "$COMMENTS" | less -R
