@@ -13,6 +13,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hypridle")
 	hl.exec_cmd("nm-applet --indicator")
 	hl.exec_cmd("handy --start-hidden")
+	hl.exec_cmd("obsidian-ntfy")
 
 	hl.exec_cmd("gammastep")
 	hl.exec_cmd("syncthing --no-browser")

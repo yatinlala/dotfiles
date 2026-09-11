@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+ntfy subscribe ylal-obs-notif-calico-skies |
+jq -c --unbuffered 'select(.event == "message")' |
+while read -r msg; do
+    title=$(jq -r '.title // "ntfy"' <<<"$msg")
+    body=$(jq -r '.message // ""' <<<"$msg")
+
+    notify-send \
+        --app-name="ntfy" \
+        "$title" \
+        "$body"
+done
