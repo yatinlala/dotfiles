@@ -288,19 +288,19 @@ create_toggleable({
 	startup_cmd = "kitty --app-id org.yatin.ratune -e ratune",
 })
 
-create_toggleable({
-	bind = mod .. "+ m",
-	class = "mindwtr",
-	width = 0.9,
-	height = 0.9,
-	pgrep = "pgrep -x mindwtr",
-	startup_cmd = "flatpak run tech.dongdongbh.mindwtr",
-	windowrules = { opacity = 0.98 },
-})
+-- create_toggleable({
+-- 	bind = mod .. "+ m",
+-- 	class = "mindwtr",
+-- 	width = 0.9,
+-- 	height = 0.9,
+-- 	pgrep = "pgrep -x mindwtr",
+-- 	startup_cmd = "flatpak run tech.dongdongbh.mindwtr",
+-- 	windowrules = { opacity = 0.98 },
+-- })
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
-bindexec({ mod, "SHIFT", "m" }, "gtk-launch mpv")
+bindexec({ mod, "m" }, "gtk-launch mpv")
 bindexec({ mod, "n" }, "gtk-launch brave-nlkdodakkfmmlodmicoknbiaipomggoe-Default")
 bindexec({ mod, "p" }, "gtk-launch gtk-pipe-viewer")
 bindexec({ mod, "e" }, "flatpak run com.bilingify.readest")
