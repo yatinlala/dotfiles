@@ -58,7 +58,7 @@ hl.window_rule({
 	match = { class = "org.yatin.fzfpopup" },
 
 	float = true,
-	size = "monitor_w*0.8 monitor_h*0.8",
+	size = "monitor_w*0.92 monitor_h*0.90",
 	center = true,
 	opacity = 0.95,
 })

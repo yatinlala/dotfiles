@@ -300,6 +300,8 @@ create_toggleable({
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
+bindexec({ mod, "slash" }, "kitty --class org.yatin.fzfpopup -o allow_remote_control=yes sm-mini reload")
+
 bindexec({ mod, "m" }, "gtk-launch mpv")
 bindexec({ mod, "n" }, "gtk-launch brave-nlkdodakkfmmlodmicoknbiaipomggoe-Default")
 bindexec({ mod, "p" }, "gtk-launch gtk-pipe-viewer")
