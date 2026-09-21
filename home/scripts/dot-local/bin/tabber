@@ -1,415 +1,317 @@
-#!/usr/bin/bash
+#!/usr/bin/env python3
+"""Interactive bookmarks stored in a single Obsidian Markdown note."""
+import argparse
+from contextlib import contextmanager
+from dataclasses import dataclass
+from datetime import date
+import fcntl
+from html.parser import HTMLParser
+import os
+import pwd
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
+from urllib.parse import urlsplit
 
-# tabber - A shell script for managing browser tabs
-# Usage: ./tabber {store|find|delete|edit}
-# TODO should be case insensitive, not working
+USER_HOME = Path(pwd.getpwuid(os.getuid()).pw_dir)
+FILE = Path(os.environ.get('TABBER_FILE', str(USER_HOME / 'documents/notes/tabber.md')))
+HEADER = '# Tabber\n\nSaved links. Edit titles, dates, tags, or add indented notes inside each entry.\nTabber matches bookmarks by URL. Keep annotations indented beneath their bookmark.\n\n'
+DELETED_NOTICE = '  *Deleted — excluded from Tabber search.*\n'
+LINK = re.compile(r'^- \[((?:\\.|[^\\\]])*)\]\((?:<([^\n<>]+)>|([^\n]+))\)[ \t]*$')
+METADATA = re.compile(r'^  added: (\d{4}-\d{2}-\d{2})[ \t]*·[ \t]*(.*)$')
 
-TABBER_FILE="$HOME/.local/share/tabber.txt"
 
-# Ensure the directory exists
-mkdir -p "$(dirname "$TABBER_FILE")"
+class Cancelled(Exception):
+    pass
 
-# Function to get page title from URL
-get_page_title() {
-    local url="$1"
-    local fetch_url title
 
-    # Reddit serves an anti-bot interstitial ("Please wait for verification")
-    # to curl on www.reddit.com regardless of headers; old.reddit.com does not.
-    fetch_url=$(sed -E 's#^(https?://)(www\.)?reddit\.com#\1old.reddit.com#' <<<"$url")
+@dataclass
+class Entry:
+    url: str
+    title: str
+    added: str
+    tags: list
+    deleted: bool = False
+    notes: str = ''
+    start: int = 0
+    end: int = 0
 
-    # Fetch with a browser User-Agent and --compressed so sites return the real
-    # page. pup's text{} decodes HTML entities for us. Whitespace is collapsed
-    # and trimmed with tr+sed (NOT xargs, which strips quotes/apostrophes and
-    # truncates titles containing them).
-    title=$(curl -fsSL --compressed --max-time 15 \
-        -A 'Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0' \
-        -H 'Accept-Language: en-US,en;q=0.9' \
-        "$fetch_url" \
-        | pup --plain 'title text{}' \
-        | tr -s '[:space:]' ' ' \
-        | sed 's/^ *//; s/ *$//')
 
-    printf '%s\n' "${title:-Untitled}"
-}
+def clean(value):
+    return ' '.join(value.split())
 
-# Function to store a new tab
-store_tab() {
-    # Get URL from clipboard
-    local url
-    url=$(wl-paste)
 
-    if [[ -z "$url" ]]; then
-        echo "Error: No URL found in clipboard"
-        notify-send "Tabber Error" "No URL found in clipboard"
-        exit 1
-    fi
-
-    # Validate URL format (basic check)
-    if [[ ! "$url" =~ ^https?:// ]]; then
-        echo "Error: Invalid URL format. Must start with http:// or https://"
-        notify-send "Tabber Error" "Invalid URL format: $url"
-        exit 1
-    fi
-
-    # Check for duplicate URL (exact match on the URL field, skip deleted entries)
-    if [[ -f "$TABBER_FILE" ]]; then
-        local existing
-        existing=$(awk -F'\t' -v u="$url" '$1==u' "$TABBER_FILE" | head -n1)
-        if [[ -n "$existing" ]]; then
-            local existing_title existing_date existing_tags
-            existing_title=$(echo "$existing" | cut -f2)
-            existing_date=$(echo "$existing" | cut -f3)
-            existing_tags=$(echo "$existing" | cut -f4)
-            echo "Error: URL already stored: $existing_title ($existing_date) [$existing_tags]"
-            notify-send "Tabber" "Duplicate URL\n$existing_title\n$existing_date · $existing_tags" --icon=dialog-warning
-            exit 1
-        fi
-    fi
-
-    # Get todo/archive choice (now stored as a tag)
-    local type
-    type=$(echo -e "todo\narchive" | rofi --case-smart -dmenu -p " Type:")
-
-    if [[ -z "$type" ]]; then
-        echo "Operation cancelled"
-        notify-send "Tabber" "Operation cancelled"
-        exit 0
-    fi
-
-    # Get optional tags
-    local tags
-    tags=$(rofi -dmenu -p " Tags (comma separated, optional):")
-
-    # Merge type into tags (type is now a tag)
-    if [[ -z "$tags" ]]; then
-        tags="$type"
-    else
-        tags="$tags,$type"
-    fi
-
-    # Get current date
-    local date
-    date=$(date '+%Y-%m-%d')
-
-    # Get page title (last, so it doesn't block rofi prompts)
-    echo "Fetching page title..."
-    local title
-    title=$(get_page_title "$url")
-
-    # New file format: URL<TAB>TITLE<TAB>DATE<TAB>TAGS
-    local entry="${url}	${title}	${date}	${tags}"
-
-    # Append to file
-    echo "$entry" >> "$TABBER_FILE"
-
-    echo "Tab stored: $title"
-    notify-send "Tabber" "Tab stored: $title" --icon=browser
-}
-
-# Helper: check if a comma-separated tag list contains a specific tag (case-insensitive)
-tags_contain() {
-    local tags="$1"
-    local want="$2"
-    grep -qiE '(^|[[:space:]]*,[[:space:]]*)'"$want"'([[:space:]]*,[[:space:]]*|$)' <<<"$tags"
-}
-
-# Helper: populate the global arrays TAB_ENTRIES (rofi display strings) and
-# TAB_LINES (matching 1-based file line numbers) with active (non-deleted) tabs.
-# Optional $1 = tag filter ("todo"/"archive"); empty or "both" includes all.
-load_tabs() {
-    local filter="$1"
-    local line_num=0 url title date tags
-    TAB_ENTRIES=()
-    TAB_LINES=()
-    while IFS=$'\t' read -r url title date tags; do
-        ((line_num++))
-        [[ "$url" =~ ^# ]] && continue
-        if [[ -n "$filter" && "$filter" != "both" ]] && ! tags_contain "$tags" "$filter"; then
+def tags_from(value):
+    tags = []
+    for tag in value.split(','):
+        tag = tag.strip().lstrip('#')
+        if tag.startswith('tabber/'):
+            tag = tag[7:]
+        if not tag:
             continue
-        fi
-        TAB_ENTRIES+=("$title | $url | $date | ${tags:-(no tags)}")
-        TAB_LINES+=("$line_num")
-    done < "$TABBER_FILE"
-}
+        if not re.fullmatch(r'[\w/-]+', tag) or not re.search(r'[^\d/]', tag):
+            raise ValueError(f'Invalid tag: {tag}. Use letters, underscores, hyphens or slashes.')
+        if tag not in tags:
+            tags.append(tag)
+    return tags
 
-# Helper: echo the TAB_ENTRIES index whose display string exactly matches $1.
-# Returns non-zero if not found.
-selected_index() {
-    local sel="$1" i
-    for i in "${!TAB_ENTRIES[@]}"; do
-        [[ "${TAB_ENTRIES[$i]}" == "$sel" ]] && { echo "$i"; return 0; }
-    done
-    return 1
-}
 
-# Function to find and copy a tab
-find_tab() {
-    local filter_type="$1"  # "todo", "archive", "both", or empty for menu
+def check_url(url):
+    parsed = urlsplit(url)
+    if parsed.scheme not in ('http', 'https') or not parsed.netloc or re.search(r'[\s<>]', url):
+        raise ValueError('URL must be a single http:// or https:// address.')
+    return url
 
-    if [[ ! -f "$TABBER_FILE" ]]; then
-        echo "No tabs stored yet"
-        exit 1
-    fi
 
-    # If no filter specified, show menu to choose
-    if [[ -z "$filter_type" ]]; then
-        filter_type=$(echo -e "both\ntodo\narchive" | rofi -dmenu -p " Show which tabs:")
+def render(entry):
+    title = entry.title.replace('\\', '\\\\')
+    for char in '[]*_`':
+        title = title.replace(char, '\\' + char)
+    tags = ' '.join('#tabber/' + t if t.lower() in ('todo', 'archive') else '#' + t for t in entry.tags)
+    return (f'- [{title}](<{entry.url}>)\n'
+            f'  added: {entry.added} · {tags}\n'
+            f'{DELETED_NOTICE if entry.deleted else ""}{entry.notes}')
 
-        if [[ -z "$filter_type" ]]; then
-            echo "No selection made"
-            exit 0
-        fi
-    fi
 
-    load_tabs "$filter_type"
+def parse(text):
+    """Read link bullets and their indented metadata/annotations, without IDs."""
+    entries = []
+    lines = text.splitlines(keepends=True)
+    offsets = [0]
+    for line in lines:
+        offsets.append(offsets[-1] + len(line))
+    i = 0
+    while i < len(lines):
+        link = LINK.fullmatch(lines[i].rstrip('\r\n'))
+        if not link:
+            i += 1
+            continue
+        metadata = METADATA.fullmatch(lines[i + 1].rstrip('\r\n')) if i + 1 < len(lines) else None
+        if not metadata:
+            raise ValueError(f'Missing or malformed bookmark metadata on line {i + 2}.')
+        url = check_url(link[2] or link[3])
+        title = re.sub(r'\\(.)', r'\1', link[1])
+        tag_text = metadata[2].strip()
+        if any(not t.startswith('#') for t in tag_text.split()):
+            raise ValueError(f'Malformed tags on line {i + 2}.')
+        end = i + 2
+        while end < len(lines):
+            if lines[end].startswith(('  ', '\t')):
+                end += 1
+            elif not lines[end].strip():
+                following = end + 1
+                while following < len(lines) and not lines[following].strip():
+                    following += 1
+                if following < len(lines) and lines[following].startswith(('  ', '\t')):
+                    end = following
+                else:
+                    break
+            else:
+                break
+        notes = ''.join(lines[i + 2:end])
+        deleted = notes.startswith(DELETED_NOTICE)
+        entries.append(Entry(url, title, metadata[1], tags_from(','.join(tag_text.split())),
+                             deleted, notes.removeprefix(DELETED_NOTICE), offsets[i], offsets[end]))
+        i = end
+    return entries
 
-    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
-        if [[ "$filter_type" == "both" ]]; then
-            echo "No active tabs found"
-        else
-            echo "No tabs found tagged '$filter_type'"
-        fi
-        exit 1
-    fi
 
-    # Show in rofi with appropriate prompt
-    local prompt="Select tab:"
-    case "$filter_type" in
-        "todo") prompt="Select todo tab:" ;;
-        "archive") prompt="Select archive tab:" ;;
-    esac
+def read():
+    return FILE.read_text() if FILE.exists() else HEADER
 
-    local selected
-    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | tac | rofi -i -dmenu -p " $prompt")
 
-    if [[ -z "$selected" ]]; then
-        echo "No selection made"
-        exit 0
-    fi
+def save(original, updated):
+    FILE.parent.mkdir(parents=True, exist_ok=True)
+    if read() != original:
+        raise ValueError('The note changed while the menu was open. Please retry.')
+    mode = FILE.stat().st_mode & 0o777 if FILE.exists() else 0o600
+    fd, name = tempfile.mkstemp(prefix='.tabber-', suffix='.tmp', dir=FILE.parent)
+    try:
+        with os.fdopen(fd, 'w') as handle:
+            handle.write(updated)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(name, mode)
+        if read() != original:
+            raise ValueError('The note changed while saving. Please retry.')
+        os.replace(name, FILE)
+    finally:
+        if os.path.exists(name):
+            os.unlink(name)
 
-    local idx
-    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
 
-    # Read the URL straight from the file by line number — titles can contain
-    # '|', so parsing the display string is unreliable.
-    local selected_url
-    selected_url=$(sed -n "${TAB_LINES[$idx]}p" "$TABBER_FILE" | cut -f1)
+@contextmanager
+def lock():
+    # Held only around writes, never while waiting for a menu or network request.
+    import hashlib
+    directory = Path(os.environ.get('XDG_STATE_HOME', str(USER_HOME / '.local/state'))) / 'tabber'
+    directory.mkdir(parents=True, exist_ok=True)
+    name = hashlib.sha256(str(FILE.resolve()).encode()).hexdigest() + '.lock'
+    with (directory / name).open('a') as handle:
+        fcntl.flock(handle, fcntl.LOCK_EX)
+        yield
 
-    # Copy to clipboard
-    echo -n "$selected_url" | wl-copy
-    echo "URL copied to clipboard: $selected_url"
-}
 
-# Function to edit an existing tab
-edit_tab() {
-    if [[ ! -f "$TABBER_FILE" ]]; then
-        echo "No tabs stored yet"
-        exit 1
-    fi
+def menu(prompt, choices=(), current=None, index=False):
+    args = ['rofi', '-i', '-dmenu', '-p', prompt]
+    if current is not None:
+        args += ['-filter', current]
+    if index:
+        args += ['-format', 'i', '-no-custom']
+    result = subprocess.run(args, input='\n'.join(choices) + '\n', text=True, capture_output=True)
+    if result.returncode != 0:
+        raise Cancelled()
+    return result.stdout.rstrip('\n')
 
-    load_tabs
 
-    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
-        echo "No active tabs found"
-        exit 1
-    fi
+def notify(message):
+    print(message)
+    try:
+        subprocess.run(['notify-send', 'Tabber', message], check=False)
+    except FileNotFoundError:
+        pass
 
-    # Pick a tab to edit
-    local selected
-    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | tac | rofi -i -dmenu -p " Select tab to edit:")
 
-    if [[ -z "$selected" ]]; then
-        echo "No selection made"
-        exit 0
-    fi
+def duplicate(entries, url, excluding=None):
+    for entry in entries:
+        if not entry.deleted and entry.url == url and entry is not excluding:
+            raise ValueError(f'URL already stored: {entry.title} ({entry.added})')
 
-    local idx
-    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
-    local target_line=${TAB_LINES[$idx]}
 
-    # Read current values directly from the file using the line number
-    local raw_line
-    raw_line=$(sed -n "${target_line}p" "$TABBER_FILE")
+class PageTitle(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.inside = False
+        self.parts = []
 
-    local current_url current_title current_date current_tags
-    current_url=$(echo "$raw_line" | cut -f1)
-    current_title=$(echo "$raw_line" | cut -f2)
-    current_date=$(echo "$raw_line" | cut -f3)
-    current_tags=$(echo "$raw_line" | cut -f4)
+    def handle_starttag(self, tag, attrs):
+        if tag == 'title':
+            self.inside = True
 
-    # Edit URL (with duplicate check, excluding current line)
-    local new_url
-    new_url=$(rofi -dmenu -p " URL:" -filter "$current_url" <<< "")
-    if [[ -z "$new_url" ]]; then
-        echo "Operation cancelled"
-        exit 0
-    fi
-    if [[ ! "$new_url" =~ ^https?:// ]]; then
-        echo "Error: Invalid URL format"
-        notify-send "Tabber Error" "Invalid URL format: $new_url"
-        exit 1
-    fi
-    # Duplicate check — skip if URL is unchanged (exact match, excluding this line)
-    if [[ "$new_url" != "$current_url" ]]; then
-        local dupe
-        dupe=$(awk -F'\t' -v u="$new_url" -v ln="$target_line" 'NR!=ln && $1==u' "$TABBER_FILE" | head -n1)
-        if [[ -n "$dupe" ]]; then
-            local dupe_title dupe_date dupe_tags
-            dupe_title=$(echo "$dupe" | cut -f2)
-            dupe_date=$(echo "$dupe" | cut -f3)
-            dupe_tags=$(echo "$dupe" | cut -f4)
-            echo "Error: URL already stored: $dupe_title ($dupe_date) [$dupe_tags]"
-            notify-send "Tabber" "Duplicate URL\n$dupe_title\n$dupe_date · $dupe_tags" --icon=dialog-warning
-            exit 1
-        fi
-    fi
+    def handle_endtag(self, tag):
+        if tag == 'title':
+            self.inside = False
 
-    # Edit title
-    local new_title
-    new_title=$(rofi -dmenu -p " Title:" -filter "$current_title" <<< "")
-    if [[ -z "$new_title" ]]; then
-        echo "Operation cancelled"
-        exit 0
-    fi
+    def handle_data(self, data):
+        if self.inside:
+            self.parts.append(data)
 
-    # Edit tags
-    local new_tags
-    new_tags=$(rofi -dmenu -p " Tags:" -filter "$current_tags" <<< "")
-    if [[ -z "$new_tags" ]]; then
-        echo "Operation cancelled"
-        exit 0
-    fi
 
-    # Write updated entry back to file (replace the target line in place)
-    local new_entry="${new_url}	${new_title}	${current_date}	${new_tags}"
-    local lines
-    mapfile -t lines < "$TABBER_FILE"
-    lines[$((target_line - 1))]="$new_entry"
-    printf '%s\n' "${lines[@]}" > "$TABBER_FILE"
+def page_title(url):
+    fetch = re.sub(r'^(https?://)(?:www\.)?reddit\.com(?=/|$)', r'\1old.reddit.com', url)
+    result = subprocess.run(['curl', '-fsSL', '--compressed', '--max-time', '15',
+                             '-A', 'Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0',
+                             '-H', 'Accept-Language: en-US,en;q=0.9', fetch], capture_output=True)
+    parser = PageTitle()
+    if result.returncode == 0:
+        parser.feed(result.stdout.decode('utf-8', errors='replace'))
+    return clean(' '.join(parser.parts)) or 'Untitled'
 
-    echo "Tab updated: $new_title"
-    notify-send "Tabber" "Tab updated: $new_title" --icon=browser
-}
 
-# Function to delete (mark as deleted) a tab
-delete_tab() {
-    if [[ ! -f "$TABBER_FILE" ]]; then
-        echo "No tabs stored yet"
-        exit 1
-    fi
+def store():
+    url = check_url(subprocess.run(['wl-paste', '--no-newline'], capture_output=True, text=True, check=True).stdout.strip())
+    duplicate(parse(read()), url)
+    kind = menu('Type:', ['todo', 'archive'])
+    if kind not in ('todo', 'archive'):
+        raise ValueError('Choose todo or archive.')
+    tags = tags_from(menu('Tags (comma separated, optional):'))
+    tags = [t for t in tags if t.lower() not in ('todo', 'archive')] + [kind]
+    print('Fetching page title...')
+    title = page_title(url)
+    if title in ('Untitled', 'Welcome to Reddit', 'Just a moment...', 'Please wait for verification'):
+        title = clean(menu('Title:', [title], current=title)) or 'Untitled'
+    entry = Entry(url, title, date.today().isoformat(), tags)
+    with lock():
+        original = read()
+        duplicate(parse(original), url)
+        position = original.find('\n## Deleted entries\n')
+        if position < 0:
+            position = len(original)
+        updated = original[:position].rstrip('\n') + '\n\n' + render(entry) + '\n' + original[position:]
+        save(original, updated)
+    notify(f'Tab stored: {title}')
 
-    load_tabs
 
-    if [[ ${#TAB_ENTRIES[@]} -eq 0 ]]; then
-        echo "No active tabs found"
-        exit 1
-    fi
+def select(entries, prompt, filter_by='both'):
+    entries = [e for e in reversed(entries) if not e.deleted and
+               (filter_by == 'both' or filter_by in [t.lower() for t in e.tags])]
+    if not entries:
+        raise ValueError('No matching active tabs found.')
+    choices = [f'{e.title} | {e.url} | {e.added} | {",".join(e.tags)}' for e in entries]
+    selection = menu(prompt, choices, index=True)
+    if not selection:
+        raise Cancelled()
+    index = int(selection)
+    if not 0 <= index < len(entries):
+        raise ValueError('Invalid selection.')
+    return entries[index]
 
-    # Show in rofi
-    local selected
-    selected=$(printf '%s\n' "${TAB_ENTRIES[@]}" | rofi -i -dmenu -p " Select tab to delete:")
 
-    if [[ -z "$selected" ]]; then
-        echo "No selection made"
-        exit 0
-    fi
+def find(filter_by):
+    filter_by = filter_by or menu('Show which tabs:', ['both', 'todo', 'archive'])
+    if filter_by not in ('both', 'todo', 'archive'):
+        raise ValueError('Choose both, todo or archive.')
+    entry = select(parse(read()), 'Select tab:', filter_by)
+    subprocess.run(['wl-copy'], input=entry.url, text=True, check=True)
+    print(f'URL copied to clipboard: {entry.url}')
 
-    local idx
-    idx=$(selected_index "$selected") || { echo "Error: Could not find selected entry"; exit 1; }
 
-    # Mark the entry as deleted by prepending '#' to its line
-    sed -i "${TAB_LINES[$idx]}s/^/#/" "$TABBER_FILE"
+def change(command):
+    original = read()
+    entries = parse(original)
+    entry = select(entries, f'Select tab to {command}:')
+    if command == 'delete':
+        entry.deleted = True
+    else:
+        entry.url = check_url(menu('URL:', [entry.url], current=entry.url).strip())
+        duplicate(entries, entry.url, excluding=entry)
+        entry.title = clean(menu('Title:', [entry.title], current=entry.title))
+        if not entry.title:
+            raise ValueError('Title cannot be empty.')
+        tags = ','.join(entry.tags)
+        entry.tags = tags_from(menu('Tags (comma separated):', [tags], current=tags))
+    with lock():
+        save(original, original[:entry.start] + render(entry) + original[entry.end:])
+    notify('Tab marked as deleted' if command == 'delete' else f'Tab updated: {entry.title}')
 
-    echo "Tab marked as deleted"
-}
 
-# Function to prune deleted entries
-prune_tabs() {
-    if [[ ! -f "$TABBER_FILE" ]]; then
-        echo "No tabs stored yet"
-        exit 1
-    fi
+def prune():
+    with lock():
+        original = read()
+        deleted = [e for e in parse(original) if e.deleted]
+        updated = original
+        for entry in reversed(deleted):
+            updated = updated[:entry.start] + updated[entry.end:]
+        if deleted:
+            save(original, updated)
+    notify(f'Pruned {len(deleted)} deleted entries')
 
-    # Count lines before pruning
-    local total_lines
-    total_lines=$(wc -l < "$TABBER_FILE")
 
-    # Create a temporary file with only non-deleted entries
-    local temp_file
-    temp_file=$(mktemp)
+def main():
+    parser = argparse.ArgumentParser(description=f'Interactive bookmarks in {FILE}. Bookmarks are matched by URL. Deleted entries are visibly labeled until pruned.')
+    parser.add_argument('command', choices=['store', 'find', 'edit', 'delete', 'prune', 'help'])
+    parser.add_argument('filter', nargs='?', choices=['todo', 'archive', 'both'])
+    args = parser.parse_args()
+    try:
+        if args.command == 'help':
+            parser.print_help()
+        elif args.command == 'store':
+            store()
+        elif args.command == 'find':
+            find(args.filter)
+        elif args.command in ('edit', 'delete'):
+            change(args.command)
+        else:
+            prune()
+    except Cancelled:
+        print('Operation cancelled')
+    except (ValueError, OSError, subprocess.SubprocessError) as error:
+        notify(f'Error: {error}')
+        return 1
+    return 0
 
-    while IFS= read -r line; do
-        # Only keep lines that don't start with #
-        if [[ ! "$line" =~ ^# ]]; then
-            echo "$line" >> "$temp_file"
-        fi
-    done < "$TABBER_FILE"
 
-    # Count lines after pruning
-    local remaining_lines
-    remaining_lines=$(wc -l < "$temp_file")
-    local deleted_count=$((total_lines - remaining_lines))
-
-    # Replace the original file
-    mv "$temp_file" "$TABBER_FILE"
-
-    echo "Pruned $deleted_count deleted entries"
-    echo "Remaining entries: $remaining_lines"
-    notify-send "Tabber" "Pruned $deleted_count deleted entries" --icon=edit-delete
-}
-
-# Function to show help
-show_help() {
-    echo "tabber - Tab management script"
-    echo
-    echo "Usage:"
-    echo "  ./tabber store         - Store URL from clipboard with metadata"
-    echo "  ./tabber find          - Show menu to choose tag filter, then find and copy URL"
-    echo "  ./tabber find todo     - Find and copy from entries tagged todo"
-    echo "  ./tabber find archive  - Find and copy from entries tagged archive"
-    echo "  ./tabber find both     - Find and copy from all tabs"
-    echo "  ./tabber edit          - Edit an existing tab's URL, title, or tags"
-    echo "  ./tabber delete        - Mark a tab as deleted"
-    echo "  ./tabber prune         - Remove all deleted entries from storage"
-    echo "  ./tabber help          - Show this help message"
-    echo
-    echo "File format: URL<tab>TITLE<tab>DATE<tab>TAGS"
-    echo "Storage location: $TABBER_FILE"
-}
-
-# Main script logic
-case "$1" in
-    "store")
-        store_tab
-        ;;
-    "find")
-        if [[ "$2" == "todo" || "$2" == "archive" || "$2" == "both" ]]; then
-            find_tab "$2"
-        else
-            find_tab
-        fi
-        ;;
-    "edit")
-        edit_tab
-        ;;
-    "delete")
-        delete_tab
-        ;;
-    "prune")
-        prune_tabs
-        ;;
-    "help"|"--help"|"-h")
-        show_help
-        ;;
-    "")
-        echo "Error: No command specified"
-        show_help
-        exit 1
-        ;;
-    *)
-        echo "Error: Unknown command '$1'"
-        show_help
-        exit 1
-        ;;
-esac
+if __name__ == '__main__':
+    sys.exit(main())
