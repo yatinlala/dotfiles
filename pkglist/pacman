@@ -57,6 +57,7 @@ figlet
 firefox
 fish
 flatpak
+fontforge
 foot
 foot-terminfo
 fprintd
@@ -131,6 +132,7 @@ ncdu
 neovide
 network-manager-applet
 networkmanager
+networkmanager-openconnect
 newsboat
 nix
 nmap
@@ -149,6 +151,7 @@ opam
 openai-codex
 openblas
 openbsd-netcat
+openconnect
 opencv
 openmp
 openssh
@@ -210,6 +213,7 @@ raylib
 rclone
 reaper
 reflector
+renderdoc
 ripgrep
 rocm-smi-lib
 rofi
@@ -349,6 +353,7 @@ vulkan-validation-layers
 watchexec
 waybar
 waydroid
+waylock
 wayvnc
 wev
 wget

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uri="$1"
+encoded="${uri#external-open:}"
+
+url="$(python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))' "$encoded")"
+
+exec xdg-open "$url"
