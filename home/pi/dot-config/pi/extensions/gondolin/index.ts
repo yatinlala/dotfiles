@@ -21,7 +21,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { RealFSProvider, VM } from "@earendil-works/gondolin";
+import { ReadonlyProvider, RealFSProvider, VM } from "@earendil-works/gondolin";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import {
 	type BashOperations,
@@ -36,6 +36,7 @@ import {
 	type EditOperations,
 	type FindOperations,
 	formatSize,
+	getPackageDir,
 	type GrepToolDetails,
 	type GrepToolInput,
 	type LsOperations,
@@ -47,6 +48,7 @@ import {
 
 const GUEST_WORKSPACE = "/workspace";
 const GUEST_CONFIG = `${GUEST_WORKSPACE}/.config/pi`;
+const GUEST_PI = "/opt/pi";
 const DEFAULT_GREP_LIMIT = 100;
 
 function resolveConfigSource(): string | undefined {
@@ -383,6 +385,7 @@ function createGondolinBashOps(vm: VM, localCwd: string, shellPath: string): Bas
 export default function (pi: ExtensionAPI) {
 	const localCwd = process.cwd();
 	const configSource = resolveConfigSource();
+	const piSource = fs.realpathSync(getPackageDir());
 	const localRead = createReadTool(localCwd);
 	const localWrite = createWriteTool(localCwd);
 	const localEdit = createEditTool(localCwd);
@@ -399,6 +402,7 @@ export default function (pi: ExtensionAPI) {
 		ctx?.ui.setStatus("gondolin", ctx.ui.theme.fg("accent", `Gondolin: starting ${GUEST_WORKSPACE}`));
 		const mounts = {
 			[GUEST_WORKSPACE]: new RealFSProvider(localCwd),
+			[GUEST_PI]: new ReadonlyProvider(new RealFSProvider(piSource)),
 			...(configSource ? { [GUEST_CONFIG]: new RealFSProvider(configSource) } : {}),
 		};
 		const created = await VM.create({
@@ -454,6 +458,7 @@ export default function (pi: ExtensionAPI) {
 					`Guest workspace: ${GUEST_WORKSPACE}`,
 					`Host config: ${configSource ?? "not mounted"}`,
 					`Guest config: ${configSource ? GUEST_CONFIG : "not mounted"}`,
+					`Pi package (read-only): ${piSource} -> ${GUEST_PI}`,
 					`Shell: ${shellPath}`,
 				].join("\n"),
 				"info",
@@ -547,6 +552,6 @@ export default function (pi: ExtensionAPI) {
 		const systemPrompt = event.systemPrompt.includes(localLine)
 			? event.systemPrompt.replace(localLine, guestLine)
 			: `${event.systemPrompt}\n\n${guestLine}`;
-		return { systemPrompt };
+		return { systemPrompt: systemPrompt.replaceAll(piSource, GUEST_PI) };
 	});
 }

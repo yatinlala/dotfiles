@@ -1,5 +1,5 @@
 import { CustomEditor, type ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { matchesKey, truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
+import { matchesKey, truncateToWidth, visibleWidth, type TuiAltScreen } from "@earendil-works/pi-tui";
 
 type Mode = "normal" | "insert";
 type Operator = "delete" | "change" | undefined;
@@ -13,12 +13,52 @@ class VimEditor extends CustomEditor {
   private pendingFind?: Omit<Find, "character">;
   private pendingReplace = false;
   private lastFind?: Find;
+  private pendingG = false;
+
+  /** Handle scrolling where Pi has already routed input to this editor.
+   * Viewport input listeners run BEFORE extension listeners, so translating
+   * keys in onTerminalInput cannot invoke fullscreen keybindings.
+   */
+  private scrollTranscript(data: string): boolean {
+    if (this.tui.mode !== "fullscreen" || this.operator ||
+        this.pendingFind || this.pendingReplace) return false;
+    // Avoid instanceof: Pi loads extensions across jiti module boundaries.
+    const viewport = this.tui as TuiAltScreen;
+    if (typeof viewport.scrollBy !== "function" ||
+        typeof viewport.scrollToTop !== "function" ||
+        typeof viewport.scrollToBottom !== "function") return false;
+
+    const wasG = this.pendingG;
+    this.pendingG = false;
+    if (matchesKey(data, "g") && !wasG) {
+      this.pendingG = true;
+      this.redraw();
+      return true;
+    }
+    // Half a terminal screen; line counts (e.g. 5J) also work.
+    const halfPage = Math.max(1, Math.floor(this.tui.terminal.rows / 2));
+    const count = Math.min(10000, Math.max(1, Number(this.count) || 1));
+    if (matchesKey(data, "shift+j")) viewport.scrollBy(count);
+    else if (matchesKey(data, "shift+k")) viewport.scrollBy(-count);
+    else if (matchesKey(data, "ctrl+u")) viewport.scrollBy(-halfPage * count);
+    else if (matchesKey(data, "ctrl+d")) viewport.scrollBy(halfPage * count);
+    else if (wasG && matchesKey(data, "g")) viewport.scrollToTop();
+    else if (matchesKey(data, "shift+g")) viewport.scrollToBottom();
+    else {
+      if (wasG) { this.count = ""; this.redraw(); }
+      return false;
+    }
+    this.count = "";
+    this.redraw();
+    return true;
+  }
 
   private redraw(): void {
     this.tui.requestRender();
   }
 
   private insert(): void {
+    this.pendingG = false;
     this.mode = "insert";
     this.operator = undefined;
     this.pendingFind = undefined;
@@ -28,6 +68,7 @@ class VimEditor extends CustomEditor {
   }
 
   private normal(): void {
+    this.pendingG = false;
     this.mode = "normal";
     this.operator = undefined;
     this.pendingFind = undefined;
@@ -137,9 +178,15 @@ class VimEditor extends CustomEditor {
     }
 
     if (this.mode === "insert") {
+      if (matchesKey(data, "ctrl+backspace")) {
+        this.send("\x17"); // Same word deletion/undo behavior as Ctrl-W.
+        return;
+      }
       super.handleInput(data);
       return;
     }
+
+    if (this.scrollTranscript(data)) return;
 
     if (this.pendingFind) {
       const pending = this.pendingFind;
@@ -224,7 +271,7 @@ class VimEditor extends CustomEditor {
         ? " c"
         : this.pendingReplace
           ? " r"
-          : "";
+          : this.pendingG ? " g" : "";
     const label = ` ${this.mode.toUpperCase()}${pending} `;
     const last = lines.length - 1;
     if (visibleWidth(lines[last]!) >= label.length) {
@@ -236,6 +283,7 @@ class VimEditor extends CustomEditor {
 
 export default function (pi: ExtensionAPI) {
   pi.on("session_start", (_event, ctx) => {
+    if (ctx.mode !== "tui") return;
     ctx.ui.setEditorComponent((tui, theme, keybindings) =>
       new VimEditor(tui, theme, keybindings),
     );
