@@ -1,0 +1,2 @@
+# Run from Hyprland through the normal kitty -1 instance, without opening a window.
+launch --type=background --allow-remote-control /usr/bin/sh -c 'output=$(/usr/bin/python3 /home/yatin/.dotfiles/home/scripts/dot-local/bin/sm save default --all 2>&1); status=$?; if [ "$status" -eq 0 ]; then /usr/bin/notify-send "Saved default snapshot"; else /usr/bin/notify-send -u critical "Terminal save failed" "$output"; fi' sm

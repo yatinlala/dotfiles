@@ -300,7 +300,8 @@ create_toggleable({
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
-bindexec({ mod, "slash" }, "kitty --class org.yatin.fzfpopup -o allow_remote_control=yes sm-mini reload")
+bindexec({ mod, "slash" }, "kitty --class org.yatin.fzfpopup -o allow_remote_control=yes sm restore")
+bindexec({ mod, "SHIFT", "slash" }, "kitty -1 --session ~/.config/kitty/sm-save-all.session")
 
 bindexec({ mod, "m" }, "gtk-launch mpv")
 bindexec({ mod, "n" }, "gtk-launch brave-nlkdodakkfmmlodmicoknbiaipomggoe-Default")

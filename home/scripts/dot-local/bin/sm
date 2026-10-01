@@ -1,0 +1,490 @@
+#!/usr/bin/env python3
+"""Save and restore Kitty terminal snapshots, including active Neovim sessions."""
+
+import argparse
+from contextlib import contextmanager
+from datetime import datetime, timezone
+import fcntl
+import json
+import os
+from pathlib import Path
+import pwd
+import re
+import shlex
+import shutil
+import subprocess
+import sys
+import tempfile
+import uuid
+
+
+SCRIPT = str(Path(__file__).resolve())
+SGR = re.compile(r"\x1b\[[0-9:;]*m")
+ANSI = re.compile(
+    r"\x1b\[[0-?]*[ -/]*[@-~]"
+    r"|\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)"
+    r"|\x1b[P_X^].*?\x1b\\"
+    r"|\x1b[ -/]*[@-Z\\-_]",
+    re.DOTALL,
+)
+RESET = "\x1b[0m"
+SNAPSHOT_ID = re.compile(r"[0-9]{8}T[0-9]{12}Z-[0-9a-f]{8}")
+
+
+def state_dir():
+    base = Path(os.environ.get("XDG_STATE_HOME") or Path.home() / ".local/state")
+    if os.environ.get("SM_DIR"):
+        return Path(os.environ["SM_DIR"]).expanduser().resolve()
+    # Keep existing snapshots accessible after the sm-mini rename, without
+    # moving user data or breaking an explicitly configured legacy directory.
+    if not os.environ.get("SM_MINI_DIR") and not (base / "sm-mini").exists():
+        return (base / "sm").expanduser().resolve()
+    return Path(os.environ.get("SM_MINI_DIR") or base / "sm-mini").expanduser().resolve()
+
+
+def plain(text):
+    text = ANSI.sub("", text)
+    return "".join(c for c in text if c in "\n\t" or (c.isprintable()))
+
+
+def formatted(text):
+    """Keep color/style (SGR) codes, omitting other terminal controls."""
+    parts = []
+    start = 0
+    for match in ANSI.finditer(text):
+        parts.append(plain(text[start:match.start()]))
+        if SGR.fullmatch(match.group()):
+            parts.append(match.group())
+        start = match.end()
+    parts.append(plain(text[start:]))
+    return "".join(parts)
+
+
+def one_line(text):
+    return " ".join(plain(text).split())
+
+
+def remote(*args):
+    address = os.environ.get("KITTY_LISTEN_ON", "")
+    fds = (int(address[3:]),) if address.startswith("fd:") else ()
+    result = subprocess.run(["kitten", "@", *args], capture_output=True,
+                            text=True, pass_fds=fds)
+    if result.returncode:
+        raise RuntimeError(result.stderr.strip() or "Kitty remote control failed")
+    return result.stdout
+
+
+def date_name(now):
+    return now.astimezone().strftime("%Y-%m-%d_%H-%M-%S")
+
+
+def valid_name(name):
+    return (isinstance(name, str) and bool(name) and name == name.strip()
+            and all(c.isprintable() for c in name) and not SNAPSHOT_ID.fullmatch(name))
+
+
+def validate_window(window, path):
+    if (not isinstance(window, dict)
+            or any(not isinstance(window.get(key), str) for key in ("cwd", "title", "text"))
+            or not Path(window["cwd"]).is_absolute()):
+        raise ValueError(f"Invalid snapshot window: {path}")
+    if "nvim" in window:
+        editor = window["nvim"]
+        if (not isinstance(editor, dict)
+                or not isinstance(editor.get("session"), str)
+                or not isinstance(editor.get("cwd"), str)
+                or not Path(editor["cwd"]).is_absolute()):
+            raise ValueError(f"Invalid Neovim session: {path}")
+
+
+def read_entry(path):
+    entry = json.loads(path.read_text())
+    if (not isinstance(entry, dict) or entry.get("version") not in (1, 2, 3)
+            or not isinstance(entry.get("saved_at"), str)):
+        raise ValueError(f"Invalid snapshot: {path}")
+    saved_at = datetime.fromisoformat(entry["saved_at"])
+    if saved_at.tzinfo is None:
+        raise ValueError(f"Snapshot timestamp needs a timezone: {path}")
+    if entry["version"] in (1, 2):
+        validate_window(entry, path)
+        # Expose old snapshots as dated, single-window groups without modifying
+        # them. The suffix distinguishes legacy --all saves from the same second.
+        window = {key: entry[key] for key in ("cwd", "title", "text", "nvim") if key in entry}
+        entry = dict(version=3, name=date_name(saved_at) + "-" + path.stem.rsplit("-", 1)[-1],
+                     saved_at=entry["saved_at"], windows=[window])
+    if (not valid_name(entry.get("name")) or not isinstance(entry.get("windows"), list)
+            or not entry["windows"]):
+        raise ValueError(f"Invalid snapshot: {path}")
+    for window in entry["windows"]:
+        validate_window(window, path)
+    return entry
+
+
+def entries():
+    result = []
+    for path in sorted(state_dir().glob("*.json"), reverse=True):
+        try:
+            result.append((path, read_entry(path)))
+        except (OSError, ValueError, TypeError, AttributeError) as error:
+            print(f"Skipping {path.name}: {error}", file=sys.stderr)
+    return sorted(result, key=lambda item: datetime.fromisoformat(item[1]["saved_at"]), reverse=True)
+
+
+@contextmanager
+def storage_lock():
+    directory = state_dir()
+    directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+    with (directory / ".lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        yield directory
+
+
+def nvim_server_pids(pids):
+    """Include terminal-mode Neovim's --embed backend, outside its TUI pgrp."""
+    servers = set(pids)
+    for pid in pids:
+        try:
+            children = Path(f"/proc/{pid}/task/{pid}/children").read_text().split()
+        except OSError:
+            continue
+        for child in children:
+            try:
+                argv = Path(f"/proc/{child}/cmdline").read_bytes().split(b"\0")
+                if Path(os.fsdecode(argv[0])).name == "nvim" and b"--embed" in argv:
+                    servers.add(int(child))
+            except OSError:
+                pass  # Child may exit between listing it and reading cmdline.
+    return servers
+
+
+def nvim_sockets(pids):
+    """Find listening Unix sockets owned by these Neovim processes (Linux)."""
+    inodes = set()
+    for pid in pids:
+        try:
+            for fd in Path(f"/proc/{pid}/fd").iterdir():
+                try:
+                    link = os.readlink(fd)
+                    if link.startswith("socket:["):
+                        inodes.add(link[8:-1])
+                except OSError:
+                    pass  # A descriptor may close while inspecting the process.
+        except OSError:
+            continue
+    for line in Path("/proc/net/unix").read_text().splitlines()[1:]:
+        fields = line.split(maxsplit=7)
+        if (len(fields) == 8 and fields[6] in inodes
+                and fields[3] == "00010000" and fields[7].startswith("/")):
+            yield fields[7]
+
+
+# Capture a private copy without changing mini.sessions' active session or
+# writing the user's buffers. Exclude options/globals and terminal processes.
+NVIM_CAPTURE = r"""
+local file = vim.fn.tempname()
+local previous, options = vim.v.this_session, vim.o.sessionoptions
+local ok, result = pcall(function()
+  vim.o.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize'
+  vim.cmd('silent noautocmd mksession! ' .. vim.fn.fnameescape(file))
+  local modified = 0
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.bo[buf].modified then modified = modified + 1 end
+  end
+  return vim.json.encode({session = table.concat(vim.fn.readfile(file), '\n') .. '\n',
+                         cwd = vim.fn.getcwd(), modified = modified})
+end)
+vim.v.this_session, vim.o.sessionoptions = previous, options
+vim.fn.delete(file)
+if not ok then error(result) end
+return result
+"""
+
+
+def capture_nvim(window):
+    processes = window.get("foreground_processes", [])
+    pids = {p["pid"] for p in processes if p.get("cmdline")
+            and Path(p["cmdline"][0]).name == "nvim"}
+    if not pids:
+        return None
+    pids = nvim_server_pids(pids)
+    try:
+        for address in nvim_sockets(pids):
+            # Match the server PID as well as its socket owner; never capture a
+            # different editor merely because it shares a working directory.
+            code = "if not ({" + ",".join(f"[{p}]=true" for p in sorted(pids))
+            code += "})[vim.fn.getpid()] then error('Neovim PID mismatch') end\n"
+            expression = "luaeval('(function() " + (code + NVIM_CAPTURE).replace("'", "''") + " end)()')"
+            result = subprocess.run(
+                ["nvim", "--server", address, "--remote-expr", expression],
+                capture_output=True, text=True, timeout=5)
+            if result.returncode:
+                raise RuntimeError(result.stderr.strip() or "Neovim RPC failed")
+            editor = json.loads(result.stdout)
+            modified = editor.pop("modified", 0)
+            if modified:
+                print(f"sm: Window {window['id']}: {modified} modified Neovim buffer(s); "
+                      "session saves layout, not unwritten contents.", file=sys.stderr)
+            return editor
+        raise RuntimeError("no accessible Neovim RPC socket")
+    except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
+        raise RuntimeError(f"Cannot capture Neovim: {error}. "
+                           "Use save --no-nvim for a transcript-only snapshot.") from error
+
+
+def save(args):
+    if args.name is not None and not valid_name(args.name):
+        raise RuntimeError("Use a nonempty, single-line name without surrounding whitespace; IDs are reserved.")
+    match = "all" if args.all else "id:" + str(
+        args.window_id if args.window_id is not None else os.environ.get("KITTY_WINDOW_ID", "")
+    )
+    if match == "id:":
+        raise RuntimeError("Run save inside Kitty, or pass --window-id ID.")
+    tree = json.loads(remote("ls", "--match", match))
+    windows = [w for host in tree for tab in host["tabs"] for w in tab["windows"]]
+    if not windows:
+        raise RuntimeError("No matching Kitty windows.")
+    captured = []
+    failures = []
+    for window in windows:
+        try:
+            cwd = window.get("cwd", "")
+            if not cwd or not Path(cwd).is_absolute():
+                raise RuntimeError("Kitty did not report an absolute working directory")
+            text = remote("get-text", "--match", f"id:{window['id']}", "--extent", "all", "--ansi")
+            entry = dict(cwd=cwd, title=window.get("title", ""), text=formatted(text))
+            editor = None if args.no_nvim else capture_nvim(window)
+            if editor is not None:
+                entry["nvim"] = editor
+            captured.append(entry)
+        except (OSError, RuntimeError) as error:
+            failures.append(f"Window {window['id']}: {error}")
+    if failures:
+        raise RuntimeError("Snapshot not saved; previous snapshot unchanged.\n" + "\n".join(failures))
+
+    # Capture first, then serialize name lookup and atomic publication. Two
+    # simultaneous saves cannot create duplicate names or overwrite a dated save.
+    with storage_lock() as directory:
+        saved = entries()
+        now = datetime.now(timezone.utc)
+        name = args.name or date_name(now)
+        if args.name is None:
+            names = {entry["name"] for _, entry in saved}
+            suffix = 2
+            while name in names:
+                name = f"{date_name(now)}-{suffix}"
+                suffix += 1
+        matches = [(path, entry) for path, entry in saved if entry["name"] == name]
+        if len(matches) > 1:
+            raise RuntimeError(f"Ambiguous name: {name}; delete duplicates by ID first.")
+        ident = now.strftime("%Y%m%dT%H%M%S%fZ") + "-" + uuid.uuid4().hex[:8]
+        target = matches[0][0] if matches else directory / (ident + ".json")
+        entry = dict(version=3, name=name, saved_at=now.isoformat(timespec="microseconds"), windows=captured)
+        temporary = None
+        try:
+            with tempfile.NamedTemporaryFile(mode="w", dir=directory, prefix=".saving-",
+                                             delete=False, encoding="utf-8") as stream:
+                temporary = Path(stream.name)
+                json.dump(entry, stream, ensure_ascii=False)
+                stream.flush()
+                os.fsync(stream.fileno())
+            temporary.replace(target)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
+    print(f"{'Updated' if matches else 'Saved'} {name}: {summary(entry)} ({target.stem})")
+    return len(windows)
+
+
+def label(entry):
+    return ("[nvim] " if "nvim" in entry else "") + one_line(entry["title"])
+
+
+def summary(entry):
+    count = len(entry["windows"])
+    editors = sum("nvim" in window for window in entry["windows"])
+    return f"{count} window{'s' if count != 1 else ''}" + (f" · {editors} nvim" if editors else "")
+
+
+def picker_rows(saved):
+    return [f"{path.stem}\t{entry['name']}  {summary(entry)}  {entry['saved_at']}"
+            for path, entry in saved]
+
+
+def pick(saved, action):
+    picker = shutil.which("fzfwp") or shutil.which("fzf")
+    if not picker:
+        raise RuntimeError(f"Install fzf to use the picker, or use sm {action} ID.")
+    rows = picker_rows(saved)
+    preview = shlex.join([sys.executable, SCRIPT, "_preview"]) + " {1}"
+    header = f"Enter: {action} | Esc: cancel"
+    bindings = []
+    if action == "restore":
+        delete = shlex.join([sys.executable, SCRIPT, "delete"]) + " {1} >/dev/null"
+        refresh = shlex.join([sys.executable, SCRIPT, "_rows"])
+        bindings.append(f"--bind=delete:reload-sync({delete}; {refresh})")
+        header = "Enter: restore | Delete: delete snapshot | Esc: cancel"
+    env = os.environ.copy()
+    env["SM_DIR"] = str(state_dir())
+    result = subprocess.run(
+        [picker, "--no-multi", "--delimiter=\t", "--with-nth=2..", f"--prompt={action.title()}> ",
+         "--preview", preview, "--preview-window=right:60%:wrap:nohidden",
+         f"--header={header}", *bindings],
+        input="\n".join(rows) + "\n", text=True, stdout=subprocess.PIPE, env=env)
+    if result.returncode in (1, 130):
+        return []
+    if result.returncode:
+        raise RuntimeError(f"Picker exited with status {result.returncode}")
+    ident = result.stdout.split("\t", 1)[0].strip()
+    return [snapshot(ident)]
+
+
+def restore(saved, no_nvim=False):
+    failures = []
+    shell = os.environ.get("SHELL") or pwd.getpwuid(os.getuid()).pw_shell or "/bin/sh"
+    windows = [(path, group, index, window) for path, group in saved
+               for index, window in enumerate(group["windows"])]
+    for path, group, index, entry in windows:
+        handoff = None
+        try:
+            if not Path(entry["cwd"]).is_dir():
+                raise RuntimeError(f"Directory no longer exists: {entry['cwd']}")
+            if not no_nvim and "nvim" in entry:
+                if not shutil.which("nvim"):
+                    raise RuntimeError("Neovim is not installed; use restore --no-nvim")
+                if not Path(entry["nvim"]["cwd"]).is_dir():
+                    raise RuntimeError("Neovim directory no longer exists; use restore --no-nvim")
+            # A named snapshot can be updated/deleted before the new window
+            # starts. Hand off a private, immutable copy of this window instead.
+            with tempfile.NamedTemporaryFile(mode="w", prefix="sm-restore-", suffix=".json",
+                                             delete=False, encoding="utf-8") as stream:
+                handoff = Path(stream.name)
+                json.dump(dict(group, windows=[entry]), stream, ensure_ascii=False)
+            remote("launch", "--type=os-window", f"--cwd={entry['cwd']}",
+                   "--os-window-class=kitty",
+                   sys.executable, SCRIPT, "_replay", str(handoff), shell, "--consume",
+                   *(["--no-nvim"] if no_nvim else []))
+            handoff = None  # The replay process removes its copy after reading.
+            print(f"Restored {group['name']} [{index + 1}]: {label(entry)} ({one_line(entry['cwd'])})")
+        except (OSError, RuntimeError) as error:
+            failures.append(f"{group['name']} [{index + 1}]: {error}")
+        finally:
+            if handoff is not None:
+                handoff.unlink(missing_ok=True)
+    if failures:
+        raise RuntimeError("\n".join(failures))
+
+
+def snapshot(selector):
+    if SNAPSHOT_ID.fullmatch(selector):
+        path = state_dir() / (selector + ".json")
+        if path.is_file():
+            return path, read_entry(path)
+    else:
+        matches = [(path, entry) for path, entry in entries() if entry["name"] == selector]
+        if len(matches) == 1:
+            return matches[0]
+        if len(matches) > 1:
+            raise RuntimeError(f"Ambiguous snapshot name: {one_line(selector)}; use an ID from sm list.")
+    raise RuntimeError(f"Snapshot not found: {one_line(selector)}; use sm list.")
+
+
+def replay(args):
+    group = read_entry(Path(args.path))
+    if args.consume:
+        Path(args.path).unlink()
+    entry = group["windows"][0]
+    os.chdir(entry["cwd"])
+    print(formatted(entry["text"]), end="")
+    print(f"{RESET}\n--- Restored {group['name']} from {one_line(group['saved_at'])} ---\n", flush=True)
+    if "nvim" in entry and not args.no_nvim:
+        try:
+            # Each restore gets its own writable session copy. Neovim plugins
+            # may autowrite it without changing the saved snapshot.
+            with tempfile.TemporaryDirectory(prefix="sm-nvim-") as directory:
+                session = Path(directory) / "Session.vim"
+                session.write_text(entry["nvim"]["session"], encoding="utf-8")
+                subprocess.run(["nvim", "-S", str(session)], cwd=entry["nvim"]["cwd"])
+        except OSError as error:
+            print(f"sm: Could not reopen Neovim: {error}", file=sys.stderr)
+        except KeyboardInterrupt:
+            pass
+    os.execv(args.shell, [args.shell, "-i"])
+
+
+def main(argv=None):
+    argv = sys.argv[1:] if argv is None else argv
+    # Internal helpers are deliberately absent from the public command list.
+    if argv and argv[0] in ("_preview", "_replay", "_rows"):
+        parser = argparse.ArgumentParser(prog="sm " + argv[0])
+        if argv[0] == "_rows":
+            parser.parse_args(argv[1:])
+            # Unlike the public list command, emit nothing when empty so fzf
+            # doesn't turn the "No saved snapshots" message into a selectable row.
+            for row in picker_rows(entries()):
+                print(row)
+        elif argv[0] == "_preview":
+            parser.add_argument("selector")
+            args = parser.parse_args(argv[1:])
+            _, entry = snapshot(args.selector)
+            print(f"{entry['name']} — {summary(entry)}\nSaved {entry['saved_at']}\n")
+            for index, window in enumerate(entry["windows"], 1):
+                print(f"--- Window {index}: {label(window)} ({one_line(window['cwd'])}) ---")
+                print(formatted(window["text"]) + RESET + "\n")
+        else:
+            parser.add_argument("path")
+            parser.add_argument("shell")
+            parser.add_argument("--consume", action="store_true")
+            parser.add_argument("--no-nvim", action="store_true")
+            replay(parser.parse_args(argv[1:]))
+        return
+    parser = argparse.ArgumentParser(
+        prog="sm", description=__doc__,
+        epilog="Storage: $SM_DIR or $XDG_STATE_HOME/sm (~/.local/state/sm). "
+               "Existing sm-mini storage / SM_MINI_DIR is still honored. "
+               "Neovim sessions preserve layout, not unwritten buffer contents.")
+    commands = parser.add_subparsers(dest="command", required=True)
+    saving = commands.add_parser("save", help="Save the current Kitty terminal")
+    saving.add_argument("name", nargs="?", help="Create/update this name; default: local date and time")
+    saving.add_argument("--no-nvim", action="store_true", help="Save only the terminal transcript")
+    group = saving.add_mutually_exclusive_group()
+    group.add_argument("--all", action="store_true", help="Save all windows in this Kitty instance as one snapshot")
+    group.add_argument("--window-id", type=int, help="Kitty window ID (for keybindings)")
+    restoring = commands.add_parser("restore", help="Restore every window in a snapshot")
+    group = restoring.add_mutually_exclusive_group()
+    group.add_argument("selector", nargs="?", metavar="NAME_OR_ID", help="Snapshot name or ID; omit to pick with fzf")
+    group.add_argument("--all", action="store_true", help="Restore every saved snapshot")
+    restoring.add_argument("--no-nvim", action="store_true", help="Restore only the terminal transcript")
+    commands.add_parser("list", help="List saved snapshots")
+    deleting = commands.add_parser("delete", help="Delete a snapshot (does not close running windows)")
+    deleting.add_argument("selector", nargs="?", metavar="NAME_OR_ID", help="Snapshot name or ID; omit to pick with fzf")
+    args = parser.parse_args(argv)
+    if args.command == "save":
+        save(args)
+    else:
+        ident = getattr(args, "selector", None)
+        saved = [snapshot(ident)] if ident else entries()
+        if not saved:
+            print("No saved snapshots. Run sm save first.")
+        elif args.command == "list":
+            for row in picker_rows(saved):
+                print(row)
+        else:
+            if not ident and not getattr(args, "all", False):
+                saved = pick(saved, args.command)
+            if args.command == "restore":
+                restore(saved, args.no_nvim)
+            else:
+                with storage_lock():
+                    for path, entry in saved:
+                        path.unlink()
+                        print(f"Deleted {entry['name']} ({path.stem})")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, RuntimeError, ValueError) as error:
+        print(f"sm: {error}", file=sys.stderr)
+        sys.exit(1)
+    except KeyboardInterrupt:
+        sys.exit(130)
