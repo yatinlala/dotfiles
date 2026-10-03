@@ -70,6 +70,15 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "handy-overlay",
+	match = { class = "^Handy$", title = "^Recording$" },
+
+	border_size = 0,
+	no_focus = true,
+	move = "monitor_w*0.5-window_w*0.5 monitor_h-window_h-50",
+})
+
+hl.window_rule({
 	match = { initial_title = "Steam Settings" },
 	float = true,
 	opacity = 0.98,
