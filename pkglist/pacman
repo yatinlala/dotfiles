@@ -1,6 +1,6 @@
-aichat
 amd-ucode
 amdgpu_top
+android-udev
 anki
 arch-wiki-docs
 arch-wiki-lite
@@ -29,6 +29,7 @@ chafa
 cjson
 clang
 cliphist
+copyparty
 cowsay
 cryptsetup
 cups
@@ -80,6 +81,7 @@ go
 gptfdisk
 grim
 grub
+gst-plugin-va
 guitarix
 guvcview
 gvfs
@@ -216,6 +218,7 @@ reflector
 renderdoc
 ripgrep
 rocm-smi-lib
+rocminfo
 rofi
 rofimoji
 rpi-imager
@@ -353,6 +356,7 @@ vulkan-validation-layers
 watchexec
 waybar
 waydroid
+wayland-utils
 waylock
 wayvnc
 wev

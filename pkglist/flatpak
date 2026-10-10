@@ -5,6 +5,7 @@ Discord	com.discordapp.Discord	1.0.159	stable	flathub	user
 Flatseal	com.github.tchx84.Flatseal	2.4.1	stable	flathub	user
 Nocturne	com.jeffser.Nocturne	1.5.2	stable	flathub	user
 OBS Studio	com.obsproject.Studio	32.2.2	stable	flathub	user
+RustDesk	com.rustdesk.RustDesk		master	rustdesk-origin	user
 Slack	com.slack.Slack	4.52.162	stable	flathub	user
 Bottles	com.usebottles.bottles	67.3	stable	flathub	user
 GIMP 0.54	io.github.balooii.gimp054	0.54.1	master	gimp054-origin	user
