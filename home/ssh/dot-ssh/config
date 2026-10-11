@@ -1,0 +1,3 @@
+Host cso-sub
+    HostName viterbi-scf01.vlab.usc.edu
+    User ylala
