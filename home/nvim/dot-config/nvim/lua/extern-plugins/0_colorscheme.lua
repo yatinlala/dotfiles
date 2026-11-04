@@ -60,6 +60,8 @@ local function apply_highlight_overrides()
     vim.api.nvim_set_hl(0, "@keyword.repeat", { link = "Normal" })
     vim.api.nvim_set_hl(0, "@keyword.conditional", { link = "Normal" })
     vim.api.nvim_set_hl(0, "@type.builtin", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@type.c", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "@keyword.type.c", { link = "Normal" })
 
     -- Slightly dim delimiters such as semicolons, commas, colons, and dots.
     vim.api.nvim_set_hl(0, "@punctuation.delimiter", { fg = "#96938a" })
