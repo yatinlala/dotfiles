@@ -28,7 +28,12 @@
 hl.window_rule({
 	match = { title = "MPV: YouTube (Comments|Description)$" },
 	float = true,
-	size = "monitor_w*.6 monitor_h*.7",
+	size = "monitor_w*.9 monitor_h*.9",
+	center = true,
+})
+hl.window_rule({
+	match = { title = "REAPER Query" },
+	float = true,
 	center = true,
 })
 hl.window_rule({

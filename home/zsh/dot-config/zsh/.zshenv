@@ -52,6 +52,8 @@ export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
 export SSB_HOME="$XDG_DATA_HOME/zoom"
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+# Android tools (including Java-based SDK/Gradle tools) share xdg-launch state.
+export ANDROID_USER_HOME="${HOME%/.local/xdg-launch}/.local/xdg-launch/.android"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export RANDFILE='$XDG_RUNTIME_DIR/rnd'

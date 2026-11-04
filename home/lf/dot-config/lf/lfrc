@@ -101,6 +101,8 @@ map gnc cd ~/.config/nvim
 
 map gs cd ~/software
 
+map gS cd ~/school
+
 map gd cd ~/documents
 map gb cd ~/documents/books
 

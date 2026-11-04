@@ -299,8 +299,10 @@ create_toggleable({
 -- })
 
 bindexec({ mod, "d" }, "handy --toggle-transcription")
+bindexec({ mod, "SHIFT", "d" }, "handy --cancel")
 bindexec({ mod, "v" }, "kitty --app-id org.yatin.fzfpopup -e fuzzy_video")
-bindexec({ mod, "slash" }, "kitty --class org.yatin.fzfpopup -o allow_remote_control=yes sm restore")
+-- Share the normal instance so restored windows remain reachable by save-all.
+bindexec({ mod, "slash" }, "kitty -1 --class org.yatin.fzfpopup -o allow_remote_control=yes sm restore")
 bindexec({ mod, "SHIFT", "slash" }, "kitty -1 --session ~/.config/kitty/sm-save-all.session")
 
 bindexec({ mod, "m" }, "gtk-launch mpv")
