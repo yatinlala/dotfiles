@@ -1,8 +1,18 @@
 {
-  "lastChangelogVersion": "1.0.0",
+  "lastChangelogVersion": "1.5.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "low",
   "enableInstallTelemetry": false,
-  "theme": "gruvbox"
+  "theme": "gruvbox",
+  "enabledModels": [
+    "openai-codex/gpt-6.1-sol",
+    "openai-codex/gpt-6-astra",
+    "openai-codex/gpt-6-luna",
+    "openai-codex/gpt-5.6-terra"
+  ],
+  "hideThinkingBlock": true,
+  "extensions": [
+    "-builtin:llama.cpp"
+  ]
 }

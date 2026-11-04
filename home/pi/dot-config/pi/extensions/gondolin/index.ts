@@ -20,6 +20,7 @@
  */
 
 import fs from "node:fs";
+import { importClipboardFiles } from "./clipboard.ts";
 import path from "node:path";
 import { ReadonlyProvider, RealFSProvider, VM } from "@earendil-works/gondolin";
 import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
@@ -47,7 +48,9 @@ import {
 } from "@earendil-works/pi-coding-agent";
 
 const GUEST_WORKSPACE = "/workspace";
-const GUEST_CONFIG = `${GUEST_WORKSPACE}/.config/pi`;
+// Keep mount points outside the host-backed workspace to avoid creating
+// configuration directories in each project.
+const GUEST_CONFIG = "/pi-config";
 const GUEST_PI = "/opt/pi";
 const DEFAULT_GREP_LIMIT = 100;
 
@@ -394,6 +397,8 @@ export default function (pi: ExtensionAPI) {
 	const localFind = createFindTool(localCwd);
 	const localLs = createLsTool(localCwd);
 
+	// Deliberately runtime-only: reload/restart restores sandboxing.
+	let sandboxEnabled = true;
 	let vm: VM | undefined;
 	let vmStarting: Promise<VM> | undefined;
 	let shellPath = "/bin/sh";
@@ -403,7 +408,9 @@ export default function (pi: ExtensionAPI) {
 		const mounts = {
 			[GUEST_WORKSPACE]: new RealFSProvider(localCwd),
 			[GUEST_PI]: new ReadonlyProvider(new RealFSProvider(piSource)),
-			...(configSource ? { [GUEST_CONFIG]: new RealFSProvider(configSource) } : {}),
+			// Never unlock this mount for approval: parallel guest commands could
+			// otherwise mutate host-executed extensions during the write window.
+			...(configSource ? { [GUEST_CONFIG]: new ReadonlyProvider(new RealFSProvider(configSource)) } : {}),
 		};
 		const created = await VM.create({
 			sessionLabel: `pi ${path.basename(localCwd)}`,
@@ -430,6 +437,22 @@ export default function (pi: ExtensionAPI) {
 		return vmStarting;
 	}
 
+	pi.on("input", async (event, ctx) => {
+		if (!sandboxEnabled) return;
+		try {
+			const text = await importClipboardFiles(event.text, async (guestPath, bytes) => {
+				const activeVm = await ensureVm(ctx);
+				await activeVm.fs.writeFile(guestPath, bytes);
+			});
+			// Return transform even when /tmp paths stay identical: the file was imported.
+			return { action: "transform", text, images: event.images };
+		} catch (error) {
+			ctx.ui.notify(`Clipboard import failed: ${error instanceof Error ? error.message : error}`, "error");
+			ctx.ui.setEditorText(event.text);
+			return { action: "handled" };
+		}
+	});
+
 	pi.on("session_start", async (_event, ctx) => {
 		await ensureVm(ctx);
 	});
@@ -447,17 +470,49 @@ export default function (pi: ExtensionAPI) {
 		}
 	});
 
+	pi.registerCommand("sandbox", {
+		description: "Enable/disable VM tool routing, or show status: /sandbox [enable|disable|status]",
+		handler: async (args, ctx) => {
+			const action = args.trim().toLowerCase() || "status";
+			if (!["enable", "disable", "status"].includes(action)) {
+				ctx.ui.notify("Usage: /sandbox [enable|disable|status]", "warning");
+				return;
+			}
+			if (action === "status") {
+				ctx.ui.notify(sandboxEnabled ? "Sandbox enabled: tools run in Gondolin." : "Sandbox DISABLED: tools run directly on the host without per-command approval.", "info");
+				return;
+			}
+			// Never change routing underneath an executing agent turn.
+			if (!ctx.isIdle()) {
+				ctx.ui.notify("Wait for the agent to finish (or abort it) before changing sandbox mode.", "warning");
+				return;
+			}
+			if (action === "enable") {
+				// Commit the mode only after the VM is ready.
+				const activeVm = await ensureVm(ctx);
+				sandboxEnabled = true;
+				ctx.ui.setStatus("gondolin", ctx.ui.theme.fg("accent", `Gondolin: ${activeVm.id.slice(0, 8)} (${GUEST_WORKSPACE})`));
+			} else {
+				sandboxEnabled = false;
+				// Keep the VM alive so guest-only files survive a temporary switch.
+				ctx.ui.setStatus("gondolin", ctx.ui.theme.fg("warning", "Sandbox OFF: host tools"));
+			}
+			ctx.ui.notify(sandboxEnabled ? "Sandbox enabled." : "Sandbox disabled. Standard tools now run on the host without per-command approval. Reload/restart restores sandboxing.", sandboxEnabled ? "info" : "warning");
+		},
+	});
+
 	pi.registerCommand("gondolin", {
 		description: "Show Gondolin VM status",
 		handler: async (_args, ctx) => {
 			const activeVm = await ensureVm(ctx);
 			ctx.ui.notify(
 				[
+					`Sandbox routing: ${sandboxEnabled ? "enabled" : "DISABLED (host tools)"}`,
 					`Gondolin VM: ${activeVm.id}`,
 					`Host workspace: ${localCwd}`,
 					`Guest workspace: ${GUEST_WORKSPACE}`,
 					`Host config: ${configSource ?? "not mounted"}`,
-					`Guest config: ${configSource ? GUEST_CONFIG : "not mounted"}`,
+					`Guest config (read-only): ${configSource ? GUEST_CONFIG : "not mounted"}`,
 					`Pi package (read-only): ${piSource} -> ${GUEST_PI}`,
 					`Shell: ${shellPath}`,
 				].join("\n"),
@@ -469,6 +524,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localRead,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localRead.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createReadTool(GUEST_WORKSPACE, {
 				operations: createGondolinReadOps(activeVm, localCwd),
@@ -480,6 +536,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localWrite,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localWrite.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createWriteTool(GUEST_WORKSPACE, {
 				operations: createGondolinWriteOps(activeVm, localCwd),
@@ -491,6 +548,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localEdit,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localEdit.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createEditTool(GUEST_WORKSPACE, {
 				operations: createGondolinEditOps(activeVm, localCwd),
@@ -502,6 +560,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localBash,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localBash.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createBashTool(GUEST_WORKSPACE, {
 				operations: createGondolinBashOps(activeVm, localCwd, shellPath),
@@ -513,6 +572,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localLs,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localLs.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createLsTool(GUEST_WORKSPACE, {
 				operations: createGondolinLsOps(activeVm, localCwd),
@@ -524,6 +584,7 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localFind,
 		async execute(id, params, signal, onUpdate, ctx) {
+			if (!sandboxEnabled) return localFind.execute(id, params, signal, onUpdate);
 			const activeVm = await ensureVm(ctx);
 			const tool = createFindTool(GUEST_WORKSPACE, {
 				operations: createGondolinFindOps(activeVm, localCwd),
@@ -535,23 +596,32 @@ export default function (pi: ExtensionAPI) {
 	pi.registerTool({
 		...localGrep,
 		async execute(_id, params, signal, _onUpdate, ctx) {
+			if (!sandboxEnabled) return localGrep.execute(_id, params, signal, _onUpdate);
 			const activeVm = await ensureVm(ctx);
 			return executeGondolinGrep(activeVm, localCwd, params, signal);
 		},
 	});
 
 	pi.on("user_bash", async (_event, ctx) => {
+		if (!sandboxEnabled) return;
 		const activeVm = await ensureVm(ctx);
 		return { operations: createGondolinBashOps(activeVm, localCwd, shellPath) };
 	});
 
 	pi.on("before_agent_start", async (event, ctx) => {
+		if (!sandboxEnabled) {
+			return {
+				systemPrompt: `${event.systemPrompt}\n\nSandbox mode: DISABLED by the user via /sandbox disable. Standard bash/read/write/edit/ls/find/grep tools execute directly on the host with host user permissions, without per-command approval. User ! commands also run on the host. Current working directory: ${localCwd}. Use host paths, not /workspace, /pi-config, or /opt/pi guest aliases. Host Pi configuration: ${configSource ?? "not resolved"}. Installed Pi package: ${piSource}. host_bash remains separately approval-gated; use ordinary bash in this mode. /sandbox enable restores VM routing.`,
+			};
+		}
 		await ensureVm(ctx);
 		const localLine = `Current working directory: ${localCwd}`;
 		const guestLine = `Current working directory: ${GUEST_WORKSPACE} (Gondolin VM; host workspace mounted from ${localCwd})`;
 		const systemPrompt = event.systemPrompt.includes(localLine)
 			? event.systemPrompt.replace(localLine, guestLine)
 			: `${event.systemPrompt}\n\n${guestLine}`;
-		return { systemPrompt: systemPrompt.replaceAll(piSource, GUEST_PI) };
+		return {
+			systemPrompt: `${systemPrompt.replaceAll(piSource, GUEST_PI)}\n\n${GUEST_CONFIG} is read-only. Sandbox writes cannot be approved or bypassed. To modify Pi configuration, use host_bash with a narrow, explicit command targeting the host config path; Pi requires user approval for every invocation. Never make the mount writable. Host config mount source: ${configSource ?? "not mounted"}.`,
+		};
 	});
 }
