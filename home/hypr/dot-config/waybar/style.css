@@ -23,7 +23,7 @@ tooltip {
   border-color: #1d2021;
 }
 #workspaces button {
-  padding: 0 0.6em;
+  padding: 0 0.486em;
   color: #504945;
   border-radius: 6px;
   margin-right: 4px;
@@ -55,16 +55,17 @@ tooltip {
 #battery,
 #bluetooth,
 #backlight,
-#date,
 #clock,
-#wireplumber,
-#network,
-#workspaces,
+#date,
 #mpris,
+#network,
 #tray,
+#wireplumber,
+#workspaces,
+#custom-weather,
 #custom-charge_threshold {
   background: #32302f;
-  padding: 0 0.6em;
+  padding: 0 0.486em;
   margin-right: 2px;
   margin-left: 4px;
   margin-top: 4px;
@@ -75,7 +76,7 @@ tooltip {
 #custom-todo {
   background: #32302f;
   /* background: #2a4c1f; */
-  padding: 0 0.4em;
+  padding: 0 0.324em;
   margin-right: 2px;
   margin-left: 2px;
   margin-top: 5px;
@@ -84,7 +85,7 @@ tooltip {
 }
 
 #custom-hypridle_toggle {
-  padding: 0 0.3em;
+  padding: 0 0.243em;
   margin-right: 2px;
   margin-left: 2px;
   margin-top: 5px;
@@ -134,7 +135,7 @@ tooltip {
 
 #taskbar {
   background: #1d2021;
-  padding: 0 0.6em;
+  padding: 0 0.486em;
   margin-right: 10px;
   margin-left: 4px;
   margin-top: 4px;
@@ -160,4 +161,45 @@ tooltip {
   border-radius: 6px;
   background: #4e635b;
   color: #c3bdaa;
+}
+
+/* Former inline workspace-number color; retain the laptop's appearance. */
+#workspaces button label {
+  color: #ebdbb2;
+}
+
+/* BOOX only: high-contrast light palette, with no gradients or animations. */
+window#waybar.moreland {
+  background: #ffffff;
+  color: #111111;
+}
+
+window#waybar.moreland * {
+  color: #111111;
+  background-color: transparent;
+  background-image: none;
+  text-shadow: none;
+  box-shadow: none;
+  animation: none;
+  transition: none;
+}
+
+window#waybar.moreland #workspaces button label {
+  color: #111111;
+}
+
+window#waybar.moreland #workspaces button.active,
+window#waybar.moreland #workspaces button.focused,
+window#waybar.moreland #taskbar button.active {
+  background: #e0e0e0;
+  box-shadow: inset 0 -2px #111111;
+}
+
+window#waybar.moreland #workspaces button:hover,
+window#waybar.moreland #taskbar button:hover {
+  background: #eeeeee;
+}
+
+window#waybar.moreland #workspaces button.urgent {
+  box-shadow: inset 0 0 0 2px #111111;
 }
