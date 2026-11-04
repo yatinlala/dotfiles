@@ -281,11 +281,11 @@ create_toggleable({
 
 create_toggleable({
 	bind = mod .. " + U",
-	class = "org.yatin.ratune",
+	class = "com.jeffser.Nocturne",
 	width = 0.9,
 	height = 0.9,
-	pgrep = "pgrep -x ratune",
-	startup_cmd = "kitty --app-id org.yatin.ratune -e ratune",
+	pgrep = "pgrep -x nocturne",
+	startup_cmd = "flatpak run com.jeffser.Nocturne",
 })
 
 -- create_toggleable({
@@ -430,11 +430,11 @@ hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- bind = $mod,backslash,exec,toggler inhibit-lid
 -- bind = $mod shift,r,exec,toggler gammastep
 
-hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
-hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })
+hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
+hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })
 
-hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv previous"), { locked = true })
-hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv next"), { locked = true })
-hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=io.m51.Gelly,ratune,spotify,mpd,spotifyd,mpv play-pause"), { locked = true })
+hl.bind(mod .. "+ bracketleft", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,spotifyd,mpv previous"), { locked = true })
+hl.bind(mod .. "+ bracketright", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,spotifyd,mpv next"), { locked = true })
+hl.bind("XF86Favorites", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,spotifyd,mpv play-pause"), { locked = true })
 
 -- hl.notification.create({ text = "we here", duration = 2000 })
