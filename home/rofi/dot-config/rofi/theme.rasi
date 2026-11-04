@@ -39,7 +39,7 @@ window {
 
 prompt {
     enabled: 						true;
-	padding: 					0.30% 1% 0% -0.5%;
+	padding:                    0px 8px 0px 0px;
 	background-color: 				@al;
 	text-color: 					@bg;
 	/* font:					"Liga SFMono Nerd Font 11"; */
