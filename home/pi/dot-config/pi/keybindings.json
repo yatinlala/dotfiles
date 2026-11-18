@@ -9,5 +9,10 @@
   ],
   "app.model.cycleForward": "ctrl+shift+p",
   "app.model.cycleBackward": "ctrl+shift+p",
-  "app.session.toggleNamedFilter": "ctrl+shift+n"
+  "app.session.toggleNamedFilter": "ctrl+shift+n",
+  "app.interrupt": "ctrl+q",
+  "app.model.select": [
+    "ctrl+l",
+    "alt+m"
+  ]
 }

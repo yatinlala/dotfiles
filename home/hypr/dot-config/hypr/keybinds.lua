@@ -370,6 +370,7 @@ hl.define_submap("hypr [g]ray [i]nvert [k]ill [p]erf [r]eload [s]wallow [w]aybar
 
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
+bindexec({ mod, "SHIFT", "r" }, "toggler gammastep")
 
 hl.bind(mod .. " + " .. mod2 .. " + B", hl.dsp.exec_cmd("kitty --app-id org.yatin.fzfpopup -e bluetui"))
 
@@ -430,7 +431,6 @@ hl.bind(mod .. " + a", hl.dsp.dpms("toggle"))
 -- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 --
 -- bind = $mod,backslash,exec,toggler inhibit-lid
--- bind = $mod shift,r,exec,toggler gammastep
 
 hl.bind(mod .. "+ minus", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,mpv volume .05-"), { locked = true, repeating = true })
 hl.bind(mod .. "+ equal", hl.dsp.exec_cmd("playerctl --player=com.jeffser.Nocturne,ratune,spotify,mpd,mpv volume .05+"), { locked = true, repeating = true })

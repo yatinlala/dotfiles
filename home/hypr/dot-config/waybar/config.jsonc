@@ -7,8 +7,8 @@
     ],
     "modules-right": [
       // "custom/eye",
-      "power-profiles-daemon",
       "privacy",
+      "power-profiles-daemon",
       "idle_inhibitor",
       "custom/weather",
       "custom/charge_threshold",

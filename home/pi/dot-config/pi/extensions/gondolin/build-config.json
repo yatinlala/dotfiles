@@ -20,7 +20,8 @@
       "git",
       "jq",
       "ripgrep",
-      "fd"
+      "fd",
+      "poppler-utils"
     ],
     "initramfsPackages": [],
     "krunfwVersion": "v5.2.1"
