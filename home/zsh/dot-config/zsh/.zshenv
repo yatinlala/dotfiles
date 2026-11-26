@@ -1,13 +1,17 @@
 typeset -U PATH path
 
-export PATH="$HOME/.local/state/nix/profile/bin:$HOME/.local/share/npm/bin:$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$PATH"
+export ELAN_HOME=$HOME/.local/xdg-launch/.elan
+PATH="$HOME/.local/state/nix/profile/bin:$ELAN_HOME/bin:$PATH"
+PATH="$HOME/.local/share/go/bin:$HOME/.local/share/cargo/bin:$HOME/.local/share/npm/bin:$PATH"
 
 [ "$TERM" = "xterm-kitty" ] && alias ssh="kitten ssh"
 
 # LOCAL PREFIX
-export PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+export PATH
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
