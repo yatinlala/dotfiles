@@ -6,11 +6,16 @@
 #   yo --backend=anthropic explain the last error
 #   YOKIT_BACKEND=openrouter                 # change the default for this shell
 #
+# Personal OpenRouter defaults — edit these here. Reasoning is disabled below.
+YOKIT_OPENROUTER_MODEL=qwen/qwen3.5-35b-a3b
+YOKIT_OPENROUTER_PROVIDER=deepinfra
+
 # Requires jq and timeout; kitty remote control supplies optional terminal context.
 # Backends:
 #   codex: codex + `codex login` with ChatGPT; honors xdg-launch alias.
-#   anthropic (default): curl + ANTHROPIC_API_KEY or ~/io/anthropickey.
-#   openrouter: curl + OPENROUTER_API_KEY or ~/io/openrouterkey.
+#   anthropic (default): curl + ANTHROPIC_API_KEY or pass api/yokit-anthropic.
+#   openrouter: curl + OPENROUTER_API_KEY or pass api/yokit-openrouter.
+# pass entries hold the key on the first line; keys are fetched only on request.
 #   local: llama-cli + YOKIT_LOCAL_MODEL pointing to a GGUF file (command-only,
 #          request only, no scrollback; keeps startup and prompt processing small).
 #
@@ -20,8 +25,6 @@
 #   YOKIT_CODEX_MODEL=gpt-6-luna, YOKIT_CODEX_REASONING=low
 #   YOKIT_CODEX_SERVICE_TIER=fast (2.5x credits; set to default for standard)
 #   YOKIT_CODEX_TIMEOUT=30, YOKIT_ANTHROPIC_MODEL=claude-haiku-4-5
-#   YOKIT_OPENROUTER_MODEL=meta-llama/llama-3.1-8b-instruct (no reasoning)
-#   YOKIT_OPENROUTER_PROVIDER=groq (pin provider; auto routes by latency)
 #   YOKIT_LOCAL_TIMEOUT=45, YOKIT_GPU_LAYERS=all
 #   YOKIT_LOCAL_CTX_SIZE=4096, YOKIT_LOCAL_THREADS=8
 # Local inference runs once and exits; mmap pages are reclaimable, never locked.
@@ -36,8 +39,6 @@ YOKIT_CODEX_REASONING=${YOKIT_CODEX_REASONING:-low}
 YOKIT_CODEX_SERVICE_TIER=${YOKIT_CODEX_SERVICE_TIER:-fast}
 YOKIT_CODEX_TIMEOUT=${YOKIT_CODEX_TIMEOUT:-30}
 YOKIT_ANTHROPIC_MODEL=${YOKIT_ANTHROPIC_MODEL:-claude-haiku-4-5}
-YOKIT_OPENROUTER_MODEL=${YOKIT_OPENROUTER_MODEL:-meta-llama/llama-3.1-8b-instruct}
-YOKIT_OPENROUTER_PROVIDER=${YOKIT_OPENROUTER_PROVIDER:-groq}
 YOKIT_LOCAL_MODEL=${YOKIT_LOCAL_MODEL:-$HOME/.local/share/llms/unsloth/gemma-4-E2B-it-Q4_K_M.gguf}
 YOKIT_LOCAL_TIMEOUT=${YOKIT_LOCAL_TIMEOUT:-45}
 YOKIT_LOCAL_CTX_SIZE=${YOKIT_LOCAL_CTX_SIZE:-4096}
@@ -59,20 +60,31 @@ _yo_require() {
 }
 
 _yo_api_key() {
-  local name=$1 key_file=$2 key
+  local name=$1 pass_entry=$2 key
   key=${(P)name}
-  [[ -z $key && -r $key_file ]] && key=$(<"$key_file")
-  [[ -n $key ]] || { _yo_error "set $name or put the key in $key_file"; return 1; }
+  if [[ -z $key ]]; then
+    _yo_require pass || return 1
+    key=$(command pass show "$pass_entry") || {
+      _yo_error "could not read pass entry $pass_entry"; return 1
+    }
+    key=${key%%$'\n'*}
+  fi
+  [[ -n $key ]] || { _yo_error "set $name or store a key in pass entry $pass_entry"; return 1; }
+  [[ $key != *$'\r'* && $key != *$'\n'* ]] || {
+    _yo_error "invalid API key: expected a single line"; return 1
+  }
   print -r -- "$key"
 }
 
 # Shared HTTP transport; stdout is only a successful JSON body, stderr is errors.
+# Arguments after the URL are header lines, passed through a pipe, not curl argv.
 _yo_post() {
   local payload=$1 url=$2 body rc message
   shift 2
   body=$(command curl --silent --show-error --fail-with-body \
     --connect-timeout 5 --max-time "$YOKIT_TIMEOUT" \
-    -H 'content-type: application/json' "$@" --data-binary @- "$url" <<< "$payload")
+    -H 'content-type: application/json' -H @<(print -rl -- "$@") \
+    --data-binary @- "$url" <<< "$payload")
   rc=$?
   message=$(jq -r '.error.message // empty' <<< "$body" 2>/dev/null)
   [[ -z $message ]] || { _yo_error "$message"; return 1; }
@@ -86,18 +98,19 @@ _yo_post() {
 _yo_backend_openrouter() {
   _yo_require curl || return 1
   local key payload body
-  key=$(_yo_api_key OPENROUTER_API_KEY "$HOME/io/openrouterkey") || return 1
+  key=$(_yo_api_key OPENROUTER_API_KEY api/yokit-openrouter) || return 1
   payload=$(jq -cn --arg model "$YOKIT_OPENROUTER_MODEL" \
     --arg provider "$YOKIT_OPENROUTER_PROVIDER" --arg system "$_yo_system" \
     --arg request "$1" --argjson tokens "$YOKIT_MAX_TOKENS" '{
       model: $model, max_tokens: $tokens, temperature: 0,
+      reasoning: {enabled: false},
       messages: [{role: "system", content: $system}, {role: "user", content: $request}],
       response_format: {type: "json_object"},
       provider: ({require_parameters: true, sort: "latency"} +
         if $provider == "auto" then {} else {only: [$provider], allow_fallbacks: false} end)
     }') || return 1
   body=$(_yo_post "$payload" https://openrouter.ai/api/v1/chat/completions \
-    -H "Authorization: Bearer $key") || return 1
+    "Authorization: Bearer $key") || return 1
   jq -ce 'if .choices[0].finish_reason == "stop" then
     .choices[0].message.content | fromjson
     else error("incomplete or refused OpenRouter response") end' <<< "$body"
@@ -106,7 +119,7 @@ _yo_backend_openrouter() {
 _yo_backend_anthropic() {
   _yo_require curl || return 1
   local key payload body
-  key=$(_yo_api_key ANTHROPIC_API_KEY "$HOME/io/anthropickey") || return 1
+  key=$(_yo_api_key ANTHROPIC_API_KEY api/yokit-anthropic) || return 1
   payload=$(jq -cn --arg model "$YOKIT_ANTHROPIC_MODEL" --arg system "$_yo_system" \
     --arg request "$1" --argjson schema "$_yo_schema" --argjson tokens "$YOKIT_MAX_TOKENS" '{
       model: $model, max_tokens: $tokens, temperature: 0, thinking: {type: "disabled"},
@@ -115,7 +128,7 @@ _yo_backend_anthropic() {
       tool_choice: {type: "tool", name: "reply", disable_parallel_tool_use: true}
     }') || return 1
   body=$(_yo_post "$payload" https://api.anthropic.com/v1/messages \
-    -H "x-api-key: $key" -H 'anthropic-version: 2023-06-01') || return 1
+    "x-api-key: $key" 'anthropic-version: 2023-06-01') || return 1
   jq -ce 'if .stop_reason == "tool_use" then
     [.content[] | select(.type == "tool_use" and .name == "reply")][0].input
     else error("incomplete or refused Anthropic response") end' <<< "$body"
@@ -255,13 +268,6 @@ yo() {
   fi
 }
 
-_yo_pending_chat=''
-_yo_precmd() {
-  [[ -n $_yo_pending_chat ]] || return 0
-  print -r -- $'\033[3;36m'"$_yo_pending_chat"$'\033[0m'
-  _yo_pending_chat=''
-}
-
 _yo_accept_line() {
   POSTDISPLAY=''
   zle -R
@@ -289,17 +295,16 @@ _yo_accept_line() {
     CURSOR=${#BUFFER}
     zle -M "$explanation"
   else
-    _yo_pending_chat=$text
+    # Keep the displayed request, print the answer, and redraw a blank input.
+    zle -I
     print -sr -- "$BUFFER"
-    # Do not submit the natural-language request to the shell: it may contain $().
+    print -r -- $'\033[3;36m'"$text"$'\033[0m'
     BUFFER=''
     CURSOR=0
-    zle .accept-line
+    zle -R
   fi
 }
 
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd _yo_precmd
 zle -N _yo_accept_line
 bindkey -M viins '^M' _yo_accept_line
 bindkey -M viins '^J' _yo_accept_line
