@@ -12,7 +12,7 @@
       "idle_inhibitor",
       "custom/weather",
       "custom/charge_threshold",
-      "mpd",
+      // "mpd",
       // "custom/todo",
       "custom/scratchpad_tracking",
       "tray",
