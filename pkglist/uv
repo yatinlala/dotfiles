@@ -1,4 +1,4 @@
-huggingface-hub v2.2.0
+huggingface-hub v2.4.0
 - hf
 - tiny-agents
 hyprshade v5.0.0
@@ -10,5 +10,5 @@ pocket-tts v4.0.1
 soprano-tts v0.2.0
 - soprano
 - soprano-webui
-spotdl v4.5.2
+spotdl v4.6.0
 - spotdl

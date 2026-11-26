@@ -1,24 +1,24 @@
-Jan	ai.jan.Jan	0.8.7	stable	flathub	user
 ArtCraft Launcher	ai.storyteller.artcraft-launcher	0.14.0	stable	artcraft-launcher1-origin	user
 GridCraft	ai.storyteller.gridcraft	0.16.0	stable	gridcraft-origin	user
 PhotoCraft	ai.storyteller.photocraft	0.20.1	stable	photocraft-origin	user
-ATLauncher	com.atlauncher.ATLauncher	3.4.41.3	stable	flathub	user
-Readest	com.bilingify.readest	0.12.16	stable	flathub	user
-Discord	com.discordapp.Discord	1.0.164	stable	flathub	user
+ATLauncher	com.atlauncher.ATLauncher	3.4.42.0	stable	flathub	user
+Readest	com.bilingify.readest	0.12.20	stable	flathub	user
+Discord	com.discordapp.Discord	1.0.171	stable	flathub	user
 Flatseal	com.github.tchx84.Flatseal	2.4.1	stable	flathub	user
 iReal Pro	com.irealpro.irealpro	2026.7.5	stable	flathub	user
-Nocturne	com.jeffser.Nocturne	1.5.2	stable	flathub	user
-OBS Studio	com.obsproject.Studio	32.2.2	stable	flathub	user
+Nocturne	com.jeffser.Nocturne	1.6.0	stable	flathub	user
+OBS Studio	com.obsproject.Studio	33.0.3	stable	flathub	user
 RustDesk	com.rustdesk.RustDesk		master	rustdesk-origin	user
-Slack	com.slack.Slack	4.52.178	stable	flathub	user
-Bottles	com.usebottles.bottles	67.4	stable	flathub	user
+Slack	com.slack.Slack	4.53.280	stable	flathub	user
+Bottles	com.usebottles.bottles	67.7	stable	flathub	user
 Riff	dev.diegovsky.Riff	26.10	stable	flathub	user
-Gelly	io.m51.Gelly	1.16.1	stable	flathub	user
+Gelly	io.m51.Gelly	2.1.0	stable	flathub	user
 Speech Note	net.mkiol.SpeechNote	4.8.4	stable	flathub	user
 Camera	org.gnome.Snapshot	51.0	stable	flathub	user
 Disk Usage Analyzer	org.gnome.baobab	50.0	stable	flathub	user
 GMetronome	org.gnome.gitlab.dqpb.GMetronome	0.5.1	stable	flathub	user
 Inkscape	org.inkscape.Inkscape	1.4.4	stable	flathub	user
+Ladybird	org.ladybird.Ladybird	2026.47.8	stable	ladybird	user
 LocalSend	org.localsend.localsend_app	1.18.2	stable	flathub	user
 ONLYOFFICE Desktop Editors	org.onlyoffice.desktopeditors	10.0.0	stable	flathub	user
-Zoom	us.zoom.Zoom	7.2.1.5760	stable	flathub	user
+Zoom	us.zoom.Zoom	7.2.5.6661	stable	flathub	user

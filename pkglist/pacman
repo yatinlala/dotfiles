@@ -56,6 +56,7 @@ fd
 ffmpegthumbnailer
 figlet
 firefox
+firejail
 fish
 flatpak
 fontforge
@@ -85,7 +86,9 @@ gst-plugin-va
 guitarix
 guvcview
 gvfs
+gxplugins.lv2
 helvum
+hip-runtime-amd
 htop
 httpie
 httrack
@@ -100,10 +103,14 @@ ibus
 imagemagick
 imv
 inetutils
+innoextract
 jujutsu
 just
+kdeconnect
 keyd
 kitty
+krita
+krita-plugin-gmic
 lapack
 lazygit
 lf
@@ -156,6 +163,7 @@ openbsd-netcat
 openconnect
 opencv
 openmp
+openmpi
 openssh
 otf-aurulent-nerd
 otf-codenewroman-nerd
@@ -182,6 +190,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+playerctl
 podman
 postgresql
 power-profiles-daemon
@@ -191,11 +200,14 @@ python-adblock
 python-brotli
 python-brotlicffi
 python-mutagen
+python-numpy
 python-pip
 python-pipx
 python-pycryptodome
 python-pycryptodomex
 python-pyxattr
+python-rich-argparse
+python-scipy
 python-secretstorage
 python-uv
 python-websockets
@@ -241,6 +253,7 @@ speech-dispatcher
 spirv-headers
 spotify-launcher
 sqlc
+sshfs
 steam
 stow
 strace
@@ -361,6 +374,7 @@ waylock
 wayvnc
 wev
 wget
+whois
 wine
 wine-mono
 wireplumber
