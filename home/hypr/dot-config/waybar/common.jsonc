@@ -71,7 +71,8 @@
 	"hyprland/workspaces": {
 		"sort-by": "number",
 		"all-outputs": true,
-		"format": "{id}"
+		"format": "{id}",
+		"tooltip": false
 	},
 	"custom/202020": {
 		"tooltip": false,
