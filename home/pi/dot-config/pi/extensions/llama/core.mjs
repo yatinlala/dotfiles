@@ -11,14 +11,14 @@ export function configuration(env = process.env) {
   }
   url.pathname = url.pathname.replace(/\/+$/, '').replace(/\/v1$/, '');
   if (url.hostname === 'localhost') url.hostname = '127.0.0.1';
-  const root = env.LLMS || join(homedir(), '.local/share/llms');
   return {
     url: url.toString().replace(/\/$/, ''),
     apiKey: env.LLAMA_API_KEY || '',
-    binary: env.PI_LLAMA_BINARY || 'llama-server',
-    modelsDir: resolve(env.PI_LLAMA_MODELS_DIR || join(root, 'router')),
-    preset: resolve(env.PI_LLAMA_PRESET || join(env.XDG_CONFIG_HOME || join(homedir(), '.config'), 'llama/config.ini')),
-    context: 8192,
+    binary: env.PI_LLAMA_BINARY,
+    modelsDir: env.PI_LLAMA_MODELS_DIR && resolve(env.PI_LLAMA_MODELS_DIR),
+    preset: env.PI_LLAMA_PRESET && resolve(env.PI_LLAMA_PRESET),
+    modelsRoot: env.LLMS,
+    configHome: env.XDG_CONFIG_HOME,
     startupMs: 15000,
     graceMs: 1500,
     runtimeDir: resolve(env.PI_LLAMA_RUNTIME_DIR || join(env.XDG_RUNTIME_DIR || join(homedir(), '.cache'), 'pi-llama-managed')),
@@ -26,7 +26,8 @@ export function configuration(env = process.env) {
 }
 
 export const fingerprint = config => createHash('sha256').update(JSON.stringify([
-  config.url, config.binary, config.modelsDir, config.preset, config.context, config.apiKey,
+  config.url, config.binary, config.modelsDir, config.modelsDir ? null : config.modelsRoot,
+  config.preset, config.preset ? null : config.configHome, config.apiKey,
 ])).digest('hex');
 
 export async function endpoint(config) {

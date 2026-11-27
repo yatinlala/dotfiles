@@ -16,11 +16,11 @@ is stopped. Cached models can also be selected directly through `/model`.
 Defaults match this machine:
 
 - Server: `http://127.0.0.1:8081`
-- Executable: `llama-server` on PATH
+- Endpoint owner on this laptop: `llama-router.socket` (systemd user unit). A connection starts the proxy and router; five minutes without open connections stops both. Do not bind another foreground router to port 8081 while the socket is enabled.
 - Discovery directory: `$LLMS/router`, falling back to
   `~/.local/share/llms/router`
 - Optional preset: `${XDG_CONFIG_HOME:-~/.config}/llama/config.ini`
-- Context: 8192; GPU layers: all; Jinja and router autoload enabled
+- Router launch flags are maintained in the `llama-router` executable
 
 The preset still supplies per-model MTP options. Model/projector/draft paths
 come from the discovered symlink layout. The extension never moves model files.
@@ -50,7 +50,8 @@ users from guessing/authenticating that socket; Linux removes it automatically
 on supervisor exit, so there is no stale PID/lock-file recovery race.
 
 - Router already running: validate and reuse it; never stop/reconfigure it.
-- Router absent: spawn one, wait for readiness, and own that process group.
+- Socket activation enabled: use the systemd-owned endpoint. Passive discovery does not wake a dormant router.
+- No listener or activation socket: spawn `llama-router`, wait for readiness, and own that process group.
 - Two Pi sessions: share one supervisor/router and hold separate connections.
 - Last connection closes: wait 1.5 seconds (for `/reload`/session replacement),
   then terminate the owned router process group; force-kill after five seconds.

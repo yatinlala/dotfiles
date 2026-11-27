@@ -1,11 +1,12 @@
 [Unit]
-Description=Startup llama-server
-After=network-online.target
+Description=Local llama.cpp model router
+StopWhenUnneeded=yes
 
 [Service]
-ExecStart=/home/yatin/.local/bin/llama-server --models-dir /home/yatin/.local/share/llms --models-preset /home/yatin/.config/llama/config.ini
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=default.target
+Type=exec
+RuntimeDirectory=llama-router
+RuntimeDirectoryMode=0700
+Environment=LLAMA_ARG_HOST=%t/llama-router/backend.sock
+Environment=LD_LIBRARY_PATH=%h/.local/pref/llama-cli/lib
+ExecStart=%h/.local/bin/llama-router
+ExecStartPost=/usr/bin/curl -fsS --retry 20 --retry-all-errors --retry-delay 1 --max-time 2 --unix-socket %t/llama-router/backend.sock -o /dev/null http://localhost/health

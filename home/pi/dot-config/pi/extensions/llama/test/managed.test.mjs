@@ -22,7 +22,7 @@ async function fixture(t) {
   const root = await mkdtemp(join(tmpdir(), 'pi-llama-test-'));
   await mkdir(join(root, 'models'));
   const config = { url: `http://127.0.0.1:${await port()}`, apiKey: '', binary: fake, modelsDir: join(root, 'models'),
-    preset: join(root, 'missing.ini'), context: 8192, runtimeDir: join(root, 'runtime'), startupMs: 3000, graceMs: 100 };
+    preset: join(root, 'missing.ini'), runtimeDir: join(root, 'runtime'), startupMs: 3000, graceMs: 100 };
   t.after(async () => { await sleep(300); await rm(root, { recursive: true, force: true }); });
   return config;
 }
@@ -96,7 +96,7 @@ test('external router without autoload is not changed or replaced', async t => {
 test('conflicting managed configuration is rejected without harming first session', async t => {
   const c = await fixture(t);
   const a = await acquire(c); t.after(() => a.close());
-  await assert.rejects(acquire({ ...c, context: 16384 }), /different configuration/);
+  await assert.rejects(acquire({ ...c, preset: join(c.modelsDir, 'other.ini') }), /different configuration/);
   assert.equal((await discover(c)).models.length, 1);
   a.close();
 });
@@ -111,7 +111,7 @@ test('unrelated listener is never replaced', async t => {
 });
 test('spawn failure produces an actionable error', async t => {
   const c = await fixture(t); c.binary = '/nonexistent/pi-llama-server';
-  await assert.rejects(acquire(c), /ENOENT/);
+  await assert.rejects(acquire(c), /exited \(127\); see/);
 });
 test('extension command discovers and selects; generic selection loads and enables thinking', async t => {
   const c = await fixture(t);

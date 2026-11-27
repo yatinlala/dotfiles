@@ -2,10 +2,13 @@ import type { Model, Provider } from '@earendil-works/pi-ai';
 import type { ExtensionAPI, ExtensionContext } from '@earendil-works/pi-coding-agent';
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { configuration, discover, endpoint, request, refused, selectable, toPiModel } from './core.mjs';
 import { acquire } from './lease.mjs';
 
 const PROVIDER = 'llama.cpp';
+const execFileAsync = promisify(execFile);
 
 export default async function managedLlama(pi: ExtensionAPI, streaming?: Pick<Provider, 'stream' | 'streamSimple'>) {
   const compat = streaming ?? await import('@earendil-works/pi-ai/compat');
@@ -44,6 +47,17 @@ export default async function managedLlama(pi: ExtensionAPI, streaming?: Pick<Pr
     try { await attaching; } finally { attaching = undefined; }
   };
 
+  // Probing :8081 would wake a socket-activated router even for an unrelated provider.
+  // Keep passive discovery for already-running routers and non-systemd endpoints.
+  const routerIsDormant = async () => {
+    if (config.url !== 'http://127.0.0.1:8081') return false;
+    try {
+      const { stdout } = await execFileAsync('systemctl',
+        ['--user', 'is-active', 'llama-router.socket', 'llama-server.service'], { timeout: 1000 });
+      return stdout.trim() === 'active\ninactive';
+    } catch { return false; }
+  };
+
   const catalogModels = async (signal?: AbortSignal) => {
     const catalog = await discover(config, signal);
     const selected = catalog.models.filter(m => selectable(m, catalog.autoload));
@@ -55,14 +69,14 @@ export default async function managedLlama(pi: ExtensionAPI, streaming?: Pick<Pr
       if (model.status.value === 'loaded') {
         templates.set(model.id, await request(config, `/props?${new URLSearchParams({ model: model.id, autoload: 'false' })}`, { signal }));
       }
-      result.push({ ...toPiModel(model, templates.get(model.id), config.context), api: 'openai-completions', provider: PROVIDER, baseUrl: `${config.url}/v1` });
+      result.push({ ...toPiModel(model, templates.get(model.id)), api: 'openai-completions', provider: PROVIDER, baseUrl: `${config.url}/v1` });
     }
     return result.sort((a, b) => a.id.localeCompare(b.id));
   };
 
   // Initial discovery makes --list-models and startup model selection work without
   // a session_start event. No supervisor/socket/background work starts here.
-  try { models = await catalogModels(); await saveCatalog(); }
+  try { if (!(await routerIsDormant())) { models = await catalogModels(); await saveCatalog(); } }
   catch { /* Keep the last known catalog so a saved local model can reconnect. */ }
 
   const provider: Provider = {
@@ -80,6 +94,7 @@ export default async function managedLlama(pi: ExtensionAPI, streaming?: Pick<Pr
     getModels: () => models,
     async refreshModels(context) {
       if (!context.allowNetwork || context.signal.aborted) return;
+      if (!lease && await routerIsDormant()) return;
       try {
         const updated = await catalogModels(context.signal);
         if (await context.publish({ update: () => { models = updated; } })) await saveCatalog();
@@ -179,7 +194,7 @@ export default async function managedLlama(pi: ExtensionAPI, streaming?: Pick<Pr
   pi.on('session_start', async (_event, ctx) => {
     try {
       if (ctx.model?.provider === PROVIDER) await prepareModel(ctx, ctx.model.id);
-      else {
+      else if (!(await routerIsDormant())) {
         // Discover an already running router, but don't start one merely by launching Pi.
         await discover(config);
         await attach(ctx);

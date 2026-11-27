@@ -1,0 +1,13 @@
+#!/bin/sh
+# Start the local llama.cpp model router in the foreground.
+set -eu
+models_dir=${PI_LLAMA_MODELS_DIR:-${LLMS:-$HOME/.local/share/llms}/router}
+preset=${PI_LLAMA_PRESET:-${XDG_CONFIG_HOME:-$HOME/.config}/llama/config.ini}
+
+if [ -f "$preset" ]; then
+    set -- --models-preset "$preset" "$@"
+fi
+
+exec "${PI_LLAMA_BINARY:-llama-server}" \
+    --models-dir "$models_dir" --models-max 2 --models-autoload \
+    --host "${LLAMA_ARG_HOST:-127.0.0.1}" --port "${LLAMA_ARG_PORT:-8081}" "$@"

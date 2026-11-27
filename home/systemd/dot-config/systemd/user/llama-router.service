@@ -1,0 +1,8 @@
+[Unit]
+Description=Forward local llama.cpp requests
+Requires=llama-server.service
+After=llama-server.service
+
+[Service]
+Type=notify
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd --exit-idle-time=5min %t/llama-router/backend.sock

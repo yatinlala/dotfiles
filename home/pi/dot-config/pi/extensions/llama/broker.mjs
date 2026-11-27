@@ -1,7 +1,6 @@
 // Separate process: owns the router, while each attached Pi holds a socket lease.
 import net from 'node:net';
 import { spawn } from 'node:child_process';
-import { access } from 'node:fs/promises';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { endpoint, discover, fingerprint, refused } from './core.mjs';
 
@@ -50,16 +49,18 @@ async function ensureRouter() {
   if (url.protocol !== 'http:' || !['127.0.0.1', '[::1]'].includes(url.hostname) || url.pathname !== '/') {
     throw new Error('Automatic startup is only allowed for a local loopback HTTP router; start remote servers yourself');
   }
-  await access(config.modelsDir);
-  const args = ['--models-dir', config.modelsDir, '--models-autoload', '--host', url.hostname.replace(/[\[\]]/g, ''),
-    '--port', url.port || '80', '--jinja', '-ngl', 'all', '-c', String(config.context)];
-  // A missing preset is fine; errors other than ENOENT are not silently ignored.
-  try { await access(config.preset); args.push('--models-preset', config.preset); }
-  catch (error) { if (error.code !== 'ENOENT') throw error; }
+  const env = {
+    ...process.env,
+    LLAMA_API_KEY: config.apiKey,
+    LLAMA_ARG_HOST: url.hostname.replace(/[\[\]]/g, ''),
+    LLAMA_ARG_PORT: url.port || '80',
+  };
+  if (config.binary) env.PI_LLAMA_BINARY = config.binary;
+  if (config.modelsDir) env.PI_LLAMA_MODELS_DIR = config.modelsDir;
+  if (config.preset) env.PI_LLAMA_PRESET = config.preset;
   if (stopping) throw new Error('Supervisor is shutting down');
-  child = spawn(config.binary, args, {
-    detached: true, stdio: ['ignore', 'inherit', 'inherit'],
-    env: { ...process.env, LLAMA_API_KEY: config.apiKey },
+  child = spawn('llama-router', [], {
+    detached: true, stdio: ['ignore', 'inherit', 'inherit'], env,
   });
   child.on('error', error => { childError = error; });
   child.on('exit', (code, signal) => {

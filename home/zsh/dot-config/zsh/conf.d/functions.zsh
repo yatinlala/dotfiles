@@ -75,17 +75,6 @@ run() { systemd-run --user --scope "$@" }
 runc() { systemd-run --user --scope -p CPUQuota="$1" "${@:2}" }
 runm() {  systemd-run --user --scope -p MemoryHigh="$1" "${@:2}"  }
 runcm() {  systemd-run --user --scope -p CPUQuota="$1" -p MemoryHigh="$2" "${@:3}"  }
-start-llama() {
-  llama-server \
-     --models-dir "$LLMS/router" \
-     --models-preset "${XDG_CONFIG_HOME:-$HOME/.config}/llama/config.ini" \
-     --models-autoload \
-     --host 127.0.0.1 \
-     --port 8081 \
-     --jinja \
-     -ngl all \
-     -c 8192
-   }
 lg() { lazygit "$@" }
 git-clean() {
   git clean -xfd
